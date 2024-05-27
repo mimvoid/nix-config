@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./shell-tools.nix
+    ./shell.nix
     ./foot.nix
     ./nixvim.nix
     ./yazi.nix

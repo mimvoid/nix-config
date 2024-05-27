@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-    home.packages = wth pkgs; [
+    home.packages = with pkgs; [
         ffmpegthumbnailer
         poppler
         unar
