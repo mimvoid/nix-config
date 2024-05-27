@@ -1,13 +1,6 @@
 { config, pkgs, inputs, ... }: 
 
 {
-    home.packages = with pkgs; [
-        rose-pine-icon-theme
-        rose-pine-cursor
-        cantarell-fonts
-        (nerdfonts.override { fonts = [ "SourceCodePro" "FiraCode" "FiraMono" "Hack"];})
-    ];
-
     gtk = {
       iconTheme.package = pkgs.rose-pine-icon-theme;
       iconTheme.name = "rose-pine-moon";
@@ -33,7 +26,7 @@
             };
 
             monospace = {
-                package = (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" "FiraCode" "FiraMono" "Hack"];});
+                package = (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ];});
                 name = "SauceCodePro NFM";
             };
 
