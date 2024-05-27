@@ -38,7 +38,7 @@ And what I will use, but haven't fully migrated over yet:
 
 # Resources
 
-### NixOS Sources
+### Nix & NixOS Sources
 - [Official NixOS website](https://nixos.org/)
 - [Download the Nix package manager & NixOS](https://nixos.org/download/)
   - The Nix package manager has many choices, especially on the unstable channel. However, I'd advise against it if you really want to get into Nix's declarative nature. Unless you just want a good package manager, then be my guest.
@@ -49,6 +49,8 @@ And what I will use, but haven't fully migrated over yet:
 - [Search NixOS options](https://search.nixos.org/options)
 
 - [Nix User Repository](https://nur.nix-community.org/)
+- [Nix applications and ecosystem](https://nixos.wiki/wiki/Applications)
+- [Remember to optimize your NixOS storage](https://www.reddit.com/r/NixOS/comments/1cunvdw/friendly_reminder_optimizestore_is_not_on_by/)
 
 ### Home Manager
 A declarative approach to configuring your user environment! It's a lot like NixOS's configuration file, but can be used on other distros too, though not systemwide. I tried it on openSUSE Tumbleweed, but not long-term before trying NixOS. Still, it's pretty nice!
@@ -59,7 +61,7 @@ A declarative approach to configuring your user environment! It's a lot like Nix
 - [Search Home Manager options](https://home-manager-options.extranix.com/)
 
 ### Extras
-The NixOS configuration file and Home Manager are the two main tools I use, but here are some other modules and tools I like!
+The NixOS configuration file and Home Manager are the two main tools I use, but here are some other tools I like!
 
 - [Awesome Nix: Great collection of Nix resources!](https://github.com/nix-community/awesome-nix)
 - [nh: A pretty Nix and Home Manager helper](https://github.com/viperML/nh)
@@ -71,6 +73,7 @@ The NixOS configuration file and Home Manager are the two main tools I use, but 
   - It seems less automatic than Stylix, but I'd love to try it out at some point.
 - [Plasma-manager: For KDE Plasma](https://github.com/pjones/plasma-manager)
   - Also haven't tried this one extensively, but it seems promising.
+- [System Manager: Manage system configuration with Nix](https://github.com/numtide/system-manager)
 
 # Pieces of Advice
 
