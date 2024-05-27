@@ -19,7 +19,7 @@ What I use:
 - **Desktop environment**: [KDE Plasma 6](https://kde.org/plasma-desktop/)
 - **Music Player**: [Elisa](https://apps.kde.org/elisa/)
 - **Cursor**: [Rose Pine Dawn cursor](https://github.com/rose-pine/cursor)
-- **Folder icons**: [Rose Pine Moon icons](https://github.com/rose-pine/gtk)
+- **GTK icons**: [Rose Pine Moon icons](https://github.com/rose-pine/gtk)
 - **Fonts**: [Cantarell](https://cantarell.gnome.org/) & [SauceCodePro Nerd Font](https://www.nerdfonts.com/)
 - **Bootable USB**: [Ventoy](https://www.ventoy.net/en/index.html)
 
