@@ -6,6 +6,8 @@ This is where I keep my configuration files and links to resources I found helpf
 
 Note: This repo is a massive work-in-progress, and I only recently got into configuration files at all. Apologies if it's a little messy!
 
+My Firefox CSS from the chrome folder can be found in [panefox](https://github.com/mimvoid/panefox).
+
 Also: I got some of my [wallpapers](https://github.com/JaKooLit/Wallpaper-Bank) from JaKooLit's [Hyprland dots](https://github.com/JaKooLit/Hyprland-Dots), and don't know the sources. I will definitely try to track them down once I can.
 
 ***
