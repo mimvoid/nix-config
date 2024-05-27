@@ -45,7 +45,7 @@ And what I will use, but haven't fully migrated over yet:
 - [Nix language guide](https://nix.dev/tutorials/nix-language)
 - [Very helpful guide to Nix flakes](https://nixos-and-flakes.thiscute.world/nixos-with-flakes/introduction-to-flakes)
   - Nix flakes may seem daunting at first, but they make it super easy to add extra sources and configuration options. Plus, they're declarative while nix channels are not.
-- [Search nix packages](https://search.nixos.org/packages)
+- [Search Nix packages](https://search.nixos.org/packages)
 - [Search NixOS options](https://search.nixos.org/options)
 
 - [Nix User Repository](https://nur.nix-community.org/)
