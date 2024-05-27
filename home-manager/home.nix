@@ -11,10 +11,6 @@
   # INSTALLATIONS #
   #---------------#
 
-  # Currently installed through zypper:
-  # Hyprland
-  # xdg-desktop-portal-hyprland
-
   home.packages = with pkgs; [
     # GUIs
     xfce.thunar
