@@ -53,7 +53,7 @@ And what I will use, but haven't fully migrated over yet:
 ### Home Manager
 A declarative approach to configuring your user environment! It's a lot like NixOS's configuration file, but can be used on other distros too, though not systemwide. I tried it on openSUSE Tumbleweed, but not long-term before trying NixOS. Still, it's pretty nice!
 
-- [Home Manager GitHub page](https://github.com/nix-community/home-manager)
+- [Home Manager](https://github.com/nix-community/home-manager)
 - [Home Manager manual](https://nix-community.github.io/home-manager/)
 - [Home Manager configuration options manual](https://nix-community.github.io/home-manager/options.xhtml)
 - [Search Home Manager options](https://home-manager-options.extranix.com/)
