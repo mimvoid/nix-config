@@ -6,7 +6,7 @@ This is where I keep my configuration files and links to resources I found helpf
 
 Note: This repo is a massive work-in-progress, and I only recently got into configuration files at all. Apologies if it's a little messy!
 
-Also: I got some of my [wallpapers](https://github.com/JaKooLit/Wallpaper-Bank) from JaKooLit's [Hyprland dots](https://github.com/JaKooLit/Hyprland-Dots), and don't know the sources. I will track them down once I can!
+Also: I got some of my [wallpapers](https://github.com/JaKooLit/Wallpaper-Bank) from JaKooLit's [Hyprland dots](https://github.com/JaKooLit/Hyprland-Dots), and don't know the sources. I will definitely try to track them down once I can.
 
 ***
 
@@ -81,4 +81,4 @@ The NixOS configuration file and Home Manager are the two main tools I use, but 
   - If you really want to dig deep, don't be afraid to look through the source code and create your own modules, overlays, and whatever you need to get that configuration! You can do a ton on NixOS, but it takes time, effort, and undoubtly frustration, haha.
 - Compared to the rest of Linux, NixOS is a very different distro, but that's what makes me enjoy it!
 ***
-Btw, if you made it this far, thanks! Have a cookie 🍪
+If you made it this far, thanks! Have a cookie 🍪
