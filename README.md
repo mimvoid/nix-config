@@ -13,7 +13,7 @@ Also: I got some of my [wallpapers](https://github.com/JaKooLit/Wallpaper-Bank) 
 What I use:
 
 - **Terminal**: [foot](https://codeberg.org/dnkl/foot)
-- **Editor**: [Nixvim](https://github.com/nix-community/nixvim)
+- **Editor**: [NixVim](https://github.com/nix-community/nixvim)
 - **File manager**: [Thunar](https://docs.xfce.org/xfce/thunar/start) & [yazi](https://github.com/sxyazi/yazi)
   - I still haven't went through yazi's keymaps yet, but I'll try fully switching to it when I do!
 - **Desktop environment**: [KDE Plasma 6](https://kde.org/plasma-desktop/)
