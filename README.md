@@ -1,2 +1,11 @@
-# nix-config
-Links to resources, along with my NixOS and Home Manager config files!
+# mimvoid's NixOS & home manager configs
+Note: This repo is a massive work-in-progress, and I only recently got into configuration files. Apologies if this is a little messy!
+
+What I use:
+
+***
+# Resources
+
+### NixOS Sources
+- [Official NixOS website](https://nixos.org/)
+- 
