@@ -28,7 +28,7 @@ And what I will use, but haven't fully migrated over yet:
 - **Window manager**: [Hyprland](https://hyprland.org/)
 - **Hypr ecosystem**: [hypridle & hyprlock](https://wiki.hyprland.org/Hypr-Ecosystem/)
 - **Bar**: [Waybar](https://github.com/Alexays/Waybar)
-  - Also considering [yambar](https://codeberg.org/dnkl/yambar/)
+  - Also considering [yambar](https://codeberg.org/dnkl/yambar/) and [eww](https://github.com/elkowar/eww)
 - **Notifications**: [mako](https://github.com/emersion/mako)
 - **App launcher**: [fuzzel](https://codeberg.org/dnkl/fuzzel)
 - **Note-taking app**: [Obsidian](https://obsidian.md/)
