@@ -1,96 +1,42 @@
-{ inputs, outputs, lib, config, pkgs, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
-  home.username = "zinnia";
-  home.homeDirectory = "/home/zinnia";
+    home = {
+      username = "zinnia";
+      homeDirectory = "/home/zinnia";
+      stateVersion = "23.11";
+    };
+    
+    programs.home-manager.enable = true;
 
-  home.stateVersion = "23.11";
-  programs.home-manager.enable = true;
 
-  #---------------#
-  # INSTALLATIONS #
-  #---------------#
+    # Temporary installation list
 
-  home.packages = with pkgs; [
-    # GUIs
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    gvfs
-    zathura
+    home.packages = with pkgs; [
+      # GUIs
+      xfce.thunar
+      xfce.thunar-archive-plugin
+      gvfs
+      zathura 
 
-    # Hyprland
-    hyprland
-    hyprland-protocols
-    xdg-desktop-portal-hyprland
-    hyprlock
-    hypridle
-    hyprcursor
-    hyprpicker
-    waybar
-    eww
-    mako
-    fuzzel
-    swaybg
-    wlsunset
-    wlogout
+      # # It is sometimes useful to fine-tune packages, for example, by applying
+      # # overrides. You can do that directly here, just don't forget the
+      # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+      # # fonts?
+      # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
 
-    # # It is sometimes useful to fine-tune packages, for example, by applying
-    # # overrides. You can do that directly here, just don't forget the
-    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
-    # # fonts?
-    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
-
-    # # You can also create simple shell scripts directly inside your
-    # # configuration. For example, this adds a command 'my-hello' to your
-    # # environment:
-    # (pkgs.writeShellScriptBin "my-hello" ''
-    #   echo "Hello, ${config.home.username}!"
-    # '')
-  ];
-
-  imports = [
-      ./terminal.nix
-      ./stylix.nix
+      # # You can also create simple shell scripts directly inside your
+      # # configuration. For example, this adds a command 'my-hello' to your
+      # # environment:
+      # (pkgs.writeShellScriptBin "my-hello" ''
+      #   echo "Hello, ${config.home.username}!"
+      # '')
     ];
 
-  programs.zathura.enable = true;
-
-  services = {
-    mako = {
-      enable = true;
-
-      anchor = "top-right";
-
-      actions = true;
-      defaultTimeout = 5000;
-      ignoreTimeout = true;
-      maxVisible = 5;
-
-      icons = true;
-
-      borderSize = 1;
-      borderRadius = 4;
-      padding = "8";
-
-      font = "SauceCodePro Nerd Font Medium 9";
-
-      backgroundColor = "#24273abb"; #transleucent base
-      textColor = "#cad3f5"; #catppuccin text
-      borderColor = "#f5bde6"; #pink?
-      progressColor = "over #363a4f";
-    };
-
-    wlsunset = {
-      enable = true;
-      sunrise = "7:30";
-      sunset = "20:00";
-      temperature = {
-        day = 5000;
-        night = 2500;
-      };
-    };
-  };
-
+    imports = [
+        ./terminal/default.nix
+        ./stylix.nix
+    ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

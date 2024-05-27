@@ -5,15 +5,17 @@
 
 {
   imports =
-    [ # Include the results of the hardware scan.
+    [
       ./hardware-configuration.nix
+      #./system/sddm.nix
+      #./system/grub2.nix
     ];
 
   # Enable nix flakes
   nix.package = pkgs.nixFlakes;
   nix.settings.experimental-features = [ "nix-command" "flakes"];
 
-  # Bare minimum system packages--most are just in home manager
+  # Bare minimum system packages--most are in home manager
   environment.systemPackages = with pkgs; [
     git
     neovim
@@ -29,10 +31,19 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # Allow unfree packages
+  nixpkgs.config.allowUnfree = true;
 
   #----------------------------------------#
   # Desktop Environments & Window Managers #
   #----------------------------------------#
+
+  services.xserver.enable = true;
+  # Configure keymap in X11
+  services.xserver = {
+    xkb.layout = "us";
+    xkb.variant = "";
+  }; 
 
   programs.xwayland.enable = true;
 
@@ -49,46 +60,25 @@
     dolphin-plugins
   ];
 
+  # Hyprland
+  wayland.windowManager.hyprland.enable = true;
+
+  #---------------#
+  # Applicatioons #
+  #---------------#
+
+  # Install firefox.
+  programs.firefox.enable = true;
+
   # Thunar gvfs
   services.gvfs = {
     enable = true;
     package = pkgs.gvfs;
   };
 
-  networking.hostName = "nixos";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # Enable networking
-  networking.networkmanager.enable = true;
-
-  # Set your time zone.
-  time.timeZone = "America/New_York";
-
-  # Select internationalisation properties.
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_US.UTF-8";
-    LC_IDENTIFICATION = "en_US.UTF-8";
-    LC_MEASUREMENT = "en_US.UTF-8";
-    LC_MONETARY = "en_US.UTF-8";
-    LC_NAME = "en_US.UTF-8";
-    LC_NUMERIC = "en_US.UTF-8";
-    LC_PAPER = "en_US.UTF-8";
-    LC_TELEPHONE = "en_US.UTF-8";
-    LC_TIME = "en_US.UTF-8";
-  };
-
-  # Enable the X11 windowing system.
-  services.xserver.enable = true;
-
-  # Configure keymap in X11
-  services.xserver = {
-    xkb.layout = "us";
-    xkb.variant = "";
-  };
-
-  # Enable CUPS to print documents.
-  services.printing.enable = true;
+  #----------#
+  # Services #
+  #----------#
 
   # Enable sound with pipewire.
   sound.enable = true;
@@ -112,8 +102,37 @@
     powerOnBoot = true;
   };
 
-  # Enable touchpad support (enabled default in most desktopManager).
+  # Enable touchpad support
   services.xserver.libinput.enable = true;
+
+  # Enables CUPS
+  services.printing.enable = true;
+
+  #---------------#
+  # Miscellaneous #
+  #---------------#
+
+  networking.hostName = "nixos";
+  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+  # Enable networking
+  networking.networkmanager.enable = true;
+
+  # Time zone
+  time.timeZone = "America/New_York";
+
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  i18n.extraLocaleSettings = {
+    LC_ADDRESS = "en_US.UTF-8";
+    LC_IDENTIFICATION = "en_US.UTF-8";
+    LC_MEASUREMENT = "en_US.UTF-8";
+    LC_MONETARY = "en_US.UTF-8";
+    LC_NAME = "en_US.UTF-8";
+    LC_NUMERIC = "en_US.UTF-8";
+    LC_PAPER = "en_US.UTF-8";
+    LC_TELEPHONE = "en_US.UTF-8";
+    LC_TIME = "en_US.UTF-8";
+  };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.zinnia = {
@@ -124,12 +143,6 @@
       neovim
     ];
   };
-
-  # Install firefox.
-  programs.firefox.enable = true;
-
-  # Allow unfree packages
-  nixpkgs.config.allowUnfree = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

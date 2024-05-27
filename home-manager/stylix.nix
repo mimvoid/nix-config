@@ -1,5 +1,6 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ config, pkgs, inputs, ... }: 
 
+{
     home.packages = with pkgs; [
         rose-pine-icon-theme
         rose-pine-cursor
