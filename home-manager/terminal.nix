@@ -7,6 +7,7 @@
 
         # Shell tools
         bash
+        bash-completion
         autojump
         bat
         eza
