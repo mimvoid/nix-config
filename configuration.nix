@@ -48,7 +48,6 @@
     kate
     khelpcenter
     dolphin-plugins
-    spectacle
   ];
 
   # Thunar gvfs
