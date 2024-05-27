@@ -44,7 +44,7 @@ And what I will use, but haven't fully migrated over yet:
   - The Nix package manager has many choices, especially on the unstable channel. However, I'd advise against it if you really want to get into Nix's declarative nature. Unless you just want a good package manager, then be my guest.
 - [Nix language guide](https://nix.dev/tutorials/nix-language)
 - [Very helpful guide to Nix flakes](https://nixos-and-flakes.thiscute.world/nixos-with-flakes/introduction-to-flakes)
-  - Nix flakes may seem dauntinng at first, but they make it super easy to add extra sources and configuration options. Plus, they're declarative while nix channels are not.
+  - Nix flakes may seem daunting at first, but they make it super easy to add extra sources and configuration options. Plus, they're declarative while nix channels are not.
 - [Search nix packages](https://search.nixos.org/packages)
 - [Search NixOS options](https://search.nixos.org/options)
 
