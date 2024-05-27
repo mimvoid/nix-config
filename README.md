@@ -79,6 +79,6 @@ The NixOS configuration file and Home Manager are the two main tools I use, but 
   - If you really want a config without the manual effort, maybe NixOS is not for you.
 - It's absolutely true that NixOS documentation is sparse.
   - If you really want to dig deep, don't be afraid to look through the source code and create your own modules, overlays, and whatever you need to get that configuration! You can do a ton on NixOS, but it takes time, effort, and undoubtly frustration, haha.
-- Compared to the rest of Linux, NixOS is a very different distro, but that's what makes me enjoy it!
+- Compared to the rest of Linux, NixOS is a very different distro, but that's why I enjoy it!
 ***
 If you made it this far, thanks! Have a cookie 🍪
