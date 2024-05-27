@@ -2,7 +2,9 @@
 
 This is where I keep my configuration files and links to resources I found helpful, as well as some pieces of advice from my experience with NixOS.
 
-Note: This repo is a massive work-in-progress, and I only recently got into configuration files. Apologies if it's a little messy!
+![Screenshot_20240527_000609](https://github.com/mimvoid/nix-config/assets/153698678/3f722d86-e655-4cbb-82a5-9acba1b91ff1)
+
+Note: This repo is a massive work-in-progress, and I only recently got into configuration files at all. Apologies if it's a little messy!
 
 Also: I got some of my [wallpapers](https://github.com/JaKooLit/Wallpaper-Bank) from JaKooLit's [Hyprland dots](https://github.com/JaKooLit/Hyprland-Dots), and don't know the sources. I will track them down once I can!
 
