@@ -51,7 +51,6 @@
         extraConfig = {
             init.defaultBranch = "main";
             core.editor = "nvim";
-            fetch.prune = true;
         };
     };
 
