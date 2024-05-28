@@ -1,92 +1,228 @@
-{ config, pkgs, ...}:
+{ config, pkgs, ... }:
 
+# Default applications
+let
+    terminal = "foot";
+    launcher = "fuzzel";
+    bar = "waybar";
+    browser = "firefox";
+    fileManager = "yazi";
+
+    left = "H";
+    down = "J";
+    up = "K";
+    right = "L";
+in
 {
-programs = {
-  hypridle = {
-    enable = true;
+    # Temporary
+    home.packages = with pkgs; [
+        hyprcursor
+        hypridle
+        hyprlock
+        fuzzel
+        mako
+        networkmanagerapplet
+        swaybg
+        waybar
+        wlsunset
+        wlogout
+    ];
+        
+    wayland.windowManager.hyprland = {
+        enable = true;
+        systemd = {
+            enable = true;
+            variables = ["--all"];
+        };
+        xwayland.enable = true;
+        
+        extraConfig = "
+            monitor = ,preferred,auto,auto
+            xwayland {
+                force_zero_scaling = true
+            }
+        ";
 
-    settings = {
+        settings = {
+            # Startup & daemons
+            exec-once = [
+                "systemctl --user import-environment &"
+                "dbus-update-activation-environment --systemd --all &"
+                "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
+                "/usr/libexec/polkit-kde-authetication-agent-1 &"
+                "hypridle &"
+                "mako &"
+            ];
 
-      general = {
-        lock_cmd = "hyprlock";
-        after_sleep_cmd = "hyprctl dispatch dpms on";
-        ignore_dbus_inhibit = false;
-      };
+            exec = [
+                "wlsunset"
+                "swaybg -i ~/NixOS/home-manager/extra/wallpapers/Manga-Girl-Rain.png &"
+                "nm-applet --indicator &"
+                "waybar"
+            ];
 
-      listener = [
-        # Idle warning
-        {
-          timeout = 540;
-          on-timeout = "notify-send 'Hypridle' 'Are you there...?'";
-          on-resume = "notify-send 'Hypridle' 'Welcome back!'";
-        }
-        # Screen locking
-        {
-          timeout = 600;
-          on-timeout = "hyprlock";
-          on-resume = "notify-send 'Hyprland' 'Welcome back!'";
-        }
-        # Sleep
-        {
-          timeout = 900;
-          on-timeout = "hyprctl dispatch dpms off";
-          on-resume = "hyprctl dispatch dpms on";
-        }
-      ];
+            env = [
+                "XDK_CURRENT_DESKTOP, Hyprland"
+                "XDK_SESSION_TYPE, wayland"
+                "XDK_SESSION_DESKTOP, Hyprland"
+
+                "GDK_scale, 2"
+                "GDK_BACKEND, wayland, x11, *"
+
+                "QT_AUTO_SCREEN_SCALE_FACTOR, 1_SCALE_FACTOR, 1"
+                "QT_QPA_PLATFORM, wayland; xcb"
+                "QT_QPA_PLATFORMTHEME, qt6ct"
+                "QT_QPA_scale, 2"
+                "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
+
+                #"XCURSOR_THEME,"
+                "XCURSOR_SIZE, 32"
+                "HYPRCURSOR_SIZE, 32"
+            ];
+
+            #---------#
+            # Layouts #
+            #---------#
+
+            dwindle = {
+                pseudotile = true;
+                preserve_split = true;
+            };
+
+            master.new_is_master = true;
+
+            #-----------------#
+            # Window settings #
+            #-----------------#
+
+            general = {
+                gaps_in = 4;
+                gaps_out = 8;
+
+                border_size = 1;
+                "col.active_border" = "rgb(f4dbd6)"; #flamingo
+                "col.inactive_border" = "rgb(c6a0f6)"; #mauve
+
+                resize_on_border = true;
+                allow_tearing = false;
+                layout = "dwindle";
+            };
+
+            decoration = {
+                rounding = 6;
+
+                active_opacity = 0.80;
+                inactive_opacity = 0.70;
+
+                drop_shadow = true;
+                shadow_range = 2;
+                shadow_render_power = 2;
+                "col.shadow" = "rbg(191926)"; #crust
+
+                blur = {
+                    enabled = true;
+                    size = 1;
+                    passes = 1;
+                    contrast = 1.40;
+                };
+            };
+
+            windowrulev2 = [
+                "suppressevent maximize, class:.*"
+                "opacity 1.0 override 0.90 override, class:(firefox)"
+                "opacity 1.0 override 0.90 override, class:(elisa)"
+                "opacity 0.90 override 0.85 override, title:(YaST2*)"
+                "opacity 0.98 override 0.85 override, class:(Zotero)"
+                "opaque, class:(krita)"
+            ];
+
+            animations = {
+                enabled = true;
+                bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
+                animation = [
+                    "windows, 1, 2, myBezier"
+                    "windowsOut, 1, 2, default, popin 80%"
+                    "border, 1, 3, default"
+                    "borderangle, 1, 2, default"
+                    "fade, 1, 2, default"
+                    "workspaces, 1, 2, default"
+                ];
+            };
+
+            #---------------#
+            # Miscellaneous #
+            #---------------#
+
+            input = {
+                kb_layout = "us";
+                #kb_variant = 
+                #kb_model = 
+                #kb_options =
+                #kb_rules = 
+
+                follow_mouse = "1";
+
+                sensitivity = "0";
+
+                touchpad.natural_scroll = false;
+            };
+
+            gestures.workspace_swipe = false;
+
+            misc = {
+                force_default_wallpaper = 0;
+                disable_hyprland_logo = true;
+            };
+
+            #-------------#
+            # Keybindings #
+            #-------------#
+
+            "$mod" = "SUPER";
+            bindm = [
+                "$mod, mouse:272, movewindow"
+                "$mod, mouse:272, resizewindow"
+            ];
+            bind = [
+                # Launch
+                "$mod, Return, exec, ${terminal}"
+                "$mod, E, exec, ${fileManager}"
+                "$mod, SPACE, exec, ${launcher}"
+                "$mod, W, exec, ${browser}"
+
+                # Exit
+                "$mod, Q, killacive"
+
+                # Reload
+                "$mod, R, exec, "
+
+                # Trigger wlogout
+                "$mod SHIFT, Q, exec, wlogout -b 2"
+
+                # Switch focus
+                "$mod, ${left}, movefocus, l"
+                "$mod, ${right}, movefocus, r"
+                "$mod, ${up}, movefocus, u"
+                "$mod, ${down}, movefocus, d"
+            ]
+            ++ (
+                # Workspaces
+                # $mod + {1..10} to workspace {1..10}
+                # $mod + shift + {1..10} to move to workspace {1..10}
+                builtins.concatLists (builtins.genList (
+                    x: let
+                        ws = let
+                        c = (x + 1) / 10;
+                    in
+                        builtins.toString (x + 1 - (c * 10));
+                    in [
+                        "$mod, ${ws}, workspace, ${toString (x + 1)}"
+                        "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
+                    ]
+                )
+                10)
+            );
+        };
+            
     };
-  };
-
-#  hyprlock = {
-#    enable = false; #Need to import settings with colors somehow...
-#  };
-
-#  fuzzel = {
-#    enable = true;
-#    settings = {
-#      main = {
-#
-#      };
-#      colors = {
-#
-#      };
-#    };
-#  };
-
-};
-
-services = {
-  mako = {
-    enable = true;
-
-    anchor = "top-right";
-
-    actions = true;
-    defaultTimeout = 5000;
-    ignoreTimeout = true;
-    maxVisible = 5;
-
-    icons = true;
-
-    borderSize = 1;
-    borderRadius = 4;
-    padding = "8";
-
-    font = "SauceCodePro Nerd Font Medium 9";
-
-    backgroundColor = "#24273abb"; #transleucent base
-    textColor = "#cad3f5"; #catppuccin text
-    borderColor = "#f5bde6"; #pink?
-    progressColor = "over #363a4f";
-  };
-
-  wlsunset = {
-    enable = true;
-    sunrise = "7:30";
-    sunset = "20:00";
-    temperature = {
-      day = 5000;
-      night = 2500;
-    };
-  };
-};
 }

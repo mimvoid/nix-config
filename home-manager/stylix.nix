@@ -1,6 +1,10 @@
 { config, pkgs, inputs, ... }: 
 
 {
+    home.packages = with pkgs; [
+        rose-pine-icon-theme
+    ];
+
     gtk = {
       iconTheme.package = pkgs.rose-pine-icon-theme;
       iconTheme.name = "rose-pine-moon";

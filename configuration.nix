@@ -22,6 +22,7 @@
     nh
     wget
     curl
+    polkit
   ];
 
   # Autoupdate
@@ -61,7 +62,7 @@
   ];
 
   # Hyprland
-  wayland.windowManager.hyprland.enable = true;
+  programs.hyprland.enable = true;
 
   #---------------#
   # Applicatioons #
