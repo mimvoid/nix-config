@@ -1,28 +1,53 @@
 # Macchiato Candle palette & fonts
 # Custom catppuccin macchiato with rosy accents and cool bases
 
-# Default format is ffffff, use nix-rice to translate it?
+# This is ridiculous, needs to have some abstraction or I will tire
 
 { config, ... }:
 
-let
-    theme = ./raw-palettes/catppuccin-macchiato.nix
-in
 {
-    # Color palette
+    imports = [ ./raw-palettes/catppuccin-macchiato.nix ];
+
     # Bases: neutral colors, most common
-    text = theme.text;
-    base = theme.base;
-    line = theme.surface0;
-    frame = theme.surface1;
+    text = {
+        hex = text.hex;
+        rgb = text.rgb;
+    };
+    base = {
+        hex = base.hex;
+        rgb = base.rgb;
+    };
+    line = {
+        hex = surface0.hex;
+        rgb = surface0.rgb;
+    };
+    frame = {
+        hex = surface1.hex;
+        rgb = surface0.rgb;
+    };
 
     # Accents: colorful parts of the palette
-    accent-main = theme.flamingo;
-    accent-pair = theme.pink;
-    accent-mid = theme.mauve;
+    accent-main = {
+        hex = flamingo.hex;
+        rgb = flamingo.rgb;
+    };
+    accent-pair = {
+        hex = pink.hex;
+        rgb = pink.rgb;
+    };
+    accent-mid = {
+        hex = mauve.hex;
+        rgb = mauve.rgb;
+    };
 
-    watch = theme.yellow;
-    alert = theme.maroon;
+    watch = {
+        hex = yellow.hex;
+        rgb = yellow.rgb;
+    };
+    alert = {
+        hex = maroon.hex;
+        rgb = maroon.rgb;
+    };
     
     # Fonts
     sansSerif = {

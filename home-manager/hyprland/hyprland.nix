@@ -104,7 +104,7 @@ in
                 drop_shadow = true;
                 shadow_range = 2;
                 shadow_render_power = 2;
-                "col.shadow" = "rbg(191926)"; #crust
+                "col.shadow" = "rgb(181926)"; #crust
 
                 blur = {
                     enabled = true;
@@ -178,7 +178,7 @@ in
                 "$mod, W, exec, ${browser}"
 
                 # Exit
-                "$mod, Q, killacive"
+                "$mod, Q, killactive"
 
                 # Reload
                 "$mod, R, exec, pkill waybar && hyprctl reload config-only"

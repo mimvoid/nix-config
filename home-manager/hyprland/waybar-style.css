@@ -1,0 +1,101 @@
+/*---https://github.com/dpgraham4401/.dotfiles---*/
+
+* {
+    border: none;
+    font-family: "SauceCodePro NF", "FiraCode Nerd Font", "Hack", "Noto Sans", sans-serif;
+    font-size: 10px;
+    color: #ffffff;
+    border-radius: 16px;
+}
+
+window {
+    /*font-weight: bold;*/
+}
+
+window#waybar {
+    background: rgba(0, 0, 0, 0);
+}
+
+
+/*-----Module groups----*/
+
+.modules-right {
+    background-color: rgba(36,39,58,0.60);
+    margin: 2px 6px 0 0;
+}
+
+.modules-center {
+    background-color: rgba(36,39,58,0.60);
+    margin: 2px 0 0 0;
+}
+
+.modules-left {
+    margin: 2px 0 0 5px;
+    background-color: rgba(36,39,58,0.60);
+}
+
+
+/*-----Individual modules----*/
+
+#workspaces button {
+    padding: 1px 5px;
+    background-color: transparent;
+}
+
+#workspaces button:hover {
+    box-shadow: inherit;
+    background-color: rgba(0,153,153,1);
+}
+
+#workspaces button.focused {
+    background-color: rgba(0,43,51,0.85);
+}
+
+#clock,
+#battery,
+#cpu,
+#memory,
+#temperature,
+#network,
+#pulseaudio,
+#custom-media,
+#tray,
+#mode,
+#custom-power,
+#custom-menu,
+#idle_inhibitor {
+    padding: 0 8px;
+}
+
+#mode {
+    color: #cad3f5;
+}
+
+#custom-power {
+    background-color: rgba(181,191,226,0.4);
+    border-radius: 16px;
+    margin: 5px 5px;
+    padding: 1px 1px 1px 6px;
+}
+
+
+/*-----Indicators----*/
+
+#idle_inhibitor.activated { color: #81c8be; }
+
+#pulseaudio.muted { color: rgba(165,173,203,0.75); }
+
+#battery.charging { color: #81c8be; }
+#battery.warning:not(.charging) { color: #e5c890; }
+#battery.critical:not(.charging) { color: #e78284; }
+
+#temperature.critical { color: #e78284; }
+
+
+/*-----Colors----*/
+/*
+ * rgba(0,85,102,1),#005566 --> Indigo(dye)
+ *rgba(0,43,51,1),#002B33 --> Dark Green
+ *rgba(0,153,153,1),#009999 --> Persian Green
+ *
+ */

@@ -16,7 +16,7 @@
         ./hyprland.nix
         ./hypridle.nix
         #./hyprlock.nix
-        #./waybar.nix
+        ./waybar.nix
         #./fuzzel.nix
         #./mako.nix
         ./wlsunset.nix

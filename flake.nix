@@ -20,27 +20,21 @@
             inputs.nixpkgs.follows = "nixpkgs";
             inputs.home-manager.follows = "home-manager";
         };
-
-        # Nix-rice overlays
-        nix-rice.url = "github:bertof/nix-rice";
     };
 
-    outputs = inputs @ { self, nixpkgs, home-manager, nixvim, stylix, nix-rice, plasma-manager, ... }:
-    let
-        overlays = [ nix-rice.overlays.default ];
-    in
+    outputs = inputs @ { self, nixpkgs, home-manager, nixvim, stylix, plasma-manager, ... }:
     {
         nixosConfigurations = {
             nixos = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
-                specialArgs = { inherit inputs overlays; };
+                specialArgs = { inherit inputs; };
                 modules = [ ./configuration.nix ];
             };
         };
         homeConfigurations = {
             "zinnia" = home-manager.lib.homeManagerConfiguration {
                 pkgs = nixpkgs.legacyPackages.x86_64-linux;
-                extraSpecialArgs = { inherit inputs overlays; };
+                extraSpecialArgs = { inherit inputs; };
                 modules = [
                     ./home-manager/home.nix
                     stylix.homeManagerModules.stylix

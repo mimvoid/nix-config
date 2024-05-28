@@ -44,7 +44,12 @@
   services.xserver = {
     xkb.layout = "us";
     xkb.variant = "";
-  }; 
+  };
+
+  xdg.portal = {
+    enable = true;
+    extraPortals = [ pkgs.xdg-desktop-portal-hyprland ];
+  };
 
   programs.xwayland.enable = true;
 
@@ -62,7 +67,10 @@
   ];
 
   # Hyprland
-  programs.hyprland.enable = true;
+  programs.hyprland = {
+    enable = true;
+    xwayland.enable = true;
+  };
   security.polkit.enable = true;
 
   #---------------#
@@ -114,10 +122,12 @@
   # Miscellaneous #
   #---------------#
 
-  networking.hostName = "nixos";
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  # Enable networking
-  networking.networkmanager.enable = true;
+  networking = {
+    hostName = "nixos";
+    # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
+    # Enable networking
+    networkmanager.enable = true;
+  };
 
   # Time zone
   time.timeZone = "America/New_York";

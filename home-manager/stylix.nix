@@ -52,6 +52,8 @@
         hyprland.enable = false;
         mako.enable = false;
         nixvim.transparent_bg.main = true;
+        waybar.enable = false;
+
         gtk.enable = false;
         kde.enable = false;
     };

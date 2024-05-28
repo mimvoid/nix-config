@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, outputs, ... }:
 
 {
     home = {
@@ -17,7 +17,6 @@
       xfce.thunar
       xfce.thunar-archive-plugin
       gvfs
-      zathura 
 
       # # It is sometimes useful to fine-tune packages, for example, by applying
       # # overrides. You can do that directly here, just don't forget the
