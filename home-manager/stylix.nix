@@ -53,6 +53,7 @@
         mako.enable = false;
         nixvim.transparent_bg.main = true;
         waybar.enable = false;
+        fuzzel.enable = false;
 
         gtk.enable = false;
         kde.enable = false;

@@ -1,9 +1,9 @@
 { ... }:
 
 {
-  wlogout = {
+  programs.wlogout = {
     enable = true;
-    style = ./wlogout-style.css
+    style = ./wlogout-style.css;
     layout = [
       {
         label = "lock";
@@ -14,13 +14,13 @@
       {
         label = "logout";
         action = "hyprctl dispatch exit 0";
-        text = "",
+        text = "";
         keybind = "o";
       }
       {
         label = "reboot";
         action = "systemctl reboot";
-        text = "",
+        text = "";
         keybind = "r";
       }
       {
@@ -30,5 +30,5 @@
         keybind = "s";
       }
     ];
-  }
+  };
 }

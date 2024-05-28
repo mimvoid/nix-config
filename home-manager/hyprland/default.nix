@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
     home.packages = with pkgs; [
@@ -15,10 +15,10 @@
     imports = [
         ./hyprland.nix
         ./hypridle.nix
-        #./hyprlock.nix
+        ./hyprlock.nix
         ./waybar.nix
-        #./fuzzel.nix
-        #./mako.nix
+        ./fuzzel.nix
+        ./mako.nix
         ./wlsunset.nix
         ./wlogout.nix
     ];
