@@ -25,7 +25,7 @@ What I use:
 - **Fonts**: [Cantarell](https://cantarell.gnome.org/) & [SauceCodePro Nerd Font](https://www.nerdfonts.com/)
 - **Bootable USB**: [Ventoy](https://www.ventoy.net/en/index.html)
 
-And what I will use, but haven't fully migrated over yet:
+Hyprland-specific sessions:
 
 - **Window manager**: [Hyprland](https://hyprland.org/)
 - **Hypr ecosystem**: [hypridle & hyprlock](https://wiki.hyprland.org/Hypr-Ecosystem/)
@@ -33,6 +33,9 @@ And what I will use, but haven't fully migrated over yet:
   - Also considering [yambar](https://codeberg.org/dnkl/yambar/) and [eww](https://github.com/elkowar/eww)
 - **Notifications**: [mako](https://github.com/emersion/mako)
 - **App launcher**: [fuzzel](https://codeberg.org/dnkl/fuzzel)
+
+And what I will use, but haven't fully migrated over yet:
+
 - **Note-taking app**: [Obsidian](https://obsidian.md/)
   - **Theme**: [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) with catppuccin macchiato
 - **Fonts**: [Limelight](https://fonts.google.com/specimen/Limelight)
