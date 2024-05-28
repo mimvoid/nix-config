@@ -1,17 +1,25 @@
-{ config, pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
-# Hyprland
-      hyprland
-      hyprland-protocols
-      xdg-desktop-portal-hyprland
-      hyprlock
-      hypridle
-      hyprcursor
-      hyprpicker
-      waybar
-      eww
-      fuzzel
-      swaybg
-      wlogout
+    home.packages = with pkgs; [
+        hyprland-protocols
+        xdg-desktop-portal-hyprland
+        hyprcursor
+        hyprpicker
+        eww
+        swaybg
+        libnotify
+        networkmanagerapplet
+    ];
+
+    imports = [
+        ./hyprland.nix
+        ./hypridle.nix
+        #./hyprlock.nix
+        #./waybar.nix
+        #./fuzzel.nix
+        #./mako.nix
+        ./wlsunset.nix
+        #./wlogout.nix
+    ];
 }

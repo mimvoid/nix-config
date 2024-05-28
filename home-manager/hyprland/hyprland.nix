@@ -1,33 +1,21 @@
-{ config, pkgs, ... }:
-
-# Default applications
+{ config, inputs, ... }:
 let
+    # Default applications
     terminal = "foot";
     launcher = "fuzzel";
     bar = "waybar";
     browser = "firefox";
     fileManager = "yazi";
 
+    # Used in keymaps
     left = "H";
     down = "J";
     up = "K";
     right = "L";
 in
 {
-    # Temporary
-    home.packages = with pkgs; [
-        hyprcursor
-        hypridle
-        hyprlock
-        fuzzel
-        mako
-        networkmanagerapplet
-        swaybg
-        waybar
-        wlsunset
-        wlogout
-    ];
-        
+    #imports = [ ../palettes/macchiato-candle.nix ];
+
     wayland.windowManager.hyprland = {
         enable = true;
         systemd = {
@@ -47,16 +35,15 @@ in
             # Startup & daemons
             exec-once = [
                 "systemctl --user import-environment &"
-                "dbus-update-activation-environment --systemd --all &"
+                # "dbus-update-activation-environment --systemd --all &" # Redundant
                 "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
-                "/usr/libexec/polkit-kde-authetication-agent-1 &"
                 "hypridle &"
                 "mako &"
             ];
 
             exec = [
                 "wlsunset"
-                "swaybg -i ~/NixOS/home-manager/extra/wallpapers/Manga-Girl-Rain.png &"
+                "swaybg -i ~/NixOS/home-manager/wallpapers/Manga-Girl-Rain.png &"
                 "nm-applet --indicator &"
                 "waybar"
             ];
@@ -194,7 +181,7 @@ in
                 "$mod, Q, killacive"
 
                 # Reload
-                "$mod, R, exec, "
+                "$mod, R, exec, pkill waybar && hyprctl reload config-only"
 
                 # Trigger wlogout
                 "$mod SHIFT, Q, exec, wlogout -b 2"
