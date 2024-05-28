@@ -5,7 +5,7 @@ let
     launcher = "fuzzel";
     bar = "waybar";
     browser = "firefox";
-    fileManager = "yazi";
+    fileManager = "ya"; # Command for yazi
 
     # Used in keymaps
     left = "H";
