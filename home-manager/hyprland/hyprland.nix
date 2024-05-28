@@ -63,8 +63,8 @@ in
                 "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
 
                 #"XCURSOR_THEME,"
-                "XCURSOR_SIZE, 32"
-                "HYPRCURSOR_SIZE, 32"
+                "XCURSOR_SIZE, 24"
+                "HYPRCURSOR_SIZE, 24"
             ];
 
             #---------#
