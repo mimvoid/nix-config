@@ -3,30 +3,21 @@
 {
     home.packages = with pkgs; [
         # Icons
-        papirus-icon-theme
         catppuccin-papirus-folders
 
         # Fonts
-        (nerdfonts.override { fonts = [ "SourceCodePro" ]; };)
+        (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
         cantarell-fonts
-        (noto-fonts-lgc-plus.override { variants = [ "Noto Sans" ];};)
     ];
 
     fonts.fontconfig = {
         enable = true;
         defaultFonts = {
             serif = config.fonts.fontconfig.defaultFonts.sansSerif;
-            sansSerif = [ "Cantarell" "Noto Sans" ];
-            monospace = "SauceCodePro Nerd Font";
+            sansSerif = [ "Cantarell" ];
+            monospace = [ "SauceCodePro Nerd Font" ];
         };
     };
-
-    home.pointerCursor = {
-        name = "BreezeX-RosePineDawn-Linux";
-        package = pkgs.rose-pine-cursor;
-        size = 24;
-        gtk.enable = true;
-    }
 
     gtk = {
         enable = true;
@@ -34,15 +25,24 @@
             name = "Cantarell";
             package = pkgs.cantarell-fonts;
         };
+        cursorTheme = {
+            name = "BreezeX-RosePineDawn-Linux";
+            package = pkgs.rose-pine-cursor;
+            size = 24;
+        };
         iconTheme = {
             name = "Papirus";
-            package = pkgs.papirus-icon-theme;
+            package = pkgs.catppuccin-papirus-folders;
+        };
+        theme = {
+            name = "rose-pine-moon";
+            package = pkgs.rose-pine-gtk-theme;
         };
     };
 
     qt = {
         enable = true;
-        platformTheme = "kde";
+        platformTheme = "gtk";
         style.name = "breeze";
     };
 }

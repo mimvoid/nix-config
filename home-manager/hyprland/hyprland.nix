@@ -5,7 +5,7 @@ let
     launcher = "fuzzel";
     bar = "waybar";
     browser = "firefox";
-    fileManager = "yazi %u"; # Launches yazi
+    fileManager = "thunar"; # Temporary, somehow yazi %u doesn't work
 
     # Used in keymaps
     left = "H";
@@ -42,7 +42,7 @@ in
             ];
 
             exec = [
-                "wlsunset"
+                "wlsunset &"
                 "swaybg -i ~/NixOS/wallpapers/Manga-Girl-Rain.png &"
                 "nm-applet --indicator &"
                 "waybar"
@@ -58,7 +58,7 @@ in
 
                 "QT_AUTO_SCREEN_SCALE_FACTOR, 1_SCALE_FACTOR, 1"
                 "QT_QPA_PLATFORM, wayland; xcb"
-                "QT_QPA_PLATFORMTHEME, qt6ct"
+                "QT_QPA_PLATFORMTHEME, gtk"
                 "QT_QPA_scale, 2"
                 "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
 

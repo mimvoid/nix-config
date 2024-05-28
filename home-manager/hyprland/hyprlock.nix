@@ -1,4 +1,4 @@
-{ outputs, ... }:
+{ config, ... }:
 let
   monospace = "SauceCodePro Nerd Font";
   display = "Limelight";
@@ -76,7 +76,7 @@ in
         {
           # User field
           # monitor =
-          text = "  welcome!"; # Will put a username variable here sometime
+          text = "  ${config.home.username}";
           color = "rgb(cad3f5)"; # text
           font_size = 16;
           font_family = monospace;
