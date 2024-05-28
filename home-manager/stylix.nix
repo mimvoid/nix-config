@@ -13,7 +13,7 @@
     stylix = {
         autoEnable = true;
 
-        image = ./extra/wallpapers/airy_scenery.jpg;
+        image = ../wallpapers/airy_scenery.jpg;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
 
         cursor = {

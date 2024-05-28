@@ -5,7 +5,7 @@
     enable = true;
     systemd = {
       enable = true;
-      target = "hyprlan;d-session.target";
+      target = "hyprland-session.target";
     };
     
    style = ./waybar-style.css;
