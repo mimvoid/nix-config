@@ -5,7 +5,7 @@ let
     launcher = "fuzzel";
     bar = "waybar";
     browser = "firefox";
-    fileManager = "foot && ya"; # Command for yazi
+    fileManager = "yazi %u"; # Launches yazi
 
     # Used in keymaps
     left = "H";
@@ -43,7 +43,7 @@ in
 
             exec = [
                 "wlsunset"
-                "swaybg -i ~/NixOS/home-manager/wallpapers/Manga-Girl-Rain.png &"
+                "swaybg -i ~/NixOS/wallpapers/Manga-Girl-Rain.png &"
                 "nm-applet --indicator &"
                 "waybar"
             ];
@@ -53,7 +53,7 @@ in
                 "XDK_SESSION_TYPE, wayland"
                 "XDK_SESSION_DESKTOP, Hyprland"
 
-                "GDK_scale, 2"
+                "GDK_scale, 1"
                 "GDK_BACKEND, wayland, x11, *"
 
                 "QT_AUTO_SCREEN_SCALE_FACTOR, 1_SCALE_FACTOR, 1"

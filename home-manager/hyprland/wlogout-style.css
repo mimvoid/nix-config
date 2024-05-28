@@ -1,0 +1,71 @@
+/* STYLE */
+
+window {
+    color: #cad3f5; /* text */
+    background-color: transparent;
+
+    font-family: SauceCodePro Nerd Font Medium;
+    font-size: 14px;
+}
+
+button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20%;
+    background-color: #24273a; /* base */
+
+    margin: 12px 96px;
+    border: none;
+    border-radius: 24px;
+
+    animation: gradient_f 20s ease-in infinite;
+    opacity: 0.75;
+}
+
+/* button:focus {
+ *  opacity: 0.80;
+ *  background-size: 25%;
+}*/
+
+button:hover {
+    background-color: #f0c6c6;
+    color: #24273a;
+    background-size: 25%;
+    /*margin: 18px;*/
+    /*border-radius: 32px;*/
+    animation: gradient_f 20s ease-in infinite;
+    transition: background-color 0.1s linear;
+    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), background-color 0.05s ease-in-out;
+	opacity: 0.85;
+}
+
+
+/* ICONS */
+
+#lock {
+    background-image: image(url("./icons/lock.png"));
+}
+#lock:hover {
+    background-image: image(url("./icons/lock-hover.png"));
+}
+
+#logout {
+    background-image: image(url("./icons/logout.png"));
+}
+#logout:hover {
+    background-image: image(url("./icons/logout-hover.png"));
+}
+
+#shutdown {
+    background-image: image(url("./icons/power.png"));
+}
+#shutdown:hover {
+    background-image: image(url("./icons/power-hover.png"));
+}
+
+#reboot {
+    background-image: image(url("./icons/restart.png"));
+}
+#reboot:hover {
+    background-image: image(url("./icons/restart-hover.png"));
+}

@@ -20,6 +20,6 @@
         #./fuzzel.nix
         #./mako.nix
         ./wlsunset.nix
-        #./wlogout.nix
+        ./wlogout.nix
     ];
 }
