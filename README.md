@@ -2,6 +2,8 @@
 
 This is where I keep my configuration files and links to resources I found helpful, as well as some pieces of advice from my experience with NixOS.
 
+![2024-05-29-022050_hyprshot](https://github.com/mimvoid/nix-config/assets/153698678/5f282993-fbc5-4633-bd5d-adfbf41e9df1)
+
 ![Screenshot_20240527_000609](https://github.com/mimvoid/nix-config/assets/153698678/3f722d86-e655-4cbb-82a5-9acba1b91ff1)
 
 Note: This repo is a massive work-in-progress, and I only recently got into configuration files at all. Apologies if it's a little messy!
