@@ -42,6 +42,10 @@ And what I will use, but haven't fully migrated over yet:
   - **Theme**: [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) with catppuccin macchiato
 - **Fonts**: [Limelight](https://fonts.google.com/specimen/Limelight)
 
+Wallpapers (incomplete list):
+
+- [BAKAIRIS](https://www.artstation.com/artwork/YK8DNq)
+
 
 # Resources
 
