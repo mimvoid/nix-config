@@ -11,8 +11,8 @@
         width = 72;
         lines = 36;
         layer = "overlay";
-        prompt = ">  ";
-        #icon-theme = "Rowaita-Pink-Dark";
+        prompt = "'> '";
+        icon-theme = "Papirus";
         exit-on-keyboard-focus-loss = false;
 
         horizontal-pad = 32;
