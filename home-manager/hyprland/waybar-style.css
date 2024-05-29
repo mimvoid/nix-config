@@ -1,101 +1,137 @@
-/*---https://github.com/dpgraham4401/.dotfiles---*/
+/*--- Built on https://github.com/dpgraham4401/.dotfiles---*/
 
 * {
+    all: unset;
     border: none;
-    font-family: "SauceCodePro NF", "FiraCode Nerd Font", "Hack", "Noto Sans", sans-serif;
+    font-family: "SauceCodePro NF", sans-serif;
     font-size: 10px;
-    color: #ffffff;
+    color: #f4dbd6;
     border-radius: 16px;
 }
 
-window {
-    /*font-weight: bold;*/
+window#waybar {
+    background: rgba(0,0,0,0);
 }
 
-window#waybar {
-    background: rgba(0, 0, 0, 0);
+tooltip {
+    background-color: rgba(36,39,58,0.50);
+}
+tooltip label {
+    color: #f4dbd6;
+    padding: 0 4px;
 }
 
 
 /*-----Module groups----*/
 
-.modules-right {
-    background-color: rgba(36,39,58,0.60);
-    margin: 2px 6px 0 0;
+.modules-left {
+    margin: 2px 0 0 6px;
+    background-color: rgba(36,39,58,0.70);
 }
 
 .modules-center {
-    background-color: rgba(36,39,58,0.60);
     margin: 2px 0 0 0;
+    background-color: rgba(36,39,58,0.70);
 }
 
-.modules-left {
-    margin: 2px 0 0 5px;
-    background-color: rgba(36,39,58,0.60);
+.modules-right {
+    margin: 2px 6px 0 0;
+    background-color: rgba(36,39,58,0.70);
 }
 
 
 /*-----Individual modules----*/
 
-#workspaces button {
-    padding: 1px 5px;
+/* This is a big mess
+ * I'll clean it up once I learn
+ * CSS functions
+ */
+
+#clock,
+#network,
+#pulseaudio,
+#battery,
+#custon-media,
+#tray {
+    padding: 2px 8px;
     background-color: transparent;
 }
 
+#clock:hover,
+#network:hover,
+#pulseaudio:hover,
+#battery:hover,
+#custom-media:hover,
+#tray:hover {
+    background-color: rgba(198,160,246,0.25);
+    transition: background-color 0.2s ease-in-out;
+}
+
+#workspaces button label { color: #f5bde6; }
+#workspaces button.active label {
+    color: #8bd5ca;
+    transition: color 0.2s ease-in-out;
+}
+
+#workspaces button {
+    padding: 1px 12px 1px 9px;
+    background-color: transparent;
+}
+
+#workspaces button.active {
+    background-color: rgba(198,160,246,0.2);
+    transition: all 0.2s ease-in-out;
+}
+
 #workspaces button:hover {
-    box-shadow: inherit;
-    background-color: rgba(0,153,153,1);
-}
-
-#workspaces button.focused {
-    background-color: rgba(0,43,51,0.85);
-}
-
-#clock,
-#battery,
-#cpu,
-#memory,
-#temperature,
-#network,
-#pulseaudio,
-#custom-media,
-#tray,
-#mode,
-#custom-power,
-#custom-menu,
-#idle_inhibitor {
-    padding: 0 8px;
-}
-
-#mode {
     color: #cad3f5;
+    background-color: rgba(245, 189, 230, 0.85);
+    transition: all 0.2s ease-in-out;
 }
+
+/* #workspaces button.focused {
+ *  background-color: rgba(0, 43, 51, 0.85);
+}*/
+
+/* rosewater */
+#clock { color: #f4dbd6; }
+
+/* lavender */
+#network {
+    color: #b7bdf8;
+    padding-left: 10px;
+}
+
+/* sapphire */
+#pulseaudio { color: #7dc4e4; }
 
 #custom-power {
-    background-color: rgba(181,191,226,0.4);
+    color: #f4dbd6;
+    background-color: rgba(198,160,246,0.2);
     border-radius: 16px;
-    margin: 5px 5px;
-    padding: 1px 1px 1px 6px;
+    padding: 0 6px 0 10px;
+}
+#custom-power:hover {
+    color: #cad3f5;
+    background-color: rgba(245, 189, 230, 0.85);
+    transition: color 0.2s ease-in-out;
+    transition: background-color 0.2s ease-in-out;
 }
 
 
-/*-----Indicators----*/
+/*-----Indications----*/
 
-#idle_inhibitor.activated { color: #81c8be; }
-
+/* subtext0 */
 #pulseaudio.muted { color: rgba(165,173,203,0.75); }
 
+/* teal */
+#battery.full { color: #8bd5ca; }
+
+/* teal-ish */
 #battery.charging { color: #81c8be; }
+
+/* yellow-ish */
 #battery.warning:not(.charging) { color: #e5c890; }
+
+/* red-ish */
 #battery.critical:not(.charging) { color: #e78284; }
-
-#temperature.critical { color: #e78284; }
-
-
-/*-----Colors----*/
-/*
- * rgba(0,85,102,1),#005566 --> Indigo(dye)
- *rgba(0,43,51,1),#002B33 --> Dark Green
- *rgba(0,153,153,1),#009999 --> Persian Green
- *
- */
