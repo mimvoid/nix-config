@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }: 
+{ config, pkgs, inputs, lib, ... }: 
 
 # Stylix works well in the terminal
 # but has some issues outside it so
@@ -22,6 +22,12 @@
                 name = "SauceCodePro NFM";
             };
             sizes.terminal = 14;
+        };
+
+        cursor = {
+            name = lib.mkDefault "BreezeX-RosePineDawn-Linux";
+            package = lib.mkDefault pkgs.rose-pine-cursor;
+            size = lib.mkDefault 24;
         };
 
         opacity.popups = 0.95;
