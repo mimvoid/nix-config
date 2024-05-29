@@ -10,8 +10,6 @@ Note: This repo is a massive work-in-progress, and I only recently got into conf
 
 My Firefox CSS from the chrome folder can be found in [panefox](https://github.com/mimvoid/panefox).
 
-Also: I got some of my [wallpapers](https://github.com/JaKooLit/Wallpaper-Bank) from JaKooLit's [Hyprland dots](https://github.com/JaKooLit/Hyprland-Dots), and don't know the sources. I will definitely try to track them down once I can.
-
 ***
 
 What I use:
@@ -42,9 +40,14 @@ And what I will use, but haven't fully migrated over yet:
   - **Theme**: [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) with catppuccin macchiato
 - **Fonts**: [Limelight](https://fonts.google.com/specimen/Limelight)
 
-Wallpapers (incomplete list):
+Wallpapers:
 
-- [BAKAIRIS](https://www.artstation.com/artwork/YK8DNq)
+- JaKooLit's [wallpaper bank](https://github.com/JaKooLit/Wallpaper-Bank)
+  - Rainy world: [BAKAIRIS](https://www.artstation.com/artwork/YK8DNq)
+  - City buildings: Tokyo Shinjuku by unknown?
+- Sunrise: [Sunrise Speed Panorama by Elias Stern](https://www.artstation.com/artwork/5DmxW)
+- Soaring ships: [Departure by Han Yijie](https://danbooru.donmai.us/posts/1847025?q=han_yijie)
+- Pink clouds: [Clouds by Shari Coté / milkgrrl](https://www.milkgrrl.com/portfolio)
 
 
 # Resources
