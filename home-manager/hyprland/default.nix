@@ -6,6 +6,7 @@
         xdg-desktop-portal-hyprland
         hyprcursor
         hyprpicker
+        hyprshot
         eww
         swaybg
         libnotify

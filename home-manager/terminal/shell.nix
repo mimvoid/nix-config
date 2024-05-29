@@ -4,7 +4,7 @@
      home.packages = with pkgs; [
         bash-completion
         eza
-        fastfetch
+        disfetch
         fzf
         nh
         nix-bash-completions

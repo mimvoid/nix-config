@@ -191,6 +191,11 @@ in
                 "$mod, ${right}, movefocus, r"
                 "$mod, ${up}, movefocus, u"
                 "$mod, ${down}, movefocus, d"
+
+                # Screenshot
+                "$mod, Print, exec, hyprshot -m window"
+                ", Print, exec, hyprshot -m output"
+                "$mod SHIFT, Print, exec, hyprshot -m region"
             ]
             ++ (
                 # Workspaces

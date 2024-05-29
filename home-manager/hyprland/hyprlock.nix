@@ -18,7 +18,6 @@ in
         {
         # monitor =
         path = "../../wallpapers/Buildings.png";
-        color = "rgb(ee99a0)";# maroon
         blur_passes = 0;
         }
       ];
