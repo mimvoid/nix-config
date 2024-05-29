@@ -93,8 +93,8 @@ tooltip label {
  *  background-color: rgba(0, 43, 51, 0.85);
 }*/
 
-/* rosewater */
-#clock { color: #f4dbd6; }
+/* lighter peach */
+#clock { color: shade(#f5a97f, 1.15); }
 
 /* lavender */
 #network {
