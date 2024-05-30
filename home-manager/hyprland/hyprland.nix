@@ -120,7 +120,7 @@ in
                 "opacity 1.0 override 0.90 override, class:(elisa)"
                 "opacity 0.90 override 0.85 override, title:(YaST2*)"
                 "opacity 0.98 override 0.85 override, class:(Zotero)"
-                "opacity 1.0 override 0.85 override class:(obsidian)"
+                "opacity 0.98 override 0.85 override class:(obsidian)"
                 "opaque, class:(krita)"
             ];
 
