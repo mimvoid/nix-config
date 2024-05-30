@@ -6,7 +6,7 @@
         zsh
         zsh-z
         zsh-autopair
-        zsh-fast-syntax-highlighting
+        zsh-syntax-highlighting
         pure-prompt
 
         # Nix integrations
@@ -35,7 +35,7 @@
             path = "$HOME/zsh/.zsh_history";
             ignoreDups = true;
             ignorePatterns = [ "ls" "eza" "exit" "ya" ];
-            ignoreSpace = false;
+            ignoreSpace = true;
         };
         shellAliases = {
             gco = "git checkout";
@@ -52,8 +52,27 @@
         };
         syntaxHighlighting = {
             enable = true;
-            package = pkgs.zsh-fast-syntax-highlighting;
         };
+        completionInit = " autoload -U compinit && compinit";
+        initExtra = "
+            # Changes the prompt
+             prompt pure
+
+            # Adds plugins
+             source $HOME/zsh/plugins/zsh-autopair/share/zsh/zsh-autopair/autopair.zsh
+             source $HOME/zsh/plugins/zsh-z/share/zsh-z/zsh-z.plugin.zsh
+             zstyle ':completion:*' menu select
+        ";
+        plugins = [
+            {
+                name = "zsh-z";
+                src = pkgs.zsh-z;
+            }
+            {
+                name = "zsh-autopair";
+                src = pkgs.zsh-autopair;
+            }
+        ];
     };
 
     programs.git = {
