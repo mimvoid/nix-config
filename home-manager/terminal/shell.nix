@@ -7,7 +7,7 @@
         zsh-z
         zsh-autopair
         zsh-syntax-highlighting
-        pure-prompt
+        starship
 
         # Nix integrations
         zsh-nix-shell
@@ -55,10 +55,6 @@
         };
         completionInit = " autoload -U compinit && compinit";
         initExtra = "
-            # Changes the prompt
-             prompt pure
-
-            # Adds plugins
              source $HOME/zsh/plugins/zsh-autopair/share/zsh/zsh-autopair/autopair.zsh
              source $HOME/zsh/plugins/zsh-z/share/zsh-z/zsh-z.plugin.zsh
              zstyle ':completion:*' menu select
@@ -83,6 +79,11 @@
             init.defaultBranch = "main";
             core.editor = "nvim";
         };
+    };
+
+    programs.starship = {
+        enable = true;
+        enableZshIntegration = true;
     };
 
     programs = {
