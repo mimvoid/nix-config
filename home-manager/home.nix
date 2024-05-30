@@ -9,22 +9,14 @@
     
     programs.home-manager.enable = true;
 
-
-    # Temporary installation list
-
-    home.packages = with pkgs; [
-      # GUIs
-      xfce.thunar
-      xfce.thunar-archive-plugin
-      gvfs
-    ];
-
     imports = [
-        ./theming.nix
         ./terminal/default.nix
+        ./theming.nix
         ./stylix.nix
         ./hyprland/default.nix
+        ./guis/default.nix
     ];
+
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.

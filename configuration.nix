@@ -38,6 +38,8 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
+  services.flatpak.enable = true;
+
   #----------------------------------------#
   # Desktop Environments & Window Managers #
   #----------------------------------------#

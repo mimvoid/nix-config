@@ -34,10 +34,15 @@
         history = {
             path = "$HOME/zsh/.zsh_history";
             ignoreDups = true;
-            ignorePatterns = [ "ls" "eza" "exit" "ya" ];
+            ignorePatterns = [ "ls" "eza" "exit" "yazi" ];
             ignoreSpace = true;
         };
+        syntaxHighlighting = {
+            enable = true;
+        };
         shellAliases = {
+            ya = "yazi";
+
             gco = "git checkout";
             gpull = "git pull";
             gpush = "git push";
@@ -45,13 +50,6 @@
 
             nhh = "nh home switch ~/NixOS";
             nhos = "nh os switch ~/NixOS";
-
-            fuck = "thefuck";
-            oof = "thefuck";
-            oops = "thefuck";
-        };
-        syntaxHighlighting = {
-            enable = true;
         };
         completionInit = " autoload -U compinit && compinit";
         initExtra = "
@@ -89,7 +87,5 @@
     programs = {
         bat.enable = true;
         ripgrep.enable = true;
-        thefuck.enable = true;
-        thefuck.enableZshIntegration = true;
     };
 }

@@ -5,6 +5,9 @@
         # Nix packages
         nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
 
+        # Declarative flatpaks
+        #nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+
         # Home Manager & modules
         home-manager = {
             url = "github:nix-community/home-manager/release-24.05";
@@ -23,20 +26,24 @@
     };
 
     outputs = inputs @ { self, nixpkgs, home-manager, nixvim, stylix, plasma-manager, ... }:
+    let
+        allowed-unfree-packages = [ "" ];
+    in
     {
         nixosConfigurations = {
             nixos = nixpkgs.lib.nixosSystem {
                 system = "x86_64-linux";
-                specialArgs = { inherit inputs; };
+                specialArgs = { inherit inputs allowed-unfree-packages; };
                 modules = [ ./configuration.nix ];
             };
         };
         homeConfigurations = {
             "zinnia" = home-manager.lib.homeManagerConfiguration {
                 pkgs = nixpkgs.legacyPackages.x86_64-linux;
-                extraSpecialArgs = { inherit inputs; };
+                extraSpecialArgs = { inherit inputs allowed-unfree-packages; };
                 modules = [
                     ./home-manager/home.nix
+                    #nix-flatpak.homeManagerModules.nix-flatpak
                     stylix.homeManagerModules.stylix
                     nixvim.homeManagerModules.nixvim
                     plasma-manager.homeManagerModules.plasma-manager
