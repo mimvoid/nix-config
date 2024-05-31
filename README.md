@@ -17,12 +17,13 @@ What I use:
 - **Terminal**: [foot](https://codeberg.org/dnkl/foot)
 - **Editor**: [NixVim](https://github.com/nix-community/nixvim)
 - **File manager**: [Thunar](https://docs.xfce.org/xfce/thunar/start) & [yazi](https://github.com/sxyazi/yazi)
-  - I still haven't went through yazi's keymaps yet, but I'll try fully switching to it when I do!
 - **Desktop environment**: [KDE Plasma 6](https://kde.org/plasma-desktop/)
-- **Music Player**: [Elisa](https://apps.kde.org/elisa/)
 - **Cursor**: [Rose Pine Dawn cursor](https://github.com/rose-pine/cursor)
-- **GTK icons**: [Rose Pine Moon icons](https://github.com/rose-pine/gtk)
-- **Fonts**: [Cantarell](https://cantarell.gnome.org/) & [SauceCodePro Nerd Font](https://www.nerdfonts.com/)
+- **Icons**: [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) with [Catppuccin folders](https://github.com/catppuccin/papirus-folders)
+- **Fonts**: [Cantarell](https://cantarell.gnome.org/), [SauceCodePro Nerd Font](https://www.nerdfonts.com/), and [Limelight](https://fonts.google.com/specimen/Limelight)
+- **Music Player**: [Elisa](https://apps.kde.org/elisa/)
+- **Note-taking app**: [Obsidian](https://obsidian.md/)
+  - **Theme**: [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) with catppuccin macchiato maroon
 - **Bootable USB**: [Ventoy](https://www.ventoy.net/en/index.html)
 
 Hyprland-specific sessions:
@@ -30,15 +31,9 @@ Hyprland-specific sessions:
 - **Window manager**: [Hyprland](https://hyprland.org/)
 - **Hypr ecosystem**: [hypridle & hyprlock](https://wiki.hyprland.org/Hypr-Ecosystem/)
 - **Bar**: [Waybar](https://github.com/Alexays/Waybar)
-  - Also considering [yambar](https://codeberg.org/dnkl/yambar/) and [eww](https://github.com/elkowar/eww)
+  - Also considering [eww](https://github.com/elkowar/eww)
 - **Notifications**: [mako](https://github.com/emersion/mako)
 - **App launcher**: [fuzzel](https://codeberg.org/dnkl/fuzzel)
-
-And what I will use, but haven't fully migrated over yet:
-
-- **Note-taking app**: [Obsidian](https://obsidian.md/)
-  - **Theme**: [AnuPpuccin](https://github.com/AnubisNekhet/AnuPpuccin) with catppuccin macchiato
-- **Fonts**: [Limelight](https://fonts.google.com/specimen/Limelight)
 
 Wallpapers:
 
