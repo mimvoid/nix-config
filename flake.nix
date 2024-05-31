@@ -27,7 +27,9 @@
 
     outputs = inputs @ { self, nixpkgs, home-manager, nixvim, stylix, plasma-manager, ... }:
     let
-        allowed-unfree-packages = [ "" ];
+        allowed-unfree-packages = [
+            "zoom"
+        ];
     in
     {
         nixosConfigurations = {

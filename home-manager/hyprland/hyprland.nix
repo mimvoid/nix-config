@@ -118,6 +118,7 @@ in
                 "suppressevent maximize, class:.*"
                 "opacity 1.0 override 0.90 override, class:(firefox)"
                 "opacity 1.0 override 0.90 override, class:(elisa)"
+                "opacity 1.0 override 0.90 override, class:(FreeTube)"
                 "opacity 0.90 override 0.85 override, title:(YaST2*)"
                 "opacity 0.98 override 0.85 override, class:(Zotero)"
                 "opacity 0.98 override 0.85 override class:(obsidian)"
