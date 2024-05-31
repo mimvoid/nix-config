@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ pkgs, lib, ... }:
 
 {
     home.packages = with pkgs; [
@@ -7,8 +7,24 @@
         rose-pine-cursor
 
         # Fonts
-        (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+        # Sans serif
         cantarell-fonts
+        noto-fonts-cjk-sans
+        atkinson-hyperlegible
+        raleway
+        carlito
+
+        # Serif
+        noto-fonts-cjk-serif
+
+        # Monospace
+        (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+        courier-prime
+
+        # Display / Handwriting
+        (google-fonts.override { fonts = [ "Limelight-Regular" "Oswald[wght]" "MajorMonoDisplay-Regular" "MaShanZheng-Regular" ]; })
+        norwester-font
+        lxgw-wenkai
     ];
 
     gtk = {
