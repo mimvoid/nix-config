@@ -17,7 +17,7 @@ in
       background = [
         {
         # monitor =
-        path = "../../wallpapers/Buildings.png";
+        path = "~/NixOS/wallpapers/Buildings.png";
         blur_passes = 0;
         }
       ];
@@ -51,7 +51,7 @@ in
         {
           # Date
           # monitor =
-          text = "cmd[update:18000000] echo '$(date +'%A, %B %-d')'";
+          text = ''cmd[update:18000000] echo "$(date +'%A, %B %-d')"'';
           color = "rgb(cad3f5)"; # text
           font_size = 20;
           font_family = monospace;
@@ -63,10 +63,10 @@ in
         {
           # Time
           # monitor =
-          text = "cmd[update:1000] echo '<big> $(date +'%H:%M') </big>'";
+          text = ''cmd[update:1000] echo "<big> $(date +'%H:%M') </big>"'';
           color = "rgb(cad3f5)"; # text
           font_size = 128;
-          font_family = monospace; # Replace with display eventually
+          font_family = "Limelight";
 
           position = "0, -220";
           halign = "center";
@@ -80,7 +80,7 @@ in
           font_size = 16;
           font_family = monospace;
 
-          position = "0, 12";
+          position = "0, 8";
           halign = "center";
           valign = "center";
         }
