@@ -1,4 +1,4 @@
-{ config, inputs, ... }:
+{ config, inputs, pkgs, ... }:
 let
     # Default applications
     terminal = "foot";
@@ -12,6 +12,8 @@ let
     down = "J";
     up = "K";
     right = "L";
+
+    inherit (pkgs) polkit_gnome callPackage;
 in
 {
     wayland.windowManager.hyprland = {
@@ -35,7 +37,7 @@ in
                 "systemctl --user import-environment &"
                 # "dbus-update-activation-environment --systemd --all &" # Redundant
                 "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
-                # Include polkit later
+                "${polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
                 "hypridle &"
                 "mako &"
             ];
