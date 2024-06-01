@@ -1,9 +1,10 @@
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
     programs.nixvim = {
         enable = true;
         defaultEditor = true;
+        extraPlugins = [ pkgs.vimPlugins.nvchad ];
     };
 
     programs.nixvim.plugins = {
@@ -11,7 +12,7 @@
                    
         bufferline = {
             enable = true;
-            alwaysShowBufferline = false;
+            alwaysShowBufferline = true;
         };
 
         ccc.enable = true;
@@ -51,12 +52,5 @@
 	        indent = true;
 	        nixGrammars = true;
         };
-
-	    trouble = {
-	        enable = true;
-	        settings.auto_open = true;
-	    };
-
-        which-key.enable = true;
     };
 }

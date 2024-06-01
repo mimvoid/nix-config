@@ -1,7 +1,7 @@
 { config, ... }:
 let
   monospace = "SauceCodePro Nerd Font";
-  display = "Limelight";
+#  display = "Limelight";
 in
 {
   programs.hyprlock = {
@@ -17,7 +17,7 @@ in
       background = [
         {
         # monitor =
-        path = "~/NixOS/wallpapers/Buildings.png";
+        #path = "~/NixOS/wallpapers/Buildings.png";
         blur_passes = 0;
         }
       ];
@@ -31,8 +31,8 @@ in
           dots_spacing = 0.2;
           dots_center = true;
 
-          outer_color = "rgb(ee99a0)"; # maroon
-          inner_color = "rgb(24273a)"; # base
+          #outer_color = "rgb(ee99a0)"; # maroon
+          #inner_color = "rgb(24273a)"; # base
 
           font_family = monospace;
           font_color = "rgb(cad3f5)"; # text
@@ -66,7 +66,7 @@ in
           text = ''cmd[update:1000] echo "<big> $(date +'%H:%M') </big>"'';
           color = "rgb(cad3f5)"; # text
           font_size = 128;
-          font_family = "Limelight";
+          font_family = display;
 
           position = "0, -220";
           halign = "center";

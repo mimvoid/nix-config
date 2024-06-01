@@ -17,11 +17,11 @@
         borderRadius = 4;
         padding = "8";
 
-        font = "SauceCodePro Nerd Font Medium 9";
+        #font = "SauceCodePro Nerd Font Medium 9";
 
-        backgroundColor = "#24273abb"; #transleucent base
-        textColor = "#cad3f5"; #catppuccin text
-        borderColor = "#f5bde6"; #pink?
-        progressColor = "over #363a4f";
+        #backgroundColor = "#24273abb"; #transleucent base
+        #textColor = "#cad3f5"; #catppuccin text
+        #borderColor = "#f5bde6"; #pink?
+        #progressColor = "over #363a4f";
     };   
 }

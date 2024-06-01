@@ -11,7 +11,7 @@
    style = ./waybar-style.css;
     settings = {
       mainBar = {
-        layer = "top";
+        layer = "bottom";
         position = "top";
         passthrough = false;
 

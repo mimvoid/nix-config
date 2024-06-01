@@ -1,5 +1,7 @@
 { config, inputs, ... }:
 let
+    # 
+
     # Default applications
     terminal = "foot";
     launcher = "fuzzel";
@@ -37,13 +39,14 @@ in
                 "systemctl --user import-environment &"
                 # "dbus-update-activation-environment --systemd --all &" # Redundant
                 "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
+                # Include polkit later
                 "hypridle &"
                 "mako &"
             ];
 
             exec = [
                 "wlsunset &"
-                "swaybg -i ~/NixOS/wallpapers/Manga-Girl-Rain.png &"
+                #"swaybg -i ~/NixOS/wallpapers/Manga-Girl-Rain.png &"
                 "nm-applet --indicator &"
                 "waybar"
             ];
@@ -76,8 +79,6 @@ in
                 preserve_split = true;
             };
 
-            master.new_is_master = true;
-
             #-----------------#
             # Window settings #
             #-----------------#
@@ -87,8 +88,8 @@ in
                 gaps_out = 8;
 
                 border_size = 1;
-                "col.active_border" = "rgb(f4dbd6)"; #flamingo
-                "col.inactive_border" = "rgb(c6a0f6)"; #mauve
+                #"col.active_border" = "rgb(f4dbd6)"; #flamingo
+                #"col.inactive_border" = "rgb(c6a0f6)"; #mauve
 
                 resize_on_border = true;
                 allow_tearing = false;
@@ -104,7 +105,7 @@ in
                 drop_shadow = true;
                 shadow_range = 2;
                 shadow_render_power = 2;
-                "col.shadow" = "rgb(181926)"; #crust
+                #"col.shadow" = "rgb(181926)"; #crust
 
                 blur = {
                     enabled = true;

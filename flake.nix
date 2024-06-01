@@ -17,6 +17,7 @@
             url = "github:nix-community/nixvim";
             inputs.nixpkgs.follows = "nixpkgs";
         };
+        nix-colors.url = "github:misterio77/nix-colors";
         stylix.url = "github:danth/stylix/master";
         plasma-manager = {
             url = "github:pjones/plasma-manager/trunk";
@@ -25,7 +26,7 @@
         };
     };
 
-    outputs = inputs @ { self, nixpkgs, home-manager, nixvim, stylix, plasma-manager, ... }:
+    outputs = inputs @ { self, nixpkgs, home-manager, nixvim, nix-colors, stylix, plasma-manager, ... }:
     let
         allowed-unfree-packages = [
             "zoom"

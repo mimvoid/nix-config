@@ -12,7 +12,7 @@
     imports = [
         ./terminal/default.nix
         ./theming.nix
-        ./stylix.nix
+        #./stylix.nix
         ./hyprland/default.nix
         ./guis/default.nix
     ];

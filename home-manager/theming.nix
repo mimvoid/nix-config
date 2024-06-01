@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ config, pkgs, lib, ... }:
 
 {
     home.packages = with pkgs; [
@@ -22,21 +22,69 @@
         courier-prime
 
         # Display / Handwriting
-        (google-fonts.override { fonts = [ "Limelight-Regular" "Oswald[wght]" "MajorMonoDisplay-Regular" "MaShanZheng-Regular" ]; })
+        (google-fonts.override { fonts = [
+            "Limelight-Regular"
+            "Oswald[wght]"
+            "MajorMonoDisplay-Regular"
+            "MaShanZheng-Regular"
+        ]; })
         norwester-font
         lxgw-wenkai
     ];
 
+    # Current color palette
+    imports = [ ../palettes/macchiato-nightlight.nix ];
+
+    # Stylix works well in the terminal
+    # but has some issues outside it so
+    # auto-enable is off
+
+    stylix = {
+        autoEnable = false;
+
+        image = ../wallpapers/airy_scenery.jpg;
+        base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+
+        fonts = {
+            serif = config.stylix.fonts.sansSerif;
+            sansSerif = {
+                package = pkgs.cantarell-fonts;
+                name = "Cantarell";
+            };
+            monospace = {
+                package = (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ];});
+                name = "SauceCodePro Nerd Font";
+            };
+            sizes.terminal = 14;
+        };
+
+        cursor = {
+            name = "BreezeX-RosePineDawn-Linux";
+            package = pkgs.rose-pine-cursor;
+            size = 24;
+        };
+
+        opacity.popups = 0.95;
+        opacity.terminal = 0.85;
+    };
+
+    stylix.targets = {
+        bat.enable = true;
+        foot.enable = true;
+        fzf.enable = true;
+        nixvim = {
+            enable = true;
+            transparent_bg.main = false;
+            transparent_bg.sign_column = false;
+        };
+        yazi.enable = true;
+    };
+
     gtk = {
         enable = true;
         font = {
-            name = lib.mkForce "Cantarell";
-            package = lib.mkForce pkgs.cantarell-fonts;
-        };
-        cursorTheme = {
-            name = lib.mkForce "BreezeX-RosePineDawn-Linux";
-            package = lib.mkForce pkgs.rose-pine-cursor;
-            size = lib.mkForce 24;
+            name = "Cantarell";
+            package = pkgs.cantarell-fonts;
         };
         iconTheme = {
             name = "Papirus";

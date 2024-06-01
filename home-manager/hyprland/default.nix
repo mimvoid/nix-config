@@ -15,6 +15,7 @@
 
     imports = [
         ./hyprland.nix
+        ./hypr-theme.nix
         ./hypridle.nix
         ./hyprlock.nix
         ./waybar.nix

@@ -8,7 +8,7 @@
         gvfs
 
         # Art & design
-        krita
+        #krita Seems to be broken right now
 
         # Documents
         pdfarranger
