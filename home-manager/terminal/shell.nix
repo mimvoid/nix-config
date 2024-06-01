@@ -19,6 +19,7 @@
         disfetch
         fzf
         tlrc
+        exiftool
     ];
 
     programs.bash = {

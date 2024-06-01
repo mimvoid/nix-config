@@ -5,6 +5,7 @@
         # Thunar
         xfce.thunar
         xfce.thunar-archive-plugin
+        xfce.thunar-media-tags-plugin
         gvfs
 
         # Art & design
