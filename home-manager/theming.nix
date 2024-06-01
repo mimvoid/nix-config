@@ -39,7 +39,7 @@
     stylix = {
         autoEnable = false;
 
-        image = ../wallpapers/airy_scenery.jpg;
+        image = ../wallpapers/hanyijie_departure.jpg;
         base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
 
         fonts = {
