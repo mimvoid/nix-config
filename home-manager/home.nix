@@ -14,7 +14,7 @@
         ./terminal/default.nix
         ./hyprland/default.nix
         ./guis/default.nix
-        ./eww/eww.nix
+        ./eww.nix
     ];
 
 
