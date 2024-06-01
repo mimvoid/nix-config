@@ -7,7 +7,6 @@
         hyprcursor
         hyprpicker
         hyprshot
-        eww
         swaybg
         libnotify
         networkmanagerapplet
