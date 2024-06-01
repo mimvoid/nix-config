@@ -1,4 +1,4 @@
-{ config, pkgs, inputs, ... }:
+{ ... }:
 
 {
     home = {
@@ -10,12 +10,13 @@
     programs.home-manager.enable = true;
 
     imports = [
-        ./terminal/default.nix
         ./theming.nix
-        #./stylix.nix
+        ./terminal/default.nix
         ./hyprland/default.nix
         ./guis/default.nix
     ];
+
+
 
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage

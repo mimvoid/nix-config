@@ -1,7 +1,7 @@
 { config, ... }:
 let
   monospace = "SauceCodePro Nerd Font";
-#  display = "Limelight";
+  display = "Limelight";
 in
 {
   programs.hyprlock = {
@@ -14,13 +14,8 @@ in
         no_face_in = false;
       };
 
-      background = [
-        {
-        # monitor =
-        #path = "~/NixOS/wallpapers/Buildings.png";
-        blur_passes = 0;
-        }
-      ];
+      # Lockscreen background is in hypr-theme.nix
+      background = [{ blur_passes = 0; }];
 
       input-field = [
         {

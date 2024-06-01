@@ -1,13 +1,11 @@
 { config, inputs, ... }:
 let
-    # 
-
     # Default applications
     terminal = "foot";
     launcher = "fuzzel";
     bar = "waybar";
     browser = "firefox";
-    fileManager = "thunar"; # Temporary, somehow yazi %u doesn't work
+    fileManager = "thunar";
 
     # Used in keymaps
     left = "H";
@@ -16,8 +14,6 @@ let
     right = "L";
 in
 {
-    #imports = [ ../palettes/macchiato-candle.nix ];
-
     wayland.windowManager.hyprland = {
         enable = true;
         systemd = {
@@ -45,8 +41,8 @@ in
             ];
 
             exec = [
+                # Includes swaybg, specified in hypr-theme.nix
                 "wlsunset &"
-                #"swaybg -i ~/NixOS/wallpapers/Manga-Girl-Rain.png &"
                 "nm-applet --indicator &"
                 "waybar"
             ];
@@ -88,8 +84,6 @@ in
                 gaps_out = 8;
 
                 border_size = 1;
-                #"col.active_border" = "rgb(f4dbd6)"; #flamingo
-                #"col.inactive_border" = "rgb(c6a0f6)"; #mauve
 
                 resize_on_border = true;
                 allow_tearing = false;
@@ -105,7 +99,6 @@ in
                 drop_shadow = true;
                 shadow_range = 2;
                 shadow_render_power = 2;
-                #"col.shadow" = "rgb(181926)"; #crust
 
                 blur = {
                     enabled = true;

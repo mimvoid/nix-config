@@ -32,9 +32,6 @@
         lxgw-wenkai
     ];
 
-    # Current color palette
-    imports = [ ../palettes/macchiato-nightlight.nix ];
-
     # Stylix works well in the terminal
     # but has some issues outside it so
     # auto-enable is off

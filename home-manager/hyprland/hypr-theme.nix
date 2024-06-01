@@ -1,17 +1,19 @@
-{ config, lib, ... }:
+{ config, lib, inputs, ... }:
 
 let
     homescreen = "~/NixOS/wallpapers/Manga-Girl-Rain.png";
     lockscreen = "~/NixOS/wallpapers/Buildings.png";
+    current-palette = ../../palettes/macchiato-nightlight.nix;
+    display = "Limelight";
 
     hue = config.colorScheme.palette;
     type = config.stylix.fonts;
-    display = "Limelight";
 in
 {
     imports = [
         ../theming.nix
-        ../../palettes/macchiato-nightlight.nix
+        inputs.nix-colors.homeManagerModules.default
+        current-palette
     ];
 
     wayland.windowManager.hyprland.settings = {
