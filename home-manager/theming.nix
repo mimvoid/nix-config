@@ -50,7 +50,7 @@
             };
             monospace = {
                 package = (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ];});
-                name = "SauceCodePro Nerd Font";
+                name = "SauceCodePro NFM";
             };
             sizes.terminal = 14;
         };

@@ -10,6 +10,7 @@
         swaybg
         libnotify
         networkmanagerapplet
+        eww
     ];
 
     imports = [

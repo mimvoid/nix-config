@@ -1,0 +1,12 @@
+(defwindow  example
+            :monitor 0
+            :geometry (geometry :x "0%"
+                                :y "20px"
+                                :width = "72px"
+                                :height = "30px"
+                                :anchor = "top center")
+            :stacking "fg"
+            :focusable false
+            :namespace "dock"
+            :exclusive true
+"example content")
