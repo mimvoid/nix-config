@@ -9,6 +9,7 @@ This is where I keep my configuration files and links to resources I found helpf
 Note: This repo is a massive work-in-progress, and I only recently got into configuration files at all. Apologies if it's a little messy!
 
 My Firefox CSS from the chrome folder can be found in [panefox](https://github.com/mimvoid/panefox).
+See my dedicated wallpaper repository and credits [here](https://github.com/mimvoid/wallpaper-stash/tree/main).
 
 ***
 
@@ -34,16 +35,6 @@ Hyprland-specific sessions:
   - Also considering [eww](https://github.com/elkowar/eww)
 - **Notifications**: [mako](https://github.com/emersion/mako)
 - **App launcher**: [fuzzel](https://codeberg.org/dnkl/fuzzel)
-
-Wallpapers:
-
-- JaKooLit's [wallpaper bank](https://github.com/JaKooLit/Wallpaper-Bank)
-  - Rainy world: [BAKAIRIS](https://www.artstation.com/artwork/YK8DNq)
-  - City buildings: Tokyo Shinjuku by unknown?
-- Sunrise: [Sunrise Speed Panorama by Elias Stern](https://www.artstation.com/artwork/5DmxW)
-- Soaring ships: [Departure by Han Yijie](https://danbooru.donmai.us/posts/1847025?q=han_yijie)
-- Pink clouds: [Clouds by Shari Coté / milkgrrl](https://www.milkgrrl.com/portfolio)
-
 
 # Resources
 
