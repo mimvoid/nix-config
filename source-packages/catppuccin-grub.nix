@@ -5,12 +5,14 @@
   flavor ? "mocha", # override with your chosen flavor
   ...
 }:
-
+let
+  version = "1.0.0";
+in
 stdenvNoCC.mkDerivation {
   pname = "catppuccin-grub";
-  version = "1.0.0";
+  inherit version;
 
-  src = fetchFromGitHub rec {
+  src = fetchFromGitHub {
     owner = "catppuccin";
     repo = "grub";
     rev = "refs/tags/v${version}";
