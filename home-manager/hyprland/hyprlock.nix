@@ -1,9 +1,25 @@
-{ config, ... }:
+{ config, inputs, ... }:
+
+# Ideally, the colors and fonts should be in
+# hypr-theme.nix, but extracting and appending
+# an attribute set within a list is complicated.
+# This is a temporary solution.
+
 let
-  monospace = "SauceCodePro Nerd Font";
+  lockscreen = "~/NixOS/wallpapers/tokyo-shinjuku.png";
+  current-palette = ../../palettes/macchiato-nightlight.nix;
   display = "Limelight";
+
+  hue = config.colorScheme.palette;
+  type = config.stylix.fonts;
 in
 {
+  imports = [
+    ../theming.nix
+    inputs.nix-colors.homeManagerModules.default
+    current-palette
+  ];
+
   programs.hyprlock = {
     enable = true;
     settings = {
@@ -14,23 +30,27 @@ in
         no_face_in = false;
       };
 
-      # Lockscreen background is in hypr-theme.nix
-      background = [{ blur_passes = 0; }];
+      background = [
+        {
+          path = lockscreen;
+          blur_passes = 0;
+        }
+      ];
 
       input-field = [
         {
-          # monitor =
           size = "256, 48";
           outline_thickness = 1;
           dots_size = 0.2;
           dots_spacing = 0.2;
           dots_center = true;
 
-          #outer_color = "rgb(ee99a0)"; # maroon
-          #inner_color = "rgb(24273a)"; # base
+          outer_color = "rgb(${hue.watch})";
+          inner_color = "rgb(${hue.base})";
 
-          font_family = monospace;
-          font_color = "rgb(cad3f5)"; # text
+          font_family = type.monospace.name;
+          font_color = "rgb(${hue.text})";
+
           placeholder_text = "<i>Password...</i>";
           hide_input = false;
 
@@ -44,36 +64,33 @@ in
 
       label = [
         {
-          # Date
-          # monitor =
-          text = ''cmd[update:18000000] echo "$(date +'%A, %B %-d')"'';
-          color = "rgb(cad3f5)"; # text
-          font_size = 20;
-          font_family = monospace;
-
-          position = "0, 90";
-          halign = "center";
-          valign = "center";
-        }
-        {
           # Time
-          # monitor =
           text = ''cmd[update:1000] echo "<big> $(date +'%H:%M') </big>"'';
-          color = "rgb(cad3f5)"; # text
-          font_size = 128;
+          color = "rgb(${hue.text})";
           font_family = display;
+          font_size = 128;
 
           position = "0, -220";
           halign = "center";
           valign = "top";
         }
         {
+          # Date
+          text = ''cmd[update:18000000] echo "$(date +'%A, %B %-d')"'';
+          color = "rgb(${hue.text})"; # text
+          font_family = type.monospace.name;
+          font_size = 20;
+
+          position = "0, 90";
+          halign = "center";
+          valign = "center";
+        }
+        {
           # User field
-          # monitor =
           text = "  ${config.home.username}";
-          color = "rgb(cad3f5)"; # text
+          color = "rgb(${hue.text})";
+          font_family = type.monospace.name;
           font_size = 16;
-          font_family = monospace;
 
           position = "0, 8";
           halign = "center";

@@ -9,7 +9,7 @@
     };
     
    style = ./waybar-style.css;
-    settings = {
+   settings = {
       mainBar = {
         layer = "bottom";
         position = "top";

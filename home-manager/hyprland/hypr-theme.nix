@@ -2,7 +2,6 @@
 
 let
     homescreen = "~/NixOS/wallpapers/bakairis_rainy-world.png";
-    lockscreen = "~/NixOS/wallpapers/tokyo-shinjuku.png";
     current-palette = ../../palettes/macchiato-nightlight.nix;
     display = "Limelight";
 
@@ -24,15 +23,6 @@ in
             "col.inactive_border" = "rgb(${hue.dullAccent})";
         };
         decoration."col.shadow" = "rgb(${hue.etch})";
-    };
-
-    programs.hyprlock.settings = {
-        # Lockscreen wallpaper
-        background = [{ path = lockscreen; }];
-        input-field = [{
-                outer_color = "rgb(${hue.watch})";
-                inner_color = "rgb(${hue.base})";
-        }];
     };
 
     programs.fuzzel.settings = {

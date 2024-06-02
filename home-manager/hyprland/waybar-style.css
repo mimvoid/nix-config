@@ -1,11 +1,11 @@
-/*--- Built on https://github.com/dpgraham4401/.dotfiles---*/
+@import url("../../NixOS/palettes/macchiato-nightlight.css");
 
 * {
     all: unset;
     border: none;
-    font-family: "SauceCodePro NF", sans-serif;
+    font-family: "SauceCodePro Nerd Font", monospace;
     font-size: 10px;
-    color: #f4dbd6;
+    color: @paleAccent;
     border-radius: 16px;
 }
 
@@ -14,10 +14,10 @@ window#waybar {
 }
 
 tooltip {
-    background-color: rgba(36,39,58,0.50);
+    background-color: alpha(@base, 0.5);
 }
 tooltip label {
-    color: #f4dbd6;
+    color: @paleAccent;
     padding: 0 4px;
 }
 
@@ -26,17 +26,17 @@ tooltip label {
 
 .modules-left {
     margin: 2px 0 0 6px;
-    background-color: rgba(36,39,58,0.70);
+    background-color: alpha(@base, 0.70);
 }
 
 .modules-center {
     margin: 2px 0 0 0;
-    background-color: rgba(36,39,58,0.70);
+    background-color: alpha(@base, 0.70);
 }
 
 .modules-right {
     margin: 2px 6px 0 0;
-    background-color: rgba(36,39,58,0.70);
+    background-color: alpha(@base, 0.70);
 }
 
 
@@ -63,13 +63,15 @@ tooltip label {
 #battery:hover,
 #custom-media:hover,
 #tray:hover {
-    background-color: rgba(198,160,246,0.25);
+    background-color: alpha(@dullAccent, 0.25);
     transition: background-color 0.2s ease-in-out;
 }
 
-#workspaces button label { color: #f5bde6; }
+#workspaces button label {
+    color: @secAccent;
+}
 #workspaces button.active label {
-    color: #8bd5ca;
+    color: @alert;
     transition: color 0.2s ease-in-out;
 }
 
@@ -79,26 +81,21 @@ tooltip label {
 }
 
 #workspaces button.active {
-    background-color: rgba(198,160,246,0.2);
+    background-color: alpha(@paleAccent, 0.2);
     transition: all 0.2s ease-in-out;
 }
 
 #workspaces button:hover {
-    color: #cad3f5;
-    background-color: rgba(245, 189, 230, 0.85);
+    color: @text;
+    background-color: alpha(@secAccent, 0.85);
     transition: all 0.2s ease-in-out;
 }
-
-/* #workspaces button.focused {
- *  background-color: rgba(0, 43, 51, 0.85);
-}*/
 
 /* lighter peach */
 #clock { color: shade(#f5a97f, 1.15); }
 
-/* lavender */
 #network {
-    color: #b7bdf8;
+    color: @warning;
     padding-left: 10px;
 }
 
@@ -106,14 +103,14 @@ tooltip label {
 #pulseaudio { color: #7dc4e4; }
 
 #custom-power {
-    color: #f4dbd6;
-    background-color: rgba(198,160,246,0.2);
+    color: @paleAccent;
+    background-color: alpha(@dullAccent, 0.2);
     border-radius: 16px;
     padding: 0 6px 0 10px;
 }
 #custom-power:hover {
-    color: #cad3f5;
-    background-color: rgba(245, 189, 230, 0.85);
+    color: @text;
+    background-color: alpha(@secAccent, 0.85);
     transition: color 0.2s ease-in-out;
     transition: background-color 0.2s ease-in-out;
 }
@@ -121,17 +118,12 @@ tooltip label {
 
 /*-----Indications----*/
 
-/* subtext0 */
-#pulseaudio.muted { color: rgba(165,173,203,0.75); }
+#pulseaudio.muted { color: alpha(@smudge, 0.75); }
 
-/* teal */
-#battery.full { color: #8bd5ca; }
-
-/* teal-ish */
-#battery.charging { color: #81c8be; }
-
-/* yellow-ish */
-#battery.warning:not(.charging) { color: #e5c890; }
-
-/* red-ish */
-#battery.critical:not(.charging) { color: #e78284; }
+/* teal, lavender, yellow, maroon
+ * the color labels may not make too much
+ * sense but it makes for a nice palette. */
+#battery.full { color: @alert; }
+#battery.charging { color: @warning; }
+#battery.warning:not(.charging) { color: @tip; }
+#battery.critical:not(.charging) { color: @watch; }
