@@ -3,7 +3,7 @@
 {
     environment.systemPackages = with pkgs; [(
         catppuccin-sddm.override {
-            flavor = "macchiato";
+            flavor = "mocha";
             font = "SauceCodePro Nerd Font";
             fontSize = "11";
             background = "${../wallpapers/gracile_jellyfish.jpg}";
@@ -14,6 +14,6 @@
     services.displayManager.sddm = {
         enable = true;
         wayland.enable = true;
-        theme = "catppuccin-macchiato";
+        theme = "catppuccin-mocha";
     };
 }

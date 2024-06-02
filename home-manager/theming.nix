@@ -18,11 +18,11 @@
         noto-fonts-cjk-serif
 
         # Monospace
-        (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+        (nerdfonts.override {fonts = ["SourceCodePro"];})
         courier-prime
 
         # Display / Handwriting
-        (google-fonts.override { fonts = [
+        (google-fonts.override {fonts = [
             "Limelight-Regular"
             "Oswald[wght]"
             "MajorMonoDisplay-Regular"

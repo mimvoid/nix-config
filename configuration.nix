@@ -26,6 +26,8 @@
     wget
     curl
     polkit
+
+    (nerdfonts.override {fonts = ["SourceCodePro"];})
   ];
 
   # Autoupdate

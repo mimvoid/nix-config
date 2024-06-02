@@ -1,7 +1,7 @@
 { config, lib, inputs, ... }:
 
 let
-    homescreen = "~/NixOS/wallpapers/bakairis_rainy-world.png";
+    homescreen = "${../../wallpapers/bakairis_rainy-world.png}";
     current-palette = ../../palettes/macchiato-nightlight.nix;
     display = "Limelight";
 
