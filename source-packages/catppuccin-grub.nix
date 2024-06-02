@@ -1,19 +1,19 @@
 {
   lib,
-  stdenv,
+  stdenvNoCC,
   fetchFromGitHub,
   flavor ? "mocha", # override with your chosen flavor
   ...
 }:
 
-stdenv.mkDerivation {
+stdenvNoCC.mkDerivation {
   pname = "catppuccin-grub";
   version = "1.0.0";
 
-  src = fetchFromGitHub {
+  src = fetchFromGitHub rec {
     owner = "catppuccin";
     repo = "grub";
-    rev = "88f6124757331fd3a37c8a69473021389b7663ad";
+    rev = "refs/tags/v${version}";
     hash = "sha256-e8XFWebd/GyX44WQI06Cx6sOduCZc5z7/YhweVQGMGY=";
   };
 
@@ -21,7 +21,7 @@ stdenv.mkDerivation {
     runHook preInstall
 
     mkdir -p $out/
-    cp -r ${sources.grub}/src/catppuccin-${flavor}-grub-theme/* "$out"/
+    cp -r ${src}/src/catppuccin-${flavor}-grub-theme/* "$out"/
 
     runHook postInstall
   '';
