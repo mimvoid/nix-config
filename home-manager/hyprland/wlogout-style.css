@@ -1,7 +1,7 @@
 @import url("../../NixOS/palettes/macchiato-nightlight.css");
 
 window {
-    color: @text
+    color: @text;
     background-color: transparent;
 
     font-family: SauceCodePro Nerd Font Medium;
