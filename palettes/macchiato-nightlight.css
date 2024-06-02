@@ -1,0 +1,20 @@
+/* A GTK CSS version of macchiato-nightlight.nix
+   for waybar and wlogout style files. */
+
+@define-color etch #1d2030;
+@define-color base #24273a;
+@define-color edge #363a4f;
+@define-color frame #494d64;
+@define-color smudge #b8c0e0;
+@define-color text #cad3f5;
+
+@define-color mainAccent #f0c6c6;
+@define-color secAccent #f5bde6;
+@define-color dullAccent #c6a0f6;
+@define-color paleAccent #f4dbd6;
+
+@define-color tip #eed49f;
+@define-color watch #ee99a0;
+@define-color warning #b7bdf8;
+@define-color alert #8bd5ca;
+
