@@ -32,7 +32,7 @@ stdenvNoCC.mkDerivation {
     description = "Soothing pastel theme for GRUB";
     homepage = "https://github.com/catppuccin/grub";
     license = lib.licenses.mit;
-    maintainers = with lib.maintainers; [];
+    maintainers = with lib.maintainers; [isabelroses];
     platforms = lib.platforms.linux;
   };
 }
