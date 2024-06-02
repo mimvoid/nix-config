@@ -7,7 +7,7 @@
   imports =
     [
       ./hardware-configuration.nix
-      #./system/sddm.nix
+      ./system/sddm.nix
       #./system/grub2.nix
     ];
 
@@ -62,10 +62,6 @@
   programs.xwayland.enable = true;
 
   # KDE Plasma 6
-  services.displayManager.sddm = {
-    enable = true;
-    wayland.enable = true;
-  };
   services.desktopManager.plasma6.enable = true;
   environment.plasma6.excludePackages = with pkgs.kdePackages; [
     okular
