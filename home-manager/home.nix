@@ -12,6 +12,7 @@
     imports = [
         ./theming.nix
         ./terminal/default.nix
+        ./nixvim/default.nix
         ./hyprland/default.nix
         ./guis/default.nix
         ./eww/eww.nix

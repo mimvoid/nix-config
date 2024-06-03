@@ -1,12 +1,6 @@
-{ pkgs, inputs, ... }:
+{ ... }:
 
 {
-    programs.nixvim = {
-        enable = true;
-        defaultEditor = true;
-        extraPlugins = [ pkgs.vimPlugins.nvchad ];
-    };
-
     programs.nixvim.plugins = {
         lazy.enable = true;
                    
