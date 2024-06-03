@@ -46,8 +46,8 @@
     splitright = true;
 
     # Command line
-    showmode = false;
-    cmdheight = 2;
+    showmode = true;
+    cmdheight = 1;
 
     # Encoding
     encoding = "utf-8";
