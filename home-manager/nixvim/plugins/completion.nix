@@ -4,8 +4,10 @@
       enable = true;
       autoEnableSources = true;
       settings = {
-        performance.max_view_entries = 8;
-        keyword_length = 4;
+        performance = {
+          throttle = 100;
+          max_view_entries = 8;
+        };
         mapping = {
           "<S><CR>" = "cmp.mapping.confirm({ select = true })";
           "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
@@ -18,6 +20,12 @@
           {name = "path";}
           {name = "buffer";}
         ];
+        window.completion = {
+          border = "rounded";
+          scrollbar = true;
+          side_padding = 2;
+        };
+        window.documentation.border = "rounded";
       };
     };
   };
