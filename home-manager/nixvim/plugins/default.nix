@@ -7,6 +7,7 @@
     ./git.nix
     ./lsp.nix
     ./lualine.nix
+    ./markdown.nix
     ./neo-tree.nix
     ./telescope.nix
     ./todo.nix
