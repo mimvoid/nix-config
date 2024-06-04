@@ -24,7 +24,7 @@
     highlightOverride = {
       TelescopePreviewTitle = { bg = "#232136"; fg = "#3e8fb0"; };
       TelescopePromptTitle = { bg = "#232136"; fg = "#eb6f92"; };
-      TelescopePromptPrefix = { fg = "#eb5f92"; };
+      TelescopePromptPrefix = { fg = "#eb6f92"; };
     };
   };
 }
