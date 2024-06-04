@@ -14,11 +14,6 @@
     }
     {
       mode = "n";
-      key = "<leader>f";
-      action = "+find/file";
-    }
-    {
-      mode = "n";
       key = "<leader>s";
       action = "+search";
     }
@@ -37,6 +32,45 @@
       key = "<leader>t";
       action = "+test";
     }
+
+    # Telescope
+    {
+      mode = "n";
+      key = "<leader>ff";
+      action = "<cmd>Telescope find_files<cr>";
+    }
+    {
+      mode = "n";
+      key = "<leader>fr";
+      action = "<cmd>Telescope oldfiles<cr>";
+    }
+    {
+      mode = "n";
+      key = "<leader>fw";
+      action = "<cmd>Telescope live_grep<cr>";
+    }
+
+    # Insert mode
+    {
+      mode = "i";
+      key = "<C-j>";
+      action = "<Down>";
+    }
+    {
+      mode = "i";
+      key = "<C-k>";
+      action = "<Up>";
+    }
+    {
+      mode = "i";
+      key = "<C-h>";
+      action = "<Left>";
+    }
+    {
+      mode = "i";
+      key = "<C-l>";
+      action = "<Right>";
+    }
     # Tabs
     {
       mode = "n";
@@ -44,13 +78,13 @@
       action = "<cmd>tabnew<CR>";
       options = {
         silent = true;
-        desc = "New Tb";
+        desc = "New Tab";
       };
     }
     {
       mode = "n";
       key = "<leader>x";
-      action = "<cmd>tabclose<CR>";
+      action = "<cmd>bp<bar>sp<bar>bn<bar>bd<CR>";
       options = {
         silent = true;
         desc = "Close Tab";
@@ -59,7 +93,7 @@
     {
       mode = "n";
       key = "<Tab>";
-      action = "<cmd>tabnext<CR>";
+      action = "<cmd>BufferLineCycleNext<CR>";
       options = {
         silent = true;
         desc = "Move to next tab";
@@ -68,7 +102,7 @@
     {
       mode = "n";
       key = "<S-Tab>";
-      action = "<cmd>tabprevious<CR>";
+      action = "<cmd>BufferLineCyclePrev<CR>";
       options = {
         silent = true;
         desc = "Move to the previous tab";
@@ -132,11 +166,16 @@
       };
     }
 
-    # Nvimtree
+    # Neo-tree
     {
       mode = "n";
       key = "<leader>e";
-      action = "<cmd>NvimTreeFocus<CR>";
+      action = "<cmd>Neotree focus<CR>";
+    }
+    {
+      mode = "n";
+      key = "<leader>wk";
+      action = "<cmd>WhichKey <CR>";
     }
   ];
 }

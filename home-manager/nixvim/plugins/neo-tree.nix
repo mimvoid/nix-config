@@ -8,8 +8,9 @@
     enableModifiedMarkers = true;
     enableRefreshOnWrite = true;
 
-    addBlankLineAtTop = true;
     closeIfLastWindow = true;
     sortCaseInsensitive = true;
+
+    window.width = 16;
   };
 }

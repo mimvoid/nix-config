@@ -2,6 +2,9 @@
 
 {
   programs.nixvim.opts = {
+    timeoutlen = 3000;
+    updatetime = 300;
+
     # Line numbers
     number = true;
     relativenumber = false;
@@ -65,8 +68,6 @@
     hidden = true;
     conceallevel = 0;
     signcolumn = "yes";
-    timeoutlen = 10;
-    updatetime = 300;
     mouse = "a";
   };
 }
