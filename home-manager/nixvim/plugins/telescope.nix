@@ -1,16 +1,24 @@
 {
   programs.nixvim.plugins.telescope = {
     enable = true;
-    extensions = {
-      file-browser = {
-        enable = true;
-        settings.hidden = {file_browser = true; folder_browser = true;};
+
+    extensions.file-browser = {
+      enable = true;
+      settings.hidden = {
+        file_browser = true;
+        folder_browser = true;
       };
-      fzf-native.enable = true;
-		  media-files.enable = true;
 	  };
+
     settings.defaults = {
       initial_mode = "insert";
+      mappings = {
+        i = {
+          "<A-j>".__raw = "require('telescope.actions').move_selection_next";
+          "<A-k>".__raw = "require('telescope.actions').move_selection_previous";
+        };
+      };
+
       file_ignore_patterns = [
         "^.git/"
         "^.mypy_cache/"
@@ -19,9 +27,9 @@
         "^data/"
         "%.ipynb"
       ];
+
       vimgrep_arguments = [
         "rg"
-        "-L"
         "--color=never"
         "--no-heading"
         "--with-filename"
@@ -39,7 +47,6 @@
 
       # Layout
       selection_strategy = "reset";
-      sorting_strategy = "descending";
       layout_strategy = "horizontal";
       layout_config = {
         horizontal = {
@@ -48,12 +55,17 @@
         };
         vertical.mirror = false;
         width = 0.8;
-        height = 0.8;
+        height = 0.85;
+
+        # Many previews don't appear unless this value is very low
         preview_cutoff = 1;
       };
 
+      # Sorting
+      sorting_strategy = "descending";
       file_sorter.__raw = "require'telescope.sorters'.get_fuzzy_file";
       generic_sorter.__raw = "require'telescope.sorters'.get_generic_fuzzy_sorter";
+      use_less = true;
 
       # Prefixes
       prompt_prefix = "> ";
@@ -65,30 +77,13 @@
       results_title = "";
       dynamic_preview_title = true;
 
+      # Misc appearance
       set_env.COLORTERM = "truecolor";
       disable_devicons = false;
-      color_devicons = true;
-      use_less = true;
+      color_devicons = true; 
       path_display = ["truncate"];
 
-      # Border
-      border.__raw = "{}";
       borderchars = ["─" "│" "─" "│" "╭" "╮" "╯" "╰"];
-
-      mappings = {
-        i = {
-          "<A-j>".__raw = "require('telescope.actions').move_selection_next";
-          "<A-k>".__raw = "require('telescope.actions').move_selection_previous";
-        };
-      };
-      settings.pickers =
-      let
-        borderchars = ["─" "│" "─" "│" "╭" "╮" "╯" "╰"];
-      in
-      {
-        find_files = { inherit borderchars; };
-        live_grep = { inherit borderchars; };
-      };
     };
 	};
 }

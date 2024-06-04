@@ -8,6 +8,7 @@
           throttle = 100;
           max_view_entries = 8;
         };
+        completion.autocomplete = false;
         mapping = {
           "<S><CR>" = "cmp.mapping.confirm({ select = true })";
           "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";

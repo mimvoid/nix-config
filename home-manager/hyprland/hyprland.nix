@@ -106,7 +106,7 @@ in
                     enabled = true;
                     size = 1;
                     passes = 1;
-                    contrast = 1.40;
+                    contrast = 1.25;
                 };
             };
 
