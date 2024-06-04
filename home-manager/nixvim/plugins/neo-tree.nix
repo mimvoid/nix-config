@@ -9,7 +9,14 @@
     closeIfLastWindow = true;
     sortCaseInsensitive = true;
     
-    filesystem.filteredItems.hideHidden = false;
+    filesystem = {
+      filteredItems = {
+        hideDotfiles = true;
+        hideGitignored = true;
+        visible = true; # Hidden items are visible but grayed out
+      };
+      followCurrentFile.enabled = true;
+    };
 
     window.width = 16;
   };

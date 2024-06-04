@@ -49,7 +49,7 @@
         vertical.mirror = false;
         width = 0.8;
         height = 0.8;
-        preview_cutoff = 120;
+        preview_cutoff = 1;
       };
 
       file_sorter.__raw = "require'telescope.sorters'.get_fuzzy_file";
@@ -59,8 +59,10 @@
       prompt_prefix = "> ";
       selection_caret = "> ";
       entry_prefix = "  ";
+
       # Titles
-      results_title = "Results";
+      prompt_title = "";
+      results_title = "";
       dynamic_preview_title = true;
 
       set_env.COLORTERM = "truecolor";
@@ -70,7 +72,7 @@
       path_display = ["truncate"];
 
       # Border
-      border = true;
+      border.__raw = "{}";
       borderchars = ["─" "│" "─" "│" "╭" "╮" "╯" "╰"];
 
       mappings = {
@@ -78,6 +80,14 @@
           "<A-j>".__raw = "require('telescope.actions').move_selection_next";
           "<A-k>".__raw = "require('telescope.actions').move_selection_previous";
         };
+      };
+      settings.pickers =
+      let
+        borderchars = ["─" "│" "─" "│" "╭" "╮" "╯" "╰"];
+      in
+      {
+        find_files = { inherit borderchars; };
+        live_grep = { inherit borderchars; };
       };
     };
 	};

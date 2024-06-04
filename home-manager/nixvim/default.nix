@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./colorscheme.nix
     ./opts.nix
     ./keymaps.nix
     ./plugins/default.nix

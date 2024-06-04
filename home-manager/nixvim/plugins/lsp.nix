@@ -8,6 +8,7 @@
       #java-language-server.enable = true;
       #jsonls.enable = true;
       lua-ls.enable = true;
+      marksman.enable = true;
       nil_ls.enable = true;
       #rust-analyzer = {
       #  enable = true;

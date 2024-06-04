@@ -69,11 +69,6 @@
         bat.enable = true;
         foot.enable = true;
         fzf.enable = true;
-        nixvim = {
-            enable = true;
-            transparent_bg.main = false;
-            transparent_bg.sign_column = false;
-        };
         yazi.enable = true;
     };
 
