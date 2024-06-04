@@ -30,22 +30,22 @@
     # Insert mode
     {
       mode = "i";
-      key = "<C-j>";
+      key = "<A-j>";
       action = "<Down>";
     }
     {
       mode = "i";
-      key = "<C-k>";
+      key = "<A-k>";
       action = "<Up>";
     }
     {
       mode = "i";
-      key = "<C-h>";
+      key = "<A-h>";
       action = "<Left>";
     }
     {
       mode = "i";
-      key = "<C-l>";
+      key = "<A-l>";
       action = "<Right>";
     }
     # Tabs
