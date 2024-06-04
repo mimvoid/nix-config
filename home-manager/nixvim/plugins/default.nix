@@ -3,16 +3,23 @@
     ./alpha.nix
     ./arrow.nix
     ./bufferline.nix
-    #./cmp.nix
+    ./completion.nix
     ./lsp.nix
     ./neo-tree.nix
     ./telescope.nix
     ./treesitter.nix
-    #./which-key.nix
+    ./which-key.nix
   ];
 
   programs.nixvim.plugins = {
-    cmp.enable = true;
+    better-escape = {
+      enable = true;
+      mapping = [ "fj" ];
+      timeout = 500;
+    };
+    endwise.enable = true;
     nvim-autopairs.enable = true;
+    persistence.enable = true;
+    trim.enable = true;
   };
 }
