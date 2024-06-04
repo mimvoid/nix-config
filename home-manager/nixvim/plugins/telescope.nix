@@ -21,6 +21,7 @@
       ];
       vimgrep_arguments = [
         "rg"
+        "-L"
         "--color=never"
         "--no-heading"
         "--with-filename"
@@ -30,16 +31,25 @@
       ];
 
       # Previews
-      file_previewer.__raw = "require'telescope.previewers'.vim_buffer_cat.new";
-      grep_previewer.__raw = "require'telescope.previewers'.vim_buffer_vimgrep.new";
-      qflist_previewer.__raw = "require'telescope.previewers'.vim_buffer_qflist.new";
+      previewer = true;
+      file_previewer.__raw = "require('telescope.previewers').vim_buffer_cat.new";
+      grep_previewer.__raw = "require('telescope.previewers').vim_buffer_vimgrep.new";
+      qflist_previewer.__raw = "require('telescope.previewers').vim_buffer_qflist.new";
+      buffer_preview_maker.__raw = "require('telescope.previewers').buffer_previewer_maker";
 
       # Layout
+      selection_strategy = "reset";
       sorting_strategy = "descending";
       layout_strategy = "horizontal";
       layout_config = {
-        prompt_position = "bottom";
-        preview_width = 0.2;
+        horizontal = {
+          prompt_position = "bottom";
+          preview_width = 0.4;
+        };
+        vertical.mirror = false;
+        width = 0.8;
+        height = 0.8;
+        preview_cutoff = 120;
       };
 
       file_sorter.__raw = "require'telescope.sorters'.get_fuzzy_file";
@@ -49,13 +59,19 @@
       prompt_prefix = "> ";
       selection_caret = "> ";
       entry_prefix = "  ";
+      # Titles
+      results_title = "Results";
+      dynamic_preview_title = true;
 
       set_env.COLORTERM = "truecolor";
+      disable_devicons = false;
       color_devicons = true;
+      use_less = true;
+      path_display = ["truncate"];
 
       # Border
-      border = {};
-      borderchars = [ "─" "│" "─" "│" "╭" "╮" "╯" "╰" ];
+      border = true;
+      borderchars = ["─" "│" "─" "│" "╭" "╮" "╯" "╰"];
 
       mappings = {
         i = {

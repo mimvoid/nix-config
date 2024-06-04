@@ -7,14 +7,14 @@
     ./plugins/default.nix
   ];
 
-  home.packages = with pkgs; [
-    ripgrep
-  ];
-
   programs.nixvim = {
     enable = true;
     defaultEditor = true;
     type = "lua";
+    extraPackages = with pkgs; [
+      fzf
+      ripgrep
+    ];
     extraPlugins = with pkgs.vimPlugins; [
       plenary-nvim
     ];
