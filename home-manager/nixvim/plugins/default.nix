@@ -9,6 +9,7 @@
     ./lualine.nix
     ./neo-tree.nix
     ./telescope.nix
+    ./todo.nix
     ./treesitter.nix
     ./which-key.nix
   ];
