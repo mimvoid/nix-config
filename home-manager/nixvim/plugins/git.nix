@@ -1,13 +1,26 @@
 {
   programs.nixvim.plugins = {
+    fugitive.enable = true;
     gitsigns.enable = true;
-    neogit = {
+    lazygit = {
       enable = true;
       settings = {
-        fetch_after_checkout = true;
-        graph_style = "unicode";
-        kind = "vsplit";
-        integrations.telescope = true;
+        config_file_path = [ ];
+        floating_window_border_chars = [
+          "╭"
+          "─"
+          "╮"
+          "│"
+          "╯"
+          "─"
+          "╰"
+          "│"
+        ];
+        floating_window_scaling_factor = 0.9;
+        floating_window_use_plenary = false;
+        floating_window_winblend = 0;
+        use_custom_config_file_path = false;
+        use_neovim_remote = true;
       };
     };
   };

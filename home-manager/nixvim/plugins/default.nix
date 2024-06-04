@@ -4,6 +4,7 @@
     ./arrow.nix
     ./bufferline.nix
     ./completion.nix
+    ./git.nix
     ./lsp.nix
     ./neo-tree.nix
     ./telescope.nix
@@ -20,6 +21,5 @@
     endwise.enable = true;
     nvim-autopairs.enable = true;
     persistence.enable = true;
-    trim.enable = true;
   };
 }

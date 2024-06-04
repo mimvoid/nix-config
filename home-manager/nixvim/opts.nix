@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   programs.nixvim.opts = {
     timeoutlen = 3000;

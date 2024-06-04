@@ -8,6 +8,8 @@
 
     closeIfLastWindow = true;
     sortCaseInsensitive = true;
+    
+    filesystem.filteredItems.hideHidden = false;
 
     window.width = 16;
   };

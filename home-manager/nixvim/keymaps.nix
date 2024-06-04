@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   programs.nixvim.globals = {
     mapleader = " ";
@@ -9,30 +7,9 @@
   programs.nixvim.keymaps = [
     {
       mode = "n";
-      key = "<leader>";
-      action = "<nop>";
-    }
-    {
-      mode = "n";
-      key = "<leader>s";
-      action = "+search";
-    }
-    {
-      mode = "n";
       key = "<leader>g";
-      action = "+git";
+      action = "<cmd>Lazygit<CR>";
     }
-    {
-      mode = ["n" "v"];
-      key = "<leader>d";
-      action = "+debug";
-    }
-    {
-      mode = ["n" "v"];
-      key = "<leader>t";
-      action = "+test";
-    }
-
     # Telescope
     {
       mode = "n";
@@ -155,7 +132,6 @@
         desc = "Move to window above";
       };
     }
-
     {
       mode = "n";
       key = "<C-j>";
@@ -164,6 +140,12 @@
         silent = true;
         desc = "Move to window below";
       };
+    }
+    {
+      mode = "n";
+      key = "<leader>t";
+      action = "<cmd>vsplit<bar>terminal<CR>";
+      options.desc = "Open terminal";
     }
 
     # Neo-tree
