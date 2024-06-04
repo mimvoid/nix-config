@@ -4,14 +4,13 @@
     alwaysDivideMiddle = false;
     globalstatus = true;
     iconsEnabled = true;
-    theme = "palenight";
 
     componentSeparators = {left = ""; right = "";};
     sectionSeparators = {left = ""; right = "";};
     
     sections = {
       lualine_a = ["mode"];
-      lualine_b = ["branch" {icon = "";}];
+      lualine_b = ["branch"];
       lualine_c = ["filesize" "filename"];
 
       lualine_x = [

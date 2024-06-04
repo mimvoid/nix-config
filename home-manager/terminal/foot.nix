@@ -1,7 +1,4 @@
-{ ... }:
-
 # Colors and fonts are managed by Stylix
-
 {
     programs.foot = {
         enable = true;

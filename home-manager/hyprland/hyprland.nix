@@ -1,4 +1,4 @@
-{ config, inputs, pkgs, ... }:
+{ pkgs, ... }:
 let
     # Default applications
     terminal = "foot";
@@ -46,7 +46,7 @@ in
                 # Includes swaybg, specified in hypr-theme.nix
                 "wlsunset &"
                 "nm-applet --indicator &"
-                "waybar"
+                "${bar}"
             ];
 
             env = [

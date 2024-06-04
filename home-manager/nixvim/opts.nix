@@ -47,7 +47,7 @@
     splitright = true;
 
     # Command line
-    showmode = true;
+    showmode = false;
     cmdheight = 1;
 
     # Encoding

@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   programs.fuzzel = {
     enable = true;
