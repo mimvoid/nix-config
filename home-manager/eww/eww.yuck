@@ -1,35 +1,3 @@
-(defwidget bar []
-    (centerbox :orientation "h"))
-
-; Workspaces
-(defwidget workspaces []
-  (literal :content workspace))
-(deflisten workspace "scripts/workspace")
-
-; Application tray
-
-; Clock
-(defwidget time []
-  (box    :class "time"
-          :orientation "h"
-          :halign "end")
-  (button :onclick "scripts/" ;display calendar
-          :class "time-clock" clock))
-(defpoll date  :interval)
-
-; Media control
-(defwidget media [])
-
-; Sound
-
-; Network
-
-; Devices
-
-; Battery
-(defwidget battery [])
-
-; Waybar system tray
-
-; Power
-(defwidget power [])
+(include "variables.yuck")
+(include "bar/bar.yuck")
+(include "bar/calendar.yuck")

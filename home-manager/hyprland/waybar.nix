@@ -45,6 +45,12 @@
 
         clock = {
           format = "{:%A %b %d / %H:%M}";
+          tooltip-format = "<tt>{calendar}</tt>";
+          calendar = {
+            mode = "month";
+            weeks-pos = "left";
+            on-scroll = 1;
+          };
         };
 
         network = {
@@ -57,7 +63,6 @@
           tooltip-format-wifi = "{essid} {icon} {signalStrength}%";
           tooltip-format-ethernet = "{ifname} 󰌘";
           tooltip-format-disconnected = "󰌙 Disconnected";
-          #on-click = "nm-applet --indicator";
           max-length = 50;
           format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
         };

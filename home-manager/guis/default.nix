@@ -16,11 +16,13 @@
         zotero_7
         zathura
 
+        # Contact
+        zoom-us
+        vesktop
+
         # Misc
         anki
         bottles
-        zoom-us
-        vesktop
         freetube
     ];
 

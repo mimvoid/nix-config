@@ -21,6 +21,8 @@
       })
     '';
 
+    # Swap foreground and background highlights
+    # Make the prompt prefix red
     highlightOverride = {
       TelescopePreviewTitle = { bg = "#232136"; fg = "#3e8fb0"; };
       TelescopePromptTitle = { bg = "#232136"; fg = "#eb6f92"; };

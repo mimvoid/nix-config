@@ -1,0 +1,125 @@
+(defwindow bar
+  :geometry (geometry :x "0px"
+                      :y "0px"
+                      :width "95%"
+                      :height "28px"
+                      :anchor "center top")
+  :type "dock"
+  :wm-ignore false
+  :reserve (struts :distance "46px" :side "top")
+(bar))
+
+(defwidget bar []
+  (box  :class "bar"
+        :orientation "h"
+        :space-evenly true
+    (left)
+    (center)
+    (right)
+  )
+)
+
+;; Left widgets
+
+(defwidget left []
+  (box  :class "bar-section"
+        :orientation "h"
+        :space-evenly false
+        :halign "start"
+    (workspaces)
+    (music)
+  )
+)
+
+(defwidget workspaces []
+  (box  :class "workspaces"
+        :orientation "h"
+        :space-evenly true
+        :valign "center"
+    (literal :content "${workspaces}")
+  )
+)
+(deflisten workspaces "~/.config/eww/scripts/workspaces")
+
+(defwidget music []
+  (box  :class "music"
+        :orientation "h"
+        :space-evenly false
+  )
+)
+
+;; Center widgets
+
+(defwidget center []
+  (box  :class "bar-section"
+        :orientation "h"
+        :halign "center"
+        :valign "center"
+    (clock)
+  )
+)
+
+(defwidget clock []
+  (box  :class "clock"
+        :orientation "h"
+        :space-evenly true
+    (button :onclick "eww -c ~/.config/eww open --toggle calendar" calendar)
+  )
+)
+
+;; Right widgets
+
+(defwidget right []
+  (box  :class "bar-section"
+        :orientation "h"
+        :space-evenly false
+        :halign "end"
+        :valign "center"
+    (tray)
+    (power)
+  )
+)
+
+(defwidget tray []
+  (box  :class "tray"
+        :orientation "h"
+        :space-evenly false
+        :spacing 14
+    (network)
+    (sound)
+    (battery)
+  )
+)
+
+(defwidget network []
+  (box  :class "network"
+        :orientation "h"
+        :valign "center"
+    (button :onhover)
+    (button :onclick)
+  )
+)
+
+(defwidget sound []
+  (box  :class "sound"
+        :orientation "h"
+        :valign "center"
+    (button :onhover)
+  )
+)
+
+(defwidget battery []
+  (box  :class "battery"
+        :orientation "h"
+        :valign "center"
+    (button :onhover)
+  )
+)
+
+(defwidget power []
+  (button :class "power"
+          :onclick "wlogout -b 2" ;; TODO: replace with an eww widget
+    "⏻"
+  )
+)
+
