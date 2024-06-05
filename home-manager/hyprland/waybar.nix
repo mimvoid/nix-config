@@ -63,6 +63,7 @@
           tooltip-format-wifi = "{essid} {icon} {signalStrength}%";
           tooltip-format-ethernet = "{ifname} 󰌘";
           tooltip-format-disconnected = "󰌙 Disconnected";
+          on-click = "nm-connection-editor";
           max-length = 50;
           format-icons = [ "󰤯" "󰤟" "󰤢" "󰤥" "󰤨" ];
         };

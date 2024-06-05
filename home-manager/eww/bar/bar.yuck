@@ -39,14 +39,18 @@
     (literal :content "${workspaces}")
   )
 )
-(deflisten workspaces "~/.config/eww/scripts/workspaces")
+(deflisten workspaces "~/.config/eww/scripts/workspaces.sh")
 
 (defwidget music []
   (box  :class "music"
         :orientation "h"
         :space-evenly false
+    (song-info)
+    (song-control)
   )
 )
+(defwidget song-info [])
+(defwidget song-control [])
 
 ;; Center widgets
 
@@ -63,7 +67,7 @@
   (box  :class "clock"
         :orientation "h"
         :space-evenly true
-    (button :onclick "eww -c ~/.config/eww open --toggle calendar" calendar)
+    (button :onclick "eww -c ~/.config/eww open --toggle cal-box" cal-box)
   )
 )
 
@@ -95,8 +99,8 @@
   (box  :class "network"
         :orientation "h"
         :valign "center"
-    (button :onhover)
-    (button :onclick)
+    (button :onhover
+            :onclick)
   )
 )
 

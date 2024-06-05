@@ -2,5 +2,6 @@
   all: unset;
 }
 
+@import "variables.scss";
 @import "bar/bar.scss";
 @import "calendar/calendar.scss";
