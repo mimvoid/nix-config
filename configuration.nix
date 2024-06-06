@@ -4,7 +4,7 @@
   imports = [
     ./hardware-configuration.nix
     ./system/sddm.nix
-    #./system/grub2.nix
+    ./system/grub.nix
   ];
 
   # General system configurations
@@ -37,12 +37,13 @@
 
   fonts.packages = with pkgs; [
     (nerdfonts.override {fonts = ["SourceCodePro"];})
+    fira-code
   ];
 
   # Bootloader
   # TODO: remove this once GRUB2 is configured
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true; 
+  #boot.loader.systemd-boot.enable = true;
+  #boot.loader.efi.canTouchEfiVariables = true; 
 
 
   # X11

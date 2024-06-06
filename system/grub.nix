@@ -14,7 +14,7 @@
 
     # Default GRUB has such small text
     # This makes it more readable for me
-    font = "${pkgs.nerdfonts}/share/fonts/truetype/NerdFonts/SauceCodeProNerdFont-Medium.ttf";
+    font = "${pkgs.fira-code}/share/fonts/truetype/FiraCode-VF.ttf";
     fontSize = 16; # Only works with ttf or otf fonts
 
     #splashImage = 
