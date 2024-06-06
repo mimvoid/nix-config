@@ -32,9 +32,9 @@
         lxgw-wenkai
     ];
 
-    # Stylix works well in the terminal
-    # but has some issues outside it so
-    # auto-enable is off
+    # Stylix is nice in the terminal
+    # but I don't like how it works
+    # outside it so auto-enable is off
 
     stylix = {
         autoEnable = false;

@@ -6,6 +6,10 @@
         poppler
         unar
         wl-clipboard
+
+        dooit
+        wttrbar
+        wego
     ];
 
     programs.yazi = {
