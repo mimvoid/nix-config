@@ -17,7 +17,7 @@
       auto-optimise-store = true;
     };
   };
-  system.autoupgrade.enable = true;
+  system.autoUpgrade.enable = true;
 
   # Package sources
   nixpkgs.config.allowUnfree = true;
