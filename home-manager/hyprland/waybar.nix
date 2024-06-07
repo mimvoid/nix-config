@@ -13,12 +13,12 @@
         position = "top";
         passthrough = false;
 
-        height = 28;
-        spacing = 4;
+        height = 24;
+        spacing = 2;
         fixed-center = true;
         margin-left = 8;
         margin-right = 8;
-        margin-top = 2;
+        margin-top = 1;
 
         modules-left = [ "hyprland/workspaces" ];
         modules-center = [ "clock" ];

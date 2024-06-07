@@ -118,6 +118,7 @@ in
                 "opacity 0.90 override 0.85 override, title:(YaST2*)"
                 "opacity 0.98 override 0.85 override, class:(Zotero)"
                 "opacity 0.98 override 0.85 override, class:(obsidian)"
+                "opacity 0.98 override 0.85 override, class:(PBE.QOwnNotes)"
                 "opacity 0.98 override 0.85 override, class:(vesktop)"
                 "opaque, class:(krita)"
             ];

@@ -76,7 +76,7 @@ tooltip label {
 }
 
 #workspaces button {
-    padding: 1px 12px 1px 9px;
+    padding: 1.5px 10px 1px 6px;
     background-color: transparent;
 }
 
@@ -106,7 +106,7 @@ tooltip label {
     color: @paleAccent;
     background-color: alpha(@dullAccent, 0.2);
     border-radius: 16px;
-    padding: 0 6px 0 10px;
+    padding: 0 4px 0 8px;
 }
 #custom-power:hover {
     color: @text;
