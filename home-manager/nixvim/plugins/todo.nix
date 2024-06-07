@@ -22,7 +22,7 @@
       # color = Can be a hex color or a named color.
       # alt = A set of other keywords that all map to this keyword.
 
-      FIX = { icon = " "; color = "error"; alt = [ "BUG" "ISSUE" ];};
+      FIX = { icon = " "; color = "error"; alt = [ "FIXME" "BUG" "ISSUE" ];};
       TODO = { icon = " "; color = "info"; };
       HACK = { icon = " "; color = "warning"; };
       WARN = { icon = " "; color = "warning"; alt = [ "WARNING" ]; };

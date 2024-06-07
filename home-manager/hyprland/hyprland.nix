@@ -42,6 +42,7 @@ in
                 "mako &"
             ];
 
+            # FIXME: waybar gets executed twice at startup
             exec = [
                 # Includes swaybg, specified in hypr-theme.nix
                 "wlsunset &"
