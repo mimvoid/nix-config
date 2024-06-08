@@ -70,6 +70,7 @@
         foot.enable = true;
         fzf.enable = true;
         yazi.enable = true;
+        zathura.enable = true;
     };
 
     gtk = {
