@@ -5,6 +5,7 @@
     ./hardware-configuration.nix
     ./system/sddm.nix
     ./system/grub.nix
+    ./packages/default.nix
   ];
 
   # General system configurations
