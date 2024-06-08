@@ -135,6 +135,7 @@
     enable = true;
     package = pkgs.gvfs;
   };
+  services.tumbler.enable = true;
 
   #---------------#
   # Miscellaneous #
