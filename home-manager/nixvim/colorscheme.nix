@@ -6,17 +6,17 @@
       colorscheme = "rose-pine-moon";
     };
 
-    # Enable telescope borders
+    # Enable telescope borders, disable plugins that aren't installed
     extraConfigLuaPre = ''
       require('base16-colorscheme').with_config({
         telescope = true,
         telescope_borders = true,
-        indentblankline = true,
+        cmp = true,
+        lsp_semantic = true,
+        indentblankline = false,
         notify = false,
         ts_rainbow = false,
-        cmp = true,
         illuminate = false,
-        lsp_semantic = true,
         dapui = false,
       })
     '';
