@@ -128,7 +128,9 @@
   # CUPS
   services.printing.enable = true;
 
-  # gvfs for Thunar
+  # Thunar additions
+  programs.xfconf.enable = true;
+  
   services.gvfs = {
     enable = true;
     package = pkgs.gvfs;
