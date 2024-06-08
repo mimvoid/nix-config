@@ -1,0 +1,32 @@
+/* WIP */
+/* A personal CSS snippet to approximate
+ * live preview to reading mode */
+
+.mod-cm6 .cm-editor .HyperMD-header-1 {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1rem !important;
+}
+.mod-cm6 .cm-editor .HyperMD-header-2 {
+  padding-top: 2.5rem !important;
+  padding-bottom: 1rem !important;
+}
+.mod-cm6 .cm-editor .HyperMD-header-3 {
+  padding-top: 2.5rem !important;
+  padding-bottom: 1rem !important;
+}
+.mod-cm6 .cm-editor .HyperMD-header-4 {
+  padding-top: 2.5rem !important;
+  padding-bottom: 1rem !important;
+}
+.mod-cm6 .cm-editor .HyperMD-header-5 {
+  padding-top: 2.5rem !important;
+  padding-bottom: 1rem !important;
+}
+.mod-cm6 .cm-editor .HyperMD-header-6 {
+  padding-top: 2.5rem !important;
+  padding-bottom: 1rem !important;
+}
+/*.mod-cm6 .cm-editor .HyperMD-paragraph {
+  padding-top: 0rem;
+  padding-bottom: 1rem;
+}*/
