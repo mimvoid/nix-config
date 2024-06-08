@@ -11,6 +11,7 @@
     ./lualine.nix
     ./markdown.nix
     ./neo-tree.nix
+    ./nvim-colorizer.nix
     ./telescope.nix
     ./todo.nix
     ./treesitter.nix
