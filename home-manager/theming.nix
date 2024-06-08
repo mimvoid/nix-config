@@ -1,5 +1,19 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
+let
+  # Wallpaper
+  homescreen = ../wallpapers/hanyijie_departure.jpg;
 
+  # Default fonts
+  serif = sansSerif;
+  sansSerif = {
+    package = pkgs.cantarell-fonts;
+    name = "Cantarell";
+  };
+  monospace = {
+    package = (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ];});
+    name = "SauceCodePro NFM";
+  };
+in
 {
   home.packages = with pkgs; [
     # Icons
@@ -39,19 +53,13 @@
   stylix = {
     autoEnable = false;
 
-    image = ../wallpapers/hanyijie_departure.jpg;
+    image = homescreen;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
 
     fonts = {
-      serif = config.stylix.fonts.sansSerif;
-      sansSerif = {
-      package = pkgs.cantarell-fonts;
-        name = "Cantarell";
-      };
-      monospace = {
-        package = (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ];});
-        name = "SauceCodePro NFM";
-      };
+      inherit serif;
+      inherit sansSerif;
+      inherit monospace;
       sizes.terminal = 14;
     };
 
@@ -75,10 +83,7 @@
 
   gtk = {
     enable = true;
-    font = {
-      name = "Cantarell";
-      package = pkgs.cantarell-fonts;
-    };
+    font = sansSerif;
     iconTheme = {
       name = "Papirus";
       package = pkgs.catppuccin-papirus-folders;
