@@ -3,7 +3,7 @@
 {
   xdg.desktopEntries = {
     obsidian = {
-      name = "Obsidian.AppImage";
+      name = "Obsidian";
       icon = "${pkgs.papirus-icon-theme}/share/icons/Papirus/48x48/apps/obsidian.svg";
 
       # TODO: what is the variable for an appimageTool package?
