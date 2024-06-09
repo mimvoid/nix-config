@@ -22,6 +22,7 @@
     # Misc
     anki
     bottles
+    nextcloud-client
   ];
 
   imports = [
@@ -32,6 +33,11 @@
 
   # Imports list of allowed unfree packages from flake.nix
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages; 
+
+  services.nextcloud-client = {
+    enable = true;
+    package = pkgs.nextcloud-client;
+  };
 
   # There seems to be a bug with flatpak
   # that prevents nix-flatpak from working

@@ -20,6 +20,7 @@
         fzf
         tlrc
         exiftool
+        megacmd
     ];
 
     programs.bash = {
