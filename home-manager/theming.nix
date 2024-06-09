@@ -3,6 +3,11 @@ let
   # Wallpaper
   homescreen = ../wallpapers/hanyijie_departure.jpg;
 
+  cat-folders = (pkgs.catppuccin-papirus-folders.override {
+    flavor = "macchiato";
+    accent = "blue";
+  });
+
   # Default fonts
   serif = sansSerif;
   sansSerif = {
@@ -16,13 +21,10 @@ let
 in
 {
   home.packages = with pkgs; [
-    # Icons
-    catppuccin-papirus-folders
     rose-pine-cursor
 
     # Fonts
     # Sans serif
-    cantarell-fonts
     noto-fonts-cjk-sans
     atkinson-hyperlegible
     raleway
@@ -32,7 +34,6 @@ in
     noto-fonts-cjk-serif
 
     # Monospace
-    (nerdfonts.override {fonts = ["SourceCodePro"];})
     courier-prime
 
     # Display / Handwriting
@@ -44,6 +45,11 @@ in
     ]; })
     norwester-font
     lxgw-wenkai
+  ]
+  ++ [
+    cat-folders
+    sansSerif.package
+    monospace.package
   ];
 
   # Stylix is nice in the terminal
@@ -86,7 +92,7 @@ in
     font = sansSerif;
     iconTheme = {
       name = "Papirus";
-      package = pkgs.catppuccin-papirus-folders;
+      package = cat-folders;
     };
     theme = {
       name = "rose-pine-moon";

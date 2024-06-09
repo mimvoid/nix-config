@@ -11,6 +11,7 @@
 
   imports = [
     ./theming.nix
+    ./desktop.nix
     ./terminal/default.nix
     ./nixvim/default.nix
     ./hyprland/default.nix
