@@ -120,6 +120,8 @@
     networkmanager.enable = true;
   };
 
+  programs.ssh.startAgent = true;
+
   # Bluetooth
   hardware.bluetooth = {
     enable = true;
