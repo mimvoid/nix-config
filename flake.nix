@@ -21,11 +21,6 @@
     };
     nix-colors.url = "github:misterio77/nix-colors";
     stylix.url = "github:danth/stylix/master";
-    plasma-manager = {
-      url = "github:pjones/plasma-manager/trunk";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
   };
 
   outputs = {
@@ -36,7 +31,6 @@
     nixvim,
     nix-colors,
     stylix,
-    plasma-manager,
     ... } @ inputs:
   let
     system = "x86_64-linux";
@@ -70,7 +64,6 @@
           #nix-flatpak.homeManagerModules.nix-flatpak
           stylix.homeManagerModules.stylix
           nixvim.homeManagerModules.nixvim
-          plasma-manager.homeManagerModules.plasma-manager
         ];
       };
     };
