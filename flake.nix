@@ -15,6 +15,7 @@
     };
 
     # Extra modules
+    ags.url = "github:Aylur/ags";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";

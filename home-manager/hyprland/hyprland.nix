@@ -82,6 +82,20 @@ in
             # Window settings #
             #-----------------#
 
+            # TODO: create shorthands for this
+            windowrulev2 = [
+                "suppressevent maximize, class:.*"
+                "opacity 1.0 override 1.0 override, class:(firefox)"
+                "opacity 1.0 override 0.90 override, class:(elisa)"
+                "opacity 1.0 override 0.90 override, class:(FreeTube)"
+                "opacity 0.90 override 0.85 override, title:(YaST2*)"
+                "opacity 0.98 override 0.85 override, class:(Zotero)"
+                "opacity 0.98 override 0.85 override, class:(obsidian)"
+                "opacity 0.98 override 0.85 override, class:(PBE.QOwnNotes)"
+                "opacity 0.98 override 0.85 override, class:(vesktop)"
+                "opaque, class:(krita)"
+            ];
+
             general = {
                 gaps_in = 4;
                 gaps_out = 8;
@@ -110,19 +124,6 @@ in
                     contrast = 1.25;
                 };
             };
-
-            windowrulev2 = [
-                "suppressevent maximize, class:.*"
-                "opacity 1.0 override 0.90 override, class:(firefox)"
-                "opacity 1.0 override 0.90 override, class:(elisa)"
-                "opacity 1.0 override 0.90 override, class:(FreeTube)"
-                "opacity 0.90 override 0.85 override, title:(YaST2*)"
-                "opacity 0.98 override 0.85 override, class:(Zotero)"
-                "opacity 0.98 override 0.85 override, class:(obsidian)"
-                "opacity 0.98 override 0.85 override, class:(PBE.QOwnNotes)"
-                "opacity 0.98 override 0.85 override, class:(vesktop)"
-                "opaque, class:(krita)"
-            ];
 
             animations = {
                 enabled = true;
