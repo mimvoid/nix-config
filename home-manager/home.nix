@@ -16,7 +16,7 @@
     ./nixvim/default.nix
     ./hyprland/default.nix
     ./guis/default.nix
-    ./eww/eww.nix
+    ./ags/ags.nix
   ];
 
   home.sessionVariables = {

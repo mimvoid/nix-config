@@ -1,0 +1,87 @@
+@import url("../../NixOS/palettes/macchiato-nightlight.css");
+
+* {
+  all: unset;
+}
+
+window.bar {
+  background-color: transparent;
+  font-family: "SauceCodePro Nerd Font", monospace;
+  font-size: 10px;
+}
+
+.left, .center, .right {
+  margin-top: 1px;
+  padding: 4px 6px;
+  color: @paleAccent;
+  background-color: alpha(@base, 0.70);
+  border-radius: 16px;
+}
+
+.left { margin-left: 14px; }
+.right { margin-right: 14px; }
+
+button {
+  min-width: 0;
+  padding-top: 0;
+  padding-bottom: 0;
+  background-color: transparent;
+}
+
+button:active {
+  background-color: alpha(@dullAccent, 0.25);
+}
+
+/*button:hover {
+  background-color: alpha(@dullAccent, 0.25);
+}*/
+
+/* Left widgets */
+.workspaces button {
+  border-radius: 24px;
+  margin: 0 2px;
+  padding: 0 4px;
+  color: @secAccent;
+  background-color: transparent;
+}
+
+.workspaces button.focused {
+  color: @alert;
+  background-color: alpha(@dullAccent, 0.2);
+  transition: all 0.2s ease-in-out;
+}
+
+.workspaces button:hover {
+  color: @text;
+  background-color: alpha(@secAccent, 0.85);
+  transition: all 0.2s ease-in-out;
+}
+
+.client-title {
+  margin-left: 12px;
+  color: @secAccent;
+}
+
+/* Center widgets */
+.clock label {
+  color: shade(@warning, 1.15);
+}
+
+/* Right widgets */
+.volume {
+  min-width: 60px;
+  color: #7dc4e4;
+}
+
+.battery {
+  color: @alert;
+}
+
+.notification {
+  color: @alert;
+}
+
+levelbar block,
+highlight {
+  min-height: 10px;
+}

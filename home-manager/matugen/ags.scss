@@ -1,0 +1,6 @@
+<* for name, value in colors *>
+@define-color ${{name}} {{value.default.hex}}
+<* endfor *>
+<* for name, value in harmonized_colors *>
+@define-color ${{name}} {{value.hex}};
+<* endfor *>

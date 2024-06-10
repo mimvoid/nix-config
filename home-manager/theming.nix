@@ -1,12 +1,21 @@
-{ pkgs, ... }:
+{ pkgs, config, inputs, ... }:
 let
   # Wallpaper
-  homescreen = ../wallpapers/hanyijie_departure.jpg;
+  homescreen = ../wallpapers/bakairis_rainy-world.png;
 
-  cat-folders = (pkgs.catppuccin-papirus-folders.override {
-    flavor = "macchiato";
-    accent = "blue";
-  });
+  cursor = {
+    name = "BreezeX-RosePineDawn-Linux";
+    package = pkgs.rose-pine-cursor;
+    size = 24;
+  };
+
+  icons = {
+    name = "Papirus";
+    package = (pkgs.catppuccin-papirus-folders.override {
+      flavor = "macchiato";
+      accent = "blue";
+    });
+  };
 
   # Default fonts
   serif = sansSerif;
@@ -20,10 +29,10 @@ let
   };
 in
 {
-  home.packages = with pkgs; [
-    rose-pine-cursor
+  imports = [ inputs.matugen.homeManagerModules.default ];
 
-    # Fonts
+  home.packages = with pkgs; [
+    # Extra fonts
     # Sans serif
     noto-fonts-cjk-sans
     atkinson-hyperlegible
@@ -45,22 +54,45 @@ in
     ]; })
     norwester-font
     lxgw-wenkai
-  ]
-  ++ [
-    cat-folders
+  ] ++ [
+    icons.package
+    cursor.package
     sansSerif.package
     monospace.package
   ];
 
-  # Stylix is nice in the terminal
-  # but I don't usually like how it works
-  # outside it so auto-enable is off
+  programs.matugen = {
+    enable = true;
+    wallpaper = homescreen;
+    type = "scheme-tonal-spot";
+    jsonFormat = "strip";
+    variant = "dark";
+    templates = {
+      ags = {
+        input_path = ./matugen/ags.scss;
+        output_path = ags/colors.scss;
+      };
+    };
+  };
+
+  # Symlink matugen outputs
+  home.file = {
+    "NixOS/home-manager/ags/colors.scss" = {
+      source = "${config.programs.matugen.theme.files}"/ags/colors.scss;
+    };
+    #"gtk-4.0/gtk.css" = {
+    #  source = "${config.programs.matugen.theme.files}/.config/gtk-4.0/gtk.css";
+    #};
+  };
+
 
   stylix = {
     autoEnable = false;
 
     image = homescreen;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+
+    inherit cursor;
 
     fonts = {
       inherit serif;
@@ -69,31 +101,19 @@ in
       sizes.terminal = 14;
     };
 
-    cursor = {
-      name = "BreezeX-RosePineDawn-Linux";
-      package = pkgs.rose-pine-cursor;
-      size = 24;
+    targets = {
+      bat.enable = true;
+      foot.enable = true;
+      fzf.enable = true;
+      yazi.enable = true;
+      zathura.enable = true;
     };
-
-    opacity.popups = 0.95;
-    opacity.terminal = 0.85;
-  };
-
-  stylix.targets = {
-    bat.enable = true;
-    foot.enable = true;
-    fzf.enable = true;
-    yazi.enable = true;
-    zathura.enable = true;
   };
 
   gtk = {
     enable = true;
     font = sansSerif;
-    iconTheme = {
-      name = "Papirus";
-      package = cat-folders;
-    };
+    iconTheme = icons;
     theme = {
       name = "rose-pine-moon";
       package = pkgs.rose-pine-gtk-theme;
