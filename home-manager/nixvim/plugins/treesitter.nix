@@ -8,6 +8,7 @@
 
       ensureInstalled = [
         "bash"
+        "c"
         "comment"
         "css"
         "git_config"
@@ -18,12 +19,14 @@
         "html"
         "hyprlang"
         "ini"
+        "javascript"
         "latex"
         "lua"
         "markdown"
         "markdown_inline"
         "nix"
         "scss"
+        "typescript"
         "yaml"
         "yuck"
       ];

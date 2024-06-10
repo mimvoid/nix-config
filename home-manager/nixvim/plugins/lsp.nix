@@ -3,6 +3,7 @@
     enable = true;
     servers = {
       bashls.enable = true;
+      ccls.enable = true;
       cssls.enable = true;
       #html.enable = true;
       #java-language-server.enable = true;
@@ -16,7 +17,7 @@
       #  installRustc = true;
       #};
       #tailwindcss.enable = true;
-      #tsserver.enable = true;
+      tsserver.enable = true;
       typos-lsp.enable = true;
       yamlls.enable = true;
     };
