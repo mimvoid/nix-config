@@ -23,5 +23,5 @@
     };
   };
 
-  programs.nixvim.plugins.lsp-lines.enable = true;
+  #programs.nixvim.plugins.lsp-lines.enable = true;
 }
