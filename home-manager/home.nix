@@ -20,6 +20,11 @@
     ./ags/ags.nix
   ];
 
+  home.packages = with pkgs; [
+    wl-clipboard
+    wl-clipboard-x11
+  ];
+
   home.sessionVariables = {
     EDITOR = "nvim";
   };

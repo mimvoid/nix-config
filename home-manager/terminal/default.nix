@@ -9,6 +9,7 @@
   ];
 
   home.packages = with pkgs; [
+    xterm
     dooit
     wttrbar
     wego

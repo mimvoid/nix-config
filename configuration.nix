@@ -28,9 +28,6 @@
     bash
     zsh
 
-    foot
-    sakura
-
     git
     neovim
     nh

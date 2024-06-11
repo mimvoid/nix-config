@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  homescreen = "${pkgs.xfce.xfdesktop}/share/backgrounds/xfce/xfce-flower.svg";
+  homescreen = "${pkgs.xfce.xfdesktop}/share/backgrounds/xfce/xfce-leaves.svg";
 in
 {
   xfconf.settings.xfce4-desktop = {

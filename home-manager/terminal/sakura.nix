@@ -1,16 +1,18 @@
 {
   xdg.configFile."sakura/sakura.conf" = {
-    enable = false;
+    enable = true;
     text = '' # conf
       [sakura]
 
-      # Palette
+      # Colors
       colorset1_fore=rgb(202,211,245)
       colorset1_curs=rgb(202,211,245)
       colorset2_back=rgba(36,39,58,1)
       colorset1_scheme=1
       colorset1_key=F1
       last_colorset=1
+
+      palette=1
 
       # Font
       font=SauceCodePro Nerd Font,monospace 14
@@ -34,7 +36,6 @@
       copy_on_select=false
       use_fading=false
       word_chars=-,./?%&#_~:
-      palette=1
 
       # Accelerators?
       add_tab_accelerator=5

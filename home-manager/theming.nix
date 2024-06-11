@@ -80,6 +80,7 @@ in
       bat.enable = true;
       foot.enable = true;
       fzf.enable = true;
+      xresources.enable = true;
       yazi.enable = true;
       zathura.enable = true;
     };
