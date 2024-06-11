@@ -9,5 +9,6 @@
   imports = [
     ./thunar.nix
     ./xfce-desktop.nix
+    ./xfwm.nix
   ];
 }
