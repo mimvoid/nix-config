@@ -9,6 +9,7 @@
     hyprshot
     swww
     libnotify
+    gnome.gnome-keyring
     networkmanagerapplet
   ];
 

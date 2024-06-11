@@ -28,6 +28,9 @@
     bash
     zsh
 
+    foot
+    sakura
+
     git
     neovim
     nh
@@ -73,18 +76,35 @@
   };
 
   # KDE Plasma 6
-  services.desktopManager.plasma6 = {
+  #services.desktopManager.plasma6 = {
+  #  enable = true;
+  #  enableQt5Integration = true;
+  #};
+
+  #environment.plasma6.excludePackages = with pkgs.kdePackages; [
+  #  okular
+  #  kate
+  #  khelpcenter
+  #  dolphin-plugins
+  #];
+
+  # XFCE
+  services.xserver.desktopManager.xfce = {
     enable = true;
-    enableQt5Integration = true;
+    enableXfwm = true;
+    enableScreensaver = false;
+    noDesktop = false;
   };
 
-  environment.plasma6.excludePackages = with pkgs.kdePackages; [
-    okular
-    kate
-    khelpcenter
-    dolphin-plugins
+  environment.xfce.excludePackages = with pkgs; [
+    gnome.gnome-themes-extra
+    gnome.adwaita-icon-theme
+    hicolor-icon-theme
+    tango-icon-theme
+    xfce.xfce4-terminal
+    xfce.xfce4-icon-theme
   ];
-
+  
   # Hyprland
   programs.hyprland = {
     enable = true;
@@ -101,6 +121,10 @@
   };
 
   security.polkit.enable = true;
+  programs.xfconf.enable = true;
+
+  services.gnome.gnome-keyring.enable = true;
+  security.pam.services.zinnia.enableGnomeKeyring = true;
 
   # Pipewire
   sound.enable = true;
@@ -131,9 +155,7 @@
   # CUPS
   services.printing.enable = true;
 
-  # Thunar additions
-  programs.xfconf.enable = true;
-  
+  # Thunar additions 
   services.gvfs = {
     enable = true;
     package = pkgs.gvfs;

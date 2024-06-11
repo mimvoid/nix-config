@@ -11,7 +11,7 @@
 
   # Unused for now
   xdg.configFile = {
-    ".config/xfce4/xfconf/xfce-perchannel-xml/thunar.xml" = {
+    "xfce4/xfconf/xfce-perchannel-xml/thunar.xml" = {
       enable = false;
       text = # xml
       ''

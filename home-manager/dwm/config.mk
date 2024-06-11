@@ -1,5 +1,5 @@
 # dwm version
-VERSION = 6.1
+VERSION = 6.5
 
 # Customize below to fit your system
 
@@ -15,13 +15,19 @@ XINERAMALIBS  = -lXinerama
 XINERAMAFLAGS = -DXINERAMA
 
 # includes and libs
+# TODO: add font lib?
 INCS = -I${X11INC}
 LIBS = -L${X11LIB} -lX11 ${XINERAMALIBS}
+
+# Optional compiler optimisations may create smaller binaries and
+# faster code, but increases compile time.
+# See https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
+OPTIMISATIONS = -march=native -mtune=native -flto=auto -O3
 
 # flags
 CPPFLAGS = -D_BSD_SOURCE -D_POSIX_C_SOURCE=2 -DVERSION=\"${VERSION}\" ${XINERAMAFLAGS}
 #CFLAGS   = -g -std=c99 -pedantic -Wall -O0 ${INCS} ${CPPFLAGS}
-CFLAGS   = -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
+CFLAGS   = ${OPTIMISATIONS} -std=c99 -pedantic -Wall -Os ${INCS} ${CPPFLAGS}
 LDFLAGS  = -s ${LIBS}
 
 # Solaris

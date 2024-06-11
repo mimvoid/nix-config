@@ -2,18 +2,13 @@
 
 {
   home.packages = with pkgs; [
-    # Thunar
-    xfce.thunar
-    xfce.thunar-archive-plugin
-    xfce.thunar-media-tags-plugin
-    gvfs
-
     # Art & design
     #krita Seems to be broken right now
 
     # Documents
     pdfarranger
     zotero_7
+    xarchiver
 
     # Contact
     zoom-us

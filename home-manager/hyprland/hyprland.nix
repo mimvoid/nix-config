@@ -12,8 +12,6 @@ let
     down = "J";
     up = "K";
     right = "L";
-
-    inherit (pkgs) polkit_gnome callPackage;
 in
 {
     wayland.windowManager.hyprland = {
@@ -37,7 +35,8 @@ in
                 "systemctl --user import-environment &"
                 # "dbus-update-activation-environment --systemd --all &" # Redundant
                 "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
-                "${polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
+                "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
+                "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon &"
                 "hypridle &"
                 "mako &"
                 # Includes swww daemon, see ./hypr-theme.nix
