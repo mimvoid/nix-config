@@ -5,7 +5,6 @@
     ffmpegthumbnailer
     poppler
     unar
-    wl-clipboard
   ];
 
   programs.yazi = {
