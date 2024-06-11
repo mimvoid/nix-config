@@ -2,7 +2,7 @@ let
   g = "general/";
 in
 {
-  xfconf.settings.wfwm4 = {
+  xfconf.settings.xfwm4 = {
     "${g}theme" = "rose-pine-moon";
 
     # Focus
@@ -23,6 +23,7 @@ in
     # Default: "O|SHMC" Icon | Shutter Hide Min/Maximize Close
     "${g}button_layout" = "|SHMC";
     "${g}title_font" = "Cantarell 9";
+    "${g}borderless_maximize" = false;
 
     # Workspaces
     "${g}cycle_workspaces" = true;
