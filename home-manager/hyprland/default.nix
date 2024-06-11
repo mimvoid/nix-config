@@ -8,6 +8,7 @@
     hyprpicker
     hyprshot
     swaybg
+    swww
     libnotify
     networkmanagerapplet
   ];
@@ -15,7 +16,6 @@
   imports = [
     ./hyprland.nix
     ./hypr-theme.nix
-    ./hyprpaper.nix
     ./hypridle.nix
     ./hyprlock.nix
     ./waybar.nix
