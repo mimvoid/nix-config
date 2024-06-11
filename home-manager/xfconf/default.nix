@@ -8,5 +8,6 @@
 {
   imports = [
     ./thunar.nix
+    ./xfce-desktop.nix
   ];
 }
