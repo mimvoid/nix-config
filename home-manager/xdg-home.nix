@@ -6,8 +6,8 @@ let
   obsidian-dir = "Documents/Zettelkasten";
 
   appimg = {
-    obsidian = pkgs.callPackage ../packages/obsidian.nix {version="1.6.3";};
-    krita = pkgs.callPackage ../packages/krita.nix {version="5.2.2";};
+    obsidian = pkgs.callPackage ../packages/obsidian.nix { version = "1.6.3"; };
+    krita = pkgs.callPackage ../packages/krita.nix { version = "5.2.2"; };
   };
 in
 {
