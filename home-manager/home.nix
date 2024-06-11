@@ -15,6 +15,7 @@
     ./terminal/default.nix
     ./nixvim/default.nix
     ./hyprland/default.nix
+    ./xfconf/default.nix
     ./guis/default.nix
     ./ags/ags.nix
   ];
