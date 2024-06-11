@@ -16,7 +16,6 @@
 
     # Extra modules
     ags.url = "github:Aylur/ags";
-    matugen.url = "github:/InioX/Matugen";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";

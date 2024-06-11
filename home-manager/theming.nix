@@ -1,4 +1,4 @@
-{ pkgs, config, inputs, ... }:
+{ pkgs, ... }:
 let
   # Wallpaper
   homescreen = ../wallpapers/bakairis_rainy-world.png;
@@ -29,9 +29,9 @@ let
   };
 in
 {
-  imports = [ inputs.matugen.homeManagerModules.default ];
-
   home.packages = with pkgs; [
+    wallust
+
     # Extra fonts
     # Sans serif
     noto-fonts-cjk-sans
@@ -60,31 +60,6 @@ in
     sansSerif.package
     monospace.package
   ];
-
-  programs.matugen = {
-    enable = true;
-    wallpaper = homescreen;
-    type = "scheme-tonal-spot";
-    jsonFormat = "strip";
-    variant = "dark";
-    templates = {
-      ags = {
-        input_path = ./matugen/ags.scss;
-        output_path = ags/colors.scss;
-      };
-    };
-  };
-
-  # Symlink matugen outputs
-  home.file = {
-    "NixOS/home-manager/ags/colors.scss" = {
-      source = "${config.programs.matugen.theme.files}"/ags/colors.scss;
-    };
-    #"gtk-4.0/gtk.css" = {
-    #  source = "${config.programs.matugen.theme.files}/.config/gtk-4.0/gtk.css";
-    #};
-  };
-
 
   stylix = {
     autoEnable = false;
