@@ -21,7 +21,6 @@
 
   imports = [
     ./freetube.nix
-    ./thunar.nix
     ./zathura.nix
   ];
 
