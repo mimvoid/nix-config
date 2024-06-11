@@ -15,13 +15,11 @@ in
     };
   };
   home.file = {
-    ".mozilla/firefox/${firefox-profile}/chrome" = {
-      enable = true;
-
-      # It seems like using ./firefox/chrome points to the ${pkgs.firefox}/chrome
-      # Angry about this...
-      source = symlink ./firefox-config/chrome;
-    };
+    # FIXME: somehow doesn't work despite the same exact format?
+    #".mozilla/firefox/${firefox-profile}/chrome" = {
+    #  enable = true;
+    #  source = symlink ./firefox-config/chrome;
+    #};
     "${obsidian-dir}/.obsidian/snippets" = {
       enable = true;
       source = symlink ./obsidian-css;
