@@ -42,6 +42,11 @@
     syntaxHighlighting = {
       enable = true;
     };
+    historySubstringSearch = {
+      enable = true;
+      searchUpKey = "$terminfo[kcuu1]";
+      searchDownKey = "$terminfo[kcud1]";
+    };
     shellAliases = {
       ya = "yy";
 
@@ -58,6 +63,7 @@
     ''
       source $HOME/zsh/plugins/zsh-autopair/share/zsh/zsh-autopair/autopair.zsh
       source $HOME/zsh/plugins/zsh-z/share/zsh-z/zsh-z.plugin.zsh
+      source $HOME/zsh/plugins/zsh-z
       zstyle ':completion:*' menu select
       
       # Let Yazi change current directory
