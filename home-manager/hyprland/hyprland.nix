@@ -40,11 +40,11 @@ in
                 "${polkit_gnome}/libexec/polkit-gnome-authentication-agent-1"
                 "hypridle &"
                 "mako &"
+                # Includes swww daemon, see ./hypr-theme.nix
             ];
 
             # FIXME: waybar gets executed twice at startup
             exec = [
-                # Includes swaybg, specified in hypr-theme.nix
                 "wlsunset &"
                 "nm-applet --indicator &"
                 "${bar}"
