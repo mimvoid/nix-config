@@ -1,71 +1,61 @@
+{ pkgs, ... }:
 let
-  #p1 = "panel-1/";
-  #p2 = "panel-2/";
+  p1 = "panels/panel-1/";
+  p2 = "panels/panel-2/";
   w = {
     workspaces = "plugins/plugin-1";
     sep1 = "plugins/plugin-2";
-    sep2 = "plugins/plugin-3";
-    clock = "plugins/plugin-4";
+    clock = "plugins/plugin-3";
+    sep2 = "plugins/plugin-4";
     systray = "plugins/plugin-5";
     notif = "plugins/plugin-6";
     battery = "plugins/plugin-7";
     power = "plugins/plugin-8";
 
-    #appmenu = 
-    #sep3 = 
-    #launch-term = 
-    #launch-files = 
-    #launch-browser = 
-    #launch-appfind = 
-    #sep4 =
-    #tasks = 
+    appmenu = "plugins/plugin-9";
+    sep3 = "plugins/plugin-10";
+    dock = "plugins/plugin-11";
   };
 in
 {
   xfconf.settings.xfce4-panel = {
     # TODO: panel settings are very messy
 
-    #"panels" = [
-    #1 # for panel 1
-    #2 # for panel 2
-    #{ dark-mode = true; }
-    #{
-    #  # Top panel
-    #  "${p1}position" = "p=6;x=0;y=0";
-    #  "${p1}position-locked" = true;
-    #  "${p1}length" = 98.9;
-    #  "${p1}size" = 28;
+    "panels" = [ 1 2 ];
+    "panels/dark-mode" = true;
+    
+    # Top panel
+    "${p1}position-locked" = true;
+    "${p1}length" = 98.9;
+    "${p1}size" = 28;
 
-    #  "${p1}background-style" = 1 # solid color
-    #  # transleucent catppuccin macchiato base
-    #  "${p1}background-rgba" = [
-    #    0.14117647058823529
-    #    0.15294117647058827
-    #    0.22745098039215686
-    #    0.72390572390572394
-    #  ];
+    "${p1}background-style" = 1; # solid color
+    # transleucent catppuccin macchiato base
+    "${p1}background-rgba" = [
+      0.14117647058823529
+      0.15294117647058827
+      0.22745098039215686
+      0.72390572390572394
+    ];
+    # Note: changing the order may not update the plugins'
+    # internal names right away, leading to some strange behavior.
+    # I've found that reloading the XFCE shell (e.g. logging out) fixes it.
+    "${p1}plugin-ids" = [ 1 2 3 4 5 6 7 8 ];
+    
+    # Bottom panel
+    "${p2}autohide-behavior" = 0; # don't autohide
+    "${p2}position-locked" = true;
+    "${p2}length" = 1; # let it be autoexpanded by plugins
+    "${p2}size" = 42;
 
-    #  "${p1}plugin-ids" = [ 1 2 4 3 5 6 7 8 ];
-    #}
-    #{
-    #  # Bottom panel
-    #  "${p2}autohide-behavior" = 0; # don't autohide
-    #  "${p2}position" = "p=10;x=0;y=0";
-    #  "${p2}position-locked" = true;
-    #  "${p2}length" = 1; # let it be autoexpanded by plugins
-    #  "${p2}size" = 42;
-
-    #  "${p1}background-style" = 1 # solid color
-    #  "${p1}background-rgba" = [
-    #    0.14117647058823529
-    #    0.15294117647058827
-    #    0.22745098039215686
-    #    0.72390572390572394
-    #  ];
-
-    #  "${p2}plugin-ids" = [  ];
-    #}
-    #];
+    "${p2}background-style" = 1; # solid color
+    "${p2}background-rgba" = [
+      0.14117647058823529
+      0.15294117647058827
+      0.22745098039215686
+      0.72390572390572394
+    ];
+    "${p2}plugin-ids" = [ 9 10 11 12 13 14 15 16 ];
 
     # Plugins/widgets
     # Top bar
@@ -104,13 +94,15 @@ in
     "${w.power}/custom-title" = "O"; # the letter O
 
     # Bottom bar
-    #"${w.appmenu}" = "applicationsmenu";
-    #"${w.appmenu}/show-button-title" = false;
-    #"${w.appmenu}/button-title" = "view-list-details";
+    "${w.appmenu}" = "applicationsmenu";
+    "${w.appmenu}/show-button-title" = false;
+    "${w.appmenu}/button-icon" = "view-list-details";
 
-    #"${w.sep3}" = "separator";
-    #"${w.sep3}/expand" = false;
-    #"${w.sep3}/style" = 
+    "${w.sep3}" = "separator";
+    "${w.sep3}/expand" = false;
+    "${w.sep3}/style" = 0;
+
+    "${w.dock}" = "docklike";
 
     #"${w.launch-term}" = "launcher";
     #"${w.launch-term}/items" = ["17181307541.desktop"];
@@ -124,7 +116,7 @@ in
     #"${w.launch-appfind}" = "launcher";
     #"${w.launch-appfind}/items" = ["17181307544.desktop"];
 
-    #"${w.sep4}" = separator;
+    #"${w.sep4}" = "separator";
     #"${w.sep4}/expand" = false;
     #"${w.sep4}/style" = 0;
 
@@ -134,5 +126,26 @@ in
     #"${w.tasks}/show-handle" = false;
     #"${w.tasks}/flat-buttons" = true;
     #"${w.tasks}/show-tooltips" = true;
+  };
+
+  xdg.configFile."xfce4/panel/docklike-11.rc" = {
+    enable = true;
+    text = '' #rc
+      [user]
+      onlyDisplayVisible=false
+      onlyDisplayScreen=false
+      showPreviews=true
+      showWindowCount=false
+      middleButtonBehavior=2 # do nothing
+      noWindowsListIfSingle=false
+      indicatorStyle=3 # ciliora
+      inactiveIndicatorStyle=1 # dots
+      indicatorOrientation=0 # automatic
+      indicatorColorFromTheme=true
+      forceIconSize=false
+      keyComboActive=false
+      keyAloneActive=false
+      pinned=xterm;thunar;firefox;
+    '';
   };
 }

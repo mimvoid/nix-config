@@ -3,7 +3,7 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./system/sddm.nix
+    ./system/lightdm.nix
     ./system/grub.nix
   ];
 
@@ -34,6 +34,7 @@
     wget
     curl
     appimage-run
+    xfce.xfce4-docklike-plugin
   ];
 
   fonts.packages = with pkgs; [
