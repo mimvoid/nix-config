@@ -1,40 +1,52 @@
 { pkgs, ... }:
 let
+  background = ../wallpapers/gracile_jellyfish.jpg;
+  theme = {
+    name = "Catppuccin-Mocha-Standard-Blue-Dark";
+    package = (pkgs.catppuccin-gtk.override {
+      accents = ["blue"];
+      size = "standard";
+      variant = "mocha";
+    });
+  };
   cursorTheme = {
     name = "BreezeX-RosePineDawn-Linux";
     package = pkgs.rose-pine-cursor;
     size = 24;
   };
   iconTheme = {
-    name = "Papirus Dark";
-    package = (pkgs.catppuccin-papirus-folders.override {
-      flavor = "macchiato";
-      accent = "blue";
-    });
+    name = "Adwaita";
+    package = pkgs.gnome-themes-extra;
   };
 in
 {
   services.xserver.displayManager.lightdm = {
     enable = true;
-    background = ../wallpapers/gracile_jellyfish.jpg;
+    inherit background;
     greeter.enable = true;
-    greeters = {
+    greeters.gtk = {
       enable = true;
-      gtk = {
-        enable = true;
-        indicators = [
-          "~host"
-          "~spacer"
-          "~clock"
-          "~spacer"
-          "~session"
-          #"~language"
-          "~a11y"
-          "~power"
-        ];
-        inherit cursorTheme iconTheme;
-        clock-format = "%H:%M";
-      };
+      inherit theme cursorTheme iconTheme;
+      indicators = [
+        #"~host"
+        "~spacer"
+        "~clock"
+        "~spacer"
+        "~session"
+        #"~language"
+        #"~a11y"
+        "~power"
+      ];
+      clock-format = "%A %b %d / %H:%M";
+      extraConfig = '' #conf
+        font-name = SauceCodePro Nerd Font
+        xft-antialias = true
+        xft-dpi = 144
+        panel-position = top
+        show-clock = true
+        hide-user-image = true
+        user-background = false
+      '';
     };
   };
 }

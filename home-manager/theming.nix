@@ -1,7 +1,12 @@
 { pkgs, ... }:
 let
   # Wallpaper
-  homescreen = ../wallpapers/bakairis_rainy-world.png;
+  #homescreen = ../wallpapers/bakairis_rainy-world.png;
+  
+  theme = {
+    name = "rose-pine-moon";
+    package = pkgs.rose-pine-gtk-theme;
+  };
 
   cursor = {
     name = "BreezeX-RosePineDawn-Linux";
@@ -64,8 +69,8 @@ in
   stylix = {
     autoEnable = false;
 
-    image = homescreen;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+    #image = homescreen;
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/${theme.name}.yaml";
 
     inherit cursor;
 
@@ -90,10 +95,7 @@ in
     enable = true;
     font = sansSerif;
     iconTheme = icons;
-    theme = {
-      name = "rose-pine-moon";
-      package = pkgs.rose-pine-gtk-theme;
-    };
+    inherit theme;
   };
 
   qt = {
