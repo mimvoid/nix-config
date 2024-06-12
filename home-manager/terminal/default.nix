@@ -13,6 +13,5 @@
     dooit
     wttrbar
     wego
-    ncmpcpp
   ];
 }

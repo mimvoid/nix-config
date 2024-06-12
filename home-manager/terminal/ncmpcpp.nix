@@ -3,7 +3,7 @@
 {
   services.mpd = {
     enable = true;
-    musicDirectory = config.xdg.UserDirs.music;
+    musicDirectory = config.xdg.userDirs.music;
     network.startWhenNeeded = true;
   };
   programs.ncmpcpp = {
@@ -40,7 +40,7 @@
       external_editor = "nvim";
 
       # Colors
-      main_window_highlight_color = "white";
+      #main_window_highlight_color = "white";
       progressbar_elapsed_color = "white";
       progressbar_color = "black";
       statusbar_color = "white";
@@ -74,7 +74,7 @@
       color2 = "black";
 
       # Album art
-      execute_on_song_change="~/.ncmpcpp/art.sh";
+      execute_on_song_change="${./ncmpcpp-art.sh}";
       song_list_format = "                       $2%t $R$5%a ";
 
       song_status_format = "$b$7♫ $2%a $4⟫$3⟫ $8%t $4⟫$3⟫ $5%b ";
