@@ -35,6 +35,16 @@ in
     #  "${p1}position-locked" = true;
     #  "${p1}length" = 98.9;
     #  "${p1}size" = 28;
+
+    #  "${p1}background-style" = 1 # solid color
+    #  # transleucent catppuccin macchiato base
+    #  "${p1}background-rgba" = [
+    #    0.14117647058823529
+    #    0.15294117647058827
+    #    0.22745098039215686
+    #    0.72390572390572394
+    #  ];
+
     #  "${p1}plugin-ids" = [ 1 2 4 3 5 6 7 8 ];
     #}
     #{
@@ -44,6 +54,15 @@ in
     #  "${p2}position-locked" = true;
     #  "${p2}length" = 1; # let it be autoexpanded by plugins
     #  "${p2}size" = 42;
+
+    #  "${p1}background-style" = 1 # solid color
+    #  "${p1}background-rgba" = [
+    #    0.14117647058823529
+    #    0.15294117647058827
+    #    0.22745098039215686
+    #    0.72390572390572394
+    #  ];
+
     #  "${p2}plugin-ids" = [  ];
     #}
     #];

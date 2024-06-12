@@ -20,7 +20,7 @@ in
 
     # Window title & buttons
     
-    # Default: "O|SHMC" Icon | Shutter Hide Min/Maximize Close
+    # Default: "O|SHMC" Icon | Shutter Hide Maximize Close
     "${g}button_layout" = "|SHMC";
     "${g}title_font" = "Cantarell 9";
     "${g}borderless_maximize" = true;
