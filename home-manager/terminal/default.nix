@@ -4,7 +4,6 @@
   imports = [
     ./shell.nix
     ./foot.nix
-    ./sakura.nix
     ./yazi.nix
   ];
 
