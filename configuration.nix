@@ -89,7 +89,7 @@
   services.xserver.desktopManager.xfce = {
     enable = true;
     enableXfwm = true;
-    enableScreensaver = false;
+    enableScreensaver = true;
     noDesktop = false;
   };
 
@@ -100,6 +100,8 @@
     tango-icon-theme
     xfce.xfce4-terminal
     xfce.xfce4-icon-theme
+    xfce.mousepad
+    xfce.parole
   ];
   
   # Hyprland

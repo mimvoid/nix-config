@@ -17,6 +17,7 @@
     # Misc
     anki
     bottles
+    amberol
   ];
 
   imports = [

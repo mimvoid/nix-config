@@ -17,6 +17,10 @@ in
       enable = true;
       source = symlink ./ags;
     };
+    "ncmpcpp/ncmpcpp-art.sh" = {
+      enable = true;
+      source = symlink ./terminal/ncmpcpp-art.sh;
+    };
   };
   home.file = {
     # FIXME: somehow doesn't work despite the same exact format?
