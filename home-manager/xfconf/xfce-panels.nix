@@ -10,23 +10,43 @@ let
     notif = "plugins/plugin-6";
     battery = "plugins/plugin-7";
     power = "plugins/plugin-8";
+
+    #appmenu = 
+    #sep3 = 
+    #launch-term = 
+    #launch-files = 
+    #launch-browser = 
+    #launch-appfind = 
+    #sep4 =
+    #tasks = 
   };
 in
 {
   xfconf.settings.xfce4-panel = {
     # TODO: panel settings are very messy
 
-    #"panels" = [{
+    #"panels" = [
+    #1 # for panel 1
+    #2 # for panel 2
+    #{ dark-mode = true; }
+    #{
     #  # Top panel
     #  "${p1}position" = "p=6;x=0;y=0";
     #  "${p1}position-locked" = true;
-    #  "${p1}plugin-ids" = [ 4 3 5 6 9 10 11 12 13 14 ];
-    
+    #  "${p1}length" = 98.9;
+    #  "${p1}size" = 28;
+    #  "${p1}plugin-ids" = [ 1 2 4 3 5 6 7 8 ];
+    #}
+    #{
     #  # Bottom panel
+    #  "${p2}autohide-behavior" = 0; # don't autohide
     #  "${p2}position" = "p=10;x=0;y=0";
     #  "${p2}position-locked" = true;
-    #  "${p2}plugin-ids" = [ 1 15 16 17 18 19 20 21 22 2 ];
-    #}];
+    #  "${p2}length" = 1; # let it be autoexpanded by plugins
+    #  "${p2}size" = 42;
+    #  "${p2}plugin-ids" = [  ];
+    #}
+    #];
 
     # Plugins/widgets
     # Top bar
@@ -68,6 +88,26 @@ in
     #"${w.appmenu}" = "applicationsmenu";
     #"${w.appmenu}/show-button-title" = false;
     #"${w.appmenu}/button-title" = "view-list-details";
+
+    #"${w.sep3}" = "separator";
+    #"${w.sep3}/expand" = false;
+    #"${w.sep3}/style" = 
+
+    #"${w.launch-term}" = "launcher";
+    #"${w.launch-term}/items" = ["17181307541.desktop"];
+
+    #"${w.launch-files}" = "launcher";
+    #"${w.launch-files}/items" = ["17181307542.desktop"];
+
+    #"${w.launch-browser}" = "launcher";
+    #"${w.launch-browser}/items" = ["17181307543.desktop"];
+
+    #"${w.launch-appfind}" = "launcher";
+    #"${w.launch-appfind}/items" = ["17181307544.desktop"];
+
+    #"${w.sep4}" = separator;
+    #"${w.sep4}/expand" = false;
+    #"${w.sep4}/style" = 0;
 
     #"${w.tasks}" = "tasklist";
     #"${w.tasks}/grouping" = 1;
