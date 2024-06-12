@@ -23,7 +23,7 @@ in
     # Default: "O|SHMC" Icon | Shutter Hide Min/Maximize Close
     "${g}button_layout" = "|SHMC";
     "${g}title_font" = "Cantarell 9";
-    "${g}borderless_maximize" = false;
+    "${g}borderless_maximize" = true;
 
     # Workspaces
     "${g}cycle_workspaces" = true;
@@ -34,5 +34,14 @@ in
     "${g}snap_to_border" = true;
     "${g}snap_to_windows" = true;
     "${g}snap_width" = 64;
+
+    # Workspaces
+    "${g}worksapce_names" = [ "1" "2" "3" "4" ];
+    
+    # Margins
+    "${g}margin_top" = 12;
+    "${g}margin_right" = 12;
+    "${g}margin_bottom" = 12;
+    "${g}margin_left" = 12;
   };
 }

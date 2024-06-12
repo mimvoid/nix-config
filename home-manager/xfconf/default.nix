@@ -10,6 +10,7 @@
     ./thunar.nix
     ./xfce-desktop.nix
     ./xfce-keymaps.nix
+    ./xfce-panels.nix
     ./xfwm.nix
   ];
 }

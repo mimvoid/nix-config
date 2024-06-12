@@ -7,6 +7,7 @@ in
     "${c}<Super>Return" = "exo-open --launch TerminalEmulator";
     "${c}<Super>w" = "exo-open --launch WebBrowser";
     "${c}<Super>e" = "thunar";
+    "${c}<Super>space" = "xfce4-appfinder";
 
     "${c}<Super><Shift>q" = "xfce4-session-logout";
     "${wm}<Super>q" = "close_window_key";
