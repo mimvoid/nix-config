@@ -6,8 +6,8 @@
       target = "hyprland-session.target";
     };
     
-   style = ./waybar-style.css;
-   settings = {
+    style = ./waybar-style.css;
+    settings = {
       mainBar = {
         layer = "bottom";
         position = "top";
