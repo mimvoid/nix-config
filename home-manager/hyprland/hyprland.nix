@@ -3,7 +3,6 @@ let
   # Default applications
   terminal = "foot";
   launcher = "fuzzel";
-  bar = "waybar";
   browser = "firefox";
   fileManager = "thunar";
 
@@ -39,11 +38,13 @@ in
       # Includes swww daemon, see ./hypr-theme.nix
     ];
 
-    # FIXME: waybar gets executed twice at startup
     exec = [
       "wlsunset &"
       "nm-applet --indicator &"
-      "${bar} &"
+      
+      # If you use waybar, there's no need to have it here
+      # It'll start if programs.waybar.systemd.target = "hyprland-session.target";
+      # At least I think that's how it works
     ];
 
     env = [
