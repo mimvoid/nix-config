@@ -172,7 +172,7 @@ in
       "$mod, Q, killactive"
 
       # Reload
-      "$mod, R, exec, pkill waybar ; hyprctl reload config-only"
+      "$mod, R, exec, pkill waybar && waybar ; hyprctl reload config-only"
 
       # Trigger wlogout
       "$mod SHIFT, Q, exec, wlogout -b 2"
