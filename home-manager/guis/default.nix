@@ -18,6 +18,7 @@
     anki
     bottles
     amberol
+    kdePackages.merkuro
   ];
 
   imports = [
