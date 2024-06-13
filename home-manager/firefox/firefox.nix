@@ -1,7 +1,11 @@
-{ inputs, outputs, lib, config, pkgs, ... }: {
+{ pkgs, ... }:
 
-    programs.firefox = {
-        profiles.userChrome = import ./chrome/userChrome.css";
-        profiles.userContent = ./chrome/userContent.css;
+{
+  programs.firefox = {
+    enable = true;
+    package = pkgs.firefox-beta;
+    profiles = {
+
     };
+  };
 }

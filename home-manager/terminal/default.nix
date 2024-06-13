@@ -3,6 +3,7 @@
 {
   imports = [
     ./shell.nix
+    ./git.nix
     ./foot.nix
     ./yazi.nix
   ];
