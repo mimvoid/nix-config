@@ -5,6 +5,6 @@
   
   programs.firefox = {
     enable = true;
-    package = pkgs.firefox-beta;
+    package = pkgs.unstable.firefox-beta;
   };
 }

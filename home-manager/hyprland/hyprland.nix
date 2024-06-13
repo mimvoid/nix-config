@@ -3,7 +3,7 @@ let
   # Default applications
   terminal = "foot";
   launcher = "fuzzel";
-  browser = "firefox";
+  browser = "firefox-beta";
   fileManager = "thunar";
 
   # Used in keymaps
