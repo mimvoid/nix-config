@@ -16,25 +16,21 @@ in
 {
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd = {
-      enable = true;
-      variables = ["--all"];
-    };
+    systemd = { enable = true; variables = ["--all"]; };
     xwayland.enable = true;
         
-    extraConfig = "
+    extraConfig = ''
       monitor = ,preferred,auto,auto
       xwayland {
         force_zero_scaling = true
       }
-    ";
+    '';
   };
 
   wayland.windowManager.hyprland.settings = {
     # Startup & daemons
     exec-once = [
-      "systemctl --user import-environment &"
-      # "dbus-update-activation-environment --systemd --all &" # Redundant
+      "systemctl --user import-environment &" 
       "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
       "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon &"
@@ -47,7 +43,7 @@ in
     exec = [
       "wlsunset &"
       "nm-applet --indicator &"
-      "${bar}"
+      "${bar} &"
     ];
 
     env = [
@@ -60,7 +56,7 @@ in
 
       "QT_AUTO_SCREEN_SCALE_FACTOR, 1_SCALE_FACTOR, 1"
       "QT_QPA_PLATFORM, wayland; x11"
-      "QT_QPA_PLATFORMTHEME,gtk3"
+      "QT_QPA_PLATFORMTHEME, gtk3"
       "QT_QPA_scale, 2"
       "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
 
@@ -69,31 +65,26 @@ in
       "HYPRCURSOR_SIZE, 24"
     ];
 
-    #---------#
-    # Layouts #
-    #---------#
+    windowrulev2 =
+    let
+      opaque-ish = val: "opacity 0.98 override 0.85 override, class:(${val})";
+      active-opaque = val: "opacity 1.0 override 0.85 override, class:(${val})";
+      opaque = val: "opaque, class:(${val})";
+    in
+    [
+      "suppressevent maximize, class:.*"
+      (opaque-ish "Freetube")
+      (opaque-ish "Zotero")
+      (opaque-ish "obsidian")
+      (opaque-ish "vesktop")
+      (active-opaque "firefox")
+      (opaque "krita")
+    ];
 
     dwindle = {
       pseudotile = true;
       preserve_split = true;
     };
-
-    #-----------------#
-    # Window settings #
-    #-----------------#
-
-    # TODO: create shorthands for this
-    windowrulev2 = [
-      "suppressevent maximize, class:.*"
-      "opacity 1.0 override 0.85 override, class:(firefox)"
-      "opacity 1.0 override 0.90 override, class:(elisa)"
-      "opacity 1.0 override 0.90 override, class:(FreeTube)"
-      "opacity 0.98 override 0.85 override, class:(Zotero)"
-      "opacity 0.98 override 0.85 override, class:(obsidian)"
-      "opacity 0.98 override 0.85 override, class:(PBE.QOwnNotes)"
-      "opacity 0.98 override 0.85 override, class:(vesktop)"
-      "opaque, class:(krita)"
-    ];
 
     general = {
       layout = "dwindle";
@@ -142,17 +133,15 @@ in
     #---------------#
 
     input = {
+      follow_mouse = "1";
+      sensitivity = "0";
+      touchpad.natural_scroll = false;
+
       kb_layout = "us";
       #kb_variant = 
       #kb_model = 
       #kb_options =
       #kb_rules = 
-
-      follow_mouse = "1";
-
-      sensitivity = "0";
-
-      touchpad.natural_scroll = false;
     };
 
     gestures.workspace_swipe = false;
@@ -168,8 +157,8 @@ in
 
     "$mod" = "SUPER";
     bindm = [
-      "$mod, mouse:272, movewindow"
       "$mod, mouse:272, resizewindow"
+      "$mod, mouse:273, movewindow"
     ];
     bind = [
       # Launch
