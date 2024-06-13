@@ -6,5 +6,12 @@
   programs.firefox = {
     enable = true;
     package = pkgs.unstable.firefox-beta;
+    policies = {
+      DisableAppUpdate = true;
+      PasswordManagerEnabled = false;
+      NoDefaultBookmarks = true;
+      DontCheckDefaultBrowser = true;
+      DisableTelemetry = true;
+    };
   };
 }
