@@ -11,7 +11,7 @@
   home.packages = with pkgs; [
     xterm
     rclone
-    dooit
+    unstable.dooit
     wttrbar
     wego
   ];
