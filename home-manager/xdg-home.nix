@@ -17,6 +17,10 @@ in
       enable = true;
       source = symlink ./ags;
     };
+    "dooit/config.py" = {
+      enable = true;
+      source = symlink ./terminal/dooit.py;
+    };
   };
   home.file = {
     # FIXME: somehow doesn't work despite the same exact format?
