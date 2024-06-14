@@ -10,6 +10,7 @@
 
   home.packages = with pkgs; [
     xterm
+    rclone
     dooit
     wttrbar
     wego
