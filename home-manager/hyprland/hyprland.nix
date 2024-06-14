@@ -79,6 +79,7 @@ in
       (opaque-ish "obsidian")
       (opaque-ish "vesktop")
       (active-opaque "firefox")
+      (opaque "ristretto")
       (opaque "krita")
     ];
 
