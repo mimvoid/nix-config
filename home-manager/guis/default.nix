@@ -19,6 +19,7 @@
     bottles
     amberol
     kdePackages.merkuro
+    nextcloud-client
   ];
 
   imports = [
