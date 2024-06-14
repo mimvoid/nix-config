@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
@@ -13,9 +13,14 @@
     "last-view" = "ThunarIconView";
     "last-icon-view-zoom-level" = "THUNAR_ZOOM_LEVEL_100_PERCENT";
     "last-separator-position" = 170;
-    "last-window-maximized" = false;
     "last-show-hidden" = true;
+    "last-restore-tabs" = true;
     "misc-single-click" = false;
     "misc-case-sensitive" = false;
+    "misc-show-delete-action" = true;
+    "hidden-bookmarks" = [
+      "file://${config.home.homeDirectory}/Desktop"
+      "computer:///"
+    ];
   };
 }
