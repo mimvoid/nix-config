@@ -120,6 +120,7 @@ The NixOS configuration file and Home Manager are what I mainly use, but here ar
   - [NixVim documentation](https://nix-community.github.io/nixvim/)
 - [Stylix](https://github.com/danth/stylix), for quick universal colorschemes and fonts
   - [Stylix documentation](https://danth.github.io/stylix/options/nixos.html)
+- [Nix-colors](https://docs.xfce.org/xfce/xfwm4/start), for managing color palettes
 - [Nix-rice](https://github.com/bertof/nix-rice/), for managing color palettes
 - [Plasma-manager](https://github.com/pjones/plasma-manager), for configuring KDE Plasma declaratively
 - [System Manager](https://github.com/numtide/system-manager), for managing system configuration with Nix
