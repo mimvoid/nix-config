@@ -1,5 +1,20 @@
 # mimvoid's nixos & home manager configs
-
+```nix
+          .                      
+          \  ॱ` -.          
+           .  .-. `.                
+           : _   `  \               
+         _ ) *   .   `·-._          
+         ‾ `-.- '         `-.       
+             ;       `       `.     
+             :.       .        \    
+             . \  .   :   .-'   .   
+             '  `+.;  ;  '      :   
+             :  '  |    ;       ;-. 
+            .  '   :  :`:     _.`· ;
+    [bug] .·  .  .·' ; .·`- +'  `· ॱ
+          `·-·   `·-·  `·-·'        
+```
 This is where I keep my configuration files and links to resources I found helpful, as well as some pieces of advice from my experience with NixOS.
 
 ![2024-05-29-022050_hyprshot](https://github.com/mimvoid/nix-config/assets/153698678/5f282993-fbc5-4633-bd5d-adfbf41e9df1)
@@ -84,4 +99,6 @@ The NixOS configuration file and Home Manager are the two main tools I use, but 
   - If you really want to dig deep, don't be afraid to look through the source code and create your own modules, overlays, and whatever you need to get that configuration! You can do a ton on NixOS, but it takes time, effort, and undoubtly frustration, haha.
 - Compared to the rest of Linux, NixOS is a very different distro, but that's why I enjoy it!
 ***
-If you made it this far, thanks! Have a cookie 🍪
+ASCII Art by Blazej Kozlowski
+
+Modified by mimvoid
