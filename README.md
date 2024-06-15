@@ -119,10 +119,17 @@ The NixOS configuration file and Home Manager are what I mainly use, but here ar
 
 # Pieces of Advice
 
+- Use `nix path-info nixpkgs#<package-name>` if at all possible
+  - Trust me, it is *not* fun to manually search through nix/store/ to find the path to a specific package file.
+  - The sooner you're aware of this, the better!
 - If you choose to start with a starter config, start small!
   - You can understand a lot by configuring things yourself, and configs that are too complex may confuse you out of touching them.
   - If you really want a config without the manual effort, NixOS is probably not for you.
 - It's absolutely true that NixOS documentation is sparse.
-  - If you really want to dig deep, don't be afraid to look through the source code.
+  - If you really want to dig deep, don't be afraid to look through the source code or the manuals.
   - You can do a ton on NixOS, but it takes time, effort, and undoubtly frustration.
+- You don't need to rely on the options NixOS and Home Manager give you to create config files
+  - NixOS has `environment.etc."path/file.type"`, meaning etc/path/file.type
+  - Home Manager has `home.file."path/file.type"`, meaning home/user/path/file.type, and `xdg.configFile."path/file.type"`, meaning ~/.config/path/file.type!
+  - Optionally, you can use `"path/file.type".source = config.lib.file.mkOutOfStoreSymlink ./path/to/source/file` to symlink an existing file to the location you want
 - NixOS works very differently to other Linux distros, but that's why I enjoy it!
