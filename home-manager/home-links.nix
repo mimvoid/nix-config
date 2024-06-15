@@ -35,6 +35,16 @@ in
       enable = true;
       source = symlink "${home-manager}/krita/CatppuccinMacchiatoMaroon.colors";
     };
+
+    # TODO: install krita plugins as packages instead of manually
+    "krita/pykrita/reference_tabs" = {
+      enable = true;
+      source = symlink "${home-manager}/krita/reference-tabs-docker-master/pykrita/reference_tabs";
+    };
+    "krita/pykrita/reference_tabs.desktop" = {
+      enable = true;
+      source = symlink "${home-manager}/krita/reference-tabs-docker-master/pykrita/reference_tabs.desktop";
+    };
   };
   home.file = {
     ".mozilla/firefox/${firefox-profile}/chrome" = {
