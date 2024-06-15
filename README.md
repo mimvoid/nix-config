@@ -36,6 +36,7 @@ Display Manager: [LightDM](https://github.com/canonical/lightdm)
 | Art program       | [Krita](https://krita.org)                                             |
 | Document viewer   | [Zathura](https://git.pwmt.org/pwmt/zathura/)                          |
 | To-do list        | [dooit](https://github.com/kraanzu/dooit)                              |
+| Music player      | [Amberol](https://apps.gnome.org/Amberol)                              |
 
 | Hyprland-specific |                                                       |
 | ----------------- | ----------------------------------------------------- |
