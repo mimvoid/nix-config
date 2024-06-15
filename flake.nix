@@ -5,9 +5,6 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Declarative flatpaks
-    #nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
-
     # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager/release-24.05";
@@ -62,7 +59,6 @@
         extraSpecialArgs = { inherit inputs allowed-unfree-packages; };
         modules = [
           ./home-manager/home.nix
-          #nix-flatpak.homeManagerModules.nix-flatpak
           stylix.homeManagerModules.stylix
           nixvim.homeManagerModules.nixvim
         ];
