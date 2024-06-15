@@ -4,6 +4,7 @@
   home.packages = with pkgs; [
     # Art & design
     # nixpkgs#krita seems to be broken right now
+    kdePackages.wacomtablet
 
     # Documents
     pdfarranger
