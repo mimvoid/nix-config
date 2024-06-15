@@ -26,6 +26,12 @@ in
       source = symlink "${home-manager}/terminal/dooit.py";
     };
   };
+  xdg.dataFile = {
+    "krita/color-schemes/CatppuccinMochaMaroon.colors" = {
+      enable = true;
+      source = symlink "${home-manager}/krita/CatppuccinMochaMaroon.colors";
+    };
+  };
   home.file = {
     ".mozilla/firefox/${firefox-profile}/chrome" = {
       enable = true;
