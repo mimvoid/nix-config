@@ -130,7 +130,7 @@ in
 
   xdg.configFile."xfce4/panel/docklike-11.rc" = {
     enable = true;
-    text = '' #rc
+    text = ''
       [user]
       onlyDisplayVisible=false
       onlyDisplayScreen=false
@@ -145,7 +145,7 @@ in
       forceIconSize=false
       keyComboActive=false
       keyAloneActive=false
-      pinned=xterm;thunar;firefox;
+      pinned=xterm;thunar;firefox;krita;
     '';
   };
 }

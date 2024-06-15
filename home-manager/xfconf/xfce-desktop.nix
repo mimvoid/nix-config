@@ -12,8 +12,8 @@ in
       "desktop-icons/style" = 0; # No desktop icons
     };
     xsettings = {
-      "Xft/DPI" = 144;
-      "Xfce/LastCustomDPI" = 144;
+      "Xft/DPI" = 140;
+      "Xfce/LastCustomDPI" = 140;
       "Gtk/FontName" = "Cantarell 11";
       "Gtk/MonospaceFontName" = "SauceCodePro Nerd Font 12";
     };

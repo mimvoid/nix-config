@@ -49,10 +49,10 @@ in
 
       theme = mkOption {
         type = types.str;
-        default = "";
+        default = "Krita dark";
         description = "The theme for Krita.";
         example = literalExpression ''
-          "Catppuccin Mocha"
+          "Breeze Dark"
         '';
       };
 

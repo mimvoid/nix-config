@@ -8,6 +8,7 @@
 {
   imports = [
     ./thunar.nix
+    ./screensaver.nix
     ./xfce-desktop.nix
     ./xfce-keymaps.nix
     ./xfce-panels.nix
