@@ -26,6 +26,7 @@ in
       source = symlink "${home-manager}/terminal/dooit.py";
     };
   };
+
   xdg.dataFile = {
     "krita/color-schemes/CatppuccinMochaMaroon.colors" = {
       enable = true;
@@ -37,6 +38,7 @@ in
     };
 
     # TODO: install krita plugins as packages instead of manually
+    # Reference Tabs Docker
     "krita/pykrita/reference_tabs" = {
       enable = true;
       source = symlink "${home-manager}/krita/reference-tabs-docker-master/pykrita/reference_tabs";
@@ -45,7 +47,22 @@ in
       enable = true;
       source = symlink "${home-manager}/krita/reference-tabs-docker-master/pykrita/reference_tabs.desktop";
     };
+
+    # Composition helper
+    "krita/actions/compositionhelper.action" = {
+      enable = true;
+      source = symlink "${home-manager}/krita/compositionhelper/compositionhelper.action";
+    };
+    "krita/pykrita/compositionhelper" = {
+      enable = true;
+      source = symlink "${home-manager}/krita/compositionhelper/compositionhelper";
+    };
+    "krita/pykrita/compositionhelper.desktop" = {
+      enable = true;
+      source = symlink "${home-manager}/krita/compositionhelper/compositionhelper.desktop";
+    };
   };
+
   home.file = {
     ".mozilla/firefox/${firefox-profile}/chrome" = {
       enable = true;
