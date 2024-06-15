@@ -93,7 +93,7 @@ Unofficial:
 ### Home Manager
 A declarative approach to configuring your user environment! It's very much like NixOS's configuration file, but just for the home directory. It's great if you want to tinker without adding a bunch of generations to your boot menu, or use different configurations for users on the same system.
 
-It can work on other distros too---I tried it on openSUSE Tumbleweed, though not long-term.
+It can work on other distros too—I tried it on openSUSE Tumbleweed, though not long-term.
 
 - [Home Manager](https://github.com/nix-community/home-manager)
 - [Home Manager manual](https://nix-community.github.io/home-manager/)
