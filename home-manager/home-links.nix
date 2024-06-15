@@ -31,6 +31,10 @@ in
       enable = true;
       source = symlink "${home-manager}/krita/CatppuccinMochaMaroon.colors";
     };
+    "krita/color-schemes/CatppuccinMacchiatoMaroon.colors" = {
+      enable = true;
+      source = symlink "${home-manager}/krita/CatppuccinMacchiatoMaroon.colors";
+    };
   };
   home.file = {
     ".mozilla/firefox/${firefox-profile}/chrome" = {
