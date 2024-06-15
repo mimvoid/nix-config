@@ -61,6 +61,16 @@ in
       enable = true;
       source = symlink "${home-manager}/krita/compositionhelper/compositionhelper.desktop";
     };
+
+    # Timer Watch
+    "krita/pykrita/timer_watch" = {
+      enable = true;
+      source = symlink "${home-manager}/krita/timer_watch/timer_watch";
+    };
+    "krita/pykrita/timer_watch.desktop" = {
+      enable = true;
+      source = symlink "${home-manager}/krita/timer_watch/timer_watch.desktop";
+    };
   };
 
   home.file = {
