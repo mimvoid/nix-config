@@ -37,6 +37,12 @@ in
       source = symlink "${home-manager}/krita/CatppuccinMacchiatoMaroon.colors";
     };
 
+    # Dirty Chalk brushes
+    "krita/Childs_for_Children.bundle" = {
+      enable = true;
+      source = symlink "${home-manager}/krita/Chalks_for_Children.bundle";
+    };
+
     # TODO: install krita plugins as packages instead of manually
     # Reference Tabs Docker
     "krita/pykrita/reference_tabs" = {
