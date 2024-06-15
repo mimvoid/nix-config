@@ -39,11 +39,9 @@ in
     ];
 
     exec = [
-      "wlsunset &"
       "nm-applet --indicator &"
-      
-      # If you use waybar, there's no need to have it here
-      # It'll start if programs.waybar.systemd.target = "hyprland-session.target";
+      # Don't have programs with systemd targets here (unless you want two of them)
+      # If their systemd.target = "hyprland-session.target";
       # At least I think that's how it works
     ];
 
