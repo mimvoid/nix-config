@@ -24,7 +24,7 @@ BORDER_DIM = iris + " 50%"
 BORDER_LIT = rose
 
 BORDER_TITLE_DIM = muted, base # fg then bg
-BORDER_TITLE_LIT = text, rose
+BORDER_TITLE_LIT = base, rose
 
 SEARCH_COLOR = love
 YANK_COLOR = pine
