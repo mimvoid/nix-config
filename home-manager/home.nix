@@ -11,7 +11,7 @@
 
   imports = [
     ./theming.nix
-    ./xdg-home.nix
+    ./home-links.nix
     ./terminal/default.nix
     ./nixvim/default.nix
     ./hyprland/default.nix

@@ -2,6 +2,8 @@
 let
   app-icons = "${pkgs.papirus-icon-theme}/share/icons/Papirus/48x48/apps";
   symlink = config.lib.file.mkOutOfStoreSymlink;
+
+  home-manager = "${config.home.homeDirectory}/NixOS/home-manager";
   firefox-profile = "30dphuug.default";
   obsidian-dir = "Documents/Zettelkasten";
 
@@ -12,25 +14,26 @@ let
 in
 {
   # Symlinks
+  # If you're using flakes, use absolute paths or the symlinks will point to the nix store
+  # If you don't do that, it can cause broken links, and nothing will update until a rebuild
   xdg.configFile = {
     "ags" = {
       enable = true;
-      source = symlink ./ags;
+      source = symlink "${home-manager}/ags";
     };
     "dooit/config.py" = {
       enable = true;
-      source = symlink ./terminal/dooit.py;
+      source = symlink "${home-manager}/terminal/dooit.py";
     };
   };
   home.file = {
     ".mozilla/firefox/${firefox-profile}/chrome" = {
       enable = true;
-      # Needed an absolute path here
-      source = symlink "${config.home.homeDirectory}/NixOS/home-manager/firefox/chrome";
+      source = symlink "${home-manager}/firefox/chrome";
     };
     "${obsidian-dir}/.obsidian/snippets" = {
       enable = true;
-      source = symlink ./obsidian-css;
+      source = symlink "${home-manager}/obsidian-css";
     };
   };
 
