@@ -2,7 +2,7 @@
 let
   app-icons = "${pkgs.papirus-icon-theme}/share/icons/Papirus/48x48/apps";
   symlink = config.lib.file.mkOutOfStoreSymlink;
-  #firefox-profile = "30dphuug.default";
+  firefox-profile = "30dphuug.default";
   obsidian-dir = "Documents/Zettelkasten";
 
   appimg = {
@@ -23,11 +23,11 @@ in
     };
   };
   home.file = {
-    # FIXME: somehow doesn't work despite the same exact format?
-    #".mozilla/firefox/${firefox-profile}/chrome" = {
-    #  enable = true;
-    #  source = symlink ./firefox/chrome;
-    #};
+    ".mozilla/firefox/${firefox-profile}/chrome" = {
+      enable = true;
+      # Needed an absolute path here
+      source = symlink "${config.home.homeDirectory}/NixOS/home-manager/firefox/chrome";
+    };
     "${obsidian-dir}/.obsidian/snippets" = {
       enable = true;
       source = symlink ./obsidian-css;
