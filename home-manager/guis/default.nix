@@ -3,7 +3,7 @@
 {
   home.packages = with pkgs; [
     # Art & design
-    #krita Seems to be broken right now
+    # nixpkgs#krita seems to be broken right now
 
     # Documents
     pdfarranger
@@ -18,7 +18,6 @@
     anki
     bottles
     amberol
-    kdePackages.merkuro
     nextcloud-client
   ];
 
@@ -28,16 +27,5 @@
   ];
 
   # Imports list of allowed unfree packages from flake.nix
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages; 
-
-  # There seems to be a bug with flatpak
-  # that prevents nix-flatpak from working
-  # so this will be commented for now
-
-  #services.flatpak.packages = [ "" ];
-
-  #services.flatpak.update.auto = {
-  #    enable = true;
-  #    onCalendar = "weekly";
-  #};
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
 }
