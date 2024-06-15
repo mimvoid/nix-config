@@ -45,6 +45,7 @@ Display Manager: [LightDM](https://github.com/canonical/lightdm)
 | Bar               | [Waybar](https://github.com/Alexays/Waybar)           |
 | Launcher          | [fuzzel](https://codeberg.org/dnkl/fuzzel)            |
 | Notifications     | [mako](https://github.com/emersion/mako)              |
+| Wallpaper         | [swww](https://github.com/LGFae/swww)                 |
 
 | Theming         |                                                              |
 | --------------- | ------------------------------------------------------------ |
