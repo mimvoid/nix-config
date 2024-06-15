@@ -37,7 +37,6 @@
     xfce.xfce4-docklike-plugin
 
     distrobox
-    podman
   ];
 
   fonts.packages = with pkgs; [
@@ -128,6 +127,8 @@
 
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.zinnia.enableGnomeKeyring = true;
+
+  virtualisation.podman.enable = true;
 
   # Pipewire
   sound.enable = true;
