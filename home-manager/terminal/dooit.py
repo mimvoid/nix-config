@@ -40,10 +40,9 @@ TIME_FORMAT = "%H:%M"
 # Modified by mimvoid
 # source: https://www.asciiart.eu/animals/cats
 ART = [
-    "                              ",
-    "      .                      ",
-    "      \  ॱ` -.          ",
-    "       .  .-. `.                ",
+    "      .                         ",
+    "      \  ॱ` -.                  ",
+    "       .  ,-. `.                ",
     "       : _   `  \               ",
     "     _ ) *   .   `·-._          ",
     "     ‾ `-.- '         `-.       ",
