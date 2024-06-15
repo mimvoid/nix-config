@@ -132,4 +132,5 @@ The NixOS configuration file and Home Manager are what I mainly use, but here ar
   - NixOS has `environment.etc."path/file.type"`, meaning etc/path/file.type
   - Home Manager has `home.file."path/file.type"`, meaning home/user/path/file.type, and `xdg.configFile."path/file.type"`, meaning ~/.config/path/file.type!
   - Optionally, you can use `"path/file.type".source = config.lib.file.mkOutOfStoreSymlink /absolute/path/to/source/file` to symlink an existing file to the location you want
+  - Or create your own modules.
 - NixOS works very differently to other Linux distros, but that's why I enjoy it!
