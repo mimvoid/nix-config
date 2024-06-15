@@ -1,34 +1,20 @@
 <h1 align="center">mimvoid's nixos & home manager dotfiles</h1>
-<pre>
-          .                      
-          \  ॱ` -.          
-           .  .-. `.                
-           : _   `  \               
-         _ ) *   .   `·-._          
-         ‾ `-.- '         `-.       
-             ;       `       `.     
-             :.       .        \    
-             . \  .   :   .-'   .   
-             '  `+.;  ;  '      :   
-             :  '  |    ;       ;-. 
-            .  '   :  :`:     _.`· ;
-    [bug] .·  .  .·' ; .·`- +'  `· ॱ
-          `·-·   `·-·  `·-·'        
-</pre>
 
 <p align="center">This is where I keep my configuration files, links to helpful resources, and some pieces of advice from my experience with NixOS.
 
 <span align="center">
 
-![2024-05-29-022050_hyprshot](https://github.com/mimvoid/nix-config/assets/153698678/5f282993-fbc5-4633-bd5d-adfbf41e9df1)
+![2024-06-14-195949_hyprshot](https://github.com/mimvoid/nix-config/assets/153698678/3f3fd85b-64c6-4adf-8987-1d345e00d901)
 
-![Screenshot_20240527_000609](https://github.com/mimvoid/nix-config/assets/153698678/3f722d86-e655-4cbb-82a5-9acba1b91ff1)
+![2024-06-14-195624_hyprshot](https://github.com/mimvoid/nix-config/assets/153698678/c80bb662-b7f5-434b-8613-a21cd33767ee)
+
+![2024-06-14-201336_hyprshot](https://github.com/mimvoid/nix-config/assets/153698678/075ef3b6-456a-4543-a740-7794d1a0a8d2)
 
 </span>
 
 My Firefox CSS: [panefox](https://github.com/mimvoid/panefox)
 
-My wallpaper repository and credits: [wallpaper-stash](https://github.com/mimvoid/wallpaper-stash/tree/main)
+My wallpaper repo and credits: [wallpaper-stash](https://github.com/mimvoid/wallpaper-stash/tree/main)
 
 # What I use
 
