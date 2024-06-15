@@ -72,7 +72,7 @@ in
     in
     [
       "suppressevent maximize, class:.*"
-      (opaque-ish "Freetube")
+      (opaque-ish "FreeTube")
       (opaque-ish "Zotero")
       (opaque-ish "obsidian")
       (opaque-ish "vesktop")
