@@ -38,16 +38,18 @@ Display Manager: [LightDM](https://github.com/canonical/lightdm)
 | To-do list        | [dooit](https://github.com/kraanzu/dooit)                              |
 | Music player      | [Amberol](https://apps.gnome.org/Amberol)                              |
 
-| Hyprland-specific |                                                       |
-| ----------------- | ----------------------------------------------------- |
-| Idle              | [hypridle](https://wiki.hyprland.org/Hypr-Ecosystem/) |
-| Lockscreen        | [hyprlock](https://wiki.hyprland.org/Hypr-Ecosystem/) |
-| Bar               | [Waybar](https://github.com/Alexays/Waybar)           |
-| Launcher          | [fuzzel](https://codeberg.org/dnkl/fuzzel)            |
-| Notifications     | [mako](https://github.com/emersion/mako)              |
-| Wallpaper         | [swww](https://github.com/LGFae/swww)                 |
-| Screenshot        | [hyprshot](https://github.com/Gustash/hyprshot)       |
-| Color picker      | [hyprpicker](https://github.com/hyprwm/hyprpicker)    |
+| Hyprland-specific  |                                                       |
+| ------------------ | ----------------------------------------------------- |
+| Idle               | [hypridle](https://wiki.hyprland.org/Hypr-Ecosystem/) |
+| Lockscreen         | [hyprlock](https://wiki.hyprland.org/Hypr-Ecosystem/) |
+| Bar                | [Waybar](https://github.com/Alexays/Waybar)           |
+| Launcher           | [fuzzel](https://codeberg.org/dnkl/fuzzel)            |
+| Notifications      | [mako](https://github.com/emersion/mako)              |
+| Logout menu        | [wlogout](https://github.com/ArtsyMacaw/wlogout)      |
+| Wallpaper          | [swww](https://github.com/LGFae/swww)                 |
+| Screen temperature | [wlsunset](https://sr.ht/~kennylevinsen/wlsunset/)    |
+| Screenshot         | [hyprshot](https://github.com/Gustash/hyprshot)       |
+| Color picker       | [hyprpicker](https://github.com/hyprwm/hyprpicker)    |
 
 | Theming         |                                                              |
 | --------------- | ------------------------------------------------------------ |
