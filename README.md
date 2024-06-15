@@ -46,6 +46,8 @@ Display Manager: [LightDM](https://github.com/canonical/lightdm)
 | Launcher          | [fuzzel](https://codeberg.org/dnkl/fuzzel)            |
 | Notifications     | [mako](https://github.com/emersion/mako)              |
 | Wallpaper         | [swww](https://github.com/LGFae/swww)                 |
+| Screenshot        | [hyprshot](https://github.com/Gustash/hyprshot)       |
+| Color picker      | [hyprpicker](https://github.com/hyprwm/hyprpicker)    |
 
 | Theming         |                                                              |
 | --------------- | ------------------------------------------------------------ |
