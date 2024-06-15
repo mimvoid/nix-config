@@ -1,4 +1,4 @@
-# rose pine Moon palette
+# Rose Pine Moon palette
 
 base = "#232136"
 muted = "#908caa"
