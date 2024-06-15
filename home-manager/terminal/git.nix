@@ -8,7 +8,7 @@
     userName = "mimvoid";
     userEmail = "mimvoid@proton.me";
     ignores = [
-      "result"
+      "result/"
       "__pycache__/"
     ];
     extraConfig = {
