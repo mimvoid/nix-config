@@ -12,7 +12,6 @@
     xterm
     rclone
     unstable.dooit
-    distrobox
     wttrbar
     wego
   ];

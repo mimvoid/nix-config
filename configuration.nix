@@ -35,6 +35,9 @@
     curl
     appimage-run
     xfce.xfce4-docklike-plugin
+
+    distrobox
+    podman
   ];
 
   fonts.packages = with pkgs; [
