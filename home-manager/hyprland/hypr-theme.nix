@@ -17,6 +17,7 @@ in
 
   wayland.windowManager.hyprland.settings = {
     # Homescreen wallpaper
+    exec-once = lib.mkAfter [ "swww-daemon --no-cache &" ];
     exec = lib.mkAfter [ "${./swww_init_time.sh} &" ];
     general = {
       "col.active_border" = "rgb(${hue.mainAccent})";
