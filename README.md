@@ -120,5 +120,3 @@ The NixOS configuration file and Home Manager are what I mainly use, but here ar
   - If you really want to dig deep, don't be afraid to look through the source code.
   - You can do a ton on NixOS, but it takes time, effort, and undoubtly frustration.
 - NixOS works very differently to other Linux distros, but that's why I enjoy it!
-***
-[ASCII art](https://www.asciiart.eu/animals/cats) by Blazej Kozlowski (modified by mimvoid)
