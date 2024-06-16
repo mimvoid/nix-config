@@ -157,8 +157,11 @@
   services.printing = {
     enable = true;
     package = pkgs.cups;
-    tempDir = "/tmp/cups";
-    drivers = with pkgs; [ epsonscan2 epson-escpr ];
+    drivers = with pkgs; [
+      epsonscan2
+      epson-escpr
+      epson-escpr2
+    ];
     startWhenNeeded = true;
   };
 
