@@ -1,12 +1,12 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.firefoxpwa ];
+  home.packages = [ pkgs.unstable.firefoxpwa ];
   
   programs.firefox = {
     enable = true;
     package = pkgs.unstable.firefox-beta;
-    nativeMessagingHosts = [ pkgs.firefoxpwa ];
+    nativeMessagingHosts = [ pkgs.unstable.firefoxpwa ];
     policies = {
       DisableAppUpdate = true;
       PasswordManagerEnabled = false;
