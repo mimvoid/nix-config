@@ -11,7 +11,7 @@
 
   xfconf.settings.thunar = {
     "last-view" = "ThunarIconView";
-    "last-icon-view-zoom-level" = "THUNAR_ZOOM_LEVEL_150_PERCENT";
+    "last-icon-view-zoom-level" = "THUNAR_ZOOM_LEVEL_100_PERCENT";
     "last-separator-position" = 170;
     "last-show-hidden" = true;
     "last-restore-tabs" = true;
