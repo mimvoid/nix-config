@@ -35,8 +35,6 @@
     curl
     appimage-run
     xfce.xfce4-docklike-plugin
-
-    distrobox
   ];
 
   fonts.packages = with pkgs; [
@@ -48,7 +46,6 @@
   # TODO: remove this once GRUB2 is configured
   #boot.loader.systemd-boot.enable = true;
   #boot.loader.efi.canTouchEfiVariables = true; 
-
 
   # X11
   services.xserver = {
@@ -157,7 +154,16 @@
   };
 
   # CUPS
-  services.printing.enable = true;
+  services.printing = {
+    enable = true;
+    package = pkgs.cups;
+    tempDir = "/tmp/cups";
+    drivers = with pkgs; [ epsonscan2 epson-escpr ];
+    startWhenNeeded = true;
+  };
+
+  services.system-config-printer.enable = true;
+  programs.system-config-printer.enable = true;
 
   # Thunar additions 
   services.gvfs = {
