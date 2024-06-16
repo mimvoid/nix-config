@@ -6,7 +6,7 @@
   programs.firefox = {
     enable = true;
     package = pkgs.unstable.firefox-beta;
-    nativeMessagingHosts.packages = [ pkgs.firefoxpwa ];
+    nativeMessagingHosts = [ pkgs.firefoxpwa ];
     policies = {
       DisableAppUpdate = true;
       PasswordManagerEnabled = false;
