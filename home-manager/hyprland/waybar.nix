@@ -26,6 +26,7 @@
           "network"
           "pulseaudio"
           "battery"
+          "custom/wlsunset"
           "custom/power"
         ];
 
@@ -114,6 +115,13 @@
           format-time = "{H}h {M}min";
           tooltip = true;
           tooltip-format = "{timeTo} {power}w";
+        };
+
+        "custom/wlsunset" = {
+          format = "󰖚";
+          on-click = "${./wlsunset-toggle.sh}";
+          tooltip = true;
+          tooltip-format = "Toggle wlsunset";
         };
 
         "custom/power" = {

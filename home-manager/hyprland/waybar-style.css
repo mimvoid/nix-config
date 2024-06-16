@@ -102,6 +102,8 @@ tooltip label {
 /* sapphire */
 #pulseaudio { color: #7dc4e4; }
 
+#custom-wlsunset { color: @watch }
+
 #custom-power {
     color: @paleAccent;
     background-color: alpha(@dullAccent, 0.2);
