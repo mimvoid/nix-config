@@ -14,7 +14,7 @@
 
 My Firefox CSS: [panefox](https://github.com/mimvoid/panefox)
 
-My wallpaper repo and credits: [wallpaper-stash](https://github.com/mimvoid/wallpaper-stash/tree/main)
+My wallpaper repo and credits: [wallpaper-stash](wallpapers/README.md)
 
 # What I use
 
