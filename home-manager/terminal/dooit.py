@@ -39,7 +39,7 @@ TIME_FORMAT = "%H:%M"
 # Art by Blazej Kozlowski
 # Modified by mimvoid
 # source: https://www.asciiart.eu/animals/cats
-ART = [
+ART_D = [
     "      .                         ",
     "      \  ॱ` -.                  ",
     "       .  ,-. `.                ",
@@ -65,13 +65,7 @@ QUOTE4 = f"you [{love}]cannot kill me[/{love}] in a [{love}]way that matters[/{l
 
 PAD = " "
 
-# TODO: get stats working
-#STATS = [
-#    f"Completed: {completed}",
-#    f"Pending: {pending}",
-#    f"Overdue: {overdue}",
-#]
-DASHBOARD = [ART, PAD, QUOTE1, QUOTE2, QUOTE3, QUOTE4]
+DASHBOARD = [ART_D, PAD, QUOTE1, QUOTE2, QUOTE3, QUOTE4]
 
 # Workspaces
 EMPTY_WORKSPACE = [
@@ -87,12 +81,34 @@ WORKSPACE = {
 }
 
 # Todos
-COLUMN_ORDER = ["description", "due", "urgency"]
-EMPTY_TODO = [
-    ":O",
-    "Wow so empty!?",
-    "Let's think of some stuff to do!"
+# Art by Joan Stark
+# source: https://www.asciiart.eu/animals/cats
+ART_T = [
+    "               _ |\_   ",
+    f"               \` ..\  [{rose}]?[/{rose}]",
+    "         __,.-‟ =___Y= ",
+    "       .‟        )     ",
+    " _    /   ,    \/\_    ",
+    "((____|    )_-\ \_-`   ",
+    "`------`-----` `--`    ",
 ]
+
+# TODO: get stats working
+#STATS = [
+#    f"Completed: {done}",
+#    f"Pending: {pending}",
+#    f"Overdue: {overdue}",
+#]
+
+EMPTY_TODO = [
+    ART_T,
+    PAD,
+    "Wow so empty!?",
+    "Let's think of some stuff to do!",
+    #STATS
+]
+
+COLUMN_ORDER = ["description", "due", "urgency"]
 TODO = {
     "color_todos": False, # color based on status
     "editing": pine,
@@ -112,6 +128,9 @@ TODO = {
     "pending_icon": " ",
     "overdue_icon": " ",
 
+    # Urgency
+    "initial_urgency": 1,
+
     "urgency1_icon": " ",
     "urgency2_icon": "󱊡",
     "urgency3_icon": "󱊢",
@@ -122,6 +141,7 @@ TODO = {
     "urgency3_color": "gold",
     "urgency4_color": "love",
 
+    # Children
     "children_hint": "({done}/{total})",
     "start_expanded": True,
 }
