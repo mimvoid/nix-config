@@ -54,7 +54,7 @@ button:hover {
 }
 
 .workspaces button:hover {
-  color: @text;
+  color: @base;
   background-color: alpha(@secAccent, 0.85);
   transition: all 0.2s ease-in-out;
 }
@@ -114,7 +114,7 @@ button:hover {
 }
 
 .power-actions:hover {
-  color: @text;
+  color: @base;
   background-color: alpha(@secAccent, 0.85);
   transition: color 0.2s ease-in-out;
   transition: background-color 0.2s ease-in-out;
