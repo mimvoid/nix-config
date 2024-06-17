@@ -67,8 +67,11 @@ Extras
 - Krita
   - Themes
     - [Catppuccin Macchiato & Mocha Maroon](https://github.com/catppuccin/kde)
-  - Brushes
+  - Brushes & Resources
     - [Dirty Chalk for Children](https://krita-artists.org/t/dirty-chalk-for-children-free/39643)
+    - [Hollow brush](https://krita-artists.org/t/i-made-a-hollow-brush/92064)
+    - [SK Sketching](https://krita-artists.org/t/sk-sketching-in-krita-v1/45795)
+    - [Rakurri Gradient Map Set](https://krita-artists.org/t/rakurri-gradient-map-set-free-gradient-maps/33381)
   - Plugins
     - [Composition Helper](https://github.com/Grum999/CompositionHelper)
     - [Reference Tabs Docker](https://invent.kde.org/freyalupen/reference-tabs-docker)
