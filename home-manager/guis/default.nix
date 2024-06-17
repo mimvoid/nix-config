@@ -19,6 +19,7 @@
     bottles
     amberol
     nextcloud-client
+    localsend
   ];
 
   imports = [
