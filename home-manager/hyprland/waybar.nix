@@ -1,10 +1,10 @@
 {
   programs.waybar = {
     enable = true;
-    systemd = {
-      enable = true;
-      target = "hyprland-session.target";
-    };
+    #systemd = {
+    #  enable = true;
+    #  target = "hyprland-session.target";
+    #};
     
     style = ./waybar-style.css;
     settings = {

@@ -35,6 +35,7 @@ in
       "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon &"
       "hypridle &"
       "mako &"
+      "ags &"
       # Includes swww daemon, see ./hypr-theme.nix
     ];
 
