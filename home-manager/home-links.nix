@@ -1,11 +1,22 @@
 { config, pkgs, ... }:
 let
-  app-icons = "${pkgs.papirus-icon-theme}/share/icons/Papirus/48x48/apps";
-  symlink = config.lib.file.mkOutOfStoreSymlink;
+  link = src: {
+    enable = true;
+    source = config.lib.file.mkOutOfStoreSymlink "${src}";
+  };
 
+  # Directory shorthands
   home-manager = "${config.home.homeDirectory}/NixOS/home-manager";
+
+  ref-tabs = "${home-manager}/krita/reference-tabs-docker";
+  comp-helper = "${home-manager}/krita/composition-helper/compositionhelper";
+  timer-watch = "${home-manager}/krita/timer-watch";
+
   firefox-profile = "30dphuug.default";
   obsidian-dir = "Documents/Zettelkasten";
+
+  # AppImage packages
+  app-icons = "${pkgs.papirus-icon-theme}/share/icons/Papirus/48x48/apps";
 
   appimg = {
     obsidian = pkgs.callPackage ../packages/obsidian.nix { version = "1.6.3"; };
@@ -15,87 +26,67 @@ in
 {
   # Symlinks
   # If you're using flakes, use absolute paths or the symlinks will point to the nix store
-  # If you don't do that, it can cause broken links, and nothing will update until a rebuild
+  # Relative paths can cause broken links, and nothing will update until a rebuild
+
+  # TODO: despite my best efforts at shorthanding, this is still bad.
+  # I will work on this again at some point.
+
   xdg.configFile = {
-    "ags" = {
-      enable = true;
-      source = symlink "${home-manager}/ags";
-    };
-    "dooit/config.py" = {
-      enable = true;
-      source = symlink "${home-manager}/terminal/dooit.py";
-    };
+    "ags" = (link "${home-manager}/ags");
+    "dooit/config.py" = (link "${home-manager}/terminal/dooit.py");
   };
 
   xdg.dataFile = {
-    "krita/color-schemes/CatppuccinMochaMaroon.colors" = {
-      enable = true;
-      source = symlink "${home-manager}/krita/CatppuccinMochaMaroon.colors";
-    };
-    "krita/color-schemes/CatppuccinMacchiatoMaroon.colors" = {
-      enable = true;
-      source = symlink "${home-manager}/krita/CatppuccinMacchiatoMaroon.colors";
-    };
-
     # Dirty Chalk brushes
-    "krita/Childs_for_Children.bundle" = {
-      enable = true;
-      source = symlink "${home-manager}/krita/Chalks_for_Children.bundle";
-    };
+    "krita/Chalks_for_Children.bundle" = (
+      link "${home-manager}/krita/Chalks_for_Children.bundle");
 
-    # TODO: install krita plugins as packages instead of manually
+    # Krita themes
+    "krita/color-schemes/CatppuccinMochaMaroon.colors" = (
+      link "${home-manager}/krita/CatppuccinMochaMaroon.colors");
+
+    "krita/color-schemes/CatppuccinMacchiatoMaroon.colors" = (
+      link "${home-manager}/krita/CatppuccinMacchiatoMaroon.colors");
+
+    # TODO: maybe install krita plugins as packages instead of git checkout?
+    
     # Reference Tabs Docker
-    "krita/pykrita/reference_tabs" = {
-      enable = true;
-      source = symlink "${home-manager}/krita/reference-tabs-docker-master/pykrita/reference_tabs";
-    };
-    "krita/pykrita/reference_tabs.desktop" = {
-      enable = true;
-      source = symlink "${home-manager}/krita/reference-tabs-docker-master/pykrita/reference_tabs.desktop";
-    };
+    "krita/pykrita/reference_tabs" = (
+      link "${ref-tabs}/pykrita/reference_tabs");
+    "krita/pykrita/reference_tabs.desktop" = (
+      link "${ref-tabs}/pykrita/reference_tabs.desktop");
 
     # Composition helper
-    "krita/actions/compositionhelper.action" = {
-      enable = true;
-      source = symlink "${home-manager}/krita/compositionhelper/compositionhelper.action";
-    };
-    "krita/pykrita/compositionhelper" = {
-      enable = true;
-      source = symlink "${home-manager}/krita/compositionhelper/compositionhelper";
-    };
-    "krita/pykrita/compositionhelper.desktop" = {
-      enable = true;
-      source = symlink "${home-manager}/krita/compositionhelper/compositionhelper.desktop";
-    };
+    "krita/actions/compositionhelper.action" = (
+      link "${comp-helper}/compositionhelper.action");
+    "krita/pykrita/compositionhelper" = (
+      link "${comp-helper}/compositionhelper");
+    "krita/pykrita/compositionhelper.desktop" = (
+      link "${comp-helper}/compositionhelper.desktop");
 
     # Timer Watch
-    "krita/pykrita/timer_watch" = {
-      enable = true;
-      source = symlink "${home-manager}/krita/timer_watch/timer_watch";
-    };
-    "krita/pykrita/timer_watch.desktop" = {
-      enable = true;
-      source = symlink "${home-manager}/krita/timer_watch/timer_watch.desktop";
-    };
+    "krita/pykrita/timer_watch" = (
+      link "${timer-watch}/timer_watch");
+    "krita/pykrita/timer_watch.desktop" = (
+      link "${timer-watch}/timer_watch.desktop");
   };
 
   home.file = {
-    ".mozilla/firefox/${firefox-profile}/chrome" = {
-      enable = true;
-      source = symlink "${home-manager}/firefox/chrome";
-    };
-    "${obsidian-dir}/.obsidian/snippets" = {
-      enable = true;
-      source = symlink "${home-manager}/obsidian-css";
-    };
+    # Firefox userChrome & userContent
+    ".mozilla/firefox/${firefox-profile}/chrome" = (
+      link "${home-manager}/firefox/chrome");
+
+    # Obsidian CSS
+    "${obsidian-dir}/.obsidian/snippets" = (
+      link "${home-manager}/obsidian-css");
   };
 
-  home.packages = [
-    (appimg.obsidian)
-    (appimg.krita)
-  ];
 
-  # Desktop entries
+  # Wrapped in parentheses to prevent each package from
+  # being recognized as several elements
+  home.packages = [ (appimg.obsidian) (appimg.krita) ];
+
+  # AppImage desktop entries
   xdg.desktopEntries = {
     obsidian = {
       name = "Obsidian";
@@ -103,6 +94,7 @@ in
       exec = "${appimg.obsidian}/bin/Obsidian %u";
       terminal = false;
     };
+
     krita = {
       name = "Krita";
       icon = "${app-icons}/krita.svg";

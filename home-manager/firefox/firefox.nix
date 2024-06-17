@@ -7,6 +7,8 @@
     enable = true;
     package = pkgs.unstable.firefox-beta;
     nativeMessagingHosts = [ pkgs.unstable.firefoxpwa ];
+    
+    # FIX: currently, these don't seem to apply
     policies = {
       DisableAppUpdate = true;
       PasswordManagerEnabled = false;

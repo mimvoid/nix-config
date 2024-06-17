@@ -1,8 +1,0 @@
-[Desktop Entry]
-Type=Service
-ServiceTypes=Krita/PythonPlugin
-X-KDE-Library=reference_tabs
-X-Python-2-Compatible=false
-X-Krita-Manual=Manual.html
-Name=Reference Tabs Docker
-Comment=Docker for viewing reference images in tabs.
