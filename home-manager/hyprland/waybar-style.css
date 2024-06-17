@@ -51,7 +51,8 @@ tooltip label {
 #network,
 #pulseaudio,
 #battery,
-#custon-media,
+/*#custom-media,*/
+#custom-wlsunset,
 #tray {
     padding: 2px 8px;
     background-color: transparent;
@@ -61,7 +62,8 @@ tooltip label {
 #network:hover,
 #pulseaudio:hover,
 #battery:hover,
-#custom-media:hover,
+/*#custom-media:hover,*/
+#custom-wlsunset:hover,
 #tray:hover {
     background-color: alpha(@dullAccent, 0.25);
     transition: background-color 0.2s ease-in-out;
@@ -102,7 +104,10 @@ tooltip label {
 /* sapphire */
 #pulseaudio { color: #7dc4e4; }
 
-#custom-wlsunset { color: @watch }
+#custom-wlsunset {
+    margin-right: 6px;
+    color: @watch
+}
 
 #custom-power {
     color: @paleAccent;

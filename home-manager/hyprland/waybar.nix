@@ -119,7 +119,9 @@
 
         "custom/wlsunset" = {
           format = "󰖚";
-          on-click = "${./wlsunset-toggle.sh}";
+          # HACK: work out the script for this
+          on-click = "pkill wlsunset";
+          #on-right-click = "systemctl start wlsunset";
           tooltip = true;
           tooltip-format = "Toggle wlsunset";
         };

@@ -6,44 +6,83 @@ const battery = await Service.import("battery")
 const systemtray = await Service.import("systemtray")
 
 const date = Variable("", {
-  poll: [1000, 'date "+%H:%M:%S %b %e."'],
+  poll: [1000, 'date "+%A %b %d / %H:%M"'],
 })
 
 App.config({
-  style: "./bar.css",
-  windows: [Bar(0)],
-});
+  style: "./style.scss",
+  windows: [
+    Bar(),
+  ],
+})
 
-function Bar = (monitor: number) => Widget.Window({
-  monitor,
-  name: `bar${monitor}`,
-  anchor: ['top', 'left', 'right'],
-  exclusivity: 'exclusive',
-  child: Widget.CenterBox({
-    start_widget: Left(),
-    center_widget: Center(),
-    end_widget: Right(),
-  }),
-});
+/*-----*/
+/* BAR */
+/*-----*/
 
-// Left widgets
-function Left() {
-  return Widget.Box({
-    spacing: 8,
-    children: [
-      Workspaces(),
-      AppTray(),
-    ];
+function Bar(monitor = 0) {
+  return Widget.Window({
+    name: `bar-${monitor}`,
+    class_name: "bar",
+    monitor,
+    anchor: ["top", "left", "right"],
+    exclusivity: "exclusive",
+  
+    child: Widget.CenterBox({
+      start_widget: Left(),
+      center_widget: Center(),
+      end_widget: Right(),
+    }),
   })
 }
+
+// Layout
+function Left() {
+  return Widget.Box({
+    class_name: "left",
+    hpack: "start",
+    children: [
+      Workspaces(),
+      ClientTitle(),
+    ],
+  })
+}
+
+function Center() {
+  return Widget.Box({
+    class_name: "center",
+    children: [
+      Clock(),
+      Media(), 
+    ],
+  })
+}
+
+function Right() {
+  return Widget.Box({
+    class_name: "right",
+    hpack: "end",
+    children: [
+      Volume(),
+      BatteryLabel(),
+      SysTray(),
+      Notification(),
+    ],
+  })
+}
+
+
+/*--------------*/
+/* Left widgets */
+/*--------------*/
 
 function Workspaces() {
   const activeId = hyprland.active.workspace.bind("id")
   const workspaces = hyprland.bind("workspaces")
-    .as(ws => ws.map(({ id }) => Widget.Button({
-      on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
-      child: Widget.Label(`${id}`),
-      class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
+  .as(ws => ws.map(({ id }) => Widget.Button({
+    on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
+    child: Widget.Label(`${id}`),
+    class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
   })))
 
   return Widget.Box({
@@ -52,16 +91,17 @@ function Workspaces() {
   })
 }
 
-// Center widgets
-function Center() {
-  return Widget.Box({
-    spacing: 8,
-    children: [
-      Clock(),
-      //Weather(),
-    ],
+function ClientTitle() {
+  return Widget.Label({
+    class_name: "client-title",
+    label: hyprland.active.client.bind("title"),
   })
 }
+
+
+/*----------------*/
+/* Center widgets */
+/*----------------*/
 
 function Clock() {
   return Widget.Label({
@@ -70,29 +110,13 @@ function Clock() {
   })
 }
 
-// Right widgets
-
-function Right() {
-  return Widget.Box({
-    spacing: 8,
-    children: [
-      Media(),
-      Sound(),
-      //Network(),
-      SysTray(),
-      Battery(),
-      Notifs(),
-      //Power(),
-    ],
-  })
-}
-
 function Media() {
   const label = Utils.watch("", mpris, "player-changed", () => {
     if (mpris.players[0]) {
       const { track_artists, track_title } = mpris.players[0]
       return `${track_artists.join(", ")} - ${track_title}`
-    } else {
+    }
+    else {
       return "Nothing is playing"
     }
   })
@@ -106,7 +130,12 @@ function Media() {
   })
 }
 
-function Sound() {
+
+/*---------------*/
+/* Right widgets */
+/*---------------*/
+
+function Volume() {
   const icons = {
     101: "overamplified",
     67: "high",
@@ -131,32 +160,17 @@ function Sound() {
     draw_value: false,
     on_change: ({ value }) => audio.speaker.volume = value,
     setup: self => self.hook(audio.speaker, () => {
-        self.value = audio.speaker.volume || 0
+      self.value = audio.speaker.volume || 0
     }),
   })
 
   return Widget.Box({
     class_name: "volume",
-    css: "min-width: 180px",
     children: [icon, slider],
   })
 }
 
-function SysTray() {
-  const items = systemtray.bind("items")
-    .as(items => items.map(item => Widget.Button({
-      child: Widget.Icon({ icon: item.bind("icon") }),
-      on_primary_click: (_, event) => item.activate(event),
-      on_secondary_click: (_, event) => item.openMenu(event),
-      tooltip_markup: item.bind("tooltip_markup"),
-    })))
-
-  return Widget.Box({
-    children: items,
-  })
-}
-
-function Battery() {
+function BatteryLabel() {
   const value = battery.bind("percent").as(p => p > 0 ? p / 100 : 0)
   const icon = battery.bind("percent").as(p =>
     `battery-level-${Math.floor(p / 10) * 10}-symbolic`)
@@ -175,9 +189,23 @@ function Battery() {
   })
 }
 
+function SysTray() {
+  const items = systemtray.bind("items")
+    .as(items => items.map(item => Widget.Button({
+      child: Widget.Icon({ icon: item.bind("icon") }),
+      on_primary_click: (_, event) => item.activate(event),
+      on_secondary_click: (_, event) => item.openMenu(event),
+      tooltip_markup: item.bind("tooltip_markup"),
+    })))
+
+  return Widget.Box({
+    children: items,
+  })
+}
+
 // we don't need dunst or any other notification daemon
 // because the Notifications module is a notification daemon itself
-function Notifs() {
+function Notification() {
   const popups = notifications.bind("popups")
   return Widget.Box({
     class_name: "notification",
@@ -193,4 +221,4 @@ function Notifs() {
   })
 }
 
-export { }
+export {};
