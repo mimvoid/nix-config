@@ -37,11 +37,15 @@ in
   };
 
   xdg.dataFile = {
-    # Brushes
+    # Resources (brushes, packs, etc.)
     "krita/Chalks_for_Children.bundle" = (
       link "${home-manager}/krita/Chalks_for_Children.bundle");
     "krita/hollow_line.bundle" = (
       link "${home-manager}/krita/hollow_line.bundle");
+    "krita/SK-V1_.bundle" = (
+      link "${home-manager}/krita/SK_V1_.bundle");
+    "krita/Rakurri_Gradient_Map_Set_V1.0.bundle" = (
+      link "${home-manager}/krita/Rakurri_Gradient_Map_Set_V1.0.bundle");
 
     # Krita themes
     "krita/color-schemes/CatppuccinMochaMaroon.colors" = (
@@ -49,10 +53,6 @@ in
 
     "krita/color-schemes/CatppuccinMacchiatoMaroon.colors" = (
       link "${home-manager}/krita/CatppuccinMacchiatoMaroon.colors");
-
-    # Gradient maps
-    "krita/Rakurri_Gradient_Map_Set_V1.0.bundle" = (
-      link "${home-manager}/krita/Rakurri_Gradient_Map_Set_V1.0.bundle");
 
 
     # TODO: maybe install krita plugins as packages instead of git checkout?
