@@ -1,6 +1,8 @@
 { pkgs, ... }:
 let
   background = ../wallpapers/gracile_jellyfish.jpg;
+  
+  # TODO: The result looks as if it is Catppuccin Frappe, is it supposed to be like this?
   theme = {
     name = "Catppuccin-Mocha-Standard-Blue-Dark";
     package = (pkgs.catppuccin-gtk.override {
@@ -28,13 +30,13 @@ in
       enable = true;
       inherit theme cursorTheme iconTheme;
       indicators = [
-        #"~host"
+        #"~host" # hostname
         "~spacer"
         "~clock"
         "~spacer"
         "~session"
         #"~language"
-        #"~a11y"
+        #"~a11y" # accessibility
         "~power"
       ];
       clock-format = "%A %b %d / %H:%M";

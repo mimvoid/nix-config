@@ -1,5 +1,8 @@
 { ... }:
 
+# WIP: would like to simplify this process and integrate wallust or the like
+# Also, the color names simply do not make sense at times
+
 {
     colorScheme = {
         slug = "catppuccin-macchiato-nightlight";
