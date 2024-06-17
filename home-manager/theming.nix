@@ -1,8 +1,5 @@
 { pkgs, ... }:
-let
-  # Wallpaper
-  #homescreen = ../wallpapers/bakairis_rainy-world.png;
-  
+let  
   theme = {
     name = "rose-pine-moon";
     package = pkgs.rose-pine-gtk-theme;
