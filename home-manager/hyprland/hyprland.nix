@@ -65,13 +65,16 @@ in
     ];
 
     windowrulev2 =
+    # TODO: think of better names for these
     let
+      opaquer-title = val: "opacity 0.9 override 0.75 override, title:(${val})";
       opaque-ish = val: "opacity 0.98 override 0.85 override, class:(${val})";
       active-opaque = val: "opacity 1.0 override 0.85 override, class:(${val})";
       opaque = val: "opaque, class:(${val})";
     in
     [
       "suppressevent maximize, class:.*"
+      (opaquer-title "*Nextcloud")
       (opaque-ish "FreeTube")
       (opaque-ish "Zotero")
       (opaque-ish "obsidian")
@@ -186,6 +189,9 @@ in
       "$mod, Print, exec, hyprshot -m window"
       ", Print, exec, hyprshot -m output"
       "$mod SHIFT, Print, exec, hyprshot -m region"
+
+      # Colorpicker
+      "$mod, C, exec, hyprpicker --autocopy --format=hex"
     ] ++ (
       # Workspaces
       # $mod + {1..10} for workspace {1..10}
