@@ -53,7 +53,7 @@ function Center() {
     class_name: "center",
     children: [
       Clock(),
-      Media(), 
+      //Media(), 
     ],
   })
 }
@@ -66,7 +66,8 @@ function Right() {
       Volume(),
       BatteryLabel(),
       SysTray(),
-      Notification(),
+      //Notification(),
+      PowerActions(),
     ],
   })
 }
@@ -83,6 +84,7 @@ function Workspaces() {
     on_clicked: () => hyprland.messageAsync(`dispatch workspace ${id}`),
     child: Widget.Label(`${id}`),
     class_name: activeId.as(i => `${i === id ? "focused" : ""}`),
+    cursor: "pointer",
   })))
 
   return Widget.Box({
@@ -110,25 +112,25 @@ function Clock() {
   })
 }
 
-function Media() {
-  const label = Utils.watch("", mpris, "player-changed", () => {
-    if (mpris.players[0]) {
-      const { track_artists, track_title } = mpris.players[0]
-      return `${track_artists.join(", ")} - ${track_title}`
-    }
-    else {
-      return "Nothing is playing"
-    }
-  })
-
-  return Widget.Button({
-    class_name: "media",
-    on_primary_click: () => mpris.getPlayer("")?.playPause(),
-    on_scroll_up: () => mpris.getPlayer("")?.next(),
-    on_scroll_down: () => mpris.getPlayer("")?.previous(),
-    child: Widget.Label({ label }),
-  })
-}
+//function Media() {
+//  const label = Utils.watch("", mpris, "player-changed", () => {
+//    if (mpris.players[0]) {
+//      const { track_artists, track_title } = mpris.players[0]
+//      return `${track_artists.join(", ")} - ${track_title}`
+//    }
+//    else {
+//      return "Nothing is playing"
+//    }
+//  })
+//
+//  return Widget.Button({
+//    class_name: "media",
+//    on_primary_click: () => mpris.getPlayer("")?.playPause(),
+//    on_scroll_up: () => mpris.getPlayer("")?.next(),
+//    on_scroll_down: () => mpris.getPlayer("")?.previous(),
+//    child: Widget.Label({ label }),
+//  })
+//}
 
 
 /*---------------*/
@@ -155,12 +157,23 @@ function Volume() {
     icon: Utils.watch(getIcon(), audio.speaker, getIcon),
   })
 
-  const slider = Widget.Slider({
-    hexpand: true,
-    draw_value: false,
-    on_change: ({ value }) => audio.speaker.volume = value,
-    setup: self => self.hook(audio.speaker, () => {
-      self.value = audio.speaker.volume || 0
+  // FIX: slider doesn't show, with or without revealer
+  const slider = Widget.Revealer({
+    child: Widget.Slider({
+      hexpand: true,
+      draw_value: false,
+      on_change: ({ value }) => audio.speaker.volume = value,
+      setup: self => self.hook(audio.speaker, () => {
+        self.value = audio.speaker.volume || 0
+      }),
+    }),
+
+    cursor: "pointer",
+    revealChild: false,
+    transitionDuration: 500,
+    transition: 'slide_left',
+    setup: self => self.poll(2000, () => {
+      self.reveal_child = !self.reveal_child;
     }),
   })
 
@@ -171,6 +184,7 @@ function Volume() {
 }
 
 function BatteryLabel() {
+  // TODO: battery percentage label does't show up right.
   const value = battery.bind("percent").as(p => p > 0 ? p / 100 : 0)
   const icon = battery.bind("percent").as(p =>
     `battery-level-${Math.floor(p / 10) * 10}-symbolic`)
@@ -180,10 +194,9 @@ function BatteryLabel() {
     visible: battery.bind("available"),
     children: [
       Widget.Icon({ icon }),
-      Widget.LevelBar({
-        widthRequest: 140,
+      Widget.Label({
+        label: ` ${value}`,
         vpack: "center",
-        value,
       }),
     ],
   })
@@ -199,25 +212,38 @@ function SysTray() {
     })))
 
   return Widget.Box({
+    class_name: "system-tray",
     children: items,
   })
 }
 
-// we don't need dunst or any other notification daemon
-// because the Notifications module is a notification daemon itself
-function Notification() {
-  const popups = notifications.bind("popups")
-  return Widget.Box({
-    class_name: "notification",
-    visible: popups.as(p => p.length > 0),
-    children: [
-      Widget.Icon({
-        icon: "preferences-system-notifications-symbolic",
-      }),
-      Widget.Label({
-        label: popups.as(p => p[0]?.summary || ""),
-      }),
-    ],
+// FIX: Notifications also don't work
+
+//function Notification() {
+//  const popups = notifications.bind("popups")
+//  return Widget.Box({
+//    class_name: "notification",
+//    visible: popups.as(p => p.length > 0),
+//    children: [
+//      Widget.Icon({
+//        icon: "preferences-system-notifications-symbolic",
+//      }),
+//      Widget.Label({
+//        label: popups.as(p => p[0]?.summary || ""),
+//      }),
+//    ],
+//  })
+//}
+
+function PowerActions() {
+  return Widget.Button({
+    class_name: "power-actions",
+    child: Widget.Icon("system-shutdown-symbolic"),
+    cursor: "pointer",
+
+    // TODO: replace with an AGS widget at some point
+
+    on_clicked: () => { Utils.execAsync('wlogout -b 2') },
   })
 }
 

@@ -12,7 +12,7 @@ window.bar {
 
 
 .left, .center, .right {
-  margin-top: 1px;
+  margin-top: 4px;
   padding: 4px 6px;
   color: @paleAccent;
   background-color: alpha(@base, 0.70);
@@ -30,7 +30,7 @@ button {
   background-color: transparent;
 }
 
-button:active {
+button:hover {
   background-color: alpha(@dullAccent, 0.25);
 }
 
@@ -69,8 +69,9 @@ button:active {
 /* Center widgets */
 /*----------------*/
 
-.clock label {
-  color: @warning;
+.clock {
+  margin: 0 2px;
+  color: shade(@watch, 1.15);
 }
 
 
@@ -83,17 +84,42 @@ button:active {
   color: #7dc4e4;
 }
 
-/*.volume#slider {
- * color: #7dc4e4;
-}*/
+.volume revealer scale {
+  color: #7dc4e4;
+}
 
 .battery {
   color: @alert;
 }
 
+.system-tray {
+  margin: 0 8px;
+}
+
+.system-tray button {
+  border-radius: 12px;
+  padding: 0 2px;
+}
+
 .notification {
   color: @alert;
 }
+
+
+.power-actions {
+  color: @paleAccent;
+  background-color: alpha(@dullAccent, 0.2);
+  border-radius: 16px;
+  padding: 0 2px;
+}
+
+.power-actions:hover {
+  color: @text;
+  background-color: alpha(@secAccent, 0.85);
+  transition: color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+}
+
 
 levelbar block,
 highlight {
