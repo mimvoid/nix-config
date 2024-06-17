@@ -5,7 +5,7 @@
   
   programs.firefox = {
     enable = true;
-    package = pkgs.unstable.firefox-beta;
+    package = pkgs.unstable.firefox;
     nativeMessagingHosts = [ pkgs.unstable.firefoxpwa ];
     
     # FIX: currently, these don't seem to apply

@@ -32,7 +32,7 @@ Display Manager: [LightDM](https://github.com/canonical/lightdm)
 | Editor            | [Neovim](https://neovim.io) ([NixVim](https://github.com/nix-community/nixvim)) |
 | GUI file manager  | [Thunar](https://docs.xfce.org/xfce/thunar/start)                      |
 | TUI file manager  | [yazi](https://github.com/sxyazi/yazi)                                 |
-| Web browser       | [Firefox Beta](https://www.mozilla.org/en-US/firefox/channel/desktop/) |
+| Web browser       | [Firefox](https://firefox.com)                                         |
 | Art program       | [Krita](https://krita.org)                                             |
 | Document viewer   | [Zathura](https://git.pwmt.org/pwmt/zathura/)                          |
 | To-do list        | [dooit](https://github.com/kraanzu/dooit)                              |
