@@ -140,6 +140,17 @@
     pulse.enable = true;
   };
 
+  services.upower = {
+    enable = true;
+    usePercentageForPolicy = true;
+    percentageLow = 40;
+    percentageCritical = 20;
+
+    percentageAction = 5;
+    criticalPowerAction = "HybridSleep";
+  };
+  services.power-profiles-daemon.enable = true;
+
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
