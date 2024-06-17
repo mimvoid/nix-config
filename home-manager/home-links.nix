@@ -9,7 +9,7 @@ let
   home-manager = "${config.home.homeDirectory}/NixOS/home-manager";
 
   ref-tabs = "${home-manager}/krita/reference-tabs-docker";
-  comp-helper = "${home-manager}/krita/composition-helper";
+  comp-helper = "${home-manager}/krita/composition-helper/compositionhelper";
   timer-watch = "${home-manager}/krita/timer-watch";
 
   firefox-profile = "30dphuug.default";
