@@ -64,6 +64,10 @@ Extras
 
 - WIP: [AGS](https://github.com/Aylur/ags) widgets
 - [Obsidian.md](https://obsidian.md) CSS snippets
+- Krita plugins
+  - [Composition Helper](https://github.com/Grum999/CompositionHelper)
+  - [Reference Tabs Docker](https://invent.kde.org/freyalupen/reference-tabs-docker)
+  - [Timer Watch](https://github.com/EyeOdin/timer_watch)
 - Firefox themes & extensions
   - Custom themes: Incandescent (light) & Moonflower (dark)
   - [Catppuccin Macchiato - Maroon](https://github.com/catppuccin/firefox)
