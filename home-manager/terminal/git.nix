@@ -1,7 +1,11 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.git-secret ];
+  home.packages = with pkgs; [
+    git-secret
+    git-secrets
+    gitleaks
+  ];
 
   programs.git = {
     enable = true;
@@ -16,4 +20,6 @@
       core.editor = "nvim";
     };
   };
+
+  programs.lazygit.enable = true;
 }
