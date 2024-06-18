@@ -8,7 +8,7 @@
     {
       mode = "n";
       key = "<leader>g";
-      action = "<cmd>Lazygit<CR>";
+      action = "<cmd>LazyGit<CR>";
     }
     # Telescope
     {
