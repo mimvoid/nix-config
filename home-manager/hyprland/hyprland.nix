@@ -54,11 +54,16 @@ in
       "GDK_scale, 1"
       "GDK_BACKEND, wayland, x11, *"
 
+      # FIXME: doesn't always work, research why
+      "GTK_CSD, 0" # disable window decorations
+
       "QT_AUTO_SCREEN_SCALE_FACTOR, 1_SCALE_FACTOR, 1"
       "QT_QPA_PLATFORM, wayland; xcb"
       "QT_QPA_PLATFORMTHEME, gtk3"
       "QT_QPA_scale, 2"
       "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
+
+      "MOZ_ENABLE_WAYLAND, 1" # Wayland for Mozilla products
 
       #"XCURSOR_THEME,"
       "XCURSOR_SIZE, 24"
@@ -175,8 +180,11 @@ in
       "$mod, Q, killactive"
 
       # Reload
+      # I use this binding to manually reload anything I'm interested in.
+      # Having AGS reload also serves as a good visual indicator.
+      # You can replace it with any bar (e.g. waybar) you like.
       "$mod, R, exec, hyprctl reload config-only"
-      "$mod, R, exec, pkill ags && ags"
+      "$mod, R, exec, pkill ags && ags &"
 
       # Trigger wlogout
       "$mod SHIFT, Q, exec, wlogout -b 2"
