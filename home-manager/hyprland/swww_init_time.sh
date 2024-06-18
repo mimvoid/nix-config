@@ -5,19 +5,19 @@ case $(date +%H) in
 
 		swww img "$HOME"/NixOS/wallpapers/gracile_twilight.jpg
     ;;
-  07 | 08 | 09 | 10) # 7:00 to 10:59, morning
+  07 | 08 | 09 | 10 | 11) # 7:00 to 11:59, morning
 		
     swww img "$HOME"/NixOS/wallpapers/gracile_over-the-clouds.jpg
     ;;
-	11 | 12 | 13 | 14) # 11:00 to 14:59, midday
+	12 | 13 | 14 | 15) # 12:00 to 15:59, midday
 
 		swww img "$HOME"/NixOS/wallpapers/aeuna_under-the-blue-sky-4.jpg
 		;;
-	15 | 16 | 17 | 18 | 19 | 20) # 15:00 to 19:59, late afternoon/evening
+	16 | 17 | 18 | 19 | 20) # 16:00 to 19:59, late afternoon/evening
 
     swww img "$HOME"/NixOS/wallpapers/axle_end-of-the-summer.jpg
     ;;
-  21 | 22 | 23) # 20:00 to 23:59, evening/nighttime
+  21 | 22 | 23) # 21:00 to 23:59, evening/nighttime
 
 		swww img "$HOME"/NixOS/wallpapers/gracile_overgrown.jpg
 		;;
