@@ -10,7 +10,6 @@ window.bar {
   font-size: 10px;
 }
 
-
 .left, .center, .right {
   margin-top: 4px;
   padding: 4px 6px;
@@ -23,10 +22,13 @@ window.bar {
 .right { margin-right: 14px; }
 
 
+/*------------------------*/
+/* Widget type properties */
+/*------------------------*/
+
 button {
   min-width: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+  padding: 0;
   background-color: transparent;
 }
 
@@ -59,6 +61,7 @@ button:hover {
   transition: all 0.2s ease-in-out;
 }
 
+
 .client-title {
   margin-left: 12px;
   color: @secAccent;
@@ -80,13 +83,16 @@ button:hover {
 /*---------------*/
 
 .volume {
-  min-width: 60px;
   color: #7dc4e4;
 }
 
-.volume revealer scale {
+.volume-slider {
+  min-width: 48px;
+  min-height: 6px;
+  background-color: #cad;
   color: #7dc4e4;
 }
+
 
 .battery {
   color: @alert;
@@ -121,7 +127,7 @@ button:hover {
 }
 
 
-levelbar block,
+/*levelbar block,
 highlight {
   min-height: 10px;
-}
+}*/

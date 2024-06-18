@@ -9,6 +9,8 @@ const date = Variable("", {
   poll: [1000, 'date "+%A %b %d / %H:%M"'],
 })
 
+// TODO: modularize everything
+
 App.config({
   style: "./style.scss",
   windows: [
@@ -160,8 +162,23 @@ function Volume() {
   })
 
   // FIX: slider doesn't show, with or without revealer
-  const slider = Widget.Revealer({
+  // It loads since the cursor changes, but it's just not visible?
+  const slider = Widget.Slider({
+    class_name: "volume-slider",
+    cursor: "pointer",
+    hexpand: true,
+    vpack: "center",
+    draw_value: false,
+    on_change: ({ value }) => audio.speaker.volume = value,
+    setup: self => self.hook(audio.speaker, () => {
+      self.value = audio.speaker.volume || 0
+    }),
+  })
+
+  /*  const slider = Widget.Revealer({
     child: Widget.Slider({
+      class_name: "volume-slider",
+      cursor: "pointer",
       hexpand: true,
       draw_value: false,
       on_change: ({ value }) => audio.speaker.volume = value,
@@ -172,37 +189,74 @@ function Volume() {
 
     cursor: "pointer",
     revealChild: false,
-    transitionDuration: 500,
+    transitionDuration: 250,
     transition: 'slide_left',
-    setup: self => self.poll(2000, () => {
-      self.reveal_child = !self.reveal_child;
+  })*/
+
+/*  const eventbox = Widget.EventBox({
+    on_hover: () => {
+      value.reveal_child = true;
+      Utils.timeout(duration, () => open = true);
+    },
+    on_hover_lost: () => {
+      value.reveal_child = false;
+      open = false;
+    },
+    above_child: false,
+    child: Widget.Box({
+      children: [ icon, slider ],
     }),
-  })
+  });*/
 
   return Widget.Box({
     class_name: "volume",
-    children: [icon, slider],
+    children: [ icon, slider ],
   })
 }
 
 function BatteryLabel() {
-  // TODO: battery percentage label does't show up right.
-  const value = battery.bind("percent").as(p => p > 0 ? p / 100 : 0)
+  // FIX: battery percentage label does't show up right.
   const icon = battery.bind("percent").as(p =>
     `battery-level-${Math.floor(p / 10) * 10}-symbolic`)
+
+  const get_value = battery.bind("percent").as(p => p > 0 ? p / 100 : 0)
+
+  const value = Widget.Revealer({
+    child: Widget.Label(` ${get_value}`),
+
+    revealChild: false,
+    transitionDuration: 250,
+    transition: 'slide_left',
+  })
+
+  const eventbox = Widget.EventBox({
+    on_hover: () => {
+      value.reveal_child = true;
+      Utils.timeout(duration, () => open = true);
+    },
+    on_hover_lost: () => {
+      value.reveal_child = false;
+      open = false;
+    },
+    child: Widget.Box({
+      children: [
+        Widget.Icon({ icon }),
+        value,
+      ],
+    }),
+  });
 
   return Widget.Box({
     class_name: "battery",
     visible: battery.bind("available"),
     children: [
-      Widget.Icon({ icon }),
-      Widget.Label({
-        label: ` ${value}`,
-        vpack: "center",
-      }),
+      eventbox,
     ],
   })
 }
+
+// TODO: It's able to open a networkmanager menu, but how to theme it?
+// TODO: Replace systray nm-applet with network widget
 
 function SysTray() {
   const items = systemtray.bind("items")
@@ -211,6 +265,7 @@ function SysTray() {
       on_primary_click: (_, event) => item.activate(event),
       on_secondary_click: (_, event) => item.openMenu(event),
       tooltip_markup: item.bind("tooltip_markup"),
+      cursor: "pointer",
     })))
 
   return Widget.Box({
@@ -243,7 +298,7 @@ function PowerActions() {
     child: Widget.Icon("system-shutdown-symbolic"),
     cursor: "pointer",
 
-    // TODO: replace with an AGS widget at some point
+    // TODO: replace wlogout with an AGS widget at some point
 
     on_clicked: () => { Utils.execAsync('wlogout -b 2') },
   })
