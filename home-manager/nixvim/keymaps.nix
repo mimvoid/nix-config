@@ -4,160 +4,67 @@
     maplocalleader = " ";
   };
 
-  programs.nixvim.keymaps = [
-    {
-      mode = "n";
-      key = "<leader>g";
-      action = "<cmd>LazyGit<CR>";
-    }
-    # Telescope
-    {
-      mode = "n";
-      key = "<leader>ff";
-      action = "<cmd>Telescope find_files<cr>";
-    }
-    {
-      mode = "n";
-      key = "<leader>fr";
-      action = "<cmd>Telescope oldfiles<cr>";
-    }
-    {
-      mode = "n";
-      key = "<leader>fw";
-      action = "<cmd>Telescope live_grep<cr>";
-    }
+  programs.nixvim.keymaps =
+  # TODO: what is the syntax for a default value?
 
+  let
+    map = desc: mode: key: action: {
+      inherit mode;
+      inherit key;
+      inherit action;
+      options = {
+        inherit desc;
+      };
+    };
+    sil = desc: mode: key: action: {
+      inherit mode;
+      inherit key;
+      inherit action;
+      options = {
+        silent = true;
+        inherit desc;
+      };
+    };
+  in
+  [
     # Insert mode
-    {
-      mode = "i";
-      key = "<A-j>";
-      action = "<Down>";
-    }
-    {
-      mode = "i";
-      key = "<A-k>";
-      action = "<Up>";
-    }
-    {
-      mode = "i";
-      key = "<A-h>";
-      action = "<Left>";
-    }
-    {
-      mode = "i";
-      key = "<A-l>";
-      action = "<Right>";
-    }
+    (sil "Move down"  "i" "<A-J>" "<Down>")
+    (sil "Move up"    "i" "<A-k>" "<Up>")
+    (sil "Move left"  "i" "<A-h>" "<Left>")
+    (sil "Move right" "i" "<A-l>" "<Right>")
+    
     # Tabs
-    {
-      mode = "n";
-      key = "<leader>b";
-      action = "<cmd>tabnew<CR>";
-      options = {
-        silent = true;
-        desc = "New Tab";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>x";
-      action = "<cmd>bp<bar>sp<bar>bn<bar>bd<CR>";
-      options = {
-        silent = true;
-        desc = "Close Tab";
-      };
-    }
-    {
-      mode = "n";
-      key = "<Tab>";
-      action = "<cmd>BufferLineCycleNext<CR>";
-      options = {
-        silent = true;
-        desc = "Move to next tab";
-      };
-    }
-    {
-      mode = "n";
-      key = "<S-Tab>";
-      action = "<cmd>BufferLineCyclePrev<CR>";
-      options = {
-        silent = true;
-        desc = "Move to the previous tab";
-      };
-    }
+    (sil "New tab"      "n" "<leader>b" "<cmd>tabnew<cr>")
+    (sil "Close tab"    "n" "<leader>x" "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>")
+    (sil "Next tab"     "n" "<Tab>"     "<cmd>BufferLineCycleNext<cr>")
+    (sil "Previous tab" "n" "<S-Tab>"   "<cmd>BufferLineCyclePrev<cr>")
 
     # Windows
-    {
-      mode = "n";
-      key = "<leader>j";
-      action = "<C-W>s";
-      options = {
-        silent = true;
-        desc = "Split window below";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>l";
-      action = "<C-W>v";
-      options = {
-        silent = true;
-        desc = "Split window right";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-h>";
-      action = "<C-W>h";
-      options = {
-        silent = true;
-        desc = "Move to window left";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-l>";
-      action = "<C-W>l";
-      options = {
-        silent = true;
-        desc = "Move to window right";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-k>";
-      action = "<C-W>k";
-      options = {
-        silent = true;
-        desc = "Move to window above";
-      };
-    }
-    {
-      mode = "n";
-      key = "<C-j>";
-      action = "<C-W>j";
-      options = {
-        silent = true;
-        desc = "Move to window below";
-      };
-    }
-    {
-      mode = "n";
-      key = "<leader>t";
-      action = "<cmd>vsplit<bar>terminal<CR>";
-      options.desc = "Open terminal";
-    }
+    (sil "Split window below" "n" "<leader>j" "<C-W>s")
+    (sil "Split window right" "n" "<leader>l" "<C-W>v")
 
-    # Neo-tree
-    {
-      mode = "n";
-      key = "<leader>e";
-      action = "<cmd>Neotree focus<CR>";
-    }
-    {
-      mode = "n";
-      key = "<leader>wk";
-      action = "<cmd>WhichKey <CR>";
-    }
+    (sil "Go to window left"  "n" "<C-h>"     "<C-W>h")
+    (sil "Go to window right" "n" "<C-l>"     "<C-W>l")
+    (sil "Go to window above" "n" "<C-k>"     "<C-W>k")
+    (sil "Go to window below" "n" "<C-j>"     "<C-W>j")
+
+    (map "Open terminal"      "n" "<leader>t" "<cmd>vsplit<bar>terminal<cr>")
+
+
+    # Plugins
+    
+    # Neotree
+    (map "Focus Neotree" "n" "<leader>e" "<cmd>Neotree focus<cr>")
+    
+    #WhichKey
+    (map "Open WhichKey" "n" "<leader>wk" "<cmd>WhichKey<cr>")
+
+    # Git
+    (map "Open Lazygit"  "n" "<leader>g" "<cmd>LazyGit<cr>")
+  
+    # Telescope
+    (map "Telescope find files"   "n" "<leader>ff" "<cmd>Telescope find_files<cr>")
+    (map "Telescope recent files" "n" "<leader>fr" "<cmd>Telescope oldfiles<cr>")
+    (map "Telescope find word"    "n" "<leader>fw" "<cmd>Telescope live_grep<cr>")
   ];
 }
