@@ -13,6 +13,7 @@
         telescope_borders = true,
         cmp = true,
         lsp_semantic = true,
+
         indentblankline = false,
         notify = false,
         ts_rainbow = false,
@@ -21,7 +22,7 @@
       })
     '';
 
-    # Swap foreground and background highlights
+    # Swap foreground and background highlights for telescope
     # Make the prompt prefix red
     highlightOverride = {
       TelescopePreviewTitle = { bg = "#232136"; fg = "#3e8fb0"; };
