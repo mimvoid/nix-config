@@ -1,13 +1,12 @@
 {
   programs.nixvim.plugins.cmp = {
-    enable = true;
-    autoEnableSources = true;
-    settings = {
-      performance = {
-        throttle = 100;
-        max_view_entries = 8;
-      };
-      completion.autocomplete = false;
+   enable = true;
+   autoEnableSources = true;
+   settings = {
+     performance = {
+       throttle = 100;
+       max_view_entries = 8;
+     };
       mapping = {
         "<S><CR>" = "cmp.mapping.confirm({ select = true })";
         "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
@@ -15,10 +14,11 @@
       };
       sources = [
         {name = "nvim_lsp";}
-        {name = "cmdline";}
-        {name = "git";}
-        {name = "path";}
+        {name = "luasnip";}
         {name = "buffer";}
+        {name = "cmdline";}
+        {name = "path";}
+        {name = "git";}
       ];
       window.completion = {
         border = "rounded";
