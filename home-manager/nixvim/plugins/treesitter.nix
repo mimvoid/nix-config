@@ -28,11 +28,7 @@
         "scss"
         "typescript"
         "yaml"
-        "yuck"
       ];
-    };
-    treesitter-textobjects = {
-      enable = true;
     };
   };
 }
