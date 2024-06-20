@@ -1,6 +1,6 @@
-const audio = await Service.import("audio")
+const audio = await Service.import("audio");
 
-const icons = {
+const translate_values = {
   101: "overamplified",
   67: "high",
   34: "medium",
@@ -9,14 +9,19 @@ const icons = {
 }
 
 function getIcon() {
-  const icon = audio.speaker.is_muted ? 0 : [101, 67, 34, 1, 0].find(
+  const icon_value = audio.speaker.is_muted ? 0 : [101, 67, 34, 1, 0].find(
     threshold => threshold <= audio.speaker.volume * 100)
 
-  return `audio-volume-${icons[icon]}-symbolic`
+  return `audio-volume-${translate_values[icon_value]}-symbolic`
 }
 
-const icon = Widget.Icon({
-  icon: Utils.watch(getIcon(), audio.speaker, getIcon),
+const icon = Widget.Button({
+  child: Widget.Icon({
+    icon: Utils.watch(getIcon(), audio.speaker, getIcon),
+  }),
+
+  // Mutes or unmutes
+  on_clicked: () => audio.speaker.is_muted = !audio.speaker.is_muted,
 })
 
 // FIX: slider doesn't show, with or without revealer
@@ -28,9 +33,10 @@ const slider = Widget.Slider({
   hexpand: true,
   vpack: "center",
   draw_value: false,
+  value: audio.speaker.bind('volume'),
   on_change: ({ value }) => audio.speaker.volume = value,
   setup: self => self.hook(audio.speaker, () => {
-    self.value = audio.speaker.volume || 0
+    self.value = audio.speaker.volume
   }),
 })
 
@@ -43,6 +49,8 @@ const slider_box = Widget.Revealer({
   transition: 'slide_left',
 })
 
+
+
 const eventbox = Widget.EventBox({
   on_hover: () => {
     slider_box.reveal_child = true;
@@ -52,9 +60,13 @@ const eventbox = Widget.EventBox({
     slider_box.reveal_child = false;
     open = false;
   },
+
+  // FIXME: This does not show the right value
+  tooltip_text: `Volume: ${Math.floor(audio.speaker.volume * 100)}%`,
+  
   child: Widget.Box({
     children: [icon, slider_box],
-  }),
+  }), 
 })
 
 export default () => Widget.Box({
