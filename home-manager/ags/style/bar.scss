@@ -1,0 +1,110 @@
+@use "sass:color";
+@import "./mixins/_colors.scss";
+
+window.bar {
+  background-color: transparent;
+  font-family: "SauceCodePro Nerd Font", monospace;
+  font-size: 10px;
+}
+
+.left, .center, .right {
+  margin-top: 4px;
+  padding: 4px 6px;
+
+  border-radius: 16px;
+
+  color: $paleAccent;
+  background-color: change-color($base, $alpha: 0.70);
+}
+
+.left { margin-left: 14px; }
+.right { margin-right: 14px; }
+
+
+/* Widget class properties */
+
+button {
+  margin: 0 2px;
+  padding: 0 2px;
+
+  min-width: 0;
+ 
+  border-radius: 16px;
+  background-color: transparent;
+
+  >:hover {
+    background-color: change-color($dullAccent, $alpha: 0.25);
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+
+/* Modules */
+
+.workspaces button {
+  padding: 0 4px;
+
+  color: $secAccent;
+  background-color: transparent;
+
+  &.focused {
+    color: $alert;
+    background-color: change-color($dullAccent, $alpha: 0.2);
+    transition: all 0.2s ease-in-out;
+  }
+
+  &:hover {
+    color: $base;
+    background-color: change-color($secAccent, $alpha: 0.85);
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+/* Title */
+.client-title {
+  margin-left: 12px;
+  color: $secAccent;
+}
+
+/* Date */
+.clock {
+  margin: 0 2px;
+  color: adjust-color($watch, $lightness: 15);
+}
+
+/* Volume */
+/* FIX: the slider is not visible */
+
+.volume {
+  margin: 0 8px 0 2px;
+  color: #7dc4e4;
+}
+
+.volume-slider {
+  min-width: 48px;
+  min-height: 6px;
+  background-color: #cad;
+  color: #7dc4e4;
+}
+
+/* Battery */
+.battery {
+  margin: 0 2px;
+  color: $alert;
+}
+
+.system-tray {
+  margin: 0 4px;
+}
+
+/* Power actions */
+.power-actions {
+  color: $paleAccent;
+  background-color: change-color($dullAccent, $alpha: 0.2);
+
+  &:hover {
+    color: $base;
+    background-color: change-color($secAccent, $alpha: 0.85);
+    transition: all 0.2s ease-in-out;
+  }
+}

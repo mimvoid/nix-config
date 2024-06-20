@@ -1,5 +1,4 @@
-@import url("../../NixOS/palettes/macchiato-nightlight.css");
-@import url("./bar/style.scss");
+@import "./style/bar.scss";
 
 * {
   all: unset;
