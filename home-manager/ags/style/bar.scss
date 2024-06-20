@@ -1,10 +1,9 @@
 @use "sass:color";
 @import "./partials/_colors.scss";
+@import "./partials/_fonts.scss";
 
 window.bar {
   background-color: transparent;
-  font-family: "SauceCodePro Nerd Font", monospace;
-  font-size: 10px;
 }
 
 .left, .center, .right {
