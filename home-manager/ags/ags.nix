@@ -6,7 +6,6 @@
   home.packages = with pkgs; [
     bun
     dart-sass
-    sassc
   ];
 
   programs.ags = {
