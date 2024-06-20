@@ -1,7 +1,7 @@
 import Bar from "./bar/main.ts";
 
 App.config({
-  style: `./style.css`,
+  style: `/tmp/style.css`,
   windows: [
     Bar(),
   ],

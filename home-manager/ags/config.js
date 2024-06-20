@@ -10,7 +10,7 @@ const v = {
 }
 
 const scss = `${App.configDir}/style.scss`
-const css = `${App.configDir}/style.css`
+const css = `/tmp/style.css`
 
 Utils.exec(`sass ${scss} ${css}`)
 
@@ -18,7 +18,7 @@ Utils.monitorFile(
   `${App.configDir}/style`,
   function() {
     const scss = `${App.configDir}/style.scss`
-    const css = `${App.configDir}/style.css`
+    const css = `/tmp/style.css`
 
     Utils.exec(`sass ${scss} ${css}`)
     App.resetCss()
