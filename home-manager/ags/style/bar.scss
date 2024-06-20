@@ -76,13 +76,13 @@ button {
 /* FIX: the slider is not visible */
 
 .volume {
-  margin: 0 8px 0 2px;
+  margin-right: 4px;
   color: #7dc4e4;
 }
 
 .volume-slider {
   min-width: 48px;
-  min-height: 6px;
+  min-height: 4px;
   background-color: #cad;
   color: #7dc4e4;
 }
