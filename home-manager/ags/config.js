@@ -1,6 +1,6 @@
 import GLib from "gi://GLib"
 
-const main = "/tmp/asztal/main.js"
+const main = "/tmp/ags/main.js"
 const entry = `${App.configDir}/main.ts`
 const bundler = GLib.getenv("AGS_BUNDLER") || "bun"
 
@@ -8,6 +8,23 @@ const v = {
   ags: pkg.version?.split(".").map(Number) || [],
   expect: [1, 8, 1],
 }
+
+const scss = `${App.configDir}/style.scss`
+const css = `${App.configDir}/style.css`
+
+Utils.exec(`sass ${scss} ${css}`)
+
+Utils.monitorFile(
+  `${App.configDir}/style`,
+  function() {
+    const scss = `${App.configDir}/style.scss`
+    const css = `${App.configDir}/style.css`
+
+    Utils.exec(`sass ${scss} ${css}`)
+    App.resetCss()
+    App.applyCss(css)
+  },
+)
 
 try {
   switch (bundler) {
