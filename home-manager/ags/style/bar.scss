@@ -1,6 +1,7 @@
 @use "sass:color";
 @import "./partials/_colors.scss";
 @import "./partials/_fonts.scss";
+@import "./partials/_looks.scss";
 
 window.bar {
   background-color: transparent;
@@ -10,7 +11,7 @@ window.bar {
   margin-top: 4px;
   padding: 4px 6px;
 
-  border-radius: 16px;
+  border-radius: $radius;
 
   color: $paleAccent;
   background-color: change-color($base, $alpha: 0.70);
@@ -28,7 +29,7 @@ button {
 
   min-width: 0;
  
-  border-radius: 16px;
+  border-radius: $radius;
   background-color: transparent;
 
   >:hover {
