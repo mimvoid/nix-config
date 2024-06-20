@@ -15,7 +15,8 @@
     vesktop
 
     # Misc
-    anki
+    anki-bin
+    anki-sync-server
     bottles
     amberol
     nextcloud-client
