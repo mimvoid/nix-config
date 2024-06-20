@@ -3,7 +3,11 @@
 {
   imports = [ inputs.ags.homeManagerModules.default ];
 
-  home.packages = with pkgs; [ bun ];
+  home.packages = with pkgs; [
+    bun
+    dart-sass
+    sassc
+  ];
 
   programs.ags = {
     enable = true;
