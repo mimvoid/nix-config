@@ -74,6 +74,7 @@ in
     # TODO: think of better names for these
     let
       opaquer-title = val: "opacity 0.9 override 0.75 override, title:(${val})";
+      opaquer-class = val: "opacity 0.9 override 0.75 override, class:(${val})";
       opaque-ish = val: "opacity 0.98 override 0.85 override, class:(${val})";
       active-opaque = val: "opacity 1.0 override 0.85 override, class:(${val})";
       opaque = val: "opaque, class:(${val})";
@@ -81,6 +82,7 @@ in
     [
       "suppressevent maximize, class:.*"
       (opaquer-title "*Nextcloud")
+      (opaquer-class "Anki")
       (opaque-ish "FreeTube")
       (opaque-ish "Zotero")
       (opaque-ish "obsidian")
