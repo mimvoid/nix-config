@@ -1,11 +1,8 @@
-import { Utils, Widget } from "../../imports.js";
+const date = Variable("", {
+  poll: [1000, 'date "+%A %b %d / %H:%M"'],
+})
 
-export default () => Widget.EventBox({
-  child: Widget.Label({ className: "date module" })
-    .poll(1000,
-      (self) =>
-        Utils.execAsync(["date", "+%A %b %d / %H:%M"]).then((r) =>
-          self.label = r
-        ),
-    ),
-});
+export default () => Widget.Label({
+  class_name: "clock",
+  label: date.bind(),
+})

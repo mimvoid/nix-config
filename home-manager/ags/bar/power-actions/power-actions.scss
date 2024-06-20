@@ -1,0 +1,13 @@
+.power-actions {
+  color: @paleAccent;
+  background-color: alpha(@dullAccent, 0.2);
+  border-radius: 16px;
+  padding: 0 2px;
+}
+
+.power-actions:hover {
+  color: @base;
+  background-color: alpha(@secAccent, 0.85);
+  transition: color 0.2s ease-in-out;
+  transition: background-color 0.2s ease-in-out;
+}
