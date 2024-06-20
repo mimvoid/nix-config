@@ -10,7 +10,7 @@ import PowerActions from "./power-actions/power-actions.ts";
 
 
 export default (monitor: number) => Widget.Window({
-  monitor: 0,
+  monitor,
   name: `bar-${monitor}`,
   class_name: "bar",
   anchor: ["top", "left", "right"],
