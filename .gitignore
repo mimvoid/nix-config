@@ -1,8 +1,16 @@
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
 
+# Nix
 result/
+
+# Sass
+.sass-cache/
+*.css.map
+*.sass.map
+*.scss.map
 
 # Prerequisites
 *.d
