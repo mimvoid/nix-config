@@ -1,5 +1,22 @@
+@use "sass:color";
+@import "./style/partials/_fonts.scss";
+@import "./style/partials/_colors.scss";
 @import "./style/bar.scss";
 
 * {
   all: unset;
+  font-family: $monospace;
+  font-size: $font-size;
+}
+
+tooltip {
+  background-color: transparent;
+  border: none;
+
+  >*>* {
+    padding: 4px 8px;
+    border-radius: 16px;
+    background-color: change-color($base, $alpha: 0.70);
+    color: $text;
+  }
 }
