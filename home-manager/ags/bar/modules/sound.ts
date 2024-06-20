@@ -34,40 +34,30 @@ const slider = Widget.Slider({
   }),
 })
 
-/*  const slider = Widget.Revealer({
-  child: Widget.Slider({
-    class_name: "volume-slider",
-    cursor: "pointer",
-    hexpand: true,
-    draw_value: false,
-    on_change: ({ value }) => audio.speaker.volume = value,
-    setup: self => self.hook(audio.speaker, () => {
-      self.value = audio.speaker.volume || 0
-    }),
-  }),
+const slider_box = Widget.Revealer({
+  child: slider,
 
   cursor: "pointer",
   revealChild: false,
   transitionDuration: 250,
   transition: 'slide_left',
-})*/
+})
 
-/*const eventbox = Widget.EventBox({
+const eventbox = Widget.EventBox({
   on_hover: () => {
-    value.reveal_child = true;
+    slider_box.reveal_child = true;
     Utils.timeout(duration, () => open = true);
   },
   on_hover_lost: () => {
-    value.reveal_child = false;
+    slider_box.reveal_child = false;
     open = false;
   },
-  above_child: false,
   child: Widget.Box({
-    children: [ icon, slider ],
+    children: [icon, slider_box],
   }),
-});*/
+})
 
 export default () => Widget.Box({
   class_name: "volume",
-  children: [ icon, slider ],
+  child: eventbox,
 })

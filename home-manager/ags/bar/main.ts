@@ -1,12 +1,12 @@
-import Workspaces from "./workspaces/workspaces.ts";
-import ClientTitle from "./title/title.ts";
+import Workspaces from "./modules/workspaces.ts";
+import ClientTitle from "./modules/title.ts";
 
-import Clock from "./date/date.ts";
+import Clock from "./modules/date.ts";
 
-import Volume from "./sound/sound.ts";
-import Battery from "./battery/battery.ts";
-import SysTray from "./tray/tray.ts";
-import PowerActions from "./power-actions/power-actions.ts";
+import Volume from "./modules/sound.ts";
+import Battery from "./modules/battery.ts";
+import SysTray from "./modules/tray.ts";
+import PowerActions from "./modules/power-actions.ts";
 
 
 export default (monitor: number) => Widget.Window({
