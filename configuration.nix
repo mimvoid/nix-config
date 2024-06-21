@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hosts/h1/hardware-configuration.nix
     ./system/lightdm.nix
     ./system/grub.nix
   ];
@@ -155,8 +155,6 @@
     hostName = "nixos";
     networkmanager.enable = true;
   };
-
-  programs.ssh.startAgent = true;
 
   # Bluetooth
   hardware.bluetooth = {
