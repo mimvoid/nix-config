@@ -51,6 +51,11 @@
         specialArgs = { inherit inputs allowed-unfree-packages; };
         modules = [ ./configuration.nix ];
       };
+
+      customIso = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [ ./hosts/iso/configuration.nix ];
+      };
     };
     
     homeConfigurations = {
