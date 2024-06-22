@@ -5,6 +5,7 @@
     ./hosts/h1/hardware-configuration.nix
     ./system/lightdm.nix
     ./system/grub.nix
+    ./system/virt.nix
   ];
 
   # General system configurations
@@ -25,27 +26,15 @@
 
   # Minimum system packages, most are in home manager
   environment.systemPackages = with pkgs; [
-    bash
-    zsh
-
     git
-    neovim
     nh
     wget
     curl
-    appimage-run
-    xfce.xfce4-docklike-plugin
   ];
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override {fonts = ["SourceCodePro"];})
-    fira-code
+    (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
   ];
-
-  # Bootloader
-  # TODO: remove this once GRUB2 is configured
-  #boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true; 
 
   # X11
   services.xserver = {
@@ -54,9 +43,6 @@
     # Configure keymap in X11
     xkb.layout = "us";
     xkb.variant = "";
-
-    # Touchpad support
-    libinput.enable = true;
   };
 
   programs.xwayland.enable = true;
@@ -114,18 +100,32 @@
   # Apps & Services #
   #-----------------#
 
+  users.users.zinnia = {
+    isNormalUser = true;
+    description = "zinnia";
+    extraGroups = [ "networkmanager" "wheel" ];
+    packages = with pkgs; [
+      neovim
+      appimage-run
+      xfce.xfce4-docklike-plugin
+    ];
+    shell = pkgs.zsh;
+  };
+
   programs = {
     zsh.enable = true;
     firefox.enable = true;
   };
 
   security.polkit.enable = true;
-  programs.xfconf.enable = true;
-
+  
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.zinnia.enableGnomeKeyring = true;
 
-  virtualisation.podman.enable = true;
+  programs.xfconf.enable = true;
+
+  # Touchpad support
+  services.libinput.enable = true;
 
   # Pipewire
   sound.enable = true;
@@ -140,6 +140,7 @@
     pulse.enable = true;
   };
 
+  # Power management
   services.upower = {
     enable = true;
     usePercentageForPolicy = true;
@@ -151,12 +152,12 @@
   };
   services.power-profiles-daemon.enable = true;
 
+  # Networks & connections
   networking = {
     hostName = "nixos";
     networkmanager.enable = true;
   };
 
-  # Bluetooth
   hardware.bluetooth = {
     enable = true;
     powerOnBoot = true;
@@ -167,9 +168,9 @@
     enable = true;
     package = pkgs.cups;
     drivers = with pkgs; [
-      epsonscan2
       epson-escpr
       epson-escpr2
+      epsonscan2
     ];
     startWhenNeeded = true;
   };
@@ -182,19 +183,12 @@
     enable = true;
     package = pkgs.gvfs;
   };
+
   services.tumbler.enable = true;
 
   #---------------#
   # Miscellaneous #
   #---------------#
-
-  users.users.zinnia = {
-    isNormalUser = true;
-    description = "zinnia";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ neovim ];
-    shell = pkgs.zsh;
-  };
 
   time.timeZone = "America/New_York";
 
