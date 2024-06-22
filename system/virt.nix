@@ -14,9 +14,6 @@
       };
     };
 
-    useBootLoader = true;
-    useEFIBoot = true;
-
     libvirtd.enable = true;
     kvmgt.enable = true;
   };
