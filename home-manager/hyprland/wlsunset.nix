@@ -1,4 +1,9 @@
+{ pkgs, ... }:
+
 {
+  # Allows wlsunset to launch with a terminal command
+  home.packages = [ pkgs.wlsunset ];
+
   services.wlsunset = {
     enable = true;
     systemdTarget = "hyprland-session.target";
