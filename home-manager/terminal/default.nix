@@ -10,9 +10,9 @@
 
   home.packages = with pkgs; [
     xterm
+    bluetuith
     rclone
+    distrobox
     unstable.dooit
-    wttrbar
-    wego
   ];
 }

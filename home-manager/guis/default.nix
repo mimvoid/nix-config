@@ -8,19 +8,24 @@
     # Documents
     pdfarranger
     zotero_7
+
+    # Files
     xarchiver
+    nextcloud-client
+    localsend
 
     # Contact
     zoom-us
     vesktop
 
+    # Virtualisation
+    bottles
+    virt-manager
+
     # Misc
     anki-bin
     anki-sync-server
-    bottles
     amberol
-    nextcloud-client
-    localsend
   ];
 
   imports = [
