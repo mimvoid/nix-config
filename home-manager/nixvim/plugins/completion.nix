@@ -5,20 +5,17 @@
    settings = {
      performance = {
        throttle = 100;
-       max_view_entries = 8;
+       max_view_entries = 6;
      };
       mapping = {
-        "<S><CR>" = "cmp.mapping.confirm({ select = true })";
+        "<CR>" = "cmp.mapping.confirm({ select = true })";
         "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
-        "<A-Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
+        "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
       };
       sources = [
-        {name = "nvim_lsp";}
-        {name = "luasnip";}
-        {name = "buffer";}
-        {name = "cmdline";}
         {name = "path";}
-        {name = "git";}
+        {name = "nvim_lsp"; keyword_length = 1; }
+        {name = "buffer"; keyword_length = 3; }
       ];
       window.completion = {
         border = "rounded";
