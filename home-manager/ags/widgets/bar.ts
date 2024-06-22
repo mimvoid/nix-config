@@ -1,12 +1,13 @@
-import Workspaces from "./modules/workspaces.ts";
-import ClientTitle from "./modules/title.ts";
+import Workspaces from "./bar-modules/workspaces";
+import ClientTitle from "./bar-modules/title";
 
-import Clock from "./modules/date.ts";
+import Clock from "./bar-modules/date";
 
-import Volume from "./modules/sound.ts";
-import Battery from "./modules/battery.ts";
-import SysTray from "./modules/tray.ts";
-import PowerActions from "./modules/power-actions.ts";
+import Volume from "./bar-modules/sound";
+import Battery from "./bar-modules/battery";
+import SysTray from "./bar-modules/tray";
+import WlsunsetToggle from "./bar-modules/wlsunset";
+import PowerActions from "./bar-modules/power-actions";
 
 
 export default (monitor: number) => Widget.Window({
@@ -54,6 +55,7 @@ function Right() {
       Battery(),
       SysTray(),
       //Notification(),
+      WlsunsetToggle(),
       PowerActions(),
     ],
   })

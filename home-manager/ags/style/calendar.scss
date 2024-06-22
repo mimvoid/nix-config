@@ -1,0 +1,16 @@
+@use "sass:color";
+@import "./variables/_looks.scss";
+@import "./variables/_colors.scss";
+
+// TODO: configure individual elements of calendar
+
+calendar {
+  all: unset;
+  padding: 4px;
+  border-radius: $radius;
+
+  font-size: 15px;
+
+  background-color: change-color($base, $alpha: 0.70);
+  color: $text; 
+}

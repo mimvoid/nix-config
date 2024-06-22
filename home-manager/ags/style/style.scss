@@ -1,0 +1,36 @@
+@use "sass:color";
+@import "./variables/_looks.scss";
+@import "./variables/_fonts.scss";
+@import "./variables/_colors.scss";
+@import "./bar.scss";
+@import "./calendar.scss";
+
+* {
+  all: unset;
+  font-family: $font-family;
+  font-size: $font-size;
+}
+
+window.popup {
+  menu {
+    padding: 8px;
+    border-radius: 8px;
+    background-color: change-color($base, $alpha: 0.70);
+    color: $text;
+  }
+  menuitem {
+    margin: 2px;
+  }
+}
+
+tooltip {
+  background-color: transparent;
+  border: none;
+
+  >*>* {
+    padding: 4px 8px;
+    border-radius: $radius;
+    background-color: change-color($base, $alpha: 0.70);
+    color: $text;
+  }
+}

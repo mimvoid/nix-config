@@ -9,16 +9,16 @@ const v = {
   expect: [1, 8, 1],
 }
 
-const scss = `${App.configDir}/style.scss`
-const css = `/tmp/style.css`
+const scss = `${App.configDir}/style/style.scss`
+const css = `/tmp/style/style.css`
 
 Utils.exec(`sass ${scss} ${css}`)
 
 Utils.monitorFile(
   `${App.configDir}/style`,
   function() {
-    const scss = `${App.configDir}/style.scss`
-    const css = `/tmp/style.css`
+    const scss = `${App.configDir}/style/style.scss`
+    const css = `/tmp/style/style.css`
 
     Utils.exec(`sass ${scss} ${css}`)
     App.resetCss()

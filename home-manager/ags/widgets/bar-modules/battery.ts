@@ -16,7 +16,7 @@ const value = Widget.Revealer({
 const eventbox = Widget.EventBox({
   on_hover: () => {
     value.reveal_child = true;
-    Utils.timeout(duration, () => open = true);
+    open = true;
   },
   on_hover_lost: () => {
     value.reveal_child = false;
@@ -24,7 +24,11 @@ const eventbox = Widget.EventBox({
   },
   child: Widget.Box({
     children: [
-      Widget.Icon({ icon }),
+      Widget.Icon({
+        icon,
+        // Sets a class name to a charging battery, for styling
+        class_name: battery.bind('charging').as(ch => ch ? 'charging' : '')
+      }),
       value,
     ],
   }),

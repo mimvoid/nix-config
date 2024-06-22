@@ -1,9 +1,11 @@
-import Bar from "./bar/main.ts";
+import Bar from "./widgets/bar";
+import Calendar from "./widgets/calendar";
 
 App.config({
-  style: `/tmp/style.css`,
+  style: `/tmp/style/style.css`,
   windows: [
     Bar(),
+    Calendar(),
   ],
 })
 

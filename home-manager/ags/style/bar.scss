@@ -1,7 +1,7 @@
 @use "sass:color";
-@import "./partials/_colors.scss";
-@import "./partials/_fonts.scss";
-@import "./partials/_looks.scss";
+@import "./variables/_colors.scss";
+@import "./variables/_fonts.scss";
+@import "./variables/_looks.scss";
 
 window.bar {
   background-color: transparent;
@@ -32,7 +32,7 @@ button {
   border-radius: $radius;
   background-color: transparent;
 
-  >:hover {
+  &:hover {
     background-color: change-color($dullAccent, $alpha: 0.25);
     transition: all 0.2s ease-in-out;
   }
@@ -69,7 +69,10 @@ button {
 /* Date */
 .clock {
   margin: 0 2px;
-  color: adjust-color($watch, $lightness: 15);
+  color: adjust-color($watch, $lightness: 10);
+
+  /* disable default button background color */
+  &:hover { background-color: transparent; };
 }
 
 /* Volume */
@@ -83,7 +86,7 @@ button {
 .volume-slider {
   min-width: 48px;
   min-height: 4px;
-  background-color: #cad;
+  background-color: #494d64;
   color: #7dc4e4;
 }
 
@@ -97,9 +100,14 @@ button {
   margin: 0 4px;
 }
 
+.wlsunset-toggle {
+  color: adjust-color($watch, $lightness: 8);
+}
+
 /* Power actions */
 .power-actions {
-  color: $paleAccent;
+  margin-left: 4px;
+  color: $mainAccent;
   background-color: change-color($dullAccent, $alpha: 0.2);
 
   &:hover {

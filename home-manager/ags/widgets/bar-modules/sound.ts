@@ -54,7 +54,7 @@ const slider_box = Widget.Revealer({
 const eventbox = Widget.EventBox({
   on_hover: () => {
     slider_box.reveal_child = true;
-    Utils.timeout(duration, () => open = true);
+    open = true;
   },
   on_hover_lost: () => {
     slider_box.reveal_child = false;
