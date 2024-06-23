@@ -58,7 +58,6 @@ function Right() {
       Bluetooth(),
       Volume(),
       Battery(),
-      //Notification(),
       WlsunsetToggle(),
       PowerActions(),
     ],
