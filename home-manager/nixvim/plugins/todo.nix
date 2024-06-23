@@ -2,12 +2,12 @@
   programs.nixvim.plugins.todo-comments = {
     enable = true;
     colors = {
-      error = [ "DiagnosticError" "ErrorMsg" "#DC2626" ];
-      warning = [ "DiagnosticWarn" "WarningMsg" "#FBBF24" ];
-      info = [ "DiagnosticInfo" "#2563EB" ];
-      hint = [ "DiagnosticHint" "#10B981" ];
-      default = [ "Identifier" "#7C3AED" ];
-      test = [ "Identifier" "#FF00FF" ];
+      error = [ "DiagnosticError" "ErrorMsg" "#EB6F92" ];
+      warning = [ "DiagnosticWarn" "WarningMsg" "#F6C177" ];
+      info = [ "DiagnosticInfo" "#C4A7E7" ];
+      hint = [ "DiagnosticHint" "#3E8FB0" ];
+      default = [ "Identifier" "#EA9A97" ];
+      test = [ "Identifier" "#EA9A97" ];
     };
     highlight = {
       keyword = "wide_fg";
