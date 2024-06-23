@@ -118,8 +118,12 @@ label {
 }
 
 /* Battery */
+
+/* TODO: different colors for battery percentages */
 .battery {
   color: $alert;
+
+  .charging { color: $alert; }
 }
 
 .wlsunset-toggle {

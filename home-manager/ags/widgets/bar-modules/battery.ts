@@ -1,21 +1,22 @@
-const battery = await Service.import("battery")
+const battery = await Service.import("battery");
 
-const icon = battery.bind("percent").as(p =>
-  `battery-level-${Math.floor(p / 10) * 10}-symbolic`)
+const icon = Widget.Icon({
+  icon: battery.bind("percent")
+    .as(p =>`battery-level-${Math.floor(p / 10) * 10}-symbolic`),
+  
+  // Sets a class name to a charging battery for styling
+  class_name: battery.bind('charging').as(ch => ch ? 'charging' : ''),
+  
+  // Makes it sideways
+  css: "-gtk-icon-transform: rotate(90deg);",
+})
 
 const value = Widget.Label({
   label: battery.bind("percent").as(p => `${p}%`),
 })
 
 const battery_widget = Widget.Box({
-  children: [
-    Widget.Icon({
-      icon,
-      // Sets a class name to a charging battery for styling
-      class_name: battery.bind('charging').as(ch => ch ? 'charging' : '')
-    }),
-    value,
-  ],
+  children: [ icon, value ],
 
   // TODO: this displays an absurdly high number of hours when
   // when discharging with a nearly full battery,
