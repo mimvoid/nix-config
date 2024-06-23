@@ -40,12 +40,4 @@ in
       border = "${hue.watch}ff";
     };
   };
-    
-  services.mako = {
-    font = "${type.monospace.name} Medium 9";
-    backgroundColor = "#${hue.base}bb";
-    textColor = "#${hue.text}";
-    borderColor = "#${hue.secAccent}";
-    progressColor = "over #${hue.edge}";
-  };
 }

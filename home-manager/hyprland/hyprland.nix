@@ -34,7 +34,6 @@ in
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
       "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon &"
       "hypridle &"
-      "mako &"
       "ags &"
       # Includes swww daemon, see ./hypr-theme.nix
     ];
@@ -186,7 +185,7 @@ in
       # Having AGS reload also serves as a good visual indicator.
       # You can replace it with any bar (e.g. waybar) you like.
       "$mod, R, exec, hyprctl reload config-only"
-      "$mod, R, exec, pkill ags && ags &"
+      "$mod, R, exec, ags --quit && ags &"
 
       # Trigger wlogout
       "$mod SHIFT, Q, exec, wlogout -b 2"
