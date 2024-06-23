@@ -21,7 +21,7 @@ window.bar {
 .right { margin-right: 14px; }
 
 
-/* Widget class properties */
+/* General widget properties */
 
 button {
   margin: 0 2px;
@@ -38,11 +38,26 @@ button {
   }
 }
 
+label {
+  margin: 0 4px;
+}
+
+.network:hover, .bluetooth:hover, .volume, .battery {
+  margin: 0 4px;
+}
+
+/* Default overwrites */
+.workspaces label, .workspaces button, .volume button {
+  margin: 0;
+}
+
 
 /* Modules */
 
+/* Workspaces */
+
 .workspaces button {
-  padding: 0 4px;
+  padding: 0 6px;
 
   color: $secAccent;
   background-color: transparent;
@@ -62,24 +77,37 @@ button {
 
 /* Title */
 .client-title {
-  margin-left: 12px;
+  margin-left: 10px;
   color: $secAccent;
 }
 
 /* Date */
 .clock {
-  margin: 0 2px;
   color: adjust-color($watch, $lightness: 10);
 
   /* disable default button background color */
   &:hover { background-color: transparent; };
 }
 
+/* System tray */
+.system-tray {
+  margin: 0 2px;
+}
+
+/* Network */
+.network {
+  color: $warning;
+}
+
+/* Bluetooth */
+.bluetooth {
+  color: #8aadf4;
+}
+
 /* Volume */
 /* FIX: the slider is not visible */
 
 .volume {
-  margin-right: 4px;
   color: #7dc4e4;
 }
 
@@ -92,12 +120,7 @@ button {
 
 /* Battery */
 .battery {
-  margin: 0 2px;
   color: $alert;
-}
-
-.system-tray {
-  margin: 0 4px;
 }
 
 .wlsunset-toggle {
@@ -106,7 +129,8 @@ button {
 
 /* Power actions */
 .power-actions {
-  margin-left: 4px;
+  margin: 0 0 0 6px;
+  padding: 0 4px;
   color: $mainAccent;
   background-color: change-color($dullAccent, $alpha: 0.2);
 
