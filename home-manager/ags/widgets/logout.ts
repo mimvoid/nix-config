@@ -28,12 +28,14 @@ const shutdown = ({
 
 
 const menu_left = Widget.CenterBox({
+  class_name: "logout-left",
   vertical: true,
   start_widget: lock,
   end_widget: logout,
 })
 
 const menu_right = Widget.CenterBox({
+  class_name: "logout-right".
   vertical: true,
   start_widget: restart,
   end_widget: shutdown,
@@ -44,7 +46,7 @@ export default (monitor: number) => Widget.Window({
   monitor,
   name: "logout-menu",
   class_name: "logout",
-  anchor: [],
+  anchor: [], // let it be centered
   exclusivity: "normal",
   layer: "overlay",
   children: [ menu_left, menu_right ],

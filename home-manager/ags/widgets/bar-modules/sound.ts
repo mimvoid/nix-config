@@ -21,8 +21,14 @@ const icon = Widget.Button({
   }),
 
   // Mutes or unmutes
+  cursor: "pointer",
   on_clicked: () => audio.speaker.is_muted = !audio.speaker.is_muted,
 })
+
+const label = Widget.Label({
+  label: audio.speaker.bind('volume').as(v => `${Math.floor(v * 100)}%`),
+})
+
 
 // FIX: slider doesn't show, with or without revealer
 // It loads since the cursor changes, but it's just not visible?
@@ -49,8 +55,6 @@ const slider_box = Widget.Revealer({
   transition: 'slide_left',
 })
 
-
-
 const eventbox = Widget.EventBox({
   on_hover: () => {
     slider_box.reveal_child = true;
@@ -61,15 +65,14 @@ const eventbox = Widget.EventBox({
     open = false;
   },
 
-  // FIXME: This does not show the right value
-  tooltip_text: `Volume: ${Math.floor(audio.speaker.volume * 100)}%`,
-  
+  //tooltip_text: `Volume: $audio.bind('volume').as(v => ${Math.floor(v*100)}%`,
+ 
   child: Widget.Box({
-    children: [icon, slider_box],
+    children: [slider_box, label],
   }), 
 })
 
 export default () => Widget.Box({
   class_name: "volume",
-  child: eventbox,
+  children: [icon, eventbox],
 })

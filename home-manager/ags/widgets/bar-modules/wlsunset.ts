@@ -8,7 +8,6 @@ const icon = Widget.Icon({
 
 export default () => Widget.Button({
   class_name: "wlsunset-toggle",
-  child: icon,
   cursor: "pointer",
   tooltip_text: "Toggle wlsunset",
 
@@ -17,4 +16,6 @@ export default () => Widget.Button({
     (output) => print(output),
     (err) => logError(err),
   )},
+
+  child: icon,
 })

@@ -1,18 +1,28 @@
 const systemtray = await Service.import("systemtray")
 
-// TODO: It's able to open a networkmanager menu, but how to theme it?
-// TODO: Replace systray nm-applet with network widget
+// Contains the system tray applets to ignore
+const ignore = [
+  "nm-applet", // there's already network module
+];
 
-const items = systemtray.bind("items")
-  .as(items => items.map(item => Widget.Button({
-    child: Widget.Icon({ icon: item.bind("icon") }),
-    on_primary_click: (_, event) => item.activate(event),
-    on_secondary_click: (_, event) => item.openMenu(event),
-    tooltip_markup: item.bind("tooltip_markup"),
-    cursor: "pointer",
-  })))
-
-export default () => Widget.Box({
+// Makes a button for each system tray item
+const tray_items = (item: TrayItem) => Widget.Button({
   class_name: "system-tray",
-  children: items,
+  child: Widget.Icon({
+    icon: item.bind("icon")
+  }),
+
+  cursor: "pointer",
+  on_primary_click: (_, event) => item.activate(event),
+  on_secondary_click: (_, event) => item.openMenu(event),
+  
+  tooltip_markup: item.bind("tooltip_markup"),
+
+  // Shows what the item is called
+  tooltip_text: item.bind('title'),
 })
+
+export default () => Widget.Box()
+  .bind("children", systemtray, "items", i => i
+    .filter(({ id }) => !ignore.includes(id))
+    .map(tray_items))

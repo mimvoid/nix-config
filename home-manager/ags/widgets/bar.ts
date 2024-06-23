@@ -3,9 +3,11 @@ import ClientTitle from "./bar-modules/title";
 
 import Clock from "./bar-modules/date";
 
+import SysTray from "./bar-modules/tray";
+import Network from "./bar-modules/network.ts";
+import Bluetooth from "./bar-modules/bluetooth";
 import Volume from "./bar-modules/sound";
 import Battery from "./bar-modules/battery";
-import SysTray from "./bar-modules/tray";
 import WlsunsetToggle from "./bar-modules/wlsunset";
 import PowerActions from "./bar-modules/power-actions";
 
@@ -51,9 +53,11 @@ function Right() {
     class_name: "right",
     hpack: "end",
     children: [
+      SysTray(),
+      Network(),
+      Bluetooth(),
       Volume(),
       Battery(),
-      SysTray(),
       //Notification(),
       WlsunsetToggle(),
       PowerActions(),

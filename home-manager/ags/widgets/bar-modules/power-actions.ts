@@ -3,7 +3,7 @@ export default () => Widget.Button({
   child: Widget.Icon("system-shutdown-symbolic"),
   cursor: "pointer",
 
-  // TODO: replace wlogout with an AGS widget at some point
+  // TODO: replace wlogout
 
   on_clicked: () => { Utils.execAsync('wlogout -b 2') },
 })
