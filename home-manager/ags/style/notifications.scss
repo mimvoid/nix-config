@@ -1,0 +1,61 @@
+@use "sass:color";
+@import "./variables/_colors.scss";
+@import "./variables/_looks.scss";
+
+window.notification-popups box.notifications {
+  min-width: 2px;
+  min-height: 2px;
+  padding: 8px;
+}
+
+/* FIX: make height flexible */
+/* TODO: justify content to center */
+
+.notification {
+  min-width: 200px;
+  min-height: 28px;
+
+  margin: 4px;
+  padding: 8px;
+
+  border-radius: $radius*0.25;
+
+  background-color: change-color($base, $alpha: 0.7);
+
+  border: 1px solid $secAccent;
+  .critical { border: 1px solid $alert; }
+}
+
+.icon {
+  min-width: 4px;
+  min-height: 4px;
+  margin: 0 8px 0 0;
+  
+  image {
+    margin: 4px;
+    font-size: 16px;
+    color: $mainAccent;
+  }
+  
+  box {
+    min-width: 4px;
+    min-height: 4px;
+    border-radius: 6px;
+  }
+}
+
+.title {
+  font-weight: bold;
+  color: $text;
+}
+
+.body {
+  color: $text;
+}
+
+.actions .action-button {
+  margin: 4px 2px 0 2px;
+  
+  &:first-child { margin-left: 0; }
+  &:last-child { margin-right: 0; }
+}
