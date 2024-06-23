@@ -24,8 +24,7 @@ window.bar {
 /* General widget properties */
 
 button {
-  margin: 0 2px;
-  padding: 0 2px;
+  padding: 0 4px;
 
   min-width: 0;
  
@@ -42,12 +41,12 @@ label {
   margin: 0 4px;
 }
 
-.network:hover, .bluetooth:hover, .volume, .battery {
+.volume, .battery {
   margin: 0 4px;
 }
 
 /* Default overwrites */
-.workspaces label, .workspaces button, .volume button {
+.workspaces label {
   margin: 0;
 }
 
