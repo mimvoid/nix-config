@@ -40,11 +40,9 @@ const list_box = Widget.Revealer({
 const eventbox = Widget.EventBox({
   on_hover: () => {
     list_box.reveal_child = true;
-    open = true;
   },
   on_hover_lost: () => {
     list_box.reveal_child = false;
-    open = false;
   },
 
   child: Widget.Box({

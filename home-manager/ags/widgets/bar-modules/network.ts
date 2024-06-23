@@ -29,11 +29,9 @@ const wifi_label_box = Widget.Revealer({
 const wifi_eventbox = Widget.EventBox({
   on_hover: () => {
     wifi_label_box.reveal_child = true;
-    open = true;
   },
   on_hover_lost: () => {
     wifi_label_box.reveal_child = false;
-    open = false;
   },
 
   child: Widget.Box({

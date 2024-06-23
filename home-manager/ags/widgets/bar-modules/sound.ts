@@ -58,11 +58,9 @@ const slider_box = Widget.Revealer({
 const eventbox = Widget.EventBox({
   on_hover: () => {
     slider_box.reveal_child = true;
-    open = true;
   },
   on_hover_lost: () => {
     slider_box.reveal_child = false;
-    open = false;
   },
 
   //tooltip_text: `Volume: $audio.bind('volume').as(v => ${Math.floor(v*100)}%`,
