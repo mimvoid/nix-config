@@ -1,7 +1,11 @@
 const notifications = await Service.import("notifications")
 
 /** @param {import('resource:///com/github/Aylur/ags/service/notifications.js').Notification} n */
-function NotificationIcon({ app_entry, app_icon, image }) {
+function NotificationIcon({ app_entry, app_icon, image }) { 
+  // Default icon
+  let icon = "dialog-information-symbolic"
+
+  // Uses an image for the icon, if available
   if (image) {
     return Widget.Box({
       css: `background-image: url("${image}");`
@@ -10,8 +14,8 @@ function NotificationIcon({ app_entry, app_icon, image }) {
         + "background-position: center;",
     })
   }
-
-  let icon = "dialog-information-symbolic"
+  
+  // Picks an icon for an app, if available
   if (Utils.lookUpIcon(app_icon))
     icon = app_icon
 
@@ -25,14 +29,17 @@ function NotificationIcon({ app_entry, app_icon, image }) {
 
 /** @param {import('resource:///com/github/Aylur/ags/service/notifications.js').Notification} n */
 function Notification(n) {
+  // The 4 elements of a notification
   const icon = Widget.Box({
-    vpack: "start",
     class_name: "icon",
+    vpack: "start",
+
     child: NotificationIcon(n),
   })
 
   const title = Widget.Label({
     class_name: "title",
+    
     xalign: 0,
     justification: "left",
     hexpand: true,
@@ -40,18 +47,21 @@ function Notification(n) {
     max_width_chars: 24,
     truncate: "end",
     wrap: true,
-    label: n.summary,
     use_markup: true,
+  
+    label: n.summary,
   })
 
   const body = Widget.Label({
     class_name: "body",
-    hexpand: true,
-    use_markup: true,
+    
     xalign: 0,
     justification: "left",
-    label: n.body,
+    hexpand: true,
     wrap: true,
+    use_markup: true,
+  
+    label: n.body,
   })
 
   const actions = Widget.Box({
@@ -63,33 +73,39 @@ function Notification(n) {
         n.dismiss()
       },
       hexpand: true,
+      hpack: "center",
       child: Widget.Label(label),
     })),
   })
 
-  return Widget.EventBox(
-    {
-      attribute: { id: n.id },
-      on_primary_click: n.dismiss,
-    },
-    Widget.Box(
-      {
-        class_name: `notification ${n.urgency}`,
-        vertical: true,
-      },
-      Widget.Box([
-        icon,
-        Widget.Box(
-          { vertical: true },
-          title,
-          body,
-        ),
-      ]),
-      actions,
-    ),
-  )
+  // Groupings of the elements
+  const text = Widget.Box({
+    children: [title, body],
+    vertical: true,
+    hpack: "start",
+  })
+
+  const main = Widget.Box({
+    children: [icon, text],
+  })
+
+  const all = Widget.Box({
+    class_name: `notification ${n.urgency}`,
+
+    children: [main, actions],
+    vertical: true,
+  })
+
+  // Putting it all together
+  return Widget.EventBox({
+    attribute: { id: n.id },
+    on_primary_click: n.dismiss,
+    
+    child: all,
+  })
 }
 
+// Handling multiple notifications
 const list = Widget.Box({
   vertical: true,
   children: notifications.popups.map(Notification),
@@ -108,6 +124,8 @@ function onDismissed(_, /** @type {number} */ id) {
 list.hook(notifications, onNotified, "notified")
   .hook(notifications, onDismissed, "dismissed")
 
+
+// Notification window
 export default (monitor: number) => Widget.Window({
   monitor,
   name: `notifications${monitor}`,

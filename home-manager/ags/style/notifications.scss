@@ -8,9 +8,6 @@ window.notification-popups box.notifications {
   padding: 8px;
 }
 
-/* FIX: make height flexible */
-/* TODO: justify content to center */
-
 .notification {
   min-width: 200px;
 
@@ -26,9 +23,9 @@ window.notification-popups box.notifications {
 }
 
 .icon {
-  min-width: 4px;
-  min-height: 4px;
-  margin: 0 8px 0 0;
+  min-width: 28px;
+  min-height: 28px;
+  margin: 0 12px 0 6px;
   
   image {
     margin: 4px;
@@ -37,8 +34,8 @@ window.notification-popups box.notifications {
   }
   
   box {
-    min-width: 4px;
-    min-height: 4px;
+    min-width: 28px;
+    min-height: 28px;
     border-radius: 6px;
   }
 }
