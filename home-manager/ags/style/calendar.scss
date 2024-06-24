@@ -1,6 +1,6 @@
 @use "sass:color";
+@import "./palettes/_current-palette.scss";
 @import "./variables/_looks.scss";
-@import "./variables/_colors.scss";
 
 // TODO: configure individual elements of calendar
 
@@ -11,6 +11,6 @@ calendar {
 
   font-size: 15px;
 
-  background-color: change-color($base, $alpha: 0.70);
+  background-color: $base;
   color: $text; 
 }

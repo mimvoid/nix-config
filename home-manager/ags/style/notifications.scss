@@ -1,5 +1,5 @@
 @use "sass:color";
-@import "./variables/_colors.scss";
+@import "./palettes/current-palette";
 @import "./variables/_looks.scss";
 
 window.notification-popups box.notifications {
@@ -13,17 +13,16 @@ window.notification-popups box.notifications {
 
 .notification {
   min-width: 200px;
-  min-height: 28px;
 
   margin: 4px;
   padding: 8px;
 
   border-radius: $radius*0.25;
 
-  background-color: change-color($base, $alpha: 0.7);
+  background-color: $base;
 
-  border: 1px solid $secAccent;
-  .critical { border: 1px solid $alert; }
+  border: 1px solid $primary;
+  .critical { border: 1px solid $error; }
 }
 
 .icon {
@@ -34,7 +33,7 @@ window.notification-popups box.notifications {
   image {
     margin: 4px;
     font-size: 16px;
-    color: $mainAccent;
+    color: $secondary;
   }
   
   box {

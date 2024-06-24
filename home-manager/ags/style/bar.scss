@@ -1,5 +1,5 @@
 @use "sass:color";
-@import "./variables/_colors.scss";
+@import "./palettes/_current-palette.scss";
 @import "./variables/_fonts.scss";
 @import "./variables/_looks.scss";
 
@@ -13,8 +13,8 @@ window.bar {
 
   border-radius: $radius;
 
-  color: $paleAccent;
-  background-color: change-color($base, $alpha: 0.70);
+  color: $secondary-bright;
+  background-color: $base;
 }
 
 .left { margin-left: 14px; }
@@ -32,7 +32,7 @@ button {
   background-color: transparent;
 
   &:hover {
-    background-color: change-color($dullAccent, $alpha: 0.25);
+    background-color: $box;
     transition: all 0.2s ease-in-out;
   }
 }
@@ -58,18 +58,18 @@ label {
 .workspaces button {
   padding: 0 6px;
 
-  color: $secAccent;
+  color: $primary;
   background-color: transparent;
 
   &.focused {
     color: $alert;
-    background-color: change-color($dullAccent, $alpha: 0.2);
+    background-color: $box;
     transition: all 0.2s ease-in-out;
   }
 
   &:hover {
-    color: $base;
-    background-color: change-color($secAccent, $alpha: 0.85);
+    color: change-color($base, $alpha: 1);
+    background-color: change-color($primary, $alpha: 0.85);
     transition: all 0.2s ease-in-out;
   }
 }
@@ -77,12 +77,12 @@ label {
 /* Title */
 .client-title {
   margin-left: 10px;
-  color: $secAccent;
+  color: $primary;
 }
 
 /* Date */
 .clock {
-  color: adjust-color($watch, $lightness: 10);
+  color: adjust-color($error, $lightness: 10);
 
   /* disable default button background color */
   &:hover { background-color: transparent; };
@@ -95,51 +95,51 @@ label {
 
 /* Network */
 .network {
-  color: $warning;
+  color: $tertiary-dim;
 }
 
 /* Bluetooth */
 .bluetooth {
-  color: #8aadf4;
+  color: $tertiary;
 }
 
 /* Volume */
 /* FIX: the slider is not visible */
 
 .volume {
-  color: #7dc4e4;
+  color: $tertiary-bright;
 }
 
 .volume-slider {
   min-width: 48px;
   min-height: 4px;
   background-color: #494d64;
-  color: #7dc4e4;
+  color: $tertiary-bright;
 }
 
 /* Battery */
 
 /* TODO: different colors for battery percentages */
 .battery {
-  color: $alert;
+  color: $good;
 
-  .charging { color: $alert; }
+  .charging { color: $good; }
 }
 
 .wlsunset-toggle {
-  color: adjust-color($watch, $lightness: 8);
+  color: adjust-color($error, $lightness: 8);
 }
 
 /* Power actions */
 .power-actions {
   margin: 0 0 0 6px;
   padding: 0 4px;
-  color: $mainAccent;
-  background-color: change-color($dullAccent, $alpha: 0.2);
+  color: $primary;
+  background-color: $box;
 
   &:hover {
-    color: $base;
-    background-color: change-color($secAccent, $alpha: 0.85);
+    color: change-color($base, $alpha: 1);
+    background-color: change-color($primary, $alpha: 0.85);
     transition: all 0.2s ease-in-out;
   }
 }

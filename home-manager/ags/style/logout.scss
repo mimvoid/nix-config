@@ -1,4 +1,4 @@
-@import "./variables/_colors.scss";
+@import "./palettes/_current-palette.scss";
 @import "./variables/_looks.scss";
 
 /* WIP */
@@ -28,7 +28,7 @@
   animation: gradient_f 20s ease-in infinite;
 
   &:hover {
-    background-color: $mainAccent;
+    background-color: $secondary;
     color: $base;
     background-size: 25%;
     transition: background-color 0.1s linear;

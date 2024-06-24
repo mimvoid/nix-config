@@ -1,0 +1,32 @@
+@use "sass:color";
+
+/* Based on Ayu Dark */
+/* WIP */
+
+$base: #0B0E14;
+
+$box: #171B24;
+$box-bright: #1A1F28;
+$box-dim: #0F131A;
+
+$string: #BFBDB6;
+$string-dim: #636A72;
+
+$shadow: #0B0E14;
+
+
+$primary: #FFB454;
+$primary-bright: #E6B673;
+$primary-dim: #FF8F40;
+
+$secondary: #F29668;
+$secondary-bright: mix(#f29668, #F07178, $weight: 75%);
+$secondary-dim: mix(#f29668, #FF8F40);
+
+$tertiary: #59C2FF;
+$tertiary-bright: #95E6CB;
+$tertiary-dim: #39BAE6;
+
+$good: mix(#AAD94C, #95E6CB);
+$warn: #FF8F40;
+$error: #F26D78;
