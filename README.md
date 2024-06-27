@@ -42,9 +42,9 @@ Display Manager: [LightDM](https://github.com/canonical/lightdm)
 | ------------------ | ----------------------------------------------------- |
 | Idle               | [hypridle](https://wiki.hyprland.org/Hypr-Ecosystem/) |
 | Lockscreen         | [hyprlock](https://wiki.hyprland.org/Hypr-Ecosystem/) |
-| Bar                | [Waybar](https://github.com/Alexays/Waybar)           |
+| Bar                | [AGS](https://github.com/Aylur/ags)                   |
+| Notifications      | [AGS](https://github.com/Aylur/ags) ([mako](https://github.com/emersion/mako)-like style) |
 | Launcher           | [fuzzel](https://codeberg.org/dnkl/fuzzel)            |
-| Notifications      | [mako](https://github.com/emersion/mako)              |
 | Logout menu        | [wlogout](https://github.com/ArtsyMacaw/wlogout)      |
 | Wallpaper          | [swww](https://github.com/LGFae/swww)                 |
 | Screen temperature | [wlsunset](https://sr.ht/~kennylevinsen/wlsunset/)    |
