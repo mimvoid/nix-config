@@ -47,6 +47,12 @@ in
     "krita/Rakurri_Gradient_Map_Set_V1.0.bundle" = (
       link "${home-manager}/krita/Rakurri_Gradient_Map_Set_V1.0.bundle");
 
+    # Palettes
+    "krita/palettes/catppuccin-macchiato.gpl" = (
+      link "${home-manager}/krita/gpl-palettes/palettes/catppuccin/catppuccin-macchiato.gpl");
+    "krita/palettes/rose-pine-moon.gpl" = (
+      link "${home-manager}/krita/gpl-palettes/palettes/rose-pine/rose-pine-moon.gpl");
+
     # Krita themes
     "krita/color-schemes/CatppuccinMochaMaroon.colors" = (
       link "${home-manager}/krita/CatppuccinMochaMaroon.colors");

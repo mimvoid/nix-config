@@ -1,3 +1,7 @@
 [submodule "home-manager/krita/gpl-palettes"]
 	path = home-manager/krita/gpl-palettes
-	url = https://github.com/mimvoid/gpl-palettes.git
+  url = https://github.com/mimvoid/gpl-palettes.git
+
+[submodule "home-manager/firefox/chrome"]
+  path = home-manager/firefox/chrome
+  url = https://github.com/mimvoid/panefox.git
