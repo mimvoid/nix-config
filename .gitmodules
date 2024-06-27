@@ -1,0 +1,3 @@
+[submodule "home-manager/krita/gpl-palettes"]
+	path = home-manager/krita/gpl-palettes
+	url = https://github.com/mimvoid/gpl-palettes.git

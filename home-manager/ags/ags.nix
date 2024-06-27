@@ -4,7 +4,6 @@
   imports = [ inputs.ags.homeManagerModules.default ];
 
   home.packages = with pkgs; [
-    bun
     dart-sass
   ];
 
