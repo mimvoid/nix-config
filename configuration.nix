@@ -3,7 +3,7 @@
 {
   imports = [
     ./hosts/h2/hardware-configuration.nix
-    ./system/lightdm.nix
+    ./system/login.nix
     ./system/boot.nix
     ./system/virt.nix
   ];
