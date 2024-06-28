@@ -19,7 +19,10 @@ let
   app-icons = "${pkgs.papirus-icon-theme}/share/icons/Papirus/48x48/apps";
 
   appimg = {
-    obsidian = pkgs.callPackage ../packages/obsidian.nix { version = "1.6.3"; };
+    obsidian = pkgs.callPackage ../packages/obsidian.nix {
+      version = "1.6.3";
+      sha256 = "Ed6NWa/wT4kQUV2SjqIdYUL2OXKw2D8OEnk8ZnsKkYQ=";
+    };
     krita = pkgs.callPackage ../packages/krita.nix { version = "5.2.2"; };
   };
 in
