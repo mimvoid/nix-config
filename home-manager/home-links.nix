@@ -37,6 +37,7 @@ in
   xdg.configFile = {
     "ags" = (link "${home-manager}/ags");
     "dooit/config.py" = (link "${home-manager}/terminal/dooit.py");
+    "wlogout/icons" = (link "${home-manager}/hyprland/icons");
   };
 
   xdg.dataFile = {
