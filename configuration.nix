@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./hosts/h1/hardware-configuration.nix
+    ./hosts/h2/hardware-configuration.nix
     ./system/lightdm.nix
     ./system/boot.nix
     ./system/virt.nix
@@ -36,6 +36,12 @@
     (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
   ];
 
+  console = {
+    font = "ter-d28b";
+    packages = [ pkgs.terminus_font ];
+    useXkbConfig = true;
+  };
+
   # X11
   services.xserver = {
     enable = true;
@@ -57,19 +63,6 @@
       xdg-desktop-portal-kde
     ];
   };
-
-  # KDE Plasma 6
-  #services.desktopManager.plasma6 = {
-  #  enable = true;
-  #  enableQt5Integration = true;
-  #};
-
-  #environment.plasma6.excludePackages = with pkgs.kdePackages; [
-  #  okular
-  #  kate
-  #  khelpcenter
-  #  dolphin-plugins
-  #];
 
   # XFCE
   services.xserver.desktopManager.xfce = {
