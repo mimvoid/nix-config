@@ -1,54 +1,35 @@
 { pkgs, ... }:
 let
-  background = ../wallpapers/gracile_jellyfish.jpg;
-  
-  # TODO: The result looks as if it is Catppuccin Frappe, is it supposed to be like this?
-  theme = {
-    name = "Catppuccin-Mocha-Standard-Blue-Dark";
-    package = (pkgs.catppuccin-gtk.override {
-      accents = ["blue"];
-      size = "standard";
-      variant = "mocha";
-    });
-  };
-  cursorTheme = {
-    name = "BreezeX-RosePineDawn-Linux";
-    package = pkgs.rose-pine-cursor;
-    size = 24;
-  };
-  iconTheme = {
-    name = "Adwaita";
-    package = pkgs.gnome-themes-extra;
-  };
+  tgreet = pkgs.greetd.tuigreet;
+  hyprland = "${pkgs.hyprland}/share/wayland-sessions";
+  xfce = "${pkgs.xfce.xfce4-session}/share/xsessions";
 in
 {
-  services.xserver.displayManager.lightdm = {
+  services.greetd = {
     enable = true;
-    inherit background;
-    greeter.enable = true;
-    greeters.gtk = {
-      enable = true;
-      inherit theme cursorTheme iconTheme;
-      indicators = [
-        #"~host" # hostname
-        "~spacer"
-        "~clock"
-        "~spacer"
-        "~session"
-        #"~language"
-        #"~a11y" # accessibility
-        "~power"
-      ];
-      clock-format = "%A %b %d / %H:%M";
-      extraConfig = '' #conf
-        font-name = SauceCodePro Nerd Font
-        xft-antialias = true
-        xft-dpi = 144
-        panel-position = top
-        show-clock = true
-        hide-user-image = true
-        user-background = false
-      '';
+    settings = {
+      default_session = {
+        command = builtins.concatStringsSep " " [
+          "${tgreet}/bin/tuigreet"
+          "--time --time-format '%A %b %d / %H:%M'"
+          "--asterisks"
+          "--remember --remember-session"
+          "--sessions ${hyprland}"
+          "--xsessions ${xfce}"
+        ];
+        user = "greeter";
+      };
     };
+  };
+
+  # source: https://www.reddit.com/r/NixOS/comments/u0cdpi/tuigreet_with_xmonad_how/
+  systemd.services.greetd.serviceConfig = {
+    Type = "idle";
+    StandardInput = "tty";
+    StandardOutput = "tty";
+    StandardError = "journal";
+    TTYReset = true;
+    TTYVHangup = true;
+    TTYVTDisallocate = true;
   };
 }

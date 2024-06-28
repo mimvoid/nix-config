@@ -30,6 +30,7 @@
     git
     wget
     curl
+
     # Restricting this to a user doesn't seem to work
     xfce.xfce4-docklike-plugin
   ];
@@ -64,6 +65,8 @@
   };
 
   # XFCE
+  services.xserver.displayManager.startx.enable = true;
+
   services.xserver.desktopManager.xfce = {
     enable = true;
     enableXfwm = true;
