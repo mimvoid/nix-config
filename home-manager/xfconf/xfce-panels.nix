@@ -1,4 +1,3 @@
-{ pkgs, ... }:
 let
   p1 = "panels/panel-1/";
   p2 = "panels/panel-2/";
@@ -19,15 +18,15 @@ let
 in
 {
   xfconf.settings.xfce4-panel = {
-    # TODO: panel settings are very messy
-
     "panels" = [ 1 2 ];
     "panels/dark-mode" = true;
     
     # Top panel
+    "${p1}position" = "p=9;x=960;y=18";
     "${p1}position-locked" = true;
     "${p1}length" = 98.9;
     "${p1}size" = 28;
+    "${p1}icon-size" = 16;
 
     "${p1}background-style" = 1; # solid color
     # transleucent catppuccin macchiato base
@@ -44,6 +43,7 @@ in
     
     # Bottom panel
     "${p2}autohide-behavior" = 0; # don't autohide
+    "${p2}position" = "p=10;x=968;y=1056";
     "${p2}position-locked" = true;
     "${p2}length" = 1; # let it be autoexpanded by plugins
     "${p2}size" = 42;
@@ -90,6 +90,7 @@ in
     "${w.battery}" = "power-manager-plugin";
 
     "${w.power}" = "actions";
+    "${w.power}/appearance" = 1; # Action Buttons = 0, Session Menu = 1
     "${w.power}/button-title" = 3; # enable custom title
     "${w.power}/custom-title" = "O"; # the letter O
 
@@ -103,29 +104,6 @@ in
     "${w.sep3}/style" = 0;
 
     "${w.dock}" = "docklike";
-
-    #"${w.launch-term}" = "launcher";
-    #"${w.launch-term}/items" = ["17181307541.desktop"];
-
-    #"${w.launch-files}" = "launcher";
-    #"${w.launch-files}/items" = ["17181307542.desktop"];
-
-    #"${w.launch-browser}" = "launcher";
-    #"${w.launch-browser}/items" = ["17181307543.desktop"];
-
-    #"${w.launch-appfind}" = "launcher";
-    #"${w.launch-appfind}/items" = ["17181307544.desktop"];
-
-    #"${w.sep4}" = "separator";
-    #"${w.sep4}/expand" = false;
-    #"${w.sep4}/style" = 0;
-
-    #"${w.tasks}" = "tasklist";
-    #"${w.tasks}/grouping" = 1;
-    #"${w.tasks}/show-labels" = false;
-    #"${w.tasks}/show-handle" = false;
-    #"${w.tasks}/flat-buttons" = true;
-    #"${w.tasks}/show-tooltips" = true;
   };
 
   xdg.configFile."xfce4/panel/docklike-11.rc" = {
