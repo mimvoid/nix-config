@@ -26,10 +26,12 @@
 
   # Minimum system packages, most are in home manager
   environment.systemPackages = with pkgs; [
-    git
     nh
+    git
     wget
     curl
+    # Restricting this to a user doesn't seem to work
+    xfce.xfce4-docklike-plugin
   ];
 
   fonts.packages = with pkgs; [
@@ -45,10 +47,7 @@
   # X11
   services.xserver = {
     enable = true;
-
-    # Configure keymap in X11
-    xkb.layout = "us";
-    xkb.variant = "";
+    xkb.layout = "us"; # Keymap in X11
   };
 
   programs.xwayland.enable = true;
@@ -60,7 +59,7 @@
     enable = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
-      xdg-desktop-portal-kde
+      xdg-desktop-portal-xapp
     ];
   };
 
@@ -71,6 +70,8 @@
     enableScreensaver = true;
     noDesktop = false;
   };
+
+  programs.xfconf.enable = true;
 
   environment.xfce.excludePackages = with pkgs; [
     gnome.gnome-themes-extra
@@ -96,11 +97,10 @@
   users.users.zinnia = {
     isNormalUser = true;
     description = "zinnia";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
     packages = with pkgs; [
       neovim
-      appimage-run
-      xfce.xfce4-docklike-plugin
+      appimage-run 
     ];
     shell = pkgs.zsh;
   };
@@ -115,21 +115,12 @@
   services.gnome.gnome-keyring.enable = true;
   security.pam.services.zinnia.enableGnomeKeyring = true;
 
-  programs.xfconf.enable = true;
-
   # Touchpad support
   services.libinput.enable = true;
 
-  # Pipewire
-  sound.enable = true;
-
-  hardware.pulseaudio.enable = false;
-  security.rtkit.enable = true;
-
+  # Sound
   services.pipewire = {
     enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
   };
 
@@ -184,21 +175,7 @@
   #---------------#
 
   time.timeZone = "America/New_York";
-
-  i18n = {
-    defaultLocale = "en_US.UTF-8";
-    extraLocaleSettings = {
-      LC_ADDRESS = "en_US.UTF-8";
-      LC_IDENTIFICATION = "en_US.UTF-8";
-      LC_MEASUREMENT = "en_US.UTF-8";
-      LC_MONETARY = "en_US.UTF-8";
-      LC_NAME = "en_US.UTF-8";
-      LC_NUMERIC = "en_US.UTF-8";
-      LC_PAPER = "en_US.UTF-8";
-      LC_TELEPHONE = "en_US.UTF-8";
-      LC_TIME = "en_US.UTF-8";
-    };
-  };
+  i18n.defaultLocale = "en_US.UTF-8";
 
   system.stateVersion = "23.11";
 }
