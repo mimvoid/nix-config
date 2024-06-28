@@ -40,6 +40,14 @@ in
   };
 
   xdg.dataFile = {
+    # Krita thumbnails
+    "thumbnailers/kra.thumbnailer".text = ''
+      [Thumbnailer Entry]
+      TryExec=unzip
+      Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
+      MimeType=application/x-krita;
+    '';
+
     # Resources (brushes, packs, etc.)
     "krita/Chalks_for_Children.bundle" = (
       link "${home-manager}/krita/Chalks_for_Children.bundle");
