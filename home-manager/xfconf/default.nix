@@ -1,4 +1,4 @@
-{ ... }:
+{ pkgs, ... }:
 
 # Note: XFCE is not my main driver, but
 # I keep it around as a light just-works
@@ -14,4 +14,6 @@
     ./xfce-panels.nix
     ./xfwm.nix
   ];
+
+  home.packages = [ pkgs.xclip ];
 }

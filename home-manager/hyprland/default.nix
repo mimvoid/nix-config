@@ -4,13 +4,15 @@
   home.packages = with pkgs; [
     hyprland-protocols
     xdg-desktop-portal-hyprland
+
+    gnome.gnome-keyring
+    networkmanagerapplet
+    
+    wl-clipboard
     hyprcursor
     hyprpicker
     hyprshot
     swww
-    libnotify
-    gnome.gnome-keyring
-    networkmanagerapplet
   ];
 
   imports = [

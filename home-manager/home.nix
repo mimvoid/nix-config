@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   home = {
@@ -19,11 +19,6 @@
     ./guis/default.nix
     ./firefox/firefox.nix
     ./ags/ags.nix
-  ];
-
-  home.packages = with pkgs; [
-    wl-clipboard 
-    xclip
   ];
 
   home.sessionVariables = {
