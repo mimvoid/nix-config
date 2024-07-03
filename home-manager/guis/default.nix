@@ -2,29 +2,26 @@
 
 {
   home.packages = with pkgs; [
-    # Art & design
-    # nixpkgs#krita seems to be broken right now
-
-    # Documents
+    # Files & documents
     pdfarranger
-    zotero_7
-
-    # Files
     xarchiver
     nextcloud-client
     localsend
+
+    # Academics
+    zotero_7
+    anki-bin
+    anki-sync-server
 
     # Contact
     zoom-us
     vesktop
 
-    # Virtualisation
+    # Virtualisation/layers
     bottles
     virt-manager
 
-    # Misc
-    anki-bin
-    anki-sync-server
+    # Media
     amberol
   ];
 

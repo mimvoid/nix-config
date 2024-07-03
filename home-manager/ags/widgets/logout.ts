@@ -1,43 +1,27 @@
-// TODO: fix repetitive code
-// TODO: set default visibility off before importing
+// TODO: set default visibility off
+// FIX: importing this causes actions to be executed right after
 
-const lock = Widget.Button({
-  child: Widget.Icon("system-lock-screen-symbolic"),
-  cursor: "pointer",
-  on_clicked: Utils.exec('hyprlock'),
+const MenuButton = (cls: string, icon: string, action: string) => Widget.Button({
+  class_name: `${cls}`,
+  cursor: "pointer", 
+  on_clicked: Utils.exec(`${action}`),
+  child: Widget.Icon(`${icon}-symbolic`),
 })
 
-const logout = Widget.Button({
-  child: Widget.Icon("system-log-out-symbolic"),
-  cursor: "pointer",
-  on_clicked: Utils.exec('hyprctl dispatch exit 0'),
-})
-
-// Icon can also be system-restart-symbolic
-const restart = Widget.Button({
-  child: Widget.Icon("view-refresh-symbolic"),
-  cursor: "pointer",
-  on_clicked: Utils.exec('systemctl rebott'),
-})
-
-const shutdown = ({
-  child: Widget.Icon("system-shutdown-symbolic"),
-  cursor: "pointer",
-  on_clicked: Utils.exec('systemctl poweroff'),
-})
-
+const lock = MenuButton('lock', 'system-lock-screen', 'hyprlock')
+const logout = MenuButton('logout', 'system-log-out', 'hyprctl dispatch exit 0')
+const reboot = MenuButton('reboot', 'view-refresh', 'systemctl reboot')
+const shutdown = MenuButton('shutdown', 'system-shutdown', 'systemctl poweroff')
 
 const menu_left = Widget.CenterBox({
-  class_name: "logout-left",
   vertical: true,
   start_widget: lock,
   end_widget: logout,
 })
 
 const menu_right = Widget.CenterBox({
-  class_name: "logout-right".
   vertical: true,
-  start_widget: restart,
+  start_widget: reboot,
   end_widget: shutdown,
 })
 
