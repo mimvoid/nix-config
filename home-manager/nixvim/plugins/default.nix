@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   imports = [
     ./alpha.nix
@@ -19,19 +17,8 @@
     ./which-key.nix
   ];
 
-  programs.nixvim = {
-    plugins = {
-      better-escape = {
-        enable = true;
-        mapping = [ "fj" ];
-        timeout = 500;
-      };
-      endwise.enable = true;
-      nvim-autopairs.enable = true;
-      persistence.enable = true;
-    };
-    extraPlugins = with pkgs.vimPlugins; [
-      yuck-vim
-    ];
+  programs.nixvim.plugins = {
+    nvim-autopairs.enable = true;
+    persistence.enable = true;
   };
 }
