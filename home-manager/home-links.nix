@@ -8,9 +8,10 @@ let
   # Directory shorthands
   home-manager = "${config.home.homeDirectory}/NixOS/home-manager";
 
-  ref-tabs = "${home-manager}/krita/reference-tabs-docker";
-  comp-helper = "${home-manager}/krita/composition-helper/compositionhelper";
-  timer-watch = "${home-manager}/krita/timer-watch";
+  krita = "${home-manager}/krita";
+  ref-tabs = "${krita}/reference-tabs-docker";
+  comp-helper = "${krita}/composition-helper/compositionhelper";
+  timer-watch = "${krita}/timer-watch";
 
   firefox-profile = "30dphuug.default";
   obsidian-dir = "Documents/Zettelkasten";
@@ -51,26 +52,26 @@ in
 
     # Resources (brushes, packs, etc.)
     "krita/Chalks_for_Children.bundle" = (
-      link "${home-manager}/krita/Chalks_for_Children.bundle");
+      link "${krita}/Chalks_for_Children.bundle");
     "krita/hollow_line.bundle" = (
-      link "${home-manager}/krita/hollow_line.bundle");
+      link "${krita}/hollow_line.bundle");
     "krita/SK-V1_.bundle" = (
-      link "${home-manager}/krita/SK_V1_.bundle");
+      link "${krita}/SK_V1_.bundle");
     "krita/Rakurri_Gradient_Map_Set_V1.0.bundle" = (
-      link "${home-manager}/krita/Rakurri_Gradient_Map_Set_V1.0.bundle");
+      link "${krita}/Rakurri_Gradient_Map_Set_V1.0.bundle");
 
     # Palettes
     "krita/palettes/catppuccin-macchiato.gpl" = (
-      link "${home-manager}/krita/gpl-palettes/palettes/catppuccin/catppuccin-macchiato.gpl");
+      link "${krita}/gpl-palettes/palettes/catppuccin/catppuccin-macchiato.gpl");
     "krita/palettes/rose-pine-moon.gpl" = (
-      link "${home-manager}/krita/gpl-palettes/palettes/rose-pine/rose-pine-moon.gpl");
+      link "${krita}/gpl-palettes/palettes/rose-pine/rose-pine-moon.gpl");
 
     # Krita themes
     "krita/color-schemes/CatppuccinMochaMaroon.colors" = (
-      link "${home-manager}/krita/CatppuccinMochaMaroon.colors");
+      link "${krita}/CatppuccinMochaMaroon.colors");
 
     "krita/color-schemes/CatppuccinMacchiatoMaroon.colors" = (
-      link "${home-manager}/krita/CatppuccinMacchiatoMaroon.colors");
+      link "${krita}/CatppuccinMacchiatoMaroon.colors");
 
 
     # TODO: maybe install krita plugins as packages instead of git checkout?
