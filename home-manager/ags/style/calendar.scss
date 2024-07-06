@@ -2,15 +2,36 @@
 @import "./palettes/_current-palette.scss";
 @import "./variables/_looks.scss";
 
-// TODO: configure individual elements of calendar
-
-calendar {
+.calendar {
   all: unset;
-  padding: 4px;
+  padding: 12px;
   border-radius: $radius;
-
-  font-size: 15px;
-
   background-color: $base;
-  color: $text; 
+}
+
+.calendar calendar {
+  padding: 4px;
+  font-size: 15px;
+  color: $text;
+
+  &.button {
+    border-radius: $radius;
+
+    &:hover {
+      background-color: $box;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+
+  /* Week numbers & day names */
+  &.highlight {
+    color: transparentize($text, 0.25);
+  }
+
+  /* Defaults to current day */
+  &:selected {
+    border-radius: $radius;
+    color: $base;
+    background-color: $secondary;
+  }
 }
