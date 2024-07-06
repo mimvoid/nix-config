@@ -8,7 +8,7 @@ import Network from "./bar-modules/network.ts";
 import Bluetooth from "./bar-modules/bluetooth";
 import Volume from "./bar-modules/sound";
 import Battery from "./bar-modules/battery";
-import WlsunsetToggle from "./bar-modules/wlsunset";
+import Brightness from "./bar-modules/brightness";
 import PowerActions from "./bar-modules/power-actions";
 
 
@@ -58,7 +58,7 @@ function Right() {
       Bluetooth(),
       Volume(),
       Battery(),
-      WlsunsetToggle(),
+      Brightness(),
       PowerActions(),
     ],
   })

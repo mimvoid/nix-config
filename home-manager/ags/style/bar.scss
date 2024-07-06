@@ -92,7 +92,7 @@ window.bar {
   color: $tertiary-bright;
 }
 
-.volume-slider {
+.volume-slider, .brightness slider {
   min-width: 48px;
   min-height: 4px;
   background-color: #494d64;
@@ -108,7 +108,7 @@ window.bar {
   .charging { color: $good; }
 }
 
-.wlsunset-toggle {
+.brightness {
   color: adjust-color($error, $lightness: 8);
 }
 
