@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, allowed-unfree-packages, ... }:
 
 {
   imports = [
@@ -21,7 +21,7 @@
   system.autoUpgrade.enable = true;
 
   # Package sources
-  nixpkgs.config.allowUnfree = true;
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
   services.flatpak.enable = true;
 
   # Minimum system packages, most are in home manager
