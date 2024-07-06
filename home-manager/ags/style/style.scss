@@ -30,6 +30,15 @@ label {
   margin: 0 4px;
 }
 
+trough {
+  min-width: 42px;
+  min-height: 4px;
+  border-radius: $radius;
+  background-color: $box;
+
+  highlight { border-radius: $radius; }
+}
+
 window.popup {
   menu {
     padding: 8px;

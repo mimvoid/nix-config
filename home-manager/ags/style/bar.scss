@@ -81,13 +81,7 @@ window.bar {
 
 .volume {
   color: $tertiary-bright;
-}
-
-.volume-slider, .brightness slider {
-  min-width: 48px;
-  min-height: 4px;
-  background-color: #494d64;
-  color: $tertiary-bright; //does nothing?
+  trough highlight { background-color: $tertiary-bright; } //doesn't work
 }
 
 /* TODO: different colors for battery percentages */
@@ -99,6 +93,9 @@ window.bar {
 
 .brightness {
   color: adjust-color($error, $lightness: 8);
+  trough highlight {
+    background-color: adjust-color($error, $lightness: 8);
+  }
 }
 
 .power-actions {

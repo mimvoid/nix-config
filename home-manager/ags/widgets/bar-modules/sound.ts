@@ -29,10 +29,6 @@ const label = Widget.Label({
   label: audio.speaker.bind('volume').as(v => `${Math.floor(v * 100)}%`),
 })
 
-
-// FIX: slider doesn't show, with or without revealer
-// It loads since the cursor changes, but it's just not visible?
-
 const slider = Widget.Slider({
   class_name: "volume-slider",
   cursor: "pointer",
