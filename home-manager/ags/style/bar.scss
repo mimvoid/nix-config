@@ -93,13 +93,18 @@ window.bar {
 
 .brightness {
   color: adjust-color($error, $lightness: 8);
+  
+  .brightness-revealer {
+    min-width: 4px;
+  }
+
   trough highlight {
     background-color: adjust-color($error, $lightness: 8);
   }
 }
 
 .power-actions {
-  margin: 0 0 0 6px;
+  margin: 0 0 0 2px;
   padding: 0 4px;
   color: $primary;
   background-color: $box;
