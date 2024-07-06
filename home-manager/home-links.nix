@@ -65,6 +65,8 @@ in
       link "${krita}/gpl-palettes/palettes/catppuccin/catppuccin-macchiato.gpl");
     "krita/palettes/rose-pine-moon.gpl" = (
       link "${krita}/gpl-palettes/palettes/rose-pine/rose-pine-moon.gpl");
+    "krita/palettes/ayu-mirage.gpl" = (
+      link "${krita}/gpl-palettes/palettes/ayu/ayu-mirage.gpl");
 
     # Krita themes
     "krita/color-schemes/CatppuccinMochaMaroon.colors" = (
