@@ -3,6 +3,8 @@
 @import "./variables/_fonts.scss";
 @import "./variables/_looks.scss";
 
+/* FIX: sliders are not visible */
+
 window.bar {
   background-color: transparent;
 }
@@ -21,21 +23,22 @@ window.bar {
 .right { margin-right: 14px; }
 
 
-/* General widget properties */
+/* Widget-specific spacing */
+
+.workspaces label {
+  margin: 0;
+}
 
 .volume, .battery {
   margin: 0 4px;
 }
 
-/* Default overwrites */
-.workspaces label {
-  margin: 0;
+.system-tray {
+  margin: 0 2px;
 }
 
 
 /* Modules */
-
-/* Workspaces */
 
 .workspaces button {
   padding: 0 6px;
@@ -56,13 +59,11 @@ window.bar {
   }
 }
 
-/* Title */
 .client-title {
   margin-left: 10px;
   color: $primary;
 }
 
-/* Date */
 .clock {
   color: adjust-color($error, $lightness: 10);
 
@@ -70,23 +71,13 @@ window.bar {
   &:hover { background-color: transparent; };
 }
 
-/* System tray */
-.system-tray {
-  margin: 0 2px;
-}
-
-/* Network */
 .network {
   color: $tertiary-dim;
 }
 
-/* Bluetooth */
 .bluetooth {
   color: $tertiary;
 }
-
-/* Volume */
-/* FIX: the slider is not visible */
 
 .volume {
   color: $tertiary-bright;
@@ -96,10 +87,8 @@ window.bar {
   min-width: 48px;
   min-height: 4px;
   background-color: #494d64;
-  color: $tertiary-bright;
+  color: $tertiary-bright; //does nothing?
 }
-
-/* Battery */
 
 /* TODO: different colors for battery percentages */
 .battery {
@@ -112,7 +101,6 @@ window.bar {
   color: adjust-color($error, $lightness: 8);
 }
 
-/* Power actions */
 .power-actions {
   margin: 0 0 0 6px;
   padding: 0 4px;
