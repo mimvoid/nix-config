@@ -12,6 +12,24 @@
   font-size: $font-size;
 }
 
+button {
+  padding: 0 4px;
+
+  min-width: 0;
+ 
+  border-radius: $radius;
+  background-color: transparent;
+
+  &:hover {
+    background-color: $box;
+    transition: all 0.2s ease-in-out;
+  }
+}
+
+label {
+  margin: 0 4px;
+}
+
 window.popup {
   menu {
     padding: 8px;
