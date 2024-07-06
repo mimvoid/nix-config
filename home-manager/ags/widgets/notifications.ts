@@ -128,7 +128,7 @@ list.hook(notifications, onNotified, "notified")
 // Notification window
 export default (monitor: number) => Widget.Window({
   monitor,
-  name: `notifications${monitor}`,
+  name: `notifications-${monitor}`,
   class_name: "notification-popups",
   anchor: ["top", "right"],
   child: Widget.Box({
