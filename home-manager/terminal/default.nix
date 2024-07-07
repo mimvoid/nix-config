@@ -13,6 +13,7 @@
     bluetuith
     rclone
     distrobox
+    gotop
     unstable.dooit
   ];
 }
