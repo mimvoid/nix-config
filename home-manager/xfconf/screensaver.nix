@@ -1,5 +1,5 @@
 {
-  xfconf.settings.xfce4-screesaver = {
+  xfconf.settings.xfce4-screensaver = {
     "lock/saver-activation/delay" = 1; # delay locking 1 minute after screensaver
     "lock/sleep-activation" = true;
     "lock/user-switching/enabled" = false;
