@@ -6,7 +6,7 @@
   all: unset;
   padding: 12px;
   border-radius: $radius;
-  background-color: $base;
+  background-color: change-color($base, $alpha: 0.9);
 }
 
 .calendar calendar {
@@ -15,6 +15,7 @@
   color: $text;
 
   &.button {
+    color: transparentize($text, 0.5);
     border-radius: $radius;
 
     &:hover {
@@ -25,7 +26,7 @@
 
   /* Week numbers & day names */
   &.highlight {
-    color: transparentize($text, 0.25);
+    color: transparentize($primary, 0.3);
   }
 
   /* Defaults to current day */
@@ -34,4 +35,7 @@
     color: $base;
     background-color: $secondary;
   }
+
+  /* Days outside the current month */
+  &:indeterminate { color: transparentize($text, 0.6); }
 }
