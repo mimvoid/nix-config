@@ -37,8 +37,9 @@ in
       0.22745098039215686
       0.72390572390572394
     ];
-    # Note: changing the order may not update the plugins'
-    # internal names right away, leading to some strange behavior.
+
+    # Note: changing the plugin type for a previously used number may not update
+    # the plugins' internal names right away, leading to some strange behavior.
     # I've found that reloading the XFCE shell (e.g. logging out) fixes it.
     "${p1}plugin-ids" = [ 1 2 3 4 5 6 7 8 9 ];
     
@@ -56,7 +57,7 @@ in
       0.22745098039215686
       0.72390572390572394
     ];
-    "${p2}plugin-ids" = [ 9 10 11 12 13 14 15 16 ];
+    "${p2}plugin-ids" = [ 10 11 12 ];
 
     # Plugins/widgets
     # Top bar
