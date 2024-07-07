@@ -7,13 +7,14 @@ let
     clock = "plugins/plugin-3";
     sep2 = "plugins/plugin-4";
     systray = "plugins/plugin-5";
-    notif = "plugins/plugin-6";
-    battery = "plugins/plugin-7";
-    power = "plugins/plugin-8";
+    audio = "plugins/plugin-6";
+    notif = "plugins/plugin-7";
+    battery = "plugins/plugin-8";
+    power = "plugins/plugin-9";
 
-    appmenu = "plugins/plugin-9";
-    sep3 = "plugins/plugin-10";
-    dock = "plugins/plugin-11";
+    appmenu = "plugins/plugin-10";
+    sep3 = "plugins/plugin-11";
+    dock = "plugins/plugin-12";
   };
 in
 {
@@ -39,7 +40,7 @@ in
     # Note: changing the order may not update the plugins'
     # internal names right away, leading to some strange behavior.
     # I've found that reloading the XFCE shell (e.g. logging out) fixes it.
-    "${p1}plugin-ids" = [ 1 2 3 4 5 6 7 8 ];
+    "${p1}plugin-ids" = [ 1 2 3 4 5 6 7 8 9 ];
     
     # Bottom panel
     "${p2}autohide-behavior" = 0; # don't autohide
@@ -85,6 +86,9 @@ in
     "${w.systray}/square-icons" = true; # icons occupy square spaces
     "${w.systray}/symbolic-icons" = true;
 
+    "${w.audio}" = "pulseaudio";
+    "${w.audio}/volume-max" = 100;
+
     "${w.notif}" = "notification-plugin";
 
     "${w.battery}" = "power-manager-plugin";
@@ -106,7 +110,7 @@ in
     "${w.dock}" = "docklike";
   };
 
-  xdg.configFile."xfce4/panel/docklike-11.rc" = {
+  xdg.configFile."xfce4/panel/docklike-12.rc" = {
     enable = true;
     text = ''
       [user]

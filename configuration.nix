@@ -33,6 +33,7 @@
 
     # Restricting this to a user doesn't seem to work
     xfce.xfce4-docklike-plugin
+    xfce.xfce4-pulseaudio-plugin
   ];
 
   fonts.packages = with pkgs; [
