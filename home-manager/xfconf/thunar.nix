@@ -4,9 +4,14 @@
   xfconf.settings.thunar = {
     "last-view" = "ThunarIconView";
     "last-icon-view-zoom-level" = "THUNAR_ZOOM_LEVEL_100_PERCENT";
-    "last-separator-position" = 170;
     "last-show-hidden" = true;
+
+    "last-location-bar" = "ThunarLocationButtons";
+    "misc-image-preview-mode" = "THUNAR_IMAGE_PREVIEW_MODE_STANDALONE";
+    
     "last-restore-tabs" = true;
+    "misc-confirm-close-multiple-tabs" = false;
+    
     "misc-single-click" = false;
     "misc-case-sensitive" = false;
     "misc-show-delete-action" = true;
