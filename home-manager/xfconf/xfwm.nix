@@ -25,7 +25,9 @@ in
     # Default: "O|SHMC" Icon | Shutter Hide Maximize Close
     "${g}button_layout" = "|SHMC";
     "${g}title_font" = "Cantarell 9";
-    "${g}borderless_maximize" = true; # since shadows count as borders
+
+    # used with picom, default compositor includes shadows in borders
+    "${g}borderless_maximize" = false;
 
     # Workspaces
     "${g}cycle_workspaces" = true;

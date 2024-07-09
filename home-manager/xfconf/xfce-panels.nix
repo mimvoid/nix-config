@@ -27,20 +27,15 @@ in
     "${p1}position-locked" = true;
     "${p1}length" = 98.9;
     "${p1}size" = 28;
-    "${p1}icon-size" = 16;
+    "${p1}icon-size" = 15;
 
     "${p1}background-style" = 1; # solid color
-    # transleucent catppuccin macchiato base
-    "${p1}background-rgba" = [
-      0.14117647058823529
-      0.15294117647058827
-      0.22745098039215686
-      0.72390572390572394
-    ];
+    # transleucent rose pine moon base
+    "${p1}background-rgba" = [ (35.0 / 255) (33.0 / 255) (54.0 / 255) 0.65 ];
 
     # Note: changing the plugin type for a previously used number may not update
     # the plugins' internal names right away, leading to some strange behavior.
-    # I've found that reloading the XFCE shell (e.g. logging out) fixes it.
+    # I found that reloading (e.g. logging out) fixes it.
     "${p1}plugin-ids" = [ 1 2 3 4 5 6 7 8 9 ];
     
     # Bottom panel
@@ -48,15 +43,11 @@ in
     "${p2}position" = "p=10;x=968;y=1056";
     "${p2}position-locked" = true;
     "${p2}length" = 1; # let it be autoexpanded by plugins
-    "${p2}size" = 42;
+    "${p2}size" = 46;
 
-    "${p2}background-style" = 1; # solid color
-    "${p2}background-rgba" = [
-      0.14117647058823529
-      0.15294117647058827
-      0.22745098039215686
-      0.72390572390572394
-    ];
+    "${p2}background-style" = 1;
+    "${p2}background-rgba" = [ (35.0 / 255) (33.0 / 255) (54.0 / 255) 0.65 ];
+
     "${p2}plugin-ids" = [ 10 11 12 ];
 
     # Plugins/widgets
@@ -74,7 +65,7 @@ in
     "${w.clock}" = "clock";
     "${w.clock}/mode" = 2;
     "${w.clock}/digital-layout" = 2;
-    "${w.clock}/digital-date-font" = "Cantarell 8";
+    "${w.clock}/digital-date-font" = "Cantarell 9";
     "${w.clock}/digital-date-format" = "%A %b %d / %H:%M";
 
     "${w.sep2}" = "separator";
@@ -102,7 +93,7 @@ in
     # Bottom bar
     "${w.appmenu}" = "applicationsmenu";
     "${w.appmenu}/show-button-title" = false;
-    "${w.appmenu}/button-icon" = "view-list-details";
+    "${w.appmenu}/button-icon" = "start-here";
 
     "${w.sep3}" = "separator";
     "${w.sep3}/expand" = false;
@@ -118,16 +109,19 @@ in
       onlyDisplayVisible=false
       onlyDisplayScreen=false
       showPreviews=true
+      previewScale=0.5 # default 0.125
       showWindowCount=false
       middleButtonBehavior=2 # do nothing
       noWindowsListIfSingle=false
       indicatorStyle=3 # ciliora
       inactiveIndicatorStyle=1 # dots
       indicatorOrientation=0 # automatic
-      indicatorColorFromTheme=true
       forceIconSize=false
       keyComboActive=false
       keyAloneActive=false
+      indicatorColorFromTheme=false
+      indicatorColor=rgb(234,154,151)
+      inactiveColor=rgb(62,143,176)
       pinned=xterm;thunar;firefox;krita;
     '';
   };

@@ -1,5 +1,5 @@
-{ pkgs, ... }:
-let  
+{ config, pkgs, ... }:
+let
   theme = {
     name = "rose-pine-moon";
     package = pkgs.rose-pine-gtk-theme;
@@ -82,7 +82,6 @@ in
       bat.enable = true;
       foot.enable = true;
       fzf.enable = true;
-      xresources.enable = true;
       yazi.enable = true;
       zathura.enable = true;
     };
@@ -99,5 +98,25 @@ in
     enable = true;
     platformTheme.name = "gtk3";
     style.name = "breeze";
+  };
+
+  xfconf.settings.xsettings."Gtk/CursorThemeSize" = 38;
+
+  xresources = {
+    properties = {
+      "*.faceName" = "${monospace.name}";
+      "*.faceSize" = config.stylix.fonts.sizes.terminal;
+      "*.renderFont" = true;
+      "Xcursor.size" = cursor.size;
+      "Xcursor.theme" = cursor.name; 
+    };
+    extraConfig = builtins.readFile (
+      pkgs.fetchFromGitHub {
+        owner = "rose-pine";
+        repo = "xresources";
+        rev = "main";
+        sha256 = "AoQbxofViOOcFK4tjowXUVMPkZoblWD8L17GVZjD67I=";
+      } + "/rose-pine-moon"
+    );
   };
 }

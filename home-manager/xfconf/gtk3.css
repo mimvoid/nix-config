@@ -1,0 +1,144 @@
+/* Thunar */
+.thunar menu,
+.thunar menubar,
+.thunar menuitem,
+.thunar treeview,
+.thunar scrollbar slider,
+.thunar .location-button.toggle:hover,
+.thunar .location-button.toggle:checked {
+  border-radius: 4px;
+}
+
+.thunar button.flat.image-button {
+  padding: 0 4px;
+  border-radius: 4px;
+}
+
+/* XFCE Panels */
+/* HACK: how to pad a panel? */
+#applicationmenu-button, .xfce4-panel widget grid {
+  margin-left: 8px;
+}
+#actions-button, #docklike-plugin {
+  margin-right: 8px;
+}
+
+.xfce4-panel button {
+	border: none;
+	margin: 1px;
+	padding: 4px;
+	border-radius: 10px;
+	box-shadow: none;
+	color: #f4dbd6; /* rosewater */
+}
+
+/* Resize workspaces labels */
+.xfce4-panel #pager-1 button.flat.toggle {
+  margin: 0;
+  font-size: 16px;
+}
+
+/* workspaces */
+.xfce4-panel #pager-1 button.flat.toggle:checked,
+/* other buttons */
+.xfce4-panel button:hover {
+  color: #9ccfd8; /* foam */
+	background-color: rgba(73, 77, 100, 0.75); /* surface1 */
+  transition: all 0.2s;
+}
+
+.xfce4-panel #pager-1 button.flat.toggle:hover,
+.xfce4-panel button:checked:not(#applicationmenu-button) {
+  color: #232136; /* base */
+  background-color: #ea9a97; /* rose */
+  transition: all 0.2s;
+}
+
+/* HACK: the clock widget calendar has no specific css class */
+/* Calendar */
+window.background calendar {
+  padding: 4px;
+  background-color: #232136;
+  color: rgb(224, 222, 244); /* text */
+}
+
+window.background calendar:selected {
+  color: #232136;
+  border-radius: 12px;
+  background-color: #ea9a97; /* rose */
+}
+
+/* Day names & week numbers */
+window.background calendar .highlight {
+  color: #c4a7e7; /* iris */
+}
+
+/* Days outside current month */
+window.background calendar:indeterminate {
+  color: rgba(224, 222, 244, 0.4);
+}
+
+.xfce4-panel trough {
+  min-height: 5px;
+  min-width: 128px;
+  margin: 12px;
+}
+
+#xfce4-power-manager-plugin trough {
+  margin: 16px 0 12px 0;
+}
+
+#xfce4-power-manager-plugin menu image {
+  -gtk-icon-transform: scale(0.85);
+  margin-right: 12px;
+}
+
+/* Dock */
+#applicationmenu-button image,
+#docklike-plugin .group image {
+  -gtk-icon-transform: scale(0.85);
+}
+
+#docklike-plugin .group {
+	margin: 0px;
+	padding: 0px 4px;
+}
+
+/* Because the background is layered above the indicators */
+#docklike-plugin .group:hover {
+  background-color: rgba(73, 77, 100, 0.25);
+}
+
+
+/* Menus */
+
+window.popup.csd.background menu,
+window.popup.csd.background menuitem {
+  border-radius: 4px;
+  padding: 6px;
+}
+
+/* Get rid of the sharp corner artifacts */
+/* Would've liked to just make their backgrounds transparent,
+ * but that still leaves behind border-like artifacts */
+window.popup.csd.background,
+window.popup.csd.background decoration {
+  border-radius: 6px;
+  background-color: transparent;
+}
+
+window.popup.csd.background menu separator {
+  margin: 4px 0;
+}
+
+
+/* Notifications */
+
+#XfceNotifyWindow {
+	border: 0px;
+}
+
+#XfceNotifyWindow image {
+	-gtk-icon-transform: scale(0.5);
+	border-radius: 6px;
+}

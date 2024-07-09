@@ -8,6 +8,8 @@
 {
   imports = [
     ./thunar.nix
+    ./picom.nix
+    ./appfinder.nix
     ./screensaver.nix
     ./xfce-desktop.nix
     ./xfce-keymaps.nix
