@@ -5,7 +5,7 @@
     settings = {
       main.pad = "12x0";
       scrollback = {
-        lines = 1000;
+        lines = 2048;
         indicator-position = "fixed";
         indicator-format = "percentage";
       };

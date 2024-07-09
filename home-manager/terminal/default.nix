@@ -21,6 +21,7 @@
   xresources.properties = {
     "XTerm.termName" = "xterm-256color";
     "XTerm*locale" = true;
+    "XTerm*saveLines" = 2048;
     "XTerm*metaSendsEscape" = true;
     "XTerm*selectToClipboard" = true;
     "XTerm*translations" = ''#override \n\
