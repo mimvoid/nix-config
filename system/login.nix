@@ -5,17 +5,23 @@ let
   xfce = "${pkgs.xfce.xfce4-session}/share/xsessions";
 in
 {
+  services.xserver.displayManager.startx.enable = true;
+
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
         command = builtins.concatStringsSep " " [
           "${tgreet}/bin/tuigreet"
-          "--time --time-format '%A %b %d / %H:%M'"
+          "--greeting 'Welcome back!'"
+          "--time --time-format '%a, %b %d %Y - %H:%M'"
           "--asterisks"
+          "--window-padding 2"
+          "--container-padding 2"
           "--remember --remember-session"
           "--sessions ${hyprland}"
           "--xsessions ${xfce}"
+          "--theme 'border=blue;container=black;text=white;time=yellow;prompt=magenta;input=gray;action=blue;button=yellow'"
         ];
         user = "greeter";
       };

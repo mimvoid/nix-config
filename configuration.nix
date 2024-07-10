@@ -66,8 +66,6 @@
   };
 
   # XFCE
-  services.xserver.displayManager.startx.enable = true;
-
   services.xserver.desktopManager.xfce = {
     enable = true;
     enableXfwm = true;
