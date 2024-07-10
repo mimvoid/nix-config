@@ -43,7 +43,6 @@ in
     noto-fonts-cjk-sans
     atkinson-hyperlegible
     raleway
-    carlito
 
     # Serif
     noto-fonts-cjk-serif
@@ -53,7 +52,6 @@ in
 
     # Display / Handwriting
     norwester-font
-    lxgw-wenkai
     (google-fonts.override {
       fonts = [
         "Limelight-Regular"
