@@ -21,14 +21,18 @@ let
 
   # Default fonts
   serif = sansSerif;
+
   sansSerif = {
     package = pkgs.cantarell-fonts;
     name = "Cantarell";
   };
+
   monospace = {
     package = (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ];});
     name = "SauceCodePro NFM";
   };
+
+  terminal-size = 14;
 in
 {
   home.packages = with pkgs; [
@@ -48,15 +52,19 @@ in
     courier-prime
 
     # Display / Handwriting
-    (google-fonts.override {fonts = [
-      "Limelight-Regular"
-      "Oswald[wght]"
-      "MajorMonoDisplay-Regular"
-      "MaShanZheng-Regular"
-    ]; })
     norwester-font
     lxgw-wenkai
-  ] ++ [
+    (google-fonts.override {
+      fonts = [
+        "Limelight-Regular"
+        "Oswald[wght]"
+        "MajorMonoDisplay-Regular"
+        "MaShanZheng-Regular"
+      ];
+    })
+  ]
+  ++
+  [
     icons.package
     cursor.package
     sansSerif.package
@@ -65,8 +73,6 @@ in
 
   stylix = {
     autoEnable = false;
-
-    #image = homescreen;
     base16Scheme = "${pkgs.base16-schemes}/share/themes/${theme.name}.yaml";
 
     inherit cursor;
@@ -75,7 +81,7 @@ in
       inherit serif;
       inherit sansSerif;
       inherit monospace;
-      sizes.terminal = 14;
+      sizes.terminal = terminal-size;
     };
 
     targets = {
@@ -104,11 +110,11 @@ in
 
   xresources = {
     properties = {
-      "*.faceName" = "${monospace.name}";
-      "*.faceSize" = config.stylix.fonts.sizes.terminal;
+      "*.faceName" = monospace.name;
+      "*.faceSize" = terminal-size;
       "*.renderFont" = true;
       "Xcursor.size" = cursor.size;
-      "Xcursor.theme" = cursor.name; 
+      "Xcursor.theme" = cursor.name;
     };
     extraConfig = builtins.readFile (
       pkgs.fetchFromGitHub {
