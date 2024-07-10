@@ -46,9 +46,11 @@ in
     "${g}wrap_workspaces" = false;     
     
     # Margins
-    "${g}margin_top" = 12;
+    # The large top and bottom margins allow exclusive space for
+    # the panels, even if they are floating
+    "${g}margin_top" = 35;
     "${g}margin_right" = 12;
-    "${g}margin_bottom" = 12;
+    "${g}margin_bottom" = 60;
     "${g}margin_left" = 12;
   };
 }

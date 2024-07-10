@@ -31,7 +31,7 @@ in
 
     "${p1}background-style" = 1; # solid color
     # transleucent rose pine moon base
-    "${p1}background-rgba" = [ (35.0 / 255) (33.0 / 255) (54.0 / 255) 0.65 ];
+    "${p1}background-rgba" = [ (35.0 / 255) (33.0 / 255) (54.0 / 255) 0.75 ];
 
     # Note: changing the plugin type for a previously used number may not update
     # the plugins' internal names right away, leading to some strange behavior.
@@ -40,13 +40,13 @@ in
     
     # Bottom panel
     "${p2}autohide-behavior" = 0; # don't autohide
-    "${p2}position" = "p=10;x=968;y=1056";
+    "${p2}position" = "p=0;x=960;y=1050"; # floating
     "${p2}position-locked" = true;
     "${p2}length" = 1; # let it be autoexpanded by plugins
     "${p2}size" = 46;
 
     "${p2}background-style" = 1;
-    "${p2}background-rgba" = [ (35.0 / 255) (33.0 / 255) (54.0 / 255) 0.65 ];
+    "${p2}background-rgba" = [ (35.0 / 255) (33.0 / 255) (54.0 / 255) 0.75 ];
 
     "${p2}plugin-ids" = [ 10 11 12 ];
 
@@ -66,7 +66,7 @@ in
     "${w.clock}/mode" = 2;
     "${w.clock}/digital-layout" = 2;
     "${w.clock}/digital-date-font" = "Cantarell 9";
-    "${w.clock}/digital-date-format" = "%A %b %d / %H:%M";
+    "${w.clock}/digital-date-format" = "%A %b %d  /  %H:%M";
 
     "${w.sep2}" = "separator";
     "${w.sep2}/expand" = true;
@@ -109,16 +109,17 @@ in
       onlyDisplayVisible=false
       onlyDisplayScreen=false
       showPreviews=true
-      previewScale=0.5 # default 0.125
+      previewScale=0.5            # default 0.125
       showWindowCount=false
-      middleButtonBehavior=2 # do nothing
+      middleButtonBehavior=2      # do nothing
       noWindowsListIfSingle=false
-      indicatorStyle=3 # ciliora
-      inactiveIndicatorStyle=1 # dots
-      indicatorOrientation=0 # automatic
+      indicatorStyle=3            # ciliora
+      inactiveIndicatorStyle=1    # dots
+      indicatorOrientation=0      # automatic
       forceIconSize=false
       keyComboActive=false
       keyAloneActive=false
+      indicatorOrientation=1      # bottom
       indicatorColorFromTheme=false
       indicatorColor=rgb(234,154,151)
       inactiveColor=rgb(62,143,176)
