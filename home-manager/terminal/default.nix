@@ -29,5 +29,6 @@
       Ctrl Shift <Key>C: copy-selection(CLIPBOARD) \n\
       Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
     '';
+    "XTerm*internalBorder" = 14; # padding
   };
 }
