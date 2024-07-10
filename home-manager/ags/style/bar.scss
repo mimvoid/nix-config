@@ -25,8 +25,14 @@ window.bar {
 
 /* Widget-specific spacing */
 
-.workspaces label {
-  margin: 0;
+.workspaces {
+  button {
+    margin: 0 2px;
+  }
+
+  label {
+    margin: 0;
+  }
 }
 
 .volume, .battery {
