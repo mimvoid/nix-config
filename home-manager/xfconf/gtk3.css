@@ -4,15 +4,43 @@
 .thunar menuitem,
 .thunar treeview,
 .thunar scrollbar slider,
-.thunar .location-button.toggle:hover,
-.thunar .location-button.toggle:checked {
-  border-radius: 4px;
+.thunar box entry,
+.thunar .location-button,
+.thunar .location-button:hover,
+.thunar .flat.image-button {
+  border: none;
+  border-radius: 6px;
+  box-shadow: none;
 }
 
-.thunar button.flat.image-button {
-  padding: 0 4px;
-  border-radius: 4px;
+.thunar toolbar.horizontal {
+  padding: 0 6px;
 }
+
+.thunar .location-button {
+  padding: 2px 4px;
+}
+
+.thunar .flat.image-button {
+  margin: 4px;
+  padding: 4px;
+}
+
+.thunar .flat.image-button:disabled {
+  background-color: transparent;
+}
+
+.thunar .location-button:hover:not(:checked),
+.thunar .flat.image-button:hover {
+  background-color: rgba(110, 106, 134, 0.25);
+  transition: all 0.2s;
+}
+
+.thunar .location-button label,
+.thunar .location-button image {
+  padding: 0 4px;
+}
+
 
 /* XFCE Panels */
 /* HACK: how to pad a panel? */
@@ -41,9 +69,10 @@
 /* workspaces */
 .xfce4-panel #pager-1 button.flat.toggle:checked,
 /* other buttons */
+.xfce4-panel #applicationmenu-button:checked,
 .xfce4-panel button:hover {
   color: #9ccfd8; /* foam */
-	background-color: rgba(73, 77, 100, 0.75); /* surface1 */
+	background-color: rgba(110, 106, 134, 0.25); /* muted */
   transition: all 0.2s;
 }
 
@@ -54,27 +83,33 @@
   transition: all 0.2s;
 }
 
+#clock-button label {
+  padding: 0 6px;
+}
+
 /* HACK: the clock widget calendar has no specific css class */
 /* Calendar */
-window.background calendar {
-  padding: 4px;
+.background calendar {
   background-color: #232136;
   color: rgb(224, 222, 244); /* text */
 }
 
-window.background calendar:selected {
-  color: #232136;
-  border-radius: 12px;
-  background-color: #ea9a97; /* rose */
+/* keep week numbers aligned */
+.background calendar:not(.highlight) {
+  padding: 10px 8px;
+}
+
+.background calendar:selected {
+  color: #ea9a97; /* rose */
 }
 
 /* Day names & week numbers */
-window.background calendar .highlight {
+.background calendar .highlight {
   color: #c4a7e7; /* iris */
 }
 
 /* Days outside current month */
-window.background calendar:indeterminate {
+.background calendar:indeterminate {
   color: rgba(224, 222, 244, 0.4);
 }
 
@@ -104,17 +139,12 @@ window.background calendar:indeterminate {
 	padding: 0px 4px;
 }
 
-/* Because the background is layered above the indicators */
-#docklike-plugin .group:hover {
-  background-color: rgba(73, 77, 100, 0.25);
-}
-
 
 /* Menus */
 
 window.popup.csd.background menu,
 window.popup.csd.background menuitem {
-  border-radius: 4px;
+  border-radius: 6px;
   padding: 6px;
 }
 
@@ -123,7 +153,7 @@ window.popup.csd.background menuitem {
  * but that still leaves behind border-like artifacts */
 window.popup.csd.background,
 window.popup.csd.background decoration {
-  border-radius: 6px;
+  border-radius: 8px;
   background-color: transparent;
 }
 
