@@ -10,11 +10,11 @@
 
     activeOpacity = 0.85;
     inactiveOpacity = 0.7;
-    menuOpacity = 0.95;
+    menuOpacity = 0.85;
     opacityRules = [
       "100:class_g = 'firefox' && focused"
       "100:class_g = 'krita'"
-      "100:class_g = 'ristretto'"
+      "100:class_g *?= 'ristretto'"
       "100:class_g = 'zoom'"
       "80:class_g = 'xterm' && focused"
     ];
