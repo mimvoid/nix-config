@@ -5,14 +5,19 @@
 .calendar {
   all: unset;
   padding: 12px;
+  padding-bottom: 6px;
   border-radius: $radius;
   background-color: change-color($base, $alpha: 0.9);
 }
 
 .calendar calendar {
-  padding: 4px;
   font-size: 15px;
   color: $text;
+
+  // Keep week numbers aligned
+  &:not(.highlight) {
+    padding: 6px;
+  }
 
   &.button {
     color: transparentize($text, 0.5);
@@ -31,9 +36,7 @@
 
   /* Defaults to current day */
   &:selected {
-    border-radius: $radius;
-    color: $base;
-    background-color: $secondary;
+    color: $tertiary-bright;
   }
 
   /* Days outside the current month */
