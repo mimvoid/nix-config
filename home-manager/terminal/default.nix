@@ -15,6 +15,7 @@
     distrobox
     gotop
     unstable.dooit
+    imagemagick
   ];
 
   # Theming-specific config is in ../theming.nix
