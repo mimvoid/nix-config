@@ -5,23 +5,23 @@
     font = "ter-d28b";
     packages = [ pkgs.terminus_font ];
     useXkbConfig = true;
-    colors = [ # rose pine base16
-      "191724"
-      "1f1d2e"
-      "26233a"
-      "6e6a86"
-      "908caa"
-      "e0def4"
-      "e0def4"
-      "524f67"
-      "eb6f92"
-      "f6c177"
-      "ebbcba"
-      "31748f"
-      "9ccfd8"
-      "c4a7e7"
-      "f6c177"
-      "524f67"
+    colors = [ # catppuccin mocha
+      "11111b" # crust      black
+      "f38ba8" # red        red
+      "a6e3a1" # green      green
+      "f9e2af" # yellow     yellow
+      "89b4fa" # blue       blue
+      "f5c2e7" # pink       magenta
+      "94e2d5" # teal       cyan
+      "a6adc8" # subtext 0  gray
+      "45475a" # surface 1  dark gray
+      "f38ba8" # red        light red
+      "a6e3a1" # green      light green
+      "f9e2af" # yellow     light yellow
+      "89b4fa" # blue       light blue
+      "f5c2e7" # pink       light magenta
+      "94e2d5" # teal       light cyan
+      "cdd6f4" # text       white
     ];
   };
 }

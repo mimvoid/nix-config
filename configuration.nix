@@ -3,6 +3,7 @@
 {
   imports = [
     ./hosts/h2/hardware-configuration.nix
+    ./system/console.nix
     ./system/login.nix
     ./system/boot.nix
     ./system/virt.nix
@@ -39,12 +40,6 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
   ];
-
-  console = {
-    font = "ter-d28b";
-    packages = [ pkgs.terminus_font ];
-    useXkbConfig = true;
-  };
 
   # X11
   services.xserver = {
