@@ -17,5 +17,5 @@
     ./xfwm.nix
   ];
 
-  home.packages = [ pkgs.xclip ];
+  home.packages = with pkgs; [ xclip maim ];
 }
