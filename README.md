@@ -2,15 +2,15 @@
 
 <p align="center">This is where I keep my configuration files, links to helpful resources, and some pieces of advice from my experience with NixOS.
 
-<span align="center">
+#### Hyprland
+![sunset-wallpaper](assets/2024-07-14_hyprland-1.png)
 
-![sunset-wallpaper](assets/2024-06-14_hyprland-1.png)
+![dooit-amberol-thunar](assets/2024-07-14_hyprland-2.png)
 
-![dooit-amberol-thunar](assets/2024-06-14_hyprland-2.png)
+![disfetch](assets/2024-07-14_hyprland-3.png)
 
-![disfetch](assets/2024-06-14_hyprland-3.png)
-
-</span>
+#### XFCE
+![xfce-disfetch](assets/2024-07-09_xfce.png)
 
 My Firefox CSS: [panefox](https://github.com/mimvoid/panefox)
 
