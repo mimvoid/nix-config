@@ -16,14 +16,14 @@ My Firefox CSS: [panefox](https://github.com/mimvoid/panefox)
 
 My wallpapers and credits: [wallpaper-stash](wallpapers/README.md)
 
-# What I use
+# What I Use
 
 Desktop Environments & Window Managers
 
 - [Hyprland](https://hyprland.org/)
 - [XFCE](https://xfce.org) with [xfwm](https://docs.xfce.org/xfce/xfwm4/start) 
 
-Display Manager: [LightDM](https://github.com/canonical/lightdm)
+Login Manager: [greetd](https://sr.ht/~kennylevinsen/greetd/) with [tuigreet](https://github.com/apognu/tuigreet)
 
 | Applications      |                                                                        |
 | ----------------- | ---------------------------------------------------------------------- |
@@ -48,7 +48,7 @@ Display Manager: [LightDM](https://github.com/canonical/lightdm)
 | Logout menu        | [wlogout](https://github.com/ArtsyMacaw/wlogout)      |
 | Wallpaper          | [swww](https://github.com/LGFae/swww)                 |
 | Screen temperature | [wlsunset](https://sr.ht/~kennylevinsen/wlsunset/)    |
-| Screenshot         | [hyprshot](https://github.com/Gustash/hyprshot)       |
+| Screenshot         | [hyprshot](https://github.com/Gustash/hyprshot) & [maim](https://github.com/naelstrof/maim) |
 | Color picker       | [hyprpicker](https://github.com/hyprwm/hyprpicker)    |
 
 | Theming         |                                                              |
@@ -62,8 +62,10 @@ Display Manager: [LightDM](https://github.com/canonical/lightdm)
 
 Extras
 
-- WIP: [AGS](https://github.com/Aylur/ags) widgets
-- [Obsidian.md](https://obsidian.md) CSS snippets
+- AGS widgets (WIP)
+  - Bar
+  - Calendar
+  - Notifications
 - Krita
   - Themes
     - [Catppuccin Macchiato & Mocha Maroon](https://github.com/catppuccin/kde)
@@ -76,6 +78,7 @@ Extras
     - [Composition Helper](https://github.com/Grum999/CompositionHelper)
     - [Reference Tabs Docker](https://invent.kde.org/freyalupen/reference-tabs-docker)
     - [Timer Watch](https://github.com/EyeOdin/timer_watch)
+- [Obsidian.md](https://obsidian.md) CSS snippets
 - Firefox themes & extensions
   - Custom themes: Incandescent (light) & Moonflower (dark)
   - [Catppuccin Macchiato - Maroon](https://github.com/catppuccin/firefox)
