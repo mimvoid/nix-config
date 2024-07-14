@@ -42,7 +42,7 @@
         })
       ];
     };
-    allowed-unfree-packages = [ "zoom" "steam" "steam-original" "steam-run" ];
+    allowed-unfree-packages = [ "zoom" ];
   in
   {
     nixosConfigurations = {

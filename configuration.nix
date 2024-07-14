@@ -105,7 +105,6 @@
   programs = {
     zsh.enable = true;
     firefox.enable = true;
-    steam.enable = true;
   };
 
   security.polkit.enable = true;
