@@ -17,6 +17,7 @@
       "100:class_g = 'krita'"
       "100:class_g *?= 'ristretto'"
       "100:class_g = 'zoom'"
+      "100:class_g *?= 'virt-manager'"
       "98:class_g *?= 'obsidian' && focused"
       "98:class_g *?= 'zotero' && focused"
       "80:class_g = 'xterm' && focused"
