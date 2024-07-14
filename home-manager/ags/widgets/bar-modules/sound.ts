@@ -30,7 +30,6 @@ const label = Widget.Label({
 })
 
 const slider = Widget.Slider({
-  class_name: "volume-slider",
   cursor: "pointer",
   hexpand: true,
   vpack: "center",
@@ -59,8 +58,6 @@ const eventbox = Widget.EventBox({
     slider_box.reveal_child = false;
   },
 
-  //tooltip_text: `Volume: $audio.bind('volume').as(v => ${Math.floor(v*100)}%`,
- 
   child: Widget.Box({
     children: [slider_box, label],
   }), 

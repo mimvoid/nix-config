@@ -1,10 +1,7 @@
 // TODO: change icon based on if wlsunset is running or not
-//
 // off icon weather-clear-night-symbolic
 
-const icon = Widget.Icon({
-  icon: "weather-clear-symbolic",
-})
+const icon = Widget.Icon("display-brightness-symbolic")
 
 export default () => Widget.Button({
   class_name: "wlsunset-toggle",
@@ -17,5 +14,5 @@ export default () => Widget.Button({
     (err) => logError(err),
   )},
 
-  child: icon,
+  child: icon
 })

@@ -18,14 +18,14 @@ const label = Widget.Label({
   }, 'screen-changed'),
 });
 
-const brightness_elements = Widget.Box({
+const elements = Widget.Box({
   children: [ slider, label ],
   hexpand: true,
   vpack: "center",
 })
 
 const revealer = Widget.Revealer({
-  child: brightness_elements,
+  child: elements,
 
   reveal_child: false,
   transition_duration: 250,

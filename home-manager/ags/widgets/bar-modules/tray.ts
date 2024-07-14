@@ -8,9 +8,7 @@ const ignore = [
 // Makes a button for each system tray item
 const tray_items = (item: TrayItem) => Widget.Button({
   class_name: "system-tray",
-  child: Widget.Icon({
-    icon: item.bind("icon")
-  }),
+  child: Widget.Icon({ icon: item.bind("icon") }),
 
   cursor: "pointer",
   on_primary_click: (_, event) => item.activate(event),

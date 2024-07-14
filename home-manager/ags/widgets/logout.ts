@@ -1,5 +1,5 @@
 // TODO: set default visibility off
-// FIX: importing this causes actions to be executed right after
+// FIX: importing this causes actions to be executed immediately
 
 const MenuButton = (cls: string, icon: string, action: string) => Widget.Button({
   class_name: `${cls}`,

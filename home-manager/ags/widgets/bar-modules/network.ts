@@ -1,7 +1,7 @@
 const network = await Service.import('network');
 
 // Wifi
-const wifi_icon = Widget.Button({
+const icon = Widget.Button({
   child: Widget.Icon({
     icon: network.wifi.bind('icon_name'),
   }),
@@ -11,37 +11,38 @@ const wifi_icon = Widget.Button({
   on_secondary_click: () => Utils.execAsync('nm-connection-editor'),
 })
 
-const wifi_label = Widget.Label({
+const label = Widget.Label({
   label: network.wifi.bind('strength').as(s => `${s}%`),
 
+  // FIX: does not work
   // Only show if there's a connection to the internet
   visible: network.wifi.state === "activated",
 })
 
-const wifi_label_box = Widget.Revealer({
-  child: wifi_label,
+const label_box = Widget.Revealer({
+  child: label,
 
   revealChild: false,
   transitionDuration: 250,
   transition: 'slide_left',
 })
 
-const wifi_eventbox = Widget.EventBox({
+const eventbox = Widget.EventBox({
   on_hover: () => {
-    wifi_label_box.reveal_child = true;
+    label_box.reveal_child = true;
   },
   on_hover_lost: () => {
-    wifi_label_box.reveal_child = false;
+    label_box.reveal_child = false;
   },
 
   child: Widget.Box({
-    children: [wifi_icon, wifi_label_box],
+    children: [icon, label_box],
   }), 
 })
 
 
 const Wifi = () => Widget.Box({
-  child: wifi_eventbox,
+  child: eventbox,
   tooltip_text: network.wifi.bind('ssid'),
 })
 
