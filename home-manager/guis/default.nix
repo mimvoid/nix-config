@@ -5,8 +5,6 @@
     # Files & documents
     pdfarranger
     xarchiver
-    nextcloud-client
-    localsend
 
     # Academics
     zotero_7
@@ -18,7 +16,7 @@
     vesktop
 
     # Virtualisation/layers
-    bottles
+    unstable.bottles
     virt-manager
 
     # Media
@@ -26,10 +24,12 @@
   ];
 
   imports = [
-    ./freetube.nix
+    #./freetube.nix
     ./zathura.nix
   ];
 
   # Imports list of allowed unfree packages from flake.nix
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+
+  services.nextcloud-client.enable = true;
 }
