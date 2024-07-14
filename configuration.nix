@@ -115,6 +115,16 @@
   # Touchpad support
   services.libinput.enable = true;
 
+  # Graphics
+  hardware.opengl = {
+    enable = true;
+    driSupport = true;
+    driSupport32Bit = true;
+    extraPackages = with pkgs; [
+      onevpl-intel-gpu
+    ];
+  };
+
   # Sound
   services.pipewire = {
     enable = true;
