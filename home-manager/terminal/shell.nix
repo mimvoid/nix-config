@@ -5,15 +5,10 @@
     # zsh
     zsh-z
     zsh-autopair
-    zsh-syntax-highlighting
-
-    # Nix integrations
     zsh-nix-shell
-    nix-zsh-completions
-    nh
 
-    # misc
-    eza
+    # other
+    nh
     disfetch
     tlrc
     exiftool
@@ -35,7 +30,7 @@
     history = {
       path = "$HOME/zsh/.zsh_history";
       ignoreDups = true;
-      ignorePatterns = [ "ls" "eza" "exit" "yazi" "yy" ];
+      ignorePatterns = [ "ls" "eza" "yazi" "yy" ];
     };
     
     historySubstringSearch = {
@@ -48,29 +43,26 @@
       nhos = "nh os switch ~/NixOS";
       nhh = "nh home switch ~/NixOS";
       
-      ya = "yy";
+      yy = "ya";
     };
     
     completionInit = " autoload -U compinit && compinit";
-    initExtra = ''
-      source $HOME/zsh/plugins/zsh-autopair/share/zsh/zsh-autopair/autopair.zsh
-      source $HOME/zsh/plugins/zsh-z/share/zsh-z/zsh-z.plugin.zsh
-      source $HOME/zsh/plugins/zsh-z
-      zstyle ':completion:*' menu select
-      
-      # Let Yazi change current directory
-      function yy() {
-	      local tmp="$(mktemp -t "yazi-cwd.XXXXXX")"
-	      yazi "$@" --cwd-file="$tmp"
-	      if cwd="$(cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		      cd -- "$cwd"
-	      fi
-	      rm -f -- "$tmp"
-      }
-    '';
     plugins = [
-      { name = "zsh-z"; src = pkgs.zsh-z; }
-      { name = "zsh-autopair"; src = pkgs.zsh-autopair; }
+      {
+        name = "zsh-z";
+        file = "share/zsh-z/zsh-z.plugin.zsh";
+        src = pkgs.zsh-z;
+      }
+      {
+        name = "zsh-autopair";
+        file = "share/zsh/zsh-autopair/autopair.zsh";
+        src = pkgs.zsh-autopair;
+      }
+      {
+        name = "zsh-nix-shell";
+        file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+        src = pkgs.zsh-nix-shell;
+      }
     ];
   };
 
@@ -81,6 +73,8 @@
 
   programs = {
     bat.enable = true;
+    eza.enable = true;
+    man.enable = true;
     ripgrep.enable = true;
   };
 }
