@@ -7,6 +7,7 @@
     bun
     dart-sass
     brightnessctl
+    gnome.adwaita-icon-theme
   ];
 
   programs.ags = {
