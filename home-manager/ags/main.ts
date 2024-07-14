@@ -4,6 +4,10 @@ import Notifications from "./widgets/notifications";
 
 App.config({
   style: `/tmp/ags/style/style.css`,
+  // HACK: close windows other than bar and notifications
+  onConfigParsed: () => {
+    App.closeWindow("calendar")
+  },
   windows: [
     Bar(),
     Calendar(),

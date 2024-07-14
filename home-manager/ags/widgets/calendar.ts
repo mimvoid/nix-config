@@ -29,6 +29,6 @@ export default (monitor: number) => Widget.Window({
   anchor: ["top"],
   exclusivity: "normal",
   layer: "overlay",
-  margins: [6, 0],
+  margins: [2, 0],
   child: calendar_revealer,
 })
