@@ -4,11 +4,11 @@
 
 <span align="center">
 
-![sunset-wallpaper](https://github.com/mimvoid/nix-config/assets/153698678/3f3fd85b-64c6-4adf-8987-1d345e00d901)
+![sunset-wallpaper](assets/2024-06-14_hyprland-1.png)
 
-![dooit-amberol-thunar](https://github.com/mimvoid/nix-config/assets/153698678/c80bb662-b7f5-434b-8613-a21cd33767ee)
+![dooit-amberol-thunar](assets/2024-06-14_hyprland-2.png)
 
-![disfetch](https://github.com/mimvoid/nix-config/assets/153698678/075ef3b6-456a-4543-a740-7794d1a0a8d2)
+![disfetch](assets/2024-06-14_hyprland-3.png)
 
 </span>
 
