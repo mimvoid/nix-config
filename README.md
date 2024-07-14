@@ -63,6 +63,7 @@ Login Manager: [greetd](https://sr.ht/~kennylevinsen/greetd/) with [tuigreet](ht
 Extras
 
 - AGS widgets (WIP)
+  - [Adwaita icons](https://gitlab.gnome.org/GNOME/adwaita-icon-theme)
   - Bar
   - Calendar
   - Notifications
