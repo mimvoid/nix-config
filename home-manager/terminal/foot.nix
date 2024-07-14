@@ -3,7 +3,7 @@
   programs.foot = {
    enable = true;
     settings = {
-      main.pad = "12x0";
+      main.pad = "14x0";
       scrollback = {
         lines = 2048;
         indicator-position = "fixed";
