@@ -17,16 +17,18 @@ in
     enable = true;
     systemd = { enable = true; variables = ["--all"]; };
     xwayland.enable = true;
-        
     extraConfig = ''
-      monitor = ,preferred,auto,auto
-      xwayland {
-        force_zero_scaling = true
+      general {
+        gaps_out = 4,12,12,12 # for top bar
+      }
+      decoration {
+        shadow_offset = 2 2
       }
     '';
   };
 
   wayland.windowManager.hyprland.settings = {
+
     # Startup & daemons
     exec-once = [
       "systemctl --user import-environment &" 
@@ -52,8 +54,6 @@ in
 
       "GDK_scale, 1"
       "GDK_BACKEND, wayland, x11, *"
-
-      # FIXME: doesn't always work, research why
       "GTK_CSD, 0" # disable window decorations
 
       "QT_AUTO_SCREEN_SCALE_FACTOR, 1_SCALE_FACTOR, 1"
@@ -62,12 +62,12 @@ in
       "QT_QPA_scale, 2"
       "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
 
-      "MOZ_ENABLE_WAYLAND, 1" # Wayland for Mozilla products
-
-      #"XCURSOR_THEME,"
       "XCURSOR_SIZE, 24"
       "HYPRCURSOR_SIZE, 24"
     ];
+
+    monitor = ",preferred,auto,auto";
+    xwayland.force_zero_scaling = true;
 
     windowrulev2 =
     # TODO: think of better names for these
@@ -80,6 +80,7 @@ in
     in
     [
       "suppressevent maximize, class:.*"
+      "opacity 0.8 override 0.7 override, class:(foot)"
       (opaquer-title "*Nextcloud")
       (opaquer-class "Anki")
       (opaque-ish "FreeTube")
@@ -89,6 +90,7 @@ in
       (active-opaque "firefox")
       (opaque "ristretto")
       (opaque "krita")
+      (opaque "virt-manager")
     ];
 
     dwindle = {
@@ -100,7 +102,7 @@ in
       layout = "dwindle";
       
       gaps_in = 4;
-      gaps_out = 8;
+      gaps_out = 12;
       border_size = 1;
 
       resize_on_border = true;
@@ -108,25 +110,31 @@ in
     };
 
     decoration = {
-      rounding = 6;
+      rounding = 5;
 
-      active_opacity = 0.80;
-      inactive_opacity = 0.70;
+      active_opacity = 0.85;
+      inactive_opacity = 0.7;
+      fullscreen_opacity = 1.0;
 
       drop_shadow = true;
-      shadow_range = 2;
-      shadow_render_power = 2;
+      shadow_ignore_window = true;
+      shadow_range = 6;
+      shadow_render_power = 1;
 
       blur = {
         enabled = true;
+        new_optimizations = true;
+        xray = true;
         size = 1;
-        passes = 1;
-        contrast = 1.25;
+        passes = 2;
+        contrast = 1.2;
+        noise = 0.02;
       };
     };
 
     animations = {
       enabled = true;
+      first_launch_animation = true;
       bezier = "myBezier, 0.05, 0.9, 0.1, 1.05";
       animation = [
         "windows, 1, 2, myBezier"
@@ -148,10 +156,6 @@ in
       touchpad.natural_scroll = false;
 
       kb_layout = "us";
-      #kb_variant = 
-      #kb_model = 
-      #kb_options =
-      #kb_rules = 
     };
 
     gestures.workspace_swipe = false;
@@ -166,10 +170,12 @@ in
     #-------------#
 
     "$mod" = "SUPER";
+
     bindm = [
       "$mod, mouse:272, resizewindow"
       "$mod, mouse:273, movewindow"
     ];
+
     bind = [
       # Launch
       "$mod, Return, exec, ${terminal}"

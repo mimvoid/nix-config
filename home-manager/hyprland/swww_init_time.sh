@@ -7,15 +7,15 @@ case $(date +%H) in
     ;;
   07 | 08 | 09 | 10 | 11) # 7:00 to 11:59, morning
 		
-    swww img "$HOME"/NixOS/wallpapers/gracile_over-the-clouds.jpg
+    swww img "$HOME"/NixOS/wallpapers/coffee-car.jpg
     ;;
 	12 | 13 | 14 | 15) # 12:00 to 15:59, midday
 
-		swww img "$HOME"/NixOS/wallpapers/aeuna_under-the-blue-sky-4.jpg
+		swww img "$HOME"/NixOS/wallpapers/coffee-car.jpg
 		;;
 	16 | 17 | 18 | 19 | 20) # 16:00 to 19:59, late afternoon/evening
 
-    swww img "$HOME"/NixOS/wallpapers/axle_end-of-the-summer.jpg
+    swww img "$HOME"/NixOS/wallpapers/coffee-car.jpg
     ;;
   21 | 22 | 23) # 21:00 to 23:59, evening/nighttime
 

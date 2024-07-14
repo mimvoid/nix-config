@@ -5,23 +5,19 @@
 
 /* FIX: sliders are not visible */
 
-window.bar {
+window.bar > box {
+  margin: 4px 14px;
+  border-radius: $radius;
+  
+  color: $primary;
   background-color: transparent;
 }
 
 .left, .center, .right {
-  margin-top: 4px;
-  padding: 4px 6px;
-
+  padding: 4px 8px;
   border-radius: $radius;
-
-  color: $secondary-bright;
   background-color: $base;
 }
-
-.left { margin-left: 14px; }
-.right { margin-right: 14px; }
-
 
 /* Widget-specific spacing */
 
@@ -48,12 +44,10 @@ window.bar {
 
 .workspaces button {
   padding: 0 6px;
-
-  color: $primary;
   background-color: transparent;
 
   &.focused {
-    color: $alert;
+    color: $tertiary;
     background-color: $box;
     transition: all 0.2s ease-in-out;
   }
@@ -67,14 +61,11 @@ window.bar {
 
 .client-title {
   margin-left: 10px;
-  color: $primary;
 }
 
-.clock {
-  color: adjust-color($error, $lightness: 10);
-
+.clock:hover {
   /* disable default button background color */
-  &:hover { background-color: transparent; };
+  background-color: transparent;
 }
 
 .network {
@@ -87,13 +78,15 @@ window.bar {
 
 .volume {
   color: $tertiary-bright;
-  trough highlight { background-color: $tertiary-bright; } //doesn't work
+  label { margin-left: 2px; }
+  trough highlight { background-color: $tertiary-bright; }
 }
 
 /* TODO: different colors for battery percentages */
 .battery {
   color: $good;
-
+  label { margin-left: 6px; }
+  
   .charging { color: $good; }
 }
 
@@ -112,7 +105,6 @@ window.bar {
 .power-actions {
   margin: 0 0 0 2px;
   padding: 0 4px;
-  color: $primary;
   background-color: $box;
 
   &:hover {

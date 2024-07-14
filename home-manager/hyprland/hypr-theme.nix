@@ -20,10 +20,10 @@ in
     exec-once = lib.mkAfter [ "swww-daemon --no-cache &" ];
     exec = lib.mkAfter [ "${./swww_init_time.sh} &" ];
     general = {
-      "col.active_border" = "rgb(${hue.mainAccent})";
-      "col.inactive_border" = "rgb(${hue.dullAccent})";
+      "col.active_border" = "rgb(${hue.secAccent})";
+      "col.inactive_border" = "rgba(${hue.dullAccent}40)"; # 25% opacity
     };
-    decoration."col.shadow" = "rgb(${hue.etch})";
+    decoration."col.shadow" = "rgba(00001933)"; # 20% opacity
   };
 
   programs.fuzzel.settings = {
