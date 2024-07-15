@@ -63,9 +63,15 @@ window.bar > box {
   margin-left: 10px;
 }
 
+/* disable default button background color */
 .clock:hover {
-  /* disable default button background color */
   background-color: transparent;
+}
+
+/* Change icons to Papirus for more compatibility */
+.system-tray image {
+  all: unset;
+  -gtk-icon-theme: 'Papirus';
 }
 
 .network {
