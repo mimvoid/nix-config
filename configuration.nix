@@ -7,6 +7,7 @@
     ./system/console.nix
     ./system/login.nix
     ./system/virt.nix
+    ./system/flatpaks.nix
   ];
 
   # General system configurations
@@ -21,9 +22,8 @@
   };
   system.autoUpgrade.enable = true;
 
-  # Package sources
+  # Import list of allowed unfree packages from flake.nix
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
-  services.flatpak.enable = true;
 
   # Minimum system packages, most are in home manager
   environment.systemPackages = with pkgs; [

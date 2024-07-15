@@ -24,6 +24,7 @@
   ];
 
   imports = [
+    ./flatpaks.nix
     #./freetube.nix
     ./zathura.nix
   ];
