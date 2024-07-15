@@ -126,7 +126,7 @@ The NixOS configuration file and Home Manager are what I mainly use, but here ar
 - [nh](https://github.com/viperML/nh), a pretty wrapper & helper for Nix and Home Manager
 - [NixVim](https://github.com/nix-community/nixvim), for configuring Neovim and its plugins declaratively
   - [NixVim documentation](https://nix-community.github.io/nixvim/)
-- [nix-flatpak](https://github.com/gmodena/nix-flatpak), for managing flatpaks declaratively
+- [nix-flatpak](https://github.com/gmodena/nix-flatpak), for managing Flatpaks declaratively
 - [Stylix](https://github.com/danth/stylix), for quick universal colorschemes and fonts
   - [Stylix documentation](https://danth.github.io/stylix/options/nixos.html)
 - [Nix-colors](https://docs.xfce.org/xfce/xfwm4/start), for managing color palettes
