@@ -6,3 +6,6 @@ result/
 *.css.map
 *.sass.map
 *.scss.map
+
+.*sync.log
+.sync_*.db*
