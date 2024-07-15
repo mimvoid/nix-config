@@ -40,6 +40,7 @@ in
     "dooit/config.py" = (link "${home-manager}/terminal/dooit.py");
     "gtk-3.0/gtk.css" = (link "${home-manager}/xfconf/gtk3.css");
     "wlogout/icons" = (link "${home-manager}/hyprland/icons");
+    "superProductivity/style.css" = (link "${home-manager}/guis/sp-dracula.css");
   };
 
   xdg.dataFile = {
