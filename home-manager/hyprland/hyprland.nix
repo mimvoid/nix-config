@@ -62,6 +62,10 @@ in
       "QT_QPA_scale, 2"
       "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
 
+      # Enable Ozone Wayland for electron apps
+      "NIXOS_OZONE_WL, 1"
+      "ELECTRON_OZONE_PLATFORM_HINT, auto"
+
       "XCURSOR_SIZE, 24"
       "HYPRCURSOR_SIZE, 24"
     ];
