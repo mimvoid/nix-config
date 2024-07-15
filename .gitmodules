@@ -6,6 +6,10 @@
   path = home-manager/firefox/chrome
   url = https://github.com/mimvoid/panefox.git
 
+[submodule "wallpaper-stash"]
+	path = wallpapers
+	url = git@github.com:mimvoid/wallpaper-stash.git
+
 [submodule "reference-tabs-docker"]
   path = home-manager/krita/reference-tabs-docker
   url = https://invent.kde.org/freyalupen/reference-tabs-docker.git
