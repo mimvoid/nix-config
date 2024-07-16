@@ -6,6 +6,8 @@
 # This is a temporary solution.
 
 let
+  # Cannot be a relative path since it's pointing to a file
+  # that's untracked due to being inside a git submodule
   lockscreen = "~/NixOS/wallpapers/wallpapers/tokyo-shinjuku.png";
   current-palette = ../../palettes/macchiato-nightlight.nix;
   display = "Limelight";
