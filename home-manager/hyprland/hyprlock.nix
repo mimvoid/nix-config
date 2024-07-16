@@ -6,7 +6,7 @@
 # This is a temporary solution.
 
 let
-  lockscreen = "${../../wallpapers/tokyo-shinjuku.png}";
+  lockscreen = "~/NixOS/wallpapers/wallpapers/tokyo-shinjuku.png";
   current-palette = ../../palettes/macchiato-nightlight.nix;
   display = "Limelight";
 
