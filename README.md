@@ -56,7 +56,7 @@ Login Manager: [greetd](https://sr.ht/~kennylevinsen/greetd/) with [tuigreet](ht
 | GTK theme       | [Rose Pine Moon](https://github.com/rose-pine/gtk)           |
 | Cursor          | [Rose Pine Dawn cursor](https://github.com/rose-pine/cursor) |
 | Icons           | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) with [Catppuccin folders](https://github.com/catppuccin/papirus-folders) |
-| Sans serif font | [Cantarell](https://cantarell.gnome.org/)                    |
+| Sans serif font | [Karla](https://fonts.google.com/specimen/Karla)                    |
 | Monospace font  | [SauceCodePro Nerd Font](https://www.nerdfonts.com/)         |
 | Display font    | [Limelight](https://fonts.google.com/specimen/Limelight)     |
 
