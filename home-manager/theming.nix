@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
 let
   theme = {
     name = "rose-pine-moon";
@@ -19,12 +19,22 @@ let
     });
   };
 
+  g-fonts = pkgs.google-fonts.override {
+    fonts = [
+      "Karla"
+      "Limelight-Regular"
+      "Oswald"
+      "MajorMonoDisplay-Regular"
+      "MaShanZheng-Regular"
+    ];
+  };
+
   # Default fonts
   serif = sansSerif;
 
   sansSerif = {
-    package = pkgs.cantarell-fonts;
-    name = "Cantarell";
+    package = g-fonts;
+    name = "Karla";
   };
 
   monospace = {
@@ -52,17 +62,11 @@ in
 
     # Display / Handwriting
     norwester-font
-    (google-fonts.override {
-      fonts = [
-        "Limelight-Regular"
-        "Oswald[wght]"
-        "MajorMonoDisplay-Regular"
-        "MaShanZheng-Regular"
-      ];
-    })
   ]
   ++
   [
+    g-fonts
+    theme.package
     icons.package
     cursor.package
     sansSerif.package
@@ -71,7 +75,7 @@ in
 
   stylix = {
     autoEnable = false;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/${theme.name}.yaml";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
 
     inherit cursor;
 

@@ -1,3 +1,4 @@
+{ config, ... }:
 let
   p1 = "panels/panel-1/";
   p2 = "panels/panel-2/";
@@ -65,7 +66,7 @@ in
     "${w.clock}" = "clock";
     "${w.clock}/mode" = 2;
     "${w.clock}/digital-layout" = 2;
-    "${w.clock}/digital-date-font" = "Cantarell 9";
+    "${w.clock}/digital-date-font" = "${config.gtk.font.name} 9";
     "${w.clock}/digital-date-format" = "%A %b %d  /  %H:%M";
 
     "${w.sep2}" = "separator";
