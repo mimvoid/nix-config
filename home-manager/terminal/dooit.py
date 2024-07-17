@@ -114,12 +114,12 @@ TODO = {
     "editing": pine,
     "pointer": ">",
 
-    "due_icon": "",
+    "due_icon": "󰃭 ",
 
-    "effort_icon": "󱐋 ",
+    "effort_icon": " ",
     "effort_color": gold,
 
-    "recurrence_icon": " 󰑏 ",
+    "recurrence_icon": "  ",
     "recurrence_color": foam,
 
     "tags_color": love,
