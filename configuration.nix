@@ -108,9 +108,7 @@
   };
 
   security.polkit.enable = true;
-  
   services.gnome.gnome-keyring.enable = true;
-  security.pam.services.zinnia.enableGnomeKeyring = true;
 
   # Touchpad support
   services.libinput.enable = true;

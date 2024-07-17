@@ -7,6 +7,12 @@ in
 {
   # Required to start an X11 session
   services.xserver.displayManager.startx.enable = true;
+  
+  # Let greetd unlock gnome keyring
+  security.pam.services = {
+    login.enableGnomeKeyring = true;
+    greetd.enableGnomeKeyring = true;
+  };
 
   services.greetd = {
     enable = true;
