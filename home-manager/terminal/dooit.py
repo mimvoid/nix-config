@@ -11,9 +11,9 @@ foam = "#9ccfd8"
 iris = "#c4a7e7"
 
 # dooit's colors
-red = "#eb6f92"     #love
-yellow = "#f6c177"  #gold
-green = "#3e86b0"   #pine
+red = love
+yellow = gold
+green = pine
 
 # Config
 BACKGROUND = base
