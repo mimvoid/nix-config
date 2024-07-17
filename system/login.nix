@@ -5,6 +5,7 @@ let
   xfce = "${pkgs.xfce.xfce4-session}/share/xsessions";
 in
 {
+  # Required to start an X11 session
   services.xserver.displayManager.startx.enable = true;
 
   services.greetd = {
