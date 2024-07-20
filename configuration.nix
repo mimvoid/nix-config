@@ -1,4 +1,4 @@
-{ pkgs, lib, allowed-unfree-packages, ... }:
+{ inputs, pkgs, lib, allowed-unfree-packages, ... }:
 
 {
   imports = [
@@ -19,8 +19,22 @@
       experimental-features = [ "nix-command" "flakes" ];
       auto-optimise-store = true;
     };
+    gc = {
+      automatic = true;
+      dates = "weekly";
+      options = "--delete-older-than 7d";
+    };
   };
-  system.autoUpgrade.enable = true;
+
+  system.autoUpgrade = {
+    enable = true;
+    flake = inputs.self.outPath;
+    flags = [
+      "--update-input"
+      "nixpkgs"
+      "--commit-lock-file"
+    ];
+  };
 
   # Import list of allowed unfree packages from flake.nix
   nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
