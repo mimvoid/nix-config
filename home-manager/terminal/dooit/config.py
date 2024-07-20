@@ -1,3 +1,5 @@
+from extra import *
+
 # Rose Pine Moon palette
 
 base = "#232136"
@@ -24,7 +26,7 @@ BORDER_DIM = iris + " 50%"
 BORDER_LIT = rose
 
 BORDER_TITLE_DIM = muted, base # fg then bg
-BORDER_TITLE_LIT = base, rose
+BORDER_TITLE_LIT = rose, base
 
 SEARCH_COLOR = love
 YANK_COLOR = pine
@@ -52,16 +54,17 @@ ART_D = [
     "         '  `+.;  ;  '      :   ",
     "         :  '  |    ;       ;-. ",
     "        .  '   :  :`:     _.`· ;",
-    f"[{rose}]bug[/{rose}]   .·  .  .·' ; .·`- +'  `· ॱ",
+    f"{col('bug',rose)}   .·  .  .·' ; .·`- +'  `· ॱ",
     "      `·-·   `·-·  `·-·'        ",
 ]
 
 # Didn't use an array since I wanted them centered
-# TODO: is there a shorthand for this?
-QUOTE1 = f"can you feel your [{love}]heart[/{love}] burning?"
+QUOTE1 = f"can you feel your {col('heart',love)} burning?"
 QUOTE2 = "can you feel the struggle within?"
-QUOTE3 = f"the fear within me is beyond [{pine}]anything[/{pine}] your soul can make."
-QUOTE4 = f"you [{love}]cannot kill me[/{love}] in a [{love}]way that matters[/{love}]"
+QUOTE3 = f"the fear within me is beyond {col('anything',pine)} your soul can make."
+QUOTE4 = f"you {col('cannot kill me',love)} in a {col('way that matters',love)}"
+
+
 
 PAD = " "
 
@@ -85,7 +88,7 @@ WORKSPACE = {
 # source: https://www.asciiart.eu/animals/cats
 ART_T = [
     "               _ |\_   ",
-    f"               \` ..\  [{rose}]?[/{rose}]",
+    f"               \` ..\  {col('?', rose)}",
     "         __,.-‟ =___Y= ",
     "       .‟        )     ",
     " _    /   ,    \/\_    ",
@@ -93,19 +96,11 @@ ART_T = [
     "`------`-----` `--`    ",
 ]
 
-# TODO: get stats working
-#STATS = [
-#    f"Completed: {done}",
-#    f"Pending: {pending}",
-#    f"Overdue: {overdue}",
-#]
-
 EMPTY_TODO = [
     ART_T,
     PAD,
     "Wow so empty!?",
     "Let's think of some stuff to do!",
-    #STATS
 ]
 
 COLUMN_ORDER = ["description", "due", "urgency"]
@@ -146,9 +141,45 @@ TODO = {
     "start_expanded": True,
 }
 
-#keybindings = [
-#    "move down": ["j", "<down>"],
-#    "shift down": ["J", "<shift+down>"],
-#    "move up": ["k", "<up>"],
-#    "shift up": ["K", "<shift+up>"],
+# Status bar
+
+status_icons = {
+    "NORMAL": ["󰆋 ", pine],
+    "INSERT": [" ", rose],
+    "DATE": ["󰃭 ", love],
+    "SEARCH": [" ", foam],
+    "SORT": [" ", iris],
+    "K PENDING": [" ", gold],
+}
+
+def status(status):
+    icon, color = status_icons[status]
+    return blk(icon + status, color)
+
+def get_message(message):
+    return " " + message
+
+def get_clock() -> str:
+    return blk('󰥔', foam) + col(f"{datetime.now().time().strftime(' %H:%M ')}", foam)
+
+def get_username():
+    try:
+        username = os.getlogin()
+    except OSError:
+        uid = os.getuid()
+        import pwd
+
+        username = pwd.getpwuid(uid).pw_name
+    return blk('', pine) + col(f" {username}", pine)
+
+# TODO: get stats working
+#STATS = [
+#     f"Completed: {get_total_completed()}",
+#     f"Pending: {get_total_pending()}",
+#     f"Overdue: {get_total_overdue()}",
 #]
+
+bar = {
+    "A": [(status, 0.1), get_message],
+    "C": [(get_clock, 1), get_username],
+}
