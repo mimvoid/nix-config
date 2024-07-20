@@ -17,7 +17,6 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    install -Dm444 -t $out/share/fonts/opentype fonts/otf/*.otf
     install -Dm444 fonts/ttf/*.ttf -t $out/share/fonts/truetype
     install -Dm444 fonts/variable/*.ttf -t $out/share/fonts/variable
 
