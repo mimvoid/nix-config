@@ -99,6 +99,7 @@ in
     enable = true;
     font = sansSerif;
     iconTheme = icons;
+    cursorTheme = cursor;
     inherit theme;
   };
 

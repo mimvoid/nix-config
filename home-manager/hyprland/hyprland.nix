@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   # Default applications
   terminal = "foot";
@@ -62,12 +62,16 @@ in
       "QT_QPA_scale, 2"
       "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
 
+      "MOZ_ENABLE_WAYLAND, 1"
+
       # Enable Ozone Wayland for electron apps
       "NIXOS_OZONE_WL, 1"
       "ELECTRON_OZONE_PLATFORM_HINT, auto"
 
       "XCURSOR_SIZE, 24"
+      "XCURSOR_THEME, ${config.gtk.cursorTheme.name}"
       "HYPRCURSOR_SIZE, 24"
+      "HYPRCURSOR_THEME, ${config.gtk.cursorTheme.name}"
     ];
 
     monitor = ",preferred,auto,auto";
@@ -189,6 +193,7 @@ in
 
       # Toggle fullscreen
       "$mod, F, fullscreen"
+
       # Exit
       "$mod, Q, killactive"
 
