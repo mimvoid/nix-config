@@ -20,11 +20,14 @@ let
   app-icons = "${pkgs.papirus-icon-theme}/share/icons/Papirus/48x48/apps";
 
   appimg = {
-    obsidian = pkgs.callPackage ../packages/obsidian.nix {
-      version = "1.6.3";
-      sha256 = "Ed6NWa/wT4kQUV2SjqIdYUL2OXKw2D8OEnk8ZnsKkYQ=";
+    obsidian = pkgs.callPackage ../packages/appimages/obsidian.nix {
+      version = "1.6.7";
+      sha256 = "Bf5IUjM1oX6gGlwXExAdsvEFPYMKXkKLnBFdmhvYCcU=";
     };
-    krita = pkgs.callPackage ../packages/krita.nix { version = "5.2.2"; };
+    krita = pkgs.callPackage ../packages/appimages/krita.nix {
+      version = "5.2.3";
+      sha256 = "yRzhgQkxFxwRBU4id8Ie/JfPnXPcOdoSOfbcFGLRnIs=";
+    };
   };
 in
 {
