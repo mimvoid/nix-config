@@ -5,20 +5,20 @@
       main = {
         dpi-aware = true;
         #terminal = "foot";
-        width = 72;
-        lines = 36;
+        width = 33;
+        lines = 16;
         layer = "overlay";
         prompt = "'> '";
         icon-theme = "Papirus";
         exit-on-keyboard-focus-loss = false;
 
-        horizontal-pad = 32;
+        horizontal-pad = 28;
         vertical-pad = 18;
         inner-pad = 16;
-        border-radius = 4;
 
         fields = "filename,name";
       };
+      border.radius = 8;
     };
   };
 }
