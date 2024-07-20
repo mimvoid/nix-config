@@ -5,7 +5,7 @@
 
 stdenvNoCC.mkDerivation {
   pname = "karla";
-  version = "unstable-2024-07-19";
+  version = "2.004";
 
   src = fetchFromGitHub {
     owner = "googlefonts";
