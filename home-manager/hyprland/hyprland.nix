@@ -187,6 +187,8 @@ in
       "$mod, SPACE, exec, ${launcher}"
       "$mod, W, exec, ${browser}"
 
+      # Toggle fullscreen
+      "$mod, F, fullscreen"
       # Exit
       "$mod, Q, killactive"
 
