@@ -19,11 +19,9 @@ let
     });
   };
 
-  g-fonts = pkgs.google-fonts.override {
+  g-fonts = pkgs.unstable.google-fonts.override {
     fonts = [
-      "Karla"
       "Limelight-Regular"
-      "Oswald"
       "MajorMonoDisplay-Regular"
       "MaShanZheng-Regular"
     ];
@@ -33,7 +31,7 @@ let
   serif = sansSerif;
 
   sansSerif = {
-    package = g-fonts;
+    package = (pkgs.callPackage ../packages/fonts/karla.nix {});
     name = "Karla";
   };
 
@@ -62,6 +60,7 @@ in
 
     # Display / Handwriting
     norwester-font
+    (callPackage ../packages/fonts/oswald.nix {})
   ]
   ++
   [
