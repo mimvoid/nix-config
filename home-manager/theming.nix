@@ -22,7 +22,6 @@ let
   g-fonts = pkgs.unstable.google-fonts.override {
     fonts = [
       "Limelight-Regular"
-      "MajorMonoDisplay-Regular"
       "MaShanZheng-Regular"
     ];
   };
@@ -61,6 +60,7 @@ in
     # Display / Handwriting
     norwester-font
     (callPackage ../packages/fonts/oswald.nix {})
+    (callPackage ../packages/fonts/major-mono-display.nix {})
   ]
   ++
   [
