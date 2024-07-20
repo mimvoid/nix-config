@@ -24,9 +24,10 @@
     zoom-us
     vesktop
 
-    # Virtualisation/layers
+    # Virtualisation/layers/games
     unstable.bottles
     virt-manager
+    unstable.prismlauncher
 
     # Media
     amberol
