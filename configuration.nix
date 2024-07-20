@@ -155,7 +155,12 @@
     criticalPowerAction = "HybridSleep";
   };
 
-  services.tlp.enable = true;
+  services.tlp = {
+    enable = true;
+    settings = {
+      USB_EXCLUDE_BTUSB = 1;
+    };
+  };
   services.auto-cpufreq.enable = true;
 
   # Networks & connections
