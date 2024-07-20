@@ -19,13 +19,6 @@ let
     });
   };
 
-  g-fonts = pkgs.unstable.google-fonts.override {
-    fonts = [
-      "Limelight-Regular"
-      "MaShanZheng-Regular"
-    ];
-  };
-
   # Default fonts
   serif = sansSerif;
 
@@ -61,10 +54,11 @@ in
     norwester-font
     (callPackage ../packages/fonts/oswald.nix {})
     (callPackage ../packages/fonts/major-mono-display.nix {})
+    (callPackage ../packages/fonts/limelight.nix {})
+    (callPackage ../packages/fonts/ma-shan-zheng.nix {})
   ]
   ++
   [
-    g-fonts
     theme.package
     icons.package
     cursor.package
