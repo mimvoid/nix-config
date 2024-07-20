@@ -40,9 +40,9 @@
       
       # Allows nixpkgs-unstable to be referenced with pkgs.unstable.<package>
       overlays = [
-        (self: super: {
+        (final: _prev: {
           unstable = import nixpkgs-unstable {
-            system = self.system;
+            system = final.system;
           };
         })
       ];
