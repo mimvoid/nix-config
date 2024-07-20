@@ -3,7 +3,7 @@
 , fetchFromGitHub
 }:
 
-stdenvNoCC.mkDerivation rec {
+stdenvNoCC.mkDerivation {
   pname = "karla";
   version = "unstable-2024-07-19";
 
