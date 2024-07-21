@@ -20,8 +20,8 @@ stdenvNoCC.mkDerivation {
     runHook postInstall
   '';
 
-  meta = with lib; {
-    description = "A sensitive rendition of the classic high contrast art deco style geometric sans serif";
+  meta = {
+    description = "Sensitive rendition of the classic high contrast art deco style geometric sans serif";
     longDescription = ''
       Limelight is a sensitive rendition of the classic high contrast
       art deco style geometric sans serif. This style is often used to
@@ -31,8 +31,8 @@ stdenvNoCC.mkDerivation {
       pages at medium and large font sizes.
     '';
     homepage = "https://fonts.google.com/specimen/Limelight";
-    license = licenses.ofl;
-    platforms = platforms.all;
-    maintainers = with maintainers; [ mimvoid ];
+    license = lib.licenses.ofl;
+    platforms = lib.platforms.all;
+    maintainers = with lib.maintainers; [ mimvoid ];
   };
 }

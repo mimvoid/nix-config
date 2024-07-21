@@ -19,8 +19,8 @@ stdenvNoCC.mkDerivation {
     runHook postInstall
   '';
 
-  meta = with lib; {
-    description = "A monospaced geometric sans serif all-uppercase typeface";
+  meta = {
+    description = "Monospaced geometric sans serif all-uppercase typeface";
     longDescription = ''
       Majör is a monospaced geometric sans serif all-uppercase typeface
       which also has a complete set of constructivist display characters
@@ -32,8 +32,8 @@ stdenvNoCC.mkDerivation {
       choice for web typography, especially at large point-sizes.
     '';
     homepage = "https://github.com/googlefonts/majormono";
-    license = licenses.ofl;
-    platforms = platforms.all;
-    maintainers = with maintainers; [ mimvoid ];
+    license = lib.licenses.ofl;
+    platforms = lib.platforms.all;
+    maintainers = with lib.maintainers; [ mimvoid ];
   };
 }

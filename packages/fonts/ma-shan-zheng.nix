@@ -19,8 +19,8 @@ stdenvNoCC.mkDerivation {
     runHook postInstall
   '';
 
-  meta = with lib; {
-    description = "A script reminiscent of fonts used to display 'yinglian'";
+  meta = {
+    description = "Script reminiscent of fonts used to display 'yinglian'";
     longDescription = ''
       This script is reminiscent of fonts used to display "yinglian,"
       the short poems and blessings traditionally posted on either
@@ -28,8 +28,8 @@ stdenvNoCC.mkDerivation {
       and majestic, vital and expansive. 
     '';
     homepage = "https://fonts.google.com/specimen/Ma+Shan+Zheng";
-    license = licenses.ofl;
-    platforms = platforms.all;
-    maintainers = with maintainers; [ mimvoid ];
+    license = lib.licenses.ofl;
+    platforms = lib.platforms.all;
+    maintainers = with lib.maintainers; [ mimvoid ];
   };
 }

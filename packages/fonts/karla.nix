@@ -20,8 +20,8 @@ stdenvNoCC.mkDerivation {
     runHook postInstall
   '';
 
-  meta = with lib; {
-    description = "An outstanding grotesque sans serif typeface family";
+  meta = {
+    description = "Outstanding grotesque sans serif typeface family";
     longDescription = ''
       Karla is an outstanding grotesque sans serif typeface
       family created by Jonathan Pinhorn (a graduate of the
@@ -29,8 +29,8 @@ stdenvNoCC.mkDerivation {
       released through Google Webfonts in 2012.
     '';
     homepage = "https://github.com/googlefonts/karla";
-    license = licenses.ofl;
-    platforms = platforms.all;
-    maintainers = with maintainers; [ mimvoid ];
+    license = lib.licenses.ofl;
+    platforms = lib.platforms.all;
+    maintainers = with lib.maintainers; [ mimvoid ];
   };
 }
