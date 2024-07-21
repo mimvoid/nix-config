@@ -19,11 +19,14 @@ let
     });
   };
 
+  # Font packages
+  myfont = pname: pkgs.callPackage ../packages/fonts/${pname}.nix {};
+ 
   # Default fonts
   serif = sansSerif;
 
   sansSerif = {
-    package = (pkgs.callPackage ../packages/fonts/karla.nix {});
+    package = (myfont "karla");
     name = "Karla";
   };
 
@@ -52,13 +55,14 @@ in
 
     # Display / Handwriting
     norwester-font
-    (callPackage ../packages/fonts/oswald.nix {})
-    (callPackage ../packages/fonts/major-mono-display.nix {})
-    (callPackage ../packages/fonts/limelight.nix {})
-    (callPackage ../packages/fonts/ma-shan-zheng.nix {})
   ]
   ++
   [
+    (myfont "oswald")
+    (myfont "major-mono-display")
+    (myfont "limelight")
+    (myfont "ma-shan-zheng")
+
     theme.package
     icons.package
     cursor.package
