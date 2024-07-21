@@ -1,19 +1,21 @@
-{ lib, stdenvNoCC, fetchzip }:
+{ lib, stdenvNoCC, fetchFromGitHub }:
 
 stdenvNoCC.mkDerivation {
   pname = "limelight-font";
   version = "1.002";
 
-  src = fetchzip {
-    url = "https://www.1001fonts.com/download/limelight.zip";
-    stripRoot = false;
-    hash = "sha256-mGKqf7jkgdsEgdeB4ceiOO7ISnkKwF0GkUgd5fwxQY0=";
+  src = fetchFromGitHub {
+    owner = "google";
+    repo = "fonts";
+    sparseCheckout = [ "ofl/limelight" ];
+    rev = "be513c976cb05d66f196b8213a75620fdce1d062";
+    hash = "sha256-89NF5U1M/shvfKvmeW8BsAlseGIB5i4YQ2MPqfM1pTE=";
   };
 
   installPhase = ''
     runHook preInstall
 
-    install -Dm444 -t $out/share/fonts/truetype *.ttf 
+    install -Dm444 -t $out/share/fonts/truetype ofl/limelight/*.ttf 
 
     runHook postInstall
   '';
