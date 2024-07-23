@@ -16,6 +16,7 @@
     gotop
     unstable.dooit
     imagemagick
+    neocities-cli
   ];
 
   # Theming-specific config is in ../theming.nix

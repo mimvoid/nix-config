@@ -5,7 +5,7 @@
       bashls.enable = true;
       #ccls.enable = true;
       cssls.enable = true;
-      #html.enable = true;
+      html.enable = true;
       #java-language-server.enable = true;
       #jsonls.enable = true;
       #lua-ls.enable = true;
