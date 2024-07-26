@@ -17,6 +17,7 @@
     unstable.dooit
     imagemagick
     neocities-cli
+    nodePackages.browser-sync
   ];
 
   # Theming-specific config is in ../theming.nix
