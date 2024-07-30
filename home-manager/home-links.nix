@@ -44,7 +44,6 @@ in
     "dooit/extra.py" = (link "${home-manager}/terminal/dooit/extra.py");
     "gtk-3.0/gtk.css" = (link "${home-manager}/xfconf/gtk3.css");
     "wlogout/icons" = (link "${home-manager}/hyprland/icons");
-    "superProductivity/style.css" = (link "${home-manager}/guis/sp-dracula.css");
   };
 
   xdg.dataFile = {

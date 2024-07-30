@@ -1,7 +1,6 @@
 {
   imports = [
     ./alpha.nix
-    ./arrow.nix
     ./bufferline.nix
     ./completion.nix
     ./git.nix
@@ -14,7 +13,6 @@
     ./todo.nix
     ./treesitter.nix
     ./trouble.nix
-    ./which-key.nix
   ];
 
   programs.nixvim.plugins = {

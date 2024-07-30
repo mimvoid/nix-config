@@ -56,9 +56,6 @@
     # Neotree
     (map "Focus Neotree" "n" "<leader>e" "<cmd>Neotree focus<cr>")
     
-    #WhichKey
-    (map "Open WhichKey" "n" "<leader>wk" "<cmd>WhichKey<cr>")
-
     # Git
     (map "Open Lazygit"  "n" "<leader>g" "<cmd>LazyGit<cr>")
   
