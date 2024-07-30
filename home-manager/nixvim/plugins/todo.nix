@@ -9,6 +9,7 @@
       default = [ "Identifier" "#EA9A97" ];
       test = [ "Identifier" "#EA9A97" ];
     };
+
     highlight = {
       keyword = "wide_fg";
       after = "";
@@ -16,6 +17,7 @@
       commentsOnly = true;
       multiline = true;
     };
+
     keywords = {
 
       # icon = Icon used for the sign and in search results.
@@ -30,12 +32,21 @@
       NOTE = { icon = " "; color = "hint"; alt = [ "INFO" "Note" ]; };
       TEST = { icon = " "; color = "test"; alt = [ "TESTING" "PASSED" "FAILED" ]; };
     };
-    search.args = [
-      "--color=never"
-      "--no-heading"
-      "--with-filename"
-      "--line-number"
-      #"--column"
-    ];
+
+    search = {
+      command = "rg";
+      args = [
+        "--color=never"
+        "--no-heading"
+        "--with-filename"
+        "--line-number"
+        "--column"
+        "--smart-case"
+        "--hidden"
+        "--glob"
+        "!**/.git/*"
+      ];
+      pattern = ''\b(KEYWORDS):'';
+    };
   };
 }
