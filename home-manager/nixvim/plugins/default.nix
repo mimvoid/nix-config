@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   imports = [
     ./alpha.nix
@@ -15,8 +17,19 @@
     ./trouble.nix
   ];
 
-  programs.nixvim.plugins = {
-    nvim-autopairs.enable = true;
-    persistence.enable = true;
+  programs.nixvim = {
+    plugins = {
+      nvim-autopairs.enable = true;
+      persistence.enable = true;
+    };
+
+    extraPlugins = with pkgs.vimPlugins; [
+      plenary-nvim
+    ];
+
+    extraPackages = with pkgs; [
+      fzf
+      ripgrep
+    ];
   };
 }

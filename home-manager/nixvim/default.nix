@@ -1,5 +1,3 @@
-{ pkgs, ... }:
-
 {
   imports = [
     ./colorscheme.nix
@@ -12,12 +10,5 @@
     enable = true;
     defaultEditor = true;
     type = "lua";
-    extraPackages = with pkgs; [
-      fzf
-      ripgrep
-    ];
-    extraPlugins = with pkgs.vimPlugins; [
-      plenary-nvim
-    ];
   };
 }
