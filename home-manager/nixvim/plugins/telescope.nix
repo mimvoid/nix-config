@@ -2,11 +2,18 @@
   programs.nixvim.plugins.telescope = {
     enable = true;
 
-    extensions.file-browser = {
+    extensions.frecency = {
       enable = true;
-      settings.hidden = {
-        file_browser = true;
-        folder_browser = true;
+      settings = {
+        default_workspace = "CWD";
+        ignore_patterns = [
+          "*.git/*"
+          "*/tmp/*"
+          "term://*"
+          "*cache*"
+          "__pycache__/*"
+          ".sass-cache/*"
+        ];
       };
 	  };
 
@@ -26,6 +33,7 @@
         "^output/"
         "^data/"
         "%.ipynb"
+        ".sass-cache/*"
       ];
 
       vimgrep_arguments = [
@@ -36,6 +44,11 @@
         "--line-number"
         "--column"
         "--smart-case"
+        # Search hidden files
+        "--hidden"
+        # Don't search .git/
+        "--glob"
+        "!**/.git/*"
       ];
 
       # Previews

@@ -61,7 +61,7 @@
   
     # Telescope
     (map "Telescope find files"   "n" "<leader>ff" "<cmd>Telescope find_files<cr>")
-    (map "Telescope recent files" "n" "<leader>fr" "<cmd>Telescope oldfiles<cr>")
+    (map "Telescope recent files" "n" "<leader>fr" "<cmd>Telescope frecency<cr>")
     (map "Telescope find word"    "n" "<leader>fw" "<cmd>Telescope live_grep<cr>")
   ];
 }
