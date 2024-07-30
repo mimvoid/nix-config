@@ -55,6 +55,7 @@
     
     # Neotree
     (map "Focus Neotree" "n" "<leader>e" "<cmd>Neotree focus<cr>")
+    (map "Move to parent directory" "n" "<leader>w" "<cmd>Neotree focus dir=..<cr>")
     
     # Git
     (map "Open Lazygit"  "n" "<leader>g" "<cmd>LazyGit<cr>")
@@ -63,5 +64,8 @@
     (map "Telescope find files"   "n" "<leader>ff" "<cmd>Telescope find_files<cr>")
     (map "Telescope recent files" "n" "<leader>fr" "<cmd>Telescope frecency<cr>")
     (map "Telescope find word"    "n" "<leader>fw" "<cmd>Telescope live_grep<cr>")
+
+    # Todo comments
+    (map "Find todo comments"     "n" "<leader>ft" "<cmd>TodoTelescope<cr>")
   ];
 }
