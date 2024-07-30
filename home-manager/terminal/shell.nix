@@ -50,7 +50,7 @@
       ncp = "neocities push --prune src";
     };
 
-    # HACK: setting up arttime wtihout packaging it
+    # HACK: setting up arttime without packaging it
     initExtra = ''
       PATH=$PATH:~/.local/bin
       fpath+="$HOME/.local/share/zsh/functions"

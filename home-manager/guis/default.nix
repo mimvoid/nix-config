@@ -1,13 +1,5 @@
 { pkgs, lib, allowed-unfree-packages, ... }:
-# let
-#   # Override the desktop entry file's name
-#   sp = pkgs.unstable.super-productivity.overrideAttrs (prev: {
-#     postInstall = (prev.postInstall or "") + ''
-#       substituteInPlace $out/share/applications/${prev.pname}.desktop \
-#         --replace "superProductivity" "Super Productivity"
-#     '';
-#   });
-# in
+
 {
   home.packages = with pkgs; [
     # Files & documents
@@ -31,10 +23,6 @@
 
     # Media
     amberol
-#  ]
-#  ++
-#  [
-#    (sp)
   ];
 
   imports = [

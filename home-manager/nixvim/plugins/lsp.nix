@@ -16,12 +16,9 @@
       #  installCargo = true;
       #  installRustc = true;
       #};
-      #tailwindcss.enable = true;
       tsserver.enable = true;
       typos-lsp.enable = true;
       #yamlls.enable = true;
     };
   };
-
-  #programs.nixvim.plugins.lsp-lines.enable = true;
 }
