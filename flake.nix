@@ -21,7 +21,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     nix-colors.url = "github:misterio77/nix-colors";
-    stylix.url = "github:danth/stylix/master";
+    stylix.url = "github:danth/stylix/release-24.05";
   };
 
   outputs = {
