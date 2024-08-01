@@ -1,11 +1,12 @@
 /* [!callout|monospace] Makes the font monospace */
 
-/* author: efemkay
+/* Slightly modified to match the monospace font set in settings
+ * author: efemkay
  * source: https://forum.obsidian.md/t/monospace-segment-in-live-preview-without-breaking-links/38327/2 */
 
 div[data-callout-metadata*="monospace"] {
-    font-family: monospace;
+    font-family: var(--font-monospace);
 }
 .HyperMD-quote {
-    font-family: monospace;
+    font-family: var(--font-monospace);
 }
