@@ -98,6 +98,7 @@ in
       (active-opaque "firefox")
       (opaque "ristretto")
       (opaque "krita")
+      (opaque "org.inkscape.Inkscape")
       (opaque "virt-manager")
     ];
 
