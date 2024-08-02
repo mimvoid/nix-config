@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   homescreen = "${pkgs.xfce.xfdesktop}/share/backgrounds/xfce/xfce-flower.svg";
 in
@@ -11,11 +11,14 @@ in
       "backdrop/screen0/monitoreDP-1/workspace3/last-image" = homescreen;
       "desktop-icons/style" = 0; # No desktop icons
     };
+
     xsettings = {
       "Xft/DPI" = 140;
       "Xfce/LastCustomDPI" = 140;
-      "Gtk/FontName" = "Cantarell 11";
-      "Gtk/MonospaceFontName" = "SauceCodePro Nerd Font 12";
+      "Gtk/FontName" = "${config.gtk.font.name} 11";
+      "Gtk/MonospaceFontName" = "${config.stylix.fonts.monospace.name} 12";
+      "Gtk/CursorThemeName" = "${config.gtk.cursorTheme.name}";
+      "Gtk/CursorThemeSize" = 38;
     };
   };
 }

@@ -106,8 +106,6 @@ in
     style.name = "breeze";
   };
 
-  xfconf.settings.xsettings."Gtk/CursorThemeSize" = 38;
-
   xresources = {
     properties = {
       "*.faceName" = monospace.name;
