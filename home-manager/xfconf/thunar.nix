@@ -7,7 +7,7 @@
     "last-show-hidden" = true;
 
     "last-location-bar" = "ThunarLocationButtons";
-    "misc-image-preview-mode" = "THUNAR_IMAGE_PREVIEW_MODE_STANDALONE";
+    "misc-image-preview-mode" = "THUNAR_IMAGE_PREVIEW_MODE_EMBEDDED";
     
     "last-restore-tabs" = true;
     "misc-confirm-close-multiple-tabs" = false;
