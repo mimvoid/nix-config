@@ -10,5 +10,6 @@
     enable = true;
     defaultEditor = true;
     type = "lua";
+    enableMan = false;
   };
 }

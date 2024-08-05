@@ -89,6 +89,7 @@
     gnome.adwaita-icon-theme
     hicolor-icon-theme
     tango-icon-theme
+    xfce.xfce4-screenshooter
     xfce.xfce4-terminal
     xfce.xfce4-icon-theme
     xfce.mousepad
@@ -169,10 +170,7 @@
     networkmanager.enable = true;
   };
 
-  hardware.bluetooth = {
-    enable = true;
-    powerOnBoot = true;
-  };
+  hardware.bluetooth.enable = true;
 
   # CUPS
   services.printing = {
@@ -195,7 +193,6 @@
     plugins = with pkgs.xfce; [
       thunar-archive-plugin
       thunar-media-tags-plugin
-      thunar-volman
     ];
   };
 

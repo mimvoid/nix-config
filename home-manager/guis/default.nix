@@ -18,7 +18,6 @@
 
     # Virtualisation/layers/games
     unstable.bottles
-    virt-manager
     unstable.prismlauncher
 
     # Media

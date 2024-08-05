@@ -18,21 +18,17 @@
   ];
 
   services.flatpak.packages = let
-    flathub = appId: { inherit appId; origin = "flathub"; };
+    #flathub = appId: { inherit appId; origin = "flathub"; };
     aagl = appId: { inherit appId; origin = "launcher.moe"; };
   in
   [
-    (flathub "io.github.giantpinkrobots.flatsweep")
     (aagl "moe.launcher.the-honkers-railway-launcher")
   ];
 
   services.flatpak = {
     uninstallUnmanaged = true;
-    update.auto = {
-      enable = true;
-      onCalendar = "weekly";
-    };
 
+    # FIX: these do not work
     overrides.global = {
       # Give access to GTK themes & icons
       Context.filesystems = [
