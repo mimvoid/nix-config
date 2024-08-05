@@ -17,7 +17,12 @@ in
 
   wayland.windowManager.hyprland.settings = {
     # Homescreen wallpaper
-    exec-once = lib.mkAfter [ "swww-daemon --no-cache &" ];
+    # HACK: reload Hyprland to exec swww_init_time, adding the script file
+    # in exec-once doesn't work
+    exec-once = lib.mkAfter [
+      "swww-daemon --no-cache &"
+      "hyprctl reload config-only &"
+    ];
     exec = lib.mkAfter [ "${./swww_init_time.sh} &" ];
     general = {
       "col.active_border" = "rgb(${hue.secAccent})";
