@@ -185,6 +185,14 @@ in
       "$mod, mouse:273, movewindow"
     ];
 
+    binde = [
+      # Resize windows
+      "$mod ALT, ${left}, resizeactive, -10 0"
+      "$mod ALT, ${right}, resizeactive, 10 0"
+      "$mod ALT, ${up}, resizeactive, 0 -10"
+      "$mod ALT, ${down}, resizeactive, 0 10"
+    ];
+
     bind = [
       # Launch
       "$mod, Return, exec, ${terminal}"
@@ -213,6 +221,12 @@ in
       "$mod, ${right}, movefocus, r"
       "$mod, ${up}, movefocus, u"
       "$mod, ${down}, movefocus, d"
+
+      # Move windows
+      "$mod SHIFT, ${left}, movewindow, l"
+      "$mod SHIFT, ${right}, movewindow, r"
+      "$mod SHIFT, ${up}, movewindow, u"
+      "$mod SHIFT, ${down}, movewindow, d"
 
       # Screenshot
       "$mod, Print, exec, hyprshot -m window"
