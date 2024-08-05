@@ -105,53 +105,51 @@ in
     style.name = "breeze";
   };
 
-  xresources = {
-    properties = {
-      "*.faceName" = monospace.name;
-      "*.faceSize" = terminal-size;
-      "*.renderFont" = true;
-      "Xcursor.size" = cursor.size;
-      "Xcursor.theme" = cursor.name;
+  xresources.properties = {
+    "*.faceName" = monospace.name;
+    "*.faceSize" = terminal-size;
+    "*.renderFont" = true;
+    "Xcursor.size" = cursor.size;
+    "Xcursor.theme" = cursor.name;
 
-      # Rose pine for Xresources is different from that of base 16,
-      # so I made this manually to match it.
+    # Rose pine for Xresources is different from that of base 16,
+    # so I made this manually to match it.
 
-      # special
-      "*.foreground" = "#e0def4";
-      "*.background" = "#232136";
-      "*.cursorColor" = "#e0def4";
+    # special
+    "*.foreground" = "#e0def4";
+    "*.background" = "#232136";
+    "*.cursorColor" = "#e0def4";
 
-      # black
-      "*.color0" = "#2a273f";
-      "*.color8" = "#393552";
+    # black
+    "*.color0" = "#2a273f";
+    "*.color8" = "#393552";
 
-      # red
-      "*.color1" = "#eb6f92";
-      "*.color9" = "#eb6f92";
+    # red
+    "*.color1" = "#eb6f92";
+    "*.color9" = "#eb6f92";
 
-      # green
-      "*.color2" = "#3e8fb0";
-      "*.color10" = "#3e8fb0";
+    # green
+    "*.color2" = "#3e8fb0";
+    "*.color10" = "#3e8fb0";
 
-      # yellow
-      "*.color3" = "#ea9a97";
-      "*.color11" = "#ea9a97";
+    # yellow
+    "*.color3" = "#ea9a97";
+    "*.color11" = "#ea9a97";
 
-      # blue
-      "*.color4" = "#c4a7e7";
-      "*.color12" = "#c4a7e7";
+    # blue
+    "*.color4" = "#c4a7e7";
+    "*.color12" = "#c4a7e7";
 
-      # magenta (this hurts)
-      "*.color5" = "#f6c177";
-      "*.color13" = "#f6c177";
+    # magenta (this hurts)
+    "*.color5" = "#f6c177";
+    "*.color13" = "#f6c177";
 
-      # cyan
-      "*.color6" = "#9ccfd8";
-      "*.color14" = "#9ccfd8";
+    # cyan
+    "*.color6" = "#9ccfd8";
+    "*.color14" = "#9ccfd8";
 
-      # white
-      "*.color7" = "#6e6a86";
-      "*.color15" = "#908caa";
-    };
+    # white
+    "*.color7" = "#6e6a86";
+    "*.color15" = "#908caa";
   };
 }
