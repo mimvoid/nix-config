@@ -3,8 +3,8 @@
 {
   home.packages = with pkgs; [
     # Files & documents
+    gnome.file-roller
     pdfarranger
-    xarchiver
     nextcloud-client # Have it available as an app
 
     # Academics
