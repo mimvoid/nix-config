@@ -8,7 +8,6 @@
     zsh-nix-shell
 
     # other
-    nh
     disfetch
     tlrc
     exiftool

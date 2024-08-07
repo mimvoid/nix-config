@@ -2,11 +2,6 @@
 
 {
   home.packages = with pkgs; [
-    hyprland-protocols
-    xdg-desktop-portal-hyprland
-
-    gnome.gnome-keyring
-    
     wl-clipboard
     hyprcursor
     hyprpicker

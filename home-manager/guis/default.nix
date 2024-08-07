@@ -13,7 +13,7 @@
     anki-sync-server
 
     # Contact
-    zoom-us
+    #zoom-us
     vesktop
 
     # Virtualisation/layers/games

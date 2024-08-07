@@ -4,7 +4,6 @@
   home.packages = with pkgs; [
     git-secret
     git-secrets
-    gitleaks
   ];
 
   programs.git = {

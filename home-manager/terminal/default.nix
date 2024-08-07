@@ -10,13 +10,15 @@
 
   home.packages = with pkgs; [
     xterm
+
     unstable.impala
     bluetuith
-    rclone
-    distrobox
+
     gotop
-    unstable.dooit
+    rclone
     imagemagick
+    unstable.dooit
+    
     neocities-cli
     nodePackages.browser-sync
   ];
