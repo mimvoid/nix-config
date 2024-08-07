@@ -10,6 +10,7 @@
 
   home.packages = with pkgs; [
     xterm
+    unstable.impala
     bluetuith
     rclone
     distrobox

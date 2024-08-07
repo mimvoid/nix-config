@@ -6,7 +6,6 @@
     xdg-desktop-portal-hyprland
 
     gnome.gnome-keyring
-    networkmanagerapplet
     
     wl-clipboard
     hyprcursor

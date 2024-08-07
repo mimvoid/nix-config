@@ -7,8 +7,8 @@ const icon = Widget.Button({
   }),
 
   cursor: "pointer",
-  // TODO: replace this with the nm-applet system tray item menu
-  on_secondary_click: () => Utils.execAsync('nm-connection-editor'),
+  // TODO: how to launch a tui app
+  //on_secondary_click: () => Utils.execAsync('impala'),
 })
 
 const label = Widget.Label({

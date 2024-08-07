@@ -167,7 +167,11 @@
   # Networks & connections
   networking = {
     hostName = "nixos";
-    networkmanager.enable = true;
+    wireless.iwd.enable = true;
+    networkmanager = {
+      enable = true;
+      wifi.backend = "iwd";
+    };
   };
 
   hardware.bluetooth.enable = true;
