@@ -89,6 +89,8 @@
     gnome.adwaita-icon-theme
     hicolor-icon-theme
     tango-icon-theme
+    xfce.xfwm4-themes
+    xfce.xfce4-taskmanager
     xfce.xfce4-screenshooter
     xfce.xfce4-terminal
     xfce.xfce4-icon-theme
