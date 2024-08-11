@@ -5,8 +5,8 @@ let
   xfce = "${pkgs.xfce.xfce4-session}/share/xsessions";
 in
 {
-  # Required to start an X11 session
-  services.xserver.displayManager.startx.enable = true;
+  # Used to start an X11 session, and is faster than startx
+  services.xserver.displayManager.sx.enable = true;
   
   # Let greetd unlock gnome keyring
   security.pam.services = {
@@ -28,6 +28,7 @@ in
           "--remember --remember-session"
           "--sessions ${hyprland}"
           "--xsessions ${xfce}"
+          "--xsession-wrapper 'sx /usr/bin/env'"
           "--theme 'border=blue;container=black;text=white;time=yellow;prompt=magenta;input=gray;action=blue;button=yellow'"
         ];
         user = "greeter";
