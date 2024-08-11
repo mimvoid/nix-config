@@ -12,6 +12,9 @@ in
     "${c}<Super><Shift>q" = "xfce4-session-logout";
     "${wm}<Super>q" = "close_window_key";
 
+    "${wm}<Super>m" = "maximize_window_key";
+    "${wm}<Super>f" = "fullscreen_key";
+
     "${wm}<Super>1" = "workspace_1_key";
     "${wm}<Super>2" = "workspace_2_key";
     "${wm}<Super>3" = "workspace_3_key";

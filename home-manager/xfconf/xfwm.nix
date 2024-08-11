@@ -1,3 +1,4 @@
+{ config, ... }:
 let
   g = "general/";
 in
@@ -10,7 +11,7 @@ in
     "${g}focus_new" = true;
     "${g}prevent_focus_stealing" = false;
     "${g}raise_on_click" = true;
-    "${g}raies_on_focus" = true;
+    "${g}raise_on_focus" = true;
 
     # Opacity
     "${g}frame_opacity" = 80;
@@ -24,10 +25,10 @@ in
     
     # Default: "O|SHMC" Icon | Shutter Hide Maximize Close
     "${g}button_layout" = "|SHMC";
-    "${g}title_font" = "Cantarell 9";
+    "${g}title_font" = "${config.gtk.font.name} 9";
 
-    # used with picom, default compositor includes shadows in borders
-    "${g}borderless_maximize" = false;
+    "${g}borderless_maximize" = true;
+    "${g}titleless_maximize" = true;
 
     # Workspaces
     "${g}cycle_workspaces" = true;
@@ -52,5 +53,11 @@ in
     "${g}margin_right" = 12;
     "${g}margin_bottom" = 60;
     "${g}margin_left" = 12;
+
+    # Cycling
+    "${g}cycle_draw_frame" = false;
+    "${g}cycle_minimized" = true;
+    "${g}cycle_raise" = true;
+    "${g}cycle_worksapces" = true;
   };
 }
