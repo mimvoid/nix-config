@@ -9,6 +9,7 @@
   imports = [
     ./thunar.nix
     ./picom.nix
+    ./cortile.nix
     ./appfinder.nix
     ./screensaver.nix
     ./xfce-desktop.nix
