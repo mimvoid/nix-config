@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   theme = {
     name = "rose-pine-moon";
@@ -73,7 +73,24 @@ in
   stylix = {
     enable = true;
     autoEnable = false;
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/rose-pine-moon.yaml";
+    base16Scheme = {        # Rose pine moon
+      base00 = "232136";   # base
+      base01 = "2a273f";   # surface
+      base02 = "393552";   # overlay
+      base03 = "6e6a86";   # muted
+      base04 = "908caa";   # subtle
+      base05 = "e0def4";   # text
+      base06 = "e0def4";   # text
+      base07 = "56526e";   # highlight high
+      base08 = "eb6f92";   # love
+      base09 = "f6c177";   # gold
+      base0A = "ea9a97";   # rose
+      base0B = "3e8fb0";   # pine
+      base0C = "9ccfd8";   # foam
+      base0D = "c4a7e7";   # iris
+      base0E = "f6c177";   # gold
+      base0F = "56526e";   # highlight high
+    };
 
     inherit cursor;
 
@@ -106,51 +123,53 @@ in
     style.name = "breeze";
   };
 
-  xresources.properties = {
+  # Stylix applies colors to Xresources weirdly,
+  # so I'm doing this manually
+
+  xresources.properties = let
+    col = config.stylix.base16Scheme;
+  in {
     "*.faceName" = monospace.name;
     "*.faceSize" = terminal-size;
     "*.renderFont" = true;
     "Xcursor.size" = cursor.size;
     "Xcursor.theme" = cursor.name;
 
-    # Rose pine for Xresources is different from that of base 16,
-    # so I made this manually to match it.
-
     # special
-    "*.foreground" = "#e0def4";
-    "*.background" = "#232136";
-    "*.cursorColor" = "#e0def4";
+    "*.foreground" = "#${col.base06}";
+    "*.background" = "#${col.base00}";
+    "*.cursorColor" = "#${col.base06}";
 
     # black
-    "*.color0" = "#2a273f";
-    "*.color8" = "#393552";
+    "*.color0" = "#${col.base01}";
+    "*.color8" = "#${col.base02}";
 
     # red
-    "*.color1" = "#eb6f92";
-    "*.color9" = "#eb6f92";
+    "*.color1" = "#${col.base08}";
+    "*.color9" = "#${col.base08}";
 
     # green
-    "*.color2" = "#3e8fb0";
-    "*.color10" = "#3e8fb0";
+    "*.color2" = "#${col.base0B}";
+    "*.color10" = "#${col.base0B}";
 
     # yellow
-    "*.color3" = "#ea9a97";
-    "*.color11" = "#ea9a97";
+    "*.color3" = "#${col.base0A}";
+    "*.color11" = "#${col.base0A}";
 
     # blue
-    "*.color4" = "#c4a7e7";
-    "*.color12" = "#c4a7e7";
+    "*.color4" = "#${col.base0D}";
+    "*.color12" = "#${col.base0D}";
 
     # magenta (this hurts)
-    "*.color5" = "#f6c177";
-    "*.color13" = "#f6c177";
+    "*.color5" = "#${col.base09}";
+    "*.color13" = "#${col.base09}";
 
     # cyan
-    "*.color6" = "#9ccfd8";
-    "*.color14" = "#9ccfd8";
+    "*.color6" = "#${col.base0C}";
+    "*.color14" = "#${col.base0C}";
 
     # white
-    "*.color7" = "#6e6a86";
-    "*.color15" = "#908caa";
+    "*.color7" = "#${col.base03}";
+    "*.color15" = "#${col.base04}";
   };
 }

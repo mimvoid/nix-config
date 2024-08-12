@@ -1,34 +1,24 @@
-{ config, lib, inputs, ... }:
+{ config, lib, ... }:
 
 let
-  #homescreen = "${../../wallpapers/bakairis_rainy-world.png}";
-  current-palette = ../../palettes/macchiato-nightlight.nix;
-  #display = "Limelight";
-
-  hue = config.colorScheme.palette;
+  pal = config.palette;
   type = config.stylix.fonts;
 in
 {
   imports = [
     ../theming.nix
-    inputs.nix-colors.homeManagerModules.default
-    current-palette
+    ../../palettes/palette.nix
   ];
 
   wayland.windowManager.hyprland.settings = {
     # Homescreen wallpaper
-    # HACK: reload Hyprland to exec swww_init_time, adding the script file
-    # in exec-once doesn't work
-    exec-once = lib.mkAfter [
-      "swww-daemon --no-cache &"
-      "hyprctl reload config-only &"
-    ];
+    exec-once = lib.mkAfter [ "swww-daemon --no-cache &" ];
     exec = lib.mkAfter [ "${./swww_init_time.sh} &" ];
     general = {
-      "col.active_border" = "rgb(${hue.secAccent})";
-      "col.inactive_border" = "rgba(${hue.dullAccent}40)"; # 25% opacity
+      "col.active_border" = "rgb(${pal.primary})";
+      "col.inactive_border" = "rgba(${pal.primary-dim}40)"; # 25% opacity
     };
-    decoration."col.shadow" = "rgba(00001933)"; # 20% opacity
+    decoration."col.shadow" = "rgba(${pal.shadow}33)"; # 20% opacity
   };
 
   programs.fuzzel.settings = {
@@ -36,13 +26,13 @@ in
       font = "${type.monospace.name}:size=9";
     };
     colors = {
-      background = "${hue.base}ee";
-      text = "${hue.text}ff";
-      match = "${hue.mainAccent}ff";
-      selection = "${hue.frame}dd";
-      selection-match = "${hue.secAccent}ff";
-      selection-text = "${hue.paleAccent}ff";
-      border = "${hue.watch}ff";
+      background = "${pal.base}ee";
+      text = "${pal.string}ff";
+      match = "${pal.secondary}ff";
+      selection = "${pal.box-bright}dd";
+      selection-match = "${pal.primary}ff";
+      selection-text = "${pal.secondary-bright}ff";
+      border = "${pal.error}ff";
     };
   };
 }

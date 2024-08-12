@@ -1,25 +1,22 @@
-{ config, inputs, ... }:
+{ config, ... }:
 
 # Ideally, the colors and fonts should be in
 # hypr-theme.nix, but extracting and appending
 # an attribute set within a list is complicated.
-# This is a temporary solution.
 
 let
   # Cannot be a relative path since it's pointing to a file
   # that's untracked due to being inside a git submodule
   lockscreen = "~/NixOS/wallpapers/wallpapers/tokyo-shinjuku.png";
-  current-palette = ../../palettes/macchiato-nightlight.nix;
   display = "Limelight";
 
-  hue = config.colorScheme.palette;
+  pal = config.palette;
   type = config.stylix.fonts;
 in
 {
   imports = [
     ../theming.nix
-    inputs.nix-colors.homeManagerModules.default
-    current-palette
+    ../../palettes/palette.nix
   ];
 
   programs.hyprlock = {
@@ -47,11 +44,11 @@ in
           dots_spacing = 0.2;
           dots_center = true;
 
-          outer_color = "rgb(${hue.watch})";
-          inner_color = "rgb(${hue.base})";
+          outer_color = "rgb(${pal.error})";
+          inner_color = "rgb(${pal.base})";
 
           font_family = type.monospace.name;
-          font_color = "rgb(${hue.text})";
+          font_color = "rgb(${pal.string})";
 
           placeholder_text = "<i>Password...</i>";
           hide_input = false;
@@ -68,7 +65,7 @@ in
         {
           # Time
           text = ''cmd[update:1000] echo "<big> $(date +'%H:%M') </big>"'';
-          color = "rgb(${hue.text})";
+          color = "rgb(${pal.string})";
           font_family = display;
           font_size = 128;
 
@@ -79,7 +76,7 @@ in
         {
           # Date
           text = ''cmd[update:18000000] echo "$(date +'%A, %B %-d')"'';
-          color = "rgb(${hue.text})"; # text
+          color = "rgb(${pal.string})";
           font_family = type.monospace.name;
           font_size = 20;
 
@@ -90,7 +87,7 @@ in
         {
           # User field
           text = "  ${config.home.username}";
-          color = "rgb(${hue.text})";
+          color = "rgb(${pal.string})";
           font_family = type.monospace.name;
           font_size = 16;
 

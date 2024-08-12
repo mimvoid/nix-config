@@ -1,20 +1,26 @@
-/* A GTK CSS version of macchiato-nightlight.nix
-   for waybar and wlogout style files. */
+/* A GTK CSS color palette for wlogout styling. */
 
-@define-color etch #1d2030;
 @define-color base #24273a;
-@define-color edge #363a4f;
-@define-color frame #494d64;
-@define-color smudge #b8c0e0;
-@define-color text #cad3f5;
 
-@define-color mainAccent #f0c6c6;
-@define-color secAccent #f5bde6;
-@define-color dullAccent #c6a0f6;
-@define-color paleAccent #f4dbd6;
+@define-color box #363a4f;
+@define-color box-bright #494d64;
+@define-color box-dim #363a4f;
 
-@define-color tip #eed49f;
-@define-color watch #ee99a0;
-@define-color warning #b7bdf8;
-@define-color alert #8bd5ca;
+@define-color string #cad3f5;
+@define-color string-dim #a5adcb;
 
+@define-color primary #f5bde6;
+@define-color primary-bright #f5ccde;
+@define-color primary-dim #c6a0f6;
+
+@define-color secondary #f0c6c6;
+@define-color secondary-bright #f4dbd6;
+@define-color secondary-dim #f5c2ab;
+
+@define-color tertiary #8aadf4;
+@define-color tertiary-bright #91d6e3;
+@define-color tertiary-dim #b7bdf8;
+
+@define-color good #8bd5ca;
+@define-color warn #f5a97f;
+@define-color error #ee99a0;

@@ -13,13 +13,13 @@ all the color names in the scss files.
 $base: the background
 - determines if the palette is light or dark
 
-$box: lighter (in a dark palette) or darker (in a dark palette) than surface
+$box: lighter (in a dark palette) or darker (in a dark palette) than base
 - often used for buttons, hover backgrounds, etc.
-$box-bright: more contrast with surface
-$box-dim: less contrast with surface
+$box-bright: more contrast with base
+$box-dim: less contrast with base
 
 $string: the foreground, often text or borders
-$string-dim: string, but with less contrast with surface
+$string-dim: string, but with less contrast with base
 
 $shadow: very dark, mostly for box shadows
 
