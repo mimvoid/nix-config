@@ -44,8 +44,6 @@
       nhos = "nh os switch ~/NixOS";
       nhh = "nh home switch ~/NixOS";
       
-      yy = "ya";
-
       ncp = "neocities push --prune src";
     };
 
