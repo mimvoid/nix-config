@@ -4,17 +4,26 @@ let
     enable = true;
     source = config.lib.file.mkOutOfStoreSymlink "${src}";
   };
+  
+  krita-link = target: source: file: {
+    "krita${target}/${file}" = {
+      enable = true;
+      source = config.lib.file.mkOutOfStoreSymlink "${source}/${file}";
+    };
+  };
 
   # Directory shorthands
   home-manager = "${config.home.homeDirectory}/NixOS/home-manager";
 
   krita = "${home-manager}/krita";
-  ref-tabs = "${krita}/reference-tabs-docker";
-  comp-helper = "${krita}/composition-helper/compositionhelper";
-  timer-watch = "${krita}/timer-watch";
 
   firefox-profile = "30dphuug.default";
   obsidian-dir = "Documents/Zettelkasten";
+
+  # Krita plugin packages
+  ref-tabs = pkgs.callPackage ../packages/krita/reference-tabs-docker.nix {};
+  comp-helper = pkgs.callPackage ../packages/krita/composition-helper.nix {};
+  timer-watch = pkgs.callPackage ../packages/krita/timer-watch.nix {};
 
   # AppImage packages
   app-icons = "${pkgs.papirus-icon-theme}/share/icons/Papirus/48x48/apps";
@@ -35,9 +44,6 @@ in
   # If you're using flakes, use absolute paths or the symlinks will point to the nix store
   # Relative paths can cause broken links, and nothing will update until a rebuild
 
-  # TODO: despite my best efforts at shorthanding, this is still bad.
-  # I will work on this again at some point.
-
   xdg.configFile = {
     "ags" = (link "${home-manager}/ags");
     "dooit/config.py" = (link "${home-manager}/terminal/dooit/config.py");
@@ -54,55 +60,45 @@ in
       Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
       MimeType=application/x-krita;
     '';
+  }
+  # Resources (brushes, packs, etc.)
+  // (krita-link "" krita "Chalks_for_Children.bundle")
+  // (krita-link "" krita "hollow_line.bundle")
+  // (krita-link "" krita "SK_V1_.bundle")
+  // (krita-link "" krita "Rakurri_Gradient_Map_Set_V1.0.bundle")
 
-    # Resources (brushes, packs, etc.)
-    "krita/Chalks_for_Children.bundle" = (
-      link "${krita}/Chalks_for_Children.bundle");
-    "krita/hollow_line.bundle" = (
-      link "${krita}/hollow_line.bundle");
-    "krita/SK-V1_.bundle" = (
-      link "${krita}/SK_V1_.bundle");
-    "krita/Rakurri_Gradient_Map_Set_V1.0.bundle" = (
-      link "${krita}/Rakurri_Gradient_Map_Set_V1.0.bundle");
+  # Palettes
+  // (krita-link
+    "/palettes"
+    "${krita}/gpl-palettes/palettes/catppuccin"
+    "catppuccin-macchiato.gpl")
+  // (krita-link
+    "/palettes"
+    "${krita}/gpl-palettes/palettes/rose-pine"
+    "rose-pine-moon.gpl")
+  // (krita-link
+    "/palettes"
+    "${krita}/gpl-palettes/palettes/ayu"
+    "ayu-mirage.gpl")
 
-    # Palettes
-    "krita/palettes/catppuccin-macchiato.gpl" = (
-      link "${krita}/gpl-palettes/palettes/catppuccin/catppuccin-macchiato.gpl");
-    "krita/palettes/rose-pine-moon.gpl" = (
-      link "${krita}/gpl-palettes/palettes/rose-pine/rose-pine-moon.gpl");
-    "krita/palettes/ayu-mirage.gpl" = (
-      link "${krita}/gpl-palettes/palettes/ayu/ayu-mirage.gpl");
+  # Krita themes
+  // (krita-link "/color-schemes" krita "CatppuccinMochaMaroon.colors")
+  // (krita-link "/color-schemes" krita "CatppuccinMacchiatoMaroon.colors")
 
-    # Krita themes
-    "krita/color-schemes/CatppuccinMochaMaroon.colors" = (
-      link "${krita}/CatppuccinMochaMaroon.colors");
+  # Plugins
+  # Reference Tabs Docker
+  // (krita-link "/pykrita" "${ref-tabs}/pykrita" "reference_tabs")
+  // (krita-link "/pykrita" "${ref-tabs}/pykrita" "reference_tabs.desktop")
 
-    "krita/color-schemes/CatppuccinMacchiatoMaroon.colors" = (
-      link "${krita}/CatppuccinMacchiatoMaroon.colors");
+  # Composition Helper
+  // (krita-link "/pykrita" "${comp-helper}/pykrita" "compositionhelper")
+  // (krita-link "/pykrita" "${comp-helper}/pykrita" "compositionhelper.desktop")
+  // (krita-link "/actions" "${comp-helper}/actions" "compositionhelper.action")
 
+  # Timer Watch
+  // (krita-link "/pykrita" "${timer-watch}/pykrita" "timer_watch")
+  // (krita-link "/pykrita" "${timer-watch}/pykrita" "timer_watch.desktop");
 
-    # TODO: maybe install krita plugins as packages instead of git checkout?
-    
-    # Reference Tabs Docker
-    "krita/pykrita/reference_tabs" = (
-      link "${ref-tabs}/pykrita/reference_tabs");
-    "krita/pykrita/reference_tabs.desktop" = (
-      link "${ref-tabs}/pykrita/reference_tabs.desktop");
-
-    # Composition helper
-    "krita/actions/compositionhelper.action" = (
-      link "${comp-helper}/compositionhelper.action");
-    "krita/pykrita/compositionhelper" = (
-      link "${comp-helper}/compositionhelper");
-    "krita/pykrita/compositionhelper.desktop" = (
-      link "${comp-helper}/compositionhelper.desktop");
-
-    # Timer Watch
-    "krita/pykrita/timer_watch" = (
-      link "${timer-watch}/timer_watch");
-    "krita/pykrita/timer_watch.desktop" = (
-      link "${timer-watch}/timer_watch.desktop");
-  };
 
   home.file = {
     # Firefox userChrome & userContent
