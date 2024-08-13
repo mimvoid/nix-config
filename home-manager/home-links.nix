@@ -8,14 +8,14 @@ let
   krita-link = target: source: file: {
     "krita${target}/${file}" = {
       enable = true;
-      source = config.lib.file.mkOutOfStoreSymlink "${source}/${file}";
+      source = "${source}/${file}";
     };
   };
 
   # Directory shorthands
   home-manager = "${config.home.homeDirectory}/NixOS/home-manager";
 
-  krita = "${home-manager}/krita";
+  gpl-pal = "${home-manager}/krita/gpl-palettes/palettes";
 
   firefox-profile = "30dphuug.default";
   obsidian-dir = "Documents/Zettelkasten";
@@ -40,16 +40,17 @@ let
   };
 in
 {
-  # Symlinks
-  # If you're using flakes, use absolute paths or the symlinks will point to the nix store
-  # Relative paths can cause broken links, and nothing will update until a rebuild
+  # Direct (out of store) symlinks
+  # If you're using flakes, use absolute paths or the symlinks will point to the nix store.
+  # Relative paths can cause broken links, and nothing will update until a rebuild.
+  # No need for direct symlinks if you don't need instant updates.
 
   xdg.configFile = {
     "ags" = (link "${home-manager}/ags");
-    "dooit/config.py" = (link "${home-manager}/terminal/dooit/config.py");
-    "dooit/extra.py" = (link "${home-manager}/terminal/dooit/extra.py");
-    "gtk-3.0/gtk.css" = (link "${home-manager}/xfconf/gtk3.css");
-    "wlogout/icons" = (link "${home-manager}/hyprland/icons");
+    "dooit/config.py".source = ./terminal/dooit/config.py;
+    "dooit/extra.py".source = ./terminal/dooit/extra.py;
+    "gtk-3.0/gtk.css".source = ./xfconf/gtk3.css;
+    "wlogout/icons".source = ./hyprland/icons;
   };
 
   xdg.dataFile = {
@@ -60,30 +61,25 @@ in
       Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
       MimeType=application/x-krita;
     '';
+
+    # Palettes
+    # Gpl palettes is a submodule and unfortunately unrecognizable for nix
+    "krita/palettes/catppuccin-macchiato.gpl" = (link
+      "${gpl-pal}/catppuccin/catppuccin-macchatio.gpl");
+    "krita/palettes/rose-pine-moon.gpl" = (link
+      "${gpl-pal}/rose-pine/rose-pine-moon.gpl");
+    "krita/palettes/ayu-mirage.gpl" = (link
+      "${gpl-pal}/ayu/ayu-mirage.gpl");
   }
   # Resources (brushes, packs, etc.)
-  // (krita-link "" krita "Chalks_for_Children.bundle")
-  // (krita-link "" krita "hollow_line.bundle")
-  // (krita-link "" krita "SK_V1_.bundle")
-  // (krita-link "" krita "Rakurri_Gradient_Map_Set_V1.0.bundle")
+  // (krita-link "" ./krita "Chalks_for_Children.bundle")
+  // (krita-link "" ./krita "hollow_line.bundle")
+  // (krita-link "" ./krita "SK_V1_.bundle")
+  // (krita-link "" ./krita "Rakurri_Gradient_Map_Set_V1.0.bundle")
 
-  # Palettes
-  // (krita-link
-    "/palettes"
-    "${krita}/gpl-palettes/palettes/catppuccin"
-    "catppuccin-macchiato.gpl")
-  // (krita-link
-    "/palettes"
-    "${krita}/gpl-palettes/palettes/rose-pine"
-    "rose-pine-moon.gpl")
-  // (krita-link
-    "/palettes"
-    "${krita}/gpl-palettes/palettes/ayu"
-    "ayu-mirage.gpl")
-
-  # Krita themes
-  // (krita-link "/color-schemes" krita "CatppuccinMochaMaroon.colors")
-  // (krita-link "/color-schemes" krita "CatppuccinMacchiatoMaroon.colors")
+  # Themes
+  // (krita-link "/color-schemes" ./krita "CatppuccinMochaMaroon.colors")
+  // (krita-link "/color-schemes" ./krita "CatppuccinMacchiatoMaroon.colors")
 
   # Plugins
   # Reference Tabs Docker
