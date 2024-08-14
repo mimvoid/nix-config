@@ -50,6 +50,8 @@ in
   };
 
   xdg.dataFile = {
+    "navi/cheats" = (link "${home-manager}/terminal/navi");
+
     # Krita thumbnails
     "thumbnailers/kra.thumbnailer".text = ''
       [Thumbnailer Entry]

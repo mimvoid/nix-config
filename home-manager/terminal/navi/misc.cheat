@@ -1,0 +1,4 @@
+% web
+
+# Start & watch Browsersync
+browser-sync start --server --files "*.html", "*.css", "*.js"

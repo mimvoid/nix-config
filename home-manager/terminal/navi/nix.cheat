@@ -1,0 +1,19 @@
+% nix
+
+# Optimize nix store
+nix store optimise
+
+# Delete old nix store entries
+nix-collect-garbage --delete-older-than 7d
+
+# Delete old nix profiles
+sudo nix profile wipe-history /nix/var/nix/profiles/system --older-than 7d
+
+# Update all flake inputs
+nix flake update
+
+# Update one flake input
+nix flake lock --update-input <input>
+
+# Build nixpkg at git root
+nix-build -A <package>
