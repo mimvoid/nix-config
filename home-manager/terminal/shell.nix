@@ -81,6 +81,25 @@
     enableZshIntegration = true;
   };
 
+  programs.fzf = {
+    enable = true;
+    enableZshIntegration = true;
+    package = pkgs.unstable.fzf;
+
+    defaultOptions = [
+      "--height=60%"
+      "--border"
+      "--layout=reverse"
+      "--cycle"
+      "--no-scrollbar"
+      "--no-bold"
+
+      "--bind 'alt-k:up'"
+      "--bind 'alt-j:down'"
+      "--bind 'ctrl-y:execute-silent(printf {} | cut -f 2- | wl-copy --trim-newline)'"
+    ];
+  };
+
   programs = {
     bat.enable = true;
     eza.enable = true;

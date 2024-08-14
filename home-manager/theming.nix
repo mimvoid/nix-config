@@ -104,6 +104,7 @@ in
     targets = {
       bat.enable = true;
       foot.enable = true;
+      fzf.enable = true;
       yazi.enable = true;
       zathura.enable = true;
     };
