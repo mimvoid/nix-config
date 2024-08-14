@@ -33,10 +33,6 @@ let
       version = "1.6.7";
       sha256 = "Bf5IUjM1oX6gGlwXExAdsvEFPYMKXkKLnBFdmhvYCcU=";
     };
-    krita = pkgs.callPackage ../packages/appimages/krita.nix {
-      version = "5.2.3";
-      sha256 = "yRzhgQkxFxwRBU4id8Ie/JfPnXPcOdoSOfbcFGLRnIs=";
-    };
   };
 in
 {
@@ -107,9 +103,8 @@ in
   };
 
 
-  # Wrapped in parentheses to prevent each package from
-  # being recognized as several elements
-  home.packages = [ (appimg.obsidian) (appimg.krita) ];
+  # AppImages
+  home.packages = [ (appimg.obsidian) ];
 
   # AppImage desktop entries
   xdg.desktopEntries = {
@@ -117,13 +112,6 @@ in
       name = "Obsidian";
       icon = "${app-icons}/obsidian.svg";
       exec = "${appimg.obsidian}/bin/Obsidian %u";
-      terminal = false;
-    };
-
-    krita = {
-      name = "Krita";
-      icon = "${app-icons}/krita.svg";
-      exec = "${appimg.krita}/bin/krita %u";
       terminal = false;
     };
   };

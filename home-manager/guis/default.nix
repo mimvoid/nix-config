@@ -23,6 +23,7 @@
     # Media
     amberol
     inkscape
+    unstable.krita
   ];
 
   imports = [
