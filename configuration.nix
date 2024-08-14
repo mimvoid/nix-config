@@ -124,6 +124,14 @@
     firefox.enable = true;
   };
 
+  programs.gamemode = {
+    enable = true;
+    settings.custom = {
+      start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
+      end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+    };
+  };
+
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
