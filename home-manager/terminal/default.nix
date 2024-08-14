@@ -5,6 +5,7 @@
     ./shell.nix
     ./git.nix
     ./foot.nix
+    ./navi/navi.nix
     ./yazi.nix
     #./ncmpcpp.nix
   ];
