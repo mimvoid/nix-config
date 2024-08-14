@@ -17,8 +17,6 @@
     bluetuith
 
     gotop
-    rclone
-    imagemagick
     unstable.dooit
     
     neocities-cli

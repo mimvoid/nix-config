@@ -7,21 +7,18 @@
     zsh-autopair
     zsh-nix-shell
 
+    # media
+    imagemagick
+    exiftool
+    fontpreview
+
     # other
+    nix-tree
     disfetch
     tlrc
-    exiftool
     megacmd
-    fontpreview
     libnotify
   ];
-
-  programs.bash = {
-    enable = true;
-    enableCompletion = true;
-    historyControl = [ "erasedups" "ignoredups" ];
-    historyIgnore = [ "ls" "cd" "exit" ];
-  };
 
   programs.zsh = {
     enable = true;
