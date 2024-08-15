@@ -12,12 +12,17 @@
     exiftool
     fontpreview
 
-    # other
+    # disk & files
     nix-tree
+    trashy
+    megacmd
+
+    # other
     disfetch
     tlrc
-    megacmd
+    timetrap
     libnotify
+    libqalculate
   ];
 
   programs.zsh = {
