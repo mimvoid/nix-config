@@ -47,6 +47,7 @@
       nhh = "nh home switch ~/NixOS";
       
       ncp = "neocities push --prune src";
+      arttime = "arttime --nolearn --pa  --pb  --pl 20";
     };
 
     # HACK: setting up arttime without packaging it
