@@ -50,11 +50,8 @@
       arttime = "arttime --nolearn --pa  --pb  --pl 20";
     };
 
-    # HACK: setting up arttime without packaging it
+    # fontpreview settings
     initExtra = ''
-      PATH=$PATH:~/.local/bin
-      fpath+="$HOME/.local/share/zsh/functions"
-
       export FONTPREVIEW_SIZE=650x700
       export FONTPREVIEW_PREVIEW_TEXT="SPHINX OF BLACK QUARTZ,\nJUDGE MY VOW.\n\nSphinx of Black Quartz,\nJudge My Vow.\n\nsphinx of black quartz,\njudge my vow.\n\n1234567890\n!@$\%(){}[];:\'\""
     '';

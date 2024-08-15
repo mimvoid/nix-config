@@ -21,6 +21,8 @@
     
     neocities-cli
     nodePackages.browser-sync
+
+    (callPackage ../../packages/arttime.nix {})
   ];
 
   # Theming-specific config is in ../theming.nix
