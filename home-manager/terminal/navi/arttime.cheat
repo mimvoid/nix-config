@@ -1,0 +1,31 @@
+% arttime
+
+# Kissing cats
+arttime --nolearn -a kissingcats -b kissingcats2 -t "Since we found love within, we don't bother rats - Wise cats" --ac 3
+
+# Blinking owls
+arttime --nolearn -a colorowl2 -b colorowl3 -t "We don't sleep at night - Owls"
+
+# Singing birds
+arttime --nolearn -a singingbirds -b singingbirds2 -t 'Quoth the Raven "Nevermore."' --ac 3
+
+# Boi.
+arttime --nolearn -a handyoga2 -t "boi."
+
+# Everything is fine
+arttime --nolearn -a fire -t "This is fine :)" --ac 1
+
+# Laundry
+arttime --nolearn -a laundry -t "Most don't realize they've become Sisyphus long ago" --ac 3
+
+# Celestial (northernlights 6, saturn 3, stars 3)
+arttime --nolearn -a <art> --ac <color> -t "To not look up is to live a lonely world"
+
+# Chess
+arttime --nolearn -a chess
+
+# Desktop
+arttime --nolearn -a desktop2
+
+# Skyline
+arttime --nolearn -a skyline
