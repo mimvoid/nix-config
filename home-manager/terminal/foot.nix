@@ -1,7 +1,9 @@
+{ pkgs, ... }:
 # Colors and fonts are managed by Stylix
 {
   programs.foot = {
-   enable = true;
+    enable = true;
+    package = pkgs.unstable.foot;
     settings = {
       main.pad = "14x0";
       scrollback = {
