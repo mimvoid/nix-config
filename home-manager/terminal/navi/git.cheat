@@ -1,0 +1,4 @@
+% git
+
+# List commit hashes in remote repo
+git ls-remote <url>
