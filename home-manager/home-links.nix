@@ -63,7 +63,7 @@ in
     # Palettes
     # Gpl palettes is a submodule and unfortunately unrecognizable for nix
     "krita/palettes/catppuccin-macchiato.gpl" = (link
-      "${gpl-pal}/catppuccin/catppuccin-macchatio.gpl");
+      "${gpl-pal}/catppuccin/catppuccin-macchiato.gpl");
     "krita/palettes/rose-pine-moon.gpl" = (link
       "${gpl-pal}/rose-pine/rose-pine-moon.gpl");
     "krita/palettes/ayu-mirage.gpl" = (link
