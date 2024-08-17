@@ -1,9 +1,12 @@
 #!/bin/sh
 
+# This is a severe work in progress,
+# it's very messy
+
 # System information ------------------------------------------------------
 
 # Username
-USERNAME=${USER:-$(whoami)}
+USR=${USERNAME:-${USER:-${LOGNAME:-$(whoami)}}}
 
 # Hostname
 if [ -f /etc/hostname ]; then
@@ -12,13 +15,18 @@ else
   HOST=$(uname -n)
 fi
 
-OS=$(. /etc/os-release && echo "$NAME" "$VERSION_ID" |
-  tr '[:upper:]' '[:lower:]')
+# Operating system
+if [ -f /etc/os-release ]; then
+  OS=$(. /etc/os-release && echo "$NAME" "$VERSION_ID" |
+    tr '[:upper:]' '[:lower:]')
+else
+  OS=$(uname -s | tr '[:upper:]' '[:lower:]')
+fi
 
 KERNEL=$(uname -r | tr '[:upper:]' '[:lower:]')
 
 DESKTOP=$(echo "${XDG_CURRENT_DESKTOP:-$DESKTOP_SESSION}" |
-  tr '[:upper:]' '[:lower:]')
+  awk -F/ '{ print tolower($NF) }')
 
 UPTIME=$(uptime | cut -f1 -d "," | sed -E -e 's/^[^,]*up *//' \
   -e 's/, *[[:digit:]]* users.*//; s/min/minutes/' \
@@ -30,23 +38,38 @@ PACKAGES=$(nix-store -q --requisites ~/.nix-profile 2>/dev/null | wc -l)
 
 # Print information -------------------------------------------------------
 
-prefix=$(gum style --border rounded --border-foreground 6 --padding '0 1' \
-"[1;38;5;1m user
-[1;38;5;3m󰌽 os
-[1;38;5;6m kernel
-[1;38;5;2m desktop
-[1;38;5;4m shell
-[1;38;5;5m󰥔 uptime
-[1;38;5;3m󰏔 packages")
+set -- \
+'31m user    ' \
+'33m󰌽 os      ' \
+'36m kernel  ' \
+'32m desktop ' \
+'34m shell   ' \
+'35m󰥔 uptime  ' \
+'33m󰏔 packages'
 
-info=$(gum style --padding '1 1' \
-"[0m$USERNAME[38;5;8m@[0m$HOST
-[0m$OS
-[0m$KERNEL
-[0m$DESKTOP
-[0m$(basename "${SHELL}")
-[0m$UPTIME
-[0m$PACKAGES")
+prefix=$(printf '\033[36m╭────────────╮\n' &&
+  for i in "$@";
+  do
+    printf '\033[36m│ '
+    printf '\033[%s' "$i"
+    printf '\033[36m │\n'
+    shift
+  done
+  printf '\033[36m╰────────────╯\n')
+
+
+info=$(printf '             \n'
+  printf '\033[0m%s' " $USR" &&
+  printf '\033[97m@' &&
+  printf '\033[0m%s\n' "$HOST"
+
+  for i in "$OS" "$KERNEL" "$DESKTOP" "$(basename "$SHELL")" "$UPTIME" "$PACKAGES";
+  do
+    printf '\033[0m%s\n' " $i"
+  done
+
+  printf '             \n')
+
 
 palette=$(printf '\033[0m '
 for i in 1 2 3 4 5 6 7;  
@@ -55,17 +78,8 @@ for i in 1 2 3 4 5 6 7;
   done
 printf '\033[0m\n')
 
-#art=$(gum style --bold --foreground 6 '
-#       [1;38;5;4m\\    [1;38;5;6m\\  //
-#        [1;38;5;4m\\    [1;38;5;6m\\//
-#    [1;38;5;4m::::://====[1;38;5;6m\\  [1;38;5;6m//
-#       ///      \\[1;38;5;4m//
-#  """"//[1;38;5;4m\\      ///"""" 
-#     //  [1;38;5;4m\\[1;38;5;6m====//:::::
-#        [1;38;5;4m//\\    [1;38;5;6m\\
-#       [1;38;5;4m//  \\    [1;38;5;6m\\')
 
-art=$(printf '\033[96m                        \n' &&
+art=$(printf '                        \n' &&
   printf '\033[1;94m       \\\    '       &&
   printf '\033[96m\\\  //     \n'         &&
   printf '\033[1;94m        \\\    '      &&
@@ -83,7 +97,7 @@ art=$(printf '\033[96m                        \n' &&
   printf '\033[96m\\\      \n'            &&
   printf '\033[1;94m       //  \\\    '   &&
   printf '\033[96m\\\     \n'             &&
-  printf '\033[96m                        \n')
+  printf '                        \n')
 
 # Display ------------------------------------------------------------------------------------------
 
@@ -106,15 +120,14 @@ print_test() {
 	exit 0
 }
 
-full_info=$(gum join --horizontal "${prefix}" "${info}")
-full_info_colors=$(gum join --vertical "${full_info}" "${palette}")
+full_info=$(gum join --horizontal "${prefix}" "${info}" && echo "$palette")
 
 # Default layout
 print_test "$(printf "\n" &&
-  gum join --horizontal "${art}" "${full_info_colors}" &&
+  gum join --horizontal "${art}" "${full_info}" &&
   printf "\n")"
 
 # Other layout
-print_test "${full_info_colors}"
+print_test "${full_info}"
 
 exit 1
