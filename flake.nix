@@ -49,7 +49,7 @@
   in
   {
     nixosConfigurations = {
-      nixos = nixpkgs.lib.nixosSystem {
+      sirru = nixpkgs.lib.nixosSystem {
         inherit system;
         specialArgs = { inherit inputs allowed-unfree-packages; };
         modules = [ ./configuration.nix ];

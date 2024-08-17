@@ -176,7 +176,7 @@
 
   # Networks & connections
   networking = {
-    hostName = "nixos";
+    hostName = "sirru";
     wireless.iwd.enable = true;
     networkmanager = {
       enable = true;
