@@ -74,21 +74,21 @@ in
     enable = true;
     autoEnable = false;
     base16Scheme = {        # Rose pine moon
-      base00 = "232136";   # base
-      base01 = "2a273f";   # surface
-      base02 = "393552";   # overlay
-      base03 = "6e6a86";   # muted
-      base04 = "908caa";   # subtle
-      base05 = "e0def4";   # text
-      base06 = "e0def4";   # text
+      base00 = "25223a";   # base
+      base01 = "312c48";   # surface
+      base02 = "38344e";   # overlay
+      base03 = "5d5573";   # muted
+      base04 = "9e92a5";   # subtle
+      base05 = "e8dfdd";   # text
+      base06 = "e8dfdd";   # text
       base07 = "56526e";   # highlight high
-      base08 = "eb6f92";   # love
-      base09 = "f6c177";   # gold
-      base0A = "ea9a97";   # rose
-      base0B = "3e8fb0";   # pine
-      base0C = "9ccfd8";   # foam
-      base0D = "c4a7e7";   # iris
-      base0E = "f6c177";   # gold
+      base08 = "f281a6";   # love
+      base09 = "c37ac9";   # gold
+      base0A = "efa4b7";   # rose
+      base0B = "6990d6";   # pine
+      base0C = "b1b5e4";   # foam
+      base0D = "9673de";   # iris
+      base0E = "c37ac9";   # gold
       base0F = "56526e";   # highlight high
     };
 
@@ -105,6 +105,13 @@ in
       bat.enable = true;
       foot.enable = true;
       fzf.enable = true;
+
+      nixvim = {
+        enable = true;
+        transparentBackground.main = true;
+        transparentBackground.signColumn = true;
+      };
+
       yazi.enable = true;
       zathura.enable = true;
     };

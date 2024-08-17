@@ -1,9 +1,10 @@
+{ config, ... }:
+
 {
   programs.nixvim = {
     colorschemes.base16 = {
-      enable = true;
+      # Stylix takes care of enabling and the base16 colors
       setUpBar = true;
-      colorscheme = "rose-pine-moon";
     };
 
     # Enable telescope borders, disable plugins that aren't installed
@@ -14,20 +15,23 @@
         cmp = true,
         lsp_semantic = true,
 
+        dapui = false,
+        illuminate = false,
         indentblankline = false,
+        mini_completion = false,
         notify = false,
         ts_rainbow = false,
-        illuminate = false,
-        dapui = false,
       })
     '';
 
     # Swap foreground and background highlights for telescope
     # Make the prompt prefix red
-    highlightOverride = {
-      TelescopePreviewTitle = { bg = "#232136"; fg = "#3e8fb0"; };
-      TelescopePromptTitle = { bg = "#232136"; fg = "#eb6f92"; };
-      TelescopePromptPrefix = { fg = "#eb6f92"; };
+    highlightOverride = let
+      col = config.stylix.base16Scheme;
+    in {
+      TelescopePreviewTitle = { bg = "#${col.base00}"; fg = "#${col.base0B}"; };
+      TelescopePromptTitle = { bg = "#${col.base00}"; fg = "#${col.base08}"; };
+      TelescopePromptPrefix = { fg = "#${col.base08}"; };
     };
   };
 }
