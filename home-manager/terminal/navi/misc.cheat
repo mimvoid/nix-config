@@ -2,3 +2,27 @@
 
 # Start & watch Browsersync
 browser-sync start --server --files "*.html", "*.css", "*.js"
+
+
+% colorscript
+
+# Mouse faces
+colorscript -e mouseface
+
+# Small blocks
+colorscript -e blocks1
+
+# Columns color combo test
+colorscript -e colortest
+
+# Rows color combo test
+colorscript -e colorview
+
+# Mini shebangs
+colorscript -e crunchbang-mini
+
+# Test 256 colors
+colorscript -e print256
+
+# Rails/boxes/traffic
+colorscript -e rails

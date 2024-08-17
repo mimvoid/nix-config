@@ -23,6 +23,7 @@
     timetrap
     libnotify
     libqalculate
+    dwt1-shell-color-scripts
   ];
 
   programs.zsh = {
