@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 let
   theme = {
-    name = "rose-pine-moon";
+    name = "rose-pine";
     package = pkgs.rose-pine-gtk-theme;
   };
 
@@ -15,7 +15,7 @@ let
     name = "Papirus";
     package = (pkgs.catppuccin-papirus-folders.override {
       flavor = "macchiato";
-      accent = "blue";
+      accent = "pink";
     });
   };
 
