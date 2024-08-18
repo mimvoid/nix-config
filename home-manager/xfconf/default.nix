@@ -18,5 +18,5 @@
     ./xfwm.nix
   ];
 
-  home.packages = with pkgs; [ xclip ];
+  home.packages = with pkgs; [ xclip webp-pixbuf-loader ];
 }
