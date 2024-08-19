@@ -18,7 +18,6 @@
     megacmd
 
     # other
-    gum
     disfetch
     tlrc
     timetrap

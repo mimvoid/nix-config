@@ -1,7 +1,16 @@
 #!/bin/sh
 
-# This is a severe work in progress,
-# it's very messy
+# Based on disfetch, fetchutils, and diyfetch
+# https://github.com/q60/disfetch
+# https://github.com/kiedtl/fetchutils
+# https://github.com/info-mono/diyfetch
+
+# Shorthands --------------------------------------------------------------
+
+elem () {
+  # shellcheck disable=SC2059 # the only way
+  printf "$2" | sed "$1!d"
+}
 
 # System information ------------------------------------------------------
 
@@ -33,101 +42,100 @@ UPTIME=$(uptime | cut -f1 -d "," | sed -E -e 's/^[^,]*up *//' \
   -e 's/([[:digit:]]+):0?([[:digit:]]+)/\1h \2m/' |
   xargs)
 
-PACKAGES=$(nix-store -q --requisites ~/.nix-profile 2>/dev/null | wc -l)
+# Packages (from disfetch)
+# note for nixos: display only current user installed packages
+packages_apk() { apk info 2>/dev/null | wc -l; }
+packages_dpkg() { dpkg -l 2>/dev/null | grep -c "^ii"; }
+packages_haiku() { pkgman search -ia  2>/dev/null |
+  awk 'FNR > 2 { print }' | wc -l; }
+packages_nix() { nix-store -q --requisites ~/.nix-profile 2>/dev/null | wc -l; }
+packages_pacman() { pacman -Qq 2>/dev/null | wc -l; }
+packages_rpm() { rpm -qa 2>/dev/null | wc -l; }
+packages_slack() { find /var/log/packages -mindepth 1 -maxdepth 1 2>/dev/null |
+  wc -l; }
+packages_xbps() { xbps-query -l 2>/dev/null | wc -l; }
+packages_emerge() { find /var/db/pkg -mindepth 2 -maxdepth 2 2>/dev/null |
+  wc -l; }
+
+# shellcheck disable=SC2034 # actually used in eval
+PACKAGES="$(
+  case $OS in
+    alpine*|postm*) packages_apk;;
+    android*|astra*|*bian*|elementary*|*mint*|mx*|*ubuntu*|zorin*|kali*)
+      packages_dpkg;;
+    arc*|artix*|endeavour*|manjaro*|garuda*|msys2*|parabola*)
+      packages_pacman;;
+    fedora*|qubes*|cent*|redhat*|opensuse*) packages_rpm;;
+    gentoo*) packages_emerge;;
+    haiku*) packages_haiku;;
+    nixos*) packages_nix;;
+    slack*) packages_slack;;
+    void*) packages_xbps;;
+  esac
+)"
+
+# Components -----------------------------------------------------------
+
+# Colors
+r="\033[31m"  # red
+g="\033[32m"  # green
+y="\033[33m"  # yellow
+b="\033[34m"  # blue
+m="\033[35m"  # magenta
+c="\033[36m"  # cyan
+#w="\033[37m"  # white
+
+br="\033[91m" # bright red
+bg="\033[92m" # bright green
+by="\033[93m" # bright yellow
+bb="\033[94m" # bright blue
+bm="\033[95m" # bright magenta
+bc="\033[96m" # bright cyan
+gr="\033[97m" # white (gray)
+
+bo="\033[1m"  # bold
+x="\033[0m"   # reset
+
+read -r info <<EOF
+$c╭────────────╮\n\
+$c│ $bo$r user     $x$c│ $x$USR$gr@$x$HOST\n\
+$c│ $bo$y󰌽 os       $x$c│ $x$OS\n\
+$c│ $bo$c kernel   $x$c│ $x$KERNEL\n\
+$c│ $bo$g desktop  $x$c│ $x$DESKTOP\n\
+$c│ $bo$b shell    $x$c│ $x$(basename "$SHELL")\n\
+$c│ $bo$m󰥔 uptime   $x$c│ $x$UPTIME\n\
+$c│ $bo$y󰏔 packages $x$c│ $x$PACKAGES\n\
+$c╰────────────╯\n\
+$x $br $bg $by $bb $bm $bc $gr $x\n
+EOF
+
+# Art ---------------------------------------------------------------------
+
+IFS= # from disfetch, preserve leading and trailing whitespaces
+case $OS in
+  nixos*)
+    read -r art <<EOF
+$x                        \n\
+$bo$bb       \\\\\\\\    $bc\\\\\\\\  //     $x\n\
+$bo$bb        \\\\\\\\    $bc\\\\\\\\//      $x\n\
+$bo$bb    ::::://====$bc\\\\\\\\  $bb//   $x\n\
+$bo$bc       ///      \\\\\\\\$bb//    $x\n\
+$bo$bc  """"//$bb\\\\\\\\      ///"""" $x\n\
+$bo$bc     //  $bb\\\\\\\\$bc====//:::::  $x\n\
+$bo$bb        //\\\\\\\\    $bc\\\\\\\\      $x\n\
+$bo$bb       //  \\\\\\\\    $bc\\\\\\\\     $x\n\
+$x                        \n
+EOF
+    ;;
+esac
+unset IFS
 
 
-# Print information -------------------------------------------------------
+# Combining --------------------------------------------------------------
 
-set -- \
-'31m user    ' \
-'33m󰌽 os      ' \
-'36m kernel  ' \
-'32m desktop ' \
-'34m shell   ' \
-'35m󰥔 uptime  ' \
-'33m󰏔 packages'
-
-prefix=$(printf '\033[36m╭────────────╮\n' &&
-  for i in "$@";
-  do
-    printf '\033[36m│ '
-    printf '\033[%s' "$i"
-    printf '\033[36m │\n'
-    shift
-  done
-  printf '\033[36m╰────────────╯\n')
-
-
-info=$(printf '             \n'
-  printf '\033[0m%s' " $USR" &&
-  printf '\033[97m@' &&
-  printf '\033[0m%s\n' "$HOST"
-
-  for i in "$OS" "$KERNEL" "$DESKTOP" "$(basename "$SHELL")" "$UPTIME" "$PACKAGES";
-  do
-    printf '\033[0m%s\n' " $i"
-  done
-
-  printf '             \n')
-
-
-palette=$(printf '\033[0m '
-for i in 1 2 3 4 5 6 7;  
-  do
-    printf '\033[9%sm%s' "$i" " "
-  done
-printf '\033[0m\n')
-
-
-art=$(printf '                        \n' &&
-  printf '\033[1;94m       \\\    '       &&
-  printf '\033[96m\\\  //     \n'         &&
-  printf '\033[1;94m        \\\    '      &&
-  printf '\033[96m\\\//      \n'          &&
-  printf '\033[1;94m    ::::://===='      &&
-  printf '\033[96m\\\  //   \n'           &&
-  printf '\033[1;96m       ///      \\\'  &&
-  printf '\033[94m//    \n'               &&
-  printf '\033[1;96m  """"//'             &&
-  printf '\033[94m\\\      ///"""" \n'    &&
-  printf '\033[1;96m     //  '            &&
-  printf '\033[1;94m\\\'                  &&
-  printf '\033[96m====//:::::  \n'        &&
-  printf '\033[1;94m        //\\\    '    &&
-  printf '\033[96m\\\      \n'            &&
-  printf '\033[1;94m       //  \\\    '   &&
-  printf '\033[96m\\\     \n'             &&
-  printf '                        \n')
-
-# Display ------------------------------------------------------------------------------------------
-
-terminal_size=$(stty size)
-terminal_height=${terminal_size% *}
-terminal_width=${terminal_size#* }
-
-prompt_height=${PROMPT_HEIGHT:-1}
-prompt_width=${PROMPT_WIDTH:-51}
-
-print_test() {
-	no_color=$(printf '%b' "${1}" | sed -e 's/\x1B\[[0-9;]*[JKmsu]//g')
-
-	[ "$(printf '%s' "${no_color}" | wc --lines)" -gt $(( terminal_height - prompt_height )) ] && return 1
-	[ "$(printf '%s' "${no_color}" | wc --max-line-length)" -gt "${terminal_width}" ] && return 1
-
-	gum style --align left --width="${prompt_width}" "${1}" ''
-	printf '%b' "\033[A"
-
-	exit 0
-}
-
-full_info=$(gum join --horizontal "${prefix}" "${info}" && echo "$palette")
-
-# Default layout
-print_test "$(printf "\n" &&
-  gum join --horizontal "${art}" "${full_info}" &&
-  printf "\n")"
-
-# Other layout
-print_test "${full_info}"
-
-exit 1
+printf "\n" # add spacing around
+for i in $(seq 10); do
+  # shellcheck disable=SC2059
+  echo "$(elem "$i" "$art")" "$(elem "$i" "$info")"
+done
+printf "\n"
