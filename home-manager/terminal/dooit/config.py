@@ -1,35 +1,28 @@
 from extra import *
 
-# Rose Pine Moon palette
-
-base = "#232136"
-muted = "#908caa"
-text = "#e0def4"
-love = "#eb6f92"
-gold = "#f6c177"
-rose = "#ea9a97"
-pine = "#3e8fb0"
-foam = "#9ccfd8"
-iris = "#c4a7e7"
-
-# dooit's colors
-red = love
-yellow = gold
-green = pine
+base = "#25223a"
+muted = "#5d5573"
+text = "#e8dfdd"
+red = "#f281a6"
+green = "#6990d6"
+yellow = "#efa4b7"
+blue = "#9673de"
+magenta = "#c37ac9"
+cyan = "#b1b5e4"
 
 # Config
 BACKGROUND = base
 BAR_BACKGROUND = base
 WORKSPACES_BACKGROUND = base
 TODOS_BACKGROUND = base
-BORDER_DIM = iris + " 50%"
-BORDER_LIT = rose
+BORDER_DIM = blue + " 50%"
+BORDER_LIT = yellow
 
 BORDER_TITLE_DIM = muted, base # fg then bg
-BORDER_TITLE_LIT = rose, base
+BORDER_TITLE_LIT = yellow, base
 
-SEARCH_COLOR = love
-YANK_COLOR = pine
+SEARCH_COLOR = red
+YANK_COLOR = green
 
 SAVE_ON_ESCAPE = False
 
@@ -54,15 +47,15 @@ ART_D = [
     "         '  `+.;  ;  '      :   ",
     "         :  '  |    ;       ;-. ",
     "        .  '   :  :`:     _.`· ;",
-    f"{col('bug',rose)}   .·  .  .·' ; .·`- +'  `· ॱ",
+    f"{col('bug',yellow)}   .·  .  .·' ; .·`- +'  `· ॱ",
     "      `·-·   `·-·  `·-·'        ",
 ]
 
-# Didn't use an array since I wanted them centered
-QUOTE1 = f"can you feel your {col('heart',love)} burning?"
+# Didn't use an array since I wanted them centeyellow
+QUOTE1 = f"can you feel your {col('heart',red)} burning?"
 QUOTE2 = "can you feel the struggle within?"
-QUOTE3 = f"the fear within me is beyond {col('anything',pine)} your soul can make."
-QUOTE4 = f"you {col('cannot kill me',love)} in a {col('way that matters',love)}"
+QUOTE3 = f"the fear within me is beyond {col('anything',green)} your soul can make."
+QUOTE4 = f"you {col('cannot kill me',red)} in a {col('way that matters',red)}"
 
 
 
@@ -74,10 +67,10 @@ DASHBOARD = [ART_D, PAD, QUOTE1, QUOTE2, QUOTE3, QUOTE4]
 EMPTY_WORKSPACE = [
     ":O",
     "No workspaces?",
-    f"Press [{foam}]'a'[/{foam}] to add some!",
+    f"Press [{cyan}]'a'[/{cyan}] to add some!",
 ]
 WORKSPACE = {
-    "editing": pine,
+    "editing": green,
     "pointer": ">",
     "children_hint": " ›",
     "start_expanded": True,
@@ -88,7 +81,7 @@ WORKSPACE = {
 # source: https://www.asciiart.eu/animals/cats
 ART_T = [
     "               _ |\_   ",
-    f"               \` ..\  {col('?', rose)}",
+    f"               \` ..\  {col('?', yellow)}",
     "         __,.-‟ =___Y= ",
     "       .‟        )     ",
     " _    /   ,    \/\_    ",
@@ -106,22 +99,22 @@ EMPTY_TODO = [
 COLUMN_ORDER = ["description", "due", "urgency"]
 TODO = {
     "color_todos": False, # color based on status
-    "editing": pine,
+    "editing": green,
     "pointer": ">",
 
     "due_icon": "󰃭 ",
 
     "effort_icon": " ",
-    "effort_color": gold,
+    "effort_color": magenta,
 
     "recurrence_icon": "  ",
-    "recurrence_color": foam,
+    "recurrence_color": cyan,
 
-    "tags_color": love,
+    "tags_color": red,
 
-    "completed_icon": "✕ ",
-    "pending_icon": " ",
-    "overdue_icon": " ",
+    "completed_icon": " ",
+    "pending_icon": "● ",
+    "overdue_icon": " ",
 
     # Urgency
     "initial_urgency": 1,
@@ -131,25 +124,25 @@ TODO = {
     "urgency3_icon": "󱊢",
     "urgency4_icon": "󱊣!",
 
-    "urgency1_color": "pine",
-    "urgency2_color": "foam",
-    "urgency3_color": "gold",
-    "urgency4_color": "love",
+    "urgency1_color": "green",
+    "urgency2_color": "blue",
+    "urgency3_color": "magenta",
+    "urgency4_color": "red",
 
     # Children
-    "children_hint": "({done}/{total})",
+    "children_hint": col(" [{done}/{total}]", muted),
     "start_expanded": True,
 }
 
 # Status bar
 
 status_icons = {
-    "NORMAL": ["󰆋 ", pine],
-    "INSERT": [" ", rose],
-    "DATE": ["󰃭 ", love],
-    "SEARCH": [" ", foam],
-    "SORT": [" ", iris],
-    "K PENDING": [" ", gold],
+    "NORMAL": ["󰆋 ", green],
+    "INSERT": [" ", yellow],
+    "DATE": ["󰃭 ", red],
+    "SEARCH": [" ", cyan],
+    "SORT": [" ", blue],
+    "K PENDING": [" ", magenta],
 }
 
 def status(status):
@@ -160,7 +153,7 @@ def get_message(message):
     return " " + message
 
 def get_clock() -> str:
-    return blk('󰥔', foam) + col(f"{datetime.now().time().strftime(' %H:%M ')}", foam)
+    return blk('󰥔', magenta) + col(f"{datetime.now().time().strftime(' %H:%M ')}", magenta)
 
 def get_username():
     try:
@@ -170,7 +163,7 @@ def get_username():
         import pwd
 
         username = pwd.getpwuid(uid).pw_name
-    return blk('', pine) + col(f" {username}", pine)
+    return blk('', green) + col(f" {username}", green)
 
 # TODO: get stats working
 #STATS = [
