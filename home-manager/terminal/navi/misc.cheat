@@ -9,6 +9,9 @@ browser-sync start --server --files "*.html", "*.css", "*.js"
 # Mouse faces
 colorscript -e mouseface
 
+# Large blocks
+colorscript -e bloks
+
 # Small blocks
 colorscript -e blocks1
 
