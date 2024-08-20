@@ -73,7 +73,7 @@ in
   stylix = {
     enable = true;
     autoEnable = false;
-    base16Scheme = {        # Rose pine moon
+    base16Scheme = {       # Modified rose pine moon
       base00 = "25223a";   # base
       base01 = "312c48";   # surface
       base02 = "38344e";   # overlay
@@ -82,13 +82,13 @@ in
       base05 = "e8dfdd";   # text
       base06 = "e8dfdd";   # text
       base07 = "56526e";   # highlight high
-      base08 = "f281a6";   # love
-      base09 = "c37ac9";   # gold
-      base0A = "efa4b7";   # rose
-      base0B = "6990d6";   # pine
-      base0C = "b1b5e4";   # foam
-      base0D = "9673de";   # iris
-      base0E = "c37ac9";   # gold
+      base08 = "f281a6";   # red/love
+      base09 = "c37ac9";   # magenta
+      base0A = "efa4b7";   # yellow/rose
+      base0B = "6990d6";   # green/pine
+      base0C = "b1b5e4";   # cyan/foam
+      base0D = "9673de";   # blue
+      base0E = "c37ac9";   # magenta
       base0F = "56526e";   # highlight high
     };
 
@@ -168,7 +168,7 @@ in
     "*.color4" = "#${col.base0D}";
     "*.color12" = "#${col.base0D}";
 
-    # magenta (this hurts)
+    # magenta
     "*.color5" = "#${col.base09}";
     "*.color13" = "#${col.base09}";
 
