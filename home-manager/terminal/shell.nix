@@ -44,6 +44,9 @@
     };
     
     shellAliases = {
+      ".." = "cd ..";
+      "-" = "cd -";
+
       nhos = "nh os switch ~/NixOS";
       nhh = "nh home switch ~/NixOS";
       
