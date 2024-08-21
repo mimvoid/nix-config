@@ -52,6 +52,7 @@ in
 
     # Monospace
     courier-prime
+    fira-mono
 
     # Display / Handwriting
     norwester-font
