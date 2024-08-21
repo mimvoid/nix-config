@@ -21,7 +21,7 @@
     unstable.prismlauncher
 
     # Media
-    amberol
+    tauon
     inkscape
     unstable.krita
   ];
