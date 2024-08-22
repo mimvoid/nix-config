@@ -10,6 +10,7 @@
     "XTerm*loginshell" = true; # include environment variables
     "XTerm*saveLines" = 2048;
     "XTerm*metaSendsEscape" = true;
+    "XTerm*scrollTtyOutput" = false; # stop output from forcing bottom of scroll
 
     # Enable Sixel
     "XTerm*decTerminalID" = "vt340";
