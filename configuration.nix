@@ -58,7 +58,10 @@
   # X11
   services.xserver = {
     enable = true;
-    xkb.layout = "us"; # Keymap in X11
+    xkb = {
+      layout = "us"; # Keymap in X11
+      variant = ",intl";
+    };
   };
 
   programs.xwayland.enable = true;
