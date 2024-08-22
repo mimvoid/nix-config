@@ -7,6 +7,7 @@
   xresources.properties = {
     "XTerm.termName" = "xterm-256color";
     "XTerm*locale" = true;
+    "XTerm*loginshell" = true; # include environment variables
     "XTerm*saveLines" = 2048;
     "XTerm*metaSendsEscape" = true;
 
