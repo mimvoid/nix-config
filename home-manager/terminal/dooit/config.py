@@ -24,7 +24,7 @@ BORDER_TITLE_LIT = yellow, base
 SEARCH_COLOR = red
 YANK_COLOR = green
 
-SAVE_ON_ESCAPE = False
+SAVE_ON_ESCAPE = True
 
 USE_DATE_FIRST = True # True = dd-mm, False = mm-dd
 DATE_FORMAT = "%d %h"
