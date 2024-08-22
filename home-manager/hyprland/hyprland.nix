@@ -35,6 +35,8 @@ in
       "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
       "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon &"
+      "fcitx5 -d -r &"
+      "fcitx5-remote -r &"
       "hypridle &"
       "ags &"
       # Includes swww daemon, see ./hypr-theme.nix
@@ -77,6 +79,7 @@ in
     monitor = ",preferred,auto,auto";
     xwayland.force_zero_scaling = true;
 
+    windowrule = [ "pseudo, fcitx" ];
     windowrulev2 =
     # TODO: think of better names for these
     let

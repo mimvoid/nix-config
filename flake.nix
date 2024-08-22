@@ -45,7 +45,7 @@
         })
       ];
     };
-    allowed-unfree-packages = [ "zoom" ];
+    allowed-unfree-packages = [ "fcitx5-rose-pine" ];
   in
   {
     nixosConfigurations = {

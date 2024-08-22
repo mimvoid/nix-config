@@ -25,6 +25,7 @@
 
     extraPlugins = with pkgs.vimPlugins; [
       plenary-nvim
+      fcitx-vim
     ];
 
     extraPackages = with pkgs; [
