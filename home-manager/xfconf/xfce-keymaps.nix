@@ -1,3 +1,4 @@
+{ config, ... }:
 let
   c = "commands/custom/";
   wm = "xfwm4/custom/";
@@ -8,6 +9,7 @@ in
     "${c}<Super>w" = "exo-open --launch WebBrowser";
     "${c}<Super>e" = "thunar";
     "${c}<Super>space" = "xfce4-appfinder";
+    "${c}<Super>o" = config.xdg.desktopEntries.obsidian.exec;
 
     "${c}<Super><Shift>q" = "xfce4-session-logout";
     "${wm}<Super>q" = "close_window_key";

@@ -5,6 +5,7 @@ let
   launcher = "fuzzel";
   browser = "firefox";
   fileManager = "thunar";
+  obsidian = config.xdg.desktopEntries.obsidian.exec;
 
   # Used in keymaps
   left = "H";
@@ -202,6 +203,7 @@ in
       "$mod, E, exec, ${fileManager}"
       "$mod, SPACE, exec, ${launcher}"
       "$mod, W, exec, ${browser}"
+      "$mod, O, exec, ${obsidian}"
 
       # Toggle fullscreen
       "$mod, F, fullscreen"
