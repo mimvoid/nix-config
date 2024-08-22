@@ -16,7 +16,7 @@
     bluetuith
 
     gotop
-    unstable.dooit
+    dooit
     
     neocities-cli
     nodePackages.browser-sync
