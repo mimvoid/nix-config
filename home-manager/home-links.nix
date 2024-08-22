@@ -106,12 +106,14 @@ in
   home.packages = [ (appimg.obsidian) ];
 
   # AppImage desktop entries
+  # See specifications on https://specifications.freedesktop.org/desktop-entry-spec/latest/index.html
   xdg.desktopEntries = {
     obsidian = {
       name = "Obsidian";
       icon = "obsidian";
       exec = "${appimg.obsidian}/bin/Obsidian %u";
       terminal = false;
+      categories = [ "Office" ];
     };
   };
 }
