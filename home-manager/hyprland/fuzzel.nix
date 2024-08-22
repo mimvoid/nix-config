@@ -9,7 +9,7 @@
         lines = 16;
         layer = "overlay";
         prompt = "'> '";
-        icon-theme = "Papirus";
+        icon-theme = config.gtk.iconTheme.name;
         exit-on-keyboard-focus-loss = false;
 
         horizontal-pad = 28;

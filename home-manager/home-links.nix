@@ -25,9 +25,6 @@ let
   comp-helper = pkgs.callPackage ../packages/krita/composition-helper.nix {};
   timer-watch = pkgs.callPackage ../packages/krita/timer-watch.nix {};
 
-  # AppImage packages
-  app-icons = "${pkgs.papirus-icon-theme}/share/icons/Papirus/48x48/apps";
-
   appimg = {
     obsidian = pkgs.callPackage ../packages/appimages/obsidian.nix {
       version = "1.6.7";
@@ -112,7 +109,7 @@ in
   xdg.desktopEntries = {
     obsidian = {
       name = "Obsidian";
-      icon = "${app-icons}/obsidian.svg";
+      icon = "obsidian";
       exec = "${appimg.obsidian}/bin/Obsidian %u";
       terminal = false;
     };
