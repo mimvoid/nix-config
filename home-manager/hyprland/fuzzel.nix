@@ -1,10 +1,13 @@
+{ config, ... }:
+
 {
   programs.fuzzel = {
     enable = true;
     settings = {
       main = {
+        terminal = "foot -e";
+
         dpi-aware = true;
-        #terminal = "foot";
         width = 33;
         lines = 16;
         layer = "overlay";
