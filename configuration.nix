@@ -180,11 +180,7 @@
   # Networks & connections
   networking = {
     hostName = "sirru";
-    wireless.iwd.enable = true;
-    networkmanager = {
-      enable = true;
-      wifi.backend = "iwd";
-    };
+    networkmanager.enable = true;
   };
 
   hardware.bluetooth.enable = true;

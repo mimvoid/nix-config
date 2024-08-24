@@ -12,7 +12,6 @@
   ];
 
   home.packages = with pkgs; [
-    unstable.impala
     bluetuith
 
     gotop
