@@ -7,8 +7,7 @@ const icon = Widget.Button({
   }),
 
   cursor: "pointer",
-  // TODO: how to launch a tui app
-  //on_secondary_click: () => Utils.execAsync('impala'),
+  on_secondary_click: () => Utils.execAsync('networkmanager_dmenu'),
 })
 
 const label = Widget.Label({

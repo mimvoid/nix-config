@@ -205,6 +205,8 @@ in
       "$mod, W, exec, ${browser}"
       "$mod, O, exec, ${obsidian}"
 
+      "$mod, N, exec, networkmanager_dmenu"
+
       # Toggle fullscreen
       "$mod, F, fullscreen"
 
