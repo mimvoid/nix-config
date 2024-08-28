@@ -10,14 +10,14 @@
   all: unset;
   font-family: $font-family;
   font-size: $font-size;
-  -gtk-icon-theme: 'Adwaita';
+  -gtk-icon-theme: "Adwaita";
 }
 
 button {
   padding: 0 4px;
 
   min-width: 0;
- 
+
   border-radius: $radius;
   background-color: transparent;
 
@@ -37,14 +37,16 @@ trough {
   border-radius: $radius;
   background-color: $box;
 
-  highlight { border-radius: $radius; }
+  highlight {
+    border-radius: $radius;
+  }
 }
 
 window.popup {
   menu {
     padding: 8px;
     border-radius: 8px;
-    background-color: change-color($base, $alpha: 0.70);
+    background-color: change-color($base, $alpha: 0.7);
     color: $text;
   }
   menuitem {
@@ -56,10 +58,10 @@ tooltip {
   background-color: transparent;
   border: none;
 
-  >*>* {
+  > * > * {
     padding: 4px 8px;
     border-radius: $radius;
-    background-color: change-color($base, $alpha: 0.70);
+    background-color: change-color($base, $alpha: 0.7);
     color: $text;
   }
 }

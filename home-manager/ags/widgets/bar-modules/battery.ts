@@ -1,29 +1,32 @@
 const battery = await Service.import("battery");
 
 const icon = Widget.Icon({
-  icon: battery.bind("percent")
-    .as(p =>`battery-level-${Math.floor(p / 10) * 10}-symbolic`),
-  
+  icon: battery
+    .bind("percent")
+    .as((p) => `battery-level-${Math.floor(p / 10) * 10}-symbolic`),
+
   // Sets a class name to a charging battery for styling
-  class_name: battery.bind('charging').as(ch => ch ? 'charging' : ''),
-  
+  class_name: battery.bind("charging").as((ch) => (ch ? "charging" : "")),
+
   // Makes it sideways
   css: "-gtk-icon-transform: rotate(90deg);",
-})
+});
 
 const value = Widget.Label({
-  label: battery.bind("percent").as(p => `${p}%`),
-})
+  label: battery.bind("percent").as((p) => `${p}%`),
+});
 
 const battery_widget = Widget.Box({
-  children: [ icon, value ],
+  children: [icon, value],
 
   // TODO: this displays an absurdly high number of hours when
   // when discharging with a nearly full battery,
   // is it because of upower or something else?
 
-  tooltip_text: battery.bind('time-remaining').as(t => `Time left: ${Math.floor(t/60)}h ${t%60}m`),
-})
+  tooltip_text: battery
+    .bind("time-remaining")
+    .as((t) => `Time left: ${Math.floor(t / 60)}h ${t % 60}m`),
+});
 
 // Uncomment to reveal percentage on hover
 
@@ -56,12 +59,13 @@ const battery_widget = Widget.Box({
 //      value,
 //    ],
 //  }),
-// 
+//
 //  tooltip_text: `Time left: ${battery.time_remaining}`,
 //})
 
-export default () => Widget.Box({
-  class_name: "battery",
-  visible: battery.bind("available"),
-  child: battery_widget,
-})
+export default () =>
+  Widget.Box({
+    class_name: "battery",
+    visible: battery.bind("available"),
+    child: battery_widget,
+  });

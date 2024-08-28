@@ -14,25 +14,27 @@ window.notification-popups box.notifications {
   margin: 4px;
   padding: 8px;
 
-  border-radius: $radius*0.25;
+  border-radius: $radius * 0.25;
 
   background-color: $base;
 
   border: 1px solid $primary;
-  .critical { border: 1px solid $error; }
+  .critical {
+    border: 1px solid $error;
+  }
 }
 
 .icon {
   min-width: 28px;
   min-height: 28px;
   margin: 0 12px 0 6px;
-  
+
   image {
     margin: 4px;
     font-size: 16px;
     color: $secondary;
   }
-  
+
   box {
     min-width: 28px;
     min-height: 28px;
@@ -51,7 +53,11 @@ window.notification-popups box.notifications {
 
 .actions .action-button {
   margin: 4px 2px 0 2px;
-  
-  &:first-child { margin-left: 0; }
-  &:last-child { margin-right: 0; }
+
+  &:first-child {
+    margin-left: 0;
+  }
+  &:last-child {
+    margin-right: 0;
+  }
 }

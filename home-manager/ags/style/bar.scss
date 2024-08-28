@@ -6,12 +6,14 @@
 window.bar > box {
   margin: 4px 14px;
   border-radius: $radius;
-  
+
   color: $primary;
   background-color: transparent;
 }
 
-.left, .center, .right {
+.left,
+.center,
+.right {
   padding: 4px 8px;
   border-radius: $radius;
   background-color: $base;
@@ -29,14 +31,14 @@ window.bar > box {
   }
 }
 
-.volume, .battery {
+.volume,
+.battery {
   margin: 0 4px;
 }
 
 .system-tray {
   margin: 0 2px;
 }
-
 
 /* Modules */
 
@@ -69,7 +71,7 @@ window.bar > box {
 /* Change icons to Papirus for more compatibility */
 .system-tray image {
   all: unset;
-  -gtk-icon-theme: 'Papirus';
+  -gtk-icon-theme: "Papirus";
 }
 
 .network {
@@ -82,21 +84,29 @@ window.bar > box {
 
 .volume {
   color: $tertiary-bright;
-  label { margin-left: 2px; }
-  trough highlight { background-color: $tertiary-bright; }
+  label {
+    margin-left: 2px;
+  }
+  trough highlight {
+    background-color: $tertiary-bright;
+  }
 }
 
 /* TODO: different colors for battery percentages */
 .battery {
   color: $good;
-  label { margin-left: 6px; }
-  
-  .charging { color: $good; }
+  label {
+    margin-left: 6px;
+  }
+
+  .charging {
+    color: $good;
+  }
 }
 
 .brightness {
   color: adjust-color($error, $lightness: 8);
-  
+
   .brightness-revealer {
     min-width: 4px;
   }

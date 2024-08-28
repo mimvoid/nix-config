@@ -40,5 +40,7 @@
   }
 
   /* Days outside the current month */
-  &:indeterminate { color: transparentize($text, 0.6); }
+  &:indeterminate {
+    color: transparentize($text, 0.6);
+  }
 }

@@ -10,10 +10,10 @@
 
 .logout icon {
   size: 16px; /* ?? */
-  
+
   &:hover {
     size: 20px;
-    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682);
+    transition: all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682);
   }
 }
 
@@ -32,7 +32,9 @@
     color: $base;
     background-size: 25%;
     transition: background-color 0.1s linear;
-    transition: all 0.3s cubic-bezier(.55, 0.0, .28, 1.682), background-color 0.05s ease-in-out;
-	  opacity: 0.85;
+    transition:
+      all 0.3s cubic-bezier(0.55, 0, 0.28, 1.682),
+      background-color 0.05s ease-in-out;
+    opacity: 0.85;
   }
 }

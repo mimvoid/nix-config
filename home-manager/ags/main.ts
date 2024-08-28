@@ -6,13 +6,9 @@ App.config({
   style: `/tmp/ags/style/style.css`,
   // HACK: close windows other than bar and notifications
   onConfigParsed: () => {
-    App.closeWindow("calendar")
+    App.closeWindow("calendar");
   },
-  windows: [
-    Bar(),
-    Calendar(),
-    Notifications(),
-  ],
-})
+  windows: [Bar(), Calendar(), Notifications()],
+});
 
 export {};

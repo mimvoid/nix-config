@@ -6,13 +6,16 @@ const translate_values = {
   34: "medium",
   1: "low",
   0: "muted",
-}
+};
 
 function getIcon() {
-  const icon_value = audio.speaker.is_muted ? 0 : [101, 67, 34, 1, 0].find(
-    threshold => threshold <= audio.speaker.volume * 100)
+  const icon_value = audio.speaker.is_muted
+    ? 0
+    : [101, 67, 34, 1, 0].find(
+        (threshold) => threshold <= audio.speaker.volume * 100,
+      );
 
-  return `audio-volume-${translate_values[icon_value]}-symbolic`
+  return `audio-volume-${translate_values[icon_value]}-symbolic`;
 }
 
 const icon = Widget.Button({
@@ -22,24 +25,25 @@ const icon = Widget.Button({
 
   // Mutes or unmutes
   cursor: "pointer",
-  on_clicked: () => audio.speaker.is_muted = !audio.speaker.is_muted,
-})
+  on_clicked: () => (audio.speaker.is_muted = !audio.speaker.is_muted),
+});
 
 const label = Widget.Label({
-  label: audio.speaker.bind('volume').as(v => `${Math.floor(v * 100)}%`),
-})
+  label: audio.speaker.bind("volume").as((v) => `${Math.floor(v * 100)}%`),
+});
 
 const slider = Widget.Slider({
   cursor: "pointer",
   hexpand: true,
   vpack: "center",
   draw_value: false,
-  value: audio.speaker.bind('volume'),
-  on_change: ({ value }) => audio.speaker.volume = value,
-  setup: self => self.hook(audio.speaker, () => {
-    self.value = audio.speaker.volume
-  }),
-})
+  value: audio.speaker.bind("volume"),
+  on_change: ({ value }) => (audio.speaker.volume = value),
+  setup: (self) =>
+    self.hook(audio.speaker, () => {
+      self.value = audio.speaker.volume;
+    }),
+});
 
 const slider_box = Widget.Revealer({
   child: slider,
@@ -47,8 +51,8 @@ const slider_box = Widget.Revealer({
   cursor: "pointer",
   revealChild: false,
   transitionDuration: 250,
-  transition: 'slide_left',
-})
+  transition: "slide_left",
+});
 
 const eventbox = Widget.EventBox({
   on_hover: () => {
@@ -60,10 +64,11 @@ const eventbox = Widget.EventBox({
 
   child: Widget.Box({
     children: [slider_box, label],
-  }), 
-})
+  }),
+});
 
-export default () => Widget.Box({
-  class_name: "volume",
-  children: [icon, eventbox],
-})
+export default () =>
+  Widget.Box({
+    class_name: "volume",
+    children: [icon, eventbox],
+  });
