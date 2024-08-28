@@ -5,6 +5,7 @@
     ./alpha.nix
     ./bufferline.nix
     ./completion.nix
+    ./dap.nix
     ./git.nix
     ./lsp.nix
     ./lualine.nix

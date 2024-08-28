@@ -12,10 +12,10 @@
       require('base16-colorscheme').with_config({
         telescope = true,
         telescope_borders = true,
+        dapui = true,
         cmp = true,
         lsp_semantic = true,
 
-        dapui = false,
         illuminate = false,
         indentblankline = false,
         mini_completion = false,
