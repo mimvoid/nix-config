@@ -7,4 +7,6 @@
 	  nixGrammars = true;
     nixvimInjections = true;
   };
+
+  programs.nixvim.plugins.rainbow-delimiters.enable = true;
 }

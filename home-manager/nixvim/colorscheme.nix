@@ -32,6 +32,14 @@
       TelescopePreviewTitle = { bg = "#${col.base00}"; fg = "#${col.base0B}"; };
       TelescopePromptTitle = { bg = "#${col.base00}"; fg = "#${col.base08}"; };
       TelescopePromptPrefix = { fg = "#${col.base08}"; };
+
+      RainbowDelimiterRed.fg = "#${col.base08}";
+      RainbowDelimiterYellow.fg = "#${col.base0A}";
+      RainbowDelimiterBlue.fg = "#${col.base0D}";
+      RainbowDelimiterOrange.fg = "#${col.base0A}";
+      RainbowDelimiterGreen.fg = "#${col.base0B}";
+      RainbowDelimiterViolet.fg = "#${col.base0E}";
+      RainbowDelimiterCyan.fg = "#${col.base0C}";
     };
   };
 }
