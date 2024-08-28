@@ -30,6 +30,7 @@ let
       version = "1.6.7";
       sha256 = "Bf5IUjM1oX6gGlwXExAdsvEFPYMKXkKLnBFdmhvYCcU=";
     };
+    # zen-browser = pkgs.callPackage ../packages/appimages/zen-browser.nix {};
   };
 in
 {
@@ -115,5 +116,12 @@ in
       terminal = false;
       categories = [ "Office" ];
     };
+   # zen-browser = {
+   #   name = "Zen Browser";
+   #   icon = "zen";
+   #   exec = "${appimg.zen-browser}/bin/zen-browser %u";
+   #   terminal = false;
+   #   categories = [ "Network" "WebBrowser" ];
+   # };
   };
 }

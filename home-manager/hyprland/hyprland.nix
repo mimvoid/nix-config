@@ -99,6 +99,7 @@ in
       (opaque-ish "obsidian")
       (opaque-ish "vesktop")
       (active-opaque "firefox")
+      (active-opaque "zen-alpha")
       (opaque "ristretto")
       (opaque "krita")
       (opaque "org.inkscape.Inkscape")
