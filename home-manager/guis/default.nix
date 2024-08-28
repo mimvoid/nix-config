@@ -8,8 +8,8 @@
     nextcloud-client # Have it available as an app
 
     # Academics
-    zotero_7
-    anki-bin
+    unstable.zotero
+    unstable.anki-bin
     anki-sync-server
 
     # Contact
