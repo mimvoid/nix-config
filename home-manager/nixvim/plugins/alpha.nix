@@ -79,7 +79,7 @@
             "󰈭  Find Word"
             "require('telescope.builtin').live_grep"
             ":Telescope live_grep <CR>"
-            "g"
+            "w"
           )
           (button
             "  Restore Session"

@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       main = {
-        terminal = "foot -e";
+        terminal = "foot";
 
         dpi-aware = true;
         width = 33;

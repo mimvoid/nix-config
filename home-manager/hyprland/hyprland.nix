@@ -36,8 +36,7 @@ in
       "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
       "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon &"
-      "fcitx5 -d -r &"
-      "fcitx5-remote -r &"
+      "fcitx5 -d &"
       "hypridle &"
       "ags &"
       # Includes swww daemon, see ./hypr-theme.nix
