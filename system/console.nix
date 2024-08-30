@@ -2,8 +2,8 @@
 
 {
   console = {
-    font = "ter-d28b";
-    packages = [ pkgs.terminus_font ];
+    font = "leggie-24";
+    packages = [ (pkgs.callPackage ../packages/fonts/leggie.nix {}) ];
     useXkbConfig = true;
     colors = [ # catppuccin mocha
       "11111b" # crust      black
