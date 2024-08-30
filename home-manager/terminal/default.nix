@@ -22,6 +22,4 @@
 
     (callPackage ../../packages/arttime.nix {})
   ];
-
-  services.ssh-agent.enable = true;
 }

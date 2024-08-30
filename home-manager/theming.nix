@@ -39,9 +39,6 @@ let
 in
 {
   home.packages = with pkgs; [
-    wallust
-
-    # Extra fonts
     # Sans serif
     noto-fonts-cjk-sans
     atkinson-hyperlegible
@@ -52,7 +49,6 @@ in
 
     # Monospace
     courier-prime
-    fira-mono
 
     # Display / Handwriting
     norwester-font
