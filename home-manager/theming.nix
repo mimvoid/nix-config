@@ -78,7 +78,7 @@ in
       base04 = "9e92a5";   # subtle
       base05 = "e8dfdd";   # text
       base06 = "e8dfdd";   # text
-      base07 = "56526e";   # highlight high
+      base07 = "44415a";   # highlight med
       base08 = "f281a6";   # red/love
       base09 = "c37ac9";   # magenta
       base0A = "efa4b7";   # yellow/rose
@@ -86,7 +86,7 @@ in
       base0C = "b1b5e4";   # cyan/foam
       base0D = "9673de";   # blue
       base0E = "c37ac9";   # magenta
-      base0F = "56526e";   # highlight high
+      base0F = "44415a";   # highlight med
     };
 
     inherit cursor;
