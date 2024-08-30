@@ -98,13 +98,13 @@ x="\033[0m"   # reset
 
 read -r info <<EOF
 $c╭────────────╮\n\
-$c│ $bo$r user     $x$c│ $x$USR$gr@$x$HOST\n\
-$c│ $bo$y󰌽 os       $x$c│ $x$OS\n\
-$c│ $bo$c kernel   $x$c│ $x$KERNEL\n\
-$c│ $bo$g desktop  $x$c│ $x$DESKTOP\n\
-$c│ $bo$b shell    $x$c│ $x$(basename "$SHELL")\n\
-$c│ $bo$m󰥔 uptime   $x$c│ $x$UPTIME\n\
-$c│ $bo$y󰏔 packages $x$c│ $x$PACKAGES\n\
+$c│ $r$bo user     $x$c│ $x$USR$gr@$x$HOST\n\
+$c│ $y󰌽$bo os       $x$c│ $x$OS\n\
+$c│ $c$bo kernel   $x$c│ $x$KERNEL\n\
+$c│ $g$bo desktop  $x$c│ $x$DESKTOP\n\
+$c│ $b$bo shell    $x$c│ $x$(basename "$SHELL")\n\
+$c│ $m󰥔$bo uptime   $x$c│ $x$UPTIME\n\
+$c│ $y󰏔$bo packages $x$c│ $x$PACKAGES\n\
 $c╰────────────╯\n\
 $x $br $bg $by $bb $bm $bc $gr $x\n
 EOF
@@ -129,7 +129,6 @@ EOF
     ;;
 esac
 unset IFS
-
 
 # Combining --------------------------------------------------------------
 
