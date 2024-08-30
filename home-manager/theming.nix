@@ -100,7 +100,7 @@ in
 
     targets = {
       bat.enable = true;
-      foot.enable = true;
+      #foot.enable = true;
       fzf.enable = true;
 
       nixvim = {
@@ -128,53 +128,98 @@ in
     style.name = "breeze";
   };
 
+  programs.kitty.settings = let
+    col = config.stylix.base16Scheme;
+  in {
+    # Fonts
+    font_family = monospace.name;
+    bold_font = "${monospace.name} SemBd";
+    bold_italic_font = "${monospace.name} SemBd Italic";
+    font_size = terminal-size;
+    disable_ligatures = "cursor";
+
+    # Colors
+    cursor = "none";
+    cursor_text_color = "background";
+    
+    foreground = "#${col.base06}";
+    background = "#${col.base00}";
+    selection_foreground = "none";
+    selection_background = "#${col.base0F}";
+    
+    # black
+    color0 = "#${col.base01}";
+    color8 = "#${col.base02}";
+    # red 
+    color1 = "#${col.base08}";
+    color9 = "#${col.base08}";
+    # green
+    color2 = "#${col.base0B}";
+    color10 = "#${col.base0B}";
+    # yellow
+    color3 = "#${col.base0A}";
+    color11 = "#${col.base0A}";
+    # blue
+    color4 = "#${col.base0D}";
+    color12 = "#${col.base0D}";
+    # magenta
+    color5 = "#${col.base09}";
+    color13 = "#${col.base09}";
+    # cyan
+    color6 = "#${col.base0C}";
+    color14 = "#${col.base0C}";
+    # white
+    color7 = "#${col.base03}";
+    color15 = "#${col.base04}";
+  };
+
   # Stylix applies colors to Xresources weirdly,
   # so I'm doing this manually
 
-  xresources.properties = let
-    col = config.stylix.base16Scheme;
-  in {
-    "*.faceName" = monospace.name;
-    "*.faceSize" = terminal-size;
-    "*.renderFont" = true;
-    "Xcursor.size" = cursor.size;
-    "Xcursor.theme" = cursor.name;
+  #xresources.properties = let
+  #  col = config.stylix.base16Scheme;
+  #in {
+  #  "*.faceName" = monospace.name;
+  #  "*.faceSize" = terminal-size;
+  #  "*.renderFont" = true;
+  #  "Xcursor.size" = cursor.size;
+  #  "Xcursor.theme" = cursor.name;
 
-    # special
-    "*.foreground" = "#${col.base06}";
-    "*.background" = "#${col.base00}";
-    "*.cursorColor" = "#${col.base06}";
+  #  # special
+  #  "*.foreground" = "#${col.base06}";
+  #  "*.background" = "#${col.base00}";
+  #  "*.cursorColor" = "#${col.base06}";
 
-    # black
-    "*.color0" = "#${col.base01}";
-    "*.color8" = "#${col.base02}";
+  #  # black
+  #  "*.color0" = "#${col.base01}";
+  #  "*.color8" = "#${col.base02}";
 
-    # red
-    "*.color1" = "#${col.base08}";
-    "*.color9" = "#${col.base08}";
+  #  # red
+  #  "*.color1" = "#${col.base08}";
+  #  "*.color9" = "#${col.base08}";
 
-    # green
-    "*.color2" = "#${col.base0B}";
-    "*.color10" = "#${col.base0B}";
+  #  # green
+  #  "*.color2" = "#${col.base0B}";
+  #  "*.color10" = "#${col.base0B}";
 
-    # yellow
-    "*.color3" = "#${col.base0A}";
-    "*.color11" = "#${col.base0A}";
+  #  # yellow
+  #  "*.color3" = "#${col.base0A}";
+  #  "*.color11" = "#${col.base0A}";
 
-    # blue
-    "*.color4" = "#${col.base0D}";
-    "*.color12" = "#${col.base0D}";
+  #  # blue
+  #  "*.color4" = "#${col.base0D}";
+  #  "*.color12" = "#${col.base0D}";
 
-    # magenta
-    "*.color5" = "#${col.base09}";
-    "*.color13" = "#${col.base09}";
+  #  # magenta
+  #  "*.color5" = "#${col.base09}";
+  #  "*.color13" = "#${col.base09}";
 
-    # cyan
-    "*.color6" = "#${col.base0C}";
-    "*.color14" = "#${col.base0C}";
+  #  # cyan
+  #  "*.color6" = "#${col.base0C}";
+  #  "*.color14" = "#${col.base0C}";
 
-    # white
-    "*.color7" = "#${col.base03}";
-    "*.color15" = "#${col.base04}";
-  };
+  #  # white
+  #  "*.color7" = "#${col.base03}";
+  #  "*.color15" = "#${col.base04}";
+  #};
 }

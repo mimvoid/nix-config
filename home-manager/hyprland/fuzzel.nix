@@ -5,7 +5,7 @@
     enable = true;
     settings = {
       main = {
-        terminal = "foot";
+        terminal = "kitty";
 
         dpi-aware = true;
         width = 33;

@@ -4,9 +4,10 @@
   imports = [
     ./shell.nix
     ./git.nix
-    ./foot.nix
+    #./foot.nix
+    ./kitty.nix
     ./navi/navi.nix
-    ./xterm.nix
+    #./xterm.nix
     ./yazi.nix
     #./ncmpcpp.nix
   ];

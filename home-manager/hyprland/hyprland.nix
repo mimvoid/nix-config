@@ -1,7 +1,7 @@
 { pkgs, config, ... }:
 let
   # Default applications
-  terminal = "foot";
+  terminal = "kitty";
   launcher = "fuzzel";
   browser = "firefox";
   fileManager = "thunar";
@@ -91,7 +91,8 @@ in
     in
     [
       "suppressevent maximize, class:.*"
-      "opacity 0.8 override 0.7 override, class:(foot)"
+      #"opacity 0.8 override 0.7 override, class:(foot)"
+      "opacity 0.8 override 0.7 override, class:(kitty)"
       (opaquer-title "*Nextcloud")
       (opaquer-class "Anki")
       (opaque-ish "FreeTube")
