@@ -31,8 +31,8 @@ let
   };
 
   monospace = {
-    package = (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ];});
-    name = "SauceCodePro NFM Medium";
+    package = (pkgs.nerdfonts.override { fonts = [ "Hasklig" ];});
+    name = "Hasklug Nerd Font Mono";
   };
 
   terminal-size = 14;
