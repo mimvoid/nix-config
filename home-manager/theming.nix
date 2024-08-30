@@ -32,7 +32,7 @@ let
 
   monospace = {
     package = (pkgs.nerdfonts.override { fonts = [ "SourceCodePro" ];});
-    name = "SauceCodePro NFM";
+    name = "SauceCodePro NFM Medium";
   };
 
   terminal-size = 14;
