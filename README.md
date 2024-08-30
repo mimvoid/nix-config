@@ -3,6 +3,7 @@
 <p align="center">This is where I keep my configuration files, links to helpful resources, and some pieces of advice from my experience with NixOS.
 
 #### Hyprland
+
 ![sunset-wallpaper](assets/2024-07-14_hyprland-1.png)
 
 ![dooit-amberol-thunar](assets/2024-07-14_hyprland-2.png)
@@ -10,6 +11,7 @@
 ![disfetch](assets/2024-07-14_hyprland-3.png)
 
 #### XFCE
+
 ![xfce-disfetch](assets/2024-07-09_xfce.png)
 
 My Firefox CSS: [panefox](https://github.com/mimvoid/panefox)
@@ -21,48 +23,45 @@ My wallpapers and credits: [wallpaper-stash](https://github.com/mimvoid/wallpape
 Desktop Environments & Window Managers
 
 - [Hyprland](https://hyprland.org/)
-- [XFCE](https://xfce.org) with [xfwm](https://docs.xfce.org/xfce/xfwm4/start) 
+- [XFCE](https://xfce.org) with [xfwm](https://docs.xfce.org/xfce/xfwm4/start) & [cortile](https://github.com/leukipp/cortile)
 
 Login Manager: [greetd](https://sr.ht/~kennylevinsen/greetd/) with [tuigreet](https://github.com/apognu/tuigreet)
 
-| Applications      |                                                                        |
-| ----------------- | ---------------------------------------------------------------------- |
-| Wayland terminal  | [foot](https://codeberg.org/dnkl/foot)                                 |
-| X11 terminal      | [xterm](https://invisible-island.net/xterm/)                           |
-| Editor            | [Neovim](https://neovim.io) ([NixVim](https://github.com/nix-community/nixvim)) |
-| GUI file manager  | [Thunar](https://docs.xfce.org/xfce/thunar/start)                      |
-| TUI file manager  | [yazi](https://github.com/sxyazi/yazi)                                 |
-| Web browser       | [Firefox](https://firefox.com)                                         |
-| Art program       | [Krita](https://krita.org)                                             |
-| Document viewer   | [Zathura](https://git.pwmt.org/pwmt/zathura/)                          |
-| To-do list        | [dooit](https://github.com/kraanzu/dooit)                              |
-| Music player      | [Amberol](https://apps.gnome.org/Amberol)                              |
+| Applications     |                                                                                 |
+| ---------------- | ------------------------------------------------------------------------------- |
+| Terminal         | [kitty](https://sw.kovidgoyal.net/kitty/)                                       |
+| Editor           | [Neovim](https://neovim.io) ([NixVim](https://github.com/nix-community/nixvim)) |
+| GUI file manager | [Thunar](https://docs.xfce.org/xfce/thunar/start)                               |
+| TUI file manager | [yazi](https://github.com/sxyazi/yazi)                                          |
+| Web browser      | [Firefox](https://firefox.com)                                                  |
+| Art program      | [Krita](https://krita.org)                                                      |
+| Document viewer  | [Zathura](https://git.pwmt.org/pwmt/zathura/)                                   |
+| To-do list       | [dooit](https://github.com/kraanzu/dooit)                                       |
+| Music player     | [Tauon](https://tauonmusicbox.rocks/)                                           |
 
-| Hyprland-specific  |                                                       |
-| ------------------ | ----------------------------------------------------- |
-| Idle               | [hypridle](https://wiki.hyprland.org/Hypr-Ecosystem/) |
-| Lockscreen         | [hyprlock](https://wiki.hyprland.org/Hypr-Ecosystem/) |
-| Bar                | [AGS](https://github.com/Aylur/ags)                   |
+| Hyprland-specific  |                                                                                           |
+| ------------------ | ----------------------------------------------------------------------------------------- |
+| Idle               | [hypridle](https://wiki.hyprland.org/Hypr-Ecosystem/)                                     |
+| Lockscreen         | [hyprlock](https://wiki.hyprland.org/Hypr-Ecosystem/)                                     |
+| Bar                | [AGS](https://github.com/Aylur/ags)                                                       |
 | Notifications      | [AGS](https://github.com/Aylur/ags) ([mako](https://github.com/emersion/mako)-like style) |
-| Launcher           | [fuzzel](https://codeberg.org/dnkl/fuzzel)            |
-| Logout menu        | [wlogout](https://github.com/ArtsyMacaw/wlogout)      |
-| Wallpaper          | [swww](https://github.com/LGFae/swww)                 |
-| Screen temperature | [wlsunset](https://sr.ht/~kennylevinsen/wlsunset/)    |
-| Screenshot         | [hyprshot](https://github.com/Gustash/hyprshot) & [maim](https://github.com/naelstrof/maim) |
-| Color picker       | [hyprpicker](https://github.com/hyprwm/hyprpicker)    |
+| Launcher           | [fuzzel](https://codeberg.org/dnkl/fuzzel)                                                |
+| Logout menu        | [wlogout](https://github.com/ArtsyMacaw/wlogout)                                          |
+| Wallpaper          | [swww](https://github.com/LGFae/swww)                                                     |
+| Screen temperature | [wlsunset](https://sr.ht/~kennylevinsen/wlsunset/)                                        |
+| Screenshot         | [hyprshot](https://github.com/Gustash/hyprshot)                                           |
+| Color picker       | [hyprpicker](https://github.com/hyprwm/hyprpicker)                                        |
 
-| Theming         |                                                              |
-| --------------- | ------------------------------------------------------------ |
-| GTK theme       | [Rose Pine Moon](https://github.com/rose-pine/gtk)           |
-| Cursor          | [Rose Pine Dawn cursor](https://github.com/rose-pine/cursor) |
+| Theming         |                                                                                                                                                  |
+| --------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
+| GTK theme       | [Rose Pine Moon](https://github.com/rose-pine/gtk)                                                                                               |
+| Cursor          | [Rose Pine Dawn cursor](https://github.com/rose-pine/cursor)                                                                                     |
 | Icons           | [Papirus](https://github.com/PapirusDevelopmentTeam/papirus-icon-theme) with [Catppuccin folders](https://github.com/catppuccin/papirus-folders) |
-| Sans serif font | [Karla](https://fonts.google.com/specimen/Karla)                    |
-| Monospace font  | [SauceCodePro Nerd Font](https://www.nerdfonts.com/)         |
-| Display font    | [Limelight](https://fonts.google.com/specimen/Limelight)     |
+| Sans serif font | [Karla](https://github.com/googlefonts/karla)                                                                                                    |
+| Monospace font  | [Hasklug Nerd Font](https://www.nerdfonts.com) ([Hasklig](https://github.com/i-tu/Hasklig))                                                      |
+| Display font    | [Limelight](https://fonts.google.com/specimen/Limelight)                                                                                         |
 
-Extras
-
-- AGS widgets (WIP)
+- AGS widgets
   - [Adwaita icons](https://gitlab.gnome.org/GNOME/adwaita-icon-theme)
   - Bar
   - Calendar
@@ -85,17 +84,25 @@ Extras
   - [Catppuccin Macchiato - Maroon](https://github.com/catppuccin/firefox)
   - Vertical tabs: [Sidebery](https://addons.mozilla.org/en-US/firefox/addon/sidebery/)
 
+### Extra Cool Stuff
+
+These are things I used that ended up not entirely fitting my use-case, but they're wonderful nonetheless and I totally respect and recommend them!
+
+- [Foot](https://codeberg.org/dnkl/foot), lightweight terminal emulator for Wayland
+
 # Resources
 
 ### Nix & NixOS Sources
 
 Official:
+
 - [NixOS website](https://nixos.org/)
 - [Nix package manager & NixOS download](https://nixos.org/download/)
   - The Nix package manager has many choices, especially on the unstable channel.
   - However, I'd advise against it if you really want to get into Nix's declarative nature. Unless you just want a good package manager, then go ahead.
 - [Nix ecosystem documentation](https://nix.dev)
   - [Nix language guide](https://nix.dev/tutorials/nix-language)
+- [NixOS wiki](https://wiki.nixos.org/wiki/NixOS_Wiki)
 - [Search Nix packages](https://search.nixos.org/packages)
 - [Search NixOS options](https://search.nixos.org/options)
 
@@ -111,6 +118,7 @@ Unofficial:
 - [Remember to optimize your NixOS storage](https://www.reddit.com/r/NixOS/comments/1cunvdw/friendly_reminder_optimizestore_is_not_on_by/)
 
 ### Home Manager
+
 A declarative approach to configuring your user environment! It's very much like NixOS's configuration file, but just for the home directory. It's great if you want to tinker without adding a bunch of generations to your boot menu, or use different configurations for users on the same system.
 
 It can work on other distros too—I tried it on openSUSE Tumbleweed, though not long-term.
@@ -121,6 +129,7 @@ It can work on other distros too—I tried it on openSUSE Tumbleweed, though not
 - [Search Home Manager options](https://home-manager-options.extranix.com/)
 
 ### Extras
+
 The NixOS configuration file and Home Manager are what I mainly use, but here are some other interesting tools.
 
 - [nh](https://github.com/viperML/nh), a pretty wrapper & helper for Nix and Home Manager
@@ -137,7 +146,7 @@ The NixOS configuration file and Home Manager are what I mainly use, but here ar
 # Pieces of Advice
 
 - Use `nix path-info nixpkgs#<package-name>` if at all possible
-  - Trust me, it is *not* fun to manually search through nix/store/ to find the path to a specific package file.
+  - Trust me, it is _not_ fun to manually search through nix/store/ to find the path to a specific package file.
   - The sooner you're aware of this, the better!
 - If you choose to start with a starter config, start small!
   - You can understand a lot by configuring things yourself, and configs that are too complex may confuse you out of touching them.
