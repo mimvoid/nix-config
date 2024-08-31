@@ -3,7 +3,7 @@
 {
   home.packages = [ pkgs.xterm ];
 
-  # Theming-specific config is in ../theming.nix
+  # Theming-specific config was in ../theming.nix
   xresources.properties = {
     "XTerm.termName" = "xterm-256color";
     "XTerm*locale" = true;

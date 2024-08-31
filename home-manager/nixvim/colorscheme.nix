@@ -3,8 +3,7 @@
 {
   programs.nixvim = {
     colorschemes.base16 = {
-      # Stylix takes care of enabling and the base16 colors
-      setUpBar = true;
+      setUpBar = true; # Stylix takes care of enabling and the base16 colors
     };
 
     # Enable telescope borders, disable plugins that aren't installed
@@ -24,22 +23,22 @@
       })
     '';
 
-    # Swap foreground and background highlights for telescope
-    # Make the prompt prefix red
+    # Swap fg and bg highlights for telescope
+    # Make rainbow delimiters match colorscheme
     highlightOverride = let
-      col = config.stylix.base16Scheme;
+      c = config.lib.stylix.colors.withHashtag;
     in {
-      TelescopePreviewTitle = { bg = "#${col.base00}"; fg = "#${col.base0B}"; };
-      TelescopePromptTitle = { bg = "#${col.base00}"; fg = "#${col.base08}"; };
-      TelescopePromptPrefix = { fg = "#${col.base08}"; };
+      TelescopePreviewTitle = { bg = c.base00; fg = c.green; };
+      TelescopePromptTitle = { bg = c.base00; fg = c.red; };
+      TelescopePromptPrefix.fg = c.red;
 
-      RainbowDelimiterRed.fg = "#${col.base08}";
-      RainbowDelimiterYellow.fg = "#${col.base0A}";
-      RainbowDelimiterBlue.fg = "#${col.base0D}";
-      RainbowDelimiterOrange.fg = "#${col.base0A}";
-      RainbowDelimiterGreen.fg = "#${col.base0B}";
-      RainbowDelimiterViolet.fg = "#${col.base0E}";
-      RainbowDelimiterCyan.fg = "#${col.base0C}";
+      RainbowDelimiterRed.fg = c.red;
+      RainbowDelimiterYellow.fg = c.yellow;
+      RainbowDelimiterBlue.fg = c.blue;
+      RainbowDelimiterOrange.fg = c.yellow;
+      RainbowDelimiterGreen.fg = c.green;
+      RainbowDelimiterViolet.fg = c.magenta;
+      RainbowDelimiterCyan.fg = c.cyan;
     };
   };
 }
