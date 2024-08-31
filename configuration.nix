@@ -58,8 +58,11 @@
   # X11
   services.xserver = {
     enable = true;
+    excludePackages = [ pkgs.xterm ];
+
+    # Keyboard layouts
     xkb = {
-      layout = "us"; # Keymap in X11
+      layout = "us";
       variant = ",intl";
     };
   };
