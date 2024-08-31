@@ -124,7 +124,7 @@ in
       indicatorColorFromTheme=false
       indicatorColor=rgb(234,154,151)
       inactiveColor=rgb(62,143,176)
-      pinned=xterm;thunar;firefox;krita;
+      pinned=kitty;thunar;firefox;krita;
     '';
   };
 }

@@ -20,7 +20,7 @@
       "100:class_g *?= 'virt-manager'"
       "98:class_g *?= 'obsidian' && focused"
       "98:class_g *?= 'zotero' && focused"
-      "80:class_g = 'xterm' && focused"
+      "80:class_g = 'kitty' && focused"
     ];
 
     shadow = true;

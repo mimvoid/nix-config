@@ -19,4 +19,8 @@
   ];
 
   home.packages = with pkgs; [ xclip webp-pixbuf-loader ];
+
+  xdg.configFile."xfce4/helpers.rc".text = ''
+    TerminalEmulator=kitty
+  '';
 }
