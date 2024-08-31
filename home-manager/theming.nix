@@ -26,12 +26,12 @@ let
   serif = sansSerif;
 
   sansSerif = {
-    package = (myfont "karla");
+    package = pkgs.unstable.karla;
     name = "Karla";
   };
 
   monospace = {
-    package = (pkgs.nerdfonts.override { fonts = [ "Hasklig" ];});
+    package = pkgs.nerdfonts.override { fonts = [ "Hasklig" ];};
     name = "Hasklug Nerd Font Mono";
   };
 
@@ -52,11 +52,9 @@ in
 
     # Display / Handwriting
     norwester-font
-  ]
-  ++
-  [
-    (myfont "oswald")
-    (myfont "major-mono-display")
+    unstable.oswald
+    unstable.major-mono-display
+  ] ++ [
     (myfont "limelight")
     (myfont "ma-shan-zheng")
 
