@@ -7,6 +7,7 @@
     #./foot.nix
     ./kitty.nix
     ./navi/navi.nix
+    #./taskwarrior.nix
     #./xterm.nix
     ./yazi.nix
     #./ncmpcpp.nix
