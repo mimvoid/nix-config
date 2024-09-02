@@ -24,6 +24,7 @@
     plugins = {
       nvim-autopairs.enable = true;
       persistence.enable = true;
+      marks.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
