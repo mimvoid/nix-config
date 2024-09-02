@@ -50,7 +50,6 @@
       nhos = "nh os switch ~/NixOS";
       nhh = "nh home switch ~/NixOS";
       
-      ncp = "neocities push --prune src";
       arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
     };
 

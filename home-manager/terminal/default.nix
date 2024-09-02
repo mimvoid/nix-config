@@ -18,9 +18,6 @@
 
     gotop
     dooit
-    
-    neocities-cli
-    nodePackages.browser-sync
 
     (callPackage ../../packages/arttime.nix {})
   ];
