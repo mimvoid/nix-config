@@ -41,15 +41,30 @@
 
         # Max preview
         { on = "T"; run = "plugin --sync max-preview"; }
+
+        # Bookmarks
+        { on = "m"; run = "plugin bookmarks --args=save"; }
+        { on = "'"; run = "plugin bookmarks --args=jump"; }
+        { on = "`"; run = "plugin bookmarks --args=jump"; }
+        { on = [ "b" "d" ]; run = "plugin bookmarks --args=delete"; }
       ];
     };
 
     plugins = {
       full-border = pkgs.callPackage ../../packages/yazi/full-border.nix {};
       max-preview = pkgs.callPackage ../../packages/yazi/max-preview.nix {};
+      bookmarks = pkgs.callPackage ../../packages/yazi/bookmarks.nix {};
     };
 
-    initLua = ''require("full-border"):setup()'';
+    initLua = # lua
+    ''
+      require("full-border"):setup()
+      require("bookmarks"):setup({
+        persist = "vim",
+        desc_format = "parent",
+        file_pick_mode = "parent",
+      })
+    '';
   };
 
   xdg.configFile = {
