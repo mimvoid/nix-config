@@ -104,6 +104,14 @@
     ];
   };
 
+  programs.aria2 = {
+    enable = true;
+    settings = {
+      file-allocation = "none";
+      seed-time = 0;
+    };
+  };
+
   programs = {
     bat.enable = true;
     eza.enable = true;
