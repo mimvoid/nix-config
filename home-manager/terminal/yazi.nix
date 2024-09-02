@@ -33,6 +33,10 @@
       preview = {
         tab_size = 2;
       };
+
+      plugin.prepend_previewers = [
+        { mime = "audio/*"; run = "exifaudio"; }
+      ];
     };
 
     keymap = {
@@ -59,6 +63,7 @@
       full-border = pkgs.callPackage ../../packages/yazi/full-border.nix {};
       max-preview = pkgs.callPackage ../../packages/yazi/max-preview.nix {};
       bookmarks = pkgs.callPackage ../../packages/yazi/bookmarks.nix {};
+      exifaudio = pkgs.callPackage ../../packages/yazi/exifaudio.nix {};
     };
 
     initLua = # lua
