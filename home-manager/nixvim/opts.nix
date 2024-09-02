@@ -5,7 +5,7 @@
 
     # Line numbers
     number = true;
-    relativenumber = false;
+    relativenumber = true;
 
     # Tab spaces
     expandtab = true;
