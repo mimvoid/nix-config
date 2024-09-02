@@ -67,5 +67,8 @@
 
     # Todo comments
     (map "Find todo comments"     "n" "<leader>ft" "<cmd>TodoTelescope<cr>")
+
+    # WhichKey
+    (map "Open WhichKey" "n" "?" "<cmd>WhichKey<cr>")
   ];
 }
