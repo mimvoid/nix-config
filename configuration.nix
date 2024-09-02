@@ -6,7 +6,7 @@
     ./system/boot.nix
     ./system/console.nix
     ./system/login.nix
-    #./system/virt.nix
+    ./system/virt.nix
     ./system/flatpaks.nix
   ];
 

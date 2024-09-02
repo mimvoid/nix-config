@@ -19,6 +19,7 @@
     # Virtualisation/layers/games
     unstable.bottles
     unstable.prismlauncher
+    virt-manager
 
     # Media
     tauon
