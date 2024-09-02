@@ -13,6 +13,11 @@
     enableZshIntegration = true;
     shellWrapperName = "yy";
 
+    theme.status = {
+      separator_open = "";
+      separator_close = "";
+    };
+
     settings = {
       manager = {
         ratio = [1 4 3];
