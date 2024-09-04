@@ -49,6 +49,7 @@
 
       nhos = "nh os switch ~/NixOS";
       nhh = "nh home switch ~/NixOS";
+      nixdev = "nix develop --command zsh";
       
       arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
     };
