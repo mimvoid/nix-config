@@ -7,7 +7,7 @@ nix store optimise
 nix-collect-garbage --delete-older-than 7d
 
 # Delete old nix profiles
-sudo nix profile wipe-history /nix/var/nix/profiles/system --older-than 7d
+sudo nix profile wipe-history --profile /nix/var/nix/profiles/system --older-than 7d
 
 # Update all flake inputs
 nix flake update
