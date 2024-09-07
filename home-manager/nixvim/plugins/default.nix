@@ -17,7 +17,6 @@ in
     ./completion.nix
     ./conform.nix
     ./dap.nix
-    ./git.nix
     ./lsp.nix
     ./lualine.nix
     ./markdown.nix

@@ -1,22 +1,6 @@
 {
   programs.nixvim.plugins.telescope = {
     enable = true;
-
-    extensions.frecency = {
-      enable = true;
-      settings = {
-        default_workspace = "CWD";
-        ignore_patterns = [
-          "*.git/*"
-          "*/tmp/*"
-          "term://*"
-          "*cache*"
-          "__pycache__/*"
-          ".sass-cache/*"
-        ];
-      };
-	  };
-
     settings.defaults = {
       initial_mode = "insert";
       mappings = {
