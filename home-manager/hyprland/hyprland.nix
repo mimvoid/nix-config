@@ -36,6 +36,7 @@ in
       "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
       "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon &"
+      "mega-cmd-server &"
       "fcitx5 -d &"
       "hypridle &"
       "ags &"
