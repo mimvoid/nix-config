@@ -1,13 +1,18 @@
+{ config, ... }:
+
 {
   programs.nixvim.plugins.todo-comments = {
     enable = true;
-    colors = {
-      error = [ "DiagnosticError" "ErrorMsg" "#EB6F92" ];
-      warning = [ "DiagnosticWarn" "WarningMsg" "#F6C177" ];
-      info = [ "DiagnosticInfo" "#C4A7E7" ];
-      hint = [ "DiagnosticHint" "#3E8FB0" ];
-      default = [ "Identifier" "#EA9A97" ];
-      test = [ "Identifier" "#EA9A97" ];
+
+    colors = let
+      c = config.lib.stylix.colors.withHashtag;
+    in {
+      error = [ "DiagnosticError" "ErrorMsg" c.red ];
+      warning = [ "DiagnosticWarn" "WarningMsg" c.yellow ];
+      info = [ "DiagnosticInfo" c.blue ];
+      hint = [ "DiagnosticHint" c.green ];
+      default = [ "Identifier" c.magenta ];
+      test = [ "Identifier" c.magenta ];
     };
 
     highlight = {
