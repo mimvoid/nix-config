@@ -50,6 +50,9 @@
 
     (map "Open terminal"      "n" "<leader>t" "<cmd>vsplit<bar>terminal<cr>")
 
+    # Replace placeholder text
+    (sil "Replaces placeholder '<++>'" "n" "<leader><Space>" "/<++><Enter>\"_c4l")
+
 
     # Plugins
     
