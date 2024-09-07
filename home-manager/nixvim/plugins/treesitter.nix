@@ -1,12 +1,14 @@
 {
-	programs.nixvim.plugins.treesitter = {
-	  enable = true;
-	  indent = true;
-    folding = true;
+	programs.nixvim.plugins = {
+    treesitter = {
+      enable = true;
+      indent = true;
+      folding = true;
 
-	  nixGrammars = true;
-    nixvimInjections = true;
+      nixGrammars = true;
+      nixvimInjections = true;
+    };
+
+    rainbow-delimiters.enable = true;
   };
-
-  programs.nixvim.plugins.rainbow-delimiters.enable = true;
 }

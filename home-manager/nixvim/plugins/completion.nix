@@ -1,12 +1,12 @@
 {
   programs.nixvim.plugins.cmp = {
-   enable = true;
-   autoEnableSources = true;
-   settings = {
-     performance = {
-       throttle = 100;
-       max_view_entries = 6;
-     };
+    enable = true;
+    autoEnableSources = true;
+    settings = {
+      performance = {
+        throttle = 100;
+        max_view_entries = 6;
+      };
       mapping = {
         "<CR>" = "cmp.mapping.confirm({ select = true })";
         "<S-Tab>" = "cmp.mapping(cmp.mapping.select_prev_item(), {'i', 's'})";
