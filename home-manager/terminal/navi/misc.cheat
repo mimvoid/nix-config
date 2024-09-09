@@ -1,8 +1,14 @@
+% battery
+
+$ battery: command ls /sys/class/power_supply | tr ' ' '\n'
+
+# Print battery status
+cat /sys/class/power_supply/<battery>/status
+
 % web
 
 # Start & watch Browsersync
 browser-sync start --server --files "*.html", "*.css", "*.js"
-
 
 % colorscript
 
