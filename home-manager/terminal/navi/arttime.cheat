@@ -18,8 +18,10 @@ arttime --nolearn -a fire -t "This is fine :)" --ac 1
 # Laundry
 arttime --nolearn -a laundry -t "Most don't realize they've become Sisyphus long ago" --ac 3
 
-# Celestial (northernlights 6, saturn 3, stars 3)
+# Celestial
 arttime --nolearn -a <art> --ac <color> -t "To not look up is to live a lonely world"
+$ art: echo "northernlights saturn stars" | tr ' ' '\n'
+$ color: echo "6 3" | tr ' ' '\n'
 
 # Chess
 arttime --nolearn -a chess
