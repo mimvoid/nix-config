@@ -6,6 +6,7 @@
     gnome.file-roller
     pdfarranger
     nextcloud-client # Have it available as an app
+    unstable.xournalpp
 
     # Academics
     unstable.zotero
