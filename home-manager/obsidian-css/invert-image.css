@@ -1,5 +1,8 @@
 /* General and default image blending */
 
+/* author: ashuotaku
+ * source: https://github.com/ashuotaku/Personal-Wiki/blob/main/.obsidian/snippets/invert%20image.css */
+
 .theme-dark img {
   display: block;
   max-width: 80%;
@@ -36,28 +39,28 @@
 
 /* Image dynamic colors inversion */
 
-.theme-dark span[src$="invert_B"] img{
-filter: invert(1) hue-rotate(180deg);
-}
-
-.theme-dark img[alt$="invert_B"]{
+.theme-dark span[src$="invert_B"] img {
   filter: invert(1) hue-rotate(180deg);
 }
 
-.theme-light span[src$="#invert_W"] img{
-filter: invert(1) hue-rotate(180deg);
-}
-.theme-light img[alt$="invert_W"]{
+.theme-dark img[alt$="invert_B"] {
   filter: invert(1) hue-rotate(180deg);
 }
 
-.theme-dark span[src$="invert_B_C"] img{
-filter: invert(1) hue-rotate(180deg) contrast(1.5);
+.theme-light span[src$="#invert_W"] img {
+  filter: invert(1) hue-rotate(180deg);
 }
-.theme-dark img[alt$="invert_B_C"]{
-filter: invert(1) hue-rotate(180deg) contrast(1.5);
+.theme-light img[alt$="invert_W"] {
+  filter: invert(1) hue-rotate(180deg);
 }
 
-.theme-light span[src$="#invert_W_C"] img{
-filter: invert(1) hue-rotate(180deg) contrast(1.45);
+.theme-dark span[src$="invert_B_C"] img {
+  filter: invert(1) hue-rotate(180deg) contrast(1.5);
+}
+.theme-dark img[alt$="invert_B_C"] {
+  filter: invert(1) hue-rotate(180deg) contrast(1.5);
+}
+
+.theme-light span[src$="#invert_W_C"] img {
+  filter: invert(1) hue-rotate(180deg) contrast(1.45);
 }

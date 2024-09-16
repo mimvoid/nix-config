@@ -1,0 +1,33 @@
+/* Hides or less emphasizes various elements in obsidian */
+
+/* author: mimvoid */
+
+/* Make the add properties button transleucent */
+.metadata-container .metadata-add-button {
+  opacity: 0.4;
+}
+/* Hide in reading mode */
+.markdown-preview-view .metadata-container .metadata-add-button {
+  display: none;
+}
+
+/* Hide "Properties" title */
+.metadata-properties-heading {
+  display: none;
+}
+
+/* Hide top window buttons while maintaining some whitespace */
+.workspace-leaf-content[data-type="outline"] .nav-buttons-container,
+.workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
+.workspace-leaf-content[data-type="bookmarks"] .nav-buttons-container {
+  display: none;
+}
+
+.embedded-backlinks .nav-action-button[aria-label="Collapse results"],
+.embedded-backlinks .nav-action-button[aria-label="Show search filter"],
+.workspace-leaf-content[data-type="backlink"]
+  .nav-action-button[aria-label="Collapse results"],
+.workspace-leaf-content[data-type="backlink"]
+  .nav-action-button[aria-label="Show search filter"] {
+  display: none;
+}

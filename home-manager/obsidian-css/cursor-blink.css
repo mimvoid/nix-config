@@ -1,11 +1,13 @@
 /* Disables block cursor blinking */
 
-.CodeMirror-cursor, 
-div.CodeMirror-cursor, 
+/* source: https://forum.obsidian.md/t/how-to-stop-the-blinking-cursor-in-vim-mode/9431/10 */
+
+.CodeMirror-cursor,
+div.CodeMirror-cursor,
 .cm-fat-cursor,
 .cm-animate-fat-cursor,
-.cm-fat-cursor-mark, 
-.cm-cursor{
+.cm-fat-cursor-mark,
+.cm-cursor {
   visibility: visible !important;
 }
 

@@ -1,0 +1,15 @@
+/* Adds the dot grid from Primary theme */
+/* Modified to follow already set color variable */
+
+/* author: ceciliamay
+ * source: https://github.com/primary-theme/obsidian
+ * modified: mimvoid */
+
+body .workspace-split.mod-root .view-content {
+  background-size: 50px 50px;
+  background-image: radial-gradient(
+    circle,
+    var(--background-modifier-border) 1px,
+    rgba(0, 0, 0, 0) 1px
+  );
+}

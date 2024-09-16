@@ -1,0 +1,8 @@
+/* Offset line number gutter so the note's left margin stays about the same */
+/* Instead of position: absolute, which can make it overlap the text */
+
+/* author: mimvoid */
+
+.cm-gutters {
+  margin-left: -4rem;
+}

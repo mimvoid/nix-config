@@ -1,0 +1,52 @@
+/* Hide blank line above tables (universal) */
+
+/* author: Samo
+ * source: https://forum.obsidian.md/t/hiding-the-blank-line-above-tables/63465 */
+
+.cm-line:has(+ .cm-embed-block.cm-table-widget) br {
+  display: none;
+}
+
+/* Adds a little padding to tables */
+/* ---
+ * cssclasses: pad-tables
+ * --- */
+
+/* original author: DeaconLight
+ * source: https://forum.obsidian.md/t/custom-css-for-tables-5-new-styles-ready-to-use-in-your-notes/17084 */
+
+.pad-tables th,
+.pad-tables td {
+  padding: 0.6rem;
+  line-height: 1.1;
+}
+.pad-tables thead th {
+  padding: 8px 9px 8px 9px;
+}
+
+/* Makes table corners a little rounded */
+/* ---
+ * cssclasses: round-tables
+ * --- */
+
+/* original author: DeaconLight
+ * source: https://forum.obsidian.md/t/custom-css-for-tables-5-new-styles-ready-to-use-in-your-notes/17084 */
+
+.round-tables table {
+  border-collapse: separate;
+  border: solid 1px;
+  border-radius: 5px;
+  border-spacing: 0px;
+}
+.round-tables table th:first-of-type {
+  border-top-left-radius: 5px;
+}
+.round-tables table th:last-of-type {
+  border-top-right-radius: 5px;
+}
+.round-tables table tr:last-child td:first-child {
+  border-bottom-left-radius: 4px;
+}
+.round-tables table tr:last-child td:last-child {
+  border-bottom-right-radius: 4px;
+}
