@@ -26,6 +26,7 @@
     tauon
     inkscape
     unstable.krita
+    blanket
   ];
 
   imports = [
