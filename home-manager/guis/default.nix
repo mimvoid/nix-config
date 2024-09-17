@@ -42,8 +42,5 @@
     startInBackground = true;
   };
 
-  services.syncthing = {
-    enable = true;
-    #tray.enable = true;
-  };
+  services.syncthing.enable = true;
 }
