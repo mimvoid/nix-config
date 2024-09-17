@@ -10,6 +10,7 @@ in
     "${c}<Super>e" = "thunar";
     "${c}<Super>space" = "xfce4-appfinder";
     "${c}<Super>o" = config.xdg.desktopEntries.obsidian.exec;
+    "${c}<super>d" = "super-productivity";
 
     "${c}<Super><Shift>q" = "xfce4-session-logout";
     "${wm}<Super>q" = "close_window_key";

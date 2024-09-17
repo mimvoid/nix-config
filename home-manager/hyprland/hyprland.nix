@@ -6,6 +6,7 @@ let
   browser = "firefox";
   fileManager = "thunar";
   obsidian = config.xdg.desktopEntries.obsidian.exec;
+  todo = "super-productivity";
 
   # Used in keymaps
   left = "H";
@@ -206,6 +207,7 @@ in
       "$mod, SPACE, exec, ${launcher}"
       "$mod, W, exec, ${browser}"
       "$mod, O, exec, ${obsidian}"
+      "$mod, D, exec, ${todo}"
 
       "$mod, N, exec, networkmanager_dmenu"
 

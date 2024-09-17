@@ -29,6 +29,7 @@
   ];
 
   imports = [
+    ./superProductivity/default.nix
     ./flatpaks.nix
     ./zathura.nix
   ];
