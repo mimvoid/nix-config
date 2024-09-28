@@ -102,6 +102,7 @@
     xfce.xfce4-icon-theme
     xfce.mousepad
     xfce.parole
+    xfce.ristretto
   ];
   
   # Hyprland
