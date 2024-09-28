@@ -34,4 +34,9 @@
       unstable.catppuccin-fcitx5
     ];
   };
+  # GTK & QT settings
+  gtk = {
+    gtk3.extraConfig.gtk-im-module = "fcitx";
+    gtk4.extraConfig.gtk-im-module = "fcitx";
+  };
 }

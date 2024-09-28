@@ -71,6 +71,10 @@ in
       # Enable Ozone Wayland for electron apps
       "NIXOS_OZONE_WL, 1"
       "ELECTRON_OZONE_PLATFORM_HINT, auto"
+      # Anki
+      "ANKI_WAYLAND, 1"
+      # Fcitx adjustments
+      "QT_IM_MODULES, wayland;fcitx"
 
       "XCURSOR_SIZE, 24"
       "XCURSOR_THEME, ${config.gtk.cursorTheme.name}"
@@ -93,8 +97,14 @@ in
     in
     [
       "suppressevent maximize, class:.*"
-      #"opacity 0.8 override 0.7 override, class:(foot)"
-      "opacity 0.8 override 0.7 override, class:(kitty)"
+      "opacity 0.8 override 0.7 override, class:(${terminal})"
+
+      # Make Zotero plugin notifications less intrusive
+      "float, class:^(Zotero)$, title:^(Progress)$"
+      "noinitialfocus, class:^(Zotero)$, title:^(Progress)$"
+      "move 100% 100%, class:^(Zotero)$, title:^(Progress)$"
+      "maxsize 75 50, class:^(Zotero)$, title:^(Progress)$"
+
       (opaquer-title "*Nextcloud")
       (opaquer-class "Anki")
       (opaque-ish "FreeTube")

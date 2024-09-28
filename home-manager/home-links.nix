@@ -112,7 +112,7 @@ in
     obsidian = {
       name = "Obsidian";
       icon = "obsidian";
-      exec = "${appimg.obsidian}/bin/Obsidian %u";
+      exec = "${appimg.obsidian}/bin/Obsidian --enable-wayland-ime %u";
       terminal = false;
       categories = [ "Office" ];
     };
