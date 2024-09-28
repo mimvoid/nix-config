@@ -1,12 +1,12 @@
-{ stdenv , lib , fetchurl , appimageTools , makeWrapper , electron }:
+{ stdenv, lib, fetchurl, appimageTools, makeWrapper, electron }:
 
 stdenv.mkDerivation rec {
   pname = "super-productivity";
-  version = "9.0.5";
+  version = "10.0.9";
 
   src = fetchurl {
     url = "https://github.com/johannesjo/super-productivity/releases/download/v${version}/superProductivity-${version}.AppImage";
-    sha256 = "sha256-eNAoLcQWnsTDA7sG8i0Ur9BZ+pNt4AK1GOppFCD1ZGg=";
+    sha256 = "sha256-Y8KLUjQd3fbo5PIDlyARcuTXMazydGzF8EH857h7C1k=";
     name = "${pname}-${version}.AppImage";
   };
 
@@ -33,6 +33,11 @@ stdenv.mkDerivation rec {
       --replace 'Exec=AppRun' 'Exec=${pname}'
 
     runHook postInstall
+  '';
+
+  postInstall = ''
+    substituteInPlace $out/share/applications/${pname}.desktop \
+    --replace "superProductivity" "Super Productivity"
   '';
 
   postFixup = ''

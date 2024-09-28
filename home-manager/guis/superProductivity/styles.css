@@ -5,7 +5,7 @@
 .no-scheduled-tasks,
 .no-tasks,
 /* Example text below adding task */
-.info-bar[_ngcontent-ng-c3688640420],
+.info-bar,
 /* Subtask toggle */
 button[title="Toggle sub task visibility"] {
   display: none !important;
