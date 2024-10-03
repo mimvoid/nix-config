@@ -10,6 +10,11 @@ cat /sys/class/power_supply/<battery>/status
 # Start & watch Browsersync
 browser-sync start --server --files "*.html", "*.css", "*.js"
 
+% pdf
+
+# May compress: convert to ps and back to pdf
+for i in *.pdf; do ps2pdf -dPDFSETTINGS=/ebook "$i" "${i%.pdf}_1.pdf"; done
+
 % colorscript
 
 # Mouse faces
