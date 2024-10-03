@@ -12,6 +12,7 @@
   imports = [
     ./theming.nix
     ./home-links.nix
+    ./tts.nix
     ./terminal/default.nix
     ./nixvim/default.nix
     ./hyprland/default.nix
