@@ -3,9 +3,9 @@
 {
   home.packages = with pkgs; [
     # zsh
-    zsh-z
     zsh-autopair
     zsh-nix-shell
+    zsh-vi-mode
 
     # media
     imagemagick
@@ -13,16 +13,13 @@
     fontpreview
 
     # disk & files
-    nix-tree
     trashy
     megacmd
 
     # other
     disfetch
     tlrc
-    timetrap
     libnotify
-    libqalculate
     dwt1-shell-color-scripts
   ];
 
@@ -34,6 +31,7 @@
     history = {
       path = "$HOME/zsh/.zsh_history";
       ignoreDups = true;
+      ignoreAllDups = true;
       ignorePatterns = [ "ls" "eza" "yazi" "yy" ];
     };
     
@@ -51,8 +49,19 @@
       nhh = "nh home switch ~/NixOS";
       nixdev = "nix develop --command zsh";
       
+      blueon = "bluetooth on";
+      btui = "bluetuith";
+
+      lg = "lazygit";
+      ncp = "neocities push --prune";
+
+      # use a better syntax highlighting theme for batman
+      man = "BAT_THEME=\"Dracula\" batman";
       arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
     };
+
+    # make zsh-help work with -h flag
+    shellGlobalAliases."-h" = "--help";
 
     # fontpreview settings
     initExtra = ''
@@ -63,11 +72,6 @@
     completionInit = " autoload -U compinit && compinit";
     plugins = [
       {
-        name = "zsh-z";
-        file = "share/zsh-z/zsh-z.plugin.zsh";
-        src = pkgs.zsh-z;
-      }
-      {
         name = "zsh-autopair";
         file = "share/zsh/zsh-autopair/autopair.zsh";
         src = pkgs.zsh-autopair;
@@ -76,6 +80,20 @@
         name = "zsh-nix-shell";
         file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
         src = pkgs.zsh-nix-shell;
+      }
+      {
+        name = "zsh-vi-mode";
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+        src = pkgs.zsh-vi-mode;
+      }
+      {
+        name = "zsh-help";
+        src = pkgs.fetchFromGitHub {
+          owner = "Freed-Wu";
+          repo = "zsh-help";
+          rev = "66103d6682e0ffe83576208dd5e45e560cdb76f8";
+          hash = "sha256-RiJK8A1dXq1O3m9t56/PHaP4T5Fyn5HumKPwJdYshX4=";
+        };
       }
     ];
   };
@@ -113,9 +131,14 @@
   };
 
   programs = {
-    bat.enable = true;
+    bat = {
+      enable = true;
+      extraPackages = with pkgs.bat-extras; [ batman ];
+    };
     eza.enable = true;
-    man.enable = true;
-    ripgrep.enable = true;
+    zoxide = {
+      enable = true;
+      package = pkgs.unstable.zoxide;
+    };
   };
 }
