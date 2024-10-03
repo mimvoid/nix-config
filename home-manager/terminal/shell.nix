@@ -34,12 +34,8 @@
       ignoreAllDups = true;
       ignorePatterns = [ "ls" "eza" "yazi" "yy" ];
     };
-    
-    historySubstringSearch = {
-      enable = true;
-      searchUpKey = "$terminfo[kcuu1]";
-      searchDownKey = "$terminfo[kcud1]";
-    };
+
+    historySubstringSearch.enable = true;
     
     shellAliases = {
       ".." = "cd ..";
@@ -64,9 +60,14 @@
     shellGlobalAliases."-h" = "--help";
 
     # fontpreview settings
-    initExtra = ''
+    # history substring search integration with vi mode
+    initExtra = # bash
+    ''
       export FONTPREVIEW_SIZE=650x700
       export FONTPREVIEW_PREVIEW_TEXT="SPHINX OF BLACK QUARTZ,\nJUDGE MY VOW.\n\nSphinx of Black Quartz,\nJudge My Vow.\n\nsphinx of black quartz,\njudge my vow.\n\n1234567890\n!@$\%(){}[];:\'\""
+
+      bindkey -M vicmd 'k' history-substring-search-up
+      bindkey -M vicmd 'j' history-substring-search-up
     '';
     
     completionInit = " autoload -U compinit && compinit";
