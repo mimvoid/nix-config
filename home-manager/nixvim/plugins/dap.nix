@@ -3,7 +3,7 @@
     enable = true;
 
     extensions = {
-      dap-python.enable = true;
+      #dap-python.enable = true;
       dap-ui.enable = true;
     };
   };

@@ -3,25 +3,21 @@
     enable = true;
     iconsEnabled = true;
     
-    layout = 
-    let
+    layout = let
       padding = val: { type = "padding"; inherit val; };
-      button = val: cmd-raw: cmd: shortcut: {
+
+      button = val: raw: cmd: shortcut: {
         type = "button";
         inherit val;
+        on_press = { inherit raw; };
 
-        on_press.raw = cmd-raw;
         opts = {
           inherit shortcut;
           keymap = [
             "n"
-            "${shortcut}"
-            "${cmd}"
-            {
-              noremap = true;
-              silent = true;
-              nowait = true;
-            }
+            shortcut
+            cmd
+            { noremap = true; silent = true; nowait = true; }
           ];
     
           position = "center";

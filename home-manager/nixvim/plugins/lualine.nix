@@ -7,8 +7,8 @@
 
     disabledFiletypes.statusline = [ "alpha" ];
 
-    componentSeparators = {left = ""; right = "";};
-    sectionSeparators = {left = ""; right = "";};
+    componentSeparators = { left = ""; right = ""; };
+    sectionSeparators = { left = ""; right = ""; };
     
     sections = {
       lualine_a = ["mode"];
@@ -17,7 +17,8 @@
         {
           name = "filetype";
           padding = { left = 1; right = 0; };
-          extraConfig.icon_only = true; }
+          extraConfig.icon_only = true;
+        }
         {
           name = "filename";
           padding = { left = 0; right = 1; };

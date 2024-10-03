@@ -16,7 +16,7 @@ in
     ./bufferline.nix
     ./completion.nix
     ./conform.nix
-    ./dap.nix
+    #./dap.nix
     ./lsp.nix
     ./lualine.nix
     ./markdown.nix
@@ -24,9 +24,9 @@ in
     ./neo-tree.nix
     ./nvim-colorizer.nix
     ./telescope.nix
-    ./todo.nix
+    #./todo.nix
     ./treesitter.nix
-    ./trouble.nix
+    #./trouble.nix
   ];
 
   programs.nixvim = {

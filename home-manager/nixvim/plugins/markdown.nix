@@ -3,11 +3,8 @@
     enable = true;
     settings = {
       auto_close = true;
-      auto_start = true;
+      auto_start = false;
       browser = "firefox";
-      preview_options = {
-        editable = true;
-      };
     };
   };
 }

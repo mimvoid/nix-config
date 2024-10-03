@@ -13,9 +13,9 @@
         "<Tab>" = "cmp.mapping(cmp.mapping.select_next_item(), {'i', 's'})";
       };
       sources = [
-        {name = "path";}
-        {name = "nvim_lsp"; keyword_length = 1; }
-        {name = "buffer"; keyword_length = 3; }
+        { name = "path"; }
+        { name = "nvim_lsp"; keyword_length = 1; }
+        { name = "buffer"; keyword_length = 3; }
       ];
       window.completion = {
         border = "rounded";

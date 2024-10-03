@@ -14,8 +14,9 @@
       #  installCargo = true;
       #  installRustc = true;
       #};
-      pyright.enable = true;
-      tsserver.enable = true;
+      #pyright.enable = true;
+      #texlab.enable = true;
+      #tsserver.enable = true;
       typos-lsp.enable = true;
       #yamlls.enable = true;
     };

@@ -10,53 +10,82 @@
         view = {
           style = "sign";
           signs = { add = "┃"; change = "┃"; delete = "▁"; };
+          priority = 5;
         };
       };
 
-      clue = let
-        trig = mode: keys: { inherit mode keys; };
-      in
-      {
-        triggers = [
-          # leader
-          (trig "n" "<leader>")
-          (trig "x" "<leader>")
+      hipatterns = {
+        highlighters = let
+          key = pattern: group: icon: {
+            inherit pattern;
+            inherit group;
+            extmark_opts.sign_text = icon;
+          };
+        in {
+          fixme = (key "FIXME:" "MiniHipatternsFixme" "" );
+          hack = (key "HACK:" "MiniHipatternsHack" "");
+          todo = (key "TODO:" "MiniHipatternsTodo" "");
+          note = (key "NOTE:" "MiniHipatternsNote" "");
+        };
+      };
 
-          # built-in completion
-          (trig "i" "<C-x>" )
-          
-          # g key
-          (trig "n" "g" )
-          (trig "x" "g" )
+      files = {
+        options = {
+          permanent_delete = false;
+          use_as_default_explorer = true;
+        };
+        windows = {
+          width_focus = 25;
+          width_nofocus = 15;
+        };
+        mappings.go_in_plus = "<cr>";
+      };
 
-          # marks
-          (trig "n" "\\'")
-          (trig "n" "\\`")
-          (trig "x" "\\'")
-          (trig "x" "\\`")
+      clue = {
+        triggers.__raw = ''
+          {
+            -- Leader triggers
+            { mode = 'n', keys = '<Leader>' },
+            { mode = 'x', keys = '<Leader>' },
 
-          # registers
-          (trig "n" "\"")
-          (trig "x" "\"")
-          (trig "i" "<C-r>")
-          (trig "c" "<C-r>")
+            -- Built-in completion
+            { mode = 'i', keys = '<C-x>' },
 
-          # window commands
-          (trig "n" "<C-w>")
+            -- `g` key
+            { mode = 'n', keys = 'g' },
+            { mode = 'x', keys = 'g' },
 
-          # z key
-          (trig "n" "z")
-          (trig "x" "z")
-        ];
+            -- Marks
+            { mode = 'n', keys = "'" },
+            { mode = 'n', keys = '`' },
+            { mode = 'x', keys = "'" },
+            { mode = 'x', keys = '`' },
 
-        clues = [
-          "miniclue.gen_clues.builtin_completion()"
-          "miniclue.gen_clues.g()"
-          "miniclue.gen_clues.marks()"
-          "miniclue.gen_clues.registers()"
-          "miniclue.gen_clues.windows()"
-          "miniclue.gen_clues.z()"
-        ];
+            -- Registers
+            { mode = 'n', keys = '"' },
+            { mode = 'x', keys = '"' },
+            { mode = 'i', keys = '<C-r>' },
+            { mode = 'c', keys = '<C-r>' },
+
+            -- Window commands
+            { mode = 'n', keys = '<C-w>' },
+
+            -- `z` key
+            { mode = 'n', keys = 'z' },
+            { mode = 'x', keys = 'z' },
+          }
+        '';
+
+        clues.__raw = ''
+          {
+            require('mini.clue').gen_clues.builtin_completion(),
+            require('mini.clue').gen_clues.g(),
+            require('mini.clue').gen_clues.marks(),
+            require('mini.clue').gen_clues.registers(),
+            require('mini.clue').gen_clues.windows(),
+            require('mini.clue').gen_clues.z(),
+          }
+        '';
       };
     };
   };

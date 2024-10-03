@@ -79,8 +79,6 @@
       disable_devicons = false;
       color_devicons = true; 
       path_display = ["truncate"];
-
-      borderchars = ["─" "│" "─" "│" "╭" "╮" "╯" "╰"];
     };
 	};
 }
