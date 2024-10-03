@@ -3,30 +3,23 @@
 {
   imports = [ inputs.nix-flatpak.homeManagerModules.nix-flatpak ];
 
-  # Enable nix-flatpak
-  services.flatpak.enable = true;
-
-  services.flatpak.remotes = [
-    {
-      name = "flathub";
-      location = "https://flathub.org/repo/flathub.flatpakrepo";
-    }
-    {
-      name = "launcher.moe";
-      location = "https://gol.launcher.moe/gol.launcher.moe.flatpakrepo";
-    }
-  ];
-
-  services.flatpak.packages = let
-    #flathub = appId: { inherit appId; origin = "flathub"; };
-    aagl = appId: { inherit appId; origin = "launcher.moe"; };
-  in
-  [
-    (aagl "moe.launcher.the-honkers-railway-launcher")
-  ];
-
+  # Nix-flatpak
   services.flatpak = {
-    uninstallUnmanaged = true;
+    enable = true;
+
+    remotes = [
+      {
+        name = "launcher.moe";
+        location = "https://gol.launcher.moe/gol.launcher.moe.flatpakrepo";
+      }
+    ];
+
+    packages = [
+      {
+        appId = "moe.launcher.the-honkers-railway-launcher";
+        origin = "launcher.moe";
+      }
+    ];
 
     # FIX: these do not work
     overrides.global = {

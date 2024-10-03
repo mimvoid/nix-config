@@ -7,6 +7,6 @@
     "saver/fullscreen-inhibit" = true;
     "saver/idle-activation/delay" = 10; # screesaver triggers after 10 minutes of idling
     "saver/mode" = 2;
-    "saver/themes/list" = ["screensavers-xfce-floaters"];
+    "saver/themes/list" = [ "screensavers-xfce-floaters" ];
   };
 }

@@ -1,7 +1,5 @@
 { pkgs, config, ... }:
 
-# Just trying out kitty
-
 {
   programs.kitty = {
     enable = true;

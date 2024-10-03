@@ -1,11 +1,4 @@
-{ pkgs, ... }:
-
 {
-  home.packages = with pkgs; [
-    git-secret
-    git-secrets
-  ];
-
   programs.git = {
     enable = true;
     userName = "mimvoid";

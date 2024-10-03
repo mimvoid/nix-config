@@ -13,8 +13,7 @@
     unstable.anki-bin
     anki-sync-server
 
-    # Contact
-    #zoom-us
+    # Social
     vesktop
 
     # Virtualisation/layers/games

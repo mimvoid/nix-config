@@ -1,12 +1,6 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    ffmpegthumbnailer
-    poppler
-    unar
-  ];
-
   programs.yazi = {
     enable = true;
     package = pkgs.unstable.yazi;

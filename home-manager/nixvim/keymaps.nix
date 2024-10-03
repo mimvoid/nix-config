@@ -4,10 +4,7 @@
     maplocalleader = " ";
   };
 
-  programs.nixvim.keymaps =
-  # TODO: what is the syntax for a default value?
-
-  let
+  programs.nixvim.keymaps = let
     map = desc: mode: key: action: {
       inherit mode;
       inherit key;
@@ -25,6 +22,8 @@
         inherit desc;
       };
     };
+
+    ts-repeat-move = ''require("nvim-treesitter.textobjects.repeatable_move")'';
   in
   [
     # Insert mode
@@ -33,11 +32,10 @@
     (sil "Move left"  "i" "<A-h>" "<Left>")
     (sil "Move right" "i" "<A-l>" "<Right>")
     
-    # Tabs
-    (sil "New tab"      "n" "<leader>b" "<cmd>tabnew<cr>")
-    (sil "Close tab"    "n" "<leader>x" "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>")
-    (sil "Next tab"     "n" "<Tab>"     "<cmd>BufferLineCycleNext<cr>")
-    (sil "Previous tab" "n" "<S-Tab>"   "<cmd>BufferLineCyclePrev<cr>")
+    # Buffers
+    (sil "Close buffer"    "n" "<leader>x" "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>")
+    (sil "Next buffer"     "n" "<Tab>"     "<cmd>bn<cr>")
+    (sil "Previous buffer" "n" "<S-Tab>"   "<cmd>bp<cr>")
 
     # Windows
     (sil "Split window below" "n" "<leader>j" "<C-W>s")
@@ -55,11 +53,10 @@
 
 
     # Plugins
-    
-    # Neotree
-    (map "Focus Neotree" "n" "<leader>e" "<cmd>Neotree focus<cr>")
-    (map "Move to parent directory" "n" "<leader>w" "<cmd>Neotree focus dir=..<cr>")
-    
+
+    # Mini.files
+    (map "Open mini.files" "n" "<leader>e" "<cmd>lua MiniFiles.open()<cr>")
+
     # Git
     (map "Open Lazygit"  "n" "<leader>g" "<cmd>LazyGit<cr>")
   
@@ -68,10 +65,8 @@
     (map "Telescope recent files" "n" "<leader>fr" "<cmd>Telescope frecency<cr>")
     (map "Telescope find word"    "n" "<leader>fw" "<cmd>Telescope live_grep<cr>")
 
-    # Todo comments
-    (map "Find todo comments"     "n" "<leader>ft" "<cmd>TodoTelescope<cr>")
-
-    # WhichKey
-    (map "Open WhichKey" "n" "?" "<cmd>WhichKey<cr>")
+    # Treesitter
+    (map "Repeat last move" [ "n" "x" "o" ] "n" "${ts-repeat-move}.repeat_last_move")
+    (map "Repeat opposite move" [ "n" "x" "o" ] "," "${ts-repeat-move}.repeat_last_move_opposite")
   ];
 }

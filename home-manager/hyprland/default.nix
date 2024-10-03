@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     wl-clipboard
-    hyprcursor
     hyprpicker
     hyprshot
     swww
