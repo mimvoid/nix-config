@@ -9,6 +9,15 @@ let
       hash = "sha256-FHjjae4QhohHeZQIzCvZZ3SoP3oxrNm9g6kjYMc0AAo=";
     };
   };
+  nvim-project-marks = pkgs.vimUtils.buildVimPlugin {
+    name = "nvim-project-marks";
+    src = pkgs.fetchFromGitHub {
+      owner = "BartSte";
+      repo = "nvim-project-marks";
+      rev = "0.2.0";
+      hash = "sha256-/LC/URb4sEURa7S9Ht20k9eTbJ3tZCvkHRwcxlBfra0=";
+    };
+  };
 in
 {
   imports = [
@@ -39,7 +48,14 @@ in
     extraPlugins = with pkgs.vimPlugins; [
       plenary-nvim
       fcitx-vim
-    ] ++ [ r-nvim ];
+    ] ++ [
+      r-nvim
+      nvim-project-marks
+    ];
+
+    extraConfigLua = ''
+      require('projectmarks').setup({})
+    '';
 
     extraPackages = with pkgs; [
       fzf
