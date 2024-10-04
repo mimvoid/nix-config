@@ -41,8 +41,6 @@ in
 
   xdg.configFile = {
     "ags" = (link "${home-manager}/ags");
-    "dooit/config.py".source = ./terminal/dooit/config.py;
-    "dooit/extra.py".source = ./terminal/dooit/extra.py;
     "gtk-3.0/gtk.css".source = ./xfconf/gtk3.css;
     "wlogout/icons".source = ./hyprland/icons;
   };
