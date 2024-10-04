@@ -25,17 +25,13 @@ in
     ./bufferline.nix
     ./completion.nix
     ./conform.nix
-    #./dap.nix
     ./lsp.nix
     ./lualine.nix
     ./markdown.nix
     ./mini.nix
-    ./neo-tree.nix
     ./nvim-colorizer.nix
     ./telescope.nix
-    #./todo.nix
     ./treesitter.nix
-    #./trouble.nix
   ];
 
   programs.nixvim = {
