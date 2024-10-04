@@ -68,6 +68,11 @@
 
       bindkey -M vicmd 'k' history-substring-search-up
       bindkey -M vicmd 'j' history-substring-search-up
+
+      # zsh-vi-mode customizations
+      export ZVM_CURSOR_STYLE_ENABLED=false
+      export ZVM_VI_HIGHLIGHT_FOREGROUND=yellow
+      export ZVM_VI_HIGHLIGHT_BACKGROUND=black
     '';
     
     completionInit = " autoload -U compinit && compinit";
