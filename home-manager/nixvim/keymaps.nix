@@ -22,11 +22,30 @@
         inherit desc;
       };
     };
-
-    ts-repeat-move = ''require("nvim-treesitter.textobjects.repeatable_move")'';
   in
   [
-    # Insert mode
+    # Don't yank empty lines with dd
+    {
+      mode = "n";
+      key = "dd";
+      action.__raw = # lua
+      ''
+        function()
+          if vim.fn.getline('.'):match('^%s*$') then
+            return '"_dd'
+          end
+          return 'dd'
+        end
+      '';
+
+      options = {
+        expr = true;
+        silent = true;
+        desc = "Delete line";
+      };
+    }
+
+    # Insert mode navigation
     (sil "Move down"  "i" "<A-J>" "<Down>")
     (sil "Move up"    "i" "<A-k>" "<Up>")
     (sil "Move left"  "i" "<A-h>" "<Left>")
@@ -64,9 +83,5 @@
     (map "Telescope find files"   "n" "<leader>ff" "<cmd>Telescope find_files<cr>")
     (map "Telescope recent files" "n" "<leader>fr" "<cmd>Telescope frecency<cr>")
     (map "Telescope find word"    "n" "<leader>fw" "<cmd>Telescope live_grep<cr>")
-
-    # Treesitter
-    (map "Repeat last move" [ "n" "x" "o" ] "n" "${ts-repeat-move}.repeat_last_move")
-    (map "Repeat opposite move" [ "n" "x" "o" ] "," "${ts-repeat-move}.repeat_last_move_opposite")
   ];
 }
