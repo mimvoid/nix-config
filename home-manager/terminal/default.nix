@@ -9,6 +9,7 @@
     ./yazi.nix
     ./dooit/default.nix
     ./navi/default.nix
+    ./fetcher/default.nix
   ];
 
   home.packages = with pkgs; [
