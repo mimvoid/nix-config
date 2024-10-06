@@ -10,16 +10,6 @@ let
     };
   };
 
-  nvim-project-marks = pkgs.vimUtils.buildVimPlugin {
-    name = "nvim-project-marks";
-    src = pkgs.fetchFromGitHub {
-      owner = "BartSte";
-      repo = "nvim-project-marks";
-      rev = "0.2.0";
-      hash = "sha256-/LC/URb4sEURa7S9Ht20k9eTbJ3tZCvkHRwcxlBfra0=";
-    };
-  };
-
   neotab-nvim = pkgs.vimUtils.buildVimPlugin {
     name = "neotab.nvim";
     src = pkgs.fetchFromGitHub {
@@ -39,6 +29,7 @@ in
     ./lsp.nix
     ./lualine.nix
     ./markdown.nix
+    ./marks.nix
     ./mini.nix
     ./nvim-colorizer.nix
     ./telescope.nix
@@ -49,7 +40,6 @@ in
     plugins = {
       nvim-autopairs.enable = true;
       persistence.enable = true;
-      marks.enable = true;
     };
 
     extraPlugins = with pkgs.vimPlugins; [
@@ -58,15 +48,12 @@ in
       fcitx-vim
     ] ++ [
       r-nvim
-      nvim-project-marks
       neotab-nvim
     ];
 
     # neotab.nvim config
     extraConfigLua = # lua
     ''
-      require("projectmarks").setup({})
-
       require("neotab").setup({
         tabkey = "",
         smart_punctuators = {
