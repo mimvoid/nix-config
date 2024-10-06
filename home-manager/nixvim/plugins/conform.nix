@@ -25,9 +25,9 @@
       html = [[ "prettierd" "prettier" ]];
       markdown = [[ "prettierd" "prettier" ]];
       
-      #bash = [ "shellcheck" "shellharden" "shfmt" ];
-      #go = [ "goimports" "gofmt" ];
-      #python = [ "black" "isort" ];
+      # bash = [ "shellcheck" "shellharden" "shfmt" ];
+      # go = [ "goimports" "gofmt" ];
+      # python = [ "black" "isort" ];
       
       "_" = [ "squeeze_blanks" "trim_whitespace" "trim_newlines" ];
     };

@@ -11,16 +11,15 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Nix flatpak
-    # nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
-
     # Extra modules
-    ags.url = "github:Aylur/ags";
     nixvim = {
       url = "github:nix-community/nixvim/nixos-24.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
     stylix.url = "github:danth/stylix/master";
+
+    ags.url = "github:Aylur/ags";
   };
 
   outputs = {
@@ -33,6 +32,7 @@
     ... } @ inputs:
   let
     system = "x86_64-linux";
+
     pkgs = import nixpkgs {
       inherit system;
       

@@ -26,9 +26,7 @@
       RainbowDelimiterGreen.fg = green;
       RainbowDelimiterViolet.fg = magenta;
       RainbowDelimiterCyan.fg = cyan;
-    }
-    //
-    {
+
       # Put back telescope borders and other colors
       TelescopeBorder.link = "TelescopeNormal";
       TelescopePromptBorder.link = "TelescopeBorder";

@@ -1,9 +1,9 @@
-{ stdenvNoCC
-, lib
-, fetchFromGitHub
-, gtk3
-, gtk-engine-murrine
-, variant ? "RosePine-Main-B"
+{ stdenvNoCC,
+  lib,
+  fetchFromGitHub,
+  gtk3,
+  gtk-engine-murrine,
+  variant ? "RosePine-Main-B"
 }:
 
 # based on official rose-pine-gtk-theme package

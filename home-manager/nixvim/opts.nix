@@ -61,7 +61,7 @@
     foldlevelstart = 99;
 
     # Misc
-    completeopt = ["menuone" "noselect" "noinsert"];
+    completeopt = [ "menuone" "noselect" "noinsert" ];
     termguicolors = true;
     hidden = true;
     conceallevel = 0;

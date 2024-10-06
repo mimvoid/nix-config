@@ -22,10 +22,10 @@
             extmark_opts.sign_text = icon;
           };
         in {
-          fixme = (key "FIXME:" "MiniHipatternsFixme" "" );
-          hack = (key "HACK:" "MiniHipatternsHack" "");
-          todo = (key "TODO:" "MiniHipatternsTodo" "");
-          note = (key "NOTE:" "MiniHipatternsNote" "");
+          fixme = key "FIXME:" "MiniHipatternsFixme" "";
+          hack = key "HACK:" "MiniHipatternsHack" "";
+          todo = key "TODO:" "MiniHipatternsTodo" "";
+          note = key "NOTE:" "MiniHipatternsNote" "";
         };
       };
 
@@ -42,7 +42,8 @@
       };
 
       clue = {
-        triggers.__raw = ''
+        triggers.__raw = # lua
+        ''
           {
             -- Leader triggers
             { mode = 'n', keys = '<Leader>' },
@@ -76,7 +77,8 @@
           }
         '';
 
-        clues.__raw = ''
+        clues.__raw = # lua
+        ''
           {
             require('mini.clue').gen_clues.builtin_completion(),
             require('mini.clue').gen_clues.g(),

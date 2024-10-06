@@ -59,13 +59,13 @@
     # make zsh-help work with -h flag
     shellGlobalAliases."-h" = "--help";
 
-    # fontpreview settings
-    # history substring search integration with vi mode
     initExtra = # bash
     ''
+      # fontpreview settings
       export FONTPREVIEW_SIZE=650x700
       export FONTPREVIEW_PREVIEW_TEXT="SPHINX OF BLACK QUARTZ,\nJUDGE MY VOW.\n\nSphinx of Black Quartz,\nJudge My Vow.\n\nsphinx of black quartz,\njudge my vow.\n\n1234567890\n!@$\%(){}[];:\'\""
 
+      # history substring search integration with vi mode
       bindkey -M vicmd 'k' history-substring-search-up
       bindkey -M vicmd 'j' history-substring-search-up
 

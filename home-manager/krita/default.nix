@@ -16,14 +16,14 @@ let
 
   links = with lib.attrsets; {
     themes = mapAttrs' (name: value: nameValuePair
-      ("krita/color-schemes/" + name) (value))
+      "krita/color-schemes/${name}" value)
     {
       "CatppuccinMacchiatoMaroon.colors".source = ./CatppuccinMacchiatoMaroon.colors;
     };
 
     # Brushes, packs, etc.
     resources = mapAttrs' (name: value: nameValuePair
-      ("krita/" + name) (value))
+      "krita/${name}" value)
     {
       "Chalks_for_Children.bundle".source = ./Chalks_for_Children.bundle;
       "hollow_line.bundle".source = ./hollow_line.bundle;
@@ -33,7 +33,7 @@ let
 
     # Krita can't seem to recognize the files in ~/.nix-profile/share/krita/palettes
     palettes = mapAttrs' (name: value: nameValuePair
-      ("krita/palettes/" + name) (value))
+      "krita/palettes/${name}" value)
     {
       "catppuccin-macchiato.gpl".source = "${pal}/catppuccin-macchiato.gpl";
       "rose-pine-moon.gpl".source = "${pal}/rose-pine-moon.gpl";

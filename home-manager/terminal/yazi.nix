@@ -14,7 +14,7 @@
 
     settings = {
       manager = {
-        ratio = [1 4 3];
+        ratio = [ 1 4 3 ];
         show_hidden = true;
         show_symlink = true;
         sort_by = "natural";
@@ -53,11 +53,11 @@
       ];
     };
 
-    plugins = {
-      full-border = pkgs.callPackage ../../packages/yazi/full-border.nix {};
-      max-preview = pkgs.callPackage ../../packages/yazi/max-preview.nix {};
-      bookmarks = pkgs.callPackage ../../packages/yazi/bookmarks.nix {};
-      exifaudio = pkgs.callPackage ../../packages/yazi/exifaudio.nix {};
+    plugins = with pkgs; {
+      full-border = callPackage ../../packages/yazi/full-border.nix {};
+      max-preview = callPackage ../../packages/yazi/max-preview.nix {};
+      bookmarks = callPackage ../../packages/yazi/bookmarks.nix {};
+      exifaudio = callPackage ../../packages/yazi/exifaudio.nix {};
     };
 
     initLua = # lua

@@ -11,9 +11,9 @@
 
   imports = [
     ./theming.nix
-    ./home-links.nix
-    ./krita/default.nix
+    ./links.nix
     ./tts.nix
+    ./krita/default.nix
     ./terminal/default.nix
     ./nixvim/default.nix
     ./hyprland/default.nix

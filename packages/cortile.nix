@@ -1,6 +1,6 @@
-{ lib
-, buildGoModule
-, fetchFromGitHub
+{ lib,
+  buildGoModule,
+  fetchFromGitHub
 }:
 
 # Taken from nur.repos.milahu.cortile

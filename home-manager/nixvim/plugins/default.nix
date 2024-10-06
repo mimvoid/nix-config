@@ -62,6 +62,7 @@ in
       neotab-nvim
     ];
 
+    # neotab.nvim config
     extraConfigLua = # lua
     ''
       require("projectmarks").setup({})
@@ -77,7 +78,6 @@ in
         },
       })
     '';
-
     plugins.cmp.settings.mapping."<Tab>" = # lua
     ''
       cmp.mapping(function()

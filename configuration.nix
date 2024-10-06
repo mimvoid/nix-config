@@ -2,22 +2,23 @@
 
 {
   imports = [
-    ./system/boot.nix
-    ./system/console.nix
-    ./system/login.nix
-    ./system/virt.nix
-    # ./system/flatpaks.nix
+    ./system/default.nix
   ];
 
   # General system configurations
   nix = {
     package = pkgs.nixFlakes;
+
     settings = {
       allow-dirty = true;
       warn-dirty = false; # No dirty Git tree reminders on rebuild
-      experimental-features = [ "nix-command" "flakes" ];
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
       auto-optimise-store = true;
     };
+
     gc = {
       automatic = true;
       dates = "weekly";
@@ -119,11 +120,16 @@
   users.users.zinnia = {
     isNormalUser = true;
     description = "zinnia";
-    extraGroups = [ "wheel" "networkmanager" ];
+
+    extraGroups = [
+      "wheel"
+      "networkmanager"
+    ];
+
     packages = with pkgs; [
       neovim
-      appimage-run 
     ];
+
     shell = pkgs.zsh;
   };
 

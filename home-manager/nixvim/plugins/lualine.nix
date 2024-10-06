@@ -11,8 +11,8 @@
     sectionSeparators = { left = ""; right = ""; };
     
     sections = {
-      lualine_a = ["mode"];
-      lualine_b = ["branch"];
+      lualine_a = [ "mode" ];
+      lualine_b = [ "branch" ];
       lualine_c = [
         {
           name = "filetype";
@@ -60,8 +60,8 @@
           '';
         }
       ];
-      lualine_y = ["progress"];
-      lualine_z = ["location"];
+      lualine_y = [ "progress" ];
+      lualine_z = [ "location" ];
     };
   };
 }

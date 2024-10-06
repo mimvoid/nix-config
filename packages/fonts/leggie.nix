@@ -1,4 +1,8 @@
-{ lib, stdenv, fetchFromGitHub, bdf2psf }:
+{ lib,
+  stdenv,
+  fetchFromGitHub,
+  bdf2psf
+}:
 
 stdenv.mkDerivation {
   pname = "leggie";
