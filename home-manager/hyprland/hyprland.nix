@@ -5,7 +5,7 @@ let
   launcher = "fuzzel";
   browser = "firefox";
   fileManager = "thunar";
-  obsidian = config.xdg.desktopEntries.obsidian.exec;
+  obsidian = "obsidian";
   todo = "super-productivity";
 
   # Used in keymaps

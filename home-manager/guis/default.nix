@@ -1,6 +1,12 @@
 { pkgs, lib, allowed-unfree-packages, ... }:
-
+let
+  obsidian = pkgs.callPackage ../../packages/appimages/obsidian.nix {};
+  # zen-browser = pkgs.callPackage ../../packages/appimages/zen-browser.nix {};
+in
 {
+  # Imports list of allowed unfree packages from flake.nix
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+
   home.packages = with pkgs; [
     # Files & documents
     gnome.file-roller
@@ -27,6 +33,8 @@
     unstable.krita
     unstable.geeqie
     blanket
+  ] ++ [
+    obsidian
   ];
 
   imports = [
@@ -34,9 +42,6 @@
     ./flatpaks.nix
     ./zathura.nix
   ];
-
-  # Imports list of allowed unfree packages from flake.nix
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
 
   services.nextcloud-client = {
     enable = true;

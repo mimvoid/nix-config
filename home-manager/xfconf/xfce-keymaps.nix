@@ -1,15 +1,15 @@
-{ config, ... }:
-let
-  c = "commands/custom/";
-  wm = "xfwm4/custom/";
-in
 {
-  xfconf.settings.xfce4-keyboard-shortcuts = {
+  xfconf.settings.xfce4-keyboard-shortcuts =
+  let
+    c = "commands/custom/";
+    wm = "xfwm4/custom/";
+  in
+  {
     "${c}<Super>Return" = "exo-open --launch TerminalEmulator";
     "${c}<Super>w" = "exo-open --launch WebBrowser";
     "${c}<Super>e" = "thunar";
     "${c}<Super>space" = "xfce4-appfinder";
-    "${c}<Super>o" = config.xdg.desktopEntries.obsidian.exec;
+    "${c}<Super>o" = "obsidian";
     "${c}<super>d" = "super-productivity";
 
     "${c}<Super><Shift>q" = "xfce4-session-logout";
