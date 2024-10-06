@@ -39,7 +39,7 @@ in
 
   imports = [
     ./superProductivity/default.nix
-    ./flatpaks.nix
+    # ./flatpaks.nix
     ./zathura.nix
   ];
 

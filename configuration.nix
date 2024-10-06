@@ -7,7 +7,7 @@
     ./system/console.nix
     ./system/login.nix
     ./system/virt.nix
-    ./system/flatpaks.nix
+    # ./system/flatpaks.nix
   ];
 
   # General system configurations
@@ -54,6 +54,8 @@
   fonts.packages = with pkgs; [
     (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
   ];
+
+  services.flatpak.enable = true;
 
   # X11
   services.xserver = {

@@ -12,7 +12,7 @@
     };
 
     # Nix flatpak
-    nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
+    # nix-flatpak.url = "github:gmodena/nix-flatpak/?ref=v0.4.1";
 
     # Extra modules
     ags.url = "github:Aylur/ags";
