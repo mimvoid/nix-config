@@ -14,8 +14,8 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/pykrita
-    cp -r pykrita/* $out/pykrita
+    mkdir -p $out/share/krita/pykrita
+    cp -r pykrita/* $out/share/krita/pykrita
 
     runHook postInstall
   '';

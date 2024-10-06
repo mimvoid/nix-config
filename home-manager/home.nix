@@ -12,6 +12,7 @@
   imports = [
     ./theming.nix
     ./home-links.nix
+    ./krita/default.nix
     ./tts.nix
     ./terminal/default.nix
     ./nixvim/default.nix
