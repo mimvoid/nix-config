@@ -2,7 +2,6 @@
 
 {
   imports = [
-    ./hosts/h2/hardware-configuration.nix
     ./system/boot.nix
     ./system/console.nix
     ./system/login.nix

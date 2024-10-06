@@ -52,8 +52,11 @@
     nixosConfigurations = {
       sirru = nixpkgs.lib.nixosSystem {
         inherit system;
-        modules = [ ./configuration.nix ];
         specialArgs = { inherit inputs allow-unfree; };
+        modules = [
+          ./configuration.nix
+          ./hosts/sirru/hardware-configuration.nix
+        ];
       };
 
       customIso = nixpkgs.lib.nixosSystem {
