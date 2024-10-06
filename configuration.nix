@@ -1,4 +1,4 @@
-{ inputs, pkgs, lib, allowed-unfree-packages, ... }:
+{ inputs, pkgs, lib, allow-unfree, ... }:
 
 {
   imports = [
@@ -37,7 +37,7 @@
   };
 
   # Import list of allowed unfree packages from flake.nix
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allow-unfree;
 
   # Minimum system packages, most are in home manager
   environment.systemPackages = with pkgs; [

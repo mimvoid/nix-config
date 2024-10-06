@@ -45,14 +45,15 @@
         })
       ];
     };
-    allowed-unfree-packages = [ "fcitx5-rose-pine" ];
+
+    allow-unfree = [ "" ];
   in
   {
     nixosConfigurations = {
       sirru = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs allowed-unfree-packages; };
         modules = [ ./configuration.nix ];
+        specialArgs = { inherit inputs allow-unfree; };
       };
 
       customIso = nixpkgs.lib.nixosSystem {
@@ -64,7 +65,7 @@
     homeConfigurations = {
       "zinnia" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit inputs allowed-unfree-packages; };
+        extraSpecialArgs = { inherit inputs allow-unfree; };
         modules = [
           ./home-manager/home.nix
           stylix.homeManagerModules.stylix

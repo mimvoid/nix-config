@@ -1,11 +1,11 @@
-{ pkgs, lib, allowed-unfree-packages, ... }:
+{ pkgs, lib, allow-unfree, ... }:
 let
   obsidian = pkgs.callPackage ../../packages/appimages/obsidian.nix {};
   # zen-browser = pkgs.callPackage ../../packages/appimages/zen-browser.nix {};
 in
 {
   # Imports list of allowed unfree packages from flake.nix
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allowed-unfree-packages;
+  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allow-unfree;
 
   home.packages = with pkgs; [
     # Files & documents
