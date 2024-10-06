@@ -24,6 +24,7 @@ in
   imports = [
     ./alpha.nix
     ./bufferline.nix
+    ./colors.nix
     ./completion.nix
     ./conform.nix
     ./lsp.nix
@@ -31,7 +32,6 @@ in
     ./markdown.nix
     ./marks.nix
     ./mini.nix
-    ./nvim-colorizer.nix
     ./telescope.nix
     ./treesitter.nix
   ];
