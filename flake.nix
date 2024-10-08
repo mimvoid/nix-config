@@ -19,7 +19,7 @@
 
     stylix.url = "github:danth/stylix/master";
 
-    ags.url = "github:Aylur/ags";
+    ags.url = "github:Aylur/ags/v2";
   };
 
   outputs = {

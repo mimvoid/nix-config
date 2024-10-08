@@ -4,19 +4,17 @@
   imports = [ inputs.ags.homeManagerModules.default ];
 
   home.packages = with pkgs; [
-    bun
     dart-sass
-    brightnessctl
     gnome.adwaita-icon-theme
   ];
 
   programs.ags = {
     enable = true;
     configDir = null;
-    extraPackages = with pkgs; [
-      gtksourceview
-      webkitgtk
-      accountsservice
+
+    extraPackages = [
+      inputs.ags.packages.${pkgs.system}.battery
+      # fzf
     ];
   };
 }
