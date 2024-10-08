@@ -4,11 +4,11 @@
 
 #### Hyprland
 
-![Screenshot: Anime-style sunset wallpaper with a notification][i1]
+![Screenshot: Hyprland with disfetch and eza][i1]
 
 ![Screenshot: dooit with Amberol music player and Thunar file manager][i2]
 
-![Screenshot: Hyprland with disfetch][i3]
+![Screenshot: Anime-style sunset wallpaper with a notification saying obama: then perish][i3]
 
 #### XFCE
 
