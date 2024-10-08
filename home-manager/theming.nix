@@ -89,7 +89,7 @@ in
       base0C = "#b1b5e4"; # cyan
       base0D = "#9673de"; # blue
       base0E = "#c37ac9"; # magenta
-      base0F = "#44415a"; # highlight med
+      base0F = "#55486b"; # highlight med
     };
 
     inherit cursor;
