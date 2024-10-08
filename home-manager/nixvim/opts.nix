@@ -60,6 +60,10 @@
     foldlevel = 99;
     foldlevelstart = 99;
 
+    # Spell checking
+    spell = true;
+    spelllang = [ "en" "cjk" ];
+
     # Misc
     completeopt = [ "menuone" "noselect" "noinsert" ];
     termguicolors = true;

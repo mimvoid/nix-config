@@ -30,7 +30,6 @@
       # };
       # texlab.enable = true;
       # tsserver.enable = true;
-      typos-lsp.enable = true;
     };
   };
 }
