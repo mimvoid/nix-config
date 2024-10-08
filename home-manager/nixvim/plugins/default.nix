@@ -29,7 +29,6 @@ in
     ./conform.nix
     ./lsp.nix
     ./lualine.nix
-    ./markdown.nix
     ./marks.nix
     ./mini.nix
     ./telescope.nix
