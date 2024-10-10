@@ -1,10 +1,8 @@
-import { App } from "astal"
-import style from "inline:./style.css"
-import Bar from "./widget/Bar"
+import { App } from "astal";
+import style from "./style/style.scss";
+import Bar from "./widgets/bar";
 
 App.start({
-    css: style,
-    main() {
-        Bar(0)
-    },
-})
+  css: style,
+  main: () => App.get_monitors().map(Bar),
+});

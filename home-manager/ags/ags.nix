@@ -5,6 +5,7 @@
 
   home.packages = with pkgs; [
     dart-sass
+    brightnessctl
     gnome.adwaita-icon-theme
   ];
 
@@ -12,9 +13,14 @@
     enable = true;
     configDir = null;
 
-    extraPackages = [
-      inputs.ags.packages.${pkgs.system}.battery
-      # fzf
+    extraPackages = with inputs.ags.packages.${pkgs.system}; [
+      hyprland
+      tray
+      network
+      bluetooth
+      wireplumber
+      battery
+      notifd
     ];
   };
 }
