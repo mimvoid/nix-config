@@ -20,7 +20,7 @@
     ./xfconf/default.nix
     ./guis/default.nix
     ./firefox/firefox.nix
-    ./ags/ags.nix
+    ./ags/default.nix
   ];
 
   home.sessionVariables = {

@@ -3,8 +3,8 @@
 @import "./variables/_fonts.scss";
 @import "./variables/_looks.scss";
 
-window.bar > box {
-  margin: 4px 14px;
+centerbox {
+  margin: 3px 12px 1px 12px;
   border-radius: $radius;
 
   color: $primary;
@@ -14,24 +14,18 @@ window.bar > box {
 .left,
 .center,
 .right {
-  padding: 4px 8px;
   border-radius: $radius;
   background-color: $base;
 }
 
-/* Widget-specific spacing */
-
-.workspaces {
-  button {
-    margin: 0 2px;
-  }
-
-  label {
-    margin: 0;
-  }
+.left > *,
+.center > * {
+  padding: 4px 8px;
 }
 
-.volume,
+/* Widget-specific spacing */
+
+.sound,
 .battery {
   margin: 0 4px;
 }
@@ -42,27 +36,31 @@ window.bar > box {
 
 /* Modules */
 
+.workspaces {
+  padding: 6px; /* make buttons smaller */
+}
+
 .workspaces button {
-  padding: 0 6px;
-  background-color: transparent;
+  margin: 0 2.5px;
+  padding: 0 5px;
+  background-color: $primary;
+  color: transparent;
 
   &.focused {
-    color: $tertiary;
-    background-color: $box;
-    transition: all 0.2s ease-in-out;
+    padding: 0 12px;
+    background-color: $primary-dim;
+    transition: all 0.15s ease-in-out;
   }
 
   &:hover {
-    color: change-color($base, $alpha: 1);
-    background-color: change-color($primary, $alpha: 0.85);
+    background-color: $tertiary-dim;
     transition: all 0.2s ease-in-out;
   }
 }
 
-.client-title {
-  margin-left: 10px;
+.clock icon {
+  margin: 0 4px;
 }
-
 /* disable default button background color */
 .clock:hover {
   background-color: transparent;
@@ -82,7 +80,7 @@ window.bar > box {
   color: $tertiary;
 }
 
-.volume {
+.sound {
   color: $tertiary-bright;
   label {
     margin-left: 2px;
@@ -94,6 +92,11 @@ window.bar > box {
 
 .battery {
   color: $good;
+
+  icon {
+    -gtk-icon-transform: rotate(90deg);
+  }
+
   label {
     margin-left: 6px;
   }
@@ -104,20 +107,20 @@ window.bar > box {
 }
 
 .brightness {
-  color: adjust-color($error, $lightness: 8);
+  color: adjust-color($error, $lightness: 8%);
 
   .brightness-revealer {
     min-width: 4px;
   }
 
   trough highlight {
-    background-color: adjust-color($error, $lightness: 8);
+    background-color: adjust-color($error, $lightness: 8%);
   }
 }
 
 .power-actions {
   margin: 0 0 0 2px;
-  padding: 0 4px;
+  padding: 0 6px;
   background-color: $box;
 
   &:hover {
