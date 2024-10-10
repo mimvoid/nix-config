@@ -8,7 +8,7 @@
 
 ![Screenshot: dooit with Amberol music player and Thunar file manager][i2]
 
-![Screenshot: Anime-style sunset wallpaper with a notification saying obama: then perish][i3]
+![Screenshot: Anime-style sunset wallpaper with a notification saying "obama: then perish"][i3]
 
 #### XFCE
 
@@ -38,7 +38,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 [w2]: https://xfce.org
 [w3]: https://docs.xfce.org/xfce/xfwm4/start
 [w4]: https://github.com/leukipp/cortile
-[w5]: https://sr.ht/~kennylevinsen/greetd/
+[w5]: https://sr.ht/~kennylevinsen/greetd
 [w6]: https://github.com/apognu/tuigreet
 
 | Applications     |                             |
@@ -50,7 +50,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 | Web browser      | [Firefox][a6]               |
 | Art program      | [Krita][a7]                 |
 | Document viewer  | [Zathura][a8]               |
-| To-do list       | [dooit][a9]                 |
+| To-do list       | [Super Productivity][a9]    |
 | Music player     | [Tauon][a10]                |
 
 [a1]: https://sw.kovidgoyal.net/kitty
@@ -61,7 +61,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 [a6]: https://firefox.com
 [a7]: https://krita.org
 [a8]: https://git.pwmt.org/pwmt/zathura
-[a9]: https://github.com/kraanzu/dooit
+[a9]: https://super-productivity.com
 [a10]: https://tauonmusicbox.rocks
 
 | Hyprland-specific  |                                   |
@@ -105,14 +105,14 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 [t7]: https://github.com/i-tu/Hasklig
 [t8]: https://fonts.google.com/specimen/Limelight
 
-- AGS widgets
-  - [Adwaita icons][e1]
-  - Bar
-  - Calendar
-  - Notifications
+- AGS
+  - Icons: [Adwaita][e1]
+  - Widgets
+    - Bar
+    - Calendar
+    - Notifications
 - Krita
-  - Themes
-    - [Catppuccin Macchiato & Mocha Maroon][e2]
+  - Theme: [Catppuccin Macchiato Maroon][e2]
   - Brushes & Resources
     - [Dirty Chalk for Children][e3]
     - [Hollow brush][e4]
@@ -124,8 +124,9 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
     - [Timer Watch][e9]
 - [Obsidian.md][e10] CSS snippets
 - Firefox themes & extensions
-  - Custom themes: Incandescent (light) & Moonflower (dark)
-  - [Catppuccin Macchiato - Maroon][e11]
+  - Themes
+    - Custom: Incandescent (light) & Moonflower (dark)
+    - [Catppuccin Macchiato Maroon][e11]
   - Vertical tabs: [Sidebery][e12]
 
 [e1]: https://gitlab.gnome.org/GNOME/adwaita-icon-theme
@@ -145,7 +146,8 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 
 These are things I used that ended up not entirely fitting my use-case, but they're wonderful nonetheless and I totally respect and recommend them!
 
-- [Foot](https://codeberg.org/dnkl/foot), lightweight terminal emulator for Wayland
+- [foot](https://codeberg.org/dnkl/foot), lightweight terminal emulator for Wayland
+- [dooit](https://github.com/kraanzu/dooit), a TUI to-do list manager
 
 # Resources
 
@@ -155,20 +157,23 @@ Official:
 
 - [NixOS website][n1]
 - [Nix package manager & NixOS download][n2]
-  - The Nix package manager has many choices, especially on the unstable channel.
-  - However, I'd advise against it if you really want to get into Nix's declarative nature. Unless you just want a good package manager, then go ahead.
+  - The `nix-env` package manager works like most other package managers.
+  - However, I'd advise against it if you really want to get into Nix's declarative nature
+    - Unless all you want is just a good package manager
 - [Nix ecosystem documentation][n3]
   - [Nix language guide][n4]
 - [NixOS wiki][n5]
-- [Search Nix packages][n6]
-- [Search NixOS options][n7]
+- Search
+  - [Search Nix packages][n6]
+  - [Search NixOS options][n7]
 
 Unofficial:
 
 - [Awesome Nix][n8]
-- [NixOS & Flakes Book][n9]
+- Flakes
+  - [NixOS & Flakes Book][n9]
   - [Very helpful guide to Nix flakes][n10]
-    - Nix flakes may seem daunting at first, but they make it super easy to add extra sources and configuration options. Plus, they're declarative while nix channels are not.
+  - Nix flakes may seem daunting at first, but they make it super easy to add extra sources and configuration options. Plus, they're declarative while nix channels are not
 - [Nix User Repository][n11]
 - [User-maintained NixOS wiki][n12]
   - [Nix applications and ecosystem][n13]
@@ -207,44 +212,40 @@ It can work on other distros too—I tried it on openSUSE Tumbleweed, though not
 
 ### Extras
 
-The NixOS configuration file and Home Manager are what I mainly use, but here are some other interesting tools.
+I mainly use NixOS and Home Manager, but here are some other interesting tools.
 
-- [nh][em1], a pretty wrapper & helper for Nix and Home Manager
+- [nh][em1], a pretty wrapper for rebuilding
 - [NixVim][em2], for configuring Neovim and its plugins declaratively
-  - [NixVim documentation][em3]
-- [nix-flatpak][em4], for managing Flatpaks declaratively
+  - [Documentation][em3]
 - [Stylix][em5], for quick universal colorschemes and fonts
-  - [Stylix documentation][em6]
-- [Nix-colors][em7], for managing color palettes
-- [Nix-rice][em8], for managing color palettes
-- [Plasma-manager][em9], for configuring KDE Plasma declaratively
-- [System Manager][em10], for managing system configuration with Nix
+  - [Documentation][em6]
+- [nix-flatpak][em4], for managing Flatpaks declaratively
 
 [em1]: https://github.com/viperML/nh
 [em2]: https://github.com/nix-community/nixvim
-[em3]: https://nix-community.github.io/nixvim/
-[em4]: https://github.com/gmodena/nix-flatpak
+[em3]: https://nix-community.github.io/nixvim
 [em5]: https://github.com/danth/stylix
 [em6]: https://danth.github.io/stylix/options/nixos.html
-[em7]: https://docs.xfce.org/xfce/xfwm4/start
-[em8]: https://github.com/bertof/nix-rice/
-[em9]: https://github.com/pjones/plasma-manager
-[em10]: https://github.com/numtide/system-manager
+[em4]: https://github.com/gmodena/nix-flatpak
 
 # Pieces of Advice
 
-- Use `nix path-info nixpkgs#<package-name>` if at all possible
-  - Trust me, it is _not_ fun to manually search through nix/store/ to find the path to a specific package file.
-  - The sooner you're aware of this, the better!
-- If you choose to start with a starter config, start small!
-  - You can understand a lot by configuring things yourself, and configs that are too complex may confuse you out of touching them.
-  - If you really want a config without the manual effort, NixOS is probably not for you.
-- It's absolutely true that NixOS documentation is sparse.
-  - If you really want to dig deep, don't be afraid to look through the source code or the manuals.
-  - You can do a ton on NixOS, but it takes time, effort, and undoubtly frustration.
+- Use `nix path-info nixpkgs#<package-name>`!
+  - Trust me, it is _not_ fun to manually search through `nix/store/` to find a specific package file
+  - The sooner you're know this, the better!
+- If you want a starter config, start small!
+  - You can understand a lot by doing things yourself
+  - And configs that are too complex may confuse you out of changing them
+  - If you really want a config without the manual effort, NixOS is probably not for you
+- NixOS documentation is truly sparse
+  - To dig deep, don't be afraid to look through the source code and manuals
+  - You can do a ton on NixOS, but it takes time, effort, and undoubtly frustration
 - You don't need to rely on the options NixOS and Home Manager give you to create config files
-  - NixOS has `environment.etc."path/file.type"`, meaning etc/path/file.type
-  - Home Manager has `home.file."path/file.type"`, meaning home/user/path/file.type, and `xdg.configFile."path/file.type"`, meaning ~/.config/path/file.type!
-  - Optionally, you can use `"path/file.type".source = config.lib.file.mkOutOfStoreSymlink /absolute/path/to/source/file` to symlink an existing file to the location you want
-  - Or create your own modules.
+  - NixOS has `environment.etc."path/file.type"`, meaning `etc/path/file.type`
+  - Home Manager has many:
+    - `home.file."path/file.type"` means `home/user/path/file.type`
+    - `xdg.configFile."path/file.type"` means `~/.config/path/file.type`
+      - (Unless you changed your XDG config directory)
+  - You can use `"path/file.type".source = config.lib.file.mkOutOfStoreSymlink /absolute/path/to/file` to symlink an existing file to the location you want
+  - Or create your own modules
 - NixOS works very differently to other Linux distros, but that's why I enjoy it!
