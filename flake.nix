@@ -56,6 +56,8 @@
         modules = [
           ./configuration.nix
           ./hosts/sirru/hardware-configuration.nix
+
+          { environment.variables.FLAKE = "/home/zinnia/NixOS"; }
         ];
       };
 

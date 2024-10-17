@@ -41,8 +41,8 @@
       ".." = "cd ..";
       "-" = "cd -";
 
-      nhos = "nh os switch ~/NixOS";
-      nhh = "nh home switch ~/NixOS";
+      nhos = "nh os switch";
+      nhh = "nh home switch";
       nixdev = "nix develop --command zsh";
       
       blueon = "bluetooth on";
