@@ -31,6 +31,7 @@ in
     ./lualine.nix
     ./marks.nix
     ./mini.nix
+    ./snippets.nix
     ./telescope.nix
     ./treesitter.nix
   ];

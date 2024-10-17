@@ -74,7 +74,7 @@
     # Plugins
 
     # Mini.files
-    (map "Open mini.files" "n" "<leader>e" "<cmd>lua MiniFiles.open()<cr>")
+    (map "Open mini.files" "n" "<leader>e" "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<cr>")
 
     # Git
     (map "Open Lazygit"  "n" "<leader>g" "<cmd>LazyGit<cr>")

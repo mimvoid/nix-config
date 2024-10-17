@@ -57,6 +57,8 @@
 
   services.flatpak.enable = true;
 
+  environment.pathsToLink = [ "/share/zsh" ];
+
   # X11
   services.xserver = {
     enable = true;

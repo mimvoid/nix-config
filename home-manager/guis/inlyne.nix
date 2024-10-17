@@ -24,7 +24,7 @@
     code-highlighter = "dracula"
 
     [keybindings]
-    base = [
+    extra = [
       ["ZoomIn", "="],
       ["ZoomOut", "-"],
       ["ZoomReset", "0"],
