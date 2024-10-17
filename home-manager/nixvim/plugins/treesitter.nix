@@ -5,6 +5,8 @@
       indent = true;
       folding = true;
 
+      ignoreInstall = [ "latex" ];
+
       nixGrammars = true;
       nixvimInjections = true;
 

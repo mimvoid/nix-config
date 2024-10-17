@@ -28,7 +28,7 @@
       #   installCargo = true;
       #   installRustc = true;
       # };
-      # texlab.enable = true;
+      texlab.enable = true;
       # tsserver.enable = true;
     };
   };

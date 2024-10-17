@@ -17,6 +17,7 @@ in
     ./colors.nix
     ./completion.nix
     ./conform.nix
+    ./latex.nix
     ./lsp.nix
     ./lualine.nix
     ./marks.nix
