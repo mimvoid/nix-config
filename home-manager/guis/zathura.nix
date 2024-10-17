@@ -1,15 +1,26 @@
+{ config, ... }:
+let
+  font-name = config.stylix.fonts.monospace.name;
+  font-size = builtins.toString config.stylix.fonts.sizes.terminal;
+in
 {
   programs.zathura = {
     enable = true;
     options = {
-      adjust-open = "best-fit";
-      double-click-follow = true;
-      selection-notification = false;
+      font = "${font-name} normal ${font-size}";
+      guioptions = "sv";
+      recolor = true;
+      recolor-keephue = true;
+      adjust-open = "width";
+
+      statusbar-home-tilde = true;
+      window-title-home-tilde = true;
       show-hidden = true;
       show-signature-information = true;
-      statusbar-home-tilde = true;
-      statusbar-page-percent = true;
-      window-title-home-tilde = true;
+
+      scroll-step = 60;
+      double-click-follow = true;
+      selection-notification = false;
     };
   };
 }

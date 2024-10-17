@@ -112,6 +112,7 @@ in
 
       (opaquer-title "*Nextcloud")
       (opaquer-class "Anki")
+      (opaquer-class "org.pwmt.zathura")
       (opaque-ish "FreeTube")
       (opaque-ish "Zotero")
       (opaque-ish "obsidian")
