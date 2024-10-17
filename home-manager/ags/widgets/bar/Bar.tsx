@@ -1,16 +1,16 @@
 import { App, Variable, Astal, Gtk, Gdk } from "astal"
 
-import Overview from "./bar-items/0-overview"
-import Workspaces from "./bar-items/1-workspaces"
-import Title from "./bar-items/2-window-title"
-import Clock from "./bar-items/3-clock"
-import Tray from "./bar-items/4-sys-tray"
-import Network from "./bar-items/5-network"
-// import Bluetooth from "./bar-items/6-bluetooth"
-import Sound from "./bar-items/7-sound"
-import Battery from "./bar-items/8-battery"
-import Brightness from "./bar-items/9-brightness"
-import Power from "./bar-items/10-power"
+import Overview from "./overview"
+import Workspaces from "./workspaces"
+import Title from "./window-title"
+import Clock from "./clock"
+import Tray from "./sys-tray"
+import Network from "./network"
+import Bluetooth from "./bluetooth"
+import Sound from "./sound"
+import Battery from "./battery"
+import Brightness from "./brightness"
+import Power from "./power"
 
 function Left() {
   return <box
@@ -37,6 +37,7 @@ function Right() {
     halign={Gtk.Align.END} >
       <Tray />
       <Network />
+      <Bluetooth />
       <Sound />
       <Battery />
       <Brightness />

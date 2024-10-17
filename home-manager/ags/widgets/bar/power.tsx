@@ -1,4 +1,5 @@
 import { exec } from "astal"
+import Icon from "../../lib/icons"
 
 // TODO: replace wlogout
 
@@ -7,6 +8,6 @@ export default function Power() {
     className="power-actions"
     cursor="pointer"
     onClicked={() => exec("wlogout -b 2")} >
-      <icon icon="system-shutdown-symbolic" />
+      <icon icon={Icon.powermenu.indicator} />
   </button>
 }

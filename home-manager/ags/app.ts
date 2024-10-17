@@ -1,6 +1,6 @@
 import { App } from "astal";
 import style from "./style/style.scss";
-import Bar from "./widgets/bar";
+import Bar from "./widgets/bar/Bar";
 
 App.start({
   css: style,

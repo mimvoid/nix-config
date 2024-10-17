@@ -1,8 +1,8 @@
-const Icon = <icon icon="nix-snowflake-symbolic"></icon>
+import Icon from "../../lib/icons"
 
 export default function Overview() {
   return <button
     className="overview" >
-      {Icon}
+      <icon icon={Icon.overview} />
   </button>
 }
