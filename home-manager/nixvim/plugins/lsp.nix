@@ -19,8 +19,8 @@
     servers = {
       bashls.enable = true;
       # basedpyright.enable = true;
-      cssls.enable = true;
-      html.enable = true;
+      # cssls.enable = true;
+      # html.enable = true;
       marksman.enable = true;
       nil_ls.enable = true;
       # rust-analyzer = {
