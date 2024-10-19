@@ -1,4 +1,5 @@
-import { Gtk, execAsync, bind } from "astal"
+import { execAsync, bind } from "astal"
+import { Gtk } from "astal/gtk3"
 import Bluetooth from "gi://AstalBluetooth"
 import Icon from "../../lib/icons"
 

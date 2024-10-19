@@ -1,4 +1,5 @@
-import { App, Gtk, bind, exec, execAsync, Variable, monitorFile } from "astal"
+import { bind, exec, execAsync, Variable, monitorFile } from "astal"
+import { App, Gtk } from "astal/gtk3"
 import Icon from "../../lib/icons"
 
 // brightness slider

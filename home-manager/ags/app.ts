@@ -1,4 +1,4 @@
-import { App } from "astal";
+import { App } from "astal/gtk3";
 import style from "./style/style.scss";
 import Bar from "./widgets/bar/Bar";
 

@@ -1,4 +1,4 @@
-import { App } from "astal";
+import { App } from "astal/gtk3";
 
 const Icon = {
   bluetooth: {

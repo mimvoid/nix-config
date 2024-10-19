@@ -1,4 +1,5 @@
-import { Gtk, exec, bind } from "astal"
+import { exec, bind } from "astal"
+import { Gtk } from "astal/gtk3"
 import Network from "gi://AstalNetwork"
 
 const network = Network.get_default()

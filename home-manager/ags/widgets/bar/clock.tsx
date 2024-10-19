@@ -1,4 +1,5 @@
-import { Variable, Gtk } from "astal"
+import { Variable } from "astal"
+import { Gtk } from "astal/gtk3"
 import Icon from "../../lib/icons"
 
 const time = Variable<string>("").poll(1000, "date '+%A %b %d / %H:%M'")

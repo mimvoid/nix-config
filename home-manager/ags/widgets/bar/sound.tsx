@@ -1,4 +1,5 @@
-import { Gtk, bind } from "astal"
+import { bind } from "astal"
+import { Gtk } from "astal/gtk3"
 import Wp from "gi://AstalWp"
 
 const speaker = Wp.get_default()?.audio.defaultSpeaker!

@@ -1,4 +1,5 @@
-import { App, Gdk, bind } from "astal"
+import { bind } from "astal"
+import { App, Gdk } from "astal/gtk3"
 import Tray from "gi://AstalTray"
 
 const tray = Tray.get_default()

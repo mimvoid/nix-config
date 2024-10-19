@@ -1,4 +1,5 @@
-import { App, Variable, Astal, Gtk, Gdk } from "astal"
+import { Variable } from "astal"
+import { App, Astal, Gtk, Gdk } from "astal/gtk3"
 
 import Overview from "./overview"
 import Workspaces from "./workspaces"
