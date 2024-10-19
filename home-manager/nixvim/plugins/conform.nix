@@ -6,30 +6,32 @@
     #shellcheck-minimal
     #shellharden
     #shfmt
-    #black
-    #isort
+    black
+    isort
   ];
 
   programs.nixvim.plugins.conform-nvim = {
     enable = true;
 
-    formatOnSave.lspFallback = true;
+    settings = {
+      format_on_save.lsp_format = "fallback";
 
-    formattersByFt = {
-      javascript = [[ "prettierd" "prettier" ]];
-      typescript = [[ "prettierd" "prettier" ]];
-      
-      css = [[ "prettierd" "prettier" ]];
-      scss = [[ "prettierd" "prettier" ]];
-      
-      html = [[ "prettierd" "prettier" ]];
-      markdown = [[ "prettierd" "prettier" ]];
-      
-      # bash = [ "shellcheck" "shellharden" "shfmt" ];
-      # go = [ "goimports" "gofmt" ];
-      # python = [ "black" "isort" ];
-      
-      "_" = [ "squeeze_blanks" "trim_whitespace" "trim_newlines" ];
+      formatters_by_ft = {
+        javascript = [ "prettierd" ];
+        typescript = [ "prettierd" ];
+
+        css = [ "prettierd" ];
+        scss = [ "prettierd" ];
+
+        html = [ "prettierd" ];
+        markdown = [ "prettierd" ];
+
+        # bash = [ "shellcheck" "shellharden" "shfmt" ];
+        # go = [ "goimports" "gofmt" ];
+        python = [ "black" "isort" ];
+
+        "_" = [ "squeeze_blanks" "trim_whitespace" "trim_newlines" ];
+      };
     };
   };
 }

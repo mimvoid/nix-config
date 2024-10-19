@@ -4,6 +4,7 @@
   programs.nixvim = {
     colorschemes.base16 = {
       setUpBar = true; # Stylix takes care of enabling and the base16 colors
+      settings.telescope_borders = true;
     };
 
     highlightOverride = with config.lib.stylix.colors.withHashtag; {
@@ -26,12 +27,6 @@
       RainbowDelimiterGreen.fg = green;
       RainbowDelimiterViolet.fg = magenta;
       RainbowDelimiterCyan.fg = cyan;
-
-      # Put back telescope borders and other colors
-      TelescopeBorder.link = "TelescopeNormal";
-      TelescopePromptBorder.link = "TelescopeBorder";
-      TelescopeTitle.link = "TelescopeBorder";
-      TelescopePromptNormal.link = "TelescopeNormal";
     };
   };
 }

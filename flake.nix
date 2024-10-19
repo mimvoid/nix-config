@@ -13,7 +13,7 @@
 
     # Extra modules
     nixvim = {
-      url = "github:nix-community/nixvim/nixos-24.05";
+      url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -35,7 +35,7 @@
 
     pkgs = import nixpkgs {
       inherit system;
-      
+
       # Allows nixpkgs-unstable to be referenced with pkgs.unstable.<package>
       overlays = [
         (final: _prev: {
@@ -66,7 +66,7 @@
         modules = [ ./hosts/iso/configuration.nix ];
       };
     };
-    
+
     homeConfigurations = {
       "zinnia" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;

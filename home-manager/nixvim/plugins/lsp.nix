@@ -1,7 +1,9 @@
+{ pkgs, ... }:
+
 {
   programs.nixvim.plugins.lsp = {
     enable = true;
-    
+
     keymaps = {
       diagnostic = {
         "<leader>j" = "goto_next";
@@ -17,8 +19,15 @@
     };
 
     servers = {
-      bashls.enable = true;
-      # basedpyright.enable = true;
+      bashls = {
+        enable = true;
+        package = pkgs.unstable.bash-language-server;
+      };
+
+      basedpyright = {
+        enable = true;
+        package = pkgs.unstable.basedpyright;
+      };
       # cssls.enable = true;
       # html.enable = true;
       marksman.enable = true;
@@ -29,7 +38,6 @@
       #   installRustc = true;
       # };
       texlab.enable = true;
-      # tsserver.enable = true;
     };
   };
 }

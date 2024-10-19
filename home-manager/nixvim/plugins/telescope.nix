@@ -77,8 +77,8 @@
       # Misc appearance
       set_env.COLORTERM = "truecolor";
       disable_devicons = false;
-      color_devicons = true; 
-      path_display = ["truncate"];
+      color_devicons = true;
+      path_display = [ "truncate" ];
     };
 	};
 }

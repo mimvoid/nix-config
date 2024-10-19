@@ -2,24 +2,30 @@
 	programs.nixvim.plugins = {
     treesitter = {
       enable = true;
-      indent = true;
       folding = true;
-
-      ignoreInstall = [ "latex" ];
 
       nixGrammars = true;
       nixvimInjections = true;
 
-      incrementalSelection = {
-        enable = true;
-        keymaps = {
-          initSelection = "<leader>s";
-          nodeIncremental = "<leader>s";
-          nodeDecremental = "<bs>";
+      settings = {
+        highlight = {
+          enable = true;
+          disable = [ "latex" ];
         };
+
+        incremental_selection = {
+          enable = true;
+          keymaps = {
+            init_selection = "<leader>s";
+            node_incremental = "<leader>s";
+            node_decremental = "<bs>";
+          };
+        };
+
+        indent.enable = true;
       };
     };
-    
+
     treesitter-textobjects = let
       map = query: desc: { inherit query; inherit desc; };
     in {
@@ -64,7 +70,7 @@
           "]c" = map "@class.outer"       "Next class start";
           "]i" = map "@conditional.outer" "Next conditional start";
           "]l" = map "@loop.outer"        "Next loop start";
-          
+
           "]s" = { query = "@scope"; queryGroup = "locals"; desc = "Next scope"; };
           "]z" = { query = "@fold"; queryGroup = "folds"; desc = "Next fold"; };
         };

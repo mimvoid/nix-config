@@ -1,8 +1,7 @@
 {
   programs.nixvim.plugins.alpha = {
     enable = true;
-    iconsEnabled = true;
-    
+
     layout = let
       padding = val: { type = "padding"; inherit val; };
 
@@ -19,7 +18,7 @@
             cmd
             { noremap = true; silent = true; nowait = true; }
           ];
-    
+
           position = "center";
           cursor = 3;
           width = 20;
@@ -48,7 +47,7 @@
       }
 
       (padding 3)
-      
+
       {
         type = "group";
         opts.spacing = 1;
