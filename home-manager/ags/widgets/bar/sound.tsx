@@ -35,7 +35,7 @@ const SoundBox = <eventbox
   </eventbox>
 
 export default function AudioSlider() {
-  return <box className="sound" >
+  return <box className="sound icon-label" >
     {Icon}
     {SoundBox}
   </box>

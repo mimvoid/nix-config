@@ -3,19 +3,12 @@
 @import "./variables/_fonts.scss";
 @import "./variables/_looks.scss";
 
-centerbox {
-  margin: 3px 12px 1px 12px;
+.bar centerbox {
+  margin: 3px 12px 1px;
   border-radius: $radius;
 
   color: $primary;
   background-color: transparent;
-}
-
-.left,
-.center,
-.right {
-  border-radius: $radius;
-  background-color: $base;
 }
 
 .left > *,
@@ -23,53 +16,57 @@ centerbox {
   padding: 4px 8px;
 }
 
-/* Widget-specific spacing */
-
-.sound,
-.battery {
+.icon-label {
   margin: 0 4px;
+}
+
+/*---------*/
+/* Modules */
+/*---------*/
+
+.workspaces {
+  /* Make workspace buttons slimmer */
+  padding: 6px;
+
+  button {
+    margin: 0 2.5px;
+    padding: 0 5px;
+    color: transparent;
+    background-color: $primary;
+
+    /* Expand active workspace GNOME-style */
+    &.focused {
+      padding: 0 12px;
+      background-color: $primary-dim;
+      transition: all 0.15s ease-in-out;
+    }
+
+    &:hover {
+      background-color: $tertiary-dim;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+
+.clock {
+  icon {
+    margin: 0 4px;
+  }
+
+  /* Disable default button background color */
+  &:hover {
+    background-color: transparent;
+  }
 }
 
 .system-tray {
   margin: 0 2px;
-}
 
-/* Modules */
-
-.workspaces {
-  padding: 6px; /* make buttons smaller */
-}
-
-.workspaces button {
-  margin: 0 2.5px;
-  padding: 0 5px;
-  background-color: $primary;
-  color: transparent;
-
-  &.focused {
-    padding: 0 12px;
-    background-color: $primary-dim;
-    transition: all 0.15s ease-in-out;
+  /* Change icons to Papirus for more compatibility */
+  image {
+    all: unset;
+    -gtk-icon-theme: "Papirus";
   }
-
-  &:hover {
-    background-color: $tertiary-dim;
-    transition: all 0.2s ease-in-out;
-  }
-}
-
-.clock icon {
-  margin: 0 4px;
-}
-/* disable default button background color */
-.clock:hover {
-  background-color: transparent;
-}
-
-/* Change icons to Papirus for more compatibility */
-.system-tray image {
-  all: unset;
-  -gtk-icon-theme: "Papirus";
 }
 
 .network {
@@ -82,9 +79,11 @@ centerbox {
 
 .sound {
   color: $tertiary-bright;
+
   label {
     margin-left: 2px;
   }
+
   trough highlight {
     background-color: $tertiary-bright;
   }
@@ -109,6 +108,7 @@ centerbox {
 .brightness {
   color: adjust-color($error, $lightness: 8%);
 
+  /* Widen the hit box */
   .brightness-revealer {
     min-width: 4px;
   }
@@ -125,7 +125,7 @@ centerbox {
 
   &:hover {
     color: change-color($base, $alpha: 1);
-    background-color: change-color($primary, $alpha: 0.85);
+    background-color: change-color($primary, $alpha: 0.9);
     transition: all 0.2s ease-in-out;
   }
 }

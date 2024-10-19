@@ -1,7 +1,6 @@
 @use "sass:color";
 @import "./variables/_looks.scss";
 @import "./variables/_fonts.scss";
-@import "./variables/_colors.scss";
 @import "./bar.scss";
 @import "./calendar.scss";
 @import "./notifications.scss";
@@ -11,6 +10,11 @@
   font-family: $font-family;
   font-size: $font-size;
   -gtk-icon-theme: "Adwaita";
+}
+
+.box {
+  border-radius: $radius;
+  background-color: $base;
 }
 
 button {
@@ -45,10 +49,11 @@ trough {
 window.popup {
   menu {
     padding: 8px;
-    border-radius: 8px;
+    border-radius: $radius * 0.66;
     background-color: change-color($base, $alpha: 0.7);
-    color: $text;
+    color: $string;
   }
+
   menuitem {
     margin: 2px;
   }
@@ -62,6 +67,6 @@ tooltip {
     padding: 4px 8px;
     border-radius: $radius;
     background-color: change-color($base, $alpha: 0.7);
-    color: $text;
+    color: $string;
   }
 }

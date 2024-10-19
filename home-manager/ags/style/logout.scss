@@ -4,7 +4,7 @@
 /* WIP */
 
 .logout {
-  color: $text;
+  color: $string;
   background-color: transparent;
 }
 
@@ -22,7 +22,7 @@
   border-radius: 24px;
 
   opacity: 0.75;
-  color: $text;
+  color: $string;
   background-color: $base;
 
   animation: gradient_f 20s ease-in infinite;

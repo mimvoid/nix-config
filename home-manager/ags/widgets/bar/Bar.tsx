@@ -14,7 +14,7 @@ import Power from "./power"
 
 function Left() {
   return <box
-    className="left"
+    className="left box"
     hexpand
     halign={Gtk.Align.START}>
       <Overview />
@@ -25,14 +25,14 @@ function Left() {
 
 function Center() {
   return <box
-    className="center" >
+    className="center box" >
       <Clock />
   </box>
 }
 
 function Right() {
   return <box
-    className="right"
+    className="right box"
     hexpand
     halign={Gtk.Align.END} >
       <Tray />

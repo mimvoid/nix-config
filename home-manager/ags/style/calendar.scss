@@ -12,7 +12,7 @@
 
 .calendar calendar {
   font-size: 15px;
-  color: $text;
+  color: $string;
 
   // Keep week numbers aligned
   &:not(.highlight) {
@@ -20,7 +20,7 @@
   }
 
   &.button {
-    color: transparentize($text, 0.5);
+    color: transparentize($string, 0.5);
     border-radius: $radius;
 
     &:hover {
@@ -41,6 +41,6 @@
 
   /* Days outside the current month */
   &:indeterminate {
-    color: transparentize($text, 0.6);
+    color: transparentize($string, 0.6);
   }
 }

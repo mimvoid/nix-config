@@ -22,7 +22,7 @@ function BatteryTooltip() {
 
 export default function BatteryLevel() {
   return <box
-    className="battery"
+    className="battery icon-label"
     tooltipText={BatteryTooltip()}
     visible={bind(battery, "isPresent")}>
       <icon icon={bind(battery, "batteryIconName")} />
