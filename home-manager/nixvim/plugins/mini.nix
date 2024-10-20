@@ -3,7 +3,7 @@
     enable = true;
     modules = {
       move = {};
-      pairs = {};
+      # pairs = {};
       surround = {};
       trailspace = {};
 

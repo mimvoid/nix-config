@@ -33,12 +33,14 @@ in
     extraPlugins = with pkgs.vimPlugins; [
       plenary-nvim
       fcitx-vim
+      ultimate-autopair-nvim
       neotab-nvim
     ];
 
     # neotab.nvim config
     extraConfigLua = # lua
     ''
+      require("ultimate-autopair").setup({})
       require("neotab").setup({
         tabkey = "",
         smart_punctuators = {
