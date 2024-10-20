@@ -1,3 +1,4 @@
+import { Variable } from "astal"
 import { App, Astal, Gtk, Gdk, Widget, astalify, type ConstructProps } from "astal/gtk3"
 import GObject from "gi://GObject"
 
@@ -14,14 +15,19 @@ class Calendar extends astalify(Gtk.Calendar) {
   }
 }
 
+const timeSeconds = Variable<string>("").poll(1000, "date '+%H:%M:%S'")
+
 function CalendarWidget() {
+  const Time = <label className="display in-box" label={timeSeconds()} />
+
   const Content = <Calendar
     showHeading
     showDayNames
     showWeekNumbers
   />
 
-  return <box className="calendar box" >
+  return <box className="calendar box" vertical >
+    {Time}
     {Content}
   </box>
 }

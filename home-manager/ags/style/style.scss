@@ -13,9 +13,24 @@
   -gtk-icon-theme: "Adwaita";
 }
 
+window {
+  border-radius: $radius;
+}
+
+.display {
+  padding: 2rem;
+  font-family: $display;
+  font-size: $display-size;
+}
+
 .box {
   border-radius: $radius;
   background-color: $base;
+}
+
+.in-box {
+  border-radius: $radius;
+  background-color: $box-dim;
 }
 
 button {

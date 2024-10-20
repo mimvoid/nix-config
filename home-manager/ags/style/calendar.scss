@@ -6,8 +6,13 @@
   all: unset;
   padding: 12px;
   padding-bottom: 6px;
-  border-radius: $radius;
   background-color: change-color($base, $alpha: 0.9);
+}
+
+.calendar .display {
+  margin: 2px 0 12px;
+  color: $string;
+  text-decoration: underline solid $primary;
 }
 
 .calendar calendar {
@@ -16,7 +21,7 @@
 
   // Keep week numbers aligned
   &:not(.highlight) {
-    padding: 6px;
+    padding: 5px;
   }
 
   &.button {
