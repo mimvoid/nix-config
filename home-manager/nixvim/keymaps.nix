@@ -50,7 +50,7 @@
     (sil "Move up"    "i" "<A-k>" "<Up>")
     (sil "Move left"  "i" "<A-h>" "<Left>")
     (sil "Move right" "i" "<A-l>" "<Right>")
-    
+
     # Buffers
     (sil "Close buffer"    "n" "<leader>x" "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>")
     (sil "Next buffer"     "n" "<Tab>"     "<cmd>bn<cr>")
@@ -70,7 +70,6 @@
     # Replace placeholder text
     (sil "Replaces placeholder '<++>'" "n" "<leader><Space>" "/<++><Enter>\"_c4l")
 
-
     # Plugins
 
     # Mini.files
@@ -78,7 +77,7 @@
 
     # Git
     (map "Open Lazygit"  "n" "<leader>g" "<cmd>LazyGit<cr>")
-  
+
     # Telescope
     (map "Telescope find files"   "n" "<leader>ff" "<cmd>Telescope find_files<cr>")
     (map "Telescope recent files" "n" "<leader>fr" "<cmd>Telescope frecency<cr>")

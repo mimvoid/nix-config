@@ -23,7 +23,7 @@ let
 
   # Font packages
   myfont = pname: pkgs.callPackage ../packages/fonts/${pname}.nix {};
- 
+
   # Default fonts
   serif = sansSerif;
   sansSerif = {
@@ -68,7 +68,7 @@ in
   stylix = {
     enable = true;
     autoEnable = false;
-    
+
     # Have the hashtag for viewing in the editor
     base16Scheme = lib.attrsets.mapAttrs (name: value:
       lib.strings.removePrefix "#" value)
@@ -105,8 +105,11 @@ in
       zathura.enable = true;
       nixvim = {
         enable = true;
-        transparentBackground.main = true;
-        transparentBackground.signColumn = true;
+        plugin = "base16-nvim";
+        transparentBackground = {
+          main = true;
+          signColumn = true;
+        };
       };
     };
   };
@@ -134,14 +137,14 @@ in
       # black
       color0 = base01;
       color8 = base02;
-                
+
       color1 = red;
       color2 = green;
       color3 = yellow;
       color4 = blue;
       color5 = magenta;
       color6 = cyan;
-                
+
       # white
       color7 = base03;
       color15 = base04;

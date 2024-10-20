@@ -25,7 +25,7 @@
     "shadow_opacity" = 50;
 
     # Window title & buttons
-    
+
     # Default: "O|SHMC" Icon | Shutter Hide Maximize Close
     "button_layout" = "|SHMC";
     "title_font" = "${config.gtk.font.name} 9";
@@ -36,7 +36,7 @@
     # Workspaces
     "cycle_workspaces" = true;
     "scroll_workspaces" = true;
-    
+
     # Snapping
     "tile_on_move" = true;
     "snap_resist" = false;
@@ -47,8 +47,8 @@
     # Workspaces
     "workspace_names" = [ "1" "2" "3" "4" ];
     # disables the mouse changing workspaces at the edge of a screen
-    "wrap_workspaces" = false;     
-    
+    "wrap_workspaces" = false;
+
     # Margins
     # The large top and bottom margins allow exclusive space for
     # the panels, even if they are floating

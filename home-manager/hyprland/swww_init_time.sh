@@ -6,7 +6,7 @@ case $(date +%H) in
 		swww img "$HOME"/NixOS/wallpapers/wallpapers/gracile_twilight.jpg
     ;;
   07 | 08 | 09 | 10 | 11) # 7:00 to 11:59, morning
-		
+
     swww img "$HOME"/NixOS/wallpapers/wallpapers/dangerdrop_coffee-roadtrip.jpg
     ;;
 	12 | 13 | 14 | 15) # 12:00 to 15:59, midday

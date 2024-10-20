@@ -27,7 +27,7 @@
     enable = true;
     dotDir = "zsh";
     syntaxHighlighting.enable = true;
-    
+
     history = {
       path = "$HOME/zsh/.zsh_history";
       ignoreDups = true;
@@ -36,7 +36,7 @@
     };
 
     historySubstringSearch.enable = true;
-    
+
     shellAliases = {
       ".." = "cd ..";
       "-" = "cd -";
@@ -44,7 +44,7 @@
       nhos = "nh os switch";
       nhh = "nh home switch";
       nixdev = "nix develop --command zsh";
-      
+
       blueon = "bluetooth on";
       btui = "bluetuith --no-help-display";
 
@@ -74,7 +74,7 @@
       export ZVM_VI_HIGHLIGHT_FOREGROUND=yellow
       export ZVM_VI_HIGHLIGHT_BACKGROUND=black
     '';
-    
+
     completionInit = " autoload -U compinit && compinit";
     plugins = [
       {
