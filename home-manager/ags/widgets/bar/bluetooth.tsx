@@ -17,6 +17,8 @@ const Indicator = <button
     } />
 </button>
 
+// TODO: re-implement Bluetooth active device
+
 //const Devices = <box
 //
 //</box>

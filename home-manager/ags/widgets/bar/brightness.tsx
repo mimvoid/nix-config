@@ -44,6 +44,7 @@ export default function Brightness() {
   const Label = <label
     label={bind(currentBrightness).as((i) => (`${Math.floor(i * 100)}%`))} />
 
+  // FIX: slider value does not change immediately
   const Slider = <slider
     cursor="pointer"
     valign={Gtk.Align.CENTER}

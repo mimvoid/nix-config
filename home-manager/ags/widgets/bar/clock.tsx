@@ -2,7 +2,7 @@ import { Variable } from "astal"
 import { App, Gtk } from "astal/gtk3"
 import Icon from "../../lib/icons"
 
-const time = Variable<string>("").poll(1000, "date '+%A %b %d / %H:%M'")
+const time = Variable<string>("").poll(1000, "date '+%a · %b %d · %H:%M'")
 
 export default function Clock() {
   return <button

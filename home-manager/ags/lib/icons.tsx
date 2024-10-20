@@ -1,5 +1,7 @@
 import { App } from "astal/gtk3";
 
+App.add_icons(`${SRC}/assets`);
+
 const Icon = {
   bluetooth: {
     enabled: "bluetooth-active-symbolic",
@@ -29,5 +31,3 @@ const Icon = {
 };
 
 export default Icon;
-
-App.add_icons(`${SRC}/assets`);
