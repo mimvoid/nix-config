@@ -20,7 +20,6 @@ in
   xdg.configFile = {
     "ags" = symlink "${home-manager}/ags";
     "gtk-3.0/gtk.css".source = ./xfconf/gtk3.css;
-    "wlogout/icons".source = ./hyprland/icons;
   };
 
   xdg.dataFile."navi/cheats" = symlink "${home-manager}/terminal/navi";

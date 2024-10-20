@@ -15,6 +15,5 @@
     ./hyprlock.nix
     ./fuzzel.nix
     ./wlsunset.nix
-    ./wlogout.nix
   ];
 }

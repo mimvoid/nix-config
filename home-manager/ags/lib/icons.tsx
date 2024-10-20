@@ -21,7 +21,7 @@ const Icon = {
     indicator: "system-shutdown-symbolic",
     lock: "system-lock-screen-symbolic",
     logout: "system-log-out-symbolic",
-    restart: "view-refresh-symbolic",
+    reboot: "view-refresh-symbolic",
     shutdown: "system-shutdown-symbolic",
   },
 

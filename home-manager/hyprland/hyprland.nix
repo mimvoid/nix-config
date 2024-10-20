@@ -240,8 +240,8 @@ in
       "$mod, R, exec, hyprctl reload config-only"
       "$mod, R, exec, ags --quit && ags &"
 
-      # Trigger wlogout
-      "$mod SHIFT, Q, exec, wlogout -b 2"
+      # Toggle session menu
+      "$mod SHIFT, Q, exec, ags -t \"session\""
 
       # Switch focus
       "$mod, ${left}, movefocus, l"
