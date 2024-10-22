@@ -68,6 +68,18 @@
     -gtk-icon-theme: "Papirus";
   }
 }
+.hider {
+  padding: 0 6px;
+  border-radius: $radius;
+  opacity: 0.7;
+  color: $tertiary-dim;
+  transition: all 0.2s ease-in-out;
+
+  &.open {
+    -gtk-icon-transform: rotate(-90deg);
+    opacity: 0.5;
+  }
+}
 
 .network {
   color: $tertiary-dim;

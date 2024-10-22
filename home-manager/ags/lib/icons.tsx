@@ -18,6 +18,7 @@ const Icon = {
 
   calendar: "x-office-calendar",
   overview: "nix-snowflake-symbolic",
+  hider: "pan-start-symbolic",
 
   powermenu: {
     indicator: "system-shutdown-symbolic",
