@@ -13,12 +13,12 @@ function GetBrightness() {
   return brightness
 }
 
-let currentBrightness = Variable(GetBrightness());
+const currentBrightness = Variable(GetBrightness());
 
 export default function Brightness() {
   function initializeValues() {
-    currentBrightness = GetBrightness();
-    Slider.value = currentBrightness;
+    currentBrightness.set(GetBrightness());
+    Slider.value = currentBrightness.get();
   }
 
   setTimeout(initializeValues, 0)
@@ -26,8 +26,8 @@ export default function Brightness() {
   const myDevice = exec("sh -c 'ls -w1 /sys/class/backlight | head -1'");
 
   monitorFile(`/sys/class/backlight/${myDevice}/brightness`), () => {
-    currentBrightness = GetBrightness();
-    Slider.value = currentBrightness;
+    currentBrightness.set(GetBrightness());
+    Slider.value = currentBrightness.get();
   }
 
   // toggle for wlsunset
@@ -52,7 +52,7 @@ export default function Brightness() {
     value={bind(currentBrightness)}
     onDragged={({value}) => {
       execAsync(`brightnessctl set ${Math.floor(value * 100)}% -q`).catch();
-      currentBrightness = value;
+      currentBrightness.set(value);
       }
     } />
 
