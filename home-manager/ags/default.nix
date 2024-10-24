@@ -21,6 +21,7 @@
       wireplumber
       battery
       notifd
+      mpris
     ];
   };
 }

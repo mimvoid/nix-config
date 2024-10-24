@@ -5,6 +5,7 @@ import Overview from "./overview"
 import Workspaces from "./workspaces"
 import Title from "./window-title"
 import Clock from "./clock"
+import MediaIcon from "./media"
 import Tray from "./sys-tray"
 import Network from "./network"
 import Bluetooth from "./bluetooth"
@@ -28,6 +29,7 @@ function Center() {
   return <box
     className="center box" >
       <Clock />
+      <MediaIcon />
   </box>
 }
 

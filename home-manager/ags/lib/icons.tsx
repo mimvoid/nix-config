@@ -20,6 +20,17 @@ const Icon = {
   overview: "nix-snowflake-symbolic",
   hider: "pan-start-symbolic",
 
+  mpris: {
+    start: "media-playback-start-symbolic",
+    stop: "media-playback-stop-symbolic",
+    pause: "media-playback-pause-symbolic",
+    forward: "media-seek-forward-symbolic",
+    backward: "media-seek-backward-symbolic",
+    shuffle: "media-playlist-shuffle-symbolic",
+    repeat: "media-playlist-repeat-symbolic",
+    repeatSong: "media-playlist-repeat-song-symbolic",
+  },
+
   powermenu: {
     indicator: "system-shutdown-symbolic",
     lock: "system-lock-screen-symbolic",
