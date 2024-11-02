@@ -113,6 +113,7 @@ in
       (opaquer-title "*Nextcloud")
       (opaquer-class "Anki")
       (opaquer-class "org.pwmt.zathura")
+      (opaquer-class "com.github.flxzt.rnote")
       (opaque-ish "FreeTube")
       (opaque-ish "Zotero")
       (opaque-ish "obsidian")

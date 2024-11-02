@@ -52,7 +52,7 @@
   ];
 
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "SourceCodePro" ]; })
+    (nerdfonts.override { fonts = [ "Hasklig" ]; })
   ];
 
   services.flatpak.enable = true;
