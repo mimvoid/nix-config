@@ -38,7 +38,7 @@ in
 
     # Startup & daemons
     exec-once = [
-      "systemctl --user import-environment &" 
+      "systemctl --user import-environment &"
       "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
       "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon &"

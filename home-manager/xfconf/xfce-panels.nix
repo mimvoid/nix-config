@@ -8,7 +8,12 @@ let
     "background-style" = 1;
 
     # transleucent rose pine moon base
-    "background-rgba" = [ (35.0 / 255) (33.0 / 255) (54.0 / 255) 0.75 ];
+    "background-rgba" = [
+      (35 / 255.0)
+      (33 / 255.0)
+      (54 / 255.0)
+      0.75
+    ];
   in
   {
     top-panel = mapAttrs' (name: value: nameValuePair
@@ -93,7 +98,7 @@ let
       "9/button-title" = 3; # enable custom title
       "9/custom-title" = "O"; # the letter O
     };
-    
+
     bottom = mapAttrs' (name: value: nameValuePair
       "plugins/plugin-${name}" value)
     {

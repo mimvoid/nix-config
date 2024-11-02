@@ -73,8 +73,7 @@
 
   programs.xwayland.enable = true;
 
-
-  # Desktop environments 
+  # Desktop environments
   # & window managers
   xdg.portal = {
     enable = true;
@@ -108,7 +107,7 @@
     xfce.parole
     xfce.ristretto
   ];
-  
+
   # Hyprland
   programs.hyprland = {
     enable = true;
@@ -212,7 +211,7 @@
 
   programs.system-config-printer.enable = true;
 
-  # Thunar additions 
+  # Thunar additions
   programs.thunar = {
     enable = true;
     plugins = with pkgs.xfce; [

@@ -1,5 +1,11 @@
 { config, ... }:
 let
+  # Direct (out of store) symlinks
+
+  # If you're using flakes, use absolute paths or the symlinks will point to the nix store.
+  # Relative paths can cause broken links, and nothing will update until a rebuild.
+  # No need for direct symlinks if you don't need instant updates.
+
   symlink = src: {
     source = config.lib.file.mkOutOfStoreSymlink src;
   };
@@ -11,18 +17,14 @@ let
   obsidian-dir = "Documents/Zettelkasten";
 in
 {
-  # Direct (out of store) symlinks
+  xdg = {
+    configFile = {
+      "ags" = symlink "${home-manager}/ags";
+      "gtk-3.0/gtk.css".source = ./xfconf/gtk3.css;
+    };
 
-  # If you're using flakes, use absolute paths or the symlinks will point to the nix store.
-  # Relative paths can cause broken links, and nothing will update until a rebuild.
-  # No need for direct symlinks if you don't need instant updates.
-
-  xdg.configFile = {
-    "ags" = symlink "${home-manager}/ags";
-    "gtk-3.0/gtk.css".source = ./xfconf/gtk3.css;
+    dataFile."navi/cheats" = symlink "${home-manager}/terminal/navi";
   };
-
-  xdg.dataFile."navi/cheats" = symlink "${home-manager}/terminal/navi";
 
   home.file = {
     # Firefox userChrome & userContent

@@ -28,7 +28,8 @@
 
     treesitter-textobjects = let
       map = query: desc: { inherit query; inherit desc; };
-    in {
+    in
+    {
       enable = true;
 
       select = {
