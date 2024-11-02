@@ -1,7 +1,11 @@
+{ pkgs, ... }:
+
 {
 	programs.nixvim.plugins = {
     treesitter = {
       enable = true;
+      package = pkgs.unstable.vimPlugins.nvim-treesitter;
+
       folding = true;
 
       nixGrammars = true;

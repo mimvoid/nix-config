@@ -2,6 +2,8 @@
 
 {
   programs.nixvim = {
+    globals.borderStyle = "rounded";
+
     colorschemes.base16 = {
       setUpBar = true; # Stylix takes care of enabling and the base16 colors
       settings.telescope_borders = true;

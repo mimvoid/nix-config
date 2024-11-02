@@ -75,6 +75,10 @@
     # Mini.files
     (map "Open mini.files" "n" "<leader>e" "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<cr>")
 
+    # Mini.trailspace
+    (map "Trim trailing whitespace" "n" "<leader>tw" "<cmd>lua MiniTrailspace.trim()<cr>")
+    (map "Trim trailing lines"      "n" "<leader>tl" "<cmd>lua MiniTrailspace.trim_last_lines()<cr>")
+
     # Git
     (map "Open Lazygit"  "n" "<leader>g" "<cmd>LazyGit<cr>")
 
