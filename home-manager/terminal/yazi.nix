@@ -26,6 +26,8 @@
       };
       preview = {
         tab_size = 2;
+        max_width = 2000;
+        max_height = 2000;
       };
 
       plugin.prepend_previewers = [

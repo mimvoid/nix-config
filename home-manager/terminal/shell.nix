@@ -10,6 +10,7 @@
     # media
     imagemagick
     exiftool
+    mediainfo
     fontpreview
 
     # disk & files
