@@ -19,14 +19,14 @@
         lualine_b = [ "branch" ];
         lualine_c = [
           {
-            name = "filetype";
+            __unkeyed-1 = "filetype";
             padding = { left = 1; right = 0; };
-            extraConfig.icon_only = true;
+            icon_only = true;
           }
           {
-            name = "filename";
+            __unkeyed-1 = "filename";
             padding = { left = 0; right = 1; };
-            extraConfig.symbols = { modified = ""; readonly = "󰌾"; };
+            symbols = { modified = ""; readonly = "󰌾"; };
           }
           "filesize"
         ];
@@ -34,8 +34,8 @@
         lualine_x = [
           "diff"
           {
-            name = "diagnostics";
-            extraConfig.symbols = {
+            __unkeyed-1 = "diagnostics";
+            symbols = {
               error = " ";
               warn = " ";
               info = " ";
@@ -45,7 +45,7 @@
 
           # Show active language server
           {
-            name.__raw = ''
+            __unkeyed-1.__raw = ''
               function()
                 local msg = ""
                 local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')

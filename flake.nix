@@ -19,6 +19,7 @@
 
     stylix.url = "github:danth/stylix/master";
     ags.url = "github:Aylur/ags/v2";
+    # zen-browser.url = "github:ch4og/zen-browser-flake";
   };
 
   outputs = {
@@ -45,7 +46,9 @@
       ];
     };
 
-    allow-unfree = [ "" ];
+    allow-unfree = [ "vivaldi" ];
+
+    FLAKE = "/home/zinnia/NixOS";
   in
   {
     nixosConfigurations = {
@@ -56,7 +59,7 @@
           ./configuration.nix
           ./hosts/sirru/hardware-configuration.nix
 
-          { environment.variables.FLAKE = "/home/zinnia/NixOS"; }
+          { environment.variables = { inherit FLAKE; }; }
         ];
       };
 
@@ -74,6 +77,8 @@
           ./home-manager/home.nix
           stylix.homeManagerModules.stylix
           nixvim.homeManagerModules.nixvim
+
+          { home.sessionVariables = { inherit FLAKE; }; }
         ];
       };
     };

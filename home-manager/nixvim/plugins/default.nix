@@ -28,7 +28,10 @@ in
   ];
 
   programs.nixvim = {
-    plugins.persistence.enable = true;
+    plugins = {
+      persistence.enable = true;
+      web-devicons.enable = true;
+    };
 
     extraPlugins = with pkgs.vimPlugins; [
       plenary-nvim
