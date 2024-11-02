@@ -46,7 +46,7 @@
       nixdev = "nix develop --command zsh";
 
       blueon = "bluetooth on";
-      btui = "bluetuith --no-help-display";
+      btui = "bluetui";
 
       lg = "lazygit";
       ncp = "neocities push --prune";

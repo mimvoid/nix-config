@@ -5,7 +5,6 @@
     ./shell.nix
     ./git.nix
     ./kitty.nix
-    ./bluetuith.nix
     ./yazi.nix
     ./dooit/default.nix
     ./navi/default.nix
@@ -13,6 +12,7 @@
   ];
 
   home.packages = with pkgs; [
+    unstable.bluetui
     gotop
     (callPackage ../../packages/arttime.nix {})
   ];
