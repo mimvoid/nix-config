@@ -22,6 +22,7 @@ in
     ./lualine.nix
     ./marks.nix
     ./mini.nix
+    ./r.nix
     ./snippets.nix
     ./telescope.nix
     ./treesitter.nix
