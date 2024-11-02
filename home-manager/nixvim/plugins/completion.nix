@@ -1,3 +1,16 @@
+let
+  # blink = pkgs.unstable.callPackage ../../../packages/blink-cmp/default.nix {};
+  #
+  # blink-compat = pkgs.vimUtils.buildVimPlugin {
+  #   name = "blink.compat";
+  #   src = pkgs.fetchFromGitHub {
+  #     owner = "Saghen";
+  #     repo = "blink.compat";
+  #     rev = "747262967a419b040ca20302594b1fa343e0f01a";
+  #     hash = "sha256-q2NYQP2IZR0EaIL6KxFeWzMKCVi8tt9Ztpqhf3XfAps=";
+  #   };
+  # };
+in
 {
   programs.nixvim.plugins.cmp = {
     enable = true;
@@ -33,4 +46,47 @@
       };
     };
   };
+
+  # programs.nixvim = {
+  #   extraPlugins = lib.mkAfter [
+  #     blink
+  #     blink-compat
+  #   ];
+  #
+  #   extraConfigLua = lib.mkAfter # lua
+  #   ''
+  #     require("blink-cmp").setup({
+  #       sources = {
+  #         completion = {
+  #           enabled_providers = { 'path', 'lsp', 'snippets', 'buffer', 'cmp_r' },
+  #         },
+  #
+  #         providers = {
+  #           cmp_r = {
+  #             name = 'cmp_r',
+  #             module = 'blink.compat.source',
+  #           },
+  #         },
+  #       },
+  #
+  #       accept = { auto_brackets = { enabled = true } },
+  #       highlight = { use_nvim_cmp_as_default = true },
+  #       nerd_font_variant = "mono",
+  #       triggers = { signature_help = { enabled = true } },
+  #
+  #       windows = {
+  #         autocomplete = {
+  #           border = vim.g.borderStyle,
+  #         },
+  #         documentation = {
+  #           border = vim.g.borderStyle,
+  #           auto_show = true,
+  #         },
+  #         signature_help = {
+  #           border = vim.g.borderStyle,
+  #         },
+  #       }
+  #     })
+  #   '';
+  # };
 }
