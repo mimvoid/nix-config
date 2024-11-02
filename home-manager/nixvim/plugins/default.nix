@@ -27,7 +27,6 @@ in
     ./telescope.nix
     ./treesitter.nix
   ];
-
   programs.nixvim = {
     plugins = {
       persistence.enable = true;
@@ -46,7 +45,6 @@ in
     ''
       require("ultimate-autopair").setup({})
       require("neotab").setup({
-        tabkey = "",
         smart_punctuators = {
           enabled = true,
           semicolon = {
@@ -55,16 +53,6 @@ in
           },
         },
       })
-    '';
-    plugins.cmp.settings.mapping."<Tab>" = # lua
-    ''
-      cmp.mapping(function()
-        if cmp.visible() then
-          cmp.select_next_item()
-        else
-          require("neotab").tabout()
-        end
-      end)
     '';
 
     extraPackages = with pkgs; [

@@ -22,7 +22,5 @@
         enable_named_colors = false
       })
     '';
-
-    plugins.cmp.settings.formatting.format = "require('nvim-highlight-colors').format";
   };
 }
