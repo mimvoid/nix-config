@@ -3,6 +3,7 @@
 {
   imports = [
     ./shell.nix
+    ./cli.nix
     ./git.nix
     ./kitty.nix
     ./yazi.nix
