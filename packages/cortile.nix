@@ -1,22 +1,25 @@
-{ lib,
+{
+  lib,
   buildGoModule,
-  fetchFromGitHub
+  fetchFromGitHub,
 }:
 
 # Taken from nur.repos.milahu.cortile
 
 buildGoModule rec {
   pname = "cortile";
-  version = "2.5.0";
+  version = "2.5.2";
 
   src = fetchFromGitHub {
     owner = "leukipp";
     repo = "cortile";
     rev = "v${version}";
-    hash = "sha256-0i/DWDwGyV6G1eTM7RH+O8sbo7eB6WfUEkUdXrJ0+5I=";
+    hash = "sha256-2/U7oQO2vOrmoPR+s9VMSWS+d/YqZ5Ic0ieSxSA6SP4=";
   };
 
-  vendorHash = "sha256-sjZvE7CTHLbdwuLUfhLe9NAGUEiw/8G0f6U5hWYf+kE=";
+  vendorHash = "sha256-VlIPsUogiCQeWWrFsueB6COa91CWIGx3hb7HKC59rS0=";
+
+  CGO_ENABLED = 0;
 
   ldflags = [
     "-s"
@@ -27,15 +30,16 @@ buildGoModule rec {
     "-X=main.date=1970-01-01T00:00:00Z"
   ];
 
-  meta = with lib; {
-    description = ''Linux auto tiling manager with hot corner support for
+  meta = {
+    longDescription = ''
+      Linux auto tiling manager with hot corner support for
       Openbox, Fluxbox, IceWM, Xfwm, KWin, Marco, Muffin, Mutter and other
       EWMH compliant window managers using the X11 window system. Therefore,
       this project provides dynamic tiling for XFCE, LXDE, LXQt, KDE and GNOME
       (Mate, Deepin, Cinnamon, Budgie) based desktop environments'';
     homepage = "https://github.com/leukipp/cortile";
-    license = licenses.mit;
-    maintainers = with maintainers; [ ];
+    license = lib.licenses.mit;
+    # maintainers = with lib.maintainers; [ ];
     mainProgram = "cortile";
   };
 }
