@@ -19,6 +19,21 @@
   ];
 
   home.sessionVariables = {
+    # pagers
+    PAGER = "less";
+    LESS = builtins.concatStringsSep " " [
+      "--ignore-case"
+      "--status-column"
+      "--use-color"
+      "--quit-if-one-screen"
+      "--no-init"
+      "--window=-4"
+      "--HILITE-UNREAD"
+      "--RAW-CONTROL-CHARS" # highlighting with lesspipe
+    ];
+    BAT_STYLE = "numbers,changes";
+    MANPAGER = "nvim +Man!";
+
     # fontpreview settings
     FONTPREVIEW_SIZE = "650x700";
     FONTPREVIEW_PREVIEW_TEXT = builtins.concatStringsSep ''\n'' [
@@ -71,6 +86,7 @@
   # Misc cli tools
   programs = {
     bat.enable = true;
+    lesspipe.enable = true;
 
     eza = {
       enable = true;

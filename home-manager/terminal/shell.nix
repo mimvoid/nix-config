@@ -21,12 +21,7 @@ let
 
     zsh-help = {
       name = "zsh-help";
-      src = pkgs.fetchFromGitHub {
-        owner = "Freed-Wu";
-        repo = "zsh-help";
-        rev = "66103d6682e0ffe83576208dd5e45e560cdb76f8";
-        hash = "sha256-RiJK8A1dXq1O3m9t56/PHaP4T5Fyn5HumKPwJdYshX4=";
-      };
+      src = pkgs.callPackage ../../packages/zsh-help.nix {};
     };
   };
 in
@@ -35,6 +30,7 @@ in
     zsh-autopair.src
     zsh-nix-shell.src
     zsh-vi-mode.src
+    zsh-help.src
   ];
 
   programs.zsh = {
