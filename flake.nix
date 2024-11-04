@@ -14,12 +14,27 @@
     # Extra modules
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+
+        # Disable optional inputs
+        nix-darwin.follows = "";
+        nuschtosSearch.follows = "";
+      };
     };
 
-    stylix.url = "github:danth/stylix/master";
+    stylix = {
+      url = "github:danth/stylix/master";
+      inputs = {
+        base16-fish.follows = "";
+        base16-helix.follows = "";
+        gnome-shell.follows = "";
+        tinted-foot.follows = "";
+        tinted-tmux.follows = "";
+      };
+    };
+
     ags.url = "github:Aylur/ags/v2";
-    # zen-browser.url = "github:ch4og/zen-browser-flake";
   };
 
   outputs = {
