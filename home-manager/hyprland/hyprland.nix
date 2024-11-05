@@ -41,7 +41,7 @@ in
       "systemctl --user import-environment &"
       "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
-      "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon &"
+      "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon --start --unlock &"
       "mega-cmd-server &"
       "fcitx5 -d &"
       "hypridle &"
