@@ -2,44 +2,6 @@
 	Snippet: MCL Multi Column / Author: Faiz Khuzaimah / twitter: @faizkhuzaimah / github: https://github.com/efemkay
 
 	Ver 0.10.0 (updated 2024-09-01)
-	- introduce fw dw and pw
-	- added left-right margin for Float Callout
-	- refactor List Column code to improve performance
-	Ver 0.9.10 (updated 2024-06-26)
-	- fix issues #81 and #89
-	Ver 0.9.9 (updated 2024-01-25)
-	- code cleanup (including -small -medium -large)
-	- improve css performance on float but require cssclass use again
-	Ver 0.9.8 (updated 2023-11-03)
-	- fixes on sub-callout becomes flexible height (and introduce option for such)
-	Ver 0.9.7 (updated 2023-10-13)
-	- GH FR issue #41, #42 and fixed GH issue #35. MC Callout now supports sub-blockquote and sub-paragraph
-	- GH FR issue #43. MC Callout now supports Multi Column within Multi Column
-	Ver 0.9.5 (updated 2023-07-30)
-	- fixes on minimal float affecting Minimal own wide table feature
-	- fixes on properties padding affecting Minimal
-	Ver 0.9.4 (updated 2023-07-06)
-	- improved MC Callout compatibility with Minimal theme V7.0
-	- improved MC Callout compatibility with Blue Topaz
-	Ver 0.9.3 (updated 2023-06-24)
-	- add support for List Column for li that's also a header
-	- fixes on column ruler to apply properly only for List Column on first ul only
-	- fixes on Float Callout in LP not floating due to additional div layer
-	Ver 0.9.2 (updated 2023-05-27)
-	- fix MC List Card mistakenly affect non List Card bullet list padding in same note
-	- fix obsidian default bullet "draw" not rendered properly in List Column (for the ones using tag and contextual typography plugin)
-	Ver 0.9.1 (updated 2023-04-06)
-	- fix MC "fixed center" option not properly coded
-	- fix MC List Grid previous not support sublist
-	- fix MC List Column margin top for first column
-	- fix MC List Grid for first bullet header
-	Ver 0.9.0 (updated 2023-04-01)
-	- MC - add option to hide SNW block ref for images in MC Callout
-	- MC - added wide option for List Grid/Card
-	- MC - added option to adjust float callout top margin
-	- MC - added fixed width option
-	- fix support minimal Callout style Outlined
-	- List Column/Grid/Card fully support :has()
 
 	What is this snippet for?
 	- to allow Obsidian users to change the layout with preset css by just specifying

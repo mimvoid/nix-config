@@ -1,52 +1,36 @@
-/* Hide blank line above tables (universal) */
-
-/* author: Samo
- * source: https://forum.obsidian.md/t/hiding-the-blank-line-above-tables/63465 */
-
-.cm-line:has(+ .cm-embed-block.cm-table-widget) br {
-  display: none;
-}
-
-/* Adds a little padding to tables */
-/* ---
- * cssclasses: pad-tables
- * --- */
-
-/* original author: DeaconLight
- * source: https://forum.obsidian.md/t/custom-css-for-tables-5-new-styles-ready-to-use-in-your-notes/17084 */
-
-.pad-tables th,
-.pad-tables td {
-  padding: 0.6rem;
-  line-height: 1.1;
-}
-.pad-tables thead th {
-  padding: 8px 9px 8px 9px;
+/* Pad cells a little more */
+body {
+  --table-line-height: var(--line-height-normal);
 }
 
 /* Makes table corners a little rounded */
-/* ---
- * cssclasses: round-tables
- * --- */
 
-/* original author: DeaconLight
+/* author (cssclasses implementation): DeaconLight
  * source: https://forum.obsidian.md/t/custom-css-for-tables-5-new-styles-ready-to-use-in-your-notes/17084 */
 
-.round-tables table {
+/* author (universal table styling): FireIsGood
+ * source: https://forum.obsidian.md/t/adding-rounded-corners-to-markdown-tables-with-snippets-a-clean-solution/60551 */
+
+:root table {
+  --table-border-radius: 5px;
   border-collapse: separate;
-  border: solid 1px;
-  border-radius: 5px;
   border-spacing: 0px;
+  border-radius: var(--table-border-radius);
 }
-.round-tables table th:first-of-type {
-  border-top-left-radius: 5px;
+
+th:first-of-type {
+  border-top-left-radius: var(--table-border-radius);
 }
-.round-tables table th:last-of-type {
-  border-top-right-radius: 5px;
+th:last-of-type {
+  border-top-right-radius: var(--table-border-radius);
 }
-.round-tables table tr:last-child td:first-child {
-  border-bottom-left-radius: 4px;
+tr:last-child td:first-child {
+  border-bottom-left-radius: var(--table-border-radius);
 }
-.round-tables table tr:last-child td:last-child {
-  border-bottom-right-radius: 4px;
+tr:last-child td:last-child {
+  border-bottom-right-radius: var(--table-border-radius);
+}
+
+:root :is(td, th) {
+  border-width: 0 var(--table-border-width) var(--table-border-width) 0;
 }
