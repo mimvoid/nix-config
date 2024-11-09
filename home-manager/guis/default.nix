@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    unstable.obsidian
+
     # Files & documents
     gnome.file-roller
     pdfarranger
