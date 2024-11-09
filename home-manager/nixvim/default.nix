@@ -5,7 +5,7 @@
     ./colorscheme.nix
     ./opts.nix
     ./keymaps.nix
-    ./plugins/default.nix
+    ./plugins
   ];
 
   programs.nixvim = {

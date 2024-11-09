@@ -2,7 +2,7 @@
 
 {
   imports = [
-    ./shell.nix
+    ./shells.nix
     ./cli.nix
     ./git.nix
     ./kitty.nix
@@ -14,6 +14,6 @@
 
   home.packages = with pkgs; [
     unstable.bluetui
-    (callPackage ../../packages/arttime.nix {})
+    (callPackage ../../pkgs/arttime {})
   ];
 }

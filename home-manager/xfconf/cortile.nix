@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  cortile = pkgs.callPackage ../../packages/cortile.nix {  };
+  cortile = pkgs.callPackage ../../pkgs/cortile {  };
 in
 {
   home.packages = [ cortile ];

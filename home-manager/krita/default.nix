@@ -1,10 +1,10 @@
 { pkgs, lib, ... }:
 let
-  reference-tabs-docker = pkgs.callPackage ../../packages/krita/reference-tabs-docker.nix {};
-  composition-helper = pkgs.callPackage ../../packages/krita/composition-helper.nix {};
-  timer-watch = pkgs.callPackage ../../packages/krita/timer-watch.nix {};
+  reference-tabs-docker = pkgs.callPackage ../../pkgs/krita/reference-tabs-docker {};
+  composition-helper = pkgs.callPackage ../../pkgs/krita/composition-helper {};
+  timer-watch = pkgs.callPackage ../../pkgs/krita/timer-watch {};
 
-  gpl-palettes = pkgs.callPackage ../../packages/krita/gpl-palettes.nix {
+  gpl-palettes = pkgs.callPackage ../../pkgs/krita/gpl-palettes {
     palettes = [
       "catppuccin-macchiato"
       "rose-pine-moon"

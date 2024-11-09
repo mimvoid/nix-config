@@ -13,14 +13,14 @@
     ./theming.nix
     ./links.nix
     #./tts.nix
-    ./krita/default.nix
-    ./terminal/default.nix
-    ./nixvim/default.nix
-    ./hyprland/default.nix
-    ./xfconf/default.nix
-    ./guis/default.nix
-    ./firefox/firefox.nix
-    ./ags/default.nix
+    ./krita
+    ./terminal
+    ./nixvim
+    ./hyprland
+    ./xfconf
+    ./guis
+    ./firefox
+    ./ags
   ];
 
   home.sessionVariables = {

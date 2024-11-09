@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  leggie = pkgs.callPackage ../packages/fonts/leggie.nix {};
+  leggie = pkgs.callPackage ../pkgs/fonts/leggie {};
 in
 {
   console = {

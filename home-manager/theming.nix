@@ -22,7 +22,7 @@ let
   };
 
   # Font packages
-  myfont = pname: pkgs.callPackage ../packages/fonts/${pname}.nix {};
+  myfont = pname: pkgs.callPackage ../pkgs/fonts/${pname} {};
 
   # Default fonts
   serif = sansSerif;

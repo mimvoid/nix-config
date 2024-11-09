@@ -21,7 +21,7 @@ let
 
     zsh-help = {
       name = "zsh-help";
-      src = pkgs.callPackage ../../packages/zsh-help.nix {};
+      src = pkgs.callPackage ../../pkgs/zsh-help {};
     };
   };
 in
@@ -52,6 +52,7 @@ in
       ];
     };
     historySubstringSearch.enable = true;
+    autocd = true;
 
     shellAliases = {
       ".." = "cd ..";
@@ -60,7 +61,6 @@ in
       # nix aliases
       nhos = "nh os switch";
       nhh = "nh home switch";
-      nixdev = "nix develop --command zsh";
 
       # command shorthands
       blueon = "bluetooth on";
@@ -72,6 +72,18 @@ in
       arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
     };
 
+    initExtra = # sh
+      ''
+        # history substring search integration with vi mode
+        bindkey -M vicmd 'k' history-substring-search-up
+        bindkey -M vicmd 'j' history-substring-search-up
+
+        # nix develop with zsh shell
+        function nixdev() {
+          nix develop ''${1} --command zsh
+        }
+      '';
+
     # zsh plugin configuration
     plugins = with zsh-plugins; [
       zsh-autopair
@@ -79,12 +91,6 @@ in
       zsh-vi-mode
       zsh-help
     ];
-
-    # history substring search integration with vi mode
-    initExtra = ''
-      bindkey -M vicmd 'k' history-substring-search-up
-      bindkey -M vicmd 'j' history-substring-search-up
-    '';
 
     sessionVariables = {
       # zsh-vi-mode customizations
