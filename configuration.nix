@@ -15,6 +15,11 @@
         "flakes"
       ];
       auto-optimise-store = true;
+
+      # Binary caches from cachix
+      substituters = [ "https://mimvoid.cachix.org" ];
+      trusted-public-keys = [ "mimvoid.cachix.org-1:c1LQSKRAc7IiFA8GuaTDzD4fqUIG49Cftb2aJwqvtzY=" ];
+      trusted-users = [ "root" "zinnia" ];
     };
 
     gc = {
