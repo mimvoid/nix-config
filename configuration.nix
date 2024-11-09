@@ -40,8 +40,6 @@
   environment.systemPackages = with pkgs; [
     nh
     git
-    wget
-    curl
 
     # Restricting this to a user doesn't seem to work
     xfce.xfce4-docklike-plugin
@@ -124,16 +122,11 @@
       "networkmanager"
     ];
 
-    packages = with pkgs; [
-      neovim
-    ];
-
     shell = pkgs.zsh;
   };
 
   programs = {
     zsh.enable = true;
-    firefox.enable = true;
   };
 
   programs.gamemode = {

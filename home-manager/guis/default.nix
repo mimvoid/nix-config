@@ -6,7 +6,7 @@
 
     # Files & documents
     gnome.file-roller
-    pdfarranger
+    # pdfarranger
     nextcloud-client # Have it available as an app
     rnote
 
@@ -19,20 +19,19 @@
     vesktop
 
     # Virtualisation/layers/games
-    unstable.bottles
-    unstable.prismlauncher
-    virt-manager
+    # unstable.bottles
+    # unstable.prismlauncher
+    # virt-manager
 
     # Media
     tauon
-    inkscape
+    # inkscape
     unstable.krita
     unstable.geeqie
     blanket
   ];
 
   imports = [
-    ./superProductivity/default.nix
     # ./flatpaks.nix
     ./inlyne.nix
     ./zathura.nix

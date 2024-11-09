@@ -8,11 +8,8 @@
     mediainfo
     fontpreview
 
-    # disk & files
-    trashy
-    megacmd
-
     # other
+    megacmd
     tlrc
     libnotify
     dwt1-shell-color-scripts

@@ -14,7 +14,6 @@
 
   home.packages = with pkgs; [
     unstable.bluetui
-    gotop
     (callPackage ../../packages/arttime.nix {})
   ];
 }
