@@ -1,12 +1,6 @@
-{ pkgs, lib, allow-unfree, ... }:
-let
-  obsidian = pkgs.callPackage ../../packages/appimages/obsidian.nix {};
-  # zen-browser = pkgs.callPackage ../../packages/appimages/zen-browser.nix {};
-in
-{
-  # Imports list of allowed unfree packages from flake.nix
-  nixpkgs.config.allowUnfreePredicate = pkg: builtins.elem (lib.getName pkg) allow-unfree;
+{ pkgs, ... }:
 
+{
   home.packages = with pkgs; [
     # Files & documents
     gnome.file-roller
@@ -33,8 +27,6 @@ in
     unstable.krita
     unstable.geeqie
     blanket
-  ] ++ [
-    obsidian
   ];
 
   imports = [

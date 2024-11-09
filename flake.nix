@@ -44,24 +44,30 @@
     home-manager,
     nixvim,
     stylix,
-    ... } @ inputs:
+    ...
+  } @ inputs:
   let
     system = "x86_64-linux";
 
     pkgs = import nixpkgs {
       inherit system;
 
+      # Allows certain unfree packages
+      config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
+        "vivaldi"
+        "obsidian"
+      ];
+
       # Allows nixpkgs-unstable to be referenced with pkgs.unstable.<package>
       overlays = [
         (final: _prev: {
           unstable = import nixpkgs-unstable {
             system = final.system;
+            config.allowUnfreePredicate = final.config.allowUnfreePredicate;
           };
         })
       ];
     };
-
-    allow-unfree = [ "vivaldi" ];
 
     FLAKE = "/home/zinnia/NixOS";
   in
@@ -69,7 +75,8 @@
     nixosConfigurations = {
       sirru = nixpkgs.lib.nixosSystem {
         inherit system;
-        specialArgs = { inherit inputs allow-unfree; };
+        inherit pkgs;
+        specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
           ./hosts/sirru/hardware-configuration.nix
@@ -87,7 +94,7 @@
     homeConfigurations = {
       "zinnia" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit inputs allow-unfree; };
+        extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home-manager/home.nix
           stylix.homeManagerModules.stylix
