@@ -1,4 +1,8 @@
-{ lib, stdenvNoCC, fetchFromGitHub }:
+{
+  lib,
+  stdenvNoCC,
+  fetchFromGitHub,
+}:
 
 stdenvNoCC.mkDerivation {
   pname = "ma-shan-zheng";
@@ -14,18 +18,18 @@ stdenvNoCC.mkDerivation {
   installPhase = ''
     runHook preInstall
 
-    install -Dm444 -t $out/share/fonts/truetype fonts/*.ttf 
+    install -Dm444 -t $out/share/fonts/truetype fonts/*.ttf
 
     runHook postInstall
   '';
 
   meta = {
-    description = "Script reminiscent of fonts used to display 'yinglian'";
+    description = "Script reminiscent of fonts used to display \"yinglian\"";
     longDescription = ''
       This script is reminiscent of fonts used to display "yinglian,"
       the short poems and blessings traditionally posted on either
       side of the entryway to a home or temple. MaShanZheng is heavy
-      and majestic, vital and expansive. 
+      and majestic, vital and expansive.
     '';
     homepage = "https://fonts.google.com/specimen/Ma+Shan+Zheng";
     license = lib.licenses.ofl;

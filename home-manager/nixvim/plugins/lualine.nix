@@ -26,7 +26,10 @@
           {
             __unkeyed-1 = "filename";
             padding = { left = 0; right = 1; };
-            symbols = { modified = ""; readonly = "󰌾"; };
+            symbols = {
+              modified = "";
+              readonly = "󰌾";
+            };
           }
           "filesize"
         ];

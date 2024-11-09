@@ -1,6 +1,6 @@
 { pkgs, lib, ... }:
 let
-  leggie = pkgs.callPackage ../pkgs/fonts/leggie {};
+  leggie = pkgs.callPackage ../pkgs/fonts/leggie { };
 in
 {
   console = {
@@ -8,8 +8,7 @@ in
     packages = [ leggie ];
     useXkbConfig = true;
 
-    colors = lib.lists.map (i: lib.strings.removePrefix "#" i)
-    [
+    colors = lib.lists.map (i: lib.strings.removePrefix "#" i) [
       # catppuccin mocha
       "#11111b" # crust      black
       "#f38ba8" # red        red

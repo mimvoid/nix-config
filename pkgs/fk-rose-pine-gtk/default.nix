@@ -1,9 +1,10 @@
-{ stdenvNoCC,
+{
+  stdenvNoCC,
   lib,
   fetchFromGitHub,
   gtk3,
   gtk-engine-murrine,
-  variant ? "RosePine-Main-B"
+  variant ? "RosePine-Main-B",
 }:
 
 # based on official rose-pine-gtk-theme package
@@ -19,9 +20,7 @@ stdenvNoCC.mkDerivation {
     hash = "sha256-I9UnEhXdJ+HSMFE6R+PRNN3PT6ZAAzqdtdQNQWt7o4Y=";
   };
 
-  nativeBuildInputs = [
-    gtk3
-  ];
+  nativeBuildInputs = [ gtk3 ];
 
   propagatedUserEnvPkgs = [
     gtk-engine-murrine # murrine engine for Gtk2
@@ -41,6 +40,6 @@ stdenvNoCC.mkDerivation {
     homepage = "https://github.com/Fausto-Korpsvart/Rose-Pine-GTK-Theme";
     license = licenses.gpl3Only;
     platforms = platforms.linux;
-    maintainers = with maintainers; [];
+    maintainers = with maintainers; [ ];
   };
 }

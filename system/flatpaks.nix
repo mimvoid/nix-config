@@ -2,7 +2,7 @@
 
 {
   imports = [ inputs.nix-flatpak.nixosModules.nix-flatpak ];
-  
+
   services.flatpak.enable = true;
 
   # Managed by nix-flatpak

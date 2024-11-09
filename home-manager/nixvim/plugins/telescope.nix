@@ -80,5 +80,5 @@
       color_devicons = true;
       path_display = [ "truncate" ];
     };
-	};
+  };
 }

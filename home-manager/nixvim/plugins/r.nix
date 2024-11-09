@@ -29,17 +29,15 @@ in
     ];
 
     extraConfigLua = # lua
-    ''
-      require("r").setup({
-        hl_term = true,
-        Rout_more_colors = true,
-      })
-    '';
+      ''
+        require("r").setup({
+          hl_term = true,
+          Rout_more_colors = true,
+        })
+      '';
 
     globals.rout_follow_colorscheme = true;
 
-    plugins.cmp.settings.sources = lib.mkAfter [
-      { name = "cmp_r"; }
-    ];
+    plugins.cmp.settings.sources = lib.mkAfter [ { name = "cmp_r"; } ];
   };
 }

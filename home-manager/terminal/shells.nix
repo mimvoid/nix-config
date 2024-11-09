@@ -21,7 +21,7 @@ let
 
     zsh-help = {
       name = "zsh-help";
-      src = pkgs.callPackage ../../pkgs/zsh-help {};
+      src = pkgs.callPackage ../../pkgs/zsh-help { };
     };
   };
 in
@@ -44,9 +44,16 @@ in
       ignoreDups = true;
       ignoreAllDups = true;
       ignorePatterns = [
-        "ls" "la" "ll" "eza" ".." "-"
-        "yazi" "yy"
-        "nhos" "nhh"
+        "ls"
+        "la"
+        "ll"
+        "eza"
+        ".."
+        "-"
+        "yazi"
+        "yy"
+        "nhos"
+        "nhh"
         "exit"
         "lg"
       ];

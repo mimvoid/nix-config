@@ -14,6 +14,6 @@
 
   home.packages = with pkgs; [
     unstable.bluetui
-    (callPackage ../../pkgs/arttime {})
+    (callPackage ../../pkgs/arttime { })
   ];
 }

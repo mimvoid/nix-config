@@ -25,7 +25,6 @@
       strip_trailing_spaces = "smart";
 
       enable_audio_bell = false;
-
       tab_bar_style = "hidden";
 
       wayland_enable_ime = true;

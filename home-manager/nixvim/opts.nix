@@ -32,7 +32,7 @@
 
     # Cursor
     cursorline = true; # Highlighting on cursor line
-    scrolloff =  8; # Lines above/below cursor
+    scrolloff = 8; # Lines above/below cursor
 
     # Searching
     hlsearch = true;
@@ -62,10 +62,18 @@
 
     # Spell checking
     spell = true;
-    spelllang = [ "en" "cjk" ];
+    spelllang = [
+      "en"
+      "cjk"
+    ];
 
     # Misc
-    completeopt = [ "menuone" "noselect" "noinsert" ];
+    completeopt = [
+      "menuone"
+      "noselect"
+      "noinsert"
+    ];
+
     termguicolors = true;
     hidden = true;
     conceallevel = 0;

@@ -1,56 +1,51 @@
 { config, lib, ... }:
 let
-  panels = with lib.attrsets;
-  let
-    "position-locked" = true;
+  panels =
+    with lib.attrsets;
+    let
+      "position-locked" = true;
 
-    # solid color
-    "background-style" = 1;
+      # solid color
+      "background-style" = 1;
 
-    # transleucent rose pine moon base
-    "background-rgba" = [
-      (35 / 255.0)
-      (33 / 255.0)
-      (54 / 255.0)
-      0.75
-    ];
-  in
-  {
-    top-panel = mapAttrs' (name: value: nameValuePair
-      "panels/panel-1/${name}" value)
+      # transleucent rose pine moon base
+      "background-rgba" = [
+        (35 / 255.0)
+        (33 / 255.0)
+        (54 / 255.0)
+        0.75
+      ];
+    in
     {
-      # Top panel
-      inherit "position-locked" "background-style" "background-rgba";
+      top-panel = mapAttrs' (name: value: nameValuePair "panels/panel-1/${name}" value) {
+        # Top panel
+        inherit "position-locked" "background-style" "background-rgba";
 
-      "position" = "p=9;x=960;y=18";
-      "length" = 98.9;
-      "size" = 28;
-      "icon-size" = 15;
+        "position" = "p=9;x=960;y=18";
+        "length" = 98.9;
+        "size" = 28;
+        "icon-size" = 15;
 
-      # Note: changing the plugin type for a previously used number may not update
-      # the plugins' internal names right away, leading to some strange behavior.
-      # I found that reloading (e.g. logging out) fixes it.
-      "plugin-ids" = lib.lists.range 1 9;
+        # Note: changing the plugin type for a previously used number may not update
+        # the plugins' internal names right away, leading to some strange behavior.
+        # I found that reloading (e.g. logging out) fixes it.
+        "plugin-ids" = lib.lists.range 1 9;
+      };
+
+      bottom-panel = mapAttrs' (name: value: nameValuePair "panels/panel-2${name}" value) {
+        inherit "position-locked" "background-style" "background-rgba";
+
+        "autohide-behavior" = 0; # don't autohide
+        "position" = "p=0;x=960;y=1050"; # floating
+        "length" = 1; # let it be autoexpanded by plugins
+        "size" = 46;
+
+        "plugin-ids" = lib.lists.range 10 12;
+      };
     };
-
-    bottom-panel = mapAttrs' (name: value: nameValuePair
-      "panels/panel-2${name}" value)
-    {
-      inherit "position-locked" "background-style" "background-rgba";
-
-      "autohide-behavior" = 0; # don't autohide
-      "position" = "p=0;x=960;y=1050"; # floating
-      "length" = 1; # let it be autoexpanded by plugins
-      "size" = 46;
-
-      "plugin-ids" = lib.lists.range 10 12;
-    };
-  };
 
   plugins = with lib.attrsets; {
-    top = mapAttrs' (name: value: nameValuePair
-      "plugins/plugin-${name}" value)
-    {
+    top = mapAttrs' (name: value: nameValuePair "plugins/plugin-${name}" value) {
       # workspaces
       "1" = "pager";
       "1/rows" = 1;
@@ -99,9 +94,7 @@ let
       "9/custom-title" = "O"; # the letter O
     };
 
-    bottom = mapAttrs' (name: value: nameValuePair
-      "plugins/plugin-${name}" value)
-    {
+    bottom = mapAttrs' (name: value: nameValuePair "plugins/plugin-${name}" value) {
       # appmenu
       "10" = "applicationsmenu";
       "10/show-button-title" = false;

@@ -24,14 +24,14 @@ in
     xwayland.enable = true;
 
     extraConfig = # hyprlang
-    ''
-      general {
-        gaps_out = 4,12,12,12 # for top bar
-      }
-      decoration {
-        shadow_offset = 2 2
-      }
-    '';
+      ''
+        general {
+          gaps_out = 4,12,12,12 # for top bar
+        }
+        decoration {
+          shadow_offset = 2 2
+        }
+      '';
   };
 
   wayland.windowManager.hyprland.settings = {

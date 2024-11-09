@@ -38,12 +38,14 @@
         package = pkgs.unstable.nixd;
         settings = {
           formatting.command = null;
-          options = let
-            flake-path = "(builtins.getFlake \"${config.home.sessionVariables.FLAKE}\")";
-          in {
-            nixos.expr = "${flake-path}.nixosConfigurations.sirru.options";
-            home_manager.expr = "${flake-path}.homeConfigurations.\"zinnia\".options";
-          };
+          options =
+            let
+              flake-path = "(builtins.getFlake \"${config.home.sessionVariables.FLAKE}\")";
+            in
+            {
+              nixos.expr = "${flake-path}.nixosConfigurations.sirru.options";
+              home_manager.expr = "${flake-path}.homeConfigurations.\"zinnia\".options";
+            };
         };
       };
 

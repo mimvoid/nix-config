@@ -1,9 +1,10 @@
-{ lib,
+{
+  lib,
   stdenvNoCC,
   fetchFromGitHub,
   installShellFiles,
   zsh,
-  libnotify
+  libnotify,
 }:
 
 stdenvNoCC.mkDerivation rec {
@@ -18,8 +19,11 @@ stdenvNoCC.mkDerivation rec {
   };
 
   nativeBuildInputs = [ installShellFiles ];
-  buildInputs = [ zsh libnotify ];
-  
+  buildInputs = [
+    zsh
+    libnotify
+  ];
+
   dontBuild = true;
 
   postPatch = ''
@@ -58,7 +62,10 @@ stdenvNoCC.mkDerivation rec {
       use terminal.
     '';
     homepage = "https://github.com/poetaman/arttime";
-    license = with lib.licenses; [ gpl3Only free ];
+    license = with lib.licenses; [
+      gpl3Only
+      free
+    ];
     platforms = lib.platforms.unix;
     maintainers = with lib.maintainers; [ mimvoid ];
   };

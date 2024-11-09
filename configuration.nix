@@ -1,9 +1,7 @@
 { inputs, pkgs, ... }:
 
 {
-  imports = [
-    ./system/default.nix
-  ];
+  imports = [ ./system ];
 
   # General system configurations
   nix = {
@@ -51,8 +49,6 @@
   ];
 
   services.flatpak.enable = true;
-
-  environment.pathsToLink = [ "/share/zsh" ];
 
   # X11
   services.xserver = {
@@ -125,8 +121,9 @@
     shell = pkgs.zsh;
   };
 
-  programs = {
-    zsh.enable = true;
+  environment.pathsToLink = [ "/share/zsh" ];
+  programs.zsh = {
+    enable = true;
   };
 
   programs.gamemode = {

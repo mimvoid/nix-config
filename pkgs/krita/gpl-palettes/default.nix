@@ -1,14 +1,13 @@
-{ lib,
+{
+  lib,
   stdenvNoCC,
   fetchFromGitHub,
-  palettes ? []
+  palettes ? [ ],
 }:
 # There's probably a better way to fetch specific files
 # But this works for now
 let
-  paletteList = builtins.toString (
-    builtins.map (i: "'${i}'") palettes
-  );
+  paletteList = builtins.toString (builtins.map (i: "'${i}'") palettes);
 in
 stdenvNoCC.mkDerivation {
   pname = "gpl-palettes";

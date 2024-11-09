@@ -36,7 +36,8 @@ buildGoModule rec {
       Openbox, Fluxbox, IceWM, Xfwm, KWin, Marco, Muffin, Mutter and other
       EWMH compliant window managers using the X11 window system. Therefore,
       this project provides dynamic tiling for XFCE, LXDE, LXQt, KDE and GNOME
-      (Mate, Deepin, Cinnamon, Budgie) based desktop environments'';
+      (Mate, Deepin, Cinnamon, Budgie) based desktop environments
+    '';
     homepage = "https://github.com/leukipp/cortile";
     license = lib.licenses.mit;
     # maintainers = with lib.maintainers; [ ];

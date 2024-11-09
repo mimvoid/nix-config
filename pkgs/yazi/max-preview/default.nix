@@ -1,4 +1,8 @@
-{ lib, stdenvNoCC, fetchFromGitHub }:
+{
+  lib,
+  stdenvNoCC,
+  fetchFromGitHub,
+}:
 
 stdenvNoCC.mkDerivation {
   pname = "yazi-max-preview";
@@ -22,7 +26,7 @@ stdenvNoCC.mkDerivation {
   '';
 
   meta = {
-    description = "Maximize or restore the preview pane in Yazi.";
+    description = "Maximize or restore the preview pane in Yazi";
     homepage = "https://github.com/yazi-rs/plugins";
     license = lib.licenses.mit;
     platforms = lib.platforms.linux;

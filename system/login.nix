@@ -7,7 +7,7 @@ in
 {
   # Used to start an X11 session, and is faster than startx
   services.xserver.displayManager.sx.enable = true;
-  
+
   # Let greetd unlock gnome keyring
   security.pam.services = {
     login.enableGnomeKeyring = true;

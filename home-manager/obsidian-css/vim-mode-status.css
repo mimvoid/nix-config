@@ -1,7 +1,7 @@
 /* Displays the vim mode in the status bar to the left */
 
 /* Depends on the Obsidian Vimrc Support Plugin */
-/* Source: https://github.com/esm7/obsidian-vimrc-support */
+/* source: https://github.com/esm7/obsidian-vimrc-support */
 
 div.status-bar-item.plugin-obsidian-vimrc-support {
   /* Catppuccin colors */
@@ -32,7 +32,7 @@ div.status-bar-item.plugin-obsidian-vimrc-support {
 
 div.status-bar-item.plugin-obsidian-vimrc-support:after {
   /* Separator character */
-  content: '';
+  content: "";
   position: relative;
   font-size: 1.5rem;
   left: 0.9rem;

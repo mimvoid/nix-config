@@ -1,4 +1,8 @@
-{ lib, stdenvNoCC, fetchgit }:
+{
+  lib,
+  stdenvNoCC,
+  fetchgit,
+}:
 
 stdenvNoCC.mkDerivation {
   pname = "krita-reference-tabs-docker";

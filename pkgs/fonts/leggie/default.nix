@@ -1,7 +1,8 @@
-{ lib,
+{
+  lib,
   stdenv,
   fetchFromGitHub,
-  bdf2psf
+  bdf2psf,
 }:
 
 stdenv.mkDerivation {

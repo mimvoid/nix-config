@@ -56,21 +56,21 @@
     };
 
     plugins = with pkgs; {
-      full-border = callPackage ../../pkgs/yazi/full-border {};
-      max-preview = callPackage ../../pkgs/yazi/max-preview {};
-      bookmarks = callPackage ../../pkgs/yazi/bookmarks {};
-      exifaudio = callPackage ../../pkgs/yazi/exifaudio {};
+      full-border = callPackage ../../pkgs/yazi/full-border { };
+      max-preview = callPackage ../../pkgs/yazi/max-preview { };
+      bookmarks = callPackage ../../pkgs/yazi/bookmarks { };
+      exifaudio = callPackage ../../pkgs/yazi/exifaudio { };
     };
 
     initLua = # lua
-    ''
-      require("full-border"):setup()
-      require("bookmarks"):setup({
-        persist = "vim",
-        desc_format = "parent",
-        file_pick_mode = "parent",
-      })
-    '';
+      ''
+        require("full-border"):setup()
+        require("bookmarks"):setup({
+          persist = "vim",
+          desc_format = "parent",
+          file_pick_mode = "parent",
+        })
+      '';
   };
 
   xdg.configFile = {
@@ -78,35 +78,35 @@
     "yazi/plugins/smart-paste.yazi/init.lua" = {
       enable = true;
       text = # lua
-      ''
-        return {
-	        entry = function()
-		        local h = cx.active.current.hovered
-		        if h and h.cha.is_dir then
-			        ya.manager_emit("enter", {})
-			        ya.manager_emit("paste", {})
-			        ya.manager_emit("leave", {})
-		        else
-			        ya.manager_emit("paste", {})
-		        end
-	        end,
-        }
-      '';
+        ''
+          return {
+            entry = function()
+              local h = cx.active.current.hovered
+              if h and h.cha.is_dir then
+                ya.manager_emit("enter", {})
+                ya.manager_emit("paste", {})
+                ya.manager_emit("leave", {})
+              else
+                ya.manager_emit("paste", {})
+              end
+            end,
+          }
+        '';
     };
 
     # Arrow: file navigation wraparound
     "yazi/plugins/arrow.yazi/init.lua" = {
       enable = true;
       text = # lua
-      ''
-        return {
-        	entry = function(_, args)
-        		local current = cx.active.current
-        		local new = (current.cursor + args[1]) % #current.files
-        		ya.manager_emit("arrow", { new - current.cursor })
-        	end,
-        }
-      '';
+        ''
+          return {
+          	entry = function(_, args)
+          		local current = cx.active.current
+          		local new = (current.cursor + args[1]) % #current.files
+          		ya.manager_emit("arrow", { new - current.cursor })
+          	end,
+          }
+        '';
     };
   };
 }

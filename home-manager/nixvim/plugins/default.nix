@@ -42,18 +42,18 @@ in
 
     # neotab.nvim config
     extraConfigLua = # lua
-    ''
-      require("ultimate-autopair").setup({})
-      require("neotab").setup({
-        smart_punctuators = {
-          enabled = true,
-          semicolon = {
+      ''
+        require("ultimate-autopair").setup({})
+        require("neotab").setup({
+          smart_punctuators = {
             enabled = true,
-            ft = { "nix", "javascript", "typescript" },
+            semicolon = {
+              enabled = true,
+              ft = { "nix", "javascript", "typescript" },
+            },
           },
-        },
-      })
-    '';
+        })
+      '';
 
     extraPackages = with pkgs; [
       fzf

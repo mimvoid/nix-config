@@ -30,15 +30,15 @@
   home.packages = [ pkgs.networkmanager_dmenu ];
 
   xdg.configFile."networkmanager-dmenu/config.ini".text = # ini
-  ''
-    [dmenu]
-    dmenu_command = fuzzel -d -w 40
-    active_chars = >> # this doesn't work
-    wifi_chars = ▂▄▆█
-    wifi_icons = 󰤯󰤟󰤢󰤥󰤨
-    format = {name:18}          {signal}%%  {bars}
+    ''
+      [dmenu]
+      dmenu_command = fuzzel -d -w 40
+      active_chars = >> # this doesn't work
+      wifi_chars = ▂▄▆█
+      wifi_icons = 󰤯󰤟󰤢󰤥󰤨
+      format = {name:18}          {signal}%%  {bars}
 
-    [editor]
-    terminal = foot
-  '';
+      [editor]
+      terminal = foot
+    '';
 }

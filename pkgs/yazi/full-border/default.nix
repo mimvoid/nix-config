@@ -1,4 +1,8 @@
-{ lib, stdenvNoCC, fetchFromGitHub }:
+{
+  lib,
+  stdenvNoCC,
+  fetchFromGitHub,
+}:
 
 stdenvNoCC.mkDerivation {
   pname = "yazi-full-border";
@@ -22,7 +26,7 @@ stdenvNoCC.mkDerivation {
   '';
 
   meta = {
-    description = "Add a full border to Yazi to make it look fancier.";
+    description = "Add a full border to Yazi to make it look fancier";
     homepage = "https://github.com/yazi-rs/plugins";
     license = lib.licenses.mit;
     platforms = lib.platforms.linux;

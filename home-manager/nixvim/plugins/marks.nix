@@ -14,13 +14,12 @@ in
   programs.nixvim = {
     plugins.marks.enable = true;
 
-    extraPlugins = lib.mkAfter [
-      nvim-project-marks
-    ];
-    
-    extraConfigLua = lib.mkAfter # lua
-    ''
-      require("projectmarks").setup({})
-    '';
+    extraPlugins = lib.mkAfter [ nvim-project-marks ];
+
+    extraConfigLua =
+      lib.mkAfter # lua
+        ''
+          require("projectmarks").setup({})
+        '';
   };
 }
