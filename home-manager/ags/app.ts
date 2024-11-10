@@ -4,6 +4,7 @@ import Bar from "./widgets/bar/Bar";
 import Calendar from "./widgets/menus/calendar";
 import SessionMenu from "./widgets/session";
 import MediaBox from "./widgets/menus/media";
+import NotificationPopups from "./widgets/notifications/notification-popups"
 
 App.start({
   css: style,
@@ -12,5 +13,6 @@ App.start({
     App.get_monitors().map(Calendar);
     App.get_monitors().map(SessionMenu);
     App.get_monitors().map(MediaBox);
+    App.get_monitors().map(NotificationPopups);
   },
 });

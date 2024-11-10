@@ -3,55 +3,71 @@
 @import "./variables/_looks.scss";
 
 window.notification-popups box.notifications {
-  min-width: 2px;
-  min-height: 2px;
-  padding: 8px;
+  min-width: 15rem;
+  min-height: 1rem;
+  margin: 12px;
 }
 
 .notification {
-  min-width: 200px;
-
-  margin: 4px;
-  padding: 8px;
-
+  padding: 16px;
   border-radius: $radius * 0.25;
 
   background-color: $base;
 
   border: 1px solid $primary;
-  .critical {
+
+  &.critical {
     border: 1px solid $error;
   }
 }
 
-.icon {
-  min-width: 28px;
-  min-height: 28px;
-  margin: 0 12px 0 6px;
+.notif-box {
+  padding: 0.25rem;
+}
 
-  image {
+.header {
+  padding: 0.5rem;
+  color: $string-dim;
+}
+
+.content {
+  .icon-image, .image {
+    min-width: 28px;
+    min-height: 28px;
+    margin: 0 12px 0 6px;
+  }
+
+  .image {
+    border-radius: $radius;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .icon-image icon {
     margin: 4px;
     font-size: 16px;
     color: $secondary;
   }
 
-  box {
-    min-width: 28px;
-    min-height: 28px;
-    border-radius: 6px;
+  .summary, .body {
+    font-size: $font-size * 1.25;
+    color: $string;
+  }
+
+  .summary {
+    padding: 0.25rem 0.5rem;
+    font-weight: bold;
+    color: $secondary-bright;
+  }
+
+  .body {
+    padding: 0.5rem;
+    padding-top: 0.25rem;
   }
 }
 
-.title {
-  font-weight: bold;
-  color: $string;
-}
-
-.body {
-  color: $string;
-}
-
-.actions .action-button {
+.actions {
+  color: $primary-dim;
   margin: 4px 2px 0 2px;
 
   &:first-child {
