@@ -1,6 +1,6 @@
 % battery
 
-$ battery: command ls /sys/class/power_supply | tr ' ' '\n'
+$ battery: ls -1 /sys/class/power_supply
 
 # Print battery status
 cat /sys/class/power_supply/<battery>/status

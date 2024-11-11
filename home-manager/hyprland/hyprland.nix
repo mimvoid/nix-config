@@ -80,6 +80,7 @@ in
       "ANKI_WAYLAND, 1"
       # Fcitx adjustments
       "QT_IM_MODULES, wayland;fcitx"
+      "GTK_IM_MODULE, "
 
       "XCURSOR_SIZE, 24"
       "XCURSOR_THEME, ${config.gtk.cursorTheme.name}"

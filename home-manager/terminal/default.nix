@@ -16,4 +16,9 @@
     unstable.bluetui
     (callPackage ../../pkgs/arttime { })
   ];
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 }

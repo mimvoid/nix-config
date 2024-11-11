@@ -26,12 +26,33 @@ let
   };
 in
 {
-  home.packages = with zsh-plugins; [
-    zsh-autopair.src
-    zsh-nix-shell.src
-    zsh-vi-mode.src
-    zsh-help.src
-  ];
+  home = {
+    packages = with zsh-plugins; [
+      zsh-autopair.src
+      zsh-nix-shell.src
+      zsh-vi-mode.src
+      zsh-help.src
+    ];
+
+    shellAliases = {
+      ".." = "cd ..";
+
+      # nix aliases
+      nhos = "nh os switch";
+      nhh = "nh home switch";
+
+      # command shorthands
+      blueon = "bluetooth on";
+      btui = "bluetui";
+      lg = "lazygit";
+      ncp = "neocities push --prune";
+
+      # config aliases
+      arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
+    };
+  };
+
+  programs.bash.enable = true;
 
   programs.zsh = {
     enable = true;
@@ -61,23 +82,7 @@ in
     historySubstringSearch.enable = true;
     autocd = true;
 
-    shellAliases = {
-      ".." = "cd ..";
-      "-" = "cd -";
-
-      # nix aliases
-      nhos = "nh os switch";
-      nhh = "nh home switch";
-
-      # command shorthands
-      blueon = "bluetooth on";
-      btui = "bluetui";
-      lg = "lazygit";
-      ncp = "neocities push --prune";
-
-      # config aliases
-      arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
-    };
+    shellAliases."-" = "cd -";
 
     initExtra = # sh
       ''

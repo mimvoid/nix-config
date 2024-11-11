@@ -21,3 +21,6 @@ nix-build -A <package>
 # Build package from file
 nix-build --expr 'with import <nixpkgs> {}; callPackage ./<file> {}'
 $ nixpkgs: echo "<""nixpkgs"">"
+
+# Create shell with unstable branch package
+nix shell nixpkgs/nixos-unstable#<package>

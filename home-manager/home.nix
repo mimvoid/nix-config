@@ -5,6 +5,9 @@
     username = "zinnia";
     homeDirectory = "/home/zinnia";
     stateVersion = "23.11";
+
+    enableNixpkgsReleaseCheck = false;
+    preferXdgDirectories = true;
   };
 
   programs.home-manager.enable = true;
@@ -35,10 +38,5 @@
       fcitx5-chinese-addons
       unstable.catppuccin-fcitx5
     ];
-  };
-
-  gtk = rec {
-    gtk3.extraConfig.gtk-im-module = "fcitx";
-    gtk4 = gtk3;
   };
 }
