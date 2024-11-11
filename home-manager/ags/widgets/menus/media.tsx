@@ -51,9 +51,16 @@ function Media() {
       className="media-title"
       wrap
       justify={Gtk.Justification.CENTER}
-      label={bind(player, "title").as(() =>
-        `${player.title} - ${player.artist}`
-      )}
+      label={bind(player, "title")}
+    />
+  }
+
+  const Artist = (player) => {
+    return <label
+      className="media-artist"
+      wrap
+      justify={Gtk.Justification.CENTER}
+      label={bind(player, "artist")}
     />
   }
 
@@ -63,6 +70,7 @@ function Media() {
         {Actions(ps[0])}
         {CoverArt(ps[0])}
         {Title(ps[0])}
+        {Artist(ps[0])}
       </box>
     ) : (
       "Nothing Playing"

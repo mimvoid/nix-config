@@ -17,6 +17,10 @@
 
   .media-title {
     font-weight: bolder;
+    margin-bottom: 4px;
+  }
+  .media-title,
+  .media-artist {
     font-size: $font-size * 1.5;
   }
 

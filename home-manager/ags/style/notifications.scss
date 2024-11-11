@@ -23,50 +23,48 @@ window.notification-popups box.notifications {
 
 .notif-box {
   padding: 0.25rem;
-}
 
-.header {
-  padding: 0.5rem;
-  color: $string-dim;
-}
-
-.content {
-  .icon-image, .image {
-    min-width: 28px;
-    min-height: 28px;
-    margin: 0 12px 0 6px;
+  .icon {
+    font-size: $font-size;
   }
 
-  .image {
-    border-radius: $radius;
-    background-size: cover;
-    background-position: center;
-  }
-
-  .icon-image icon {
-    margin: 4px;
-    font-size: 16px;
-    color: $secondary;
-  }
-
-  .summary, .body {
-    font-size: $font-size * 1.25;
-    color: $string;
-  }
-
-  .summary {
-    padding: 0.25rem 0.5rem;
-    font-weight: bold;
-    color: $secondary-bright;
-  }
-
-  .body {
+  .header {
     padding: 0.5rem;
-    padding-top: 0.25rem;
+    color: $string-dim;
+  }
+
+  .content {
+    .image {
+      border-radius: $radius;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .icon-image icon {
+      margin: 4px;
+      font-size: 16px;
+      color: $secondary;
+    }
+
+    .summary, .body {
+      font-size: $font-size * 1.2;
+      color: $string;
+    }
+
+    .summary {
+      padding: 0.25rem 0.5rem;
+      font-weight: bold;
+      color: $secondary-bright;
+    }
+
+    .body {
+      padding: 0.5rem;
+      padding-top: 0.25rem;
+    }
   }
 }
 
-.actions {
+.notification.actions {
   color: $primary-dim;
   margin: 4px 2px 0 2px;
 
