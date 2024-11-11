@@ -5,23 +5,15 @@
   };
 
   programs.nixvim.keymaps = let
-    map = desc: mode: key: action: {
-      inherit mode;
-      inherit key;
-      inherit action;
+    key = { silent ? false, mode ? "n" }: desc: key: action: {
+      inherit mode key action;
       options = {
-        inherit desc;
+        inherit desc silent;
       };
     };
-    sil = desc: mode: key: action: {
-      inherit mode;
-      inherit key;
-      inherit action;
-      options = {
-        silent = true;
-        inherit desc;
-      };
-    };
+
+    s = { silent = true; };
+    si = { silent = true; mode = "i"; };
   in
   [
     # Don't yank empty lines with dd
@@ -46,45 +38,45 @@
     }
 
     # Insert mode navigation
-    (sil "Move down"  "i" "<A-J>" "<Down>")
-    (sil "Move up"    "i" "<A-k>" "<Up>")
-    (sil "Move left"  "i" "<A-h>" "<Left>")
-    (sil "Move right" "i" "<A-l>" "<Right>")
+    (key si "Move down"  "<A-J>" "<Down>")
+    (key si "Move up"    "<A-k>" "<Up>")
+    (key si "Move left"  "<A-h>" "<Left>")
+    (key si "Move right" "<A-l>" "<Right>")
 
     # Buffers
-    (sil "Close buffer"    "n" "<leader>x" "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>")
-    (sil "Next buffer"     "n" "<Tab>"     "<cmd>bn<cr>")
-    (sil "Previous buffer" "n" "<S-Tab>"   "<cmd>bp<cr>")
+    (key s "Close buffer"    "<leader>x" "<cmd>bp<bar>sp<bar>bn<bar>bd<cr>")
+    (key s "Next buffer"     "<Tab>"     "<cmd>bn<cr>")
+    (key s "Previous buffer" "<S-Tab>"   "<cmd>bp<cr>")
 
     # Windows
-    (sil "Split window below" "n" "<leader>j" "<C-W>s")
-    (sil "Split window right" "n" "<leader>l" "<C-W>v")
+    (key s "Split window below" "<leader>j" "<C-W>s")
+    (key s "Split window right" "<leader>l" "<C-W>v")
 
-    (sil "Go to window left"  "n" "<C-h>"     "<C-W>h")
-    (sil "Go to window right" "n" "<C-l>"     "<C-W>l")
-    (sil "Go to window above" "n" "<C-k>"     "<C-W>k")
-    (sil "Go to window below" "n" "<C-j>"     "<C-W>j")
+    (key s "Go to window left"  "<C-h>" "<C-W>h")
+    (key s "Go to window right" "<C-l>" "<C-W>l")
+    (key s "Go to window above" "<C-k>" "<C-W>k")
+    (key s "Go to window below" "<C-j>" "<C-W>j")
 
-    (map "Open terminal"      "n" "<leader>t" "<cmd>vsplit<bar>terminal<cr>")
+    (key {} "Open terminal" "<leader>t" "<cmd>vsplit<bar>terminal<cr>")
 
     # Replace placeholder text
-    (sil "Replaces placeholder '<++>'" "n" "<leader><Space>" "/<++><Enter>\"_c4l")
-
-    # Plugins
-
-    # Mini.files
-    (map "Open mini.files" "n" "<leader>e" "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0), false)<cr>")
-
-    # Mini.trailspace
-    (map "Trim trailing whitespace" "n" "<leader>tw" "<cmd>lua MiniTrailspace.trim()<cr>")
-    (map "Trim trailing lines"      "n" "<leader>tl" "<cmd>lua MiniTrailspace.trim_last_lines()<cr>")
-
-    # Git
-    (map "Open Lazygit"  "n" "<leader>g" "<cmd>LazyGit<cr>")
+    (key s
+      "Replaces placeholder '<++>'"
+      "<leader><Space>"
+      "/<++><Enter>\"_c4l")
 
     # Telescope
-    (map "Telescope find files"   "n" "<leader>ff" "<cmd>Telescope find_files<cr>")
-    (map "Telescope recent files" "n" "<leader>fr" "<cmd>Telescope frecency<cr>")
-    (map "Telescope find word"    "n" "<leader>fw" "<cmd>Telescope live_grep<cr>")
+    (key {}
+      "Telescope find files"
+      "<leader>ff"
+      "<cmd>Telescope find_files<cr>")
+    (key {}
+      "Telescope recent files"
+      "<leader>fr"
+      "<cmd>Telescope frecency<cr>")
+    (key {}
+      "Telescope find word"
+      "<leader>fw"
+      "<cmd>Telescope live_grep<cr>")
   ];
 }

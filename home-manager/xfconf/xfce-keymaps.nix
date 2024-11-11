@@ -1,7 +1,11 @@
 { lib, ... }:
 let
-  commands = with lib.attrsets; {
-    custom = mapAttrs' (name: value: nameValuePair "commands/custom/<Super>${name}" value) {
+  prependAttrs = prefix:
+    lib.attrsets.mapAttrs' (name: value:
+      lib.nameValuePair "${prefix}${name}" value);
+
+  commands = {
+    custom = prependAttrs "commands/custom/<Super>" {
       "Return" = "exo-open --launch TerminalEmulator";
       "w" = "exo-open --launch WebBrowser";
       "e" = "thunar";
@@ -12,7 +16,7 @@ let
       "<Shift>q" = "xfce4-session-logout";
     };
 
-    wm = mapAttrs' (name: value: nameValuePair "xfwm4/custom/<Super>${name}" value) {
+    wm = prependAttrs "xfwm4/custom/<Super>" {
       "q" = "close_window_key";
 
       "m" = "maximize_window_key";

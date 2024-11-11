@@ -1,12 +1,13 @@
 { config, lib, ... }:
 let
+  prependAttrs = prefix:
+    lib.attrsets.mapAttrs' (name: value:
+      lib.nameValuePair "${prefix}${name}" value);
+
   panels =
-    with lib.attrsets;
     let
       "position-locked" = true;
-
-      # solid color
-      "background-style" = 1;
+      "background-style" = 1; # solid color
 
       # transleucent rose pine moon base
       "background-rgba" = [
@@ -17,7 +18,7 @@ let
       ];
     in
     {
-      top-panel = mapAttrs' (name: value: nameValuePair "panels/panel-1/${name}" value) {
+      top-panel = prependAttrs "panels/panel-1/" {
         # Top panel
         inherit "position-locked" "background-style" "background-rgba";
 
@@ -32,7 +33,7 @@ let
         "plugin-ids" = lib.lists.range 1 9;
       };
 
-      bottom-panel = mapAttrs' (name: value: nameValuePair "panels/panel-2${name}" value) {
+      bottom-panel = prependAttrs "panels/panel-2" {
         inherit "position-locked" "background-style" "background-rgba";
 
         "autohide-behavior" = 0; # don't autohide
@@ -44,8 +45,8 @@ let
       };
     };
 
-  plugins = with lib.attrsets; {
-    top = mapAttrs' (name: value: nameValuePair "plugins/plugin-${name}" value) {
+  plugins = {
+    top = prependAttrs "plugins/plugin-" {
       # workspaces
       "1" = "pager";
       "1/rows" = 1;
@@ -94,7 +95,7 @@ let
       "9/custom-title" = "O"; # the letter O
     };
 
-    bottom = mapAttrs' (name: value: nameValuePair "plugins/plugin-${name}" value) {
+    bottom = prependAttrs "plugins/plugin-" {
       # appmenu
       "10" = "applicationsmenu";
       "10/show-button-title" = false;

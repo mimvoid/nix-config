@@ -14,26 +14,32 @@ let
 
   pal = "${gpl-palettes}/share/krita/palettes";
 
-  links = with lib.attrsets; {
-    themes = mapAttrs' (name: value: nameValuePair "krita/color-schemes/${name}" value) {
-      "CatppuccinMacchiatoMaroon.colors".source = ./CatppuccinMacchiatoMaroon.colors;
-    };
+  links =
+    let
+      prependAttrs = prefix:
+        lib.attrsets.mapAttrs' (name: value:
+          lib.nameValuePair "${prefix}${name}" value);
+    in
+    {
+      themes = prependAttrs "krita/color-schemes/" {
+        "CatppuccinMacchiatoMaroon.colors".source = ./CatppuccinMacchiatoMaroon.colors;
+      };
 
-    # Brushes, packs, etc.
-    resources = mapAttrs' (name: value: nameValuePair "krita/${name}" value) {
-      "Chalks_for_Children.bundle".source = ./Chalks_for_Children.bundle;
-      "hollow_line.bundle".source = ./hollow_line.bundle;
-      "SK_V1_.bundle".source = ./SK_V1_.bundle;
-      "Rakurri_Gradient_Map_Set_V1.bundle".source = ./Rakurri_Gradient_Map_Set_V1.0.bundle;
-    };
+      # Brushes, packs, etc.
+      resources = prependAttrs "krita/" {
+        "Chalks_for_Children.bundle".source = ./Chalks_for_Children.bundle;
+        "hollow_line.bundle".source = ./hollow_line.bundle;
+        "SK_V1_.bundle".source = ./SK_V1_.bundle;
+        "Rakurri_Gradient_Map_Set_V1.bundle".source = ./Rakurri_Gradient_Map_Set_V1.0.bundle;
+      };
 
-    # Krita can't seem to recognize the files in ~/.nix-profile/share/krita/palettes
-    palettes = mapAttrs' (name: value: nameValuePair "krita/palettes/${name}" value) {
-      "catppuccin-macchiato.gpl".source = "${pal}/catppuccin-macchiato.gpl";
-      "rose-pine-moon.gpl".source = "${pal}/rose-pine-moon.gpl";
-      "ayu-mirage.gpl".source = "${pal}/ayu-mirage.gpl";
+      # Krita can't seem to recognize the files in ~/.nix-profile/share/krita/palettes
+      palettes = prependAttrs "krita/palettes/" {
+        "catppuccin-macchiato.gpl".source = "${pal}/catppuccin-macchiato.gpl";
+        "rose-pine-moon.gpl".source = "${pal}/rose-pine-moon.gpl";
+        "ayu-mirage.gpl".source = "${pal}/ayu-mirage.gpl";
+      };
     };
-  };
 in
 {
   home.packages = [
