@@ -17,7 +17,6 @@ const Icon = {
   },
 
   calendar: "x-office-calendar",
-  overview: "nix-snowflake-symbolic",
   hider: "pan-start-symbolic",
 
   mpris: {
@@ -30,6 +29,8 @@ const Icon = {
     repeat: "media-playlist-repeat-symbolic",
     repeatSong: "media-playlist-repeat-song-symbolic",
   },
+
+  overview: "emblem-favorite-symbolic",
 
   powermenu: {
     indicator: "system-shutdown-symbolic",
