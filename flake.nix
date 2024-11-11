@@ -35,6 +35,9 @@
     };
 
     ags.url = "github:Aylur/ags/v2";
+
+    dooit.url = "github:dooit-org/dooit";
+    dooit-extras.url = "github:dooit-org/dooit-extras";
   };
 
   outputs = {

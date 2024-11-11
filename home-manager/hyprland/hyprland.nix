@@ -45,7 +45,7 @@ in
       "mega-cmd-server &"
       "fcitx5 -d &"
       "hypridle &"
-      "ags &"
+      "ags run &"
       # Includes swww daemon, see ./hypr-theme.nix
     ];
 
@@ -240,10 +240,10 @@ in
       # Having AGS reload also serves as a good visual indicator.
       # You can replace it with any bar (e.g. waybar) you like.
       "$mod, R, exec, hyprctl reload config-only"
-      "$mod, R, exec, ags --quit && ags &"
+      "$mod, R, exec, ags quit && ags run &"
 
       # Toggle session menu
-      "$mod SHIFT, Q, exec, ags -t \"session\""
+      "$mod SHIFT, Q, exec, ags toggle \"session\""
 
       # Switch focus
       "$mod, ${left}, movefocus, l"

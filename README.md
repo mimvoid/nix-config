@@ -50,7 +50,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 | Web browser      | [Firefox][a6]               |
 | Art program      | [Krita][a7]                 |
 | Document viewer  | [Zathura][a8]               |
-| To-do list       | [Super Productivity][a9]    |
+| To-do list       | [dooit][a9]                 |
 | Music player     | [Tauon][a10]                |
 
 [a1]: https://sw.kovidgoyal.net/kitty
@@ -61,7 +61,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 [a6]: https://firefox.com
 [a7]: https://krita.org
 [a8]: https://git.pwmt.org/pwmt/zathura
-[a9]: https://super-productivity.com
+[a9]: https://github.com/dooit-org/dooit
 [a10]: https://tauonmusicbox.rocks
 
 | Hyprland-specific  |                                   |
@@ -75,7 +75,8 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 | Wallpaper          | [swww][h6]                        |
 | Screen temperature | [wlsunset][h7]                    |
 | Screenshot         | [hyprshot][h8]                    |
-| Color picker       | [hyprpicker][h9]                  |
+| To-dos             | [dooit][h9]
+| Color picker       | [hyprpicker][h10]                  |
 
 [h1]: https://wiki.hyprland.org/Hypr-Ecosystem
 [h2]: https://github.com/Aylur/ags
@@ -147,7 +148,6 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 These are things I used that ended up not entirely fitting my use-case, but they're wonderful nonetheless and I totally respect and recommend them!
 
 - [foot](https://codeberg.org/dnkl/foot), lightweight terminal emulator for Wayland
-- [dooit](https://github.com/kraanzu/dooit), a TUI to-do list manager
 
 # Resources
 
