@@ -12,6 +12,10 @@
     enable = true;
     package = pkgs.unstable.neovim-unwrapped;
     defaultEditor = true;
+
     enableMan = false;
+    withRuby = false;
+
+    luaLoader.enable = true;
   };
 }
