@@ -6,16 +6,12 @@
     #shellcheck-minimal
     #shellharden
     #shfmt
-    black
-    isort
   ];
 
   programs.nixvim.plugins.conform-nvim = {
     enable = true;
 
     settings = {
-      format_on_save.lsp_format = "fallback";
-
       formatters_by_ft = {
         javascript = [ "prettierd" ];
         typescript = [ "prettierd" ];
@@ -28,7 +24,6 @@
 
         # bash = [ "shellcheck" "shellharden" "shfmt" ];
         # go = [ "goimports" "gofmt" ];
-        python = [ "black" "isort" ];
 
         "_" = [ "squeeze_blanks" "trim_whitespace" "trim_newlines" ];
       };

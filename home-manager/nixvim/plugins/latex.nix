@@ -11,4 +11,11 @@
       view_method = "zathura";
     };
   };
+
+  programs.nixvim.plugins.cmp.filetype.tex = {
+    sources = [
+      { name = "vimtex"; }
+      { name = "buffer"; }
+    ];
+  };
 }

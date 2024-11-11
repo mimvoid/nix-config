@@ -25,11 +25,20 @@
         package = pkgs.unstable.bash-language-server;
       };
 
+      # Python
       basedpyright = {
         enable = true;
         package = pkgs.unstable.basedpyright;
-        settings.basedpyright.analysis.typeCheckingMode = "off";
+        settings.basedpyright.analysis = {
+          typeCheckingMode = "off";
+          inlayHints = {
+            variableTypes = false;
+            callArgumentNames = false;
+            functionReturnTypes = false;
+          };
+        };
       };
+      ruff.enable = true;
 
       marksman.enable = true;
 
