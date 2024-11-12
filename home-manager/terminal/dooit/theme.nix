@@ -1,13 +1,13 @@
 { config, ... }:
 
 {
-  xdg.configFile."dooit/colors.py".text =
+  xdg.configFile."dooit/theme.py".text =
     with config.lib.stylix.colors.withHashtag; # python
       ''
         from dooit.api.theme import DooitThemeBase
 
-        class MoonflowerDusk(DooitThemeBase):
-            _name = "moonflower-dusk"
+        class MoonfallEve(DooitThemeBase):
+            _name = "moonfall-eve"
 
             background1: str = "${base00}"
             background2: str = "${base01}"

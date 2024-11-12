@@ -1,175 +1,206 @@
-from extra import *
+from dooit.ui.api import DooitAPI, subscribe
+from dooit.ui.api.events import Startup
 
-base = "#25223a"
-muted = "#5d5573"
-text = "#e8dfdd"
-red = "#f281a6"
-green = "#6990d6"
-yellow = "#efa4b7"
-blue = "#9673de"
-magenta = "#c37ac9"
-cyan = "#b1b5e4"
+from dooit.api import Todo
+from dooit.ui.api.widgets import TodoWidget
 
-# Config
-BACKGROUND = base
-BAR_BACKGROUND = base
-WORKSPACES_BACKGROUND = base
-TODOS_BACKGROUND = base
-BORDER_DIM = blue + " 50%"
-BORDER_LIT = yellow
+from dooit_extras.formatters import (
+    description_children_count,
+    description_highlight_tags,
+    description_strike_completed,
+    due_casual_format,
+    due_icon,
+    # recurrence_icon,
+    status_icons,
+    urgency_icons
+)
+from dooit_extras.bar_widgets import (
+    Date,
+    Mode,
+    Spacer,
+    StatusIcons,
+    TextBox,
+    Ticker
+)
+# from dooit_extras.scripts import (
+#     toggle_workspaces
+# )
 
-BORDER_TITLE_DIM = muted, base  # fg then bg
-BORDER_TITLE_LIT = yellow, base
+from rich.style import Style
+from rich.text import Text
 
-SEARCH_COLOR = red
-YANK_COLOR = green
+import theme
 
-SAVE_ON_ESCAPE = True
+@subscribe(Startup)
+def setup_colorscheme(api: DooitAPI, _):
+    api.css.set_theme(theme.MoonfallEve)
 
-USE_DATE_FIRST = True  # True = dd-mm, False = mm-dd
-DATE_FORMAT = "%d %h"
-TIME_FORMAT = "%H:%M"
+@subscribe(Startup)
+def setup_formatters(api: DooitAPI, _):
+    fmt = api.formatter
+    theme = api.vars.theme
+
+    # ------- DEFINITIONS -------
+
+    show_children = True
+    children_format = (" ({}) ", theme.primary)
+
+    # --- Todos only ---
+
+    desc_format = ("{completed_count}/{total_count}", theme.foreground2)
+    strikethrough_complete = True
+
+    highlight_tags = True
+    tags_format = " {}"
+
+    # Due format
+    due_casual = True
+
+    # Icons
+    todo_status_icons = {
+        "completed": " ",
+        "pending": "● ",
+        "overdue": " "
+    }
+
+    todo_urgency_icons = {
+        1: "   ",
+        2: "  󱊡",
+        3: "  󱊢",
+        4: " !󱊣"
+    }
+
+    todo_due_icons = {
+        "completed": " ",
+        "pending": " ",
+        "overdue": " "
+    }
+
+    # --------- LOGIC ---------
+
+    # Format workspaces & todos to display children count
+    if show_children:
+        for i in [fmt.workspaces.description, fmt.todos.description]:
+            format = Text(children_format[0], style=children_format[1]).markup
+            i.add(description_children_count(format))
+
+    # Set icons
+    fmt.todos.status.add(status_icons(**todo_status_icons))
+    fmt.todos.urgency.add(urgency_icons(icons=todo_urgency_icons))
+    fmt.todos.due.add(due_icon(**todo_due_icons))
+
+    # Description
+    format = Text(desc_format[0], style=desc_format[1]).markup
+
+    # Casual due date format
+    if due_casual:
+        fmt.todos.due.add(due_casual_format())
+
+    # Iconify tags
+    if highlight_tags:
+        fmt.todos.description.add(description_highlight_tags(fmt=tags_format))
+
+    # Strikethrough completed todos
+    if strikethrough_complete:
+        fmt.todos.description.add(description_strike_completed())
+
+
+# Layout
+@subscribe(Startup)
+def setup_layout(api: DooitAPI, _):
+    api.layouts.todo_layout = [
+        TodoWidget.status,
+        TodoWidget.description,
+        TodoWidget.recurrence,
+        TodoWidget.due,
+        TodoWidget.urgency,
+    ]
+
+
+# Bar
+@subscribe(Startup)
+def setup_bar(api: DooitAPI, _):
+    theme = api.vars.theme
+
+    bar_status_icons = {
+        "completed_icon": " ",
+        "pending_icon": "󰔚 ",
+        "overdue_icon": " "
+    }
+
+    widgets = [
+        TextBox(api, " 󰄛 ", bg=theme.magenta),
+        Spacer(api, width=1),
+        Mode(api, format_normal=" 󰆋 NORMAL ", format_insert="  INSERT "),
+        Spacer(api, width=1),
+        Ticker(api,
+               fmt=" 󱫚 {} ",
+               fg=theme.cyan,
+               bg=theme.background2),
+        Spacer(api, width=0),
+        StatusIcons(api, **bar_status_icons, bg=theme.background2),
+        Spacer(api, width=1),
+        Date(api, fmt=" 󰧒 {} ", format="%b %d %H:%M"),
+    ]
+    api.bar.set(widgets)
+
 
 # Dashboard
-# Art by Blazej Kozlowski
-# Modified by mimvoid
-# source: https://www.asciiart.eu/animals/cats
-ART_D = [
-    "      .                         ",
-    "      \  ॱ` -.                  ",
-    "       .  ,-. `.                ",
-    "       : _   `  \               ",
-    "     _ ) *   .   `·-._          ",
-    "     ‾ `-.- '         `-.       ",
-    "         ;       `       `.     ",
-    "         :.       .        \    ",
-    "         . \  .   :   .-'   .   ",
-    "         '  `+.;  ;  '      :   ",
-    "         :  '  |    ;       ;-. ",
-    "        .  '   :  :`:     _.`· ;",
-    f"{col('bug',yellow)}   .·  .  .·' ; .·`- +'  `· ॱ",
-    "      `·-·   `·-·  `·-·'        ",
-]
+@subscribe(Startup)
+def setup_dashboard(api: DooitAPI, _):
+    theme = api.vars.theme
 
-# Didn't use an array since I wanted them centered
-QUOTE1 = f"can you feel your {col('heart',red)} burning?"
-QUOTE2 = "can you feel the struggle within?"
-QUOTE3 = f"the fear within me is beyond {col('anything',green)} your soul can make."
-QUOTE4 = f"you {col('cannot kill me',red)} in a {col('way that matters',red)}"
+    # Art by Joan Stark
+    # Modified by mimvoid, inspired by Blazej Kozlowski
+    # source: https://www.asciiart.eu/animals/cats
 
+    # Define the ascii art
+    ascii_art = r"""
+               _ |\_
+               \` _ \
+         __,.-‟ =___Y=
+       .‟        )
+ _    /   ,    \/\_
+((____|    )_-\ \_-`  bug
+`------`-----` `--`
+    """
+    ascii_color = theme.cyan
+    ascii_hl = (["bug"], theme.red)
 
-PAD = " "
+    lines = [
+        (
+            "The fear within me is beyond anything your soul can make.",
+            ["anything"],
+            theme.green
+        ),
+        (
+            "You cannot kill me in a way that matters.",
+            ["cannot kill me", "way that matters"],
+            theme.red
+        )
+    ]
 
-DASHBOARD = [ART_D, PAD, QUOTE1, QUOTE2, QUOTE3, QUOTE4]
+    # Implement the ascii art
+    ascii_art = Text(ascii_art, style=ascii_color)
+    ascii_art.highlight_words(ascii_hl[0], style=ascii_hl[1])
 
-# Workspaces
-EMPTY_WORKSPACE = [
-    ":O",
-    "No workspaces?",
-    f"Press [{cyan}]'a'[/{cyan}] to add some!",
-]
-WORKSPACE = {
-    "editing": green,
-    "pointer": ">",
-    "children_hint": " ›",
-    "start_expanded": True,
-}
+    # Parse the lines
+    formatted_lines = []
+    for i in lines:
+        text = Text(i[0], style=Style(color=theme.foreground2, bold=True, italic=True))
+        text.highlight_words(i[1], style=i[2])
+        formatted_lines.append(text)
 
-# Todos
-# Art by Joan Stark
-# source: https://www.asciiart.eu/animals/cats
-ART_T = [
-    "               _ |\_   ",
-    f"               \` ..\  {col('?', yellow)}",
-    "         __,.-‟ =___Y= ",
-    "       .‟        )     ",
-    " _    /   ,    \/\_    ",
-    "((____|    )_-\ \_-`   ",
-    "`------`-----` `--`    ",
-]
+    due_today = sum([1 for i in Todo.all() if i.is_due_today and i.is_pending])
+    overdue = sum([1 for i in Todo.all() if i.is_overdue])
 
-EMPTY_TODO = [
-    ART_T,
-    PAD,
-    "Wow so empty!?",
-    "Let's think of some stuff to do!",
-]
-
-COLUMN_ORDER = ["description", "due", "urgency"]
-TODO = {
-    "color_todos": False,  # color based on status
-    "editing": green,
-    "pointer": ">",
-    "due_icon": "󰃭 ",
-    "effort_icon": " ",
-    "effort_color": magenta,
-    "recurrence_icon": "  ",
-    "recurrence_color": cyan,
-    "tags_color": red,
-    "completed_icon": " ",
-    "pending_icon": "● ",
-    "overdue_icon": " ",
-    # Urgency
-    "initial_urgency": 1,
-    "urgency1_icon": " ",
-    "urgency2_icon": "󱊡",
-    "urgency3_icon": "󱊢",
-    "urgency4_icon": "󱊣!",
-    "urgency1_color": "green",
-    "urgency2_color": "blue",
-    "urgency3_color": "magenta",
-    "urgency4_color": "red",
-    # Children
-    "children_hint": col(" [{done}/{total}]", muted),
-    "start_expanded": True,
-}
-
-# Status bar
-
-status_icons = {
-    "NORMAL": ["󰆋 ", green],
-    "INSERT": [" ", yellow],
-    "DATE": ["󰃭 ", red],
-    "SEARCH": [" ", cyan],
-    "SORT": [" ", blue],
-    "K PENDING": [" ", magenta],
-}
-
-
-def status(status):
-    icon, color = status_icons[status]
-    return blk(icon + status, color)
-
-
-def get_message(message):
-    return " " + message
-
-
-def get_clock() -> str:
-    return blk("󰥔", magenta) + col(
-        f"{datetime.now().time().strftime(' %H:%M ')}", magenta
-    )
-
-
-def get_username():
-    try:
-        username = os.getlogin()
-    except OSError:
-        uid = os.getuid()
-        import pwd
-
-        username = pwd.getpwuid(uid).pw_name
-    return blk("", green) + col(f" {username}", green)
-
-
-# TODO: get stats working
-# STATS = [
-#     f"Completed: {get_total_completed()}",
-#     f"Pending: {get_total_pending()}",
-#     f"Overdue: {get_total_overdue()}",
-# ]
-
-bar = {
-    "A": [(status, 0.1), get_message],
-    "C": [(get_clock, 1), get_username],
-}
+    items = [
+        ascii_art,
+        ""
+    ] + formatted_lines + [
+        "",
+        "",
+        Text("󰔚 Tasks today: {}".format(due_today), style=theme.green),
+        Text(" Tasks overdue: {}".format(overdue), style=theme.red),
+    ]
+    api.dashboard.set(items)
