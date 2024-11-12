@@ -8,9 +8,10 @@ from dooit_extras.formatters import (
     description_children_count,
     description_highlight_tags,
     description_strike_completed,
+    todo_description_progress,
     due_casual_format,
     due_icon,
-    # recurrence_icon,
+    recurrence_icon,
     status_icons,
     urgency_icons
 )
@@ -22,86 +23,58 @@ from dooit_extras.bar_widgets import (
     TextBox,
     Ticker
 )
-# from dooit_extras.scripts import (
-#     toggle_workspaces
-# )
 
 from rich.style import Style
 from rich.text import Text
 
-import theme
+
+# Get colorscheme
+import moonfall_eve
+
+# Get variables
+import settings as my
+
 
 @subscribe(Startup)
 def setup_colorscheme(api: DooitAPI, _):
-    api.css.set_theme(theme.MoonfallEve)
+    api.css.set_theme(moonfall_eve.MoonfallEve)
+
 
 @subscribe(Startup)
 def setup_formatters(api: DooitAPI, _):
     fmt = api.formatter
     theme = api.vars.theme
 
-    # ------- DEFINITIONS -------
-
-    show_children = True
-    children_format = (" ({}) ", theme.primary)
-
-    # --- Todos only ---
-
-    desc_format = ("{completed_count}/{total_count}", theme.foreground2)
-    strikethrough_complete = True
-
-    highlight_tags = True
-    tags_format = " {}"
-
-    # Due format
-    due_casual = True
-
-    # Icons
-    todo_status_icons = {
-        "completed": " ",
-        "pending": "● ",
-        "overdue": " "
-    }
-
-    todo_urgency_icons = {
-        1: "   ",
-        2: "  󱊡",
-        3: "  󱊢",
-        4: " !󱊣"
-    }
-
-    todo_due_icons = {
-        "completed": " ",
-        "pending": " ",
-        "overdue": " "
-    }
-
-    # --------- LOGIC ---------
+    # A bit of a mess here... beware!
 
     # Format workspaces & todos to display children count
-    if show_children:
-        for i in [fmt.workspaces.description, fmt.todos.description]:
-            format = Text(children_format[0], style=children_format[1]).markup
-            i.add(description_children_count(format))
+    if my.ws_number_children:
+        children_format = Text(" ({}) ", style=theme.primary).markup
+        fmt.workspaces.description.add(description_children_count(children_format))
+
+    if my.todo_number_children:
+        desc_format = Text(" ({completed_count}/{total_count}) ", style=theme.primary).markup
+        fmt.todos.description.add(todo_description_progress(desc_format))
 
     # Set icons
-    fmt.todos.status.add(status_icons(**todo_status_icons))
-    fmt.todos.urgency.add(urgency_icons(icons=todo_urgency_icons))
-    fmt.todos.due.add(due_icon(**todo_due_icons))
+    fmt.todos.status.add(status_icons(**my.status_icons))
+    fmt.todos.urgency.add(urgency_icons(icons=my.urgency_icons))
+    fmt.todos.due.add(due_icon(**my.due_icons))
+    api.formatter.todos.recurrence.add(recurrence_icon(icon=my.recurrence_icon))
 
     # Description
     format = Text(desc_format[0], style=desc_format[1]).markup
 
     # Casual due date format
-    if due_casual:
+    if my.due_casual:
         fmt.todos.due.add(due_casual_format())
 
     # Iconify tags
-    if highlight_tags:
-        fmt.todos.description.add(description_highlight_tags(fmt=tags_format))
+    if my.highlight_tags:
+        fmt.todos.description.add(description_highlight_tags(fmt=my.tags_format))
 
     # Strikethrough completed todos
-    if strikethrough_complete:
+    if my.strikethrough_complete:
         fmt.todos.description.add(description_strike_completed())
 
 
@@ -122,25 +95,19 @@ def setup_layout(api: DooitAPI, _):
 def setup_bar(api: DooitAPI, _):
     theme = api.vars.theme
 
-    bar_status_icons = {
-        "completed_icon": " ",
-        "pending_icon": "󰔚 ",
-        "overdue_icon": " "
-    }
-
     widgets = [
         TextBox(api, " 󰄛 ", bg=theme.magenta),
         Spacer(api, width=1),
-        Mode(api, format_normal=" 󰆋 NORMAL ", format_insert="  INSERT "),
+        Mode(api, **my.mode),
         Spacer(api, width=1),
         Ticker(api,
-               fmt=" 󱫚 {} ",
+               fmt=my.ticker,
                fg=theme.cyan,
                bg=theme.background2),
         Spacer(api, width=0),
-        StatusIcons(api, **bar_status_icons, bg=theme.background2),
+        StatusIcons(api, **my.bar_status_icons, bg=theme.background2),
         Spacer(api, width=1),
-        Date(api, fmt=" 󰧒 {} ", format="%b %d %H:%M"),
+        Date(api, **my.date)
     ]
     api.bar.set(widgets)
 
@@ -150,22 +117,8 @@ def setup_bar(api: DooitAPI, _):
 def setup_dashboard(api: DooitAPI, _):
     theme = api.vars.theme
 
-    # Art by Joan Stark
-    # Modified by mimvoid, inspired by Blazej Kozlowski
-    # source: https://www.asciiart.eu/animals/cats
-
-    # Define the ascii art
-    ascii_art = r"""
-               _ |\_
-               \` _ \
-         __,.-‟ =___Y=
-       .‟        )
- _    /   ,    \/\_
-((____|    )_-\ \_-`  bug
-`------`-----` `--`
-    """
-    ascii_color = theme.cyan
-    ascii_hl = (["bug"], theme.red)
+    ascii_primary = theme.cyan
+    ascii_secondary = theme.red
 
     lines = [
         (
@@ -181,8 +134,8 @@ def setup_dashboard(api: DooitAPI, _):
     ]
 
     # Implement the ascii art
-    ascii_art = Text(ascii_art, style=ascii_color)
-    ascii_art.highlight_words(ascii_hl[0], style=ascii_hl[1])
+    ascii_art = Text(my.ascii_art, style=ascii_primary)
+    ascii_art.highlight_words(my.ascii_hl, style=ascii_secondary)
 
     # Parse the lines
     formatted_lines = []
