@@ -39,11 +39,6 @@ let
       '';
 in
 {
-  imports = [
-    ../theming.nix
-    ../../palettes/palette.nix
-  ];
-
   wayland.windowManager.hyprland.settings = {
     # Homescreen wallpaper
     exec = lib.mkAfter [ "${swww-schedule} &" ];

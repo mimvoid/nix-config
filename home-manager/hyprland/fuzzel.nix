@@ -39,6 +39,6 @@
       format = {name:18}          {signal}%%  {bars}
 
       [editor]
-      terminal = foot
+      terminal = kitty
     '';
 }

@@ -6,13 +6,7 @@ let
   browser = "firefox";
   fileManager = "thunar";
   obsidian = "obsidian";
-  todo = "super-productivity";
-
-  # Used in keymaps
-  left = "H";
-  down = "J";
-  up = "K";
-  right = "L";
+  todo = "kitty dooit";
 in
 {
   wayland.windowManager.hyprland = {
@@ -37,6 +31,7 @@ in
   wayland.windowManager.hyprland.settings = {
 
     # Startup & daemons
+    # Includes swww daemon, see ./hypr-theme.nix
     exec-once = [
       "systemctl --user import-environment &"
       "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
@@ -46,14 +41,12 @@ in
       "fcitx5 -d &"
       "hypridle &"
       "ags run &"
-      # Includes swww daemon, see ./hypr-theme.nix
     ];
 
+    # Don't have things with a systemd target for Hyprland here
+    # (unless you want two of them)
     exec = [
       "nm-applet --indicator &"
-      # Don't have programs with systemd targets here (unless you want two of them)
-      # If their systemd.target = "hyprland-session.target";
-      # At least I think that's how it works
     ];
 
     env = [
@@ -63,7 +56,6 @@ in
 
       "GDK_scale, 1"
       "GDK_BACKEND, wayland, x11, *"
-      "GTK_CSD, 0" # disable window decorations
 
       "QT_AUTO_SCREEN_SCALE_FACTOR, 1_SCALE_FACTOR, 1"
       "QT_QPA_PLATFORM, wayland; xcb"
@@ -93,39 +85,40 @@ in
 
     windowrule = [ "pseudo, fcitx" ];
     windowrulev2 =
-    # TODO: think of better names for these
-    let
-      opaquer-title = val: "opacity 0.9 override 0.75 override, title:(${val})";
-      opaquer-class = val: "opacity 0.9 override 0.75 override, class:(${val})";
-      opaque-ish = val: "opacity 0.97 override 0.85 override, class:(${val})";
-      active-opaque = val: "opacity 1.0 override 0.85 override, class:(${val})";
-      opaque = val: "opaque, class:(${val})";
-    in
-    [
-      "suppressevent maximize, class:.*"
-      "opacity 0.8 override 0.7 override, class:(${terminal})"
+      let
+        opacity = {
+          more = { name, id ? "class" }: "opacity 0.9 override 0.75 override, ${id}:(${name})";
+          high = name: "opacity 0.97 override 0.85 override, class:(${name})";
+          active = name: "opacity 1.0 override 0.85 override, class:(${name})";
+          full = name: "opaque, class:(${name})";
+        };
+      in
+      with opacity;
+        [
+          (more { name = "*Nextcloud"; id = "title"; })
+          (more { name = "Anki"; })
+          (more { name = "org.pwmt.zathura"; })
+          (more { name = "com.github.flxzt.rnote"; })
 
-      # Make Zotero plugin notifications less intrusive
-      "float, class:^(Zotero)$, title:^(Progress)$"
-      "noinitialfocus, class:^(Zotero)$, title:^(Progress)$"
-      "move 100% 100%, class:^(Zotero)$, title:^(Progress)$"
-      "maxsize 75 50, class:^(Zotero)$, title:^(Progress)$"
+          (high "obsidian")
+          (high "vesktop")
 
-      (opaquer-title "*Nextcloud")
-      (opaquer-class "Anki")
-      (opaquer-class "org.pwmt.zathura")
-      (opaquer-class "com.github.flxzt.rnote")
-      (opaque-ish "FreeTube")
-      (opaque-ish "Zotero")
-      (opaque-ish "obsidian")
-      (opaque-ish "vesktop")
-      (active-opaque "firefox")
-      (active-opaque "zen-alpha")
-      (opaque "ristretto")
-      (opaque "krita")
-      (opaque "org.inkscape.Inkscape")
-      (opaque "virt-manager")
-    ];
+          (active "firefox")
+
+          (full "krita")
+          (full "org.inkscape.Inkscape")
+          (full "virt-manager")
+        ]
+        ++ [
+          "suppressevent maximize, class:.*"
+          "opacity 0.8 override 0.7 override, class:(${terminal})"
+
+          # Make Zotero plugin notifications less intrusive
+          "float, class:^(Zotero)$, title:^(Progress)$"
+          "noinitialfocus, class:^(Zotero)$, title:^(Progress)$"
+          "move 100% 100%, class:^(Zotero)$, title:^(Progress)$"
+          "maxsize 75 50, class:^(Zotero)$, title:^(Progress)$"
+        ];
 
     dwindle = {
       pseudotile = true;
@@ -212,10 +205,10 @@ in
 
     binde = [
       # Resize windows
-      "$mod ALT, ${left}, resizeactive, -10 0"
-      "$mod ALT, ${right}, resizeactive, 10 0"
-      "$mod ALT, ${up}, resizeactive, 0 -10"
-      "$mod ALT, ${down}, resizeactive, 0 10"
+      "$mod ALT, H, resizeactive, -10 0"
+      "$mod ALT, L, resizeactive, 10 0"
+      "$mod ALT, K, resizeactive, 0 -10"
+      "$mod ALT, J, resizeactive, 0 10"
     ];
 
     bind = [
@@ -229,41 +222,41 @@ in
 
       "$mod, N, exec, networkmanager_dmenu"
 
+      # Screenshot
+      ", Print, exec, hyprshot -m output" # whole screen
+      "$mod, Print, exec, hyprshot -m window" # one window
+      "$mod SHIFT, Print, exec, hyprshot -m region" # selection
+
+      # Colorpicker
+      "$mod, C, exec, hyprpicker --autocopy --format=hex"
+
+      # Toggle session menu
+      "$mod SHIFT, Q, exec, ags toggle \"session\""
+
+      # Reload
+      # I use this binding to manually reload config changes.
+      # Having AGS reload also serves as a good visual indicator.
+      # You can replace it with any bar (e.g. waybar) you like.
+      "$mod, R, exec, hyprctl reload config-only"
+      "$mod, R, exec, ags quit && ags run &"
+
       # Toggle fullscreen
       "$mod, F, fullscreen"
 
       # Exit
       "$mod, Q, killactive"
 
-      # Reload
-      # I use this binding to manually reload anything I'm interested in.
-      # Having AGS reload also serves as a good visual indicator.
-      # You can replace it with any bar (e.g. waybar) you like.
-      "$mod, R, exec, hyprctl reload config-only"
-      "$mod, R, exec, ags quit && ags run &"
-
-      # Toggle session menu
-      "$mod SHIFT, Q, exec, ags toggle \"session\""
-
       # Switch focus
-      "$mod, ${left}, movefocus, l"
-      "$mod, ${right}, movefocus, r"
-      "$mod, ${up}, movefocus, u"
-      "$mod, ${down}, movefocus, d"
+      "$mod, H, movefocus, l"
+      "$mod, L, movefocus, r"
+      "$mod, K, movefocus, u"
+      "$mod, J, movefocus, d"
 
       # Move windows
-      "$mod SHIFT, ${left}, movewindow, l"
-      "$mod SHIFT, ${right}, movewindow, r"
-      "$mod SHIFT, ${up}, movewindow, u"
-      "$mod SHIFT, ${down}, movewindow, d"
-
-      # Screenshot
-      "$mod, Print, exec, hyprshot -m window"
-      ", Print, exec, hyprshot -m output"
-      "$mod SHIFT, Print, exec, hyprshot -m region"
-
-      # Colorpicker
-      "$mod, C, exec, hyprpicker --autocopy --format=hex"
+      "$mod SHIFT, H, movewindow, l"
+      "$mod SHIFT, L, movewindow, r"
+      "$mod SHIFT, K, movewindow, u"
+      "$mod SHIFT, J, movewindow, d"
     ] ++ (
       # Workspaces
       # $mod + {1..10} for workspace {1..10}

@@ -7,9 +7,9 @@
     ./git.nix
     ./kitty.nix
     ./yazi.nix
-    ./dooit/default.nix
-    ./navi/default.nix
-    ./fetcher/default.nix
+    ./dooit
+    ./navi
+    ./fetcher
   ];
 
   home.packages = with pkgs; [

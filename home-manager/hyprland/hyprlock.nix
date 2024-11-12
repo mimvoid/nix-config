@@ -7,18 +7,13 @@
 let
   # Cannot be a relative path since it's pointing to a file
   # that's untracked due to being inside a git submodule
-  lockscreen = "~/NixOS/wallpapers/wallpapers/tokyo-shinjuku.png";
+  lockscreen = "${config.home.homeDirectory}/NixOS/wallpapers/wallpapers/tokyo-shinjuku.png";
   display = "Limelight";
 
   pal = config.palette;
   type = config.stylix.fonts;
 in
 {
-  imports = [
-    ../theming.nix
-    ../../palettes/palette.nix
-  ];
-
   programs.hyprlock = {
     enable = true;
     settings = {

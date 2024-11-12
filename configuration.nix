@@ -49,10 +49,6 @@
     xfce.xfce4-pulseaudio-plugin
   ];
 
-  fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [ "Hasklig" ]; })
-  ];
-
   services.flatpak.enable = true;
 
   # X11
