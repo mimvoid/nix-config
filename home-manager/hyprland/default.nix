@@ -2,7 +2,7 @@
 
 {
   home.packages = with pkgs; [
-    wl-clipboard
+    wl-clipboard-rs
     hyprpicker
     hyprshot
     swww
