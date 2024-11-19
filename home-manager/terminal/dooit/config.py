@@ -27,17 +27,11 @@ from dooit_extras.bar_widgets import (
 from rich.style import Style
 from rich.text import Text
 
-
-# Get colorscheme
-import moonfall_eve
+# Get custom formatters
+from formats import my_due
 
 # Get variables
 import settings as my
-
-
-@subscribe(Startup)
-def setup_colorscheme(api: DooitAPI, _):
-    api.css.set_theme(moonfall_eve.MoonfallEve)
 
 
 @subscribe(Startup)
@@ -62,12 +56,9 @@ def setup_formatters(api: DooitAPI, _):
     fmt.todos.due.add(due_icon(**my.due_icons))
     api.formatter.todos.recurrence.add(recurrence_icon(icon=my.recurrence_icon))
 
-    # Description
-    format = Text(desc_format[0], style=desc_format[1]).markup
-
     # Casual due date format
     if my.due_casual:
-        fmt.todos.due.add(due_casual_format())
+        fmt.todos.due.add(my_due())
 
     # Iconify tags
     if my.highlight_tags:
@@ -96,7 +87,7 @@ def setup_bar(api: DooitAPI, _):
     theme = api.vars.theme
 
     widgets = [
-        TextBox(api, " 󰄛 ", bg=theme.magenta),
+        TextBox(api, my.bar_icon, bg=theme.magenta),
         Spacer(api, width=1),
         Mode(api, **my.mode),
         Spacer(api, width=1),
