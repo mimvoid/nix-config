@@ -17,8 +17,8 @@
     ./links.nix
     #./tts.nix
     ./krita
+    ./neovim
     ./terminal
-    ./nixvim
     ./hyprland
     ./xfconf
     ./guis
@@ -26,9 +26,6 @@
     ./ags
   ];
 
-  home.sessionVariables = {
-    EDITOR = "nvim";
-  };
 
   # Pinyin for Simplified Chinese
   i18n.inputMethod = {

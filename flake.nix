@@ -11,18 +11,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # Extra modules
-    nixvim = {
-      url = "github:nix-community/nixvim";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-
-        # Disable optional inputs
-        nix-darwin.follows = "";
-        nuschtosSearch.follows = "";
-      };
+    # My Neovim
+    nvim = {
+      url = "github:mimvoid/neovim-dots";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    # Extra modules
     stylix = {
       url = "github:danth/stylix/master";
       inputs = {
@@ -45,7 +40,6 @@
     nixpkgs,
     nixpkgs-unstable,
     home-manager,
-    nixvim,
     stylix,
     ...
   } @ inputs:
@@ -101,7 +95,6 @@
         modules = [
           ./home-manager/home.nix
           stylix.homeManagerModules.stylix
-          nixvim.homeManagerModules.nixvim
 
           { home.sessionVariables = { inherit FLAKE; }; }
         ];
