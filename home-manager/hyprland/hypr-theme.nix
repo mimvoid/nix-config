@@ -9,7 +9,7 @@ let
   pal = config.palette;
   type = config.stylix.fonts;
 
-  wallpapers = "${config.home.homeDirectory}/NixOS/wallpapers/wallpapers";
+  wallpapers = "${config.home.sessionVariables.FLAKE}/wallpapers/wallpapers";
 
   swww-schedule =
     pkgs.writeShellScript "swww-schedule" # bash

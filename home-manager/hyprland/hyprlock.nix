@@ -7,7 +7,7 @@
 let
   # Cannot be a relative path since it's pointing to a file
   # that's untracked due to being inside a git submodule
-  lockscreen = "${config.home.homeDirectory}/NixOS/wallpapers/wallpapers/tokyo-shinjuku.png";
+  lockscreen = "${config.home.sessionVariables.FLAKE}/wallpapers/wallpapers/tokyo-shinjuku.png";
   display = "Limelight";
 
   pal = config.palette;

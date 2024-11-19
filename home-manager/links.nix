@@ -11,7 +11,7 @@ let
   };
 
   # Directory shorthands
-  home-manager = "${config.home.homeDirectory}/NixOS/home-manager";
+  home-manager = "${config.home.sessionVariables.FLAKE}/home-manager";
 
   firefox-profile = "30dphuug.default";
   obsidian-dir = "Documents/Zettelkasten";
