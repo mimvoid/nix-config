@@ -27,6 +27,11 @@
   ];
 
 
+  home.packages = with pkgs; [
+    unstable.ollama
+    unstable.alpaca
+  ];
+
   # Pinyin for Simplified Chinese
   i18n.inputMethod = {
     enabled = "fcitx5";
