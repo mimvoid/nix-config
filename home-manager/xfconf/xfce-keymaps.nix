@@ -1,8 +1,6 @@
-{ lib, ... }:
+{ pkgs, ... }:
 let
-  prependAttrs = prefix:
-    lib.attrsets.mapAttrs' (name: value:
-      lib.nameValuePair "${prefix}${name}" value);
+  inherit (pkgs.my-utils) prependAttrs;
 
   commands = {
     custom = prependAttrs "commands/custom/<Super>" {

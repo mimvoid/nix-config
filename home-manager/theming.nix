@@ -1,9 +1,4 @@
-{
-  config,
-  lib,
-  pkgs,
-  ...
-}:
+{ config, lib, pkgs, ... }:
 let
   theme = {
     name = "rose-pine";
@@ -18,16 +13,8 @@ let
 
   icons = {
     name = "Papirus";
-    package = (
-      pkgs.catppuccin-papirus-folders.override {
-        flavor = "macchiato";
-        accent = "pink";
-      }
-    );
+    package = pkgs.mods.catppuccin-papirus-folders;
   };
-
-  # Font packages
-  myfont = pname: pkgs.callPackage ../pkgs/fonts/${pname} { };
 
   # Default fonts
   serif = sansSerif;
@@ -37,7 +24,7 @@ let
   };
   monospace = {
     name = "Hasklug Nerd Font Mono";
-    package = pkgs.nerdfonts.override { fonts = [ "Hasklig" ]; };
+    package = pkgs.mods.nerdfonts;
   };
 
   terminal-size = 14;
@@ -62,8 +49,8 @@ in
     unstable.oswald
     unstable.major-mono-display
 
-    (myfont "limelight")
-    (myfont "ma-shan-zheng")
+    voids.fonts.limelight
+    voids.fonts.ma-shan-zheng
 
     theme.package
     icons.package

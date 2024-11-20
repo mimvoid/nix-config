@@ -55,11 +55,12 @@
       ];
     };
 
-    plugins = with pkgs; {
-      full-border = callPackage ../../pkgs/yazi/full-border { };
-      max-preview = callPackage ../../pkgs/yazi/max-preview { };
-      bookmarks = callPackage ../../pkgs/yazi/bookmarks { };
-      exifaudio = callPackage ../../pkgs/yazi/exifaudio { };
+    plugins = {
+      inherit (pkgs.voids.yaziPlugins)
+        full-border
+        max-preview
+        bookmarks
+        exifaudio;
     };
 
     initLua = # lua

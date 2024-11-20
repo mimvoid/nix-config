@@ -1,8 +1,6 @@
-{ config, lib, ... }:
+{ pkgs, config, ... }:
 let
-  prependAttrs = prefix:
-    lib.attrsets.mapAttrs' (name: value:
-      lib.nameValuePair "${prefix}${name}" value);
+  inherit (pkgs.my-utils) prependAttrs;
 
   panels =
     let
@@ -30,7 +28,7 @@ let
         # Note: changing the plugin type for a previously used number may not update
         # the plugins' internal names right away, leading to some strange behavior.
         # I found that reloading (e.g. logging out) fixes it.
-        "plugin-ids" = lib.lists.range 1 9;
+        "plugin-ids" = pkgs.lib.lists.range 1 9;
       };
 
       bottom-panel = prependAttrs "panels/panel-2" {
@@ -41,7 +39,7 @@ let
         "length" = 1; # let it be autoexpanded by plugins
         "size" = 46;
 
-        "plugin-ids" = lib.lists.range 10 12;
+        "plugin-ids" = pkgs.lib.lists.range 10 12;
       };
     };
 

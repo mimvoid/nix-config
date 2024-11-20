@@ -35,34 +35,18 @@
     dooit-extras.url = "github:dooit-org/dooit-extras";
   };
 
-  outputs = {
-    self,
-    nixpkgs,
-    nixpkgs-unstable,
-    home-manager,
-    stylix,
-    ...
-  } @ inputs:
+  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
   let
     system = "x86_64-linux";
 
     pkgs = import nixpkgs {
       inherit system;
+      overlays = import ./overlays { inherit inputs; };
 
-      # Allows certain unfree packages
+      # Allow certain unfree packages
       config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
         "vivaldi"
         "obsidian"
-      ];
-
-      # Allows nixpkgs-unstable to be referenced with pkgs.unstable.<package>
-      overlays = [
-        (final: _prev: {
-          unstable = import nixpkgs-unstable {
-            system = final.system;
-            config.allowUnfreePredicate = final.config.allowUnfreePredicate;
-          };
-        })
       ];
     };
 
@@ -94,7 +78,7 @@
         extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home-manager/home.nix
-          stylix.homeManagerModules.stylix
+          inputs.stylix.homeManagerModules.stylix
 
           { home.sessionVariables = { inherit FLAKE; }; }
         ];

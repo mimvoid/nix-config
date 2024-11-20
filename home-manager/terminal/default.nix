@@ -14,7 +14,7 @@
 
   home.packages = with pkgs; [
     unstable.bluetui
-    (callPackage ../../pkgs/arttime { })
+    voids.arttime
   ];
 
   programs.direnv = {

@@ -21,7 +21,7 @@ let
 
     zsh-help = {
       name = "zsh-help";
-      src = pkgs.callPackage ../../pkgs/zsh-help { };
+      src = pkgs.voids.zsh-help;
     };
   };
 in

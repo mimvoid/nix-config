@@ -1,9 +1,7 @@
 { pkgs, ... }:
-let
-  cortile = pkgs.callPackage ../../pkgs/cortile { };
-in
+
 {
-  home.packages = [ cortile ];
+  home.packages = with pkgs.voids; [ cortile ];
 
   xdg.configFile."cortile/config.toml" = {
     enable = true;

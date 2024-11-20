@@ -1,8 +1,6 @@
-{ config, lib, ... }:
+{ pkgs, config, ... }:
 let
-  prependAttrs = prefix:
-    lib.attrsets.mapAttrs' (name: value:
-      lib.nameValuePair "${prefix}${name}" value);
+  inherit (pkgs.my-utils) prependAttrs;
 in
 {
   xfconf.settings.xfwm4 = prependAttrs "general/" {

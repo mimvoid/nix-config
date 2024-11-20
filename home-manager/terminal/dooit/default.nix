@@ -1,20 +1,8 @@
-{ config, inputs, pkgs, ... }:
-let
-  mydooit = pkgs.dooit.override {
-    extraPackages = with pkgs; [
-      dooit-extras
-    ];
-  };
-in
+{ config, pkgs, ... }:
+
 {
   imports = [ ./theme.nix ];
-
-  nixpkgs.overlays = with inputs; [
-    dooit.overlay
-    dooit-extras.overlay
-  ];
-
-  home.packages = [ mydooit ];
+  home.packages = with pkgs.mods; [ dooit ];
 
   xdg.configFile =
     let
