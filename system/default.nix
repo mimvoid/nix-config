@@ -4,6 +4,5 @@
     ./console.nix
     ./login.nix
     ./virt.nix
-    # ./flatpaks.nix
   ];
 }

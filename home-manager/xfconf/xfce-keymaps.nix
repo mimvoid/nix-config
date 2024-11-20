@@ -9,7 +9,7 @@ let
       "e" = "thunar";
       "space" = "xfce4-appfinder";
       "o" = "obsidian";
-      "d" = "super-productivity";
+      "d" = "kitty dooit";
 
       "<Shift>q" = "xfce4-session-logout";
     };
