@@ -1,13 +1,11 @@
-{ config, ... }:
+{ inputs, config, ... }:
 
 # Ideally, the colors and fonts should be in
 # hypr-theme.nix, but extracting and appending
 # an attribute set within a list is complicated.
 
 let
-  # Cannot be a relative path since it's pointing to a file
-  # that's untracked due to being inside a git submodule
-  lockscreen = "${config.home.sessionVariables.FLAKE}/wallpapers/wallpapers/tokyo-shinjuku.png";
+  lockscreen = "${inputs.wallpapers.outPath}/wallpapers/tokyo-shinjuku.png";
   display = "Limelight";
 
   pal = config.palette;

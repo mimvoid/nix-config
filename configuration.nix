@@ -6,6 +6,7 @@
   # General system configurations
   nix = {
     package = pkgs.nixFlakes;
+    nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
 
     settings = {
       allow-dirty = true;

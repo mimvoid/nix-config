@@ -567,17 +567,16 @@
         ]
       },
       "locked": {
-        "lastModified": 1731992905,
-        "narHash": "sha256-qYWkwnkF5AET63iV0MpAAHEHve9pXaEwkcpRB0ecji8=",
-        "owner": "mimvoid",
-        "repo": "neovim-dots",
-        "rev": "0a2399ccbc858db1b290e0f6a8c2bbb62b8989f9",
-        "type": "github"
+        "dirtyRev": "160c1f7ee4232518382445ad295605c379f3d0f3-dirty",
+        "dirtyShortRev": "160c1f7-dirty",
+        "lastModified": 1731994233,
+        "narHash": "sha256-/E6zhhXwmDqnTchCE7qFdw64rWfcrZ+tvuqM0mqfaQY=",
+        "type": "git",
+        "url": "file:///home/zinnia/Projects/neovim-dots"
       },
       "original": {
-        "owner": "mimvoid",
-        "repo": "neovim-dots",
-        "type": "github"
+        "id": "neovim-dots",
+        "type": "indirect"
       }
     },
     "root": {
@@ -589,7 +588,8 @@
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvim": "nvim",
-        "stylix": "stylix"
+        "stylix": "stylix",
+        "wallpapers": "wallpapers"
       }
     },
     "stylix": {
@@ -653,6 +653,22 @@
         "repo": "tinted-kitty",
         "rev": "eb39e141db14baef052893285df9f266df041ff8",
         "type": "github"
+      }
+    },
+    "wallpapers": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731997310,
+        "narHash": "sha256-+vinP3GfpPjIwGx710ahq8zpLvMrjIcm0MTfGSpMYas=",
+        "ref": "refs/heads/main",
+        "rev": "645b8f0f770e0b2325ce77c21aacb99336b98c0f",
+        "revCount": 19,
+        "type": "git",
+        "url": "file:wallpapers"
+      },
+      "original": {
+        "type": "git",
+        "url": "file:wallpapers"
       }
     }
   },

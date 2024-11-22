@@ -1,15 +1,10 @@
-{
-  pkgs,
-  config,
-  lib,
-  ...
-}:
+{ inputs, pkgs, config, lib, ... }:
 
 let
   pal = config.palette;
   type = config.stylix.fonts;
 
-  wallpapers = "${config.home.sessionVariables.FLAKE}/wallpapers/wallpapers";
+  wallpapers = "${inputs.wallpapers.outPath}/wallpapers";
 
   swww-schedule =
     pkgs.writeShellScript "swww-schedule" # bash

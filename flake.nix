@@ -12,8 +12,10 @@
     };
 
     # My Neovim
+    # Local repo from $ nix registry add flake:neovim-dots git+file:///path/to/neovim-dots
+    # Remote is github:mimvoid/neovim-dots
     nvim = {
-      url = "github:mimvoid/neovim-dots";
+      url = "flake:neovim-dots";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
@@ -33,6 +35,13 @@
 
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
+
+    # Submodules, to call otherwise untracked files
+    # Can use "${inputs.<submodule>.outPath}/<file-in-submodule>"
+    wallpapers = {
+      url = "git+file:wallpapers"; # relative path ./wallpapers
+      flake = false;
+    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
