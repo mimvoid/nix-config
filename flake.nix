@@ -31,8 +31,7 @@
     };
 
     # Extra packages
-    # AGS v2
-    ags.url = "github:Aylur/ags/v2";
+    ags.url = "github:Aylur/ags";
 
     # Dooit v3
     dooit.url = "github:dooit-org/dooit";
