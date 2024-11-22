@@ -1,13 +1,6 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    wl-clipboard-rs
-    hyprpicker
-    hyprshot
-    swww
-  ];
-
   imports = [
     ./hyprland.nix
     ./hypr-theme.nix
@@ -15,5 +8,12 @@
     ./hyprlock.nix
     ./fuzzel.nix
     ./wlsunset.nix
+  ];
+
+  home.packages = with pkgs; [
+    wl-clipboard-rs
+    hyprpicker
+    hyprshot
+    swww
   ];
 }

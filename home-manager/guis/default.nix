@@ -32,7 +32,6 @@
   ];
 
   imports = [
-    # ./flatpaks.nix
     ./inlyne.nix
     ./zathura.nix
   ];

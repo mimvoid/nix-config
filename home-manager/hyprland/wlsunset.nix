@@ -2,7 +2,7 @@
 
 {
   # Allows wlsunset to launch with a terminal command
-  home.packages = [ pkgs.wlsunset ];
+  home.packages = with pkgs; [ wlsunset ];
 
   # Set up custom args (duration)
   systemd.user.services.wlsunset = {

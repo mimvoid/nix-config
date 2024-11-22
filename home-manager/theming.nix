@@ -64,8 +64,8 @@ in
     autoEnable = false;
 
     # Have the hashtag for viewing in the editor
-    base16Scheme = lib.attrsets.mapAttrs (name: value: lib.strings.removePrefix "#" value) {
-      # Modified Rose Pine Moon
+    base16Scheme = lib.attrsets.mapAttrs (k: v: lib.strings.removePrefix "#" v) {
+      # Moonfall Eve: A modified Rose Pine Moon
       base00 = "#25223a"; # base
       base01 = "#312c48"; # surface
       base02 = "#38344e"; # overlay
@@ -95,14 +95,6 @@ in
       fzf.enable = true;
       yazi.enable = true;
       zathura.enable = true;
-      nixvim = {
-        enable = true;
-        plugin = "base16-nvim";
-        transparentBackground = {
-          main = true;
-          signColumn = true;
-        };
-      };
     };
   };
 

@@ -1,11 +1,9 @@
 { pkgs, lib, ... }:
-let
-  leggie = pkgs.callPackage ../pkgs/fonts/leggie { };
-in
+
 {
   console = {
     font = "leggie-24";
-    packages = [ leggie ];
+    packages = with pkgs.voids.fonts; [ leggie ];
     useXkbConfig = true;
 
     colors = lib.lists.map (i: lib.strings.removePrefix "#" i) [

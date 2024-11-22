@@ -1,6 +1,7 @@
 { final, _prev, ... }:
 let
-  inherit (final) pkgs;
+  # Meaning: pkgs = final.pkgs;
+  inherit (final) pkgs; 
 in
 {
   # Add extra packages to dooit

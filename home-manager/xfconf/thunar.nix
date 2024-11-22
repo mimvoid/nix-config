@@ -1,6 +1,9 @@
-{ config, ... }:
+{ config, pkgs, ... }:
 
 {
+  # View .webp thumbnails
+  home.packages = with pkgs; [ webp-pixbuf-loader ];
+
   xfconf.settings.thunar = {
     "last-view" = "ThunarIconView";
     "last-icon-view-zoom-level" = "THUNAR_ZOOM_LEVEL_100_PERCENT";

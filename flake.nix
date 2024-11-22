@@ -1,11 +1,10 @@
 {
-  description = "NixOS & Home Manager flake configuration";
+  description = "mimvoid's NixOS system & home flake configuration";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.05";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
-    # Home Manager
     home-manager = {
       url = "github:nix-community/home-manager/master";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -19,10 +18,10 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    # Extra modules
     stylix = {
       url = "github:danth/stylix/master";
       inputs = {
+        # Ignore un-needed inputs
         base16-fish.follows = "";
         base16-helix.follows = "";
         gnome-shell.follows = "";
@@ -31,8 +30,11 @@
       };
     };
 
+    # Extra packages
+    # AGS v2
     ags.url = "github:Aylur/ags/v2";
 
+    # Dooit v3
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
 
@@ -59,13 +61,13 @@
       ];
     };
 
+    # Directory for absolute paths, use sparingly
     FLAKE = "/home/zinnia/NixOS";
   in
   {
     nixosConfigurations = {
       sirru = nixpkgs.lib.nixosSystem {
-        inherit system;
-        inherit pkgs;
+        inherit system pkgs;
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix

@@ -5,7 +5,6 @@ let
   launcher = "fuzzel";
   browser = "firefox";
   fileManager = "thunar";
-  obsidian = "obsidian";
   todo = "kitty dooit";
 in
 {
@@ -87,7 +86,7 @@ in
     windowrulev2 =
       let
         opacity = {
-          more = { name, id ? "class" }: "opacity 0.9 override 0.75 override, ${id}:(${name})";
+          more = { id ? "class" }: name: "opacity 0.9 override 0.75 override, ${id}:(${name})";
           high = name: "opacity 0.97 override 0.85 override, class:(${name})";
           active = name: "opacity 1.0 override 0.85 override, class:(${name})";
           full = name: "opaque, class:(${name})";
@@ -95,10 +94,10 @@ in
       in
       with opacity;
         [
-          (more { name = "*Nextcloud"; id = "title"; })
-          (more { name = "Anki"; })
-          (more { name = "org.pwmt.zathura"; })
-          (more { name = "com.github.flxzt.rnote"; })
+          (more { id = "title"; } "*Nextcloud")
+          (more { } "Anki")
+          (more { } "org.pwmt.zathura")
+          (more { } "com.github.flxzt.rnote")
 
           (high "obsidian")
           (high "vesktop")
@@ -217,9 +216,9 @@ in
       "$mod, E, exec, ${fileManager}"
       "$mod, SPACE, exec, ${launcher}"
       "$mod, W, exec, ${browser}"
-      "$mod, O, exec, ${obsidian}"
       "$mod, D, exec, ${todo}"
 
+      "$mod, O, exec, obsidian"
       "$mod, N, exec, networkmanager_dmenu"
 
       # Screenshot
