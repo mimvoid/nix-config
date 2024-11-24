@@ -1,9 +1,9 @@
-{ inputs, config, ... }:
+{ inputs, config, pkgs, ... }:
 let
   lockscreen = "${inputs.wallpapers.outPath}/wallpapers/tokyo-shinjuku.png";
   display = "Limelight";
 
-  inherit (config) palette;
+  palette = pkgs.palettes.current.hex.noHashtag;
   inherit (config.stylix) fonts;
 in
 {

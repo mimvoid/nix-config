@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ lib, pkgs, ... }:
 let
   theme = {
     name = "rose-pine";
@@ -30,8 +30,6 @@ let
   terminal-size = 14;
 in
 {
-  imports = [ ../palettes/palette.nix ];
-
   home.packages = with pkgs; [
     # Sans serif
     noto-fonts-cjk-sans

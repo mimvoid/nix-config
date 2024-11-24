@@ -1,19 +1,18 @@
 { config, pkgs, ... }:
 let
-  inherit (config) palette;
   inherit (config.stylix) fonts;
 
   # Theming configs
   font = "${fonts.monospace.name}:size=9";
-  colors = with palette;
+  colors = with pkgs.palettes.current.hex.noHashtag.alpha;
     {
-      background = base + "ee";
-      text = string + "ff";
-      match = secondary + "ff";
-      selection = box-bright + "dd";
-      selection-match = primary + "ff";
-      selection-text = secondary-bright + "ff";
-      border = error + "ff";
+      background = base;
+      text = string;
+      match = secondary;
+      selection = box-bright;
+      selection-match = primary;
+      selection-text = secondary-bright;
+      border = error;
     };
   icon-theme = config.gtk.iconTheme.name;
 in

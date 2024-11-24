@@ -35,11 +35,18 @@ let
   modifications = final: _prev: {
     mods = import ./mods.nix { inherit final _prev; };
   };
+
+  # Defined palettes & functions to manipulate palettes
+  # Use pkgs.palettes.<name>
+  my-palettes = final: _prev: {
+    palettes = import ./palettes { inherit (final.pkgs) lib; };
+  };
 in
 [
   unstable-packages
   utils
   additions
   modifications
+  my-palettes
 ]
 ++ input-overlays

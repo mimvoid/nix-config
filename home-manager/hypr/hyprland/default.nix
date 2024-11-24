@@ -11,13 +11,12 @@ let
   };
 
   # Colors
-  inherit (config) palette;
-  colors = {
-    general = with palette; {
+  colors = with pkgs.palettes.current.hex.noHashtag; {
+    general = {
       "col.active_border" = "rgb(${primary})";
-      "col.inactive_border" = "rgba(${primary-dim}40)"; # 25% opacity
+      "col.inactive_border" = "rgba(${alpha.primary-dim})";
     };
-    decoration."col.shadow" = "rgba(${palette.shadow}33)"; # 20% opacity
+    decoration."col.shadow" = "rgba(${alpha.shadow})";
   };
 in
 {
@@ -40,8 +39,7 @@ in
       '';
   };
 
-  wayland.windowManager.hyprland.settings =
-    keybindings // windowrules // colors
+  wayland.windowManager.hyprland.settings = keybindings // windowrules
     // {
       # Startup & daemons
       # Includes swww daemon, see ./hypr-theme.nix
@@ -109,7 +107,8 @@ in
 
         resize_on_border = true;
         allow_tearing = false;
-      };
+      }
+      // colors.general;
 
       decoration = {
         rounding = 5;
@@ -132,7 +131,8 @@ in
           contrast = 1.2;
           noise = 0.02;
         };
-      };
+      }
+      // colors.decoration;
 
       animations = {
         enabled = true;
