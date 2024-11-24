@@ -19,7 +19,7 @@
     ./krita
     ./neovim
     ./terminal
-    ./hyprland
+    ./hypr
     ./xfconf
     ./guis
     ./firefox

@@ -2,11 +2,12 @@
 
 {
   imports = [
-    ./hyprland.nix
+    ./hyprland
     ./hypr-theme.nix
     ./hypridle.nix
     ./hyprlock.nix
     ./fuzzel.nix
+    ./swww.nix
     ./wlsunset.nix
   ];
 
