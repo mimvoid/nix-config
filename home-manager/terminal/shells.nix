@@ -94,6 +94,16 @@ in
         function nixdev() {
           nix develop ''${1} --command zsh
         }
+
+        # update one flake input
+        function nixlock() {
+          nix flake lock --update-input ''${1}
+        }
+
+        # enter a nix shell with package from unstable branch
+        function nixpkg-unstable() {
+          nix shell nixpkgs/nixos-unstable#''${1}
+        }
       '';
 
     # zsh plugin configuration
