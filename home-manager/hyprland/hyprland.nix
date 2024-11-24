@@ -4,8 +4,9 @@ let
   terminal = "kitty";
   launcher = "fuzzel";
   browser = "firefox";
-  fileManager = "thunar";
+  file-manager = "thunar";
   todo = "kitty dooit";
+  music-player = "tauon";
 in
 {
   wayland.windowManager.hyprland = {
@@ -35,10 +36,9 @@ in
       "systemctl --user import-environment &"
       "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
       "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
-      "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon --start --unlock &"
+      "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon --start &"
       "mega-cmd-server &"
       "fcitx5 -d &"
-      "hypridle &"
       "ags run &"
     ];
 
@@ -214,10 +214,11 @@ in
     bind = [
       # Launch
       "$mod, Return, exec, ${terminal}"
-      "$mod, E, exec, ${fileManager}"
+      "$mod, E, exec, ${file-manager}"
       "$mod, SPACE, exec, ${launcher}"
       "$mod, W, exec, ${browser}"
       "$mod, D, exec, ${todo}"
+      "$mod, M, exec, ${music-player}"
 
       "$mod, O, exec, obsidian"
       "$mod, N, exec, networkmanager_dmenu"
