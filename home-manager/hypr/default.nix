@@ -3,7 +3,6 @@
 {
   imports = [
     ./hyprland
-    ./hypr-theme.nix
     ./hypridle.nix
     ./hyprlock.nix
     ./fuzzel.nix

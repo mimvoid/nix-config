@@ -1,15 +1,10 @@
 { inputs, config, ... }:
-
-# Ideally, the colors and fonts should be in
-# hypr-theme.nix, but extracting and appending
-# an attribute set within a list is complicated.
-
 let
   lockscreen = "${inputs.wallpapers.outPath}/wallpapers/tokyo-shinjuku.png";
   display = "Limelight";
 
-  pal = config.palette;
-  type = config.stylix.fonts;
+  inherit (config) palette;
+  inherit (config.stylix) fonts;
 in
 {
   programs.hyprlock = {
@@ -37,11 +32,11 @@ in
           dots_spacing = 0.2;
           dots_center = true;
 
-          outer_color = "rgb(${pal.error})";
-          inner_color = "rgb(${pal.base})";
+          outer_color = "rgb(${palette.error})";
+          inner_color = "rgb(${palette.base})";
 
-          font_family = type.monospace.name;
-          font_color = "rgb(${pal.string})";
+          font_family = fonts.monospace.name;
+          font_color = "rgb(${palette.string})";
 
           placeholder_text = "<i>Password...</i>";
           hide_input = false;
@@ -58,7 +53,7 @@ in
         {
           # Time
           text = ''cmd[update:1000] echo "<big> $(date +'%H:%M') </big>"'';
-          color = "rgb(${pal.string})";
+          color = "rgb(${palette.string})";
           font_family = display;
           font_size = 128;
 
@@ -69,8 +64,8 @@ in
         {
           # Date
           text = ''cmd[update:18000000] echo "$(date +'%A, %B %-d')"'';
-          color = "rgb(${pal.string})";
-          font_family = type.monospace.name;
+          color = "rgb(${palette.string})";
+          font_family = fonts.monospace.name;
           font_size = 20;
 
           position = "0, 90";
@@ -80,8 +75,8 @@ in
         {
           # User field
           text = "  ${config.home.username}";
-          color = "rgb(${pal.string})";
-          font_family = type.monospace.name;
+          color = "rgb(${palette.string})";
+          font_family = fonts.monospace.name;
           font_size = 16;
 
           position = "0, 8";
