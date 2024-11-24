@@ -103,6 +103,7 @@ in
           (high "vesktop")
 
           (active "firefox")
+          (active "FFPWA*")
 
           (full "krita")
           (full "org.inkscape.Inkscape")
