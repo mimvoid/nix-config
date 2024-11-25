@@ -1,4 +1,4 @@
-{ pkgs, lib, ... }:
+{ pkgs, ... }:
 
 {
   console = {
@@ -6,7 +6,7 @@
     packages = with pkgs.voids.fonts; [ leggie ];
     useXkbConfig = true;
 
-    colors = lib.lists.map (i: lib.strings.removePrefix "#" i) [
+    colors = pkgs.palettes.utils.listRemoveHashtag [
       # catppuccin mocha
       "#11111b" # crust      black
       "#f38ba8" # red        red

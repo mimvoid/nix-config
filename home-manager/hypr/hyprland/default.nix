@@ -11,12 +11,12 @@ let
   };
 
   # Colors
-  colors = with pkgs.palettes.current.hex.noHashtag; {
+  colors = with pkgs.palettes.current.hex.rgbWrap; {
     general = {
-      "col.active_border" = "rgb(${primary})";
-      "col.inactive_border" = "rgba(${alpha.primary-dim})";
+      "col.active_border" = primary;
+      "col.inactive_border" = alpha.primary-dim;
     };
-    decoration."col.shadow" = "rgba(${alpha.shadow})";
+    decoration."col.shadow" = alpha.shadow;
   };
 in
 {

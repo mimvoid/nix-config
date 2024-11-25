@@ -39,7 +39,7 @@ let
   # Defined palettes & functions to manipulate palettes
   # Use pkgs.palettes.<name>
   my-palettes = final: _prev: {
-    palettes = import ./palettes { inherit (final.pkgs) lib; };
+    palettes = import ./palettes { pkgs = final.pkgs.unstable; };
   };
 in
 [

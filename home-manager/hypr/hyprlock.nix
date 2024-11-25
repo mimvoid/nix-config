@@ -3,7 +3,7 @@ let
   lockscreen = "${inputs.wallpapers.outPath}/wallpapers/tokyo-shinjuku.png";
   display = "Limelight";
 
-  palette = pkgs.palettes.current.hex.noHashtag;
+  rgb = pkgs.palettes.current.hex.rgbWrap;
   inherit (config.stylix) fonts;
 in
 {
@@ -32,11 +32,11 @@ in
           dots_spacing = 0.2;
           dots_center = true;
 
-          outer_color = "rgb(${palette.error})";
-          inner_color = "rgb(${palette.base})";
+          outer_color = rgb.error;
+          inner_color = rgb.base;
 
           font_family = fonts.monospace.name;
-          font_color = "rgb(${palette.string})";
+          font_color = rgb.string;
 
           placeholder_text = "<i>Password...</i>";
           hide_input = false;
@@ -53,7 +53,7 @@ in
         {
           # Time
           text = ''cmd[update:1000] echo "<big> $(date +'%H:%M') </big>"'';
-          color = "rgb(${palette.string})";
+          color = rgb.string;
           font_family = display;
           font_size = 128;
 
@@ -64,7 +64,7 @@ in
         {
           # Date
           text = ''cmd[update:18000000] echo "$(date +'%A, %B %-d')"'';
-          color = "rgb(${palette.string})";
+          color = rgb.string;
           font_family = fonts.monospace.name;
           font_size = 20;
 
@@ -75,7 +75,7 @@ in
         {
           # User field
           text = "  ${config.home.username}";
-          color = "rgb(${palette.string})";
+          color = rgb.string;
           font_family = fonts.monospace.name;
           font_size = 16;
 
