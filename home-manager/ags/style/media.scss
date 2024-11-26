@@ -1,15 +1,15 @@
-@import "./variables/_fonts.scss";
-@import "./variables/_looks.scss";
+@use "./variables/fonts";
+@use "./variables/looks";
 
 .media box {
-  font-size: $font-size * 2;
+  font-size: fonts.$font-size * 2;
   padding: 12px;
 
   .cover-art {
     min-height: 15em;
     min-width: 15em;
     margin: 0.75em 0;
-    border-radius: $radius * 0.5;
+    border-radius: looks.$radius * 0.5;
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -21,11 +21,11 @@
   }
   .media-title,
   .media-artist {
-    font-size: $font-size * 1.5;
+    font-size: fonts.$font-size * 1.5;
   }
 
   .media-actions icon {
-    font-size: $font-size * 1.75;
+    font-size: fonts.$font-size * 1.75;
     padding: 2px;
   }
 }

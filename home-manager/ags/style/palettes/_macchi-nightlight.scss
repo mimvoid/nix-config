@@ -2,11 +2,11 @@
 
 /* Based on Catppuccin Macchiato */
 
-$base: change-color(#24273a, $alpha: 0.8); /* base */
+$base: color.change(#24273a, $alpha: 0.8); /* base */
 
-$box: change-color(#c6a0f6, $alpha: 0.1);    /* mauve */
-$box-bright: change-color(#c6a0f6, $alpha: 0.2);
-$box-dim: change-color(#c6a0f6, $alpha: 0.1);
+$box: color.change(#c6a0f6, $alpha: 0.1);    /* mauve */
+$box-bright: color.change(#c6a0f6, $alpha: 0.2);
+$box-dim: color.change(#c6a0f6, $alpha: 0.1);
 
 $string: #cad3f5;           /* text */
 $string-dim: #a5adcb;       /* subtext0 */
@@ -15,12 +15,12 @@ $shadow: #1e2030;           /* mantle */
 
 
 $primary: #f5bde6;                      /* pink */
-$primary-bright: mix(#f5bde6, #f4dbd6); /* pink & rosewater */
+$primary-bright: color.mix(#f5bde6, #f4dbd6); /* pink & rosewater */
 $primary-dim: #c6a0f6;                  /* mauve */
 
 $secondary: #f0c6c6;                    /* flamingo */
 $secondary-bright: #f4dbd6;             /* rosewater */
-$secondary-dim: mix(#f5a97f, #f4dbd6);  /* peach & rosewater */
+$secondary-dim: color.mix(#f5a97f, #f4dbd6);  /* peach & rosewater */
 
 $tertiary: #8aadf4;         /* blue */
 $tertiary-bright: #91d7e3;  /* sky */

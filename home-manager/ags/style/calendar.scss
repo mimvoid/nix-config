@@ -1,23 +1,23 @@
 @use "sass:color";
-@import "./palettes/_current-palette.scss";
-@import "./variables/_looks.scss";
+@use "./palettes/palette";
+@use "./variables/looks";
 
 .calendar {
   all: unset;
   padding: 12px;
   padding-bottom: 6px;
-  background-color: change-color($base, $alpha: 0.9);
+  background-color: color.change(palette.$base, $alpha: 0.9);
 }
 
 .calendar .display {
   margin: 2px 0 12px;
-  color: $string;
-  text-decoration: underline solid $primary;
+  color: palette.$string;
+  text-decoration: underline solid palette.$primary;
 }
 
 .calendar calendar {
   font-size: 15px;
-  color: $string;
+  color: palette.$string;
 
   // Keep week numbers aligned
   &:not(.highlight) {
@@ -25,27 +25,27 @@
   }
 
   &.button {
-    color: transparentize($string, 0.5);
-    border-radius: $radius;
+    color: color.adjust(palette.$string, $alpha: -0.5);
+    border-radius: looks.$radius;
 
     &:hover {
-      background-color: $box;
+      background-color: palette.$box;
       transition: all 0.2s ease-in-out;
     }
   }
 
   /* Week numbers & day names */
   &.highlight {
-    color: transparentize($primary, 0.3);
+    color: color.adjust(palette.$primary, $alpha: 0.3);
   }
 
   /* Defaults to current day */
   &:selected {
-    color: $tertiary;
+    color: palette.$tertiary;
   }
 
   /* Days outside the current month */
   &:indeterminate {
-    color: transparentize($string, 0.6);
+    color: color.adjust(palette.$string, $alpha: 0.6);
   }
 }

@@ -3,11 +3,11 @@
 /* Based on Rose Pine Moon */
 /* WIP */
 
-$base: change-color(#232136, $alpha: 0.7); /* base */
+$base: color.change(#232136, $alpha: 0.7); /* base */
 
-$box: change-color(#6e6a86, $alpha: 0.4); /* muted */
-$box-bright: change-color(#908caa, $alpha: 0.7); /* subtle */
-$box-dim: change-color(#2a273f, $alpha: 0.1); /* overlay */
+$box: color.change(#6e6a86, $alpha: 0.4); /* muted */
+$box-bright: color.change(#908caa, $alpha: 0.7); /* subtle */
+$box-dim: color.change(#2a273f, $alpha: 0.1); /* overlay */
 
 $string: #e0def4; /* text */
 $string-dim: #908caa; /* subtle */
@@ -15,16 +15,16 @@ $string-dim: #908caa; /* subtle */
 $shadow: #232136; /* base */
 
 $primary: #ea9a97; /* rose */
-$primary-bright: mix(#ea9a97, #f6c177); /* rose & gold */
-$primary-dim: mix(#ea9a97, #eb6f92); /* rose & love */
+$primary-bright: color.mix(#ea9a97, #f6c177); /* rose & gold */
+$primary-dim: color.mix(#ea9a97, #eb6f92); /* rose & love */
 
 $secondary: #c4a7e7; /* iris */
-$secondary-bright: mix(#c4a7e7, #9ccfd8); /* iris & teal */
-$secondary-dim: mix(#c4a7e7, #6e6a86); /* iris & muted */
+$secondary-bright: color.mix(#c4a7e7, #9ccfd8); /* iris & teal */
+$secondary-dim: color.mix(#c4a7e7, #6e6a86); /* iris & muted */
 
-$tertiary: mix(#3e8fb0, #9ccfd8, $weight: 70%); /* pine & foam */
-$tertiary-bright: mix(#3e8fb0, #9ccfd8, $weight: 25%); /* pine & foam */
-$tertiary-dim: mix(#3e8fb0, #c4a7e7, $weight: 55%); /* pine & iris */
+$tertiary: color.mix(#3e8fb0, #9ccfd8, $weight: 70%); /* pine & foam */
+$tertiary-bright: color.mix(#3e8fb0, #9ccfd8, $weight: 25%); /* pine & foam */
+$tertiary-dim: color.mix(#3e8fb0, #c4a7e7, $weight: 55%); /* pine & iris */
 
 $good: #3e8fb0; /* pine */
 $warn: #f6c177; /* gold */

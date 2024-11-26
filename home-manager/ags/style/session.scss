@@ -1,9 +1,9 @@
 @use "sass:color";
-@import "./palettes/_current-palette.scss";
-@import "./variables/_looks.scss";
+@use "./palettes/palette";
+@use "./variables/looks";
 
 .session {
-  color: $primary-bright;
+  color: palette.$primary-bright;
 
   icon {
     margin: 4rem 6rem;
@@ -17,8 +17,8 @@
     border-radius: 2px;
 
     &:focus {
-      color: $primary;
-      border-radius: $radius;
+      color: palette.$primary;
+      border-radius: looks.$radius;
 
       icon {
         font-size: 4.5rem;
@@ -27,9 +27,9 @@
 
     &:hover {
       margin: 6px;
-      color: $base;
-      background-color: $primary;
-      border-radius: $radius;
+      color: palette.$base;
+      background-color: palette.$primary;
+      border-radius: looks.$radius;
 
       icon {
         font-size: 4.75rem;
@@ -38,7 +38,7 @@
   }
 
   .lock {
-    border-top-left-radius: $radius;
+    border-top-left-radius: looks.$radius;
     margin: 0.75rem 2px 2px 0.75rem;
 
     &:hover,
@@ -47,8 +47,8 @@
     }
   }
   .logout {
-    background-color: change-color($base, $alpha: 0.7);
-    border-bottom-left-radius: $radius;
+    background-color: color.change(palette.$base, $alpha: 0.7);
+    border-bottom-left-radius: looks.$radius;
     margin: 2px 2px 0.75rem 0.75rem;
 
     &:hover,
@@ -57,8 +57,8 @@
     }
   }
   .reboot {
-    background-color: change-color($base, $alpha: 0.7);
-    border-top-right-radius: $radius;
+    background-color: color.change(palette.$base, $alpha: 0.7);
+    border-top-right-radius: looks.$radius;
     margin: 0.75rem 0.75rem 2px 2px;
 
     &:hover,
@@ -67,7 +67,7 @@
     }
   }
   .shutdown {
-    border-bottom-right-radius: $radius;
+    border-bottom-right-radius: looks.$radius;
     margin: 2px 0.75rem 0.75rem 2px;
 
     &:hover,

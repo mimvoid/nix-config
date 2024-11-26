@@ -1,38 +1,43 @@
 @use "sass:color";
-@import "./variables/_looks.scss";
-@import "./variables/_fonts.scss";
-@import "./bar.scss";
-@import "./dashboard.scss";
-@import "./calendar.scss";
-@import "./notifications.scss";
-@import "./session.scss";
-@import "./media.scss";
+
+/* custom modules & variables */
+@use "./palettes/palette";
+@use "./variables/looks";
+@use "./variables/fonts";
+
+/* stylesheets */
+@use "./bar";
+@use "./dashboard";
+@use "./calendar";
+@use "./notifications";
+@use "./session";
+@use "./media";
 
 * {
   all: unset;
-  font-family: $font-family;
-  font-size: $font-size;
+  font-family: fonts.$font-family;
+  font-size: fonts.$font-size;
   -gtk-icon-theme: "Adwaita";
 }
 
 window {
-  border-radius: $radius;
+  border-radius: looks.$radius;
 }
 
 .display {
   padding: 2rem;
-  font-family: $display;
-  font-size: $display-size;
+  font-family: fonts.$display;
+  font-size: fonts.$display-size;
 }
 
 .box {
-  border-radius: $radius;
-  background-color: $base;
+  border-radius: looks.$radius;
+  background-color: palette.$base;
 }
 
 .in-box {
-  border-radius: $radius;
-  background-color: $box-dim;
+  border-radius: looks.$radius;
+  background-color: palette.$box-dim;
 }
 
 button {
@@ -40,11 +45,11 @@ button {
 
   min-width: 0;
 
-  border-radius: $radius;
+  border-radius: looks.$radius;
   background-color: transparent;
 
   &:hover {
-    background-color: $box;
+    background-color: palette.$box;
     transition: all 0.2s ease-in-out;
   }
 }
@@ -56,20 +61,20 @@ label {
 trough {
   min-width: 42px;
   min-height: 4px;
-  border-radius: $radius;
-  background-color: $box;
+  border-radius: looks.$radius;
+  background-color: palette.$box;
 
   highlight {
-    border-radius: $radius;
+    border-radius: looks.$radius;
   }
 }
 
 window.popup {
   menu {
     padding: 8px;
-    border-radius: $radius * 0.66;
-    background-color: change-color($base, $alpha: 0.7);
-    color: $string;
+    border-radius: looks.$radius * 0.66;
+    background-color: color.change(palette.$base, $alpha: 0.7);
+    color: palette.$string;
   }
 
   menuitem {
@@ -83,8 +88,8 @@ tooltip {
 
   > * > * {
     padding: 4px 8px;
-    border-radius: $radius;
-    background-color: change-color($base, $alpha: 0.7);
-    color: $string;
+    border-radius: looks.$radius;
+    background-color: color.change(palette.$base, $alpha: 0.7);
+    color: palette.$string;
   }
 }

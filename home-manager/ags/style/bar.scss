@@ -1,13 +1,13 @@
 @use "sass:color";
-@import "./palettes/_current-palette.scss";
-@import "./variables/_fonts.scss";
-@import "./variables/_looks.scss";
+@use "./palettes/palette";
+@use "./variables/fonts";
+@use "./variables/looks";
 
 .bar centerbox {
   margin: 3px 12px 1px;
-  border-radius: $radius;
+  border-radius: looks.$radius;
 
-  color: $primary;
+  color: palette.$primary;
   background-color: transparent;
 }
 
@@ -25,7 +25,7 @@
 /*---------*/
 
 .overview {
-  color: $tertiary-dim;
+  color: palette.$tertiary-dim;
 }
 
 .workspaces {
@@ -36,17 +36,17 @@
     margin: 0 2.5px;
     padding: 0 5px;
     color: transparent;
-    background-color: $primary;
+    background-color: palette.$primary;
 
     /* Expand active workspace GNOME-style */
     &.focused {
       padding: 0 12px;
-      background-color: $primary-dim;
+      background-color: palette.$primary-dim;
       transition: all 0.15s ease-in-out;
     }
 
     &:hover {
-      background-color: $tertiary-dim;
+      background-color: palette.$tertiary-dim;
       transition: all 0.2s ease-in-out;
     }
   }
@@ -76,9 +76,9 @@
 }
 .hider {
   padding: 0 6px;
-  border-radius: $radius;
+  border-radius: looks.$radius;
   opacity: 0.7;
-  color: $tertiary-dim;
+  color: palette.$tertiary-dim;
   transition: all 0.2s ease-in-out;
 
   &.open {
@@ -88,27 +88,27 @@
 }
 
 .network {
-  color: $tertiary-dim;
+  color: palette.$tertiary-dim;
 }
 
 .bluetooth {
-  color: $tertiary;
+  color: palette.$tertiary;
 }
 
 .sound {
-  color: $tertiary-bright;
+  color: palette.$tertiary-bright;
 
   label {
     margin-left: 2px;
   }
 
   trough highlight {
-    background-color: $tertiary-bright;
+    background-color: palette.$tertiary-bright;
   }
 }
 
 .battery {
-  color: $good;
+  color: palette.$good;
 
   icon {
     -gtk-icon-transform: rotate(90deg);
@@ -119,12 +119,12 @@
   }
 
   .charging {
-    color: $good;
+    color: palette.$good;
   }
 }
 
 .brightness {
-  color: adjust-color($error, $lightness: 8%);
+  color: color.adjust(palette.$error, $lightness: 8%);
 
   /* Widen the hit box */
   .brightness-revealer {
@@ -132,18 +132,18 @@
   }
 
   trough highlight {
-    background-color: adjust-color($error, $lightness: 8%);
+    background-color: color.adjust(palette.$error, $lightness: 8%);
   }
 }
 
 .power-actions {
   margin: 0 0 0 2px;
   padding: 0 6px;
-  background-color: $box;
+  background-color: palette.$box;
 
   &:hover {
-    color: change-color($base, $alpha: 1);
-    background-color: change-color($primary, $alpha: 0.9);
+    color: color.change(palette.$base, $alpha: 1);
+    background-color: color.change(palette.$primary, $alpha: 0.9);
     transition: all 0.2s ease-in-out;
   }
 }

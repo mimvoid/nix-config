@@ -1,6 +1,7 @@
 @use "sass:color";
-@import "./palettes/current-palette";
-@import "./variables/_looks.scss";
+@use "./palettes/palette";
+@use "./variables/fonts";
+@use "./variables/looks";
 
 window.notification-popups box.notifications {
   min-width: 15rem;
@@ -10,14 +11,14 @@ window.notification-popups box.notifications {
 
 .notification {
   padding: 16px;
-  border-radius: $radius * 0.25;
+  border-radius: looks.$radius * 0.25;
 
-  background-color: $base;
+  background-color: palette.$base;
 
-  border: 1px solid $primary;
+  border: 1px solid palette.$primary;
 
   &.critical {
-    border: 1px solid $error;
+    border: 1px solid palette.$error;
   }
 }
 
@@ -25,17 +26,17 @@ window.notification-popups box.notifications {
   padding: 0.25rem;
 
   .icon {
-    font-size: $font-size;
+    font-size: fonts.$font-size;
   }
 
   .header {
     padding: 0.5rem;
-    color: $string-dim;
+    color: palette.$string-dim;
   }
 
   .content {
     .image {
-      border-radius: $radius;
+      border-radius: looks.$radius;
       background-size: cover;
       background-position: center;
     }
@@ -43,18 +44,18 @@ window.notification-popups box.notifications {
     .icon-image icon {
       margin: 4px;
       font-size: 16px;
-      color: $secondary;
+      color: palette.$secondary;
     }
 
     .summary, .body {
-      font-size: $font-size * 1.2;
-      color: $string;
+      font-size: fonts.$font-size * 1.2;
+      color: palette.$string;
     }
 
     .summary {
       padding: 0.25rem 0.5rem;
       font-weight: bold;
-      color: $secondary-bright;
+      color: palette.$secondary-bright;
     }
 
     .body {
@@ -65,7 +66,7 @@ window.notification-popups box.notifications {
 }
 
 .notification.actions {
-  color: $primary-dim;
+  color: palette.$primary-dim;
   margin: 4px 2px 0 2px;
 
   &:first-child {
