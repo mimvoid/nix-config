@@ -3,9 +3,10 @@
 {
   home.packages = with pkgs; [
     unstable.obsidian
+    unstable.qalculate-gtk
 
     # Files & documents
-    gnome.file-roller
+    file-roller
     # pdfarranger
     nextcloud-client # Have it available as an app
     rnote

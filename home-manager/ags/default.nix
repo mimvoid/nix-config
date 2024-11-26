@@ -6,7 +6,7 @@
   home.packages = with pkgs; [
     dart-sass
     brightnessctl
-    gnome.adwaita-icon-theme
+    adwaita-icon-theme
   ];
 
   programs.ags = {

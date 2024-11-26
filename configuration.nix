@@ -5,7 +5,9 @@
 
   # General system configurations
   nix = {
-    package = pkgs.nixFlakes;
+    # https://github.com/NixOS/nix/issues/10815
+    package = pkgs.nixVersions.nix_2_20;
+
     nixPath = [
       "nixpkgs=${inputs.nixpkgs}"
       "nixpkgs-unstable=${inputs.nixpkgs-unstable}"
@@ -92,8 +94,8 @@
   programs.xfconf.enable = true;
 
   environment.xfce.excludePackages = with pkgs; [
-    gnome.gnome-themes-extra
-    gnome.adwaita-icon-theme
+    gnome-themes-extra
+    adwaita-icon-theme
     hicolor-icon-theme
     tango-icon-theme
     xfce.xfwm4-themes
@@ -148,14 +150,12 @@
   # Touchpad support
   services.libinput.enable = true;
 
-  # Graphics
-  hardware.opengl = {
+  hardware.graphics = {
     enable = true;
-    driSupport = true;
-    driSupport32Bit = true;
     extraPackages = with pkgs; [
       intel-media-driver
-      onevpl-intel-gpu
+      intel-compute-runtime
+      vpl-gpu-rt
     ];
   };
 

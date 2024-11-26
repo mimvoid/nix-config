@@ -16,7 +16,7 @@ let
       "col.active_border" = primary;
       "col.inactive_border" = alpha.primary-dim;
     };
-    decoration."col.shadow" = alpha.shadow;
+    decoration.shadow.color = alpha.shadow;
   };
 in
 {
@@ -34,7 +34,9 @@ in
           gaps_out = 4,12,12,12 # for top bar
         }
         decoration {
-          shadow_offset = 2 2
+          shadow {
+            offset = 2 2
+          }
         }
       '';
   };
@@ -47,7 +49,7 @@ in
         "systemctl --user import-environment &"
         "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
         "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1 &"
-        "${pkgs.gnome.gnome-keyring}/bin/gnome-keyring-daemon --start &"
+        "${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start &"
         "mega-cmd-server &"
         "fcitx5 -d &"
         "ags run &"
@@ -117,10 +119,12 @@ in
         inactive_opacity = 0.7;
         fullscreen_opacity = 1.0;
 
-        drop_shadow = true;
-        shadow_ignore_window = true;
-        shadow_range = 6;
-        shadow_render_power = 1;
+        shadow = {
+          enabled = true;
+          ignore_window = true;
+          range = 4;
+          render_power = 1;
+        };
 
         blur = {
           enabled = true;
