@@ -19,6 +19,7 @@ in
 
       (high "obsidian")
       (high "vesktop")
+      (high "ristretto")
 
       (active "firefox")
       (active "FFPWA*")
