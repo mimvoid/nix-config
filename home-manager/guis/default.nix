@@ -1,13 +1,17 @@
 { pkgs, ... }:
 
 {
+  imports = [
+    ./aagl.nix
+    ./inlyne.nix
+    ./zathura.nix
+  ];
+
   home.packages = with pkgs; [
     unstable.obsidian
-    unstable.qalculate-gtk
 
     # Files & documents
     file-roller
-    # pdfarranger
     nextcloud-client # Have it available as an app
     rnote
 
@@ -29,12 +33,6 @@
     # inkscape
     unstable.krita
     blanket
-  ];
-
-  imports = [
-    ./aagl.nix
-    ./inlyne.nix
-    ./zathura.nix
   ];
 
   services.nextcloud-client = {

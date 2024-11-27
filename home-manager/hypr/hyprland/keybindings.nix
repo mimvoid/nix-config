@@ -7,7 +7,6 @@ let
   todo = "kitty dooit";
   music-player = "tauon";
 
-  workspaces = lib.lists.range 1 10;
 in
 {
   "$mod" = "SUPER";

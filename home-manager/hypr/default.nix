@@ -14,6 +14,5 @@
     wl-clipboard-rs
     hyprpicker
     hyprshot
-    swww
   ];
 }

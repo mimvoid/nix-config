@@ -33,16 +33,16 @@
 
     # fontpreview settings
     FONTPREVIEW_SIZE = "650x700";
-    FONTPREVIEW_PREVIEW_TEXT = builtins.concatStringsSep ''\n'' [
+    FONTPREVIEW_PREVIEW_TEXT = pkgs.lib.strings.concatLines [
       "SPHINX OF BLACK QUARTZ,"
-      ''JUDGE MY VOW.\n''
-
+      "JUDGE MY VOW."
+      "" # extra /n line break
       "Sphinx of Black Quartz,"
-      ''Judge My Vow.\n''
-
+      "Judge My Vow."
+      ""
       "sphinx of black quartz,"
-      ''judge my vow.\n''
-
+      "judge my vow."
+      ""
       "1234567890"
       ''!@$\%(){}[];:\'\"''
     ];
