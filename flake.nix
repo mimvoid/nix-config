@@ -37,6 +37,11 @@
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
 
+    aagl = {
+      url = "github:ezKEa/aagl-gtk-on-nix";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     # Submodules, to call otherwise untracked files
     # Can use "${inputs.<submodule>.outPath}/<file-in-submodule>"
     wallpapers = {

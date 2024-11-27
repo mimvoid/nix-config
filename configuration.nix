@@ -23,8 +23,16 @@
       auto-optimise-store = true;
 
       # Binary caches from cachix
-      substituters = [ "https://mimvoid.cachix.org" ];
-      trusted-public-keys = [ "mimvoid.cachix.org-1:c1LQSKRAc7IiFA8GuaTDzD4fqUIG49Cftb2aJwqvtzY=" ];
+      substituters = [
+        "https://mimvoid.cachix.org"
+        "https://nix-community.cachix.org"
+        "https://ezkea.cachix.org" # for aagl
+      ];
+      trusted-public-keys = [
+        "mimvoid.cachix.org-1:c1LQSKRAc7IiFA8GuaTDzD4fqUIG49Cftb2aJwqvtzY="
+        "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
+        "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+      ];
       trusted-users = [ "root" "zinnia" ];
     };
 
