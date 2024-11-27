@@ -1,4 +1,4 @@
-{ lib, terminal, ... }:
+{ pkgs, terminal, ... }:
 let
   # Default applications
   launcher = "fuzzel";
@@ -7,6 +7,19 @@ let
   todo = "kitty dooit";
   music-player = "tauon";
 
+  # Commands
+  screenshot =
+    let
+      hyprshot = "${pkgs.hyprshot}/bin/hyprshot";
+
+      dir = "$(xdg-user-dir PICTURES)/Screenshots";
+      filename = "$(date +%F_%H-%M-%S).png";
+    in
+    {
+      screen = "${hyprshot} -m output -o ${dir} -f ${filename}";
+      window = "${hyprshot} -m window -o ${dir} -f ${filename}";
+      region = "${hyprshot} -m region -o ${dir} -f ${filename}";
+    };
 in
 {
   "$mod" = "SUPER";
@@ -37,9 +50,9 @@ in
     "$mod, N, exec, networkmanager_dmenu"
 
     # Screenshot
-    ", Print, exec, hyprshot -m output" # whole screen
-    "$mod, Print, exec, hyprshot -m window" # one window
-    "$mod SHIFT, Print, exec, hyprshot -m region" # selection
+    ", Print, exec, ${screenshot.screen}"
+    "$mod, Print, exec, ${screenshot.window}"
+    "$mod SHIFT, Print, exec, ${screenshot.region}"
 
     # Colorpicker
     "$mod, C, exec, hyprpicker --autocopy --format=hex"

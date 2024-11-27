@@ -5,10 +5,7 @@ let
 
   # Imports
   windowrules = import ./windowrules.nix { inherit terminal; };
-  keybindings = import ./keybindings.nix {
-    inherit (pkgs) lib;
-    inherit terminal;
-  };
+  keybindings = import ./keybindings.nix { inherit pkgs terminal; };
 
   # Colors
   colors = with pkgs.palettes.current.hex.rgbWrap; {
