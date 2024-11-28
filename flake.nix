@@ -75,6 +75,7 @@
         specialArgs = { inherit inputs; };
         modules = [
           ./configuration.nix
+          ./system/intel.nix
           ./hosts/sirru/hardware-configuration.nix
 
           { environment.variables = { inherit FLAKE; }; }
