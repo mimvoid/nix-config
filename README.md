@@ -4,11 +4,11 @@
 
 #### Hyprland
 
-![Screenshot: Hyprland with disfetch and eza][i1]
+![Screenshot: Hyprland with my custom fetcher fletchling and eza][i1]
 
-![Screenshot: dooit with Amberol music player and Thunar file manager][i2]
+![Screenshot: dooit with Tauon music player and Thunar file manager][i2]
 
-![Screenshot: Anime-style sunset wallpaper with a notification saying "obama: then perish"][i3]
+![Screenshot: Ethereal jellyfish wallpaper by gracile with a notification saying "'pwease im dwowning' obama: then perish"][i3]
 
 #### XFCE
 
@@ -18,12 +18,15 @@ My Firefox CSS: [panefox][1]
 
 My wallpapers and credits: [wallpaper-stash][2]
 
-[i1]: assets/2024-07-14_hyprland-1.png
-[i2]: assets/2024-07-14_hyprland-2.png
-[i3]: assets/2024-07-14_hyprland-3.png
+My Neovim config: [neovim-dots][3]
+
+[i1]: assets/2024-11-27_hyprland-1.png
+[i2]: assets/2024-11-27_hyprland-2.png
+[i3]: assets/2024-11-27_hyprland-3.png
 [i4]: assets/2024-07-09_xfce.png
 [1]: https://github.com/mimvoid/panefox
 [2]: https://github.com/mimvoid/wallpaper-stash
+[3]: https://github.com/mimvoid/neovim-dots
 
 # What I Use
 
@@ -44,7 +47,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 | Applications     |                             |
 | ---------------- | --------------------------- |
 | Terminal         | [kitty][a1]                 |
-| Editor           | [Neovim][a2] ([NixVim][a3]) |
+| Editor           | [Neovim][a2] (with [nixPatch][a3]) |
 | GUI file manager | [Thunar][a4]                |
 | TUI file manager | [yazi][a5]                  |
 | Web browser      | [Firefox][a6]               |
@@ -55,7 +58,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 
 [a1]: https://sw.kovidgoyal.net/kitty
 [a2]: https://neovim.io
-[a3]: https://github.com/nix-community/nixvim
+[a3]: https://github.com/NicoElbers/nixPatch-nvim
 [a4]: https://docs.xfce.org/xfce/thunar/start
 [a5]: https://github.com/sxyazi/yazi
 [a6]: https://firefox.com
@@ -66,27 +69,24 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 
 | Hyprland-specific  |                                   |
 | ------------------ | --------------------------------- |
-| Idle               | [hypridle][h1]                    |
 | Lockscreen         | [hyprlock][h1]                    |
 | Bar                | [AGS][h2]                         |
 | Notifications      | [AGS][h2] ([mako][h3]-like style) |
+| Logout menu        | [AGS][h2]                     |
 | Launcher           | [fuzzel][h4]                      |
-| Logout menu        | [wlogout][h5]                     |
-| Wallpaper          | [swww][h6]                        |
-| Screen temperature | [wlsunset][h7]                    |
-| Screenshot         | [hyprshot][h8]                    |
-| To-dos             | [dooit][h9]
-| Color picker       | [hyprpicker][h10]                  |
+| Wallpaper          | [swww][h5]                        |
+| Screen temperature | [wlsunset][h6]                    |
+| Screenshot         | [hyprshot][h7]                    |
+| Color picker       | [hyprpicker][h8]                  |
 
 [h1]: https://wiki.hyprland.org/Hypr-Ecosystem
 [h2]: https://github.com/Aylur/ags
 [h3]: https://github.com/emersion/mako
 [h4]: https://codeberg.org/dnkl/fuzzel
-[h5]: https://github.com/ArtsyMacaw/wlogout
-[h6]: https://github.com/LGFae/swww
-[h7]: https://sr.ht/~kennylevinsen/wlsunset
-[h8]: https://github.com/Gustash/hyprshot
-[h9]: https://github.com/hyprwm/hyprpicker
+[h5]: https://github.com/LGFae/swww
+[h6]: https://sr.ht/~kennylevinsen/wlsunset
+[h7]: https://github.com/Gustash/hyprshot
+[h8]: https://github.com/hyprwm/hyprpicker
 
 | Theming         |                                             |
 | --------------- | ------------------------------------------- |
@@ -106,12 +106,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 [t7]: https://github.com/i-tu/Hasklig
 [t8]: https://fonts.google.com/specimen/Limelight
 
-- AGS
-  - Icons: [Adwaita][e1]
-  - Widgets
-    - Bar
-    - Calendar
-    - Notifications
+- AGS icons: [Adwaita][e1]
 - Krita
   - Theme: [Catppuccin Macchiato Maroon][e2]
   - Brushes & Resources
@@ -124,11 +119,6 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
     - [Reference Tabs Docker][e8]
     - [Timer Watch][e9]
 - [Obsidian.md][e10] CSS snippets
-- Firefox themes & extensions
-  - Themes
-    - Custom: Incandescent (light) & Moonflower (dark)
-    - [Catppuccin Macchiato Maroon][e11]
-  - Vertical tabs: [Sidebery][e12]
 
 [e1]: https://gitlab.gnome.org/GNOME/adwaita-icon-theme
 [e2]: https://github.com/catppuccin/kde
@@ -140,8 +130,6 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 [e8]: https://invent.kde.org/freyalupen/reference-tabs-docker
 [e9]: https://github.com/EyeOdin/timer_watch
 [e10]: https://obsidian.md
-[e11]: https://github.com/catppuccin/firefox
-[e12]: https://addons.mozilla.org/en-US/firefox/addon/sidebery
 
 ### Extra Cool Stuff
 
@@ -173,8 +161,8 @@ Unofficial:
 - Flakes
   - [NixOS & Flakes Book][n9]
   - [Very helpful guide to Nix flakes][n10]
-  - Nix flakes may seem daunting at first, but they make it super easy to add extra sources and configuration options. Plus, they're declarative while nix channels are not
-- [Nix User Repository][n11]
+  - Nix flakes may seem daunting at first, but they make it super easy to add extra sources and configuration options. Plus, they're declarative while nix channels are not.
+- [Nix User Repository (NUR)][n11]
 - [User-maintained NixOS wiki][n12]
   - [Nix applications and ecosystem][n13]
 - [Remember to optimize your NixOS storage][n14]
@@ -196,7 +184,7 @@ Unofficial:
 
 ### Home Manager
 
-A declarative approach to configuring your user environment! It's very much like NixOS's configuration file, but just for the home directory. It's great if you want to tinker without adding a bunch of generations to your boot menu, or use different configurations for users on the same system.
+A declarative approach to configuring your user environment! It's like NixOS's configuration file, but only for the home directory. It's great if you want to tinker without adding a bunch of generations to your boot menu, or use different configurations for users on the same system.
 
 It can work on other distros too—I tried it on openSUSE Tumbleweed, though not long-term.
 
