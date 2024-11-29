@@ -93,7 +93,6 @@ export default function Notification(props: Props) {
               useMarkup
               halign={START}
               xalign={0}
-              justifyFill
               label={n.body}
             />}
             </box>

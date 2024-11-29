@@ -1,7 +1,6 @@
 { pkgs, ... }:
 let
   inherit (pkgs.my-utils) prependAttrs;
-  pal = "${pkgs.voids.gpl-palettes}/share/krita/palettes";
 
   links = {
     themes = prependAttrs "krita/color-schemes/" {
@@ -17,11 +16,15 @@ let
     };
 
     # Krita can't seem to recognize the files in ~/.nix-profile/share/krita/palettes
-    palettes = prependAttrs "krita/palettes/" {
-      "catppuccin-macchiato.gpl".source = "${pal}/catppuccin-macchiato.gpl";
-      "rose-pine-moon.gpl".source = "${pal}/rose-pine-moon.gpl";
-      "ayu-mirage.gpl".source = "${pal}/ayu-mirage.gpl";
-    };
+    palettes =
+      let
+        pal = "${pkgs.voids.gpl-palettes}/share/krita/palettes";
+      in
+      prependAttrs "krita/palettes/" {
+        "catppuccin-macchiato.gpl".source = "${pal}/catppuccin-macchiato.gpl";
+        "rose-pine-moon.gpl".source = "${pal}/rose-pine-moon.gpl";
+        "ayu-mirage.gpl".source = "${pal}/ayu-mirage.gpl";
+      };
   };
 in
 {

@@ -42,12 +42,7 @@ in
     "snap_width" = 64;
 
     # Workspaces
-    "workspace_names" = [
-      "1"
-      "2"
-      "3"
-      "4"
-    ];
+    "workspace_names" = [ "1" "2" "3" "4" ];
     # disables the mouse changing workspaces at the edge of a screen
     "wrap_workspaces" = false;
 
