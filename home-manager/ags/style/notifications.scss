@@ -3,30 +3,32 @@
 @use "./variables/fonts";
 @use "./variables/looks";
 
-window.notification-popups box.notifications {
-  min-width: 15rem;
-  min-height: 1rem;
-  margin: 12px;
-}
-
 .notification {
-  padding: 16px;
-  border-radius: looks.$radius * 0.25;
+  margin: 4px 12px;
+  padding: 0.25rem;
+
+  border-radius: looks.$radius * 0.4;
+  border: 1px solid palette.$primary;
 
   background-color: palette.$base;
-
-  border: 1px solid palette.$primary;
 
   &.critical {
     border: 1px solid palette.$error;
   }
-}
-
-.notif-box {
-  padding: 0.25rem;
 
   .icon {
-    font-size: fonts.$font-size;
+    .app-icon, .image, .icon-image {
+      margin: 4px;
+      margin-left: 8px;
+      font-size: fonts.$font-size * 1.6;
+      color: palette.$secondary;
+    }
+
+    .image {
+      border-radius: looks.$radius;
+      background-size: cover;
+      background-position: center;
+    }
   }
 
   .header {
@@ -35,32 +37,20 @@ window.notification-popups box.notifications {
   }
 
   .content {
-    .image {
-      border-radius: looks.$radius;
-      background-size: cover;
-      background-position: center;
-    }
-
-    .icon-image icon {
-      margin: 4px;
-      font-size: 16px;
-      color: palette.$secondary;
-    }
-
     .summary, .body {
+      padding: 0.25rem 0.5rem;
+      min-width: 12em;
       font-size: fonts.$font-size * 1.2;
-      color: palette.$string;
     }
 
     .summary {
-      padding: 0.25rem 0.5rem;
       font-weight: bold;
-      color: palette.$secondary-bright;
+      color: palette.$secondary;
     }
 
     .body {
-      padding: 0.5rem;
-      padding-top: 0.25rem;
+      padding-bottom: 0.5rem;
+      color: palette.$string;
     }
   }
 }

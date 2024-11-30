@@ -48,6 +48,9 @@ class NotifiationMap implements Subscribable {
         // so that it acts as a "popup" and we can still display it
         // in a notification center-like widget,
         // but clicking on the close button will close it
+
+        // TODO: Actually, do dismiss it (see function below)
+        // I do not like notification centers
         onHoverLost: () => this.delete(id),
 
         // Notifd by default does not close notifications
@@ -95,6 +98,7 @@ export default function NotificationPopups(gdkmonitor: Gdk.Monitor) {
   const notifs = new NotifiationMap()
 
   return <window
+    name="notifications"
     className="notification-popups"
     gdkmonitor={gdkmonitor}
     exclusivity={Astal.Exclusivity.EXCLUSIVE}

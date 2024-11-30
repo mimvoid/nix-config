@@ -52,17 +52,22 @@ export default function Notification(props: Props) {
       className="image"
       css={`background-image: url('${n.image}')`} />
 
-    const IconName = n.image && isIcon(n.image) && <box
+    const IconImage = n.image && isIcon(n.image) && <box
       expand={false}
       valign={START}
       className="icon-image">
         <icon icon={n.image} expand halign={CENTER} valign={CENTER} />
     </box>
 
+    const DefaultIcon = !n.appIcon && !n.desktopEntry && !n.image && <icon
+      className="app-icon"
+      icon="dialog-information-symbolic" />
+
     return <box className="icon" >
       {DesktopEntry}
       {ImageFile}
-      {IconName}
+      {IconImage}
+      {DefaultIcon}
     </box>
   }
 
@@ -79,15 +84,15 @@ export default function Notification(props: Props) {
       halign={END}
       label={time(n.time)} />
 
-    const CloseButton = <button
-      onClicked={() => n.dismiss()}>
-        <icon icon="window-close-symbolic" />
-    </button>
+    // I don't need it
+    // const CloseButton = <button
+    //   onClicked={() => n.dismiss()}>
+    //     <icon icon="window-close-symbolic" />
+    // </button>
 
     return <box className="header" >
       {AppName}
       {Time}
-      {CloseButton}
     </box>
   }
 
@@ -105,7 +110,6 @@ export default function Notification(props: Props) {
       useMarkup
       halign={START}
       xalign={0}
-      justifyFill
       label={n.body} />
 
     return <box className="content" vertical >
@@ -127,7 +131,7 @@ export default function Notification(props: Props) {
     </box>
 
   // Put all the contents together
-  const NotifBox = <box className="notif-box" >
+  const NotifBox = <box className="notification" >
     <Icon />
     <box vertical >
       <Header />
@@ -138,7 +142,7 @@ export default function Notification(props: Props) {
 
   // Handle urgency & events
   return <eventbox
-    className={`notification ${urgency(n)}`}
+    className={`notifications ${urgency(n)}`}
     setup={setup}
     onHoverLost={onHoverLost}>
       {NotifBox}
