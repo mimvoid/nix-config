@@ -1,11 +1,14 @@
 import { Variable } from "astal"
 import { App, Astal, Gtk, Gdk } from "astal/gtk3"
 
+// Get the bar modules
 import Overview from "./overview"
 import Workspaces from "./workspaces"
 import Title from "./window-title"
+
 import Clock from "./clock"
 import MediaIcon from "./media"
+
 import Tray from "./sys-tray"
 import Network from "./network"
 import Bluetooth from "./bluetooth"
@@ -14,6 +17,8 @@ import Battery from "./battery"
 import Brightness from "./brightness"
 import Power from "./power"
 
+
+// Define the three parts of the bar
 function Left() {
   return <box
     className="left box"
@@ -48,22 +53,21 @@ function Right() {
   </box>
 }
 
+
 export default function Bar(monitor: Gdk.Monitor) {
-  const anchor = Astal.WindowAnchor.TOP
-    | Astal.WindowAnchor.LEFT
-    | Astal.WindowAnchor.RIGHT
+  const { TOP, LEFT, RIGHT } = Astal.WindowAnchor
 
   return <window
     name="bar"
     className="bar"
     gdkmonitor={monitor}
     exclusivity={Astal.Exclusivity.EXCLUSIVE}
-    anchor={anchor}
+    anchor={TOP | LEFT | RIGHT}
     application={App} >
-    <centerbox>
-      <Left />
-      <Center />
-      <Right />
-    </centerbox>
+      <centerbox>
+        <Left />
+        <Center />
+        <Right />
+      </centerbox>
   </window>
 }

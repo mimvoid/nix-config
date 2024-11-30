@@ -3,57 +3,56 @@ import { App, Astal, Gtk, Gdk } from "astal/gtk3"
 import Icon from "../lib/icons"
 
 const Button = (action: string) => {
-  const command = (() => {
-    switch (action) {
-      case "lock":
-        return "hyprlock";
-      case "logout":
-        return "hyprctl dispatch exit";
-      case "reboot":
-        return "systemctl reboot";
-      case "shutdown":
-        return "systemctl poweroff";
-      default:
-        return "";
-    }
-  })();
+  // Change command and alignments depending on which the input name
+  const command = () => {switch (action) {
+    case "lock":
+      return "hyprlock"
+    case "logout":
+      return "hyprctl dispatch exit"
+    case "reboot":
+      return "systemctl reboot"
+    case "shutdown":
+      return "systemctl poweroff"
 
-  const halign = (() => {
-    switch (action) {
-      case "lock":
-        return "END";
-      case "logout":
-        return "END";
-      case "reboot":
-        return "START";
-      case "shutdown":
-        return "START";
-      default:
-        return "";
-    }
-  })();
+    default:
+      return ""
+  }}
 
-  const valign = (() => {
-    switch (action) {
-      case "lock":
-        return "END";
-      case "logout":
-        return "START";
-      case "reboot":
-        return "END";
-      case "shutdown":
-        return "START";
-      default:
-        return "";
-    }
-  })();
+  // Left or right
+  const halign = () => {switch (action) {
+    case "lock":
+    case "logout":
+      return "END"
 
+    case "reboot":
+    case "shutdown":
+      return "START"
+
+    default:
+      return ""
+  }}
+
+  // Top or bottom
+  const valign = () => {switch (action) {
+    case "lock":
+    case "reboot":
+      return "END"
+
+    case "logout":
+    case "shutdown":
+      return "START"
+
+    default:
+      return ""
+  }}
+
+  // Create the button
   return <button
     halign={Gtk.Align[halign]}
     valign={Gtk.Align[valign]}
     className={`${action} box`}
     cursor="pointer"
-    onClicked={() => exec(command)} >
+    onClicked={() => exec(command())} >
       <icon icon={`${Icon.powermenu[action]}`} />
   </button>
 }
@@ -66,10 +65,10 @@ const Session = new Gtk.Grid({
   visible: true,
 })
 
-Session.attach(Button("lock"), 1, 1, 1, 1)
-Session.attach(Button("logout"), 1, 2, 1, 1)
-Session.attach(Button("reboot"), 2, 1, 1, 1)
-Session.attach(Button("shutdown"), 2, 2, 1, 1)
+Session.attach(Button("lock"), 1, 1, 1, 1) // top left
+Session.attach(Button("logout"), 1, 2, 1, 1) // bottom left
+Session.attach(Button("reboot"), 2, 1, 1, 1) // top right
+Session.attach(Button("shutdown"), 2, 2, 1, 1) // bottom right
 
 export default function SessionMenu(monitor: Gdk.Monitor) {
   return <window

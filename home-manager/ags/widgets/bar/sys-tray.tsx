@@ -5,52 +5,54 @@ import Icon from "../../lib/icons"
 
 const tray = Tray.get_default()
 
-const TrayIcons = <box>
-  {bind(tray, "items").as(items => items.map(item => {
+const TrayIcons = () => {
+  // Create buttons for every system tray item
+  const Items = bind(tray, "items").as(items => items.map(item => {
     if (item.iconThemePath)
       App.add_icons(item.iconThemePath)
 
     const menu = item.create_menu()
 
     return <button
-      className="system-tray"
+      className="system-tray-item"
       tooltipMarkup={bind(item, "tooltipMarkup")}
       onDestroy={() => menu?.destroy()}
       onClickRelease={self => {
         menu?.popup_at_widget(self, Gdk.Gravity.SOUTH, Gdk.Gravity.NORTH, null)
       }} >
-      <icon gIcon={bind(item, "gicon")} />
+        <icon gIcon={bind(item, "gicon")} />
     </button>
-  }))}
-</box>
+  }))
 
+  // Wrap them all in a box
+  return <box>{Items}</box>
+}
+
+// Display system tray after clicking on a button
 const Revealer = <revealer
   transitionDuration={250}
   transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT} >
-    {TrayIcons}
+    <TrayIcons />
 </revealer>
 
-const ToggleIcon = <icon className="hider" icon={Icon.hider} />
+const SysTrayToggle = () => {
+  const ToggleIcon = <icon className="hider" icon={Icon.hider} />
 
-const state = Variable(true)
-
-export default function SysTray() {
   function toggle() {
     Revealer.revealChild = !Revealer.revealChild
-
-    if (Revealer.revealChild) {
-      ToggleIcon.className = "hider open"
-    }
-    else {
-      ToggleIcon.className = "hider"
-    }
+    // Change icon class to style it
+    ToggleIcon.className = Revealer.revealChild ? "hider open" : "hider"
   }
 
-  return <eventbox
-    onClick={() => toggle()} >
-      <box>
-        {Revealer}
-        {ToggleIcon}
-      </box>
+  // Don't actually include the revealer in the hitbox
+  return <eventbox onClick={() => toggle()} >
+    {ToggleIcon}
   </eventbox>
+}
+
+export default function SysTray() {
+  return <box className="system-tray" >
+    {Revealer}
+    <SysTrayToggle />
+  </box>
 }

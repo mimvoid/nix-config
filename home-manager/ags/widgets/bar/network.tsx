@@ -4,19 +4,24 @@ import Network from "gi://AstalNetwork"
 
 const network = Network.get_default()
 
-const Icon = <button
-  cursor="pointer"
-  onClicked={() => exec("networkmanager_dmenu")} >
-    <icon
-      className="wifi"
-      cursor="pointer"
-      icon={bind(network.wifi, "iconName")}
-    />
-  </button>
+const Icon = () => {
+  // Get icon from Astal
+  const StatusIcon = <icon
+    className="wifi"
+    icon={bind(network.wifi, "iconName")} />
 
-function Label() {
-//  state = bind(network.wifi, "state")
-//   active = state ==
+  // Wrap it in a button that launches a network manager
+  return <button
+    cursor="pointer"
+    onClicked={() => exec("networkmanager_dmenu")} >
+      {StatusIcon}
+  </button>
+}
+
+const Label = () => {
+  // TODO: Only show the label when it makes sense
+  // state = bind(network.wifi, "state")
+  // active = state ==
 
   return <label
     // visible={active.as(Boolean)}
@@ -24,25 +29,30 @@ function Label() {
   />
 }
 
-const Revealer = <revealer
+// Reveal the label on hover
+const NetworkEvent = () => {
+  const Revealer = <revealer
     transitionDuration={250}
     transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT} >
       <Label />
   </revealer>
 
-const NetworkBox = <eventbox
-  onHover={() => Revealer.revealChild = true}
-  onHoverLost={() => Revealer.revealChild = false} >
-    <box>
-      {Icon}
-      {Revealer}
-    </box>
+  // Hitbox includes the icon
+  return <eventbox
+    onHover={() => Revealer.revealChild = true}
+    onHoverLost={() => Revealer.revealChild = false} >
+      <box>
+        <Icon />
+        {Revealer}
+      </box>
   </eventbox>
+}
 
 export default function Wifi() {
-  return <box
-    className="network"
-    tooltipText={bind(network.wifi, "strength").as((i) => `${i}%`)} >
-      {NetworkBox}
+  // Display network strength as percentage on hover
+  const tooltip = bind(network.wifi, "strength").as((i) => `${i}%`)
+
+  return <box className="network" tooltipText={tooltip} >
+    <NetworkEvent />
   </box>
 }

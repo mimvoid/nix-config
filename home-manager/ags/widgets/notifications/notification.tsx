@@ -3,12 +3,16 @@ import { Gtk, Astal } from "astal/gtk3"
 import { type EventBox } from "astal/gtk3/widget"
 import Notifd from "gi://AstalNotifd"
 
+// Defines an individual notification widget
+
+// App icon checkers
 const isIcon = (icon: string) =>
   !!Astal.Icon.lookup_icon(icon)
 
 const fileExists = (path: string) =>
   GLib.file_test(path, GLib.FileTest.EXISTS)
 
+// Format the timestamp
 const time = (time: number, format = "%H:%M") => GLib.DateTime
   .new_from_unix_local(time)
   .format(format)!
@@ -34,81 +38,109 @@ export default function Notification(props: Props) {
   const { notification: n, onHoverLost, setup } = props
   const { START, CENTER, END } = Gtk.Align
 
-  // default icon
-  let icon = "dialog-information-symbolic"
+  // Notification structure
 
+  // Display the icon in various possible formats
+  const Icon = () => {
+    const DesktopEntry = (n.appIcon || n.desktopEntry) && <icon
+      className="app-icon"
+      visible={Boolean(n.appIcon || n.desktopEntry)}
+      icon={n.appIcon || n.desktopEntry} />
+
+    const ImageFile = n.image && fileExists(n.image) && <box
+      valign={START}
+      className="image"
+      css={`background-image: url('${n.image}')`} />
+
+    const IconName = n.image && isIcon(n.image) && <box
+      expand={false}
+      valign={START}
+      className="icon-image">
+        <icon icon={n.image} expand halign={CENTER} valign={CENTER} />
+    </box>
+
+    return <box className="icon" >
+      {DesktopEntry}
+      {ImageFile}
+      {IconName}
+    </box>
+  }
+
+  const Header = () => {
+    const AppName = <label
+      className="app-name"
+      halign={START}
+      truncate
+      label={n.appName || "Unknown"} />
+
+    const Time = <label
+      className="time"
+      hexpand
+      halign={END}
+      label={time(n.time)} />
+
+    const CloseButton = <button
+      onClicked={() => n.dismiss()}>
+        <icon icon="window-close-symbolic" />
+    </button>
+
+    return <box className="header" >
+      {AppName}
+      {Time}
+      {CloseButton}
+    </box>
+  }
+
+  const Content = () => {
+    const Summary = <label
+      className="summary"
+      halign={START}
+      xalign={0}
+      label={n.summary}
+      truncate />
+
+    const Body = n.body && <label
+      className="body"
+      wrap
+      useMarkup
+      halign={START}
+      xalign={0}
+      justifyFill
+      label={n.body} />
+
+    return <box className="content" vertical >
+      {Summary}
+      {Body}
+    </box>
+  }
+
+  // Create a button for each action if they exist
+  const Actions = n.get_actions().length > 0 &&
+    <box className="actions">
+      {n.get_actions().map(({ label, id }) => (
+        <button
+          hexpand
+          onClicked={() => n.invoke(id)} >
+            <label label={label} halign={CENTER} hexpand />
+        </button>
+      ))}
+    </box>
+
+  // Put all the contents together
+  const NotifBox = <box className="notif-box" >
+    <Icon />
+    <box vertical >
+      <Header />
+      <Content />
+      {Actions}
+    </box>
+  </box>
+
+  // Handle urgency & events
   return <eventbox
     className={`notification ${urgency(n)}`}
     setup={setup}
     onHoverLost={onHoverLost}>
-    <box className="notif-box" >
-      <box className="icon">
-        {(n.appIcon || n.desktopEntry) && <icon
-          className="app-icon"
-          visible={Boolean(n.appIcon || n.desktopEntry)}
-          icon={n.appIcon || n.desktopEntry}
-        />}
-      </box>
-      <box className="details" vertical>
-        <box className="header">
-          <label
-            className="app-name"
-            halign={START}
-            truncate
-            label={n.appName || "Unknown"}
-          />
-          <label
-            className="time"
-            hexpand
-            halign={END}
-            label={time(n.time)}
-          />
-          <button onClicked={() => n.dismiss()}>
-            <icon icon="window-close-symbolic" />
-          </button>
-        </box>
-        <box className="content">
-          {n.image && fileExists(n.image) && <box
-            valign={START}
-            className="image"
-            css={`background-image: url('${n.image}')`}
-          />}
-          {n.image && isIcon(n.image) && <box
-            expand={false}
-            valign={START}
-            className="icon-image">
-            <icon icon={n.image} expand halign={CENTER} valign={CENTER} />
-          </box>}
-          <box vertical>
-            <label
-              className="summary"
-              halign={START}
-              xalign={0}
-              label={n.summary}
-              truncate
-            />
-            {n.body && <label
-              className="body"
-              wrap
-              useMarkup
-              halign={START}
-              xalign={0}
-              label={n.body}
-            />}
-            </box>
-        </box>
-        {n.get_actions().length > 0 &&
-          <box className="actions">
-            {n.get_actions().map(({ label, id }) => (
-              <button
-                hexpand
-                onClicked={() => n.invoke(id)}>
-                <label label={label} halign={CENTER} hexpand />
-              </button>
-            ))}
-          </box>
-        }
-      </box>
-    </box>
+      {NotifBox}
   </eventbox>
 }

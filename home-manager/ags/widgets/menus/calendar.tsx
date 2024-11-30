@@ -15,11 +15,12 @@ class Calendar extends astalify(Gtk.Calendar) {
   }
 }
 
-const timeSeconds = Variable<string>("").poll(1000, "date '+%H:%M:%S'")
-
-function CalendarWidget() {
+const CalendarWidget = () => {
+  // Format time with seconds
+  const timeSeconds = Variable<string>("").poll(1000, "date '+%H:%M:%S'")
   const Time = <label className="display in-box" label={timeSeconds()} />
 
+  // Make the calendar
   const Content = <Calendar
     showHeading
     showDayNames

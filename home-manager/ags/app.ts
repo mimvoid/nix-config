@@ -1,6 +1,6 @@
 import { App } from "astal/gtk3";
 import style from "./style/style.scss";
-import Bar from "./widgets/bar/Bar";
+import Bar from "./widgets/bar/bar";
 import SessionMenu from "./widgets/session";
 import Calendar from "./widgets/menus/calendar";
 import Dashboard from "./widgets/menus/dashboard";

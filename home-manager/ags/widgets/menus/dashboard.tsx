@@ -2,7 +2,7 @@ import { exec } from "astal"
 import { App, Astal, Gtk, Gdk } from "astal/gtk3"
 import Mpris from "gi://AstalMpris"
 
-function User() {
+const User = () => {
   //const Avatar =
   const Username = <label label={exec("whoami")} />
 

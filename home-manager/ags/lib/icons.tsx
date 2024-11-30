@@ -19,6 +19,7 @@ const Icon = {
   calendar: "x-office-calendar",
   hider: "pan-start-symbolic",
 
+  music: "audio-x-generic-symbolic",
   mpris: {
     start: "media-playback-start-symbolic",
     stop: "media-playback-stop-symbolic",

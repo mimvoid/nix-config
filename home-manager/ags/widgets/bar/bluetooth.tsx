@@ -5,17 +5,28 @@ import Icon from "../../lib/icons"
 
 const bluetooth = Bluetooth.get_default()
 
-const Indicator = <button
-  onClicked={(_, event) => {
+// Show the Bluetooth status
+const Indicator = () => {
+  // Execute `bluetooth off` or `bluetooth on`
+  const action = (_, event) => {
     execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`)
-  }}
-  tooltipText={(bind(bluetooth, "isPowered").as((i) => `Bluetooth ${i ? "on" : "off"}`))}
-  cursor="pointer" >
-    <icon icon={
-      bind(bluetooth, "isPowered")
-        .as((i) => (i ? Icon.bluetooth.enabled : Icon.bluetooth.disabled))
-    } />
-</button>
+  }
+
+  // Show Bluetooth status on hover
+  const tooltip = bind(bluetooth, "isPowered").as((i) =>
+    `Bluetooth ${i ? "on" : "off"}`)
+
+  // Display icon depending on Bluetooth status
+  const icon = bind(bluetooth, "isPowered").as((i) =>
+    (i ? Icon.bluetooth.enabled : Icon.bluetooth.disabled))
+
+  return <button
+    onClicked={action}
+    tooltipText={tooltip}
+    cursor="pointer" >
+      <icon icon={icon} />
+  </button>
+}
 
 // TODO: re-implement Bluetooth active device
 
@@ -39,8 +50,7 @@ const Indicator = <button
 //  </eventbox>
 
 export default function BluetoothWidget() {
-  return <box
-    className="bluetooth" >
-    {Indicator}
+  return <box className="bluetooth" >
+    <Indicator />
   </box>
 }
