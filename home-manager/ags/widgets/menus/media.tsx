@@ -91,12 +91,11 @@ const InputPlayer = (player) => {
   </box>
 }
 
-export default function MediaBox(monitor: Gdk.Monitor) {
+export default function MediaBox() {
   return <window
     name="media"
     className="media"
     visible={false}
-    gdkmonitor={monitor}
 
     exclusivity={Astal.Exclusivity.NORMAL}
     anchor={Astal.WindowAnchor.TOP}

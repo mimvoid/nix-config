@@ -33,11 +33,10 @@ const CalendarWidget = () => {
   </box>
 }
 
-export default function Cal(monitor: Gdk.Monitor) {
+export default function Cal() {
   return <window
     name="calendar"
     visible={false}
-    gdkmonitor={monitor}
     exclusivity={Astal.Exclusivity.NORMAL}
     anchor={Astal.WindowAnchor.TOP}
     layer={Astal.Layer.OVERLAY}

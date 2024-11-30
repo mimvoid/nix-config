@@ -22,12 +22,11 @@ const User = () => {
 //  </box>
 //}
 
-export default function Dashboard(monitor: Gdk.Monitor) {
+export default function Dashboard() {
   return <window
     name="dashboard"
     className="dashboard"
     visible={false}
-    gdkmonitor={monitor}
     exclusivity={Astal.Exclusivity.NORMAL}
     anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT}
     layer={Astal.Layer.OVERLAY}

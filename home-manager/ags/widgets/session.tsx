@@ -70,11 +70,10 @@ Session.attach(Button("logout"), 1, 2, 1, 1) // bottom left
 Session.attach(Button("reboot"), 2, 1, 1, 1) // top right
 Session.attach(Button("shutdown"), 2, 2, 1, 1) // bottom right
 
-export default function SessionMenu(monitor: Gdk.Monitor) {
+export default function SessionMenu() {
   return <window
     name="session"
     className="session"
-    gdkmonitor={monitor}
     visible={false}
     anchor={Astal.WindowAnchor.NONE}
     exclusivity={Astal.Exclusivity.NORMAL}
