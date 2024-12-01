@@ -9,20 +9,12 @@ from dooit_extras.formatters import (
     description_highlight_tags,
     description_strike_completed,
     todo_description_progress,
-    due_casual_format,
     due_icon,
     recurrence_icon,
     status_icons,
-    urgency_icons
+    urgency_icons,
 )
-from dooit_extras.bar_widgets import (
-    Date,
-    Mode,
-    Spacer,
-    StatusIcons,
-    TextBox,
-    Ticker
-)
+from dooit_extras.bar_widgets import Date, Mode, Spacer, StatusIcons, TextBox, Ticker
 
 from rich.style import Style
 from rich.text import Text
@@ -47,7 +39,9 @@ def setup_formatters(api: DooitAPI, _):
         fmt.workspaces.description.add(description_children_count(children_format))
 
     if my.todo_number_children:
-        desc_format = Text(" ({completed_count}/{total_count}) ", style=theme.primary).markup
+        desc_format = Text(
+            " ({completed_count}/{total_count}) ", style=theme.primary
+        ).markup
         fmt.todos.description.add(todo_description_progress(desc_format))
 
     # Set icons
@@ -91,14 +85,11 @@ def setup_bar(api: DooitAPI, _):
         Spacer(api, width=1),
         Mode(api, **my.mode),
         Spacer(api, width=1),
-        Ticker(api,
-               fmt=my.ticker,
-               fg=theme.cyan,
-               bg=theme.background2),
+        Ticker(api, fmt=my.ticker, fg=theme.cyan, bg=theme.background2),
         Spacer(api, width=0),
         StatusIcons(api, **my.bar_status_icons, bg=theme.background2),
         Spacer(api, width=1),
-        Date(api, **my.date)
+        Date(api, **my.date),
     ]
     api.bar.set(widgets)
 
@@ -115,13 +106,13 @@ def setup_dashboard(api: DooitAPI, _):
         (
             "The fear within me is beyond anything your soul can make.",
             ["anything"],
-            theme.green
+            theme.green,
         ),
         (
             "You cannot kill me in a way that matters.",
             ["cannot kill me", "way that matters"],
-            theme.red
-        )
+            theme.red,
+        ),
     ]
 
     # Implement the ascii art
@@ -138,13 +129,14 @@ def setup_dashboard(api: DooitAPI, _):
     due_today = sum([1 for i in Todo.all() if i.is_due_today and i.is_pending])
     overdue = sum([1 for i in Todo.all() if i.is_overdue])
 
-    items = [
-        ascii_art,
-        ""
-    ] + formatted_lines + [
-        "",
-        "",
-        Text("󰔚 Tasks today: {}".format(due_today), style=theme.green),
-        Text(" Tasks overdue: {}".format(overdue), style=theme.red),
-    ]
+    items = (
+        [ascii_art, ""]
+        + formatted_lines
+        + [
+            "",
+            "",
+            Text("󰔚 Tasks today: {}".format(due_today), style=theme.green),
+            Text(" Tasks overdue: {}".format(overdue), style=theme.red),
+        ]
+    )
     api.dashboard.set(items)

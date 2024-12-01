@@ -2,6 +2,7 @@ from typing import Callable, Optional
 from datetime import datetime
 from dooit.api import Todo
 
+
 def my_due(fmt="{}") -> Callable:
     def wrapper(due: Optional[datetime], _: Todo) -> str:
         """
