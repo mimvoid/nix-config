@@ -19,13 +19,18 @@
     };
 
     stylix = {
-      url = "github:danth/stylix/master";
+      url = "github:danth/stylix";
       inputs = {
+        nixpkgs.follows = "nixpkgs";
+        home-manager.follows = "home-manager";
+
         # Ignore un-needed inputs
         base16-fish.follows = "";
         base16-helix.follows = "";
+        base16-vim.follows = "";
         gnome-shell.follows = "";
         tinted-foot.follows = "";
+        tinted-kitty.follows = "";
         tinted-tmux.follows = "";
       };
     };
