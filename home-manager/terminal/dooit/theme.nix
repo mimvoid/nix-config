@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  xdg.configFile."dooit/moonfall_eve.py".text =
+  xdg.configFile."dooit/themes.py".text =
     with config.lib.stylix.colors.withHashtag; # python
       ''
         from dooit.api.theme import DooitThemeBase

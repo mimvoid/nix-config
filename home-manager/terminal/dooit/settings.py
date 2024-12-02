@@ -3,18 +3,6 @@ A little file for defining and viewing settings in a quick way
 It is not a replacement for a standard dooit config.py file
 """
 
-from dooit.ui.api import DooitAPI, subscribe
-from dooit.ui.api.events import Startup
-
-
-# ------- COLORSCHEME -------
-
-from moonfall_eve import MoonfallEve
-
-@subscribe(Startup)
-def setup_colorscheme(api: DooitAPI, _):
-    api.css.set_theme(MoonfallEve)
-
 
 # ------- DASHBOARD -------
 

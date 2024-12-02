@@ -24,6 +24,7 @@ from formats import my_due
 
 # Get variables
 import settings as my
+from themes import MoonfallEve
 
 
 @subscribe(Startup)
@@ -35,14 +36,14 @@ def setup_formatters(api: DooitAPI, _):
 
     # Format workspaces & todos to display children count
     if my.ws_number_children:
-        children_format = Text(" ({}) ", style=theme.primary).markup
-        fmt.workspaces.description.add(description_children_count(children_format))
+        children_fmt = Text(" ({}) ", style=theme.primary).markup
+        fmt.workspaces.description.add(description_children_count(children_fmt))
 
     if my.todo_number_children:
-        desc_format = Text(
+        children_fmt = Text(
             " ({completed_count}/{total_count}) ", style=theme.primary
         ).markup
-        fmt.todos.description.add(todo_description_progress(desc_format))
+        fmt.todos.description.add(todo_description_progress(children_fmt))
 
     # Set icons
     fmt.todos.status.add(status_icons(**my.status_icons))
@@ -66,6 +67,8 @@ def setup_formatters(api: DooitAPI, _):
 # Layout
 @subscribe(Startup)
 def setup_layout(api: DooitAPI, _):
+    api.css.set_theme(MoonfallEve)
+
     api.layouts.todo_layout = [
         TodoWidget.status,
         TodoWidget.description,
