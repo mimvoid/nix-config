@@ -4,5 +4,9 @@
 /* author: mimvoid */
 
 .cm-gutters {
-  margin-left: -4rem;
+  margin-left: -3rem;
+}
+
+.cm-gutterElement {
+  color: var(--background-modifier-border-hover);
 }

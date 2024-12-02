@@ -2,9 +2,9 @@
 
 /* author: mimvoid */
 
-/* Make the add properties button transleucent */
+/* Make the add properties button fainter */
 .metadata-container .metadata-add-button {
-  opacity: 0.4;
+  color: var(--background-modifier-border-hover);
 }
 /* Hide in reading mode */
 .markdown-preview-view .metadata-container .metadata-add-button {
@@ -13,6 +13,11 @@
 
 /* Hide "Properties" title */
 .metadata-properties-heading {
+  display: none;
+}
+
+/* Hide help button */
+.svg-icon.help {
   display: none;
 }
 

@@ -6,7 +6,7 @@
  * modified: mimvoid */
 
 body .workspace-split.mod-root .view-content {
-  background-size: 50px 50px;
+  background-size: 40px 40px;
   background-image: radial-gradient(
     circle,
     var(--background-modifier-border) 1px,
