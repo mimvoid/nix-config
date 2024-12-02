@@ -55,10 +55,10 @@ in
     ''
       [dmenu]
       dmenu_command = fuzzel -d -w 40
-      active_chars = >> # this doesn't work
+      active_chars = >
       wifi_chars = ▂▄▆█
       wifi_icons = 󰤯󰤟󰤢󰤥󰤨
-      format = {name:18}          {signal}%%  {bars}
+      format = {name:18}           {signal}%%  {bars}
 
       [editor]
       terminal = kitty
