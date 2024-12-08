@@ -1,7 +1,7 @@
 { config, pkgs, ... }:
 
 {
-  imports = [ ./theme.nix ];
+  imports = [ ./themes.nix ];
   home.packages = with pkgs.mods; [ dooit ];
 
   xdg.configFile =
@@ -14,7 +14,8 @@
     in
     {
       "dooit/config.py" = symlink "config.py";
-      "dooit/settings.py" = symlink "settings.py";
-      "dooit/formats.py" = symlink "formats.py";
+      "dooit/settings/ui.py" = symlink "settings/ui.py";
+      "dooit/settings/formats.py" = symlink "settings/formats.py";
+      "dooit/settings/vars.py" = symlink "settings/vars.py";
     };
 }

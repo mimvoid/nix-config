@@ -1,7 +1,7 @@
 { config, ... }:
 
 {
-  xdg.configFile."dooit/themes.py".text =
+  xdg.configFile."dooit/settings/themes.py".text =
     with config.lib.stylix.colors.withHashtag; # python
       ''
         from dooit.api.theme import DooitThemeBase
