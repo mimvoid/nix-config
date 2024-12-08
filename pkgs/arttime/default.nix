@@ -5,6 +5,8 @@
   installShellFiles,
   zsh,
   libnotify,
+  vorbis-tools,
+  fzf,
 }:
 
 stdenvNoCC.mkDerivation rec {
@@ -22,50 +24,39 @@ stdenvNoCC.mkDerivation rec {
   buildInputs = [
     zsh
     libnotify
+    vorbis-tools
+    fzf
   ];
 
   dontBuild = true;
-
-  postPatch = ''
-    patchShebangs install.sh
-  '';
 
   installPhase = ''
     runHook preInstall
 
     mkdir -p $out/bin
-    mkdir -p $out/share/arttime/src
-    mkdir -p $out/share/arttime/keypoems
-    mkdir -p $out/share/arttime/textart
-    mkdir -p $out/share/arttime/doc
-    mkdir -p $out/share/man/man1
+    mkdir -p $out/share
 
-    ./install.sh --prefix $out --noupdaterc --zcompdir -
+    cp -a bin $out
+    cp -a share/arttime $out/share
 
     runHook postInstall
   '';
 
   postInstall = ''
-    installManPage share/man/man1/artprint.1.gz share/man/man1/arttime.1.gz
+    installManPage share/man/man1/*
     installShellCompletion --zsh --name _artprint share/zsh/functions/_artprint
     installShellCompletion --zsh --name _arttime share/zsh/functions/_arttime
   '';
 
   meta = {
-    description = "ASCII art with clock/timer/pattern-based time manager in the terminal";
+    description = "Clock, timer, time manager and ASCII+ text-art viewer for the terminal";
     longDescription = ''
-      Beauty of text-art meets functionality of a feature-rich
-      clock / timer / pattern-based time manager in terminal. In
-      addition to its functional/productivity features, arttime
-      brings curated text-art to otherwise artless terminal
-      emulators of starving developers and other users who can
-      use terminal.
+      Text art meets the functionality of a feature-rich clock/timer/pattern-based
+      time manager. Arttime brings curated text art to otherwise artless terminal
+      emulators of starving developers and other users who can use the terminal.
     '';
     homepage = "https://github.com/poetaman/arttime";
-    license = with lib.licenses; [
-      gpl3Only
-      free
-    ];
+    license = with lib.licenses; [ gpl3Only ];
     platforms = lib.platforms.unix;
     maintainers = with lib.maintainers; [ mimvoid ];
   };
