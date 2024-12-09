@@ -30,9 +30,13 @@
         max_height = 2000;
       };
 
-      plugin.prepend_previewers = [
-        { mime = "audio/*"; run = "exifaudio"; }
-      ];
+      plugin = {
+        prepend_previewers = [ { mime = "audio/*"; run = "exifaudio"; } ];
+        prepend_fetchers = [
+          { id = "git"; name = "*"; run = "git"; }
+          { id = "git"; name = "*/"; run = "git"; }
+        ];
+      };
     };
 
     keymap = {
@@ -58,6 +62,7 @@
     plugins = {
       inherit (pkgs.voids.yaziPlugins)
         full-border
+        git
         max-preview
         bookmarks
         exifaudio;
@@ -65,6 +70,18 @@
 
     initLua = # lua
       ''
+        require("git"):setup()
+
+        THEME.git = THEME.git or {}
+        THEME.git.modified = ui.Style():fg("blue")
+        THEME.git.modified_sign = "M"
+
+        THEME.git.added = ui.Style():fg("green")
+        THEME.git.added_sign = "A"
+
+        THEME.git.deleted = ui.Style():fg("red")
+        THEME.git.deleted_sign = "D"
+
         require("full-border"):setup()
         require("bookmarks"):setup({
           persist = "vim",

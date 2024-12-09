@@ -17,5 +17,6 @@ with pkgs;
   };
 
   full-border = callPackage ./full-border { };
+  git = callPackage ./git { };
   max-preview = callPackage ./max-preview { };
 }
