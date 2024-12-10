@@ -1,0 +1,72 @@
+/* Edits radius of round UI from
+ * ./extras/round_ui_items and ./extras/rounded_menupopups.css */
+
+/* Adjust this to change the border radius */
+:root {
+  --toolbarbutton-border-radius: 10px !important
+;
+}
+
+/* Matches the menupopup border radius */
+:root {
+  --uc-menupopup-border-radius: var(--toolbarbutton-border-radius);
+}
+
+/* URL & menu bar */
+#urlbar-input-container > box:hover,
+#urlbar-input-container > box[open],
+#main-menubar > menu,
+
+/* Sidebar */
+#sidebar-box,
+#sidebar,
+#sidebar-search-container > #search-box
+
+/* Buttons */
+.titlebar-button:hover,
+#scrollbutton-up,
+#scrollbutton-down,
+.tab-close-button,
+.close-icon > image,
+#page-action-buttons > :hover,
+.panel-arrowcontent,
+.urlbarView-row-inner,
+.search-one-offs button,
+.subviewbutton-back,
+.toolbaritem-combined-buttons > toolbarbutton,
+
+/* Popup menus */
+#PopupSearchAutoComplete,
+menupopup,
+
+/* Misc */
+button,
+.tab-background {
+  border-radius: var(--toolbarbutton-border-radius) !important;
+}
+
+/* Rounds the status panel */
+
+/* Chose this specific value since it fits well against the edges of the
+ * browser content window */
+
+#statuspanel-label {
+  border-radius: 4px;
+}
+
+/* Removes browser content margins from ../extras/browser-rounded.css */
+
+/* Also slightly changes the browser content background,
+ * which only shows when no content's loaded.
+ * Otherwise it'll look weirdly blank. */
+#tabbrowser-tabpanels {
+  browser[type="content"] {
+    margin: 0px !important;
+    border-bottom-right-radius: 0 !important;
+    background-color: color-mix(
+      in srgb,
+      currentColor 2%,
+      transparent
+    ) !important;
+  }
+}
