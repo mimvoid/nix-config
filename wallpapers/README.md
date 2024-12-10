@@ -20,7 +20,7 @@ Filename format: `artist-name_title-name.filetype`
 [Instagram](https://www.instagram.com/aeuna._),
 [Twitter](https://x.com/byAeuna)
 
-<details><summary>
+<details open><summary>
 
 #### [Under the Blue Sky 1](https://x.com/byAeuna/status/1667749176443289600/photo/1)
 
@@ -29,7 +29,7 @@ Filename format: `artist-name_title-name.filetype`
 ![Under the Blue Sky 1 by Aeuna](wallpapers/aeuna_under-the-blue-sky-1.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### [Under the Blue Sky 4](https://x.com/byAeuna/status/1667749176443289600/photo/4)
 
@@ -44,7 +44,7 @@ Filename format: `artist-name_title-name.filetype`
 
 [Artstation](https://www.artstation.com/aenamiart)
 
-<details><summary>
+<details open><summary>
 
 #### [Endless](https://www.artstation.com/artwork/4bX4eY)
 
@@ -53,7 +53,7 @@ Filename format: `artist-name_title-name.filetype`
 ![Endless by Alena Aenami](wallpapers/alena-aenami_endless.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### [Someday](https://www.artstation.com/artwork/Ya4WAb)
 
@@ -68,7 +68,7 @@ Filename format: `artist-name_title-name.filetype`
 
 [Pixiv](https://www.pixiv.net/en/users/8236670)
 
-<details><summary>
+<details open><summary>
 
 #### [Autumn Colors (秋色)](https://www.pixiv.net/en/artworks/71328482)
 
@@ -77,7 +77,7 @@ Filename format: `artist-name_title-name.filetype`
 ![Autumn Colors (秋色) by Axle](wallpapers/axle_autumn-colors.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### ["birds"](https://www.pixiv.net/en/artworks/97618640)
 
@@ -86,7 +86,7 @@ Filename format: `artist-name_title-name.filetype`
 !["birds" by Axle](wallpapers/axle_birds.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### [End of the Summer](https://www.pixiv.net/en/artworks/70458152)
 
@@ -95,7 +95,7 @@ Filename format: `artist-name_title-name.filetype`
 ![End of the Summer by Axle](wallpapers/axle_end-of-the-summer.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### [Summer (夏)](https://www.pixiv.net/en/artworks/70142035)
 
@@ -110,7 +110,7 @@ Filename format: `artist-name_title-name.filetype`
 
 [Artstation](https://www.artstation.com/bakairis)
 
-<details><summary>
+<details open><summary>
 
 #### ["rainy world" (亚特兰市郊)](https://www.artstation.com/artwork/YK8DNq)
 
@@ -128,7 +128,7 @@ Catppuccin-ified version from
 
 [Artstation](https://www.artstation.com/grivetart)
 
-<details><summary>
+<details open><summary>
 
 #### [Ubaye Valley](https://www.artstation.com/artwork/3WdYo)
 
@@ -144,7 +144,7 @@ Catppuccin-ified version from
 [Artstation](https://www.artstation.com/imbis),
 [DeviantArt](https://www.deviantart.com/bisbiswas)
 
-<details><summary>
+<details open><summary>
 
 #### [Abandoned Cottage](https://www.deviantart.com/bisbiswas/art/Abandoned-Cottage-949858161)
 
@@ -159,7 +159,7 @@ Catppuccin-ified version from
 
 [Tumblr](https://dangerdrop.tumblr.com)
 
-<details><summary>
+<details open><summary>
 
 #### ["coffee](https://dangerdrop.tumblr.com/post/140761882420/u620) [roadtrip"](https://www.pixiv.net/en/artworks/55725854)
 
@@ -174,7 +174,7 @@ Catppuccin-ified version from
 
 [Artstation](https://www.artstation.com/elias_stern)
 
-<details><summary>
+<details open><summary>
 
 #### [Sunrise Speed Panorama](https://www.artstation.com/artwork/5DmxW)
 
@@ -190,7 +190,7 @@ Catppuccin-ified version from
 [Landing page](https://lit.link/en/gracilejp),
 [website](https://www.gracile.jp)
 
-<details><summary>
+<details open><summary>
 
 #### ["blue 2"](https://x.com/gracile_jp/status/1352278374903779329/photo/2)
 
@@ -199,7 +199,7 @@ Catppuccin-ified version from
 !["blue 2" by Gracile](wallpapers/gracile_blue-2.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### ["blue 4"](https://x.com/gracile_jp/status/1352278374903779329/photo/4)
 
@@ -208,7 +208,7 @@ Catppuccin-ified version from
 !["blue 4" by Gracile](wallpapers/gracile_blue-4.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### ["branches"](https://x.com/gracile_jp/status/1389577498862620673/photo/2)
 
@@ -217,7 +217,7 @@ Catppuccin-ified version from
 !["branches" by Gracile](wallpapers/gracile_branches.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### ["clouds"](https://wallhaven.cc/w/e7d368)
 
@@ -228,7 +228,7 @@ Original source unknown
 !["clouds" by Gracile](wallpapers/gracile_clouds.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### [Edge of Summer](https://x.com/gracile_jp/status/1168895118784507910/photo/2)
 
@@ -237,7 +237,7 @@ Original source unknown
 ![Edge of Summer by Gracile](wallpapers/gracile_edge-of-summer.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### ["grasses"](https://x.com/gracile_jp/status/1707043713552368033/photo/1)
 
@@ -246,7 +246,7 @@ Original source unknown
 !["grasses" by Gracile](wallpapers/gracile_grasses.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### ["small grasses"](https://x.com/gracile_jp/status/1411382155498770433/photo/4)
 
@@ -255,7 +255,7 @@ Original source unknown
 !["small grasses" by Gracile](wallpapers/gracile_small-grass.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### [Jellyfish](https://x.com/gracile_jp/status1497202048840118277/photo/1)
 
@@ -264,7 +264,7 @@ Original source unknown
 ![Jellyfish by Gracile](wallpapers/gracile_jellyfish.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### ["overgrown"](https://x.com/gracile_jp/status/1356610926397558785/photo/3)
 
@@ -273,7 +273,7 @@ Original source unknown
 !["overgrown" by Gracile](wallpapers/gracile_overgrown.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### ["over the clouds"](https://x.com/gracile_jp/status/1406328138607456258/photo/2)
 
@@ -282,7 +282,7 @@ Original source unknown
 !["over the clouds" by Gracile](wallpapers/gracile_over-the-clouds.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### [Gracile? "savanna"](https://wallhaven.cc/w/ex2dol)
 
@@ -293,7 +293,7 @@ Original source unknown
 !["savanna"](wallpapers/gracile_savanna.jpg)
 
 </details>
-<details><summary>
+<details open><summary>
 
 #### ["twilight"](https://x.com/gracile_jp/status/1789598350595293328)
 
@@ -308,7 +308,7 @@ Original source unknown
 
 [Danbooru](https://danbooru.donmai.us/posts?tags=han_yijie)
 
-<details><summary>
+<details open><summary>
 
 #### [Departure (出航)](https://danbooru.donmai.us/posts/1847025?q=han_yijie)
 
@@ -323,7 +323,7 @@ Original source unknown
 
 [Landing page](https://linktr.ee/samdoesarts)
 
-<details><summary>
+<details open><summary>
 
 #### [Sunset](https://x.com/samdoesarts/status/1696555428228874444)
 
@@ -340,7 +340,7 @@ Uncropped original unknown
 
 [Website](https://www.milkgrrl.com/home)
 
-<details><summary>
+<details open><summary>
 
 #### [Clouds](https://www.milkgrrl.com/portfolio?pgid=jja9jy5o-49abe1d5-7966-40a7-a66d-a163695ce767)
 
@@ -356,7 +356,7 @@ Uncropped original unknown
 [Pixiv](https://www.pixiv.net/en/users/19389056),
 [Artstation](https://www.artstation.com/yhl)
 
-<details><summary>
+<details open><summary>
 
 #### [Mountain (山)](https://www.pixiv.net/en/artworks/106047489)
 
@@ -369,7 +369,7 @@ Uncropped original unknown
 
 ### Unknown Artist
 
-<details><summary>
+<details open><summary>
 
 #### Tokyo Shinjuku
 
