@@ -1,6 +1,8 @@
-{ inputs, config, pkgs, ... }:
+{ config, pkgs, ... }:
 let
-  lockscreen = "${inputs.wallpapers.outPath}/wallpapers/tokyo-shinjuku.png";
+  # Needs to be converted to a string
+  # See: https://github.com/nix-community/home-manager/issues/5743
+  lockscreen = builtins.toString ../../wallpapers/wallpapers/tokyo-shinjuku.png;
   display = "Limelight";
 
   rgb = pkgs.palettes.current.hex.rgbWrap;

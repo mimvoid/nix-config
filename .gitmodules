@@ -1,7 +1,0 @@
-[submodule "firefox-chrome"]
-  path = home-manager/firefox/chrome
-  url = https://github.com/mimvoid/panefox.git
-
-[submodule "wallpaper-stash"]
-	path = wallpapers
-	url = git@github.com:mimvoid/wallpaper-stash.git

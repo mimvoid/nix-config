@@ -573,8 +573,7 @@
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "nvim": "nvim",
-        "stylix": "stylix",
-        "wallpapers": "wallpapers"
+        "stylix": "stylix"
       }
     },
     "stylix": {
@@ -624,22 +623,6 @@
         "owner": "nix-systems",
         "repo": "default",
         "type": "github"
-      }
-    },
-    "wallpapers": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1731997310,
-        "narHash": "sha256-+vinP3GfpPjIwGx710ahq8zpLvMrjIcm0MTfGSpMYas=",
-        "ref": "refs/heads/main",
-        "rev": "645b8f0f770e0b2325ce77c21aacb99336b98c0f",
-        "revCount": 19,
-        "type": "git",
-        "url": "file:wallpapers"
-      },
-      "original": {
-        "type": "git",
-        "url": "file:wallpapers"
       }
     }
   },

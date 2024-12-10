@@ -46,13 +46,6 @@
       url = "github:ezKEa/aagl-gtk-on-nix";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
-
-    # Submodules, to call otherwise untracked files
-    # Can use "${inputs.<submodule>.outPath}/<file-in-submodule>"
-    wallpapers = {
-      url = "git+file:wallpapers"; # relative path ./wallpapers
-      flake = false;
-    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
