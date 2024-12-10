@@ -1,0 +1,28 @@
+/* Targets the bookmarks bar below the URL bar */
+
+#PlacesToolbarItems {
+  /* Centers bookmarks */
+  justify-content: safe center !important;
+
+  /* Makes bookmarks transleucent
+   * Spaces out bookmark icons */
+  > .bookmark-item {
+    opacity: 0.75;
+    margin-left: 2px;
+    margin-right: 2px;
+
+    /* Hides bookmark text */
+    > .toolbarbutton-text {
+      display: none !important;
+    }
+  }
+}
+
+/* Makes the Other Bookmarks icon transleucent
+ * Hides the Other Bookmarks text */
+#OtherBookmarks {
+  opacity: 0.75;
+  > .toolbarbutton-text {
+    display: none !important;
+  }
+}
