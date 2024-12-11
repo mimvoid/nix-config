@@ -6,14 +6,14 @@
 
 stdenvNoCC.mkDerivation {
   pname = "yazi-full-border";
-  version = "unstable-2024-08-12";
+  version = "unstable-2024-12-10";
 
   src = fetchFromGitHub {
     owner = "yazi-rs";
     repo = "plugins";
     sparseCheckout = [ "full-border.yazi" ];
-    rev = "2dc65ab07d85c3a63e663eeade1324438dc83942";
-    hash = "sha256-OP8HnD7NbwOruubgZXod8R3HJJeNhYub8MCsPljuclI=";
+    rev = "ec97f8847feeb0307d240e7dc0f11d2d41ebd99d";
+    hash = "sha256-H7seJWTVxYF5of4msnkuZpDnNiROwhS/dtwJJ/GCxGo=";
   };
 
   installPhase = ''

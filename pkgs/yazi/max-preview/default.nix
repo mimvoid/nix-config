@@ -6,14 +6,14 @@
 
 stdenvNoCC.mkDerivation {
   pname = "yazi-max-preview";
-  version = "unstable-2024-08-12";
+  version = "unstable-2024-12-10";
 
   src = fetchFromGitHub {
     owner = "yazi-rs";
     repo = "plugins";
     sparseCheckout = [ "max-preview.yazi" ];
-    rev = "2dc65ab07d85c3a63e663eeade1324438dc83942";
-    hash = "sha256-xZJr9kFd4Ma7NXxE9a1yeb7uKqoilmvn+1bszLXvsk0=";
+    rev = "ec97f8847feeb0307d240e7dc0f11d2d41ebd99d";
+    hash = "sha256-P17dq9CsOweQcwxgyHTf2LQ4yiOFm6Ikb6m9f/FBDgs=";
   };
 
   installPhase = ''

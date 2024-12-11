@@ -42,14 +42,14 @@
     keymap = {
       manager.prepend_keymap = [
         # Smart paste plugin
-        { on = "p"; run = "plugin --sync smart-paste"; }
+        { on = "p"; run = "plugin smart-paste"; }
 
         # File navigation wraparound plugin
-        { on = "k"; run = "plugin --sync arrow --args=-1"; }
-        { on = "j"; run = "plugin --sync arrow --args=1"; }
+        { on = "k"; run = "plugin arrow --args=-1"; }
+        { on = "j"; run = "plugin arrow --args=1"; }
 
         # Max preview
-        { on = "T"; run = "plugin --sync max-preview"; }
+        { on = "T"; run = "plugin max-preview"; }
 
         # Bookmarks
         { on = "m"; run = "plugin bookmarks --args=save"; }
@@ -97,6 +97,7 @@
       enable = true;
       text = # lua
         ''
+          --- @sync entry
           return {
             entry = function()
               local h = cx.active.current.hovered
@@ -117,10 +118,11 @@
       enable = true;
       text = # lua
         ''
+          --- @sync entry
           return {
-            entry = function(_, args)
+            entry = function(_, job)
               local current = cx.active.current
-              local new = (current.cursor + args[1]) % #current.files
+              local new = (current.cursor + job.args[1]) % #current.files
               ya.manager_emit("arrow", { new - current.cursor })
             end,
           }
