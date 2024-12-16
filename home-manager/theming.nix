@@ -27,7 +27,7 @@ let
     package = pkgs.mods.nerdfonts;
   };
 
-  terminal-size = 14;
+  terminal-size = 13;
 in
 {
   home.packages = with pkgs; [
