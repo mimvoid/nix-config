@@ -1,5 +1,10 @@
-<h1 align="center">mimvoid's wallpaper stash</h1>
-<p align="center">A collection of various wallpapers I've found!</p>
+<div align="center">
+
+# mimvoid's wallpaper stash
+
+A collection of various wallpapers I've found!
+
+</div>
 
 ![alena-aenami_endless](wallpapers/alena-aenami_endless.jpg)
 

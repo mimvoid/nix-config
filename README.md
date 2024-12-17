@@ -1,6 +1,10 @@
-<h1 align="center">mimvoid's nixos & home manager dotfiles</h1>
+<div align="center">
 
-<p align="center">This is where I keep my configuration files, links to helpful resources, and some pieces of advice from my experience with NixOS.</p>
+# mimvoid's nixos & home manager dotfiles
+
+This is where I keep my configuration files, links to helpful resources, and some pieces of advice from my experience with NixOS.
+
+</div>
 
 #### Hyprland
 
@@ -44,17 +48,17 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 [w5]: https://sr.ht/~kennylevinsen/greetd
 [w6]: https://github.com/apognu/tuigreet
 
-| Applications     |                             |
-| ---------------- | --------------------------- |
-| Terminal         | [kitty][a1]                 |
+| Applications     |                                    |
+| ---------------- | ---------------------------------- |
+| Terminal         | [kitty][a1]                        |
 | Editor           | [Neovim][a2] (with [nixPatch][a3]) |
-| GUI file manager | [Thunar][a4]                |
-| TUI file manager | [yazi][a5]                  |
-| Web browser      | [Firefox][a6]               |
-| Art program      | [Krita][a7]                 |
-| Document viewer  | [Zathura][a8]               |
-| To-do list       | [dooit][a9]                 |
-| Music player     | [Tauon][a10]                |
+| GUI file manager | [Thunar][a4]                       |
+| TUI file manager | [yazi][a5]                         |
+| Web browser      | [Firefox][a6]                      |
+| Art program      | [Krita][a7]                        |
+| Document viewer  | [Zathura][a8]                      |
+| To-do list       | [dooit][a9]                        |
+| Music player     | [Tauon][a10]                       |
 
 [a1]: https://sw.kovidgoyal.net/kitty
 [a2]: https://neovim.io
@@ -72,7 +76,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 | Lockscreen         | [hyprlock][h1]                    |
 | Bar                | [AGS][h2]                         |
 | Notifications      | [AGS][h2] ([mako][h3]-like style) |
-| Logout menu        | [AGS][h2]                     |
+| Logout menu        | [AGS][h2]                         |
 | Launcher           | [fuzzel][h4]                      |
 | Wallpaper          | [swww][h5]                        |
 | Screen temperature | [wlsunset][h6]                    |
