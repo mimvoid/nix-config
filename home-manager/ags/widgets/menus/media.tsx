@@ -69,7 +69,7 @@ const Media = (player) => {
     label={bind(player, "artist")} />
 
   return <box vertical>
-    {CoverArt}
+    <CoverArt />
     {Title}
     {Artist}
   </box>
