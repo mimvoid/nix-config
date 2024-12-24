@@ -1,6 +1,7 @@
 @use "sass:color";
 @use "./palettes/palette";
 @use "./variables/looks";
+@use "./variables/fonts";
 
 .calendar {
   all: unset;
@@ -9,10 +10,28 @@
   background-color: color.change(palette.$base, $alpha: 0.9);
 }
 
-.calendar .display {
-  margin: 2px 0 12px;
-  color: palette.$string;
-  text-decoration: underline solid palette.$primary;
+.calendar .big-clock {
+  margin: 2em 2em 1em;
+
+  .hour {
+    color: palette.$string;
+  }
+
+  .hour, .minute {
+    margin: 0 0.05em; /* space out a little more */
+    font-size: fonts.$display-size * 1.5;
+  }
+
+  .minute {
+    margin-right: 0;
+    color: palette.$primary;
+  }
+
+  .second {
+    min-width: 1.5em;
+    padding-bottom: 0.15em;
+    color: color.mix(palette.$string-dim, palette.$string);
+  }
 }
 
 .calendar calendar {
