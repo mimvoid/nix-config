@@ -20,6 +20,7 @@ in
 {
   imports = [
     ./resources
+    ./scripts
   ];
 
   home.packages = with pkgs.voids.krita; [
