@@ -1,15 +1,13 @@
-import { exec } from "astal"
-import { App, Astal, Gtk, Gdk } from "astal/gtk3"
-import Mpris from "gi://AstalMpris"
+import { exec } from "astal";
+import { App, Astal, Gtk, Gdk } from "astal/gtk3";
+import Mpris from "gi://AstalMpris";
 
 const User = () => {
   //const Avatar =
-  const Username = <label label={exec("whoami")} />
+  const Username = <label label={exec("whoami")} />;
 
-  return <box className="in-box" >
-    {Username}
-  </box>
-}
+  return <box className="in-box">{Username}</box>;
+};
 
 //function Media() {
 
@@ -23,18 +21,21 @@ const User = () => {
 //}
 
 export default function Dashboard() {
-  return <window
-    name="dashboard"
-    className="dashboard"
-    visible={false}
-    exclusivity={Astal.Exclusivity.NORMAL}
-    anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT}
-    layer={Astal.Layer.OVERLAY}
-    margin-top={2}
-    margin-left={2}
-    application={App} >
-      <box className="box" vertical >
+  return (
+    <window
+      name="dashboard"
+      className="dashboard"
+      visible={false}
+      exclusivity={Astal.Exclusivity.NORMAL}
+      anchor={Astal.WindowAnchor.TOP | Astal.WindowAnchor.LEFT}
+      layer={Astal.Layer.OVERLAY}
+      margin-top={2}
+      margin-left={2}
+      application={App}
+    >
+      <box className="box" vertical>
         <User />
       </box>
-  </window>
+    </window>
+  );
 }
