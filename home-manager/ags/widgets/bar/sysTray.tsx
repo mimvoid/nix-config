@@ -1,11 +1,11 @@
-import { Variable, bind } from "astal";
+import { bind } from "astal";
 import { App, Gtk, Gdk } from "astal/gtk3";
 import Tray from "gi://AstalTray";
 import Icon from "../../lib/icons";
 
 const tray = Tray.get_default();
 
-const TrayIcons = () => {
+function TrayIcons() {
   // Create buttons for every system tray item
   const Items = bind(tray, "items").as((items) =>
     items.map((item) => {
@@ -35,7 +35,7 @@ const TrayIcons = () => {
 
   // Wrap them all in a box
   return <box>{Items}</box>;
-};
+}
 
 // Display system tray after clicking on a button
 const Revealer = (
@@ -47,18 +47,19 @@ const Revealer = (
   </revealer>
 );
 
-const SysTrayToggle = () => {
+function SysTrayToggle() {
   const ToggleIcon = <icon className="hider" icon={Icon.hider} />;
 
-  function toggle() {
+  const toggle = () => {
     Revealer.revealChild = !Revealer.revealChild;
+
     // Change icon class to style it
     ToggleIcon.className = Revealer.revealChild ? "hider open" : "hider";
-  }
+  };
 
   // Don't actually include the revealer in the hitbox
-  return <eventbox onClick={() => toggle()}>{ToggleIcon}</eventbox>;
-};
+  return <eventbox onClick={toggle}>{ToggleIcon}</eventbox>;
+}
 
 export default function SysTray() {
   return (

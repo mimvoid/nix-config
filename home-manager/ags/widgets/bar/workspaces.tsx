@@ -7,6 +7,7 @@ const Spaces = bind(hypr, "workspaces").as((wss) =>
   wss
     // Keep workspaces sorted regardless of when they're entered
     .sort((a, b) => a.id - b.id)
+
     // Create a button for each workspace
     .map((ws) => (
       <button
@@ -15,7 +16,7 @@ const Spaces = bind(hypr, "workspaces").as((wss) =>
         )}
         onClicked={() => ws.focus()}
         cursor="pointer"
-        tooltipText={ws.id.toString()}
+        tooltipText={`Workspace ` + ws.id.toString()}
       ></button>
     )),
 );

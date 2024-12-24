@@ -4,20 +4,15 @@ import Wp from "gi://AstalWp";
 
 const speaker = Wp.get_default()?.audio.defaultSpeaker!;
 
-const Icon = () => {
-  // Get icon from Astal
-  const AudioIcon = <icon icon={bind(speaker, "volumeIcon")} />;
+const Icon = (
+  // Can mute or unmute speaker
+  <button cursor="pointer" onClicked={() => (speaker.mute = !speaker.mute)}>
+    <icon icon={bind(speaker, "volumeIcon")} />
+  </button>
+);
 
-  // Mute or unmute speaker
-  return (
-    <button cursor="pointer" onClicked={() => (speaker.mute = !speaker.mute)}>
-      {AudioIcon}
-    </button>
-  );
-};
-
-// Format volume as percentage
 const Label = (
+  // Format volume as percentage
   <label label={bind(speaker, "volume").as((i) => `${Math.floor(i * 100)}%`)} />
 );
 
@@ -34,7 +29,7 @@ const Slider = (
 
 // Only show slider on hover
 function EventSlider() {
-  const Revealer = (
+  const Rev = (
     <revealer
       transitionDuration={250}
       transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
@@ -47,11 +42,24 @@ function EventSlider() {
   // Makes clicking on the icon button easier
   return (
     <eventbox
-      onHover={() => (Revealer.revealChild = true)}
-      onHoverLost={() => (Revealer.revealChild = false)}
+      onHover={() => (Rev.revealChild = true)}
+      onHoverLost={() => (Rev.revealChild = false)}
+      onScroll={(_, { delta_y }) => {
+        const step = 0.05;
+
+        if (delta_y < 0) {
+          speaker.volume <= 0.95
+            ? (speaker.volume += step)
+            : (speaker.volume = 1);
+        } else {
+          speaker.volume >= 0.05
+            ? (speaker.volume -= step)
+            : (speaker.volume = 0);
+        }
+      }}
     >
       <box>
-        {Revealer}
+        {Rev}
         {Label}
       </box>
     </eventbox>
@@ -61,7 +69,7 @@ function EventSlider() {
 export default function AudioSlider() {
   return (
     <box className="sound icon-label">
-      <Icon />
+      {Icon}
       <EventSlider />
     </box>
   );

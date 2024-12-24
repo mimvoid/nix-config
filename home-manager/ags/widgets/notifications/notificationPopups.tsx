@@ -1,6 +1,6 @@
 import { Astal, Gtk, Gdk } from "astal/gtk3";
 import { type Subscribable } from "astal/binding";
-import { GLib, Variable, bind, timeout } from "astal";
+import { Variable, bind, timeout } from "astal";
 
 import Notifd from "gi://AstalNotifd";
 import Notification from "./notification";

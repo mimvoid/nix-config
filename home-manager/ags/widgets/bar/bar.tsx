@@ -1,27 +1,24 @@
-import { Variable } from "astal";
 import { App, Astal, Gtk, Gdk } from "astal/gtk3";
 
 // Get the bar modules
-import Overview from "./overview";
 import Workspaces from "./workspaces";
-import Title from "./window-title";
+import Title from "./windowTitle";
 
 import Clock from "./clock";
-import MediaIcon from "./media";
+import { MediaIcon, Overview, Power } from "./togglers";
 
-import Tray from "./sys-tray";
+import Tray from "./sysTray";
 import Network from "./network";
 import Bluetooth from "./bluetooth";
 import Sound from "./sound";
 import Battery from "./battery";
-import Brightness from "./brightness";
-import Power from "./power";
+import Brightness from "./brightness/brightness";
 
 // Define the three parts of the bar
 function Left() {
   return (
     <box className="left box" hexpand halign={Gtk.Align.START}>
-      <Overview />
+      {Overview}
       <Workspaces />
       <Title />
     </box>
@@ -32,7 +29,7 @@ function Center() {
   return (
     <box className="center box">
       <Clock />
-      <MediaIcon />
+      {MediaIcon}
     </box>
   );
 }
@@ -46,7 +43,7 @@ function Right() {
       <Sound />
       <Battery />
       <Brightness />
-      <Power />
+      {Power}
     </box>
   );
 }

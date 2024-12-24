@@ -8,7 +8,7 @@ import Bar from "./widgets/bar/bar";
 import Calendar from "./widgets/menus/calendar";
 import Dashboard from "./widgets/menus/dashboard";
 import MediaBox from "./widgets/menus/media";
-import NotificationPopups from "./widgets/notifications/notification-popups";
+import NotificationPopups from "./widgets/notifications/notificationPopups";
 import SessionMenu from "./widgets/session";
 
 App.start({

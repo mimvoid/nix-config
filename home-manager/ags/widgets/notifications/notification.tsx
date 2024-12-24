@@ -7,7 +7,6 @@ import Notifd from "gi://AstalNotifd";
 
 // App icon checkers
 const isIcon = (icon: string) => !!Astal.Icon.lookup_icon(icon);
-
 const fileExists = (path: string) => GLib.file_test(path, GLib.FileTest.EXISTS);
 
 // Format the timestamp
@@ -41,7 +40,7 @@ export default function Notification(props: Props) {
   // Notification structure
 
   // Display the icon in various possible formats
-  const Icon = () => {
+  function Icon() {
     const DesktopEntry = (n.appIcon || n.desktopEntry) && (
       <icon
         className="app-icon"
@@ -49,7 +48,6 @@ export default function Notification(props: Props) {
         icon={n.appIcon || n.desktopEntry}
       />
     );
-
     const ImageFile = n.image && fileExists(n.image) && (
       <box
         valign={START}
@@ -59,13 +57,11 @@ export default function Notification(props: Props) {
         `}
       />
     );
-
     const IconImage = n.image && isIcon(n.image) && (
       <box expand={false} valign={START} className="icon-image">
         <icon icon={n.image} expand halign={CENTER} valign={CENTER} />
       </box>
     );
-
     const DefaultIcon = !n.appIcon && !n.desktopEntry && !n.image && (
       <icon className="app-icon" icon="dialog-information-symbolic" />
     );
@@ -78,27 +74,20 @@ export default function Notification(props: Props) {
         {DefaultIcon}
       </box>
     );
-  };
+  }
 
-  const Header = () => {
+  function Header() {
     const AppName = (
       <label
         className="app-name"
+        label={n.appName || "Unknown"}
         halign={START}
         truncate
-        label={n.appName || "Unknown"}
       />
     );
-
     const Time = (
       <label className="time" hexpand halign={END} label={time(n.time)} />
     );
-
-    // I don't need it
-    // const CloseButton = <button
-    //   onClicked={() => n.dismiss()}>
-    //     <icon icon="window-close-symbolic" />
-    // </button>
 
     return (
       <box className="header">
@@ -106,9 +95,9 @@ export default function Notification(props: Props) {
         {Time}
       </box>
     );
-  };
+  }
 
-  const Content = () => {
+  function Content() {
     const Summary = (
       <label
         className="summary"
@@ -118,7 +107,6 @@ export default function Notification(props: Props) {
         truncate
       />
     );
-
     const Body = n.body && (
       <label
         className="body"
@@ -136,7 +124,7 @@ export default function Notification(props: Props) {
         {Body}
       </box>
     );
-  };
+  }
 
   // Create a button for each action if they exist
   const Actions = n.get_actions().length > 0 && (

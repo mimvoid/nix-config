@@ -2,82 +2,61 @@ import { exec } from "astal";
 import { App, Astal, Gtk, Gdk } from "astal/gtk3";
 import Icon from "../lib/icons";
 
-const Button = (action: string) => {
-  // Change command and alignments depending on the input name
-  const command = () => {
-    switch (action) {
-      case "lock":
-        return "hyprlock";
-      case "logout":
-        return "hyprctl dispatch exit";
-      case "reboot":
-        return "systemctl reboot";
-      case "shutdown":
-        return "systemctl poweroff";
+function Session() {
+  const { START, END, FILL } = Gtk.Align;
 
-      default:
-        return "";
-    }
+  const ButtonGrid = new Gtk.Grid({
+    halign: FILL,
+    valign: FILL,
+    hexpand: true,
+    vexpand: true,
+    visible: true,
+  });
+
+  const actions = {
+    lock: {
+      command: "hyprlock",
+      halign: END,
+      valign: END,
+    },
+    logout: {
+      command: "hyprctl dispatch exit",
+      halign: END,
+      valign: START,
+    },
+    reboot: {
+      command: "systemctl reboot",
+      halign: START,
+      valign: END,
+    },
+    shutdown: {
+      command: "systemctl poweroff",
+      halign: START,
+      valign: START,
+    },
   };
 
-  // Left or right
-  const halign = () => {
-    switch (action) {
-      case "lock":
-      case "logout":
-        return "END";
+  for (const action of ["lock", "logout", "reboot", "shutdown"]) {
+    const row = actions[action].halign === END ? 1 : 2;
+    const column = actions[action].valign === END ? 1 : 2;
 
-      case "reboot":
-      case "shutdown":
-        return "START";
+    const Button = (
+      <button
+        halign={actions[action].halign}
+        valign={actions[action].valign}
+        className={`${action} box`}
+        cursor="pointer"
+        onClicked={() => exec(actions[action].command)}
+      >
+        <icon icon={Icon.powermenu[action]} />
+      </button>
+    );
 
-      default:
-        return "";
-    }
-  };
+    ButtonGrid.attach(Button, row, column, 1, 1);
+  }
 
-  // Top or bottom
-  const valign = () => {
-    switch (action) {
-      case "lock":
-      case "reboot":
-        return "END";
-
-      case "logout":
-      case "shutdown":
-        return "START";
-
-      default:
-        return "";
-    }
-  };
-
-  // Create the button
-  return (
-    <button
-      halign={Gtk.Align[halign]}
-      valign={Gtk.Align[valign]}
-      className={`${action} box`}
-      cursor="pointer"
-      onClicked={() => exec(command())}
-    >
-      <icon icon={`${Icon.powermenu[action]}`} />
-    </button>
-  );
-};
-
-const Session = new Gtk.Grid({
-  halign: Gtk.Align.FILL,
-  valign: Gtk.Align.FILL,
-  hexpand: true,
-  vexpand: true,
-  visible: true,
-});
-
-Session.attach(Button("lock"), 1, 1, 1, 1); // top left
-Session.attach(Button("logout"), 1, 2, 1, 1); // bottom left
-Session.attach(Button("reboot"), 2, 1, 1, 1); // top right
-Session.attach(Button("shutdown"), 2, 2, 1, 1); // bottom right
+  return ButtonGrid;
+}
 
 export default function SessionMenu() {
   return (
@@ -96,7 +75,7 @@ export default function SessionMenu() {
       }}
       application={App}
     >
-      {Session}
+      <Session />
     </window>
   );
 }

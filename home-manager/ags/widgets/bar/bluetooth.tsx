@@ -1,5 +1,4 @@
 import { execAsync, bind } from "astal";
-import { Gtk } from "astal/gtk3";
 import Bluetooth from "gi://AstalBluetooth";
 import Icon from "../../lib/icons";
 
@@ -8,18 +7,18 @@ const bluetooth = Bluetooth.get_default();
 // Show the Bluetooth status
 const Indicator = () => {
   // Execute `bluetooth off` or `bluetooth on`
-  const action = (_, event) => {
+  const action = () => {
     execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
   };
 
   // Show Bluetooth status on hover
   const tooltip = bind(bluetooth, "isPowered").as(
-    (i) => `Bluetooth ${i ? "on" : "off"}`,
+    (p) => `Bluetooth ${p ? "on" : "off"}`,
   );
 
   // Display icon depending on Bluetooth status
-  const icon = bind(bluetooth, "isPowered").as((i) =>
-    i ? Icon.bluetooth.enabled : Icon.bluetooth.disabled,
+  const icon = bind(bluetooth, "isPowered").as((p) =>
+    p ? Icon.bluetooth.enabled : Icon.bluetooth.disabled,
   );
 
   return (

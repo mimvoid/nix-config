@@ -6,10 +6,10 @@ import Icon from "../../lib/icons";
 const mpris = Mpris.get_default();
 
 // Action buttons for playback
-const Actions = (player) => {
+function Actions(player: Mpris.Player) {
   // Play or pause
   // Icon changes based on the playing status
-  const Toggle = () => {
+  function Toggle() {
     const playIcon = bind(player, "playbackStatus").as((s) =>
       s === Mpris.PlaybackStatus.PLAYING ? Icon.mpris.pause : Icon.mpris.start,
     );
@@ -22,7 +22,7 @@ const Actions = (player) => {
         <icon icon={playIcon} />
       </button>
     );
-  };
+  }
 
   const Prev = (
     <button
@@ -46,10 +46,10 @@ const Actions = (player) => {
       {Next}
     </box>
   );
-};
+}
 
 // Information about the current song
-const Media = (player) => {
+function Media(player: Mpris.Player) {
   // Display cover art
   const CoverArt = () => {
     const coverArt = bind(player, "coverArt").as(
@@ -86,31 +86,27 @@ const Media = (player) => {
       {Artist}
     </box>
   );
-};
-
-// Pass the mpris player to the widget modules
-const InputPlayer = (player) => {
-  return (
-    <box className="box">
-      {
-        // Draw the widget modules if there is a player
-        // Only displays the first player
-        bind(mpris, "players").as((ps) =>
-          ps[0] ? (
-            <box vertical>
-              {Actions(ps[0])}
-              {Media(ps[0])}
-            </box>
-          ) : (
-            "Nothing Playing"
-          ),
-        )
-      }
-    </box>
-  );
-};
+}
 
 export default function MediaBox() {
+  // Pass the mpris player to the widget modules
+  function Input() {
+    function Popup(player: Mpris.Player) {
+      return (
+        <box vertical>
+          {Actions(player)}
+          {Media(player)}
+        </box>
+      );
+    }
+
+    // Draw the widget modules if there is a player
+    // Only displays the first player
+    return bind(mpris, "players").as((ps) =>
+      ps[0] ? Popup(ps[0]) : "Nothing Playing",
+    );
+  }
+
   return (
     <window
       name="media"
@@ -122,7 +118,7 @@ export default function MediaBox() {
       margin-top={2}
       application={App}
     >
-      <InputPlayer />
+      <box className="box">{Input()}</box>
     </window>
   );
 }
