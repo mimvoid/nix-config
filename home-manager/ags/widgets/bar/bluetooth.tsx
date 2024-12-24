@@ -1,15 +1,17 @@
 import { execAsync, bind } from "astal";
+import { Gtk } from "astal/gtk3";
 import Bluetooth from "gi://AstalBluetooth";
 import Icon from "../../lib/icons";
 
 const bluetooth = Bluetooth.get_default();
 
-// Show the Bluetooth status
-const Indicator = () => {
+function Indicator() {
+  // Show the Bluetooth status
+
   // Execute `bluetooth off` or `bluetooth on`
-  const action = () => {
+  function action() {
     execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
-  };
+  }
 
   // Show Bluetooth status on hover
   const tooltip = bind(bluetooth, "isPowered").as(
@@ -26,33 +28,45 @@ const Indicator = () => {
       <icon icon={icon} />
     </button>
   );
-};
+}
 
-// TODO: re-implement Bluetooth active device
+function BluetoothBox() {
+  // Show connected device names
 
-//const Devices = <box
-//
-//</box>
+  function Devices() {
+    return bluetooth
+      .get_devices()
+      .map((device) => (
+        <label label={device.alias} visible={device.connected} />
+      ));
+  }
 
-//const Revealer = <revealer
-//    transitionDuration={250}
-//    transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT} >
-//      <Devices />
-//  </revealer>
-//
-//const BluetoothBox = <eventbox
-//  onHover={() => Revealer.revealChild = true}
-//  onHoverLost={() => Revealer.revealChild = false} >
-//    <box>
-//      {Indicator}
-//      {Revealer}
-//    </box>
-//  </eventbox>
+  const Rev = (
+    <revealer
+      transitionDuration={250}
+      transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
+    >
+      <box>{Devices()}</box>
+    </revealer>
+  );
+
+  return (
+    <eventbox
+      onHover={() => (Rev.revealChild = true)}
+      onHoverLost={() => (Rev.revealChild = false)}
+    >
+      <box>
+        <Indicator />
+        {Rev}
+      </box>
+    </eventbox>
+  );
+}
 
 export default function BluetoothWidget() {
   return (
     <box className="bluetooth">
-      <Indicator />
+      <BluetoothBox />
     </box>
   );
 }
