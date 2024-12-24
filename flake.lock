@@ -550,10 +550,11 @@
         ]
       },
       "locked": {
-        "dirtyRev": "04f3e8efaffd95fd0755a3f1ece5b2e9d27b6171-dirty",
-        "dirtyShortRev": "04f3e8e-dirty",
-        "lastModified": 1734331005,
-        "narHash": "sha256-mpKv40ULjDuiFav/xvoboj31MU9Pd5ariSjn9miojXU=",
+        "lastModified": 1735016507,
+        "narHash": "sha256-w4IMXSJSV8o4kNtsXpg0jwkBCNaFi1QixnHNqH5CTn8=",
+        "ref": "refs/heads/main",
+        "rev": "b12bb57a4d1601d193d4e078d6673b5029959a09",
+        "revCount": 35,
         "type": "git",
         "url": "file:///home/zinnia/Projects/neovim-dots"
       },
