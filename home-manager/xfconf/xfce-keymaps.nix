@@ -10,6 +10,7 @@ let
       "space" = "xfce4-appfinder";
       "o" = "obsidian";
       "d" = "kitty dooit";
+      "a" = "krita";
 
       "<Shift>q" = "xfce4-session-logout";
     };

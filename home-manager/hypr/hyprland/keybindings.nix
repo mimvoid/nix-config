@@ -46,6 +46,7 @@ in
     "$mod, D, exec, ${todo}"
     "$mod, M, exec, ${music-player}"
 
+    "$mod, A, exec, krita"
     "$mod, O, exec, obsidian"
     "$mod, N, exec, networkmanager_dmenu"
 
