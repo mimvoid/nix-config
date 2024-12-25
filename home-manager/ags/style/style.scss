@@ -58,10 +58,12 @@ label {
 }
 
 trough {
-  min-width: 42px;
-  min-height: 4px;
+  margin: 0 0.25em;
+  min-width: 8em;
+  min-height: 0.6em;
+
   border-radius: looks.$radius;
-  background-color: palette.$box;
+  background-color: palette.$box-bright;
 
   highlight {
     border-radius: looks.$radius;

@@ -36,7 +36,7 @@ const NetworkEvent = () => {
   const Revealer = (
     <revealer
       transitionDuration={250}
-      transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
+      transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
     >
       <Label />
     </revealer>
@@ -49,8 +49,8 @@ const NetworkEvent = () => {
       onHoverLost={() => (Revealer.revealChild = false)}
     >
       <box>
-        <Icon />
         {Revealer}
+        <Icon />
       </box>
     </eventbox>
   );

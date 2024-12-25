@@ -32,7 +32,7 @@ function EventSlider() {
   const Rev = (
     <revealer
       transitionDuration={250}
-      transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
+      transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
     >
       {Slider}
     </revealer>

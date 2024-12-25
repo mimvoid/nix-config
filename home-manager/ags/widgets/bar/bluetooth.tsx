@@ -44,7 +44,7 @@ function BluetoothBox() {
   const Rev = (
     <revealer
       transitionDuration={250}
-      transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
+      transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
     >
       <box>{Devices()}</box>
     </revealer>
@@ -56,8 +56,8 @@ function BluetoothBox() {
       onHoverLost={() => (Rev.revealChild = false)}
     >
       <box>
-        <Indicator />
         {Rev}
+        <Indicator />
       </box>
     </eventbox>
   );
