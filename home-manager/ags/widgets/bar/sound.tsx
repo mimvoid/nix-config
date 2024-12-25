@@ -11,11 +11,6 @@ const Icon = (
   </button>
 );
 
-const Label = (
-  // Format volume as percentage
-  <label label={bind(speaker, "volume").as((i) => `${Math.floor(i * 100)}%`)} />
-);
-
 // Control volume with slider
 const Slider = (
   <slider
@@ -29,6 +24,9 @@ const Slider = (
 
 // Only show slider on hover
 function EventSlider() {
+    // Format volume as percentage
+  const label = bind(speaker, "volume").as((i) => `${Math.floor(i * 100)}%`);
+
   const Rev = (
     <revealer
       transitionDuration={250}
@@ -60,7 +58,7 @@ function EventSlider() {
     >
       <box>
         {Rev}
-        {Label}
+        {label}
       </box>
     </eventbox>
   );

@@ -22,11 +22,7 @@ const Slider = (
 // Reveal label & slider on hover
 const BrightnessBox = () => {
   // Format brightness as percentage
-  const Label = (
-    <label
-      label={bind(brightness, "light").as((i) => `${Math.floor(i * 100)}%`)}
-    />
-  );
+  const label = bind(brightness, "light").as((i) => `${Math.floor(i * 100)}%`);
 
   const Rev = (
     <revealer
@@ -35,7 +31,7 @@ const BrightnessBox = () => {
     >
       <box hexpand valign={CENTER}>
         {Slider}
-        {Label}
+        {label}
       </box>
     </revealer>
   );

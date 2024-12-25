@@ -15,7 +15,7 @@ export default function Clock() {
     >
       <box>
         <icon icon={Icon.calendar} />
-        <label label={time()} />
+        {time()}
       </box>
     </button>
   );
