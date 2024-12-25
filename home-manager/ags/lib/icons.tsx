@@ -17,6 +17,7 @@ const Icon = {
   },
 
   calendar: "x-office-calendar",
+  colorpicker: "color-select-symbolic",
   hider: "pan-start-symbolic",
 
   music: "audio-x-generic-symbolic",

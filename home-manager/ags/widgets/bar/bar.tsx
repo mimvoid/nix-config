@@ -8,6 +8,7 @@ import Clock from "./clock";
 import { MediaIcon, Overview, Power } from "./togglers";
 
 import Tray from "./sysTray";
+import ColorPicker from "./colorPicker";
 import Network from "./network";
 import Bluetooth from "./bluetooth";
 import Sound from "./sound";
@@ -38,6 +39,7 @@ function Right() {
   return (
     <box className="right box" hexpand halign={Gtk.Align.END}>
       <Tray />
+      <ColorPicker />
       <Network />
       <Bluetooth />
       <Sound />
