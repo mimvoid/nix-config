@@ -35,7 +35,7 @@
 }
 
 .calendar calendar {
-  font-size: 15px;
+  font-size: fonts.$menu-font-size;
   color: palette.$string;
 
   // Keep week numbers aligned
