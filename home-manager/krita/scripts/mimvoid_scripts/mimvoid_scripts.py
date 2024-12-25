@@ -13,13 +13,18 @@ class MimvoidScripts(Extension):
         pass
 
     def createActions(self, window):
+        app = Krita.instance()
+
         setup = window.createAction(f"{ID}_setup", "Setup Layers", "tools")
+        setup.setIcon(app.icon("paintLayer"))
         setup.triggered.connect(self.setup_layers)
 
         render = window.createAction(f"{ID}_render", "Add Render Layers", "tools")
+        render.setIcon(app.icon("wheel-light"))
         render.triggered.connect(self.add_render)
 
         noise = window.createAction(f"{ID}_noise", "Noise", "tools")
+        noise.setIcon(app.icon("spraybrush"))
         noise.triggered.connect(self.add_noise)
 
     # Helper functions
