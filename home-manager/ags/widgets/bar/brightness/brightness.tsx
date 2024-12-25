@@ -1,45 +1,31 @@
-import { bind, exec, monitorFile } from "astal";
-import { Widget, Gtk } from "astal/gtk3";
-import { brightness, getBrightness, setBrightness } from "./brightnessVar";
+import { bind } from "astal";
+import { Gtk } from "astal/gtk3";
+import Brightness from "../../../lib/brightness";
 import WlSunset from "./wlsunset";
 
+const brightness = Brightness.get_default();
 const { CENTER } = Gtk.Align;
 
 // Brightness label & slider
 
-function Slider() {
-  // Update value on changes to backlight brightness file
-  function setup(slider: Widget.Slider) {
-    function updateValues() {
-      brightness.set(getBrightness());
-      slider.value = brightness.get();
-    }
-    setTimeout(updateValues, 0);
-
-    const myDevice = exec("sh -c 'ls -w1 /sys/class/backlight | head -1'");
-    monitorFile(`/sys/class/backlight/${myDevice}/brightness`, () =>
-      updateValues(),
-    );
-  }
-
-  // Change brightness on drag
-  return (
-    <slider
-      setup={setup}
-      cursor="pointer"
-      valign={CENTER}
-      hexpand
-      value={bind(brightness)}
-      onDragged={({ value }) => setBrightness(value)}
-    />
-  );
-}
+// Change brightness on drag
+const Slider = (
+  <slider
+    cursor="pointer"
+    valign={CENTER}
+    hexpand
+    value={bind(brightness, "light")}
+    onDragged={({ value }) => (brightness.light = value)}
+  />
+);
 
 // Reveal label & slider on hover
 const BrightnessBox = () => {
   // Format brightness as percentage
   const Label = (
-    <label label={bind(brightness).as((i) => `${Math.floor(i * 100)}%`)} />
+    <label
+      label={bind(brightness, "light").as((i) => `${Math.floor(i * 100)}%`)}
+    />
   );
 
   const Rev = (
@@ -48,7 +34,7 @@ const BrightnessBox = () => {
       transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
     >
       <box hexpand valign={CENTER}>
-        <Slider />
+        {Slider}
         {Label}
       </box>
     </revealer>
@@ -59,19 +45,8 @@ const BrightnessBox = () => {
       onHover={() => (Rev.revealChild = true)}
       onHoverLost={() => (Rev.revealChild = false)}
       onScroll={(_, { delta_y }) => {
-        // Also change brightness by scrolling
-        const step = 0.05;
-        const brightnessValue = brightness.get();
-
-        if (delta_y < 0) {
-          brightnessValue <= 1 - step
-            ? setBrightness(brightnessValue + step)
-            : setBrightness(1);
-        } else {
-          brightnessValue >= step
-            ? setBrightness(brightnessValue - step)
-            : setBrightness(1);
-        }
+        // Change brightness by scrolling
+        delta_y < 0 ? (brightness.light += 0.05) : (brightness.light -= 0.05);
       }}
     >
       <box className="brightness-revealer">{Rev}</box>
@@ -79,7 +54,7 @@ const BrightnessBox = () => {
   );
 };
 
-export default function Brightness() {
+export default function BrightnessWidget() {
   return (
     <box className="brightness">
       <WlSunset />

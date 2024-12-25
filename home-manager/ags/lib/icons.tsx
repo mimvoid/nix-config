@@ -41,7 +41,10 @@ const Icon = {
     shutdown: "system-shutdown-symbolic",
   },
 
-  wlsunset: "display-brightness-symbolic",
+  wlsunset: {
+    on: "display-brightness-symbolic",
+    off: "weather-few-clouds-night-symbolic"
+  },
 };
 
 export default Icon;
