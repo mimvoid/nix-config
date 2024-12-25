@@ -1,4 +1,4 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 let
   theme = {
     name = "rose-pine";
@@ -49,6 +49,7 @@ in
 
     voids.fonts.limelight
     voids.fonts.ma-shan-zheng
+    voids.fonts.ritzflf
 
     theme.package
     icons.package

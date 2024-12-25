@@ -99,7 +99,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 | Icons           | [Papirus][t3] with [Catppuccin folders][t4] |
 | Sans serif font | [Karla][t5]                                 |
 | Monospace font  | [Hasklug Nerd Font][t6] ([Hasklig][t7])     |
-| Display font    | [Limelight][t8]                             |
+| Display font    | [RitzFLF][t8]                               |
 
 [t1]: https://github.com/rose-pine/gtk
 [t2]: https://github.com/rose-pine/cursor
@@ -108,7 +108,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 [t5]: https://github.com/googlefonts/karla
 [t6]: https://www.nerdfonts.com
 [t7]: https://github.com/i-tu/Hasklig
-[t8]: https://fonts.google.com/specimen/Limelight
+[t8]: https://moorstation.org/typoasis/designers/casady_greene/r_z.htm
 
 - AGS icons: [Adwaita][e1]
 - Krita
