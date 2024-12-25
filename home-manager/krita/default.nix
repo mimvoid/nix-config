@@ -27,6 +27,7 @@ in
     reference-tabs-docker
     composition-helper
     timer-watch
+    shortcut-composer
   ];
 
   xdg.dataFile =
