@@ -6,7 +6,7 @@
     imagemagick
     exiftool
     mediainfo
-    fontpreview
+    voids.fontpreview
 
     # other
     megacmd
