@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 
 {
   imports = [
@@ -9,13 +9,13 @@
     ./yazi.nix
     ./dooit
     ./navi
-    ./fetcher
   ];
 
   home.packages = with pkgs; [
     unstable.bluetui
     voids.arttime
-  ];
+  ]
+  ++ [ inputs.fletchling.packages.${pkgs.system}.default ];
 
   programs.direnv = {
     enable = true;

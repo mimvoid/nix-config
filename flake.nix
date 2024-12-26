@@ -18,6 +18,12 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
+    # My fetcher
+    fletchling = {
+      url = "github:mimvoid/fletchling";
+      inputs.nixpkgs.follows = "nixpkgs-unstable";
+    };
+
     stylix = {
       url = "github:danth/stylix";
       inputs = {

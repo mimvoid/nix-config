@@ -265,6 +265,26 @@
         "type": "github"
       }
     },
+    "fletchling": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs-unstable"
+        ]
+      },
+      "locked": {
+        "lastModified": 1735180487,
+        "narHash": "sha256-XUH8ZeJZXEynohHEXLCNwl4YBqxaxOwcRoEI/Evf+1E=",
+        "owner": "mimvoid",
+        "repo": "fletchling",
+        "rev": "ce9420844b64b2b84dd0b9cca2160e5198d425a1",
+        "type": "github"
+      },
+      "original": {
+        "owner": "mimvoid",
+        "repo": "fletchling",
+        "type": "github"
+      }
+    },
     "fromYaml": {
       "flake": false,
       "locked": {
@@ -569,6 +589,7 @@
         "ags": "ags",
         "dooit": "dooit",
         "dooit-extras": "dooit-extras",
+        "fletchling": "fletchling",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs_5",
         "nixpkgs-unstable": "nixpkgs-unstable",
