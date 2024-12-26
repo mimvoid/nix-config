@@ -8,7 +8,11 @@ const wlsunset = WlSunset.get_default();
 
 export default function WlSunsetWidget() {
   const Indicator = (
-    <icon icon={Icon.wlsunset[wlsunset.running ? "on" : "off"]} />
+    <icon
+      icon={bind(wlsunset, "running").as((r) =>
+        r ? Icon.wlsunset.on : Icon.wlsunset.off,
+      )}
+    />
   );
 
   // Create icon toggle button
@@ -20,12 +24,7 @@ export default function WlSunsetWidget() {
       tooltipText={bind(wlsunset, "running").as(
         (r) => `wlsunset ${r ? "on" : "off"}`,
       )}
-      onClicked={() => {
-        wlsunset.running = !wlsunset.running;
-        Indicator.icon === Icon.wlsunset.on
-          ? (Indicator.icon = Icon.wlsunset.off)
-          : (Indicator.icon = Icon.wlsunset.on);
-      }}
+      onClicked={() => (wlsunset.running = !wlsunset.running)}
       cursor="pointer"
     >
       {Indicator}

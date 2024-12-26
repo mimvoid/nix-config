@@ -33,20 +33,28 @@ function Indicator() {
 function BluetoothBox() {
   // Show connected device names
 
-  function Devices() {
-    return bluetooth
-      .get_devices()
-      .map((device) => (
-        <label label={device.alias} visible={device.connected} />
-      ));
-  }
+  const Devices = bind(bluetooth, "devices").as((d) =>
+    d.map((device) => (
+      <label label={device.alias} visible={bind(device, "connected")} />
+    )),
+  );
+
+  const DefaultLabel = (
+    <label
+      label="None connected"
+      visible={bind(bluetooth, "isConnected").as((c) => !c)}
+    />
+  );
 
   const Rev = (
     <revealer
       transitionDuration={250}
       transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
     >
-      <box>{Devices()}</box>
+      <box>
+        {DefaultLabel}
+        {Devices}
+      </box>
     </revealer>
   );
 
