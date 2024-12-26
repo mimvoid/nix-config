@@ -1,5 +1,4 @@
 import { execAsync, bind } from "astal";
-import { Gtk } from "astal/gtk3";
 import Bluetooth from "gi://AstalBluetooth";
 
 import HoverRevealer from "../../lib/widgets/HoverRevealer";
@@ -11,9 +10,8 @@ function Indicator() {
   // Show the Bluetooth status
 
   // Execute `bluetooth off` or `bluetooth on`
-  function action() {
+  const action = () =>
     execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
-  }
 
   // Show Bluetooth status on hover
   const tooltip = bind(bluetooth, "isPowered").as(

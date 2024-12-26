@@ -1,6 +1,7 @@
 import { bind } from "astal";
 import { Gtk } from "astal/gtk3";
 import Wp from "gi://AstalWp";
+import HoverRevealer from "../../lib/widgets/HoverRevealer";
 
 const speaker = Wp.get_default()?.audio.defaultSpeaker!;
 
@@ -14,11 +15,11 @@ const Icon = (
 // Control volume with slider
 const Slider = (
   <slider
+    value={bind(speaker, "volume")}
+    onDragged={({ value }) => (speaker.volume = value)}
     cursor="pointer"
     valign={Gtk.Align.CENTER}
     hexpand
-    onDragged={({ value }) => (speaker.volume = value)}
-    value={bind(speaker, "volume")}
   />
 );
 

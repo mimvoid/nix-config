@@ -3,7 +3,7 @@ import { App, Astal, Gtk, astalify, type ConstructProps } from "astal/gtk3";
 import GObject from "gi://GObject";
 import { time } from "../../lib/variables";
 
-const CalendarWidget = () => {
+function CalendarWidget() {
   // Format time with seconds
 
   function Time() {
@@ -21,7 +21,7 @@ const CalendarWidget = () => {
       ["%H", "hour"],
       ["%M", "minute"],
       ["%S", "second"],
-    ]
+    ];
 
     return (
       <box className="big-clock" halign={Gtk.Align.CENTER} hexpand>
@@ -53,7 +53,7 @@ const CalendarWidget = () => {
       <Calendar />
     </box>
   );
-};
+}
 
 export default function Calendar() {
   return (

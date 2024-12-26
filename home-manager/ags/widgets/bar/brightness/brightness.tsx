@@ -1,8 +1,8 @@
 import { bind } from "astal";
 import { Gtk } from "astal/gtk3";
-import Brightness from "../../../lib/brightness";
 import WlSunset from "./wlsunset";
 
+import Brightness from "../../../lib/services/brightness";
 import HoverRevealer from "../../../lib/widgets/HoverRevealer";
 
 const brightness = Brightness.get_default();
@@ -13,11 +13,11 @@ const { CENTER } = Gtk.Align;
 // Change brightness on drag
 const Slider = (
   <slider
+    value={bind(brightness, "light")}
+    onDragged={({ value }) => (brightness.light = value)}
     cursor="pointer"
     valign={CENTER}
     hexpand
-    value={bind(brightness, "light")}
-    onDragged={({ value }) => (brightness.light = value)}
   />
 );
 

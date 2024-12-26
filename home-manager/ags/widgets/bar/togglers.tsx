@@ -1,4 +1,4 @@
-import AppToggle from "../../lib/toggle";
+import AppToggle from "../../lib/widgets/AppToggle";
 import Icon from "../../lib/icons";
 
 // Toggle mpris media widget menu

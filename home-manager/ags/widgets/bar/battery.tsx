@@ -8,9 +8,7 @@ export default function BatteryLevel() {
   const Icon = <icon icon={bind(battery, "batteryIconName")} />;
 
   // Format the battery percentage
-  const label = bind(battery, "percentage").as(
-    (i) => (i * 100).toString() + "%",
-  );
+  const label = bind(battery, "percentage").as((i) => `${Math.floor(i * 100)}%`);
 
   // Show the charging status on hover
   const tooltip = bind(battery, "charging").as((i) =>
