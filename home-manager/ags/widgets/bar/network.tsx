@@ -1,6 +1,6 @@
 import { execAsync, bind } from "astal";
-import { Gtk } from "astal/gtk3";
 import Network from "gi://AstalNetwork";
+import HoverRevealer from "../../lib/widgets/HoverRevealer";
 
 const network = Network.get_default();
 
@@ -34,27 +34,11 @@ function NetworkEvent() {
     />
   );
 
-  const Rev = (
-    <revealer
-      transitionDuration={250}
-      transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
-    >
-      {Label}
-    </revealer>
-  );
-
-  // Hitbox includes the icon
   return (
-    <eventbox
-      onHover={() => (Rev.revealChild = true)}
-      onHoverLost={() => (Rev.revealChild = false)}
-    >
-      <box>
-        {Rev}
-        <Icon />
-      </box>
-    </eventbox>
-  );
+    <HoverRevealer hiddenChild={Label} >
+      <Icon />
+    </HoverRevealer>
+  )
 }
 
 export default function Wifi() {

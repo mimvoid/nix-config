@@ -150,7 +150,7 @@
   color: color.adjust(palette.$error, $lightness: 8%);
 
   /* Widen the hit box */
-  .brightness-revealer {
+  eventbox > box {
     min-width: 6px;
   }
 

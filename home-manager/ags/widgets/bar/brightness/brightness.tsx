@@ -3,6 +3,8 @@ import { Gtk } from "astal/gtk3";
 import Brightness from "../../../lib/brightness";
 import WlSunset from "./wlsunset";
 
+import HoverRevealer from "../../../lib/widgets/HoverRevealer";
+
 const brightness = Brightness.get_default();
 const { CENTER } = Gtk.Align;
 
@@ -24,29 +26,19 @@ const BrightnessBox = () => {
   // Format brightness as percentage
   const label = bind(brightness, "light").as((i) => `${Math.floor(i * 100)}%`);
 
-  const Rev = (
-    <revealer
-      transitionDuration={250}
-      transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
-    >
-      <box hexpand valign={CENTER}>
-        {Slider}
-        {label}
-      </box>
-    </revealer>
-  );
-
   return (
-    <eventbox
-      onHover={() => (Rev.revealChild = true)}
-      onHoverLost={() => (Rev.revealChild = false)}
+    <HoverRevealer
+      hiddenChild={
+        <box hexpand valign={CENTER}>
+          {Slider}
+          {label}
+        </box>
+      }
       onScroll={(_, { delta_y }) => {
         // Change brightness by scrolling
         delta_y < 0 ? (brightness.light += 0.05) : (brightness.light -= 0.05);
       }}
-    >
-      <box className="brightness-revealer">{Rev}</box>
-    </eventbox>
+    />
   );
 };
 

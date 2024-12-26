@@ -1,5 +1,5 @@
 import { execAsync, Variable, bind } from "astal";
-import { Gtk } from "astal/gtk3";
+import HoverRevealer from "../../lib/widgets/HoverRevealer";
 import Icons from "../../lib/icons";
 
 // Initial color value
@@ -38,28 +38,17 @@ function Color() {
   );
 
   // Include a color label and the circle
-  const Rev = (
-    <revealer
-      transitionDuration={250}
-      transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
-    >
-      <box className="color-box">
-        {bind(color)}
-        {colorDisplay}
-      </box>
-    </revealer>
-  );
-
   return (
-    <eventbox
-      onHover={() => (Rev.revealChild = true)}
-      onHoverLost={() => (Rev.revealChild = false)}
+    <HoverRevealer
+      hiddenChild={
+        <box className="color-box">
+          {bind(color)}
+          {colorDisplay}
+        </box>
+      }
     >
-      <box>
-        {Rev}
-        <Trigger />
-      </box>
-    </eventbox>
+      <Trigger />
+    </HoverRevealer>
   );
 }
 

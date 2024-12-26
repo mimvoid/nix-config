@@ -1,6 +1,8 @@
 import { execAsync, bind } from "astal";
 import { Gtk } from "astal/gtk3";
 import Bluetooth from "gi://AstalBluetooth";
+
+import HoverRevealer from "../../lib/widgets/HoverRevealer";
 import Icon from "../../lib/icons";
 
 const bluetooth = Bluetooth.get_default();
@@ -46,28 +48,17 @@ function BluetoothBox() {
     />
   );
 
-  const Rev = (
-    <revealer
-      transitionDuration={250}
-      transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
-    >
-      <box>
-        {DefaultLabel}
-        {Devices}
-      </box>
-    </revealer>
-  );
-
   return (
-    <eventbox
-      onHover={() => (Rev.revealChild = true)}
-      onHoverLost={() => (Rev.revealChild = false)}
+    <HoverRevealer
+      hiddenChild={
+        <box>
+          {DefaultLabel}
+          {Devices}
+        </box>
+      }
     >
-      <box>
-        {Rev}
-        <Indicator />
-      </box>
-    </eventbox>
+      <Indicator />
+    </HoverRevealer>
   );
 }
 

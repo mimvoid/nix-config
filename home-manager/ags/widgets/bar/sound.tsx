@@ -23,52 +23,39 @@ const Slider = (
 );
 
 // Only show slider on hover
-function EventSlider() {
-    // Format volume as percentage
+function SliderHover() {
+  // Format volume as percentage
   const label = bind(speaker, "volume").as((i) => `${Math.floor(i * 100)}%`);
-
-  const Rev = (
-    <revealer
-      transitionDuration={250}
-      transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
-    >
-      {Slider}
-    </revealer>
-  );
 
   // Hitbox does not include the icon
   // Makes clicking on the icon button easier
   return (
-    <eventbox
-      onHover={() => (Rev.revealChild = true)}
-      onHoverLost={() => (Rev.revealChild = false)}
+    <HoverRevealer
+      hiddenChild={Slider}
       onScroll={(_, { delta_y }) => {
         const step = 0.05;
 
         if (delta_y < 0) {
-          speaker.volume <= 0.95
+          speaker.volume <= 1 - step
             ? (speaker.volume += step)
             : (speaker.volume = 1);
         } else {
-          speaker.volume >= 0.05
+          speaker.volume >= step
             ? (speaker.volume -= step)
             : (speaker.volume = 0);
         }
       }}
     >
-      <box>
-        {Rev}
-        {label}
-      </box>
-    </eventbox>
-  );
+      {label}
+    </HoverRevealer>
+  )
 }
 
 export default function AudioSlider() {
   return (
     <box className="sound icon-label">
       {Icon}
-      <EventSlider />
+      <SliderHover />
     </box>
   );
 }
