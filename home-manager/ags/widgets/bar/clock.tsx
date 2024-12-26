@@ -1,10 +1,11 @@
-import { Variable } from "astal";
+import { bind } from "astal";
 import { App, Gtk } from "astal/gtk3";
+import { time } from "../../lib/variables";
 import Icon from "../../lib/icons";
 
 export default function Clock() {
   // Format the date & time
-  const time = Variable<string>("").poll(1000, "date '+%a · %b %d · %H:%M'");
+  const timeFmt = bind(time).as((t) => t?.format("%a · %b %d · %H:%M") || "")
 
   return (
     <button
@@ -15,7 +16,7 @@ export default function Clock() {
     >
       <box>
         <icon icon={Icon.calendar} />
-        {time()}
+        {timeFmt}
       </box>
     </button>
   );

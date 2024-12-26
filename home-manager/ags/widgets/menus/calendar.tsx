@@ -1,22 +1,21 @@
-import { Variable } from "astal";
+import { bind } from "astal";
 import { App, Astal, Gtk, astalify, type ConstructProps } from "astal/gtk3";
 import GObject from "gi://GObject";
+import { time } from "../../lib/variables";
 
 const CalendarWidget = () => {
   // Format time with seconds
+
   function Time() {
-    function getTime(time: string, className: string) {
-      const polled = Variable<string>("").poll(1000, `date '+${time}'`);
-      return (
-        <label
-          label={polled()}
-          className={`display ${className}`}
-          valign={Gtk.Align.END}
-          hexpand
-          vexpand
-        />
-      );
-    }
+    const getTime = (fmt: string, className: string) => (
+      <label
+        label={bind(time).as((t) => t?.format(fmt) || "")}
+        className={`display ${className}`}
+        valign={Gtk.Align.END}
+        hexpand
+        vexpand
+      />
+    );
 
     const times = [
       ["%H", "hour"],
