@@ -2,7 +2,7 @@ import { App } from "astal/gtk3";
 
 App.add_icons(`${SRC}/assets`);
 
-const Icon = {
+export default {
   bluetooth: {
     enabled: "bluetooth-active-symbolic",
     disabled: "bluetooth-disabled-symbolic",
@@ -18,6 +18,11 @@ const Icon = {
 
   calendar: "x-office-calendar",
   colorpicker: "color-select-symbolic",
+
+  cpu: "cpu-symbolic",
+  disk: "drive-harddisk-symbolic",
+  memory: "memory-symbolic",
+
   hider: "pan-start-symbolic",
 
   music: "audio-x-generic-symbolic",
@@ -47,5 +52,3 @@ const Icon = {
     off: "weather-few-clouds-night-symbolic"
   },
 };
-
-export default Icon;

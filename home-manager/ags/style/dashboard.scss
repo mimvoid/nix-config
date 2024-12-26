@@ -3,6 +3,90 @@
 @use "./variables/looks";
 
 .dashboard box {
-  font-size: fonts.$font-size * 2;
-  padding: 12px;
+  margin: 0.5em;
+  padding: 0.5em;
+  font-size: fonts.$menu-font-size;
+
+  .in-box, .in-box box {
+    padding: 0.25em;
+  }
+}
+
+.dashboard {
+  .in-box box.avatar {
+    padding: 1.25em;
+    border-radius: 64px;
+    background-color: palette.$box-bright;
+  }
+
+  label.avatar {
+    margin: 0.5em;
+    font-size: fonts.$menu-font-size;
+  }
+}
+
+.dashboard .toggle-button {
+  margin: 0.5em;
+  padding: 1.5em;
+
+  transition: looks.$transition;
+
+  &.on {
+    background-color: palette.$primary;
+    color: palette.$base;
+  }
+
+  &.off {
+    background-color: palette.$box;
+    color: palette.$string;
+  }
+
+  icon {
+    font-size: fonts.$menu-font-size;
+  }
+}
+
+.dashboard .stat-box {
+  // Icon names aren't supported by Adwaita
+  .cpu icon,
+  .memory icon {
+    -gtk-icon-theme: "Papirus";
+  }
+
+  icon {
+    font-size: fonts.$menu-font-size;
+  }
+
+  trough {
+    min-width: 16em;
+    margin: 0 1em;
+
+    block.filled {
+      border-radius: looks.$radius;
+    }
+  }
+
+  .cpu {
+    color: palette.$error;
+
+    block.filled {
+      background-color: palette.$error;
+    }
+  }
+
+  .memory {
+    color: palette.$good;
+
+    block.filled {
+      background-color: palette.$good;
+    }
+  }
+
+  .disk {
+    color: palette.$secondary;
+
+    block.filled {
+      background-color: palette.$secondary;
+    }
+  }
 }
