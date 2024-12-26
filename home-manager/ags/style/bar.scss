@@ -17,7 +17,7 @@
 }
 
 .icon-label {
-  margin: 0 4px;
+  margin: 0 5px;
 }
 
 /*---------*/
@@ -33,7 +33,7 @@
   padding: 6px;
 
   button {
-    margin: 0 2.5px;
+    margin: 0 2.75px;
     padding: 0 5px;
     color: transparent;
     background-color: palette.$primary;
@@ -110,6 +110,7 @@
 }
 
 .network {
+  margin: 0 4px;
   color: palette.$tertiary-dim;
 }
 
@@ -150,7 +151,7 @@
 
   /* Widen the hit box */
   .brightness-revealer {
-    min-width: 4px;
+    min-width: 6px;
   }
 
   trough highlight {

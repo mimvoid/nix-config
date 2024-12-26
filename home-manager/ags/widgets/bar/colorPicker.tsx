@@ -65,7 +65,7 @@ function Color() {
 
 export default function ColorPicker() {
   return (
-    <box className="colorpicker">
+    <box className="colorpicker icon-label">
       <Color />
     </box>
   );
