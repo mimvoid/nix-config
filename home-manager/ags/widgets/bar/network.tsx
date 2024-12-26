@@ -1,10 +1,13 @@
-import { exec, bind } from "astal";
+import { execAsync, bind } from "astal";
 import { Gtk } from "astal/gtk3";
 import Network from "gi://AstalNetwork";
 
 const network = Network.get_default();
 
-const Icon = () => {
+function Icon() {
+  // Display network strength as percentage on hover
+  const tooltip = bind(network.wifi, "strength").as((i) => `${i}%`);
+
   // Get icon from Astal
   const StatusIcon = (
     <icon className="wifi" icon={bind(network.wifi, "iconName")} />
@@ -12,56 +15,51 @@ const Icon = () => {
 
   // Wrap it in a button that launches a network manager
   return (
-    <button cursor="pointer" onClicked={() => exec("networkmanager_dmenu")}>
+    <button
+      cursor="pointer"
+      onClicked={() => execAsync("networkmanager_dmenu")}
+      tooltipText={tooltip}
+    >
       {StatusIcon}
     </button>
   );
-};
+}
 
-const Label = () => {
-  // TODO: Only show the label when it makes sense
-  // state = bind(network.wifi, "state")
-  // active = state ==
-
-  return (
+// Reveal the label on hover
+function NetworkEvent() {
+  const Label = (
     <label
-      // visible={active.as(Boolean)}
+      visible={network.state >= 50 && network.state <= 70}
       label={bind(network.wifi, "ssid").as(String)}
     />
   );
-};
 
-// Reveal the label on hover
-const NetworkEvent = () => {
-  const Revealer = (
+  const Rev = (
     <revealer
       transitionDuration={250}
       transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
     >
-      <Label />
+      {Label}
     </revealer>
   );
 
   // Hitbox includes the icon
   return (
     <eventbox
-      onHover={() => (Revealer.revealChild = true)}
-      onHoverLost={() => (Revealer.revealChild = false)}
+      onHover={() => (Rev.revealChild = true)}
+      onHoverLost={() => (Rev.revealChild = false)}
     >
       <box>
-        {Revealer}
+        {Rev}
         <Icon />
       </box>
     </eventbox>
   );
-};
+}
 
 export default function Wifi() {
-  // Display network strength as percentage on hover
-  const tooltip = bind(network.wifi, "strength").as((i) => `${i}%`);
-
   return (
-    <box className="network" tooltipText={tooltip}>
+    <box className="network">
       <NetworkEvent />
     </box>
   );
