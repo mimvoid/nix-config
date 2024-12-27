@@ -1,0 +1,19 @@
+/* Original: https://github.com/soulhotel/Perfection-Firefox-CSS-Theme/blob/main/CSS/browser-rounded.css */
+
+/* Rounds the borders around the browser website content */
+
+#tabbrowser-tabpanels {
+  border-radius: 10px;
+  background: var(--toolbar-bgcolor);
+
+  browser[type="content"] {
+    border-radius: 10px;
+    border-bottom-right-radius: 0;
+
+    background-color: var(--tabpanel-background-color);
+  }
+}
+
+body {
+  background: var(--toolbar-bgcolor);
+}

@@ -1,9 +1,9 @@
 @import url("./extras/round_ui_items.css");
 @import url("./extras/rounded_menupopups.css");
 @import url("./extras/hide_tabs_toolbar.css");
-@import url("./extras/browser-rounded.css");
 
 @import url("./userChrome/bookmarks-bar.css");
+@import url("./userChrome/browser-rounded.css");
 @import url("./userChrome/round-ui.css");
 @import url("./userChrome/sidebar.css");
 @import url("./userChrome/status.css");

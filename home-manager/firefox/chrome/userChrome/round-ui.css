@@ -53,20 +53,3 @@ button,
 #statuspanel-label {
   border-radius: 4px;
 }
-
-/* Removes browser content margins from ../extras/browser-rounded.css */
-
-/* Also slightly changes the browser content background,
- * which only shows when no content's loaded.
- * Otherwise it'll look weirdly blank. */
-#tabbrowser-tabpanels {
-  browser[type="content"] {
-    margin: 0px !important;
-    border-bottom-right-radius: 0 !important;
-    background-color: color-mix(
-      in srgb,
-      currentColor 2%,
-      transparent
-    ) !important;
-  }
-}
