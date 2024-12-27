@@ -16,6 +16,7 @@ let
   input-overlays = with inputs; [
     dooit.overlay
     dooit-extras.overlay
+    fletchling.overlay
   ];
 
   # A set of custom functions

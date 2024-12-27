@@ -272,11 +272,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735180487,
-        "narHash": "sha256-XUH8ZeJZXEynohHEXLCNwl4YBqxaxOwcRoEI/Evf+1E=",
+        "lastModified": 1735270018,
+        "narHash": "sha256-vrhOZ4RnZnZKm6/J8MOWJHNnkoPQQybWG66MDptZ0Es=",
         "owner": "mimvoid",
         "repo": "fletchling",
-        "rev": "ce9420844b64b2b84dd0b9cca2160e5198d425a1",
+        "rev": "49bd5b4fb8f651571766577e665ff6529cc58fb1",
         "type": "github"
       },
       "original": {

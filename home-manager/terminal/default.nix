@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   imports = [
@@ -14,8 +14,8 @@
   home.packages = with pkgs; [
     unstable.bluetui
     voids.arttime
-  ]
-  ++ [ inputs.fletchling.packages.${pkgs.system}.default ];
+    fletchling
+  ];
 
   programs.direnv = {
     enable = true;
