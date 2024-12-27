@@ -5,6 +5,7 @@ with pkgs;
   arttime = callPackage ./arttime { };
   cortile = callPackage ./cortile { };
   fontpreview = callPackage ./fontpreview { };
+  mdopen = callPackage ./mdopen { };
   zsh-help = callPackage ./zsh-help { };
 
   gpl-palettes = callPackage ./gpl-palettes {

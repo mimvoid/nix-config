@@ -13,6 +13,7 @@
     tlrc
     libnotify
     dwt1-shell-color-scripts
+    voids.mdopen
   ];
 
   home.sessionVariables = {

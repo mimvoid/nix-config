@@ -3,7 +3,6 @@
 {
   imports = [
     ./aagl.nix
-    ./inlyne.nix
     ./zathura.nix
   ];
 
