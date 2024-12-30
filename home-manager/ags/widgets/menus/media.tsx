@@ -16,8 +16,10 @@ function Actions(player: Mpris.Player) {
 
     return (
       <button
+        name="play-pause"
         onClick={() => player.play_pause()}
         visible={bind(player, "canPlay")}
+        cursor="pointer"
       >
         <icon icon={playIcon} />
       </button>
@@ -26,24 +28,135 @@ function Actions(player: Mpris.Player) {
 
   const Prev = (
     <button
+      name="previous"
       onClick={() => player.previous()}
       visible={bind(player, "canGoPrevious")}
+      cursor="pointer"
     >
       <icon icon={Icon.mpris.backward} />
     </button>
   );
 
   const Next = (
-    <button onClick={() => player.next()} visible={bind(player, "canGoNext")}>
+    <button
+      name="next"
+      onClick={() => player.next()}
+      visible={bind(player, "canGoNext")}
+      cursor="pointer"
+    >
       <icon icon={Icon.mpris.forward} />
     </button>
   );
 
+  function Loop() {
+    const { UNSUPPORTED, NONE, TRACK } = Mpris.Loop;
+
+    const icon = bind(player, "loopStatus").as((s) =>
+      s === TRACK ? Icon.mpris.loopSong : Icon.mpris.loop,
+    );
+
+    return (
+      <button
+        name="loop"
+        className={bind(player, "loopStatus").as((s) =>
+          s === NONE ? "off" : "",
+        )}
+        onClick={() => player.loop()}
+        visible={bind(player, "loopStatus").as((s) => s !== UNSUPPORTED)}
+        cursor="pointer"
+        halign={Gtk.Align.START}
+      >
+        <icon icon={icon} />
+      </button>
+    );
+  }
+
+  function Shuffle() {
+    const { UNSUPPORTED, ON, OFF } = Mpris.Shuffle;
+
+    const icon = bind(player, "shuffleStatus").as((s) =>
+      s === ON ? Icon.mpris.shuffle : Icon.mpris.noShuffle,
+    );
+
+    return (
+      <button
+        name="shuffle"
+        className={bind(player, "shuffleStatus").as((s) =>
+          s === OFF ? "off" : "",
+        )}
+        onClick={() => player.shuffle()}
+        visible={bind(player, "shuffleStatus").as((s) => s !== UNSUPPORTED)}
+        cursor="pointer"
+        halign={Gtk.Align.END}
+      >
+        <icon icon={icon} />
+      </button>
+    );
+  }
+
   return (
-    <box className="media-actions" halign={Gtk.Align.CENTER}>
-      {Prev}
-      <Toggle />
-      {Next}
+    <centerbox name="media-actions">
+      <Loop />
+      <box name="main-actions" halign={Gtk.Align.CENTER} hexpand>
+        {Prev}
+        <Toggle />
+        {Next}
+      </box>
+      <Shuffle />
+    </centerbox>
+  );
+}
+
+// Song progress
+function Progress(player: Mpris.Player) {
+  function lengthStr(length: number) {
+    const min = Math.floor(length / 60);
+    const sec = Math.floor(length % 60);
+    const sec0 = sec < 10 ? "0" : "";
+    return `${min}:${sec0}${sec}`;
+  }
+
+  const hasLength = bind(player, "length").as((l) => l > 0);
+
+  const position = bind(player, "position").as((p) =>
+    player.length > 0 ? p / player.length : 0,
+  );
+
+  function ProgressBar() {
+    return (
+      <slider
+        value={position}
+        onDragged={({ value }) => (player.position = value * player.length)}
+        visible={hasLength}
+      />
+    );
+  }
+
+  const Position = (
+    <label
+      name="position"
+      visible={hasLength}
+      halign={Gtk.Align.START}
+      hexpand
+      label={bind(player, "position").as(lengthStr)}
+    />
+  );
+
+  const Length = (
+    <label
+      name="length"
+      visible={hasLength}
+      halign={Gtk.Align.END}
+      hexpand
+      label={bind(player, "length").as((l) => (l > 0 ? lengthStr(l) : "0:00"))}
+    />
+  );
+
+  return (
+    <box name="progress">
+      {Position}
+      <ProgressBar />
+      {Length}
     </box>
   );
 }
@@ -95,6 +208,7 @@ export default function MediaBox() {
       return (
         <box vertical>
           {Actions(player)}
+          {Progress(player)}
           {Media(player)}
         </box>
       );

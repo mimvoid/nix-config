@@ -1,15 +1,22 @@
+@use "sass:color";
+@use "./palettes/palette";
 @use "./variables/fonts";
 @use "./variables/looks";
 
+window.media > box {
+  padding: 1em;
+}
+
 .media box {
-  font-size: fonts.$font-size * 2;
-  padding: 12px;
+  font-size: fonts.$menu-font-size;
+  padding: 0.25em;
 
   .cover-art {
-    min-height: 15em;
-    min-width: 15em;
-    margin: 0.75em 0;
+    min-height: 20em;
+    min-width: 20em;
+    margin: 1.5em 0;
     border-radius: looks.$radius * 0.5;
+
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
@@ -18,14 +25,64 @@
   .media-title {
     font-weight: bolder;
     margin-bottom: 4px;
+
+    font-size: fonts.$menu-font-size * 1.25;
+    color: palette.$primary-bright;
   }
-  .media-title,
   .media-artist {
-    font-size: fonts.$font-size * 1.5;
+    font-size: fonts.$menu-font-size;
+  }
+}
+
+#progress {
+  margin-top: 1em;
+
+  trough {
+    min-width: 22em;
+    highlight {
+      background-color: palette.$primary;
+    }
+  }
+}
+
+#media-actions {
+  padding: 0 5em; // bring closer together
+  transition: looks.$transition;
+
+  icon {
+    font-size: fonts.$menu-font-size * 1.15;
   }
 
-  .media-actions icon {
-    font-size: fonts.$font-size * 1.75;
-    padding: 2px;
+  button:hover {
+    color: palette.$primary-bright;
+    background-color: transparent;
+  }
+
+  #play-pause {
+    margin: 0 1em;
+    padding: 1.25em;
+
+    background-color: palette.$box;
+    color: palette.$primary-bright;
+
+    transition: looks.$transition;
+
+    &:hover {
+      color: palette.$base;
+      background-color: palette.$primary;
+    }
+  }
+
+  // Make them less noticable
+  #loop, #shuffle {
+    color: palette.$string-dim;
+
+    &:hover {
+      color: palette.$primary-bright;
+    }
+
+    &.off {
+      color: color.change(palette.$string-dim, $alpha: 0.75);
+    }
   }
 }

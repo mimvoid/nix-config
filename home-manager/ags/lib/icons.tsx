@@ -30,11 +30,14 @@ export default {
     start: "media-playback-start-symbolic",
     stop: "media-playback-stop-symbolic",
     pause: "media-playback-pause-symbolic",
-    forward: "media-seek-forward-symbolic",
-    backward: "media-seek-backward-symbolic",
+    forward: "media-skip-forward-symbolic",
+    backward: "media-skip-backward-symbolic",
+
     shuffle: "media-playlist-shuffle-symbolic",
-    repeat: "media-playlist-repeat-symbolic",
-    repeatSong: "media-playlist-repeat-song-symbolic",
+    noShuffle: "media-playlist-consecutive-symbolic",
+
+    loop: "media-playlist-repeat-symbolic",
+    loopSong: "media-playlist-repeat-song-symbolic",
   },
 
   overview: "emblem-favorite-symbolic",
