@@ -66,21 +66,21 @@ in
     base16Scheme = pkgs.palettes.utils.removeHashtag {
       # Moonfall Eve: A modified Rose Pine Moon
       base00 = "#25223a"; # base
-      base01 = "#312c48"; # surface
-      base02 = "#38344e"; # overlay
-      base03 = "#5d5573"; # muted
-      base04 = "#9e92a5"; # subtle
+      base01 = "#302c47"; # surface
+      base02 = "#37324f"; # overlay
+      base03 = "#5c5478"; # muted
+      base04 = "#9c92aa"; # subtle
       base05 = "#e8dfdd"; # text
       base06 = "#e8dfdd"; # text
-      base07 = "#44415a"; # highlight med
-      base08 = "#f281a6"; # red
-      base09 = "#c37ac9"; # magenta
-      base0A = "#efa4b7"; # yellow
-      base0B = "#6990d6"; # green
+      base07 = "#44415b"; # highlight med
+      base08 = "#f280aa"; # red
+      base09 = "#d87dd6"; # magenta
+      base0A = "#eda2b5"; # yellow
+      base0B = "#7098de"; # green
       base0C = "#b1b5e4"; # cyan
-      base0D = "#9673de"; # blue
-      base0E = "#c37ac9"; # magenta
-      base0F = "#55486b"; # highlight med
+      base0D = "#a675eb"; # blue
+      base0E = "#d87dd6"; # magenta
+      base0F = "#52486d"; # highlight med
     };
 
     inherit cursor;
