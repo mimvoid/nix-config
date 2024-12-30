@@ -2,7 +2,7 @@
 @use "./palettes/palette";
 @use "./variables/looks";
 
-.session {
+#session {
   color: palette.$primary-bright;
 
   icon {
@@ -37,7 +37,7 @@
     }
   }
 
-  .lock {
+  #lock {
     border-top-left-radius: looks.$radius;
     margin: 0.75rem 2px 2px 0.75rem;
 
@@ -46,7 +46,7 @@
       border-bottom-right-radius: 2px;
     }
   }
-  .logout {
+  #logout {
     background-color: color.change(palette.$base, $alpha: 0.7);
     border-bottom-left-radius: looks.$radius;
     margin: 2px 2px 0.75rem 0.75rem;
@@ -56,7 +56,7 @@
       border-top-right-radius: 2px;
     }
   }
-  .reboot {
+  #reboot {
     background-color: color.change(palette.$base, $alpha: 0.7);
     border-top-right-radius: looks.$radius;
     margin: 0.75rem 0.75rem 2px 2px;
@@ -66,7 +66,7 @@
       border-bottom-left-radius: 2px;
     }
   }
-  .shutdown {
+  #shutdown {
     border-bottom-right-radius: looks.$radius;
     margin: 2px 0.75rem 0.75rem 2px;
 

@@ -2,7 +2,7 @@
 @use "./variables/fonts";
 @use "./variables/looks";
 
-.dashboard box {
+#dashboard box {
   margin: 0.5em;
   padding: 0.5em;
   font-size: fonts.$menu-font-size;
@@ -12,7 +12,7 @@
   }
 }
 
-.dashboard {
+#dashboard {
   .in-box box.avatar {
     padding: 1.25em;
     border-radius: 64px;
@@ -25,7 +25,7 @@
   }
 }
 
-.dashboard .toggle-button {
+#dashboard .toggle-button {
   margin: 0.5em;
   padding: 1.5em;
 
@@ -46,7 +46,7 @@
   }
 }
 
-.dashboard .stat-box {
+#dashboard .stat-box {
   // Icon names aren't supported by Adwaita
   .cpu icon,
   .memory icon {
@@ -60,33 +60,29 @@
   trough {
     min-width: 16em;
     margin: 0 1em;
-
-    block.filled {
-      border-radius: looks.$radius;
-    }
   }
+}
 
-  .cpu {
-    color: palette.$error;
+.cpu {
+  color: palette.$error;
 
-    block.filled {
-      background-color: palette.$error;
-    }
+  block.filled {
+    background-color: palette.$error;
   }
+}
 
-  .memory {
-    color: palette.$good;
+.memory {
+  color: palette.$good;
 
-    block.filled {
-      background-color: palette.$good;
-    }
+  block.filled {
+    background-color: palette.$good;
   }
+}
 
-  .disk {
-    color: palette.$secondary;
+.disk {
+  color: palette.$secondary;
 
-    block.filled {
-      background-color: palette.$secondary;
-    }
+  block.filled {
+    background-color: palette.$secondary;
   }
 }

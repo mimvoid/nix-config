@@ -5,7 +5,7 @@ import Workspaces from "./workspaces";
 import Title from "./windowTitle";
 
 import Clock from "./clock";
-import { MediaIcon, Overview, Power } from "./togglers";
+import { Media, Dashboard, Session } from "./togglers";
 
 import Tray from "./sysTray";
 import ColorPicker from "./colorPicker";
@@ -19,7 +19,7 @@ import Brightness from "./brightness/brightness";
 function Left() {
   return (
     <box className="left box" hexpand halign={Gtk.Align.START}>
-      {Overview}
+      {Dashboard}
       <Workspaces />
       <Title />
     </box>
@@ -30,7 +30,7 @@ function Center() {
   return (
     <box className="center box">
       <Clock />
-      {MediaIcon}
+      {Media}
     </box>
   );
 }
@@ -45,7 +45,7 @@ function Right() {
       <Sound />
       <Battery />
       <Brightness />
-      {Power}
+      {Session}
     </box>
   );
 }

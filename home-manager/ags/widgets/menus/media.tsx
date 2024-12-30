@@ -16,7 +16,7 @@ function Actions(player: Mpris.Player) {
 
     return (
       <button
-        name="play-pause"
+        className="play-pause"
         onClick={() => player.play_pause()}
         visible={bind(player, "canPlay")}
         cursor="pointer"
@@ -28,7 +28,7 @@ function Actions(player: Mpris.Player) {
 
   const Prev = (
     <button
-      name="previous"
+      className="previous"
       onClick={() => player.previous()}
       visible={bind(player, "canGoPrevious")}
       cursor="pointer"
@@ -39,7 +39,7 @@ function Actions(player: Mpris.Player) {
 
   const Next = (
     <button
-      name="next"
+      className="next"
       onClick={() => player.next()}
       visible={bind(player, "canGoNext")}
       cursor="pointer"
@@ -57,9 +57,8 @@ function Actions(player: Mpris.Player) {
 
     return (
       <button
-        name="loop"
         className={bind(player, "loopStatus").as((s) =>
-          s === NONE ? "off" : "",
+          s === NONE ? "loop off" : "loop",
         )}
         onClick={() => player.loop()}
         visible={bind(player, "loopStatus").as((s) => s !== UNSUPPORTED)}
@@ -80,9 +79,8 @@ function Actions(player: Mpris.Player) {
 
     return (
       <button
-        name="shuffle"
         className={bind(player, "shuffleStatus").as((s) =>
-          s === OFF ? "off" : "",
+          s === OFF ? "shuffle off" : "shuffle",
         )}
         onClick={() => player.shuffle()}
         visible={bind(player, "shuffleStatus").as((s) => s !== UNSUPPORTED)}
@@ -95,9 +93,9 @@ function Actions(player: Mpris.Player) {
   }
 
   return (
-    <centerbox name="media-actions">
+    <centerbox className="media-actions">
       <Loop />
-      <box name="main-actions" halign={Gtk.Align.CENTER} hexpand>
+      <box className="main-actions" halign={Gtk.Align.CENTER} hexpand>
         {Prev}
         <Toggle />
         {Next}
@@ -134,7 +132,7 @@ function Progress(player: Mpris.Player) {
 
   const Position = (
     <label
-      name="position"
+      className="position"
       visible={hasLength}
       halign={Gtk.Align.START}
       hexpand
@@ -144,7 +142,7 @@ function Progress(player: Mpris.Player) {
 
   const Length = (
     <label
-      name="length"
+      className="length"
       visible={hasLength}
       halign={Gtk.Align.END}
       hexpand
@@ -153,7 +151,7 @@ function Progress(player: Mpris.Player) {
   );
 
   return (
-    <box name="progress">
+    <box className="media-progress">
       {Position}
       <ProgressBar />
       {Length}

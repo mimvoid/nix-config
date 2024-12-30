@@ -68,6 +68,10 @@ trough {
   highlight {
     border-radius: looks.$radius;
   }
+
+  block.filled {
+    border-radius: looks.$radius;
+  }
 }
 
 window.popup {

@@ -3,11 +3,11 @@
 @use "./variables/fonts";
 @use "./variables/looks";
 
-window.media > box {
+window#media > box {
   padding: 1em;
 }
 
-.media box {
+#media box {
   font-size: fonts.$menu-font-size;
   padding: 0.25em;
 
@@ -29,23 +29,25 @@ window.media > box {
     font-size: fonts.$menu-font-size * 1.25;
     color: palette.$primary-bright;
   }
+
   .media-artist {
     font-size: fonts.$menu-font-size;
   }
 }
 
-#progress {
+.media-progress {
   margin-top: 1em;
 
   trough {
     min-width: 22em;
+
     highlight {
       background-color: palette.$primary;
     }
   }
 }
 
-#media-actions {
+.media-actions {
   padding: 0 5em; // bring closer together
   transition: looks.$transition;
 
@@ -58,7 +60,7 @@ window.media > box {
     background-color: transparent;
   }
 
-  #play-pause {
+  .play-pause {
     margin: 0 1em;
     padding: 1.25em;
 
@@ -74,7 +76,7 @@ window.media > box {
   }
 
   // Make them less noticable
-  #loop, #shuffle {
+  .loop, .shuffle {
     color: palette.$string-dim;
 
     &:hover {

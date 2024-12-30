@@ -67,7 +67,7 @@ export default function Notification(props: Props) {
     );
 
     return (
-      <box className="icon">
+      <box className="notif-icon">
         {DesktopEntry}
         {ImageFile}
         {IconImage}

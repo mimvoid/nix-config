@@ -44,7 +44,8 @@ function Session() {
       <button
         halign={actions[action].halign}
         valign={actions[action].valign}
-        className={`${action} box`}
+        name={action}
+        className="box"
         cursor="pointer"
         onClicked={() => exec(actions[action].command)}
       >
