@@ -88,19 +88,23 @@
 
   programs.xfconf.enable = true;
 
-  environment.xfce.excludePackages = with pkgs; [
-    gnome-themes-extra
-    adwaita-icon-theme
-    hicolor-icon-theme
-    tango-icon-theme
-    xfce.xfwm4-themes
-    xfce.xfce4-taskmanager
-    xfce.xfce4-screenshooter
-    xfce.xfce4-terminal
-    xfce.xfce4-icon-theme
-    xfce.mousepad
-    xfce.parole
-  ];
+  environment.xfce.excludePackages =
+    with pkgs; [
+      gnome-themes-extra
+      adwaita-icon-theme
+      hicolor-icon-theme
+      tango-icon-theme
+    ]
+    ++ (with pkgs.xfce; [
+      xfwm4-themes
+      xfce4-taskmanager
+      xfce4-screenshooter
+      xfce4-terminal
+      xfce4-icon-theme
+      ristretto
+      mousepad
+      parole
+    ]);
 
   # Hyprland
   programs.hyprland = {
@@ -132,19 +136,22 @@
 
   programs.gamemode = {
     enable = true;
-    settings.custom = {
-      start = "${pkgs.libnotify}/bin/notify-send 'GameMode started'";
-      end = "${pkgs.libnotify}/bin/notify-send 'GameMode ended'";
+    settings.custom =
+      let
+        notify-send = "${pkgs.libnotify}/bin/notify-send";
+      in
+      {
+        start = "${notify-send} 'GameMode started'";
+        end = "${notify-send} 'GameMode ended'";
+      };
     };
-  };
 
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
-  # Touchpad support
-  services.libinput.enable = true;
-
   hardware.graphics.enable = true;
+
+  services.libinput.enable = true; # Touchpad support
 
   # Sound
   services.pipewire = {
