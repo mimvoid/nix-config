@@ -1,74 +1,41 @@
-{ config, pkgs, ... }:
+{ pkgs, ... }:
+let
+  amy = pkgs.fetchFromGitHub {
+    owner = "sweetbbak";
+    repo = "Neural-Amy-TTS";
+    sparseCheckout = [ "models/amy_neural" ];
+    rev = "9131abc49bfe028ff823c35add38649987fda17f";
+    hash = "sha256-8HJRHRclpub9ogkq2r1COyen/JvHfg60zlkEYnhw0gs=";
+  };
 
+  piper-say = pkgs.writeShellScriptBin "piper-say" ''
+    echo "$2" \
+    | ${pkgs.piper-tts}/bin/piper --model "$1" --output_raw \
+    | pw-cat --channels=1 --rate=22050 --format=s16 -p -
+  '';
+
+  piper-amy = pkgs.writeShellScriptBin "piper-amy" ''
+    ${piper-say}/bin/piper-say ${amy}/models/amy_neural/amy.onnx "$@"
+  '';
+
+  piper-amy-fast = pkgs.writeShellScriptBin "piper-amy-fast" ''
+    echo "$@" \
+    | ${pkgs.piper-tts}/bin/piper --model "${amy}/models/amy_neural/amy.onnx" --output_raw \
+    --length_scale 0.7 --sentence_silence 0.1 \
+    | pw-cat --channels=1 --rate=22050 --format=s16 -p -
+  '';
+in
 {
-  home.packages = with pkgs; [
-    piper-tts
-    speechd
+  home.packages = [
+    pkgs.piper-tts
+    piper-say
+    piper-amy
+    piper-amy-fast
   ];
 
-  xdg.configFile = {
-    "speech-dispatcher/speechd.conf".text = ''
-      CommunicationMethod "unix_socket"
-      SocketPath "default"
-      Timeout 30
-
-      LogLevel 3
-      LogDir "default"
-
-      DefaultRate 20
-      DefaultPitch 20
-      DefaultPitchRange 0
-      DefaultVolume 100
-      DefaultVoiceType "MALE1"
-      DefaultLanguage en
-
-      DefaultPunctuationMode "some"
-
-      SymbolsPreproc "char"
-      SymbolsPreprocFile "gender-neutral.dic"
-      SymbolsPreprocFile "font-variants.dic"
-      SymbolsPreprocFile "symbols.dic"
-      SymbolsPreprocFile "emojis.dic"
-      SymbolsPreprocFile "orca.dic"
-      SymbolsPreprocFile "orca-chars.dic"
-
-      DefaultCapLetRecognition  "none"
-      DefaultSpelling  Off
-
-      AudioOutputMethod "pulse"
-      AudioPulseDevice "default"
-      AudioPulseMinLength 10
-
-      AddModule "piper" "sd_generic" "piper.conf"
-      DefaultModule "piper"
-      LanguageDefaultModule "en" "piper"
-
-      Include "clients/*.conf"
-    '';
-
-    "speech-dispatcher/modules/piper.conf".text = ''
-      Debug 0
-
-      GenericExecuteSynth "echo \'$DATA\' | ${pkgs.piper-tts}/bin/piper --model ${config.xdg.dataHome}/piper/voices/en_US-lessac-medium.onnx --output_raw | pw-cat --channels=1 --rate=22050 --format=s16 -p -"
-
-      GenericCmdDependency "piper"
-      GenericCmdDependency "pw-cat"
-      GenericCmdDependency "printf"
-      GenericSoundIconFolder "/usr/share/sounds/sound-icons/"
-
-      GenericPunctNone ""
-      GenericPunctSome "--punct=\"()<>[]{}\""
-      GenericPunctMost "--punct=\"()[]{};:\""
-      GenericPunctAll "--punct"
-
-      #GenericStripPunctChars  ""
-
-      GenericLanguage  "en" "en_US" "utf-8"
-
-      AddVoice "en" "MALE1"  "Piper"
-
-      GenericRateForceInteger 20
-      GenericPitchForceInteger 20
-    '';
+  # For easier manual access
+  xdg.dataFile = {
+    "piper/voices/amy.onnx".source = "${amy}/models/amy_neural/amy.onnx";
+    "piper/voices/amy.onnx.json".source = "${amy}/models/amy_neural/amy.onnx.json";
   };
 }

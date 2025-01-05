@@ -15,7 +15,7 @@
   imports = [
     ./theming.nix
     ./links.nix
-    #./tts.nix
+    ./tts.nix
     ./krita
     ./neovim
     ./terminal
