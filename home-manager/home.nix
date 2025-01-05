@@ -38,7 +38,7 @@
     fcitx5.addons = with pkgs; [
       fcitx5-gtk
       fcitx5-rime
-      unstable.catppuccin-fcitx5
+      catppuccin-fcitx5
     ];
   };
 }

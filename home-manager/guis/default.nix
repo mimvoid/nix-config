@@ -31,7 +31,6 @@
     tauon
     # inkscape
     unstable.krita
-    blanket
   ];
 
   services.nextcloud-client = {

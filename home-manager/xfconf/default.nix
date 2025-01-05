@@ -11,7 +11,6 @@
     ./picom.nix
     ./cortile.nix
     ./appfinder.nix
-    ./screensaver.nix
     ./xfce-desktop.nix
     ./xfce-keymaps.nix
     ./xfce-panels.nix

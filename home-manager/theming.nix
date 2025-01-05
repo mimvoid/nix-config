@@ -44,8 +44,9 @@ in
 
     # Display / Handwriting
     norwester-font
-    unstable.oswald
-    unstable.major-mono-display
+
+    oswald
+    major-mono-display
 
     voids.fonts.limelight
     voids.fonts.ma-shan-zheng

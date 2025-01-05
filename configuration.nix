@@ -25,7 +25,6 @@
       # Binary caches from cachix
       substituters = [
         "https://mimvoid.cachix.org"
-        "https://nix-community.cachix.org"
         "https://ezkea.cachix.org" # for aagl
       ];
       trusted-public-keys = [
@@ -40,16 +39,6 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-  };
-
-  system.autoUpgrade = {
-    enable = true;
-    flake = inputs.self.outPath;
-    flags = [
-      "--update-input"
-      "nixpkgs"
-      "--commit-lock-file"
-    ];
   };
 
   # Minimum system packages, most are in home manager
@@ -94,7 +83,6 @@
   services.xserver.desktopManager.xfce = {
     enable = true;
     enableXfwm = true;
-    enableScreensaver = true;
     noDesktop = false;
   };
 
