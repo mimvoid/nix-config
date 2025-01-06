@@ -2,62 +2,31 @@
 
 {
   programs.yazi = {
-    enable = true;
-    package = pkgs.unstable.yazi;
-    enableZshIntegration = true;
-    shellWrapperName = "yy";
-
-    theme.status = {
-      separator_open = "";
-      separator_close = "";
-    };
-
-    settings = {
-      manager = {
-        ratio = [ 1 4 3 ];
-        show_hidden = true;
-        show_symlink = true;
-        sort_by = "natural";
-        sort_sensitive = false;
-        sort_reverse = false;
-        sort_dir_first = true;
-        sort_translit = true;
-        linemode = "none";
-      };
-      preview = {
-        tab_size = 2;
-        max_width = 2000;
-        max_height = 2000;
-      };
-
-      plugin = {
-        prepend_previewers = [ { mime = "audio/*"; run = "exifaudio"; } ];
-        prepend_fetchers = [
-          { id = "git"; name = "*"; run = "git"; }
-          { id = "git"; name = "*/"; run = "git"; }
-        ];
-      };
-    };
-
-    keymap = {
-      manager.prepend_keymap = [
-        # Smart paste plugin
-        { on = "p"; run = "plugin smart-paste"; }
-
-        # File navigation wraparound plugin
-        { on = "k"; run = "plugin arrow --args=-1"; }
-        { on = "j"; run = "plugin arrow --args=1"; }
-
-        # Max preview
-        { on = "T"; run = "plugin max-preview"; }
-
-        # Bookmarks
-        { on = "m"; run = "plugin bookmarks --args=save"; }
-        { on = "'"; run = "plugin bookmarks --args=jump"; }
-        { on = "`"; run = "plugin bookmarks --args=jump"; }
-        { on = [ "b" "d" ]; run = "plugin bookmarks --args=delete"; }
+    settings.plugin = {
+      prepend_previewers = [ { mime = "audio/*"; run = "exifaudio"; } ];
+      prepend_fetchers = [
+        { id = "git"; name = "*"; run = "git"; }
+        { id = "git"; name = "*/"; run = "git"; }
       ];
     };
+
+    keymap.manager.prepend_keymap = [
+      # Smart paste plugin
+      { on = "p"; run = "plugin smart-paste"; }
+
+      # File navigation wraparound plugin
+      { on = "k"; run = "plugin arrow --args=-1"; }
+      { on = "j"; run = "plugin arrow --args=1"; }
+
+      # Max preview
+      { on = "T"; run = "plugin max-preview"; }
+
+      # Bookmarks
+      { on = "m"; run = "plugin bookmarks --args=save"; }
+      { on = "'"; run = "plugin bookmarks --args=jump"; }
+      { on = "`"; run = "plugin bookmarks --args=jump"; }
+      { on = [ "b" "d" ]; run = "plugin bookmarks --args=delete"; }
+    ];
 
     plugins = {
       inherit (pkgs.voids.yaziPlugins)

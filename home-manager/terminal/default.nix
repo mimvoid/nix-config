@@ -6,7 +6,7 @@
     ./cli.nix
     ./git.nix
     ./kitty.nix
-    ./yazi.nix
+    ./yazi
     ./dooit
     ./navi
   ];
