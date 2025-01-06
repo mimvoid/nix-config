@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 let
-  inherit (config.stylix) fonts;
+  inherit (pkgs.theme.fonts) monospace;
 
   # Theming configs
-  font = "${fonts.monospace.name}:size=9";
+  font = "${monospace.name}:size=9";
   colors = with pkgs.palettes.main.hex.noHashtag.alpha;
     {
       background = base;

@@ -1,7 +1,7 @@
-{ config, ... }:
+{ pkgs, ... }:
 let
-  font-name = config.stylix.fonts.monospace.name;
-  font-size = builtins.toString config.stylix.fonts.sizes.terminal;
+  font-name = pkgs.theme.fonts.monospace.name;
+  font-size = builtins.toString pkgs.theme.fonts.terminal-size;
 in
 {
   programs.zathura = {

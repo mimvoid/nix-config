@@ -1,36 +1,18 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
-  theme = {
-    name = "rose-pine";
-    package = pkgs.rose-pine-gtk-theme;
-  };
-
-  cursor = {
-    name = "BreezeX-RosePineDawn-Linux";
-    package = pkgs.rose-pine-cursor;
-    size = 24;
-  };
-
-  icons = {
-    name = "Papirus";
-    package = pkgs.mods.catppuccin-papirus-folders;
-  };
-
-  # Default fonts
-  serif = sansSerif;
-  sansSerif = {
-    name = "Karla";
-    package = pkgs.unstable.karla;
-  };
-  monospace = {
-    name = "Hasklug Nerd Font Mono";
-    package = pkgs.mods.nerdfonts;
-  };
-
-  terminal-size = 13;
+  inherit (pkgs.theme)
+    gtk
+    cursor
+    icons
+    fonts
+    ;
 in
 {
+  imports = [ inputs.stylix.homeManagerModules.stylix ];
+
   home.packages = with pkgs; [
+    # Fonts
+
     # Sans serif
     noto-fonts-cjk-sans
     atkinson-hyperlegible
@@ -47,17 +29,51 @@ in
 
     oswald
     major-mono-display
+  ]
+  ++ (with pkgs.voids.fonts; [
+    # Fonts outside nixpkgs
 
-    voids.fonts.limelight
-    voids.fonts.ma-shan-zheng
-    voids.fonts.ritzflf
+    limelight
+    ma-shan-zheng
+    ritzflf
+  ])
+  ++ pkgs.theme.packages;
 
-    theme.package
-    icons.package
-    cursor.package
-    sansSerif.package
-    monospace.package
-  ];
+
+  # home.pointerCursor = {
+  #   inherit (cursor) name package size;
+  #   x11.enable = true;
+  #   gtk.enable = true;
+  # };
+  #
+  # fonts.fontconfig =
+  #   let
+  #     inherit (fonts) sansSerif serif monospace;
+  #   in
+  #   {
+  #   enable = true;
+  #   defaultFonts = {
+  #     sansSerif = [ sansSerif.name ];
+  #     serif = [ serif.name ];
+  #     monospace = [ monospace.name ];
+  #   };
+  # };
+
+
+  gtk = {
+    inherit (gtk) theme;
+    enable = true;
+    font = fonts.sansSerif;
+    iconTheme = icons;
+    cursorTheme = cursor;
+  };
+
+  qt = {
+    enable = true;
+    platformTheme.name = "gtk3";
+    style.name = "breeze";
+  };
+
 
   stylix = {
     enable = true;
@@ -67,8 +83,8 @@ in
 
     inherit cursor;
     fonts = {
-      inherit serif sansSerif monospace;
-      sizes.terminal = terminal-size;
+      inherit (fonts) serif sansSerif monospace;
+      sizes.terminal = fonts.terminal-size;
     };
 
     targets = {
@@ -77,19 +93,5 @@ in
       yazi.enable = true;
       zathura.enable = true;
     };
-  };
-
-  gtk = {
-    enable = true;
-    font = sansSerif;
-    iconTheme = icons;
-    cursorTheme = cursor;
-    inherit theme;
-  };
-
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk3";
-    style.name = "breeze";
   };
 }

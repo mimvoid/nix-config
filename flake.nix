@@ -98,8 +98,6 @@
         extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home-manager/home.nix
-          inputs.stylix.homeManagerModules.stylix
-
           { home.sessionVariables = { inherit FLAKE; }; }
         ];
       };

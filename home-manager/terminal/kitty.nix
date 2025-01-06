@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
   programs.kitty = {
@@ -10,9 +10,9 @@
       mode = "no-cursor";
     };
 
-    font = with config.stylix.fonts; {
+    font = with pkgs.theme.fonts; {
       inherit (monospace) name package;
-      size = sizes.terminal;
+      size = terminal-size;
     };
 
     settings =
@@ -55,7 +55,7 @@
           selection_foreground = "none";
         };
 
-        inherit (config.stylix.fonts) monospace;
+        inherit (pkgs.theme.fonts) monospace;
       in
       {
         # Bold font

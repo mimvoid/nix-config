@@ -6,7 +6,7 @@ let
   display = "RitzFLF";
 
   rgb = pkgs.palettes.main.hex.rgbWrap;
-  inherit (config.stylix) fonts;
+  inherit (pkgs.theme) fonts;
 in
 {
   programs.hyprlock = {

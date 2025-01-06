@@ -37,16 +37,20 @@ let
     mods = import ./mods.nix { inherit final prev; };
   };
 
-  # Defined palettes & functions to manipulate palettes
-  # Use pkgs.palettes.<name>
-  my-palettes = final: _: {
+  theming = final: _: {
+    # Defined palettes & functions to manipulate palettes
+    # Use pkgs.palettes.<name>
     palettes = import ./palettes { pkgs = final.pkgs.unstable; };
+
+    # Other variables regarding theming (e.g. fonts, icons, etc.)
+    # Use pkgs.theme.<name>
+    theme = import ./theme.nix { inherit (final) pkgs; };
   };
 in
 [
   unstable-packages
   additions
   modifications
-  my-palettes
+  theming
 ]
 ++ input-overlays
