@@ -17,7 +17,7 @@
 
     settings =
       let
-        colors = with config.lib.stylix.colors.withHashtag; rec {
+        colors = with pkgs.palettes.moonfall-eve.hex.default; rec {
           foreground = base06;
           background = base00;
           selection_background = base0F;

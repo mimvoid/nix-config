@@ -1,8 +1,8 @@
-{ config, ... }:
+{ pkgs, ... }:
 
 {
   xdg.configFile."dooit/settings/themes.py".text =
-    with config.lib.stylix.colors.withHashtag; # python
+    with pkgs.palettes.moonfall-eve.hex.default; # python
       ''
         from dooit.api.theme import DooitThemeBase
 
