@@ -1,4 +1,4 @@
-{ final, _prev, ... }:
+{ final, prev, ... }:
 let
   # Meaning: pkgs = final.pkgs;
   inherit (final) pkgs; 
@@ -12,12 +12,12 @@ in
   };
 
   # Hasklug nerd font
-  nerdfonts = _prev.nerdfonts.override {
+  nerdfonts = prev.nerdfonts.override {
     fonts = [ "Hasklig" ];
   };
 
   # Pink Catppuccin Macchiato Papirus folders
-  catppuccin-papirus-folders = _prev.catppuccin-papirus-folders.override {
+  catppuccin-papirus-folders = prev.catppuccin-papirus-folders.override {
     flavor = "macchiato";
     accent = "pink";
   };

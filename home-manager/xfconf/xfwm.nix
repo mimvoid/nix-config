@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  inherit (pkgs.my-utils) prependAttrs;
+  inherit (pkgs.voids.lib) prependAttrs;
 in
 {
   xfconf.settings.xfwm4 = prependAttrs "general/" {

@@ -4,12 +4,13 @@ let
 in
 {
   xfconf.settings = {
-    xfce4-desktop = pkgs.my-utils.prependAttrs "backdrop/screen0/monitoreDP-1/" {
+    xfce4-desktop = pkgs.voids.lib.prependAttrs "backdrop/screen0/monitoreDP-1/" {
       "workspace0/last-image" = homescreen;
       "workspace1/last-image" = homescreen;
       "workspace2/last-image" = homescreen;
       "workspace3/last-image" = homescreen;
-    } // {
+    }
+    // {
       "desktop-icons/style" = 0; # No desktop icons
     };
 

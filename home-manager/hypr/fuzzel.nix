@@ -4,7 +4,7 @@ let
 
   # Theming configs
   font = "${fonts.monospace.name}:size=9";
-  colors = with pkgs.palettes.current.hex.noHashtag.alpha;
+  colors = with pkgs.palettes.main.hex.noHashtag.alpha;
     {
       background = base;
       text = string;

@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  inherit (pkgs.my-utils) prependAttrs;
+  inherit (pkgs.voids.lib) prependAttrs;
 
   themes = prependAttrs "krita/color-schemes/" {
     "CatppuccinMacchiatoMaroon.colors".source = ./CatppuccinMacchiatoMaroon.colors;

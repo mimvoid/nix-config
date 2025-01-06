@@ -9,5 +9,5 @@
 
   prependAttrs = prefix:
     lib.attrsets.mapAttrs' (name: value:
-      lib.nameValuePair "${prefix}${name}" value);
+      lib.attrsets.nameValuePair "${prefix}${name}" value);
 }

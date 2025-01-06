@@ -8,7 +8,7 @@ let
   keybindings = import ./keybindings.nix { inherit pkgs terminal; };
 
   # Colors
-  colors = with pkgs.palettes.current.hex.rgbWrap; {
+  colors = with pkgs.palettes.main.hex.rgbWrap; {
     general = {
       "col.active_border" = primary;
       "col.inactive_border" = alpha.primary-dim;

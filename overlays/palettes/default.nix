@@ -22,8 +22,8 @@ let
   };
 in
 rec {
-  current = macchi-nightlight;
-  inherit utils;
+  main = macchi-nightlight;
+  lib = utils;
 
   macchi-nightlight = parse (import ./macchi-nightlight.nix);
 }

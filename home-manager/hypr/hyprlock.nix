@@ -5,7 +5,7 @@ let
   lockscreen = builtins.toString ../../wallpapers/wallpapers/tokyo-shinjuku.png;
   display = "RitzFLF";
 
-  rgb = pkgs.palettes.current.hex.rgbWrap;
+  rgb = pkgs.palettes.main.hex.rgbWrap;
   inherit (config.stylix) fonts;
 in
 {

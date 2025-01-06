@@ -64,7 +64,7 @@ in
     autoEnable = false;
 
     # Have the hashtag for viewing in the editor
-    base16Scheme = pkgs.palettes.utils.removeHashtag {
+    base16Scheme = pkgs.palettes.lib.removeHashtag {
       # Moonfall Eve: A modified Rose Pine Moon
       base00 = "#25223a"; # base
       base01 = "#302c47"; # surface
