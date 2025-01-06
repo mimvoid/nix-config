@@ -34,5 +34,7 @@ rec {
   main = macchi-nightlight;
   lib = utils;
 
-  macchi-nightlight = parse (import ./macchi-nightlight.nix);
+  moonfall-eve = parse (import ./moonfall/eve.nix);
+  macchi-nightlight = parse (import ./catppuccin/macchi-nightlight.nix);
+  catppuccin-macchiato = parse (import ./catppuccin/macchiato.nix);
 }

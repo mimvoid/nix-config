@@ -63,26 +63,7 @@ in
     enable = true;
     autoEnable = false;
 
-    # Have the hashtag for viewing in the editor
-    base16Scheme = pkgs.palettes.lib.attrsets.noHashtag {
-      # Moonfall Eve: A modified Rose Pine Moon
-      base00 = "#25223a"; # base
-      base01 = "#302c47"; # surface
-      base02 = "#37324f"; # overlay
-      base03 = "#5c5478"; # muted
-      base04 = "#9c92aa"; # subtle
-      base05 = "#e8dfdd"; # text
-      base06 = "#e8dfdd"; # text
-      base07 = "#44415b"; # highlight med
-      base08 = "#f280aa"; # red
-      base09 = "#d87dd6"; # magenta
-      base0A = "#eda2b5"; # yellow
-      base0B = "#7098de"; # green
-      base0C = "#b1b5e4"; # cyan
-      base0D = "#a675eb"; # blue
-      base0E = "#d87dd6"; # magenta
-      base0F = "#52486d"; # highlight med
-    };
+    base16Scheme = pkgs.palettes.moonfall-eve.hex.noHashtag.base16;
 
     inherit cursor;
     fonts = {
