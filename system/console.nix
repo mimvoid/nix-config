@@ -6,7 +6,7 @@
     packages = with pkgs.voids.fonts; [ leggie ];
     useXkbConfig = true;
 
-    colors = pkgs.palettes.utils.listRemoveHashtag [
+    colors = pkgs.palettes.lib.lists.noHashtag [
       # catppuccin mocha
       "#11111b" # crust      black
       "#f38ba8" # red        red

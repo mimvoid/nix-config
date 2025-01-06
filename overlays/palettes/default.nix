@@ -1,25 +1,34 @@
 { pkgs, ... }:
 let
-  utils = import ./utils.nix { inherit (pkgs) lib; };
+  utils = import ./lib { inherit (pkgs) lib; };
 
   # Usage examples:
   # pkgs.palettes.<name>.hex.noHashtag.<color-name>
   # pkgs.palettes.<name>.rgb.dec.<color-name>.r
 
-  # See ./utils.nix for what the functions do
+  # See ./lib for what the functions do
 
-  parse = palette: rec {
-    hex = {
-      default = palette;
-      noHashtag = utils.removeHashtag palette;
-      rgbWrap = utils.rgbWrap hex.noHashtag;
-    };
+  parse = palette:
+    let
+      inherit (utils.attrsets)
+        noHashtag
+        rgbWrap
+        hexToRgb
+        toDec
+        ;
+    in
+    rec {
+      hex = {
+        default = palette;
+        noHashtag = noHashtag palette;
+        rgbWrap = rgbWrap palette;
+      };
 
-    rgb = {
-      split = utils.hexToRgb hex.noHashtag;
-      dec = utils.toDec rgb.split;
+      rgb = {
+        split = hexToRgb palette;
+        dec = toDec rgb.split;
+      };
     };
-  };
 in
 rec {
   main = macchi-nightlight;
