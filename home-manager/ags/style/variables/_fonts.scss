@@ -5,4 +5,31 @@ $font-size: 10px;
 $display: "RitzFLF", serif;
 $display-size: 48px;
 
-$menu-font-size: 15px;
+$menu-size: 15px;
+
+
+@mixin font-family() {
+  font-family: $font-family;
+}
+@mixin font-size($scale: 1) {
+  font-size: $font-size * $scale;
+}
+@mixin font($scale: 1) {
+  @include font-family;
+  @include font-size($scale);
+}
+
+@mixin display-family() {
+  font-family: $display;
+}
+@mixin display-size($scale: 1) {
+  font-size: $display-size * $scale
+}
+@mixin display($scale: 1) {
+  font-family: $display;
+  font-size: $display-size * $scale; 
+}
+
+@mixin menu-size($scale: 1) {
+  font-size: $menu-size * $scale;
+}

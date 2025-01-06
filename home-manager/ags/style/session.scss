@@ -17,8 +17,8 @@
     border-radius: 2px;
 
     &:focus {
+      @include looks.radius;
       color: palette.$primary;
-      border-radius: looks.$radius;
 
       icon {
         font-size: 4.5rem;
@@ -26,10 +26,11 @@
     }
 
     &:hover {
+      @include looks.radius;
+
       margin: 6px;
       color: palette.$base;
       background-color: palette.$primary;
-      border-radius: looks.$radius;
 
       icon {
         font-size: 4.75rem;

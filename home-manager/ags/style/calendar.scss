@@ -18,8 +18,8 @@
   }
 
   .hour, .minute {
+    @include fonts.display-size(1.5);
     margin: 0 0.05em; /* space out a little more */
-    font-size: fonts.$display-size * 1.5;
   }
 
   .minute {
@@ -35,7 +35,7 @@
 }
 
 .calendar calendar {
-  font-size: fonts.$menu-font-size;
+  @include fonts.menu-size;
   color: palette.$string;
 
   // Keep week numbers aligned
@@ -44,12 +44,12 @@
   }
 
   &.button {
+    @include looks.radius;
     color: color.adjust(palette.$string, $alpha: -0.5);
-    border-radius: looks.$radius;
 
     &:hover {
+      @include looks.transition;
       background-color: palette.$box;
-      transition: all 0.2s ease-in-out;
     }
   }
 

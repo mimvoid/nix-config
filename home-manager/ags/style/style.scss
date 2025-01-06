@@ -15,41 +15,38 @@
 
 * {
   all: unset;
-  font-family: fonts.$font-family;
-  font-size: fonts.$font-size;
+  @include fonts.font;
   -gtk-icon-theme: "Adwaita";
 }
 
 window {
-  border-radius: looks.$radius;
+  @include looks.radius;
 }
 
 .display {
-  font-family: fonts.$display;
-  font-size: fonts.$display-size;
+  @include fonts.display;
 }
 
 .box {
-  border-radius: looks.$radius;
+  @include looks.radius;
   background-color: palette.$base;
 }
 
 .in-box {
-  border-radius: looks.$radius;
+  @include looks.radius;
   background-color: palette.$box-dim;
 }
 
 button {
+  @include looks.radius;
+
   padding: 0 4px;
-
   min-width: 0;
-
-  border-radius: looks.$radius;
   background-color: transparent;
 
   &:hover {
+    @include looks.transition;
     background-color: palette.$box;
-    transition: all 0.2s ease-in-out;
   }
 }
 
@@ -58,26 +55,28 @@ label {
 }
 
 trough {
+  @include looks.radius;
+
   margin: 0 0.25em;
   min-width: 8em;
   min-height: 0.6em;
 
-  border-radius: looks.$radius;
   background-color: palette.$box-bright;
 
   highlight {
-    border-radius: looks.$radius;
+    @include looks.radius;
   }
 
   block.filled {
-    border-radius: looks.$radius;
+    @include looks.radius;
   }
 }
 
 window.popup {
   menu {
+    @include looks.radius(0.66);
+
     padding: 8px;
-    border-radius: looks.$radius * 0.66;
     background-color: color.change(palette.$base, $alpha: 0.7);
     color: palette.$string;
   }
@@ -92,8 +91,9 @@ tooltip {
   border: none;
 
   > * > * {
+    @include looks.radius;
+
     padding: 4px 8px;
-    border-radius: looks.$radius;
     background-color: color.change(palette.$base, $alpha: 0.7);
     color: palette.$string;
   }

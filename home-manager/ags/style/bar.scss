@@ -1,11 +1,11 @@
 @use "sass:color";
 @use "./palettes/palette";
-@use "./variables/fonts";
 @use "./variables/looks";
 
 .bar centerbox {
+  @include looks.radius;
+
   margin: 3px 12px 1px;
-  border-radius: looks.$radius;
 
   color: palette.$primary;
   background-color: transparent;
@@ -40,14 +40,14 @@
 
     /* Expand active workspace GNOME-style */
     &.focused {
+      @include looks.transition;
       padding: 0 12px;
       background-color: palette.$primary-dim;
-      transition: looks.$transition;
     }
 
     &:hover {
+      @include looks.transition;
       background-color: palette.$tertiary-dim;
-      transition: looks.$transition;
     }
   }
 }
@@ -71,15 +71,16 @@
   /* Change icons to Papirus for more compatibility */
   image {
     all: unset;
-    -gtk-icon-theme: "Papirus";
+    @include looks.fallback-icons;
   }
 }
 .hider {
+  @include looks.radius;
+  @include looks.transition;
+
   padding: 0 6px;
-  border-radius: looks.$radius;
   opacity: 0.7;
   color: palette.$tertiary-dim;
-  transition: looks.$transition;
 
   &.open {
     -gtk-icon-transform: rotate(-90deg);
@@ -88,9 +89,10 @@
 }
 
 .colorpicker {
+  @include looks.radius;
+
   margin: 0 2px;
   padding: 0 2px;
-  border-radius: looks.$radius;
   background-color: palette.$box-dim;
 
   button {
@@ -160,13 +162,15 @@
 
   .wlsunset-toggle.off {
     icon {
+      @include looks.transition;
       color: palette.$tertiary;
-      transition: looks.$transition;
     }
   }
 }
 
 .session-launch {
+  @include looks.transition;
+
   margin: 0 0 0 2px;
   padding: 0 6px;
   background-color: palette.$box;
@@ -174,6 +178,5 @@
   &:hover {
     color: color.change(palette.$base, $alpha: 1);
     background-color: color.change(palette.$primary, $alpha: 0.9);
-    transition: looks.$transition;
   }
 }

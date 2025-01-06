@@ -8,14 +8,15 @@ window#media > box {
 }
 
 #media box {
-  font-size: fonts.$menu-font-size;
+  @include fonts.menu-size;
   padding: 0.25em;
 
   .cover-art {
+    @include looks.radius(0.5);
+
     min-height: 20em;
     min-width: 20em;
     margin: 1.5em 0;
-    border-radius: looks.$radius * 0.5;
 
     background-position: center;
     background-size: cover;
@@ -23,15 +24,16 @@ window#media > box {
   }
 
   .media-title {
-    font-weight: bolder;
+    @include fonts.menu-size(1.25);
+
     margin-bottom: 4px;
 
-    font-size: fonts.$menu-font-size * 1.25;
+    font-weight: bolder;
     color: palette.$primary-bright;
   }
 
   .media-artist {
-    font-size: fonts.$menu-font-size;
+    @include fonts.menu-size;
   }
 }
 
@@ -48,11 +50,11 @@ window#media > box {
 }
 
 .media-actions {
+  @include looks.transition;
   padding: 0 5em; // bring closer together
-  transition: looks.$transition;
 
   icon {
-    font-size: fonts.$menu-font-size * 1.15;
+    @include fonts.menu-size(1.15);
   }
 
   button:hover {
@@ -61,13 +63,13 @@ window#media > box {
   }
 
   .play-pause {
+    @include looks.transition;
+
     margin: 0 1em;
     padding: 1.25em;
 
     background-color: palette.$box;
     color: palette.$primary-bright;
-
-    transition: looks.$transition;
 
     &:hover {
       color: palette.$base;
