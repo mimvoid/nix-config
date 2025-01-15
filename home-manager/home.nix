@@ -30,6 +30,7 @@
   home.packages = with pkgs; [
     unstable.ollama
     unstable.alpaca
+    (fontforge-gtk.override { withPython = false; })
   ];
 
   # Pinyin for Simplified Chinese
