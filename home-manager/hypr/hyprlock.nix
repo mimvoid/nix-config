@@ -1,8 +1,8 @@
 { config, pkgs, ... }:
 let
-  # Needs to be converted to a string
+  # Needs to be a string
   # See: https://github.com/nix-community/home-manager/issues/5743
-  lockscreen = builtins.toString ../../wallpapers/wallpapers/tokyo-shinjuku.png;
+  lockscreen = "${../../wallpapers/wallpapers/tokyo-shinjuku.png}";
   display = "RitzFLF";
 
   rgb = pkgs.palettes.main.hex.rgbWrap;
@@ -16,7 +16,6 @@ in
         grace = 2;
         disable_loading_bar = true;
         hide_cursor = false;
-        no_face_in = false;
       };
 
       background = [
