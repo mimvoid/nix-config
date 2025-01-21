@@ -27,7 +27,7 @@ rec {
 
     monospace = {
       name = "Hasklug Nerd Font Mono";
-      package = pkgs.mods.nerdfonts;
+      package = pkgs.unstable.nerd-fonts.hasklug;
     };
 
     terminal-size = 13;
