@@ -45,7 +45,6 @@ in
       blueon = "bluetooth on";
       btui = "bluetui";
       lg = "lazygit";
-      ncp = "neocities push --prune";
 
       # config aliases
       arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
