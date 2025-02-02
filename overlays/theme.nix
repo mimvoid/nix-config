@@ -26,11 +26,12 @@ rec {
     serif = fonts.sansSerif;
 
     monospace = {
-      name = "Hasklug Nerd Font Mono";
-      package = pkgs.unstable.nerd-fonts.hasklug;
+      name = "0xProto Nerd Font Mono";
+      package = pkgs.unstable.nerd-fonts._0xproto;
     };
 
-    terminal-size = 13;
+    terminal-size = 12;
+    terminal-size-float = 12.5;
   };
 
   packages = [

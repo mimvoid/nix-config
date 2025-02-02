@@ -12,7 +12,7 @@
 
     font = with pkgs.theme.fonts; {
       inherit (monospace) name package;
-      size = terminal-size;
+      size = terminal-size-float;
     };
 
     settings =
@@ -59,8 +59,8 @@
       in
       {
         # Bold font
-        bold_font = "${monospace.name} SemBd";
-        bold_italic_font = "${monospace.name} SemBd Italic";
+        bold_font = "${monospace.name} Bold";
+        bold_italic_font = "${monospace.name} Bold Italic";
 
         # Windows
         inactive_text_alpha = 0.75;

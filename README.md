@@ -98,7 +98,7 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 | Cursor          | [Rose Pine Dawn cursor][t2]                 |
 | Icons           | [Papirus][t3] with [Catppuccin folders][t4] |
 | Sans serif font | [Karla][t5]                                 |
-| Monospace font  | [Hasklug Nerd Font][t6] ([Hasklig][t7])     |
+| Monospace font  | [0xProto][t6] ([Nerd Font][t7])     |
 | Display font    | [RitzFLF][t8]                               |
 
 [t1]: https://github.com/rose-pine/gtk
@@ -106,8 +106,8 @@ Login Manager: [greetd][w5] with [tuigreet][w6]
 [t3]: https://github.com/PapirusDevelopmentTeam/papirus-icon-theme
 [t4]: https://github.com/catppuccin/papirus-folders
 [t5]: https://github.com/googlefonts/karla
-[t6]: https://www.nerdfonts.com
-[t7]: https://github.com/i-tu/Hasklig
+[t6]: https://github.com/0xType/0xProto
+[t7]: https://www.nerdfonts.com
 [t8]: https://moorstation.org/typoasis/designers/casady_greene/r_z.htm
 
 - AGS icons: [Adwaita][e1]
