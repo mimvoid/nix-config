@@ -48,10 +48,7 @@
     dooit.url = "github:dooit-org/dooit";
     dooit-extras.url = "github:dooit-org/dooit-extras";
 
-    aagl = {
-      url = "github:ezKEa/aagl-gtk-on-nix";
-      inputs.nixpkgs.follows = "nixpkgs-unstable";
-    };
+    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
