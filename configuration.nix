@@ -186,6 +186,9 @@
 
   hardware.bluetooth.enable = true;
 
+  # Drawing tablet support
+  hardware.opentabletdriver.enable = true;
+
   # CUPS
   services.printing = {
     enable = true;
