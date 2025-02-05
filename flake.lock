@@ -530,11 +530,11 @@
     },
     "nixpkgs-unstable": {
       "locked": {
-        "lastModified": 1737062831,
-        "narHash": "sha256-Tbk1MZbtV2s5aG+iM99U8FqwxU/YNArMcWAv6clcsBc=",
+        "lastModified": 1738410390,
+        "narHash": "sha256-xvTo0Aw0+veek7hvEVLzErmJyQkEcRk6PSR4zsRQFEc=",
         "owner": "NixOS",
         "repo": "nixpkgs",
-        "rev": "5df43628fdf08d642be8ba5b3625a6c70731c19c",
+        "rev": "3a228057f5b619feb3186e986dbe76278d707b6e",
         "type": "github"
       },
       "original": {
@@ -632,11 +632,10 @@
         ]
       },
       "locked": {
-        "lastModified": 1738459830,
-        "narHash": "sha256-EiifErGLEL/rDZRHRwTqEo1rbnopEwwNS8kbm2uH+bI=",
-        "ref": "refs/heads/main",
-        "rev": "ddcd80c580d0f2f6a096fc4769fc9694af6f1eed",
-        "revCount": 52,
+        "dirtyRev": "9a80fb612f394040e87019580a0c8161a00a08d4-dirty",
+        "dirtyShortRev": "9a80fb6-dirty",
+        "lastModified": 1738551990,
+        "narHash": "sha256-WU+5KQjCGJ1i9t/vAdGLuk2CMllbjth9PFWzlAXq2vE=",
         "type": "git",
         "url": "file:///home/zinnia/Projects/neovim-dots"
       },
