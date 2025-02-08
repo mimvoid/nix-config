@@ -1,0 +1,6 @@
+.virtual-link.glossary-entry a {
+  opacity: var(--link-unresolved-opacity);
+  color: var(--link-unresolved-color);
+  text-decoration-color: var(--link-unresolved-decoration-color);
+  text-decoration-style: dotted;
+}
