@@ -13,11 +13,11 @@
 
 .left > *,
 .center > * {
-  padding: 4px 8px;
+  padding: 0.4em 1em;
 }
 
 .icon-label {
-  margin: 0 5px;
+  margin: 0 0.5em;
 }
 
 /*---------*/
@@ -29,24 +29,24 @@
 }
 
 .workspaces {
-  /* Make workspace buttons slimmer */
-  padding: 6px;
+  // Make workspace buttons slimmer
+  padding: 0.6em;
 
   button {
-    margin: 0 2.75px;
-    padding: 0 5px;
+    @include looks.transition;
+
+    margin: 0 0.25em;
+    padding: 0 0.5em;
     color: transparent;
     background-color: palette.$primary;
 
-    /* Expand active workspace GNOME-style */
+    // Expand active workspace GNOME-style
     &.focused {
-      @include looks.transition;
-      padding: 0 12px;
+      padding: 0 1.25em;
       background-color: palette.$primary-dim;
     }
 
     &:hover {
-      @include looks.transition;
       background-color: palette.$tertiary-dim;
     }
   }
@@ -56,10 +56,10 @@
   padding-right: 0;
 
   icon {
-    margin: 0 4px;
+    margin: 0 0.4em 0 0.25em;
   }
 
-  /* Disable default button background color */
+  // Disable default button background color
   &:hover {
     background-color: transparent;
   }
@@ -68,7 +68,7 @@
 .system-tray-item {
   margin: 0 2px;
 
-  /* Change icons to Papirus for more compatibility */
+  // Change icons to Papirus for more compatibility
   image {
     all: unset;
     @include looks.fallback-icons;
@@ -91,8 +91,8 @@
 .colorpicker {
   @include looks.radius;
 
-  margin: 0 2px;
-  padding: 0 2px;
+  margin: 0 0.25em;
+  padding: 0 0.25em;
   background-color: palette.$box-dim;
 
   button {
@@ -102,17 +102,16 @@
   .color-circle {
     margin-right: 0.25em;
     padding: 0.3em;
-
-    .color-display {
-      border: 1px solid palette.$box;
-      border-radius: 24px;
-      padding: 0 0.75em;
-    }
+  }
+  .color-display {
+    border: 1px solid palette.$box;
+    border-radius: 24px;
+    padding: 0 0.75em;
   }
 }
 
 .network {
-  margin: 0 4px;
+  margin: 0 0.4em;
   color: palette.$tertiary-dim;
 }
 
@@ -122,10 +121,6 @@
 
 .sound {
   color: palette.$tertiary-bright;
-
-  label {
-    margin-left: 2px;
-  }
 
   trough highlight {
     background-color: palette.$tertiary-bright;
@@ -140,39 +135,34 @@
   }
 
   label {
-    margin-left: 6px;
-  }
-
-  .charging {
-    color: palette.$good;
+    margin-left: 0.6em;
   }
 }
 
 .brightness {
   color: color.adjust(palette.$error, $lightness: 8%);
 
-  /* Widen the hit box */
+  // Widen the hit box
   eventbox > box {
-    min-width: 6px;
+    min-width: 0.75em;
   }
 
-  trough highlight {
+  highlight {
     background-color: color.adjust(palette.$error, $lightness: 8%);
   }
+}
+.wlsunset-toggle {
+  @include looks.transition;
 
-  .wlsunset-toggle.off {
-    icon {
-      @include looks.transition;
-      color: palette.$tertiary;
-    }
+  &.off icon {
+    color: palette.$tertiary;
   }
 }
 
 .session-launch {
   @include looks.transition;
 
-  margin: 0 0 0 2px;
-  padding: 0 6px;
+  padding: 0 0.75em;
   background-color: palette.$box;
 
   &:hover {

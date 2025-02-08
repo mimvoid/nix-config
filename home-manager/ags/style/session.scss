@@ -2,6 +2,28 @@
 @use "./palettes/palette";
 @use "./variables/looks";
 
+@mixin grid-box($v, $h) {
+  $v-opposed: "bottom";
+  @if $v == "bottom" {
+    $v-opposed: "top";
+  }
+
+  $h-opposed: "right";
+  @if $h == "right" {
+    $h-opposed: "left"
+  }
+
+  border-#{$v}-#{$h}-radius: looks.$radius;
+  margin-#{$v}: 0.75em;
+  margin-#{$h}: 0.75em;
+  margin-#{$v-opposed}: 2px;
+  margin-#{$h-opposed}: 2px;
+
+  &:focus, &:hover {
+    border-#{$v-opposed}-#{$h-opposed}-radius: 2px;
+  }
+}
+
 #session {
   color: palette.$primary-bright;
 
@@ -19,6 +41,7 @@
     &:focus {
       @include looks.radius;
       color: palette.$primary;
+      background-color: color.change(palette.$base, $alpha: 0.7);
 
       icon {
         font-size: 4.5rem;
@@ -39,41 +62,15 @@
   }
 
   #lock {
-    border-top-left-radius: looks.$radius;
-    margin: 0.75rem 2px 2px 0.75rem;
-
-    &:hover,
-    &:focus {
-      border-bottom-right-radius: 2px;
-    }
+    @include grid-box("top", "left");
   }
   #logout {
-    background-color: color.change(palette.$base, $alpha: 0.7);
-    border-bottom-left-radius: looks.$radius;
-    margin: 2px 2px 0.75rem 0.75rem;
-
-    &:hover,
-    &:focus {
-      border-top-right-radius: 2px;
-    }
+    @include grid-box("bottom", "left");
   }
   #reboot {
-    background-color: color.change(palette.$base, $alpha: 0.7);
-    border-top-right-radius: looks.$radius;
-    margin: 0.75rem 0.75rem 2px 2px;
-
-    &:hover,
-    &:focus {
-      border-bottom-left-radius: 2px;
-    }
+    @include grid-box("top", "right");
   }
   #shutdown {
-    border-bottom-right-radius: looks.$radius;
-    margin: 2px 0.75rem 0.75rem 2px;
-
-    &:hover,
-    &:focus {
-      border-top-left-radius: 2px;
-    }
+    @include grid-box("bottom", "right");
   }
 }

@@ -3,38 +3,38 @@
 @use "./variables/fonts";
 @use "./variables/looks";
 
-window#media > box {
+window.media > box {
   padding: 1em;
 }
 
-#media box {
+.media box {
   @include fonts.menu-size;
   padding: 0.25em;
+}
 
-  .cover-art {
-    @include looks.radius(0.5);
+.cover-art {
+  @include looks.radius(0.5);
 
-    min-height: 20em;
-    min-width: 20em;
-    margin: 1.5em 0;
+  min-height: 20em;
+  min-width: 20em;
+  margin: 1.5em 0;
 
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-  }
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
-  .media-title {
-    @include fonts.menu-size(1.25);
+.media-title {
+  @include fonts.menu-size(1.25);
 
-    margin-bottom: 4px;
+  margin-bottom: 4px;
 
-    font-weight: bolder;
-    color: palette.$primary-bright;
-  }
+  font-weight: bolder;
+  color: palette.$primary-bright;
+}
 
-  .media-artist {
-    @include fonts.menu-size;
-  }
+.media-artist {
+  @include fonts.menu-size;
 }
 
 .media-progress {
@@ -50,7 +50,6 @@ window#media > box {
 }
 
 .media-actions {
-  @include looks.transition;
   padding: 0 5em; // bring closer together
 
   icon {
@@ -61,32 +60,32 @@ window#media > box {
     color: palette.$primary-bright;
     background-color: transparent;
   }
+}
 
-  .play-pause {
-    @include looks.transition;
+button.play-pause {
+  @include looks.transition;
 
-    margin: 0 1em;
-    padding: 1.25em;
+  margin: 0 1em;
+  padding: 1.25em;
 
-    background-color: palette.$box;
+  background-color: palette.$box;
+  color: palette.$primary-bright;
+
+  &:hover {
+    color: palette.$base;
+    background-color: palette.$primary;
+  }
+}
+
+// Make them less noticable
+button.loop, button.shuffle {
+  color: palette.$string-dim;
+
+  &:hover {
     color: palette.$primary-bright;
-
-    &:hover {
-      color: palette.$base;
-      background-color: palette.$primary;
-    }
   }
 
-  // Make them less noticable
-  .loop, .shuffle {
-    color: palette.$string-dim;
-
-    &:hover {
-      color: palette.$primary-bright;
-    }
-
-    &.off {
-      color: color.change(palette.$string-dim, $alpha: 0.75);
-    }
+  &.off {
+    color: color.change(palette.$string-dim, $alpha: 0.75);
   }
 }

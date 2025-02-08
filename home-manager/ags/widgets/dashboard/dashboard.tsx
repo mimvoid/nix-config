@@ -11,7 +11,7 @@ function User() {
   );
 
   return (
-    <box className="in-box">
+    <box className="container">
       <box halign={Gtk.Align.START} hexpand>
         {Avatar}
         {Username}

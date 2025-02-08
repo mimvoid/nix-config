@@ -5,65 +5,65 @@
 
 .calendar {
   all: unset;
-  padding: 12px;
-  padding-bottom: 6px;
+  padding: 1.5em;
   background-color: color.change(palette.$base, $alpha: 0.9);
 }
 
-.calendar .big-clock {
+.big-clock {
   margin: 2em 2em 1em;
+
+  .hour, .minute {
+    @include fonts.display-size(1.5);
+    margin: 0 0.05em; // space out a little more
+  }
 
   .hour {
     color: palette.$string;
   }
 
-  .hour, .minute {
-    @include fonts.display-size(1.5);
-    margin: 0 0.05em; /* space out a little more */
-  }
-
   .minute {
-    margin-right: 0;
     color: palette.$primary;
   }
 
   .second {
     min-width: 1.5em;
+    margin: 0;
     padding-bottom: 0.1em;
     color: color.mix(palette.$string-dim, palette.$string);
   }
 }
 
-.calendar calendar {
+calendar {
   @include fonts.menu-size;
   color: palette.$string;
 
   // Keep week numbers aligned
   &:not(.highlight) {
-    padding: 5px;
+    padding: 0.4em;
   }
 
   &.button {
     @include looks.radius;
+    @include looks.transition;
+
     color: color.adjust(palette.$string, $alpha: -0.5);
 
     &:hover {
-      @include looks.transition;
       background-color: palette.$box;
     }
   }
 
-  /* Week numbers & day names */
+  // Week numbers & day names
   &.highlight {
     color: color.adjust(palette.$primary, $alpha: 0.3);
   }
 
-  /* Defaults to current day */
+  // Defaults to current day
   &:selected {
     color: palette.$tertiary;
   }
 
-  /* Days outside the current month */
+  // Days outside the current month
   &:indeterminate {
     color: color.adjust(palette.$string, $alpha: 0.6);
   }

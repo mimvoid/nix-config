@@ -1,0 +1,85 @@
+@use "sass:color";
+@use "./palettes/palette";
+@use "./variables/looks";
+@use "./variables/fonts";
+
+* {
+  all: unset;
+  @include fonts.font;
+  -gtk-icon-theme: "Adwaita";
+}
+
+.display {
+  @include fonts.display;
+}
+
+window {
+  @include looks.radius;
+
+  &.popup {
+    menu {
+      @include looks.radius(0.66);
+
+      padding: 1em;
+      background-color: color.change(palette.$base, $alpha: 0.7);
+      color: palette.$string;
+    }
+
+    menuitem {
+      margin: 2px;
+    }
+  }
+}
+
+.box {
+  @include looks.radius;
+  background-color: palette.$base;
+}
+
+.container {
+  @include looks.radius;
+  background-color: palette.$box-dim;
+}
+
+button {
+  @include looks.radius;
+  @include looks.transition;
+
+  padding: 0 0.4em;
+  background-color: transparent;
+
+  &:focus, &:hover {
+    background-color: palette.$box;
+  }
+}
+
+label {
+  margin: 0 0.4em;
+}
+
+trough {
+  @include looks.radius;
+
+  min-width: 8em;
+  min-height: 0.6em;
+  margin: 0 0.25em;
+
+  background-color: palette.$box-bright;
+
+  highlight, block.filled {
+    @include looks.radius;
+  }
+}
+
+tooltip {
+  background-color: transparent;
+  border: none;
+
+  label {
+    @include looks.radius;
+
+    padding: 0.5em 1em;
+    color: palette.$string;
+    background-color: color.change(palette.$base, $alpha: 0.7);
+  }
+}

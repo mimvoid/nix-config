@@ -41,7 +41,7 @@ function Disk() {
 
 export default function Stats() {
   return (
-    <box className="stat-box in-box">
+    <box className="stat-box container">
       <box halign={Gtk.Align.CENTER} hexpand vertical>
         <Cpu />
         <Memory />

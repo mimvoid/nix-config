@@ -63,7 +63,7 @@ const AudioToggle = (
 
 export default function Toggles() {
   return (
-    <box className="in-box">
+    <box className="container">
       <box halign={Gtk.Align.CENTER} hexpand>
         {NetworkToggle}
         <BluetoothToggle />
