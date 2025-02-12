@@ -1,6 +1,11 @@
 { pkgs, ... }:
 
 {
+  # Session files
+  xdg.configFile = {
+    "kitty/hugo".source = ./hugo.conf;
+  };
+
   programs.kitty = {
     enable = true;
     package = pkgs.unstable.kitty;
@@ -53,6 +58,12 @@
           cursor = "none"; # colored with the text underneath
           cursor_text_color = "background"; # fg colored with terminal background
           selection_foreground = "none";
+
+          active_tab_foreground = background;
+          active_tab_background = color3;
+          active_tab_font_style = "bold";
+          inactive_tab_foreground = foreground;
+          inactive_tab_background = background;
         };
 
         inherit (pkgs.theme.fonts) monospace;
@@ -72,11 +83,16 @@
         cursor_shape_unfocused = "hollow";
         cursor_blink_interval = 0;
 
+        # Tab bar
+        tab_bar_style = "separator";
+        tab_separator = "\" \"";
+        tab_title_max_length = 6;
+        tab_bar_align = "right";
+
         # Misc
         scrollback_lines = 2048;
         strip_trailing_spaces = "smart";
         enable_audio_bell = false;
-        tab_bar_style = "hidden";
         confirm_os_window_close = 0;
       }
       // colors // color-usages;

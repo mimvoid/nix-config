@@ -45,6 +45,7 @@ in
       blueon = "bluetooth on";
       btui = "bluetui";
       lg = "lazygit";
+      kitsd = "kitty --detach --session";
 
       # config aliases
       arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";

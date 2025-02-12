@@ -5,7 +5,7 @@
     ./shells.nix
     ./cli.nix
     ./git.nix
-    ./kitty.nix
+    ./kitty
     ./yazi
     ./dooit
     ./navi
