@@ -7,6 +7,7 @@
     exiftool
     mediainfo
     voids.fontpreview
+    nsxiv
 
     # other
     megacmd
