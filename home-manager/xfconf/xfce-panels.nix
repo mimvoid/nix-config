@@ -113,30 +113,31 @@ in
   xfconf.settings.xfce4-panel = {
     "panels" = [ 1 2 ];
     "panels/dark-mode" = true;
-  } // panels.top-panel // panels.bottom-panel // plugins.top // plugins.bottom;
+  }
+  // panels.top-panel
+  // panels.bottom-panel
+  // plugins.top
+  // plugins.bottom;
 
-  xdg.configFile."xfce4/panel/docklike-12.rc" = {
-    enable = true;
-    text = ''
-      [user]
-      onlyDisplayVisible=false
-      onlyDisplayScreen=false
-      showPreviews=true
-      previewScale=0.5            # default 0.125
-      showWindowCount=false
-      middleButtonBehavior=2      # do nothing
-      noWindowsListIfSingle=false
-      indicatorStyle=3            # ciliora
-      inactiveIndicatorStyle=1    # dots
-      indicatorOrientation=0      # automatic
-      forceIconSize=false
-      keyComboActive=false
-      keyAloneActive=false
-      indicatorOrientation=1      # bottom
-      indicatorColorFromTheme=false
-      indicatorColor=rgb(234,154,151)
-      inactiveColor=rgb(62,143,176)
-      pinned=kitty;thunar;firefox;krita;
-    '';
-  };
+  xdg.configFile."xfce4/panel/docklike-12.rc".text = ''
+    [user]
+    onlyDisplayVisible=false
+    onlyDisplayScreen=false
+    showPreviews=true
+    previewScale=0.5            # default 0.125
+    showWindowCount=false
+    middleButtonBehavior=2      # do nothing
+    noWindowsListIfSingle=false
+    indicatorStyle=3            # ciliora
+    inactiveIndicatorStyle=1    # dots
+    indicatorOrientation=0      # automatic
+    forceIconSize=false
+    keyComboActive=false
+    keyAloneActive=false
+    indicatorOrientation=1      # bottom
+    indicatorColorFromTheme=false
+    indicatorColor=rgb(234,154,151)
+    inactiveColor=rgb(62,143,176)
+    pinned=kitty;thunar;firefox;krita;
+  '';
 }

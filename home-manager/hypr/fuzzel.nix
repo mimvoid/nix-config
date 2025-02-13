@@ -51,16 +51,16 @@ in
 
   # Networkmanager dmenu
   home.packages = with pkgs; [ networkmanager_dmenu ];
-  xdg.configFile."networkmanager-dmenu/config.ini".text = # ini
-    ''
-      [dmenu]
-      dmenu_command = fuzzel -d -w 40
-      active_chars = >
-      wifi_chars = ▂▄▆█
-      wifi_icons = 󰤯󰤟󰤢󰤥󰤨
-      format = {name:18}           {signal}%%  {bars}
 
-      [editor]
-      terminal = kitty
-    '';
+  xdg.configFile."networkmanager-dmenu/config.ini".text = ''
+    [dmenu]
+    dmenu_command = fuzzel -d -w 40
+    active_chars = >
+    wifi_chars = ▂▄▆█
+    wifi_icons = 󰤯󰤟󰤢󰤥󰤨
+    format = {name:18}           {signal}%%  {bars}
+
+    [editor]
+    terminal = kitty
+  '';
 }

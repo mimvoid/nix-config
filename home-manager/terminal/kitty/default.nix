@@ -95,7 +95,8 @@
         enable_audio_bell = false;
         confirm_os_window_close = 0;
       }
-      // colors // color-usages;
+      // colors
+      // color-usages;
 
     keybindings = {
       "ctrl+alt+enter" = "launch --cwd=current";

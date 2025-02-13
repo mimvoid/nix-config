@@ -1,6 +1,6 @@
 { pkgs, ... }:
 let
-  firefoxpwa = pkgs.unstable.firefoxpwa;
+  inherit (pkgs.unstable) firefoxpwa;
 in
 {
   home.packages = [ firefoxpwa ];

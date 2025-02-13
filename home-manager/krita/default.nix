@@ -7,15 +7,13 @@ let
   };
 
   # Krita can't seem to recognize the files in ~/.nix-profile/share/krita/palettes
-  palettes =
-    let
-      pal = "${pkgs.voids.gpl-palettes}/share/krita/palettes";
-    in
-    prependAttrs "krita/palettes/" {
-      "catppuccin-macchiato.gpl".source = "${pal}/catppuccin-macchiato.gpl";
-      "rose-pine-moon.gpl".source = "${pal}/rose-pine-moon.gpl";
-      "ayu-mirage.gpl".source = "${pal}/ayu-mirage.gpl";
-    };
+  pal = "${pkgs.voids.gpl-palettes}/share/krita/palettes";
+
+  palettes = prependAttrs "krita/palettes/" {
+    "catppuccin-macchiato.gpl".source = "${pal}/catppuccin-macchiato.gpl";
+    "rose-pine-moon.gpl".source = "${pal}/rose-pine-moon.gpl";
+    "ayu-mirage.gpl".source = "${pal}/ayu-mirage.gpl";
+  };
 in
 {
   imports = [
@@ -30,16 +28,15 @@ in
     shortcut-composer
   ];
 
-  xdg.dataFile =
-    {
-      # Krita thumbnails
-      "thumbnailers/kra.thumbnailer".text = ''
-        [Thumbnailer Entry]
-        TryExec=unzip
-        Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
-        MimeType=application/x-krita;
-      '';
-    }
-    // themes
-    // palettes;
+  xdg.dataFile = {
+    # Krita thumbnails
+    "thumbnailers/kra.thumbnailer".text = ''
+      [Thumbnailer Entry]
+      TryExec=unzip
+      Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
+      MimeType=application/x-krita;
+    '';
+  }
+  // themes
+  // palettes;
 }

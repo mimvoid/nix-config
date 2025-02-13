@@ -84,22 +84,21 @@ in
 
     shellAliases."-" = "cd -";
 
-    initExtra = # sh
-      ''
-        # history substring search integration with vi mode
-        bindkey -M vicmd 'k' history-substring-search-up
-        bindkey -M vicmd 'j' history-substring-search-up
+    initExtra = /* sh */ ''
+      # history substring search integration with vi mode
+      bindkey -M vicmd 'k' history-substring-search-up
+      bindkey -M vicmd 'j' history-substring-search-up
 
-        # nix develop with zsh shell
-        function nixdev() {
-          nix develop ''${1} --command zsh
-        }
+      # nix develop with zsh shell
+      function nixdev() {
+        nix develop ''${1} --command zsh
+      }
 
-        # enter a nix shell with package from unstable branch
-        function nixpkg-unstable() {
-          nix shell nixpkgs/nixos-unstable#''${1}
-        }
-      '';
+      # enter a nix shell with package from unstable branch
+      function nixpkg-unstable() {
+        nix shell nixpkgs/nixos-unstable#''${1}
+      }
+    '';
 
     # zsh plugin configuration
     plugins = with zsh-plugins; [

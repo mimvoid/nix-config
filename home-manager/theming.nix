@@ -82,6 +82,7 @@ in
     base16Scheme = pkgs.palettes.moonfall-eve.hex.noHashtag.base16;
 
     inherit cursor;
+
     fonts = {
       inherit (fonts) serif sansSerif monospace;
       sizes.terminal = fonts.terminal-size;

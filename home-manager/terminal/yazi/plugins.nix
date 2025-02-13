@@ -37,65 +37,56 @@
         exifaudio;
     };
 
-    initLua = # lua
-      ''
-        require("git"):setup()
+    initLua = /* lua */ ''
+      require("git"):setup()
 
-        THEME.git = THEME.git or {}
-        THEME.git.modified = ui.Style():fg("blue")
-        THEME.git.modified_sign = "M"
+      THEME.git = THEME.git or {}
+      THEME.git.modified = ui.Style():fg("blue")
+      THEME.git.modified_sign = "M"
 
-        THEME.git.added = ui.Style():fg("green")
-        THEME.git.added_sign = "A"
+      THEME.git.added = ui.Style():fg("green")
+      THEME.git.added_sign = "A"
 
-        THEME.git.deleted = ui.Style():fg("red")
-        THEME.git.deleted_sign = "D"
+      THEME.git.deleted = ui.Style():fg("red")
+      THEME.git.deleted_sign = "D"
 
-        require("full-border"):setup()
-        require("bookmarks"):setup({
-          persist = "vim",
-          desc_format = "parent",
-          file_pick_mode = "parent",
-        })
-      '';
+      require("full-border"):setup()
+      require("bookmarks"):setup({
+        persist = "vim",
+        desc_format = "parent",
+        file_pick_mode = "parent",
+      })
+    '';
   };
 
   xdg.configFile = {
     # Smart paste: paste files without entering directory
-    "yazi/plugins/smart-paste.yazi/init.lua" = {
-      enable = true;
-      text = # lua
-        ''
-          --- @sync entry
-          return {
-            entry = function()
-              local h = cx.active.current.hovered
-              if h and h.cha.is_dir then
-                ya.manager_emit("enter", {})
-                ya.manager_emit("paste", {})
-                ya.manager_emit("leave", {})
-              else
-                ya.manager_emit("paste", {})
-              end
-            end,
-          }
-        '';
-    };
+    "yazi/plugins/smart-paste.yazi/init.lua".text = /* lua */ ''
+      --- @sync entry
+      return {
+        entry = function()
+          local h = cx.active.current.hovered
+          if h and h.cha.is_dir then
+            ya.manager_emit("enter", {})
+            ya.manager_emit("paste", {})
+            ya.manager_emit("leave", {})
+          else
+            ya.manager_emit("paste", {})
+          end
+        end,
+      }
+    '';
 
     # Arrow: file navigation wraparound
-    "yazi/plugins/arrow.yazi/init.lua" = {
-      enable = true;
-      text = # lua
-        ''
-          --- @sync entry
-          return {
-            entry = function(_, job)
-              local current = cx.active.current
-              local new = (current.cursor + job.args[1]) % #current.files
-              ya.manager_emit("arrow", { new - current.cursor })
-            end,
-          }
-        '';
-    };
+    "yazi/plugins/arrow.yazi/init.lua".text = /* lua */ ''
+      --- @sync entry
+      return {
+        entry = function(_, job)
+          local current = cx.active.current
+          local new = (current.cursor + job.args[1]) % #current.files
+          ya.manager_emit("arrow", { new - current.cursor })
+        end,
+      }
+    '';
   };
 }
