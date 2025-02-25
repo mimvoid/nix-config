@@ -22,6 +22,7 @@
       "100:class_g *?= 'ristretto'"
       "100:class_g = 'zoom'"
       "100:class_g *?= 'virt-manager'"
+      "100:class_g *?= 'org.kde.digikam'"
       "98:class_g *?= 'obsidian' && focused"
       "98:class_g *?= 'zotero' && focused"
       "80:class_g = 'kitty' && focused"

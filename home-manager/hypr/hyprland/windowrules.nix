@@ -26,6 +26,7 @@ in
 
       (full "krita")
       (full "org.inkscape.Inkscape")
+      (full "org.kde.digikam")
       (full "virt-manager")
     ]
     ++ [
