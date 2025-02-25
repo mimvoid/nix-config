@@ -23,7 +23,7 @@ export default {
   disk: "drive-harddisk-symbolic",
   memory: "memory-symbolic",
 
-  hider: "pan-start-symbolic",
+  hider: "go-previous-symbolic",
 
   music: "audio-x-generic-symbolic",
   mpris: {

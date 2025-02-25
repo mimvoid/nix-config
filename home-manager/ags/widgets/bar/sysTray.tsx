@@ -1,5 +1,5 @@
 import { bind } from "astal";
-import { App, Gtk, Gdk } from "astal/gtk3";
+import { Gtk } from "astal/gtk3";
 import Tray from "gi://AstalTray";
 import Icon from "../../lib/icons";
 
@@ -8,29 +8,17 @@ const tray = Tray.get_default();
 function TrayIcons() {
   // Create buttons for every system tray item
   const Items = bind(tray, "items").as((items) =>
-    items.map((item) => {
-      if (item.iconThemePath) App.add_icons(item.iconThemePath);
-
-      const menu = item.create_menu();
-
-      return (
-        <button
-          className="system-tray-item"
-          tooltipMarkup={bind(item, "tooltipMarkup")}
-          onDestroy={() => menu?.destroy()}
-          onClickRelease={(self) => {
-            menu?.popup_at_widget(
-              self,
-              Gdk.Gravity.SOUTH,
-              Gdk.Gravity.NORTH,
-              null,
-            );
-          }}
-        >
-          <icon gIcon={bind(item, "gicon")} />
-        </button>
-      );
-    }),
+    items.map((item) =>
+      <menubutton
+        className="system-tray-item"
+        usePopover={false}
+        tooltipMarkup={bind(item, "tooltipMarkup")}
+        actionGroup={bind(item, "actionGroup").as((ag) => ["dbusmenu", ag])}
+        menuModel={bind(item, "menuModel")}
+      >
+        <icon gIcon={bind(item, "gicon")} />
+      </menubutton>
+    ),
   );
 
   // Wrap them all in a box
@@ -48,7 +36,8 @@ const Revealer = (
 );
 
 function SysTrayToggle() {
-  const ToggleIcon = <icon className="hider" icon={Icon.hider} />;
+  const ToggleIcon = <icon className="hider" icon={Icon.hider} />
+  const Indicator = <box className="indicator"></box>
 
   const toggle = () => {
     Revealer.revealChild = !Revealer.revealChild;
@@ -58,7 +47,12 @@ function SysTrayToggle() {
   };
 
   // Don't actually include the revealer in the hitbox
-  return <eventbox onClick={toggle}>{ToggleIcon}</eventbox>;
+  return <eventbox onClick={toggle}>
+    <box className={bind(tray, "items").as((items) => `hider-wrapper ${items.length > 0 ? "non-empty" : "empty"}`)}>
+      {Indicator}
+      {ToggleIcon}
+    </box>
+  </eventbox>;
 }
 
 export default function SysTray() {
