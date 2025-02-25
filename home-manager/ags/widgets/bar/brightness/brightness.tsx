@@ -2,7 +2,7 @@ import { bind } from "astal";
 import { Gtk } from "astal/gtk3";
 import WlSunset from "./wlsunset";
 
-import Brightness from "../../../lib/services/brightness";
+import Brightness from "../../../services/brightness";
 import HoverRevealer from "../../../lib/widgets/HoverRevealer";
 
 const brightness = Brightness.get_default();
