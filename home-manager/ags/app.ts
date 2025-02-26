@@ -1,3 +1,5 @@
+#!/usr/bin/env gjs -m
+
 import { App } from "astal/gtk3";
 
 // Get root stylesheet
