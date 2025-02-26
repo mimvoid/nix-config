@@ -16,18 +16,13 @@
 window {
   @include looks.radius;
 
-  &.popup {
-    menu {
-      @include looks.radius(0.66);
+  &.popover > box {
+    @include looks.radius(0.66);
+    @include fonts.menu-size;
 
-      padding: 1em;
-      background-color: color.change(palette.$base, $alpha: 0.7);
-      color: palette.$string;
-    }
-
-    menuitem {
-      margin: 2px;
-    }
+    padding: 1em;
+    background: color.change(palette.$base, $alpha: 0.9);
+    color: palette.$string;
   }
 }
 

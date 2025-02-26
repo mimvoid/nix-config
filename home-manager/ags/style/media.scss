@@ -3,15 +3,6 @@
 @use "./variables/fonts";
 @use "./variables/looks";
 
-window.media > box {
-  padding: 1em;
-}
-
-.media box {
-  @include fonts.menu-size;
-  padding: 0.25em;
-}
-
 .cover-art {
   @include looks.radius(0.5);
 

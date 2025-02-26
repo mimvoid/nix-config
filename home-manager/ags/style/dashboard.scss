@@ -2,13 +2,16 @@
 @use "./variables/fonts";
 @use "./variables/looks";
 
+#dashboard > box {
+  background-color: palette.$base;
+  margin: 0;
+}
+
 .dashboard box {
   @include fonts.menu-size;
 
-  margin: 0.5em;
-  padding: 0.5em;
-
   .container, .container box {
+    margin: 0.5em;
     padding: 0.25em;
   }
 }

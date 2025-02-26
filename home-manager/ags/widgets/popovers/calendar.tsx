@@ -1,8 +1,11 @@
-import { bind } from "astal";
-import { App, Astal, Gtk } from "astal/gtk3";
+import { bind, Variable } from "astal";
+import { Gtk } from "astal/gtk3";
 
+import Popover from "@lib/widgets/Popover";
 import { Calendar } from "@lib/astalified";
 import { time, uptime } from "@lib/variables";
+
+const { START, CENTER, END } = Gtk.Align;
 
 function Time() {
   const getTime = (fmt: string, className: string) => (
@@ -23,7 +26,7 @@ function Time() {
   ];
 
   return (
-    <box className="big-clock" halign={Gtk.Align.CENTER} hexpand>
+    <box className="big-clock" halign={CENTER} hexpand>
       {times.map((time) => getTime(time[0], time[1]))}
     </box>
   );
@@ -33,32 +36,41 @@ const Uptime = (
   <label
     label={bind(uptime).as((t) => `Uptime: ${Math.floor(t / 60)}h ${Math.floor(t % 60)}m` || "")}
     className="uptime"
-    valign={Gtk.Align.END}
+    valign={END}
     hexpand
     vexpand
   />
 )
 
 const CalendarWidget = (
-  <box className="calendar box" vertical>
+  <box className="calendar" vertical>
     <Time />
     {Uptime}
     <Calendar showHeading showDayNames showWeekNumbers />
   </box>
 );
 
-export default function CalendarWindow() {
-  return (
-    <window
+function CalendarWindow() {
+  const visible = Variable(false);
+
+  const Widget = (
+    <Popover
       name="calendar"
-      visible={false}
-      exclusivity={Astal.Exclusivity.NORMAL}
-      anchor={Astal.WindowAnchor.TOP}
-      layer={Astal.Layer.OVERLAY}
-      margin-top={2}
-      application={App}
+      className="popover"
+      visible={visible()}
+      onClose={() => visible.set(false)}
+      valign={START}
+      halign={CENTER}
+      marginTop={28}
     >
       {CalendarWidget}
-    </window>
+    </Popover>
   );
+
+  return {
+    visible: visible,
+    Widget: Widget
+  }
 }
+
+export default CalendarWindow()

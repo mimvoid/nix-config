@@ -3,13 +3,6 @@
 @use "./variables/looks";
 @use "./variables/fonts";
 
-.calendar {
-  all: unset;
-  padding: 1.5em;
-  background-color: color.change(palette.$base, $alpha: 0.9);
-  color: palette.$string;
-}
-
 .big-clock {
   margin: 2em 2em 1em;
 

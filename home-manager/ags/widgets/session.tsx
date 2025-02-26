@@ -68,7 +68,7 @@ export default function SessionMenu() {
       anchor={Astal.WindowAnchor.NONE}
       exclusivity={Astal.Exclusivity.NORMAL}
       layer={Astal.Layer.OVERLAY}
-      keymode={Astal.Keymode.ON_DEMAND}
+      keymode={Astal.Keymode.EXCLUSIVE}
       onKeyPressEvent={(_, event) => {
         if (event.get_keyval()[1] === Gdk.KEY_Escape) {
           App.toggle_window("session");

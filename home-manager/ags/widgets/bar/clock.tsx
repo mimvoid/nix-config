@@ -1,6 +1,7 @@
 import { bind } from "astal";
-import { App, Gtk } from "astal/gtk3";
+import { Gtk } from "astal/gtk3";
 
+import Calendar from "../popovers/calendar";
 import { time } from "@lib/variables";
 import Icon from "@lib/icons";
 
@@ -11,7 +12,7 @@ export default function Clock() {
   return (
     <button
       className="clock"
-      onClicked={() => App.toggle_window("calendar")}
+      onClicked={() => Calendar.visible.set(true)}
       cursor="pointer"
       halign={Gtk.Align.CENTER}
     >
