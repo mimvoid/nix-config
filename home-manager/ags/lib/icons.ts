@@ -1,7 +1,3 @@
-import { App } from "astal/gtk3";
-
-App.add_icons(`${SRC}/assets`);
-
 export default {
   bluetooth: {
     enabled: "bluetooth-active-symbolic",

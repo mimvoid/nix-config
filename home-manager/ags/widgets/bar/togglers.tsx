@@ -1,5 +1,5 @@
-import AppToggle from "../../lib/widgets/AppToggle";
-import Icon from "../../lib/icons";
+import AppToggle from "@lib/widgets/AppToggle";
+import Icon from "@lib/icons";
 
 // Toggle mpris media widget menu
 export const Media = AppToggle("media", "media-launch", Icon.music)

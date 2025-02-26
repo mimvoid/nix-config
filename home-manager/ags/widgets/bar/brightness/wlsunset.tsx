@@ -1,6 +1,6 @@
 import { bind } from "astal";
-import WlSunset from "../../../services/wlsunset";
-import Icon from "../../../lib/icons";
+import WlSunset from "@services/wlsunset";
+import Icon from "@lib/icons";
 
 const wlsunset = WlSunset.get_default();
 

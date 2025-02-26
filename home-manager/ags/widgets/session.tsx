@@ -1,6 +1,6 @@
 import { exec } from "astal";
 import { App, Astal, Gtk, Gdk } from "astal/gtk3";
-import Icon from "../lib/icons";
+import Icon from "@lib/icons";
 
 function Session() {
   const { START, END, FILL } = Gtk.Align;

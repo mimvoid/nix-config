@@ -1,6 +1,6 @@
 import { execAsync, Variable, bind } from "astal";
-import HoverRevealer from "../../lib/widgets/HoverRevealer";
-import Icons from "../../lib/icons";
+import HoverRevealer from "@lib/widgets/HoverRevealer";
+import Icons from "@lib/icons";
 
 // Initial color value
 const color = Variable("#F5BDE6");

@@ -1,7 +1,8 @@
 import { bind } from "astal";
 import { App, Gtk } from "astal/gtk3";
-import { time } from "../../lib/variables";
-import Icon from "../../lib/icons";
+
+import { time } from "@lib/variables";
+import Icon from "@lib/icons";
 
 export default function Clock() {
   // Format the date & time

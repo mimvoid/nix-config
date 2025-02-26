@@ -1,5 +1,5 @@
 import { Gtk } from "astal/gtk3";
-import Icons from "../../lib/icons";
+import Icons from "@lib/icons";
 
 // TODO: get actual values
 

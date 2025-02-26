@@ -1,6 +1,6 @@
 import { execAsync, bind } from "astal";
 import Network from "gi://AstalNetwork";
-import HoverRevealer from "../../lib/widgets/HoverRevealer";
+import HoverRevealer from "@lib/widgets/HoverRevealer";
 
 const network = Network.get_default();
 

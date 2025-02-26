@@ -1,8 +1,8 @@
 import { execAsync, bind } from "astal";
 import Bluetooth from "gi://AstalBluetooth";
 
-import HoverRevealer from "../../lib/widgets/HoverRevealer";
-import Icon from "../../lib/icons";
+import HoverRevealer from "@lib/widgets/HoverRevealer";
+import Icon from "@lib/icons";
 
 const bluetooth = Bluetooth.get_default();
 

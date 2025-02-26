@@ -5,7 +5,8 @@ import { Widget, Gtk } from "astal/gtk3";
 import Network from "gi://AstalNetwork";
 import Bluetooth from "gi://AstalBluetooth";
 import Wp from "gi://AstalWp";
-import Icons from "../../lib/icons";
+
+import Icons from "@lib/icons";
 
 const network = Network.get_default();
 const bluetooth = Bluetooth.get_default();

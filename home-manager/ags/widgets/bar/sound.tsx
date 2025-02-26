@@ -1,7 +1,7 @@
 import { bind } from "astal";
 import { Gtk } from "astal/gtk3";
 import Wp from "gi://AstalWp";
-import HoverRevealer from "../../lib/widgets/HoverRevealer";
+import HoverRevealer from "@lib/widgets/HoverRevealer";
 
 const speaker = Wp.get_default()?.audio.defaultSpeaker!;
 

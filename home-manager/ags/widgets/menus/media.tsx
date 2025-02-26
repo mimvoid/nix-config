@@ -1,7 +1,7 @@
 import { bind } from "astal";
 import { App, Astal, Gtk } from "astal/gtk3";
 import Mpris from "gi://AstalMpris";
-import Icon from "../../lib/icons";
+import Icon from "@lib/icons";
 
 const mpris = Mpris.get_default();
 

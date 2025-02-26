@@ -1,7 +1,7 @@
 import { bind } from "astal";
 import { Gtk } from "astal/gtk3";
 import Tray from "gi://AstalTray";
-import Icon from "../../lib/icons";
+import Icon from "@lib/icons";
 
 const tray = Tray.get_default();
 
