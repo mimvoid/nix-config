@@ -7,6 +7,7 @@
   all: unset;
   padding: 1.5em;
   background-color: color.change(palette.$base, $alpha: 0.9);
+  color: palette.$string;
 }
 
 .big-clock {
@@ -33,9 +34,13 @@
   }
 }
 
+.uptime {
+  margin-bottom: 1.25rem;
+  @include fonts.font-size(1.25);
+}
+
 calendar {
   @include fonts.menu-size;
-  color: palette.$string;
 
   // Keep week numbers aligned
   &:not(.highlight) {

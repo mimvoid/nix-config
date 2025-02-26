@@ -2,7 +2,7 @@ import { bind } from "astal";
 import { App, Astal, Gtk } from "astal/gtk3";
 
 import { Calendar } from "@lib/astalified";
-import { time } from "@lib/variables";
+import { time, uptime } from "@lib/variables";
 
 function Time() {
   const getTime = (fmt: string, className: string) => (
@@ -29,9 +29,20 @@ function Time() {
   );
 }
 
+const Uptime = (
+  <label
+    label={bind(uptime).as((t) => `Uptime: ${Math.floor(t / 60)}h ${Math.floor(t % 60)}m` || "")}
+    className="uptime"
+    valign={Gtk.Align.END}
+    hexpand
+    vexpand
+  />
+)
+
 const CalendarWidget = (
   <box className="calendar box" vertical>
     <Time />
+    {Uptime}
     <Calendar showHeading showDayNames showWeekNumbers />
   </box>
 );
