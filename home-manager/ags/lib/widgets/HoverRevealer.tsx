@@ -1,19 +1,27 @@
-import { Gtk } from "astal/gtk3";
+import { Binding, Variable } from "astal";
+import { Widget, Gtk } from "astal/gtk3";
 
-interface HoverRevealer {
-  hiddenChild: JSX.Element;
-  child: JSX.Element;
+interface HoverRevealerProps extends Widget.EventBoxProps {
+  hiddenChild: Gtk.Widget;
+  transitionDuration?: number | Binding<number | undefined> | undefined;
+  transitionType?: Gtk.RevealerTransitionType;
 }
 
-export default ({
+export default function HoverRevealer({
   hiddenChild,
   child,
+  transitionDuration = 250,
+  transitionType = Gtk.RevealerTransitionType.SLIDE_RIGHT,
   ...props
-}: HoverRevealer): JSX.Element => {
+}: HoverRevealerProps): Gtk.Widget {
+
+  const revealed = Variable(false);
+
   const Revealer = (
     <revealer
-      transitionDuration={250}
-      transitionType={Gtk.RevealerTransitionType.SLIDE_RIGHT}
+      transitionDuration={transitionDuration}
+      transitionType={transitionType}
+      revealChild={revealed()}
     >
       {hiddenChild}
     </revealer>
@@ -21,8 +29,8 @@ export default ({
 
   return (
     <eventbox
-      onHover={() => (Revealer.revealChild = true)}
-      onHoverLost={() => (Revealer.revealChild = false)}
+      onHover={() => revealed.set(true)}
+      onHoverLost={() => revealed.set(false)}
       {...props}
     >
       <box>
@@ -31,4 +39,4 @@ export default ({
       </box>
     </eventbox>
   );
-};
+}
