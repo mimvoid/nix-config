@@ -6,7 +6,7 @@ import Popover from "@lib/widgets/Popover";
 import Icon from "@lib/icons";
 
 const mpris = Mpris.get_default();
-const { START, CENTER } = Gtk.Align;
+const { START, CENTER, END } = Gtk.Align;
 
 // Action buttons for playback
 function Actions(player: Mpris.Player) {
@@ -123,40 +123,37 @@ function Progress(player: Mpris.Player) {
     player.length > 0 ? p / player.length : 0,
   );
 
-  function ProgressBar() {
-    return (
-      <slider
-        value={position}
-        onDragged={({ value }) => (player.position = value * player.length)}
-        visible={hasLength}
-      />
-    );
-  }
+  const ProgressBar = (
+    <slider
+      value={position}
+      onDragged={({ value }) => (player.position = value * player.length)}
+      visible={hasLength}
+      hexpand
+    />
+  );
 
   const Position = (
     <label
       className="position"
-      visible={hasLength}
-      halign={Gtk.Align.START}
-      hexpand
       label={bind(player, "position").as(lengthStr)}
+      visible={hasLength}
+      halign={START}
     />
   );
 
   const Length = (
     <label
       className="length"
-      visible={hasLength}
-      halign={Gtk.Align.END}
-      hexpand
       label={bind(player, "length").as((l) => (l > 0 ? lengthStr(l) : "0:00"))}
+      visible={hasLength}
+      halign={END}
     />
   );
 
   return (
     <box className="media-progress">
       {Position}
-      <ProgressBar />
+      {ProgressBar}
       {Length}
     </box>
   );
@@ -165,37 +162,36 @@ function Progress(player: Mpris.Player) {
 // Information about the current song
 function Media(player: Mpris.Player) {
   // Display cover art
-  const CoverArt = () => {
-    const coverArt = bind(player, "coverArt").as(
-      (cover) => `background-image: url('${cover}')`,
-    );
-
-    return (
-      <box className="cover-art" valign={Gtk.Align.CENTER} css={coverArt} />
-    );
-  };
+  const CoverArt = (
+    <box
+      className="cover-art"
+      valign={CENTER}
+      css={bind(player, "coverArt").as((cover) => `background-image: url('${cover}')`)}
+    />
+  );
 
   const Title = (
     <label
-      className="media-title"
-      wrap
-      justify={Gtk.Justification.CENTER}
+      className="media-title title"
       label={bind(player, "title")}
+      maxWidthChars={36}
+      justify={Gtk.Justification.CENTER}
+      wrap
     />
   );
 
   const Artist = (
     <label
       className="media-artist"
-      wrap
-      justify={Gtk.Justification.CENTER}
       label={bind(player, "artist")}
+      justify={Gtk.Justification.CENTER}
+      wrap
     />
   );
 
   return (
-    <box vertical>
-      <CoverArt />
+    <box className="with-cover-art" vertical>
+      {CoverArt}
       {Title}
       {Artist}
     </box>

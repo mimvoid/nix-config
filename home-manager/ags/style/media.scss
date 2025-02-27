@@ -3,16 +3,21 @@
 @use "./variables/fonts";
 @use "./variables/looks";
 
+window.media > box {
+  padding: 1.5rem;
+}
+
 .cover-art {
   @include looks.radius(0.5);
 
-  min-height: 20em;
-  min-width: 20em;
+  min-height: 24rem;
+  min-width: 24rem;
   margin: 1.5em 0;
 
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
+  background-color: palette.$box;
 }
 
 .media-title {
@@ -29,19 +34,24 @@
 }
 
 .media-progress {
-  margin-top: 1em;
+  margin: 1.5rem 0 0.75rem 0;
 
   trough {
-    min-width: 22em;
+    margin: 0 0.5rem;
 
     highlight {
       background-color: palette.$primary;
     }
   }
+
+  .position,
+  .length {
+    @include fonts.font-size;
+  }
 }
 
 .media-actions {
-  padding: 0 5em; // bring closer together
+  padding: 0 2.5rem;
 
   icon {
     @include fonts.menu-size(1.15);
@@ -56,8 +66,8 @@
 button.play-pause {
   @include looks.transition;
 
-  margin: 0 1em;
-  padding: 1.25em;
+  margin: 0 1rem;
+  padding: 1.25rem;
 
   background-color: palette.$box;
   color: palette.$primary-bright;
@@ -70,6 +80,7 @@ button.play-pause {
 
 // Make them less noticable
 button.loop, button.shuffle {
+  margin: 0 1.5rem;
   color: palette.$string-dim;
 
   &:hover {
