@@ -1,9 +1,9 @@
-import { execAsync, Variable, bind } from "astal";
+import { bind } from "astal";
+import Picker from "@services/colorpicker";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
 import Icons from "@lib/icons";
 
-// Initial color value
-const color = Variable("#F5BDE6");
+const picker = Picker.get_default();
 
 function Trigger() {
   const Icon = <icon icon={Icons.colorpicker} />;
@@ -11,14 +11,8 @@ function Trigger() {
   return (
     <button
       className="color-button"
-      onClicked={() =>
-        // Update color Variable with hyprpicker
-        // FIX: only updates with the second to last color
-        execAsync("hyprpicker --format=hex -a -n")
-          .then((out) => color.set(out))
-          .catch((err) => printerr(err))
-      }
-      tooltipText={bind(color).as((c) => `Last color: ${c}`)}
+      onClicked={() => picker.pick()}
+      tooltipText={bind(picker, "color").as((c) => `Last color: ${c}`)}
       cursor="pointer"
     >
       {Icon}
@@ -32,7 +26,7 @@ function Color() {
     <box className="color-circle">
       <box
         className="color-display"
-        css={bind(color).as((c) => `background-color: ${c}`)}
+        css={bind(picker, "color").as((c) => `background-color: ${c}`)}
       />
     </box>
   );
@@ -41,10 +35,12 @@ function Color() {
   return (
     <HoverRevealer
       hiddenChild={
-        <box className="color-box">
-          {bind(color)}
-          {colorDisplay}
-        </box>
+        <button className="color-box" cursor="pointer" onClicked={() => picker.copy()}>
+          <box>
+            {bind(picker, "color").as((c) => c)}
+            {colorDisplay}
+          </box>
+        </button>
       }
     >
       <Trigger />
