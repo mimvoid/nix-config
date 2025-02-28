@@ -2,6 +2,7 @@ import { bind } from "astal";
 import { Gtk } from "astal/gtk3";
 import Wp from "gi://AstalWp";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
+import AudioPopover from "../popovers/audio";
 
 const speaker = Wp.get_default()?.audio.defaultSpeaker!;
 
@@ -26,7 +27,7 @@ const Slider = (
 // Only show slider on hover
 function SliderHover() {
   // Format volume as percentage
-  const label = bind(speaker, "volume").as((i) => `${Math.floor(i * 100)}%`);
+  const Label = bind(speaker, "volume").as((i) => `${Math.floor(i * 100)}%`);
 
   // Hitbox does not include the icon
   // Makes clicking on the icon button easier
@@ -46,8 +47,10 @@ function SliderHover() {
             : (speaker.volume = 0);
         }
       }}
+      onClick={() => AudioPopover.visible.set(true)}
+      cursor="pointer"
     >
-      {label}
+      {Label}
     </HoverRevealer>
   )
 }

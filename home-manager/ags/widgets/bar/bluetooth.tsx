@@ -1,6 +1,7 @@
 import { execAsync, bind } from "astal";
 import Bluetooth from "gi://AstalBluetooth";
 
+import BluetoothPopover from "../popovers/bluetooth";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
 import Icon from "@lib/icons";
 
@@ -31,29 +32,23 @@ function Indicator() {
 }
 
 function BluetoothBox() {
-  // Show connected device names
+  // Show first connected device name
+  function Device() {
+    if (bind(bluetooth, "isConnected").as((c) => !c)) {
+      return <label label="None connected" />;
+    }
 
-  const Devices = bind(bluetooth, "devices").as((d) =>
-    d.map((device) => (
-      <label label={device.alias} visible={bind(device, "connected")} />
-    )),
-  );
-
-  const DefaultLabel = (
-    <label
-      label="None connected"
-      visible={bind(bluetooth, "isConnected").as((c) => !c)}
-    />
-  );
+    return bind(bluetooth, "devices").as((d) => {
+      const first = d.filter((device) => device.connected)[0]
+      return <label label={first.alias} visible={bind(first, "connected")} />
+    })
+  }
 
   return (
     <HoverRevealer
-      hiddenChild={
-        <box>
-          {DefaultLabel}
-          {Devices}
-        </box>
-      }
+      hiddenChild={<box>{Device()}</box>}
+      onClick={() => BluetoothPopover.visible.set(true)}
+      cursor="pointer"
     >
       <Indicator />
     </HoverRevealer>
