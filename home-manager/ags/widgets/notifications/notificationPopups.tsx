@@ -1,26 +1,20 @@
 import { Astal, Gtk, Gdk } from "astal/gtk3";
-import { type Subscribable } from "astal/binding";
+import { Subscribable } from "astal/binding";
 import { Variable, bind, timeout } from "astal";
 
 import Notifd from "gi://AstalNotifd";
 import Notification from "./notification";
 
-// Maps notifications and puts them in a window
-// from https://github.com/Aylur/astal/blob/main/examples/js/notifications/notifications/NotificationPopups.tsx
-
-// see comment below in constructor
+const notifd = Notifd.get_default();
 const TIMEOUT_DELAY = 5000;
 
-// This class replaces Variable<Array<Widget>>
-// with a Map<number, Widget> type to track notification widgets by their id,
-// while making it conveniently bindable as an array
+// Maps notifications and puts them in a window
 
-class NotifiationMap implements Subscribable {
-  // The underlying map to keep track of id widget pairs
-  private map: Map<number, Gtk.Widget> = new Map();
+// Use a Map<number, Widget> type to track notification widgets by their id,
+// while making it bindable as an array
 
-  // It makes sense to use a Variable under the hood and use its
-  // reactivity implementation instead of keeping track of subscribers ourselves
+class NotificationMap implements Subscribable {
+  private map: Map<number, Gtk.Widget> = new Map(); // for id widget pairs
   private var: Variable<Array<Gtk.Widget>> = Variable([]);
 
   // Notify subscribers to rerender when state changes
@@ -29,58 +23,31 @@ class NotifiationMap implements Subscribable {
   }
 
   private constructor() {
-    const notifd = Notifd.get_default();
+    if (notifd.dontDisturb) return;
 
-    // Ignore timeout by senders and enforce our own
-
-    // NOTE: if the notification has any actions
-    // they might not work, since the sender already treats them as resolved
     notifd.ignoreTimeout = true;
 
     notifd.connect("notified", (_, id) => {
-      this.set(
-        id,
-        Notification({
-          notification: notifd.get_notification(id)!,
-
-          // Once hovering over the notification is done,
-          // destroy the widget without calling notification.dismiss(),
-          // so that it acts as a "popup" and we can still display it
-          // in a notification center-like widget,
-          // but clicking on the close button will close it
-
-          // TODO: Actually, do dismiss it (see function below)
-          // I do not like notification centers
-          onHoverLost: () => this.delete(id),
-
-          // Notifd by default does not close notifications
-          // until user input or the timeout specified by sender,
-          // which we set to ignore above
-          setup: () =>
-            timeout(TIMEOUT_DELAY, () => {
-              this.delete(id);
-            }),
-        }),
-      );
+      this.set(id, Notification({
+        notification: notifd.get_notification(id),
+        onHoverLost: () => this.dismiss(id),
+        setup: () => timeout(TIMEOUT_DELAY, () => this.dismiss(id)),
+      }));
     });
 
-    // Handle when notifications are closed from
-    // the outside before any user input
-    notifd.connect("resolved", (_, id) => {
-      this.delete(id);
-    });
+    // Handle when notifications are closed from the outside before any user input
+    notifd.connect("resolved", (_, id) => this.dismiss(id));
   }
 
   private set(key: number, value: Gtk.Widget) {
-    // In case of replacement, destroy previous widget
-    this.map.get(key)?.destroy();
+    this.map.get(key)?.destroy(); // In case of replacement, destroy previous widget
     this.map.set(key, value);
     this.notifiy();
   }
 
-  private delete(key: number) {
+  private dismiss(key: number) {
     this.map.get(key)?.destroy();
-    this.map.delete(key);
+    notifd.get_notification(key)?.dismiss();
     this.notifiy();
   }
 
@@ -97,7 +64,7 @@ class NotifiationMap implements Subscribable {
 
 export default function NotificationPopups(gdkmonitor: Gdk.Monitor) {
   const { TOP, RIGHT } = Astal.WindowAnchor;
-  const notifs = new NotifiationMap();
+  const notifs = new NotificationMap();
 
   return (
     <window
