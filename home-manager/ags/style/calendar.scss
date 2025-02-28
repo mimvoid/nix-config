@@ -8,7 +8,7 @@
 
   .hour, .minute {
     @include fonts.display-size(1.5);
-    margin: 0 0.05em; // space out a little more
+    margin: 0 0.1rem; // space out a little more
   }
 
   .hour {
@@ -20,6 +20,7 @@
   }
 
   .second {
+    @include fonts.display-size;
     min-width: 1.5em;
     margin: 0;
     padding-bottom: 0.1em;
@@ -29,7 +30,6 @@
 
 .uptime {
   margin-bottom: 1.25rem;
-  @include fonts.font-size(1.25);
 }
 
 calendar {

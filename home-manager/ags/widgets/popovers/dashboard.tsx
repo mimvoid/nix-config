@@ -1,23 +1,30 @@
 import { Variable } from "astal";
-import { exec } from "astal/process";
 import { Gtk } from "astal/gtk3";
 
 import Popover from "@lib/widgets/Popover";
 import Toggles from "./dashboard/toggles";
 import Stats from "./dashboard/stats";
 
+import { distro, name } from "@lib/variables";
+
+const { START, CENTER } = Gtk.Align;
+
 function User() {
-  const Avatar = <box className="avatar" />;
-  const Username = (
-    <label className="avatar" label={exec("sh -c 'echo $USER'")} />
+  const Avatar = (
+    <box className="avatar with-bg-img" css={`background-image: url('${SRC}/assets/avatar.jpg')`} />
+  );
+
+  const Names = (
+    <box vertical valign={CENTER}>
+      <label className="avatar title" label={name.username} halign={START} />
+      <label label={name.hostname} halign={START} />
+    </box>
   );
 
   return (
-    <box className="container">
-      <box halign={Gtk.Align.START} hexpand>
-        {Avatar}
-        {Username}
-      </box>
+    <box className="user-info section">
+      {Avatar}
+      {Names}
     </box>
   );
 }

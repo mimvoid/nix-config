@@ -2,6 +2,7 @@ export default {
   bluetooth: {
     enabled: "bluetooth-active-symbolic",
     disabled: "bluetooth-disabled-symbolic",
+    paired: "emblem-favorite-symbolic",
   },
 
   brightness: {
@@ -45,6 +46,8 @@ export default {
     reboot: "view-refresh-symbolic",
     shutdown: "system-shutdown-symbolic",
   },
+
+  waiting: "content-loading-symbolic",
 
   wlsunset: {
     on: "display-brightness-symbolic",

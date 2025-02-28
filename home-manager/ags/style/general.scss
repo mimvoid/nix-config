@@ -23,6 +23,31 @@ window {
     padding: 1em;
     background: color.change(palette.$base, $alpha: 0.9);
     color: palette.$string;
+
+    .section {
+      margin: 1rem;
+    }
+
+    label {
+      @include fonts.font-size(1.25);
+
+      &.title {
+        @include fonts.menu-size;
+        margin-left: 0;
+        margin-bottom: 0.75rem;
+        font-weight: bolder;
+        color: palette.$primary-bright;
+      }
+    }
+
+    trough {
+      margin: 0.5rem 0.5rem 0.5rem 0;
+      min-height: 0.6rem;
+
+      + label {
+        margin-left: 0;
+      }
+    }
   }
 }
 
@@ -34,6 +59,13 @@ window {
 .container {
   @include looks.radius;
   background-color: palette.$box-dim;
+}
+
+.with-bg-img {
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-color: palette.$box;
 }
 
 button {

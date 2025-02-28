@@ -12,7 +12,7 @@ function Time() {
     <label
       label={bind(time).as((t) => t?.format(fmt) || "")}
       className={`display ${className}`}
-      valign={Gtk.Align.END}
+      valign={END}
       hexpand
       vexpand
     />

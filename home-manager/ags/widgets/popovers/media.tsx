@@ -164,7 +164,7 @@ function Media(player: Mpris.Player) {
   // Display cover art
   const CoverArt = (
     <box
-      className="cover-art"
+      className="cover-art with-bg-img"
       valign={CENTER}
       css={bind(player, "coverArt").as((cover) => `background-image: url('${cover}')`)}
     />

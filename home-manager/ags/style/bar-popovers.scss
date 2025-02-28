@@ -1,0 +1,81 @@
+@use "./palettes/palette";
+@use "./variables/looks";
+@use "./variables/fonts";
+
+.big-icon {
+  @include looks.transition;
+  @include fonts.menu-size(1.25);
+  padding: 0.5rem 0.25rem;
+}
+
+.audio-popover .section {
+  &.speaker {
+    trough highlight {
+      background: palette.$tertiary-bright;
+    }
+
+    button icon {
+      color: palette.$tertiary-bright;
+    }
+  }
+
+  &.microphone {
+    trough highlight {
+      background: palette.$tertiary;
+    }
+
+    button icon {
+      color: palette.$tertiary;
+    }
+  }
+
+  box > label {
+    padding: 0;
+    margin-left: 0;
+  }
+
+  button {
+    margin-right: 0.75rem;
+  }
+}
+
+.bluetooth-popover {
+  .status {
+    margin-bottom: 1rem;
+
+    button icon {
+      color: palette.$tertiary;
+    }
+  }
+
+  .device {
+    padding: 0.5rem;
+
+    .device-info {
+      @include looks.transition;
+      margin-left: 0.75rem;
+      color: palette.$string-dim;
+      opacity: 0;
+    }
+
+    &:hover .device-info {
+      opacity: 1;
+    }
+  }
+}
+
+.network-popover {
+  .current {
+    icon {
+      @include looks.transition;
+    }
+
+    button {
+      margin-right: 0.75rem;
+
+      icon {
+        color: palette.$tertiary-dim;
+      }
+    }
+  }
+}
