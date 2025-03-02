@@ -1,4 +1,13 @@
 export default {
+  actions: {
+    edit: "document-edit-symbolic",
+    copy: "edit-copy-symbolic",
+    close: "window-close-symbolic",
+    clear: "edit-clear-symbolic",
+    clearAll: "edit-clear-all-symbolic",
+    save: "document-save-symbolic",
+  },
+
   bluetooth: {
     enabled: "bluetooth-active-symbolic",
     disabled: "bluetooth-disabled-symbolic",
