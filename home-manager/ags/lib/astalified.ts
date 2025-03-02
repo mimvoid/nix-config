@@ -6,9 +6,17 @@ export class Calendar extends astalify(Gtk.Calendar) {
     GObject.registerClass(this);
   }
 
-  constructor(
-    props: ConstructProps<Calendar, Gtk.Calendar.ConstructorProps, {}>,
-  ) {
+  constructor(props: ConstructProps<Calendar, Gtk.Calendar.ConstructorProps, {}>) {
+    super(props as any);
+  }
+}
+
+export class ColorButton extends astalify(Gtk.ColorButton) {
+  static {
+    GObject.registerClass(this);
+  }
+
+  constructor(props: ConstructProps<ColorButton, Gtk.ColorButton.ConstructorProps, {}>) {
     super(props as any);
   }
 }
