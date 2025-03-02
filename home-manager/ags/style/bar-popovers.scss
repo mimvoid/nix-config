@@ -79,3 +79,43 @@
     }
   }
 }
+
+.colors-popover {
+  > box {
+    min-width: 20rem;
+  }
+
+  .color-box {
+    @include looks.radius;
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+  }
+
+  .main-info {
+    padding-left: 0;
+  }
+
+  .actions {
+    opacity: 0.5;
+    padding: 0.25rem;
+  }
+
+  .converter {
+    .color-box {
+      margin: 0;
+    }
+
+    colorswatch {
+      @include looks.radius;
+      min-width: 8rem;
+      min-height: 6rem;
+    }
+
+    entry {
+      @include fonts.font-size(1.25);
+      min-width: 16em;
+      margin: 0.5em 0;
+      color: palette.$string;
+    }
+  }
+}

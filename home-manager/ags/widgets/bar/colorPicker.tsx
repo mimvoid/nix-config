@@ -2,6 +2,7 @@ import { bind } from "astal";
 import Picker from "@services/colorpicker";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
 import Icons from "@lib/icons";
+import ColorsPopover from "../popovers/colors";
 
 const picker = Picker.get_default();
 
@@ -11,8 +12,8 @@ function Trigger() {
   return (
     <button
       className="color-button"
-      onClicked={() => picker.pick()}
-      tooltipText={bind(picker, "color").as((c) => `Last color: ${c}`)}
+      onClicked={() => picker.pick().catch(console.error)}
+      tooltipText={bind(picker, "colors").as(() => `Last color: ${picker.lastColor()}`)}
       cursor="pointer"
     >
       {Icon}
@@ -26,7 +27,7 @@ function Color() {
     <box className="color-circle">
       <box
         className="color-display"
-        css={bind(picker, "color").as((c) => `background-color: ${c}`)}
+        css={bind(picker, "colors").as(() => `background-color: ${picker.lastColor()}`)}
       />
     </box>
   );
@@ -35,13 +36,12 @@ function Color() {
   return (
     <HoverRevealer
       hiddenChild={
-        <button className="color-box" cursor="pointer" onClicked={() => picker.copy()}>
-          <box>
-            {bind(picker, "color").as((c) => c)}
-            {colorDisplay}
-          </box>
-        </button>
+        <box className="color-box">
+          {bind(picker, "colors").as(() => picker.lastColor())}
+          {colorDisplay}
+        </box>
       }
+      onClick={() => ColorsPopover.visible.set(true)}
     >
       <Trigger />
     </HoverRevealer>

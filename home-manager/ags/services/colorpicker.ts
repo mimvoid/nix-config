@@ -1,5 +1,18 @@
+import { execAsync, readFile, writeFile } from "astal";
 import GObject, { register, property } from "astal/gobject";
-import { execAsync } from "astal";
+import GLib from "gi://GLib";
+
+const COLORS_STORE = GLib.get_user_state_dir() + "/ags/colorpicker.json";
+const MAX_COLORS = 10;
+
+function readColorsCache() : string[] {
+  try {
+    return JSON.parse(readFile(COLORS_STORE));
+  } catch (error) {
+    writeFile(COLORS_STORE, "[]");
+    return [];
+  }
+}
 
 @register({ GTypeName: "Colorpicker" })
 export default class ColorPicker extends GObject.Object {
@@ -10,29 +23,56 @@ export default class ColorPicker extends GObject.Object {
     return this.instance;
   }
 
-  #color = "#F5BDE6" // default value
+  #colors = readColorsCache();
 
-  @property(String)
-  get color() {
-    return this.#color;
+  @property()
+  get colors() {
+    return [...this.#colors];
   }
 
-  set color(value) {
-    this.#color = value;
-    this.notify("color");
+  set colors(colors) {
+    this.#colors = colors;
+    this.notify("colors");
+    writeFile(COLORS_STORE, JSON.stringify(colors, null, 2));
   }
+
+  lastColor() {
+    return this.colors[this.colors.length - 1] || "#000000";
+  }
+
+  readonly storePath = COLORS_STORE;
 
   readonly pick = async () => {
-    const out = await execAsync("hyprpicker --format=hex --autocopy --no-fancy").catch(console.error);
-    if (!out) return;
+    const color = await execAsync("hyprpicker --format=hex --autocopy --no-fancy").catch(console.error);
+    if (!color) return;
 
-    // FIX: still has an issue with updating the color
-    this.#color = out;
-    this.notify("color");
+    this.add(color.toLowerCase());
+    return color.toLowerCase();
   }
 
-  readonly copy = async () => {
-    execAsync(["wl-copy", this.#color]).catch(console.error).catch(console.error);
-    execAsync(`notify-send "Colorpicker" "Copied to clipboard:\n\n${this.#color}"`).catch(console.error);
+  readonly copy = async (color: string) => {
+    execAsync(["wl-copy", color]).catch(console.error);
+    execAsync(`notify-send "Colorpicker" "Copied to clipboard:\n\n${color}"`).catch(console.error);
   }
+
+  readonly add = (color: string) => {
+    let list = this.colors;
+
+    if (list.includes(color)) {
+      list = list.filter((c) => c !== color);
+      list.push(color);
+    } else {
+      list.push(color);
+      if (list.length > MAX_COLORS) list.shift();
+    }
+
+    this.colors = list;
+  }
+
+  readonly remove = (color: string) => {
+    const newList = this.colors.filter((c) => c !== color);
+    this.colors = newList;
+  }
+
+  readonly clear = () => this.colors = [];
 }
