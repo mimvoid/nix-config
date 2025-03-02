@@ -68,6 +68,23 @@ window {
   background-color: palette.$box;
 }
 
+.dropdown {
+  > button {
+    padding: 0.5rem;
+    padding-bottom: 0;
+    margin-bottom: 1rem;
+
+    icon {
+      @include looks.transition;
+      @include fonts.font-size(1.25);
+    }
+  }
+
+  &.open > button icon {
+    -gtk-icon-transform: rotate(-180deg);
+  }
+}
+
 button {
   @include looks.radius;
   @include looks.transition;
@@ -82,6 +99,12 @@ button {
 
 label {
   margin: 0 0.4em;
+}
+
+entry {
+  @include looks.radius;
+  padding: 0.5rem;
+  background-color: palette.$box-dim;
 }
 
 trough {
@@ -108,5 +131,21 @@ tooltip {
     padding: 0.5em 1em;
     color: palette.$string;
     background-color: color.change(palette.$base, $alpha: 0.7);
+  }
+}
+
+dialog {
+  $bg: color.change(palette.$base, $alpha: 1);
+
+  @include looks.radius;
+  @include fonts.menu-size;
+
+  background-color: $bg;
+  color: palette.$string;
+
+  > box,
+  headerbar {
+    background-color: $bg;
+    padding: 1rem;
   }
 }
