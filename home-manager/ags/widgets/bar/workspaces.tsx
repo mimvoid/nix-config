@@ -12,7 +12,7 @@ const Spaces = bind(hypr, "workspaces").as((wss) =>
     .map((ws) => (
       <button
         className={bind(hypr, "focusedWorkspace").as((fw) =>
-          ws === fw ? "focused" : "",
+          ws === fw ? "active" : ""
         )}
         onClicked={() => ws.focus()}
         cursor="pointer"

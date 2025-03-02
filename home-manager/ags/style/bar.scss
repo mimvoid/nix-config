@@ -19,16 +19,8 @@
 .icon-label {
   margin: 0 0.75em;
 
-  button {
-    padding: 0.25em;
-
-    icon {
-      padding: 0.25em;
-    }
-  }
-
   + .icon-label {
-    margin-left: 0.2em;
+    margin-left: 0.35em;
   }
 }
 
@@ -41,8 +33,7 @@
 }
 
 .workspaces {
-  // Make workspace buttons slimmer
-  padding: 0.6em;
+  padding: 0.6em; // Make workspace buttons slimmer
 
   button {
     @include looks.transition;
@@ -53,7 +44,7 @@
     background-color: palette.$primary;
 
     // Expand active workspace GNOME-style
-    &.focused {
+    &.active {
       padding: 0 1.25em;
       background-color: palette.$primary-dim;
     }
@@ -66,9 +57,10 @@
 
 .clock {
   padding-right: 0;
+  margin-right: 0.25em;
 
   icon {
-    margin: 0 0.4em 0 0.25em;
+    margin: 0 0.75em 0 0.25em;
   }
 
   // Disable default button background color
@@ -76,11 +68,15 @@
     background-color: transparent;
   }
 }
+.media-launch {
+  padding-left: 0.75em;
+  padding-right: 0.75em;
+}
 
 .system-tray-item {
   margin: 0 2px;
 
-  // Change icons to Papirus for more compatibility
+  // Change icons for better compatibility
   image {
     all: unset;
     @include looks.fallback-icons;
@@ -114,11 +110,10 @@
 .colorpicker {
   @include looks.radius;
 
-  margin: 0 0.25em;
+  margin: 0 0 0 0.25em;
   padding: 0 0.25em;
 
   button {
-    padding-right: 0;
     color: palette.$primary-dim;
   }
 
@@ -143,10 +138,11 @@
 }
 
 .sound {
-  color: palette.$tertiary-bright;
+  $c: palette.$tertiary-bright;
+  color: $c;
 
   trough highlight {
-    background-color: palette.$tertiary-bright;
+    background-color: $c;
   }
 }
 
@@ -163,7 +159,8 @@
 }
 
 .brightness {
-  color: color.adjust(palette.$error, $lightness: 8%);
+  $c: color.adjust(palette.$error, $lightness: 8%);
+  color: $c;
 
   // Widen the hit box
   eventbox > box {
@@ -171,7 +168,7 @@
   }
 
   highlight {
-    background-color: color.adjust(palette.$error, $lightness: 8%);
+    background-color: $c;
   }
 }
 .wlsunset-toggle {

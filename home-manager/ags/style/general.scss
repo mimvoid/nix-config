@@ -7,6 +7,10 @@
   all: unset;
   @include fonts.font;
   -gtk-icon-theme: "Adwaita";
+
+  + label {
+    margin-left: 0.4em;
+  }
 }
 
 .display {
@@ -24,20 +28,8 @@ window {
     background: color.change(palette.$base, $alpha: 0.9);
     color: palette.$string;
 
-    .section {
-      margin: 1rem;
-    }
-
     label {
-      @include fonts.font-size(1.25);
-
-      &.title {
-        @include fonts.menu-size;
-        margin-left: 0;
-        margin-bottom: 0.75rem;
-        font-weight: bolder;
-        color: palette.$primary-bright;
-      }
+      @include fonts.menu-size;
     }
 
     trough {
@@ -55,10 +47,8 @@ window {
   @include looks.radius;
   background-color: palette.$base;
 }
-
-.container {
-  @include looks.radius;
-  background-color: palette.$box-dim;
+.section {
+  margin: 1rem;
 }
 
 .with-bg-img {
@@ -89,16 +79,28 @@ button {
   @include looks.radius;
   @include looks.transition;
 
-  padding: 0 0.4em;
+  padding: 0.4em;
   background-color: transparent;
 
-  &:focus, &:hover {
+  &:focus {
+    background-color: palette.$box-dim;
+  }
+
+  &:hover {
     background-color: palette.$box;
   }
 }
 
 label {
-  margin: 0 0.4em;
+  margin-right: 0.4em;
+}
+label.title,
+.popover > box label.title {
+  @include fonts.title-size;
+  margin-left: 0;
+  margin-bottom: 0.75rem;
+  font-weight: bolder;
+  color: palette.$primary-bright;
 }
 
 entry {
@@ -112,11 +114,12 @@ trough {
 
   min-width: 8em;
   min-height: 0.6em;
-  margin: 0 0.25em;
+  margin: 0.25em;
 
   background-color: palette.$box-bright;
 
-  highlight, block.filled {
+  highlight,
+  block.filled {
     @include looks.radius;
   }
 }
@@ -128,7 +131,7 @@ tooltip {
   label {
     @include looks.radius;
 
-    padding: 0.5em 1em;
+    padding: 1em;
     color: palette.$string;
     background-color: color.change(palette.$base, $alpha: 0.7);
   }
@@ -140,12 +143,12 @@ dialog {
   @include looks.radius;
   @include fonts.menu-size;
 
-  background-color: $bg;
   color: palette.$string;
+  background-color: $bg;
 
   > box,
   headerbar {
-    background-color: $bg;
     padding: 1rem;
+    background-color: $bg;
   }
 }

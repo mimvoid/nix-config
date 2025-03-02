@@ -98,7 +98,7 @@ function Actions() {
         <icon icon={Icons.actions.save} />
       </button>
       <button onClick={() => picker.clear()}>
-        <icon icon={Icons.actions.clear} />
+        <icon icon={Icons.actions.clearAll} />
       </button>
     </box>
   )

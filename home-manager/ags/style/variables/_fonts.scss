@@ -4,7 +4,8 @@ $font-size: 10px;
 $display: "RitzFLF", serif;
 $display-size: 48px;
 
-$menu-size: 15px;
+$menu-size: 12.5px;
+$title-size: 15px;
 
 
 @mixin font-family() {
@@ -31,4 +32,7 @@ $menu-size: 15px;
 
 @mixin menu-size($scale: 1) {
   font-size: $menu-size * $scale;
+}
+@mixin title-size($scale: 1) {
+  font-size: $title-size * $scale;
 }

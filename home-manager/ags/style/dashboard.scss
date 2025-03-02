@@ -3,17 +3,9 @@
 @use "./variables/looks";
 
 #dashboard > box {
+  @include fonts.menu-size;
   background-color: palette.$base;
   margin: 0;
-}
-
-.dashboard box {
-  @include fonts.menu-size;
-
-  .container, .container box {
-    margin: 0.5em;
-    padding: 0.25em;
-  }
 }
 
 .user-info {
@@ -26,10 +18,6 @@
 
   label {
     margin: 0;
-
-    &.avatar {
-      color: palette.$primary-bright;
-    }
   }
 }
 
@@ -50,10 +38,6 @@
   }
 
   icon {
-    @include fonts.menu-size;
-  }
-}
-
 .dashboard .stat-box {
   // Icon names aren't supported by Adwaita
   .cpu icon,

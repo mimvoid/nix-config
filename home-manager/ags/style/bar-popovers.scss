@@ -4,28 +4,30 @@
 
 .big-icon {
   @include looks.transition;
-  @include fonts.menu-size(1.25);
+  @include fonts.title-size(1.1);
   padding: 0.5rem 0.25rem;
 }
 
 .audio-popover .section {
   &.speaker {
-    trough highlight {
-      background: palette.$tertiary-bright;
-    }
+    $c: palette.$tertiary-bright;
 
+    trough highlight {
+      background: $c;
+    }
     button icon {
-      color: palette.$tertiary-bright;
+      color: $c;
     }
   }
 
   &.microphone {
-    trough highlight {
-      background: palette.$tertiary;
-    }
+    $c: palette.$tertiary;
 
+    trough highlight {
+      background: $c;
+    }
     button icon {
-      color: palette.$tertiary;
+      color: $c;
     }
   }
 
@@ -112,7 +114,7 @@
     }
 
     entry {
-      @include fonts.font-size(1.25);
+      @include fonts.menu-size;
       min-width: 16em;
       margin: 0.5em 0;
       color: palette.$string;

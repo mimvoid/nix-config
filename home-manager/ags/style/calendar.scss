@@ -33,7 +33,7 @@
 }
 
 calendar {
-  @include fonts.menu-size;
+  @include fonts.title-size;
 
   // Keep week numbers aligned
   &:not(.highlight) {
