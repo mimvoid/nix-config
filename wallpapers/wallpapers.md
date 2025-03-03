@@ -61,6 +61,58 @@ Filename format: `artist-name_title-name.filetype`
 </details>
 <br>
 
+### Anthonio Amaury
+
+[DeviantArt](https://www.deviantart.com/amaury2502/gallery)
+
+<details open><summary>
+
+#### [The Moon and the Stars](https://www.deviantart.com/amaury2502/art/The-Moon-and-the-Stars-905048695)
+
+</summary>
+
+![The Moon and the Stars by Anthonio Amaury](wallpapers/anthonio-amaury_moon-and-stars.jpg)
+
+</details>
+
+<details open><summary>
+
+#### [The Last Stars Before Dawn](https://www.deviantart.com/amaury2502/art/The-last-stars-before-dawn-941385647)
+
+</summary>
+
+![The Last Stars Before Dawn by Anthonio Amaury](wallpapers/anthonio-amaury_last-stars-before-dawn.jpg)
+
+</details>
+<details open><summary>
+
+#### [Red Leaves](https://www.deviantart.com/amaury2502/art/Red-Leaves-979865962)
+
+</summary>
+
+![Red Leaves by Anthonio Amaury](wallpapers/anthonio-amaury_red-leaves.png)
+
+</details>
+<details open><summary>
+
+#### [Landcore](https://www.deviantart.com/amaury2502/art/Landcore-1020721179)
+
+</summary>
+
+![Landcore by Anthonio Amaury](wallpapers/anthonio-amaury_landcore.png)
+
+</details>
+<details open><summary>
+
+#### [Velvet](https://www.deviantart.com/amaury2502/art/Velvet-1105098714)
+
+</summary>
+
+![Velvet by Anthonio Amaury](wallpapers/anthonio-amaury_velvet.jpg)
+
+</details>
+<br />
+
 ### Axle (鳥)
 
 [Pixiv](https://www.pixiv.net/en/users/8236670)
@@ -316,6 +368,31 @@ Original source unknown
 </details>
 <br>
 
+### Hue Teo
+
+[Homepage](https://htartist.artstation.com),
+[Artstation](https://www.artstation.com/htartist)
+
+<details open><summary>
+
+#### [From Ireland to Magdalene Islands 1](https://www.artstation.com/artwork/GXDegB)
+
+</summary>
+
+![From Ireland to Magdalene islands 1 by Hue Teo](wallpapers/hue-teo_ireland-to-magdalenes-1.jpg)
+
+</details>
+<details open><summary>
+
+#### [From Ireland to Magdalene Islands 3](https://www.artstation.com/artwork/GXDegB)
+
+</summary>
+
+![From Ireland to Magdalene islands 3 by Hue Teo](wallpapers/hue-teo_ireland-to-magdalenes-3.jpg)
+
+</details>
+<br />
+
 ### Sam Yang
 
 [Landing page](https://linktr.ee/samdoesarts)
@@ -347,6 +424,27 @@ Uncropped original unknown
 
 </details>
 <br>
+
+### Surendra Rajawat
+
+[Homepage](https://rajawats.com),
+[Artstation](https://www.artstation.com/rajawat)
+
+<details open><summary>
+
+#### [Nature's Beauty](https://www.artstation.com/artwork/lRlPwe)
+
+![Nature's Beauty by Surendra Rajawat](wallpapers/surendra-rajawat_natures-beauty.jpg)
+
+</summary></details>
+
+<details open><summary>
+
+#### [Tatami Construct - Mommy Hilfiger](https://www.artstation.com/artwork/xYoRgR)
+
+![Tatami Construct - Mommy Hilfiger by Surendra Rajawat](wallpapers/surendra-rajawat_tatami-construct-mommyhilfiger.jpg)
+
+</summary></details>
 
 ### XilmO
 
