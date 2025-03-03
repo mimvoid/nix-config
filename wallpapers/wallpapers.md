@@ -115,7 +115,8 @@ Filename format: `artist-name_title-name.filetype`
 
 ### Axle (鳥)
 
-[Pixiv](https://www.pixiv.net/en/users/8236670)
+[Pixiv](https://www.pixiv.net/en/users/8236670),
+[Twitter](https://x.com/toriokok)
 
 <details open><summary>
 
@@ -128,11 +129,11 @@ Filename format: `artist-name_title-name.filetype`
 </details>
 <details open><summary>
 
-#### ["birds"](https://www.pixiv.net/en/artworks/97618640)
+#### [Satellite (卫星)](https://www.pixiv.net/en/artworks/97618640)
 
 </summary>
 
-!["birds" by Axle](wallpapers/axle_birds.jpg)
+![Satellite (卫星) by Axle](wallpapers/axle_satellite.jpg)
 
 </details>
 <details open><summary>
@@ -151,6 +152,24 @@ Filename format: `artist-name_title-name.filetype`
 </summary>
 
 ![Summer (夏) by Axle](wallpapers/axle_summer.jpg)
+
+</details>
+<details open><summary>
+
+#### [End of the Horizon (果ての地平線)](https://www.pixiv.net/en/artworks/78009155)
+
+</summary>
+
+![End of the Horizon (果ての地平線) by Axle](wallpapers/axle_end-of-the-horizon.jpg)
+
+</details>
+<details open><summary>
+
+#### [A Warm and Blue World (あたたかくて青い世界)](https://www.pixiv.net/en/artworks/90351903)
+
+</summary>
+
+![A Warm and Blue World (あたたかくて青い世界) by Axle](wallpapers/axle_warm-blue-world.jpg)
 
 </details>
 <br>
