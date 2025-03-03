@@ -21,60 +21,29 @@
   }
 }
 
-.dashboard .toggle-button {
-  @include looks.transition;
+.dashboard {
+  .toggles > button {
+    @include looks.transition;
 
-  margin: 0.5em;
-  padding: 1.5em;
+    margin: 0.5em;
+    padding: 1.5em;
 
-  &.on {
-    background-color: palette.$primary;
-    color: palette.$base;
+    &.on {
+      background-color: palette.$primary;
+      color: palette.$base;
+    }
+
+    &.off {
+      background-color: palette.$box;
+      color: palette.$string;
+    }
+
+    icon {
+      @include fonts.title-size;
+    }
   }
 
-  &.off {
-    background-color: palette.$box;
-    color: palette.$string;
-  }
-
-  icon {
-.dashboard .stat-box {
-  // Icon names aren't supported by Adwaita
-  .cpu icon,
-  .memory icon {
-    @include looks.fallback-icons;
-  }
-
-  icon {
-    @include fonts.menu-size;
-  }
-
-  trough {
-    min-width: 16em;
-    margin: 0 1em;
-  }
-}
-
-.cpu {
-  color: palette.$error;
-
-  block.filled {
-    background-color: palette.$error;
-  }
-}
-
-.memory {
-  color: palette.$good;
-
-  block.filled {
-    background-color: palette.$good;
-  }
-}
-
-.disk {
-  color: palette.$secondary;
-
-  block.filled {
-    background-color: palette.$secondary;
+  .launchers icon {
+    color: palette.$primary;
   }
 }

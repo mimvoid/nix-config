@@ -1,11 +1,11 @@
-import { Variable } from "astal";
 import { Gtk } from "astal/gtk3";
 
 import Popover from "@lib/widgets/Popover";
 import Toggles from "./dashboard/toggles";
-import Stats from "./dashboard/stats";
+import Launchers from "./dashboard/launchers";
+import visible from "./dashboard/visible";
 
-import { distro, name } from "@lib/variables";
+import { name } from "@lib/variables";
 
 const { START, CENTER } = Gtk.Align;
 
@@ -30,7 +30,6 @@ function User() {
 }
 
 function Dashboard() {
-  const visible = Variable(false)
   const { START } = Gtk.Align;
 
   const Widget = (
@@ -47,7 +46,7 @@ function Dashboard() {
       <box vertical>
         <User />
         <Toggles />
-        <Stats />
+        <Launchers />
       </box>
     </Popover>
   );

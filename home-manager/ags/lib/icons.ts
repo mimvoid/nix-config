@@ -50,6 +50,11 @@ export default {
     loopSong: "media-playlist-repeat-song-symbolic",
   },
 
+  notifications: {
+    on: "alarm-symbolic",
+    off: "notifications-disabled-symbolic",
+  },
+
   overview: "emblem-favorite-symbolic",
 
   powermenu: {
