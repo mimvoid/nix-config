@@ -1,0 +1,15 @@
+@use "sass:color";
+@use "./palettes/palette";
+@use "./variables/looks";
+
+.wallpaper-picker {
+  .item button {
+    padding: 0.5rem;
+  }
+
+  .with-bg-img {
+    @include looks.radius(0.25);
+    min-width: 16rem;
+    min-height: 9rem;
+  }
+}
