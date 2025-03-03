@@ -24,4 +24,6 @@
       mpris
     ];
   };
+
+  xdg.configFile."wallpapers".source = ../../wallpapers/wallpapers;
 }
