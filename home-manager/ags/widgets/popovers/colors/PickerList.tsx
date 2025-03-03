@@ -1,8 +1,9 @@
 import { bind, Variable, writeFile } from "astal";
 import { Gtk } from "astal/gtk3";
 
-import Dropdown from "@lib/widgets/Dropdown";
 import Picker from "@services/colorpicker";
+
+import Dropdown from "@lib/widgets/Dropdown";
 import { hexToRgb, hexToHsl } from "@lib/colors";
 import Icons from "@lib/icons";
 

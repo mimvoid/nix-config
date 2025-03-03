@@ -6,7 +6,7 @@ import Popover from "@lib/widgets/Popover";
 const network = Network.get_default();
 const wifi = network.wifi;
 
-const { START, CENTER, END, FILL } = Gtk.Align;
+const { START, END } = Gtk.Align;
 
 const Current = (
   <box className="section current">

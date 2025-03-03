@@ -1,11 +1,11 @@
 import { Gtk } from "astal/gtk3";
 
 import Popover from "@lib/widgets/Popover";
+import { name } from "@lib/variables";
+
 import Toggles from "./dashboard/toggles";
 import Launchers from "./dashboard/launchers";
 import visible from "./dashboard/visible";
-
-import { name } from "@lib/variables";
 
 const { START, CENTER } = Gtk.Align;
 
@@ -16,7 +16,7 @@ function User() {
 
   const Names = (
     <box vertical valign={CENTER}>
-      <label className="avatar title" label={name.username} halign={START} />
+      <label label={name.username} className="avatar title" halign={START} />
       <label label={name.hostname} halign={START} />
     </box>
   );

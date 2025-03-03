@@ -29,7 +29,7 @@ function ColorsPopover() {
 
   return {
     visible: visible,
-    Widget: Widget
+    Widget: () => Widget
   }
 }
 

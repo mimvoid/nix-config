@@ -18,11 +18,11 @@ export default function WlSunsetWidget() {
   // Create icon toggle button
   return (
     <button
-      className={bind(wlsunset, "running").as(
-        (r) => `wlsunset-toggle ${r ? "on" : "off"}`,
+      className={bind(wlsunset, "running").as((r) =>
+        `wlsunset-toggle ${r ? "on" : "off"}`
       )}
-      tooltipText={bind(wlsunset, "running").as(
-        (r) => `wlsunset ${r ? "on" : "off"}`,
+      tooltipText={bind(wlsunset, "running").as((r) =>
+        `wlsunset ${r ? "on" : "off"}`
       )}
       onClicked={() => (wlsunset.running = !wlsunset.running)}
       cursor="pointer"

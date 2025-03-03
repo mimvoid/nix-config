@@ -15,9 +15,9 @@ const Spaces = bind(hypr, "workspaces").as((wss) =>
           ws === fw ? "active" : ""
         )}
         onClicked={() => ws.focus()}
+        tooltipText={`Workspace ${ws.id}`}
         cursor="pointer"
-        tooltipText={`Workspace ` + ws.id.toString()}
-      ></button>
+      />
     )),
 );
 

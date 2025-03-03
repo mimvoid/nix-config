@@ -8,15 +8,15 @@ export default function Title() {
   const focused = bind(hypr, "focusedClient");
 
   // Format the focused window title
-  const Label = focused.as(
-    (client) =>
-      client && (
-        <label
-          truncate
-          maxWidthChars={42}
-          label={bind(client, "title").as(String)}
-        />
-      ),
+  const Label = focused.as((client) =>
+    client && (
+      <label
+        label={bind(client, "title")}
+        tooltipText={bind(client, "title")}
+        truncate
+        maxWidthChars={42}
+      />
+    )
   );
 
   // Show the title if there is a focused window

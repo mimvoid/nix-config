@@ -1,4 +1,4 @@
-import { bind } from "astal";
+import { bind, Variable } from "astal";
 import { Gtk } from "astal/gtk3";
 import Tray from "gi://AstalTray";
 import Icon from "@lib/icons";
@@ -25,34 +25,38 @@ function TrayIcons() {
   return <box>{Items}</box>;
 }
 
+const reveal = Variable(false);
+
 // Display system tray after clicking on a button
 const Revealer = (
   <revealer
     transitionDuration={250}
     transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
+    revealChild={reveal()}
   >
     <TrayIcons />
   </revealer>
 );
 
 function SysTrayToggle() {
-  const ToggleIcon = <icon className="hider" icon={Icon.hider} />
+  const ToggleIcon = (
+    <icon className={bind(reveal).as((r) => `hider${r && " open"}`)} icon={Icon.hider} />
+  );
   const Indicator = <box className="indicator"></box>
 
-  const toggle = () => {
-    Revealer.revealChild = !Revealer.revealChild;
-
-    // Change icon class to style it
-    ToggleIcon.className = Revealer.revealChild ? "hider open" : "hider";
-  };
-
   // Don't actually include the revealer in the hitbox
-  return <eventbox onClick={toggle}>
-    <box className={bind(tray, "items").as((items) => `hider-wrapper ${items.length > 0 ? "non-empty" : "empty"}`)}>
-      {Indicator}
-      {ToggleIcon}
-    </box>
-  </eventbox>;
+  return (
+    <eventbox onClick={() => reveal.set(!reveal.get())}>
+      <box
+        className={bind(tray, "items").as((items) =>
+          `hider-wrapper ${items.length > 0 ? "non-empty" : "empty"}`
+        )}
+      >
+        {Indicator}
+        {ToggleIcon}
+      </box>
+    </eventbox>
+  );
 }
 
 export default function SysTray() {

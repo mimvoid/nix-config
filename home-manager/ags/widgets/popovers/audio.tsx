@@ -90,7 +90,7 @@ function AudioPopover() {
 
   return {
     visible: visible,
-    Widget: Widget
+    Widget: () => Widget
   }
 }
 

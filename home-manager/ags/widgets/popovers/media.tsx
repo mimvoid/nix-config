@@ -3,223 +3,36 @@ import { Gtk } from "astal/gtk3";
 import Mpris from "gi://AstalMpris";
 
 import Popover from "@lib/widgets/Popover";
-import Icon from "@lib/icons";
+
+import Actions from "./media/Actions";
+import Progress from "./media/Progress";
+import Info from "./media/Info";
 
 const mpris = Mpris.get_default();
-const { START, CENTER, END } = Gtk.Align;
+const { START, CENTER } = Gtk.Align;
 
-// Action buttons for playback
-function Actions(player: Mpris.Player) {
-  // Play or pause
-  // Icon changes based on the playing status
-  function Toggle() {
-    const playIcon = bind(player, "playbackStatus").as((s) =>
-      s === Mpris.PlaybackStatus.PLAYING ? Icon.mpris.pause : Icon.mpris.start,
-    );
-
+// Pass the mpris player to the widget modules
+function Input() {
+  function Popup(player: Mpris.Player) {
     return (
-      <button
-        className="play-pause"
-        onClick={() => player.play_pause()}
-        visible={bind(player, "canPlay")}
-        cursor="pointer"
-      >
-        <icon icon={playIcon} />
-      </button>
-    );
-  }
-
-  const Prev = (
-    <button
-      className="previous"
-      onClick={() => player.previous()}
-      visible={bind(player, "canGoPrevious")}
-      cursor="pointer"
-    >
-      <icon icon={Icon.mpris.backward} />
-    </button>
-  );
-
-  const Next = (
-    <button
-      className="next"
-      onClick={() => player.next()}
-      visible={bind(player, "canGoNext")}
-      cursor="pointer"
-    >
-      <icon icon={Icon.mpris.forward} />
-    </button>
-  );
-
-  function Loop() {
-    const { UNSUPPORTED, NONE, TRACK } = Mpris.Loop;
-
-    const icon = bind(player, "loopStatus").as((s) =>
-      s === TRACK ? Icon.mpris.loopSong : Icon.mpris.loop,
-    );
-
-    return (
-      <button
-        className={bind(player, "loopStatus").as((s) =>
-          s === NONE ? "loop off" : "loop",
-        )}
-        onClick={() => player.loop()}
-        visible={bind(player, "loopStatus").as((s) => s !== UNSUPPORTED)}
-        cursor="pointer"
-        halign={Gtk.Align.START}
-      >
-        <icon icon={icon} />
-      </button>
-    );
-  }
-
-  function Shuffle() {
-    const { UNSUPPORTED, ON, OFF } = Mpris.Shuffle;
-
-    const icon = bind(player, "shuffleStatus").as((s) =>
-      s === ON ? Icon.mpris.shuffle : Icon.mpris.noShuffle,
-    );
-
-    return (
-      <button
-        className={bind(player, "shuffleStatus").as((s) =>
-          s === OFF ? "shuffle off" : "shuffle",
-        )}
-        onClick={() => player.shuffle()}
-        visible={bind(player, "shuffleStatus").as((s) => s !== UNSUPPORTED)}
-        cursor="pointer"
-        halign={Gtk.Align.END}
-      >
-        <icon icon={icon} />
-      </button>
-    );
-  }
-
-  return (
-    <centerbox className="media-actions">
-      <Loop />
-      <box className="main-actions" halign={Gtk.Align.CENTER} hexpand>
-        {Prev}
-        <Toggle />
-        {Next}
+      <box vertical>
+        {Actions(player)}
+        {Progress(player)}
+        {Info(player)}
       </box>
-      <Shuffle />
-    </centerbox>
-  );
-}
-
-// Song progress
-function Progress(player: Mpris.Player) {
-  function lengthStr(length: number) {
-    const min = Math.floor(length / 60);
-    const sec = Math.floor(length % 60);
-    const sec0 = sec < 10 ? "0" : "";
-    return `${min}:${sec0}${sec}`;
+    );
   }
 
-  const hasLength = bind(player, "length").as((l) => l > 0);
+  const Default = <box>Nothing Playing</box>
 
-  const position = bind(player, "position").as((p) =>
-    player.length > 0 ? p / player.length : 0,
-  );
-
-  const ProgressBar = (
-    <slider
-      value={position}
-      onDragged={({ value }) => (player.position = value * player.length)}
-      visible={hasLength}
-      hexpand
-    />
-  );
-
-  const Position = (
-    <label
-      className="position"
-      label={bind(player, "position").as(lengthStr)}
-      visible={hasLength}
-      halign={START}
-    />
-  );
-
-  const Length = (
-    <label
-      className="length"
-      label={bind(player, "length").as((l) => (l > 0 ? lengthStr(l) : "0:00"))}
-      visible={hasLength}
-      halign={END}
-    />
-  );
-
-  return (
-    <box className="media-progress">
-      {Position}
-      {ProgressBar}
-      {Length}
-    </box>
-  );
-}
-
-// Information about the current song
-function Media(player: Mpris.Player) {
-  // Display cover art
-  const CoverArt = (
-    <box
-      className="cover-art with-bg-img"
-      valign={CENTER}
-      css={bind(player, "coverArt").as((cover) => `background-image: url('${cover}')`)}
-    />
-  );
-
-  const Title = (
-    <label
-      className="media-title title"
-      label={bind(player, "title")}
-      maxWidthChars={36}
-      justify={Gtk.Justification.CENTER}
-      wrap
-    />
-  );
-
-  const Artist = (
-    <label
-      className="media-artist"
-      label={bind(player, "artist")}
-      justify={Gtk.Justification.CENTER}
-      wrap
-    />
-  );
-
-  return (
-    <box className="with-cover-art" vertical>
-      {CoverArt}
-      {Title}
-      {Artist}
-    </box>
+  // Draw the widget modules if there is a player
+  // Only displays the first player
+  return bind(mpris, "players").as((ps) =>
+    ps[0] ? Popup(ps[0]) : Default,
   );
 }
 
 function MediaBox() {
-  // Pass the mpris player to the widget modules
-  function Input() {
-    function Popup(player: Mpris.Player) {
-      return (
-        <box vertical>
-          {Actions(player)}
-          {Progress(player)}
-          {Media(player)}
-        </box>
-      );
-    }
-
-    const Default = <box>Nothing Playing</box>
-
-    // Draw the widget modules if there is a player
-    // Only displays the first player
-    return bind(mpris, "players").as((ps) =>
-      ps[0] ? Popup(ps[0]) : Default,
-    );
-  }
-
   const visible = Variable(false);
 
   const Widget = (
@@ -238,7 +51,7 @@ function MediaBox() {
 
   return {
     visible: visible,
-    Widget: Widget
+    Widget: () => Widget
   }
 }
 

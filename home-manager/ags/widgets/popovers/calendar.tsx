@@ -8,26 +8,22 @@ import { time, uptime } from "@lib/variables";
 const { START, CENTER, END } = Gtk.Align;
 
 function Time() {
-  const getTime = (fmt: string, className: string) => (
-    <label
-      label={bind(time).as((t) => t?.format(fmt) || "")}
-      className={`display ${className}`}
-      valign={END}
-      hexpand
-      vexpand
-    />
-  );
-
-  // Format time with seconds
   const times = [
-    ["%H", "hour"],
-    ["%M", "minute"],
-    ["%S", "second"],
+    { fmt: "%H", class: "hour" },
+    { fmt: "%M", class: "minute" },
+    { fmt: "%S", class: "second" },
   ];
 
   return (
     <box className="big-clock" halign={CENTER} hexpand>
-      {times.map((time) => getTime(time[0], time[1]))}
+      {times.map((t) => (
+        <label
+          label={bind(time).as((time) => time.format(t.fmt) || "")}
+          className={`display ${t.class}`}
+          valign={END}
+          expand
+        />
+      ))}
     </box>
   );
 }
@@ -37,8 +33,7 @@ const Uptime = (
     label={bind(uptime).as((t) => `Uptime: ${Math.floor(t / 60)}h ${Math.floor(t % 60)}m` || "")}
     className="uptime"
     valign={END}
-    hexpand
-    vexpand
+    expand
   />
 )
 
@@ -69,7 +64,7 @@ function CalendarWindow() {
 
   return {
     visible: visible,
-    Widget: Widget
+    Widget: () => Widget
   }
 }
 

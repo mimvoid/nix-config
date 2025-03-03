@@ -27,7 +27,7 @@ const Slider = (
 // Only show slider on hover
 function SliderHover() {
   // Format volume as percentage
-  const Label = bind(speaker, "volume").as((i) => `${Math.floor(i * 100)}%`);
+  const label = bind(speaker, "volume").as((i) => `${Math.floor(i * 100)}%`);
 
   // Hitbox does not include the icon
   // Makes clicking on the icon button easier
@@ -50,7 +50,7 @@ function SliderHover() {
       onClick={() => AudioPopover.visible.set(true)}
       cursor="pointer"
     >
-      {Label}
+      {label}
     </HoverRevealer>
   )
 }

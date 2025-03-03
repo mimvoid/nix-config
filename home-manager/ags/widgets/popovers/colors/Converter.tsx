@@ -3,8 +3,10 @@ import { Gtk } from "astal/gtk3";
 import Gdk from "gi://Gdk";
 
 import Picker from "@services/colorpicker";
+
 import { ColorButton } from "@lib/astalified";
 import Dropdown from "@lib/widgets/Dropdown";
+
 import Icons from "@lib/icons";
 import { gRgbaToHex, gRgbaToHsl } from "@lib/colors";
 

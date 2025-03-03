@@ -3,8 +3,8 @@ import { Gtk } from "astal/gtk3";
 import Bluetooth from "gi://AstalBluetooth";
 
 import Popover from "@lib/widgets/Popover";
-import DeviceItem from "./bluetooth/DeviceItem";
 import Icon from "@lib/icons";
+import DeviceItem from "./bluetooth/DeviceItem";
 
 const bluetooth = Bluetooth.get_default();
 const { START, END } = Gtk.Align;

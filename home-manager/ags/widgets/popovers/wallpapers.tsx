@@ -2,7 +2,6 @@ import { Variable, bind } from "astal";
 import { Gtk } from "astal/gtk3";
 
 import Popover from "@lib/widgets/Popover";
-
 import Wallpapers from "@services/wallpapers";
 
 const wallpapers = Wallpapers.get_default();
@@ -10,14 +9,12 @@ const { CENTER, END } = Gtk.Align;
 
 const Choices = bind(wallpapers, "wallpapers").as((ws) =>
   ws.map((w) => (
-    <box className="item" vertical>
-      <button onClick={() => wallpapers.setWallpaper(w.path)} cursor="pointer">
-        <box vertical spacing={4}>
-          <box className="with-bg-img" css={`background-image: url("${w.thumbnail || w.path}");`} />
-          <label className="filename" label={w.name} />
-        </box>
-      </button>
-    </box>
+    <button className="item" onClick={() => wallpapers.setWallpaper(w.path)} cursor="pointer">
+      <box vertical spacing={4}>
+        <box className="with-bg-img" css={`background-image: url("${w.thumbnail || w.path}");`} />
+        <label className="filename" label={w.name} />
+      </box>
+    </button>
   ))
 );
 

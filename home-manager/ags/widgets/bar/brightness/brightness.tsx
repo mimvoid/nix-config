@@ -5,24 +5,23 @@ import WlSunset from "./wlsunset";
 import Brightness from "@services/brightness";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
 
+// Brightness label & slider
+
 const brightness = Brightness.get_default();
 const { CENTER } = Gtk.Align;
 
-// Brightness label & slider
+function BrightnessBox() {
+  // Change brightness on drag
+  const Slider = (
+    <slider
+      value={bind(brightness, "light")}
+      onDragged={({ value }) => brightness.light = value}
+      cursor="pointer"
+      valign={CENTER}
+      hexpand
+    />
+  );
 
-// Change brightness on drag
-const Slider = (
-  <slider
-    value={bind(brightness, "light")}
-    onDragged={({ value }) => (brightness.light = value)}
-    cursor="pointer"
-    valign={CENTER}
-    hexpand
-  />
-);
-
-// Reveal label & slider on hover
-const BrightnessBox = () => {
   // Format brightness as percentage
   const label = bind(brightness, "light").as((i) => `${Math.floor(i * 100)}%`);
 
@@ -34,10 +33,10 @@ const BrightnessBox = () => {
           {label}
         </box>
       }
-      onScroll={(_, { delta_y }) => {
+      onScroll={(_, { delta_y }) => (
         // Change brightness by scrolling
-        delta_y < 0 ? (brightness.light += 0.05) : (brightness.light -= 0.05);
-      }}
+        delta_y < 0 ? (brightness.light += 0.05) : (brightness.light -= 0.05)
+      )}
     />
   );
 };

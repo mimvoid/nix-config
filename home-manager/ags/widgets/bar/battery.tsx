@@ -11,9 +11,7 @@ export default function BatteryLevel() {
   const label = bind(battery, "percentage").as((i) => `${Math.floor(i * 100)}%`);
 
   // Show the charging status on hover
-  const tooltip = bind(battery, "charging").as((i) =>
-    i ? "Charging" : "Discharging",
-  );
+  const tooltip = bind(battery, "charging").as((i) => i ? "Charging" : "Discharging");
 
   return (
     <box

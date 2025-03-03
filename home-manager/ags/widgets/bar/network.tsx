@@ -28,8 +28,11 @@ function Icon() {
 function NetworkEvent() {
   const Label = (
     <label
-      visible={network.state >= 50 && network.state <= 70}
       label={bind(network.wifi, "ssid")}
+      visible={bind(network, "state").as((s) => {
+        const { CONNECTED_LOCAL, CONNECTED_GLOBAL, CONNECTED_SITE } = Network.State;
+        return s === CONNECTED_LOCAL || s === CONNECTED_GLOBAL || s === CONNECTED_SITE
+      })}
     />
   );
 

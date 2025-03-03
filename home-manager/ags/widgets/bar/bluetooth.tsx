@@ -11,12 +11,11 @@ function Indicator() {
   // Show the Bluetooth status
 
   // Execute `bluetooth off` or `bluetooth on`
-  const action = () =>
-    execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
+  const action = () => execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
 
   // Show Bluetooth status on hover
-  const tooltip = bind(bluetooth, "isPowered").as(
-    (p) => `Bluetooth ${p ? "on" : "off"}`,
+  const tooltip = bind(bluetooth, "isPowered").as((p) =>
+    `Bluetooth ${p ? "on" : "off"}`
   );
 
   // Display icon depending on Bluetooth status
