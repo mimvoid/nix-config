@@ -31,7 +31,11 @@ export default {
 
   hider: "go-previous-symbolic",
 
-  music: "audio-x-generic-symbolic",
+  mimetypes: {
+    image: "image-x-generic-symbolic",
+    audio: "audio-x-generic-symbolic",
+  },
+
   mpris: {
     start: "media-playback-start-symbolic",
     stop: "media-playback-stop-symbolic",

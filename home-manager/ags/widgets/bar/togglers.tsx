@@ -11,7 +11,7 @@ export const Media = (
     cursor="pointer"
     onClicked={() => MediaPopover.visible.set(true)}
   >
-    <icon icon={Icon.music} />
+    <icon icon={Icon.mimetypes.audio} />
   </button>
 )
 
