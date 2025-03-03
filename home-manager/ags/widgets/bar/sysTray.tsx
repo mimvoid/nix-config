@@ -40,7 +40,7 @@ const Revealer = (
 
 function SysTrayToggle() {
   const ToggleIcon = (
-    <icon className={bind(reveal).as((r) => `hider${r && " open"}`)} icon={Icon.hider} />
+    <icon className={bind(reveal).as((r) => `hider${r ? " open" : ""}`)} icon={Icon.hider} />
   );
   const Indicator = <box className="indicator"></box>
 
