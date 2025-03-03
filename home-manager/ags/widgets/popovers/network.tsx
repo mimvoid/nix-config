@@ -10,7 +10,11 @@ const { START, CENTER, END, FILL } = Gtk.Align;
 
 const Current = (
   <box className="section current">
-    <button onClick={() => wifi.enabled = !wifi.enabled} cursor="pointer">
+    <button
+      onClick={() => wifi.enabled = !wifi.enabled}
+      tooltipText={bind(wifi, "enabled").as((e) => `Turn ${e ? "off" : "on"} wifi`)}
+      cursor="pointer"
+    >
       <icon className="big-icon" icon={bind(wifi, "iconName")} />
     </button>
     <box vertical>

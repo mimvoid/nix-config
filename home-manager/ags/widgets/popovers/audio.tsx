@@ -10,9 +10,15 @@ const speaker = wp?.audio.defaultSpeaker!;
 const microphone = wp?.audio.defaultMicrophone!;
 
 function Section(endpoint: Wp.Endpoint, name: string) {
+  const lowerName = name.toLowerCase();
+
   const Icon = (
     // Can mute or unmute
-    <button cursor="pointer" onClicked={() => (endpoint.mute = !endpoint.mute)}>
+    <button
+      cursor="pointer"
+      onClicked={() => (endpoint.mute = !endpoint.mute)}
+      tooltipText={bind(endpoint, "mute").as((m) => `${m ? "Unmute" : "Mute"} ${lowerName}`)}
+    >
       <icon className="big-icon" icon={bind(endpoint, "volumeIcon")} />
     </button>
   );
@@ -44,7 +50,7 @@ function Section(endpoint: Wp.Endpoint, name: string) {
   );
 
   return (
-    <box className={`section ${name.toLowerCase()}`} halign={FILL} valign={CENTER} expand>
+    <box className={`section ${lowerName}`} halign={FILL} valign={CENTER} expand>
       <box vertical>
         <label className="title" label={name} halign={START} />
         <box>

@@ -94,10 +94,18 @@ function Actions() {
 
   return (
     <box spacing={4} halign={END}>
-      <button onClick={saveColors} cursor="pointer" >
+      <button
+        onClick={saveColors}
+        tooltipText="Save color history to file"
+        cursor="pointer"
+      >
         <icon icon={Icons.actions.save} />
       </button>
-      <button onClick={() => picker.clear()}>
+      <button
+        onClick={() => picker.clear()}
+        tooltipText="Clear color history"
+        cursor="pointer"
+      >
         <icon icon={Icons.actions.clearAll} />
       </button>
     </box>

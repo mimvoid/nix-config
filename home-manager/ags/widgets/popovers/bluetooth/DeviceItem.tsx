@@ -10,7 +10,14 @@ interface BluetoothItemProps extends Widget.ButtonProps {
 }
 
 export default function DeviceItem({ device, ...props }: BluetoothItemProps) {
-  const Paired = <icon icon={Icon.bluetooth.paired} visible={device.paired} />
+  const Paired = (
+    <icon
+      icon={Icon.bluetooth.paired}
+      tooltipText="Paired"
+      visible={device.paired}
+    />
+  );
+
   const Connecting = bind(device, "connecting").as((c) =>
     <icon icon={Icon.waiting} visible={c} halign={END} />
   );

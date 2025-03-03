@@ -11,6 +11,7 @@ const { START, END } = Gtk.Align;
 
 function Status() {
   const action = () => execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
+  const tooltip = bind(bluetooth, "isPowered").as((p) => `Turn ${p ? "off" : "on"} Bluetooth`);
 
   // Display icon depending on Bluetooth status
   const icon = bind(bluetooth, "isPowered").as((p) =>
@@ -19,7 +20,7 @@ function Status() {
 
   return (
     <box className="status section">
-      <button onClicked={action} cursor="pointer">
+      <button onClicked={action} tooltipText={tooltip} cursor="pointer">
         <icon className="big-icon" icon={icon} />
       </button>
       <label label={bind(bluetooth, "isPowered").as((p) => p ? "On" : "Off")} halign={START} />
@@ -33,6 +34,7 @@ function Connected() {
       <DeviceItem
         device={device}
         onClick={() => execAsync(["bluetoothctl", "disconnect", device.address])}
+        tooltipText="Disconnect device"
       />
   ));
 
@@ -59,6 +61,7 @@ function Disconnected() {
       <DeviceItem
         device={device}
         onClick={() => execAsync(["bluetoothctl", "connect", device.address])}
+        tooltipText="Connect device"
       />
   ));
 

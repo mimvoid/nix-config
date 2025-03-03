@@ -16,7 +16,11 @@ export class ColorButton extends astalify(Gtk.ColorButton) {
     GObject.registerClass(this);
   }
 
-  constructor(props: ConstructProps<ColorButton, Gtk.ColorButton.ConstructorProps, {}>) {
+  constructor(props:
+    ConstructProps<ColorButton,
+    Gtk.ColorButton.ConstructorProps,
+    { onColorSet: [] }
+  >){
     super(props as any);
   }
 }

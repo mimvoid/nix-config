@@ -78,40 +78,50 @@ function Switcher() {
 }
 
 function Enter() {
-  const copy = () => picker.copy(colorLabel.get());
-
   const clear = () => {
     Entry.set_property("text", "");
     colorLabel.set(color.to_string());
   }
 
-  const add = () => {
-    picker.add(gRgbaToHex(color));
-    clear();
-  }
-
-  const pick = async () => {
-    const newColor = await picker.pick();
-    if (!newColor) return;
-    updateColor(newColor);
-  }
+  const buttons = [
+    {
+      icon: Icons.actions.save,
+      tooltip: "Add color to history",
+      cmd: () => {
+        picker.add(gRgbaToHex(color));
+        clear();
+      }
+    },
+    {
+      icon: Icons.actions.copy,
+      tooltip: "Copy color to clipboard",
+      cmd: () => picker.copy(colorLabel.get()),
+    },
+    {
+      icon: Icons.actions.clear,
+      tooltip: "Clear color text",
+      cmd: clear,
+    },
+    {
+      icon: Icons.colorpicker,
+      tooltip: "Pick color",
+      cmd: async () => {
+        const newColor = await picker.pick();
+        if (!newColor) return;
+        updateColor(newColor);
+      }
+    }
+  ]
 
   return (
     <box vertical spacing={8}>
       {Entry}
       <box spacing={4} halign={Gtk.Align.END}>
-        <button onClick={add} cursor="pointer">
-          <icon icon={Icons.actions.save} />
-        </button>
-        <button onClick={copy} cursor="pointer">
-          <icon icon={Icons.actions.copy} />
-        </button>
-        <button onClick={pick} cursor="pointer">
-          <icon icon={Icons.colorpicker} />
-        </button>
-        <button onClick={clear} cursor="pointer">
-          <icon icon={Icons.actions.clear} />
-        </button>
+        {buttons.map((b) => (
+          <button onClick={b.cmd} tooltipText={b.tooltip} cursor="pointer">
+            <icon icon={b.icon} />
+          </button>
+        ))}
       </box>
     </box>
   )
