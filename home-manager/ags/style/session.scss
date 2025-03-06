@@ -27,9 +27,9 @@
 #session {
   color: palette.$primary-bright;
 
-  icon {
+  image {
     margin: 4rem 6rem;
-    font-size: 4rem;
+    -gtk-icon-size: 4rem;
     transition:
       all 0.4s cubic-bezier(0.55, 0, 0.25, 1.68),
       color 0s linear;
@@ -43,8 +43,8 @@
       color: palette.$primary;
       background-color: color.change(palette.$base, $alpha: 0.7);
 
-      icon {
-        font-size: 4.5rem;
+      image {
+        -gtk-icon-size: 4.5rem;
       }
     }
 
@@ -55,8 +55,8 @@
       color: palette.$base;
       background-color: palette.$primary;
 
-      icon {
-        font-size: 4.75rem;
+      image {
+        -gtk-icon-size: 4.75rem;
       }
     }
   }

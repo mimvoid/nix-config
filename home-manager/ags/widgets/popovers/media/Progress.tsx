@@ -1,6 +1,7 @@
 import { bind } from "astal";
-import { Gtk } from "astal/gtk3";
+import { Gtk } from "astal/gtk4";
 import Mpris from "gi://AstalMpris";
+import { pointer } from "@lib/utils";
 
 // Song progress
 
@@ -19,15 +20,16 @@ export default function Progress(player: Mpris.Player) {
 
   const ProgressBar = (
     <slider
+      setup={pointer}
       value={position}
-      onDragged={({ value }) => (player.position = value * player.length)}
+      onChangeValue={({ value }) => (player.position = value * player.length)}
       hexpand
     />
   );
 
   const Position = (
     <label
-      className="position"
+      cssClasses={["position"]}
       label={bind(player, "position").as(lengthStr)}
       halign={START}
     />
@@ -35,14 +37,14 @@ export default function Progress(player: Mpris.Player) {
 
   const Length = (
     <label
-      className="length"
+      cssClasses={["length"]}
       label={bind(player, "length").as((l) => (l > 0 ? lengthStr(l) : "0:00"))}
       halign={END}
     />
   );
 
   return (
-    <box className="media-progress" visible={bind(player, "length").as((l) => l > 0)}>
+    <box cssClasses={["media-progress"]} visible={bind(player, "length").as((l) => l > 0)}>
       {Position}
       {ProgressBar}
       {Length}

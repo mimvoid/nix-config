@@ -4,6 +4,7 @@ import Bluetooth from "gi://AstalBluetooth";
 import BluetoothPopover from "../popovers/bluetooth";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
 import Icon from "@lib/icons";
+import { pointer } from "@lib/utils";
 
 const bluetooth = Bluetooth.get_default();
 
@@ -24,9 +25,12 @@ function Indicator() {
   );
 
   return (
-    <button onClicked={action} tooltipText={tooltip} cursor="pointer">
-      <icon icon={icon} />
-    </button>
+    <button
+      setup={pointer}
+      onClicked={action}
+      tooltipText={tooltip}
+      iconName={icon}
+    />
   );
 }
 
@@ -44,19 +48,21 @@ function BluetoothBox() {
   }
 
   return (
-    <HoverRevealer
-      hiddenChild={<box>{Device()}</box>}
-      onClick={() => BluetoothPopover.visible.set(true)}
-      cursor="pointer"
-    >
-      <Indicator />
-    </HoverRevealer>
+    <menubutton>
+      <HoverRevealer
+        hiddenChild={<box>{Device()}</box>}
+        onClicked={() => BluetoothPopover.visible = true}
+      >
+        <Indicator />
+      </HoverRevealer>
+      {BluetoothPopover}
+    </menubutton>
   );
 }
 
 export default function BluetoothWidget() {
   return (
-    <box className="bluetooth">
+    <box cssClasses={["bluetooth"]}>
       <BluetoothBox />
     </box>
   );

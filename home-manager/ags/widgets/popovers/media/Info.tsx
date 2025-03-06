@@ -1,5 +1,5 @@
 import { bind } from "astal";
-import { Gtk } from "astal/gtk3";
+import { Gtk } from "astal/gtk4";
 import Mpris from "gi://AstalMpris";
 
 // Information about the current song
@@ -9,16 +9,16 @@ const { CENTER } = Gtk.Align;
 export default function Info(player: Mpris.Player) {
   // Display cover art
   const CoverArt = (
-    <box
-      className="cover-art with-bg-img"
+    <image
+      cssClasses={["cover-art"]}
+      file={bind(player, "coverArt")}
       valign={CENTER}
-      css={bind(player, "coverArt").as((cover) => `background-image: url('${cover}')`)}
     />
   );
 
   const Title = (
     <label
-      className="media-title title"
+      cssClasses={["media-title", "title"]}
       label={bind(player, "title")}
       maxWidthChars={36}
       justify={Gtk.Justification.CENTER}
@@ -28,7 +28,7 @@ export default function Info(player: Mpris.Player) {
 
   const Artist = (
     <label
-      className="media-artist"
+      cssClasses={["media-artist"]}
       label={bind(player, "artist")}
       justify={Gtk.Justification.CENTER}
       wrap
@@ -36,7 +36,7 @@ export default function Info(player: Mpris.Player) {
   );
 
   return (
-    <box className="with-cover-art" vertical>
+    <box cssClasses={["with-cover-art"]} vertical>
       {CoverArt}
       {Title}
       {Artist}

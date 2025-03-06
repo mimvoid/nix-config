@@ -13,6 +13,7 @@ $title-size: 15px;
 }
 @mixin font-size($scale: 1) {
   font-size: $font-size * $scale;
+  -gtk-icon-size: $font-size * $scale;
 }
 @mixin font($scale: 1) {
   @include font-family;
@@ -23,7 +24,8 @@ $title-size: 15px;
   font-family: $display;
 }
 @mixin display-size($scale: 1) {
-  font-size: $display-size * $scale
+  font-size: $display-size * $scale;
+  -gtk-icon-size: $display-size * $scale;
 }
 @mixin display($scale: 1) {
   font-family: $display;
@@ -32,7 +34,9 @@ $title-size: 15px;
 
 @mixin menu-size($scale: 1) {
   font-size: $menu-size * $scale;
+  -gtk-icon-size: $menu-size * $scale;
 }
 @mixin title-size($scale: 1) {
   font-size: $title-size * $scale;
+  -gtk-icon-size: $title-size * $scale;
 }

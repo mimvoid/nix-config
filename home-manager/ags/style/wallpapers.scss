@@ -1,15 +1,29 @@
 @use "sass:color";
 @use "./palettes/palette";
 @use "./variables/looks";
+@use "./variables/fonts";
 
 .wallpaper-picker {
-  .item button {
-    padding: 0.5rem;
+  @include fonts.font-size;
+
+  scrolledwindow {
+    @include looks.radius;
+    padding: 1rem;
+    background-color: palette.$base;
   }
 
-  .with-bg-img {
+  picture {
     @include looks.radius(0.25);
     min-width: 16rem;
     min-height: 9rem;
+    margin-bottom: 0.25em;
+  }
+
+  label {
+    color: palette.$string;
+  }
+
+  button {
+    padding: 0.4rem;
   }
 }

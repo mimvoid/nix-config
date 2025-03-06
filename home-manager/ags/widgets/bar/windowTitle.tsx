@@ -1,5 +1,6 @@
 import { bind } from "astal";
 import Hyprland from "gi://AstalHyprland";
+import Pango from "gi://Pango";
 
 const hypr = Hyprland.get_default();
 
@@ -13,7 +14,7 @@ export default function Title() {
       <label
         label={bind(client, "title")}
         tooltipText={bind(client, "title")}
-        truncate
+        ellipsize={Pango.EllipsizeMode.END}
         maxWidthChars={42}
       />
     )
@@ -21,7 +22,7 @@ export default function Title() {
 
   // Show the title if there is a focused window
   return (
-    <box className="window-title" visible={focused.as(Boolean)}>
+    <box cssClasses={["window-title"]} visible={focused.as(Boolean)}>
       {Label}
     </box>
   );

@@ -11,7 +11,3 @@ $fallback-icons: "Papirus";
 @mixin transition() {
   transition: $transition;
 }
-
-@mixin fallback-icons() {
-  -gtk-icon-theme: $fallback-icons;
-}

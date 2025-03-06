@@ -1,17 +1,11 @@
+import { App } from "astal/gtk4";
 import Icons from "@lib/icons";
-import WallpaperPicker from "../wallpapers";
-import visible from "./visible";
+import { pointer } from "@lib/utils";
 
 const Wallpapers = (
-  <button
-    onClick={() => {
-      visible.set(false);
-      WallpaperPicker.visible.set(true);
-    }}
-    cursor="pointer"
-  >
+  <button setup={pointer} onClicked={() => App.toggle_window("wallpaperPicker")}>
     <box>
-      <icon icon={Icons.mimetypes.image} className="big-icon" />
+      <image iconName={Icons.mimetypes.image} cssClasses={["big-icon"]} />
       <label label="Change wallpaper" />
     </box>
   </button>
@@ -19,7 +13,7 @@ const Wallpapers = (
 
 export default function Launchers() {
   return (
-    <box className="launchers section" hexpand>
+    <box cssClasses={["launchers", "section"]} hexpand>
       {Wallpapers}
     </box>
   );

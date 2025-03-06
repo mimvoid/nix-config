@@ -1,12 +1,16 @@
 import { GLib } from "astal";
-import { Gtk, Astal } from "astal/gtk3";
-import { type EventBox } from "astal/gtk3/widget";
+import { Gtk } from "astal/gtk4";
 import Notifd from "gi://AstalNotifd";
+import Pango from "gi://Pango";
+import { pointer } from "@lib/utils";
 
 // Defines an individual notification widget
 
 // App icon checkers
-const isIcon = (icon: string) => !!Astal.Icon.lookup_icon(icon);
+function isIcon(icon: string) {
+  const iconTheme = new Gtk.IconTheme();
+  return iconTheme.has_icon(icon);
+}
 const fileExists = (path: string) => GLib.file_test(path, GLib.FileTest.EXISTS);
 
 // Format the timestamp
@@ -28,50 +32,46 @@ const urgency = (n: Notifd.Notification) => {
 };
 
 type Props = {
-  setup(self: EventBox): void;
-  onHoverLost(self: EventBox): void;
+  setup(self: Gtk.Box): void;
+  onHoverLeave(self: Gtk.Box): void;
   notification: Notifd.Notification;
 };
 
 export default function Notification(props: Props) {
-  const { notification: n, onHoverLost, setup } = props;
+  const { notification: n, onHoverLeave, setup } = props;
   const { START, CENTER, END } = Gtk.Align;
 
   // Notification structure
 
   // Display the icon in various possible formats
   function Icon() {
-    const DesktopEntry = (n.appIcon || n.desktopEntry) && (
-      <icon
-        className="app-icon"
-        visible={Boolean(n.appIcon || n.desktopEntry)}
-        icon={n.appIcon || n.desktopEntry}
-      />
-    );
-    const ImageFile = n.image && fileExists(n.image) && (
-      <box
-        valign={START}
-        className="image"
-        css={`
-          background-image: url("${n.image}");
-        `}
-      />
-    );
-    const IconImage = n.image && isIcon(n.image) && (
-      <box expand={false} valign={START} className="icon-image">
-        <icon icon={n.image} expand halign={CENTER} valign={CENTER} />
-      </box>
-    );
-    const DefaultIcon = !n.appIcon && !n.desktopEntry && !n.image && (
-      <icon className="app-icon" icon="dialog-information-symbolic" />
-    );
+    let Image = <image cssClasses={["app-icon"]} iconName="dialog-information-symbolic" />
+
+    if (n.appIcon || n.desktopEntry) {
+      Image = (
+        <image
+          cssClasses={["app-icon"]}
+          visible={Boolean(n.appIcon || n.desktopEntry)}
+          iconName={n.appIcon || n.desktopEntry}
+        />
+      );
+    }
+    else if (n.image) {
+      if (fileExists(n.image)) {
+        Image = <image cssClasses={["image"]} valign={START} file={n.image} />
+      }
+      else if (isIcon(n.image)) {
+        Image = (
+          <box cssClasses={["icon-image"]} valign={START} >
+            <image iconName={n.image} hexpand vexpand halign={CENTER} valign={CENTER} />
+          </box>
+        );
+      }
+    }
 
     return (
-      <box className="notif-icon">
-        {DesktopEntry}
-        {ImageFile}
-        {IconImage}
-        {DefaultIcon}
+      <box cssClasses={["notif-icon"]}>
+        {Image}
       </box>
     );
   }
@@ -79,18 +79,18 @@ export default function Notification(props: Props) {
   function Header() {
     const AppName = (
       <label
-        className="app-name"
+        cssClasses={["app-name"]}
         label={n.appName || "Unknown"}
+        ellipsize={Pango.EllipsizeMode.END}
         halign={START}
-        truncate
       />
     );
     const Time = (
-      <label className="time" hexpand halign={END} label={time(n.time)} />
+      <label label={time(n.time)} cssClasses={["time"]} hexpand halign={END} />
     );
 
     return (
-      <box className="header">
+      <box cssClasses={["header"]}>
         {AppName}
         {Time}
       </box>
@@ -100,37 +100,37 @@ export default function Notification(props: Props) {
   function Content() {
     const Summary = (
       <label
-        className="summary"
+        label={n.summary}
+        cssClasses={["summary"]}
         halign={START}
         xalign={0}
-        label={n.summary}
-        truncate
+        wrap
       />
     );
-    const Body = n.body && (
+    const Body = (
       <label
-        className="body"
+        label={n.body}
+        cssClasses={["body"]}
         wrap
+        maxWidthChars={36}
         useMarkup
         halign={START}
-        xalign={0}
-        label={n.body}
       />
     );
 
     return (
-      <box className="content" vertical>
+      <box cssClasses={["content"]} vertical>
         {Summary}
-        {Body}
+        {n.body && Body}
       </box>
     );
   }
 
   // Create a button for each action if they exist
   const Actions = n.get_actions().length > 0 && (
-    <box className="actions">
+    <box cssClasses={["actions"]}>
       {n.get_actions().map(({ label, id }) => (
-        <button hexpand onClicked={() => n.invoke(id)}>
+        <button setup={pointer} onClicked={() => n.invoke(id)} hexpand>
           <label label={label} halign={CENTER} hexpand />
         </button>
       ))}
@@ -139,7 +139,7 @@ export default function Notification(props: Props) {
 
   // Put all the contents together
   const NotifBox = (
-    <box className="notification">
+    <box cssClasses={["notification"]}>
       <Icon />
       <box vertical>
         <Header />
@@ -151,12 +151,12 @@ export default function Notification(props: Props) {
 
   // Handle urgency & events
   return (
-    <eventbox
-      className={`notifications ${urgency(n)}`}
+    <box
+      cssClasses={["notifications", urgency(n)]}
       setup={setup}
-      onHoverLost={onHoverLost}
+      onHoverLeave={onHoverLeave}
     >
       {NotifBox}
-    </eventbox>
+    </box>
   );
 }

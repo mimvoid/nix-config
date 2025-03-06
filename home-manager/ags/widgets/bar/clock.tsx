@@ -1,25 +1,29 @@
 import { bind } from "astal";
-import { Gtk } from "astal/gtk3";
+import { Gtk } from "astal/gtk4";
 
 import Calendar from "../popovers/calendar";
 import { time } from "@lib/variables";
+import { pointer } from "@lib/utils";
 import Icon from "@lib/icons";
 
 export default function Clock() {
   // Format the date & time
-  const timeFmt = bind(time).as((t) => t?.format("%a · %b %d · %H:%M") || "")
+  const timeFmt = bind(time).as((t) => t.format("%a · %b %d · %H:%M") || "")
 
   return (
-    <button
-      className="clock"
-      onClicked={() => Calendar.visible.set(true)}
-      cursor="pointer"
-      halign={Gtk.Align.CENTER}
-    >
-      <box>
-        <icon icon={Icon.calendar} />
-        {timeFmt}
-      </box>
-    </button>
+    <menubutton>
+      <button
+        setup={pointer}
+        cssClasses={["clock"]}
+        onClicked={() => Calendar.visible = true}
+        halign={Gtk.Align.CENTER}
+      >
+        <box>
+          <image iconName={Icon.calendar} />
+          {timeFmt}
+        </box>
+      </button>
+      {Calendar}
+    </menubutton>
   );
 }

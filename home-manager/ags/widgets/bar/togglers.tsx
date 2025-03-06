@@ -1,38 +1,42 @@
-import { App } from "astal/gtk3";
+import { App, Gtk } from "astal/gtk4";
 import Icon from "@lib/icons";
+import { pointer } from "@lib/utils";
 
 import DashboardPopover from "../popovers/dashboard";
 import MediaPopover from "../popovers/media";
 
 // Toggle mpris media widget menu
 export const Media = (
-  <button
-    className="media-launch"
-    cursor="pointer"
-    onClicked={() => MediaPopover.visible.set(true)}
-  >
-    <icon icon={Icon.mimetypes.audio} />
-  </button>
+  <menubutton>
+    <button
+      setup={pointer}
+      cssClasses={["media-launch"]}
+      onClicked={() => MediaPopover.visible = true}
+      iconName={Icon.mimetypes.audio}
+    />
+    {MediaPopover}
+  </menubutton>
 )
 
 // Toggle the dashboard
 export const Dashboard = (
-  <button
-    className="dashboard-launch"
-    cursor="pointer"
-    onClicked={() => DashboardPopover.visible.set(true)}
-  >
-    <icon icon={Icon.overview} />
-  </button>
+  <menubutton>
+    <button
+      setup={pointer}
+      cssClasses={["dashboard-launch"]}
+      onClicked={() => DashboardPopover.visible = true}
+      iconName={Icon.overview}
+    />
+    {DashboardPopover}
+  </menubutton>
 )
 
 // Toggle buttons for logging out, shutting down, etc.
 export const Session = (
   <button
-    className="session-launch"
-    cursor="pointer"
+    setup={pointer}
+    cssClasses={["session-launch"]}
     onClicked={() => App.toggle_window("session")}
-  >
-    <icon icon={Icon.powermenu.indicator} />
-  </button>
+    iconName={Icon.powermenu.indicator}
+  />
 );

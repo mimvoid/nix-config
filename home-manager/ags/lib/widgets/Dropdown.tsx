@@ -1,5 +1,6 @@
 import { bind, Variable } from "astal";
-import { Widget, Gtk } from "astal/gtk3";
+import { Widget, Gtk } from "astal/gtk4";
+import { pointer } from "../utils";
 
 const { START, CENTER, END } = Gtk.Align;
 
@@ -21,11 +22,11 @@ export default function Dropdown({
   const revealed = Variable(revealChild);
 
   return (
-    <box className={bind(revealed).as((r) => `dropdown section ${r ? "open" : "closed"}`)} vertical>
-      <button onClick={() => revealed.set(!revealed.get())} cursor="pointer" expand>
+    <box cssClasses={bind(revealed).as((r) => ["dropdown", "section", r ? "open" : "closed"])} vertical>
+      <button setup={pointer} onClicked={() => revealed.set(!revealed.get())} hexpand vexpand>
         <box valign={CENTER}>
           <box halign={START} valign={CENTER}>{label}</box>
-          <icon icon="pan-down-symbolic" halign={END} valign={CENTER} />
+          <image iconName="pan-down-symbolic" halign={END} valign={CENTER} />
         </box>
       </button>
       <revealer

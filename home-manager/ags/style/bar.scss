@@ -5,22 +5,33 @@
 .bar centerbox {
   @include looks.radius;
 
-  margin: 3px 12px 1px;
-
   color: palette.$primary;
   background-color: transparent;
 }
 
-.left > *,
-.center > * {
-  padding: 0.4em 1em;
+.left,
+.center {
+  > * {
+    padding: 0.3rem 0.5rem;
+    color: palette.$primary;
+  }
+
+  menubutton {
+    margin: 0;
+    padding: 0;
+
+    > button {
+      margin: 0;
+      padding: 0 0.5rem;
+    }
+  }
 }
 
 .icon-label {
-  margin: 0 0.75em;
+  margin: 0 0.35rem;
 
   + .icon-label {
-    margin-left: 0.35em;
+    margin-left: 0.3rem;
   }
 }
 
@@ -28,12 +39,12 @@
 /* Modules */
 /*---------*/
 
-.dashboard-launch {
+button.dashboard-launch image {
   color: palette.$tertiary-dim;
 }
 
-.workspaces {
-  padding: 0.6em; // Make workspace buttons slimmer
+box.workspaces {
+  padding: 0.65rem; // Make workspace buttons slimmer
 
   button {
     @include looks.transition;
@@ -55,12 +66,17 @@
   }
 }
 
-.clock {
-  padding-right: 0;
-  margin-right: 0.25em;
+button.clock {
+  margin: 0;
+  padding: 0;
 
-  icon {
-    margin: 0 0.75em 0 0.25em;
+  image {
+    margin: 0 1rem 0 0.25rem;
+  }
+
+  label {
+    margin: 0;
+    padding: 0;
   }
 
   // Disable default button background color
@@ -68,20 +84,7 @@
     background-color: transparent;
   }
 }
-.media-launch {
-  padding-left: 0.75em;
-  padding-right: 0.75em;
-}
 
-.system-tray-item {
-  margin: 0 2px;
-
-  // Change icons for better compatibility
-  image {
-    all: unset;
-    @include looks.fallback-icons;
-  }
-}
 .hider {
   @include looks.radius;
   @include looks.transition;
@@ -96,11 +99,11 @@
   }
 }
 .hider-wrapper.non-empty {
-  margin-left: 0.5em;
+  margin-left: 0.5rem;
 
   .indicator {
-    margin: 0.85em 0;
-    padding: 0.1em 0.25em;
+    margin: 0.85rem 0;
+    padding: 0.15rem;
     border-radius: 64px;
     background-color: palette.$tertiary-dim;
     opacity: 0.7;
@@ -110,26 +113,25 @@
 .colorpicker {
   @include looks.radius;
 
-  margin: 0 0 0 0.25em;
-  padding: 0 0.25em;
+  margin: 0;
+  padding: 0 0.25rem;
 
   button {
     color: palette.$primary-dim;
   }
 
   .color-circle {
-    margin-right: 0.25em;
-    padding: 0.3em;
+    margin-right: 0.25rem;
+    padding: 0.3rem;
   }
   .color-display {
     border: 1px solid palette.$box;
     border-radius: 24px;
-    padding: 0 0.75em;
+    padding: 0 0.75rem;
   }
 }
 
 .network {
-  margin: 0 0.4em;
   color: palette.$tertiary-dim;
 }
 
@@ -149,12 +151,12 @@
 .battery {
   color: palette.$good;
 
-  icon {
-    -gtk-icon-transform: rotate(90deg);
+  label {
+    margin-left: 0.5rem;
   }
 
-  label {
-    margin-left: 0.6em;
+  image {
+    -gtk-icon-transform: rotate(90deg);
   }
 }
 
@@ -162,19 +164,18 @@
   $c: color.adjust(palette.$error, $lightness: 8%);
   color: $c;
 
-  // Widen the hit box
-  eventbox > box {
-    min-width: 0.75em;
-  }
-
   highlight {
     background-color: $c;
+  }
+
+  .hover-revealer {
+    min-width: 0.75rem;
   }
 }
 .wlsunset-toggle {
   @include looks.transition;
 
-  &.off icon {
+  &.off image {
     color: palette.$tertiary;
   }
 }
@@ -183,6 +184,7 @@
   @include looks.transition;
 
   padding: 0 0.75em;
+  color: palette.$primary;
   background-color: palette.$box;
 
   &:hover {

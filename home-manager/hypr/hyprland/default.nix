@@ -50,7 +50,7 @@ in
         "mega-cmd-server &"
         "fcitx5 -d &"
         "swww-daemon &"
-        "ags run &"
+        "ags run --gtk4 &"
       ];
 
       # Don't have things with a systemd target for Hyprland here

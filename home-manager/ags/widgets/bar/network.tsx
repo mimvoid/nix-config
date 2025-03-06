@@ -1,6 +1,7 @@
 import { execAsync, bind } from "astal";
 import Network from "gi://AstalNetwork";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
+import { pointer } from "@lib/utils";
 import NetworkPopover from "../popovers/network";
 
 const network = Network.get_default();
@@ -9,18 +10,14 @@ function Icon() {
   // Display network strength as percentage on hover
   const tooltip = bind(network.wifi, "strength").as((i) => `${i}%`);
 
-  // Get icon from Astal
-  const StatusIcon = <icon className="wifi" icon={bind(network.wifi, "iconName")} />
-
   // Wrap it in a button that launches a network manager
   return (
     <button
-      cursor="pointer"
+      setup={pointer}
       onClicked={() => execAsync("networkmanager_dmenu")}
       tooltipText={tooltip}
-    >
-      {StatusIcon}
-    </button>
+      iconName={bind(network.wifi, "iconName")}
+    />
   );
 }
 
@@ -37,15 +34,18 @@ function NetworkEvent() {
   );
 
   return (
-    <HoverRevealer hiddenChild={Label} onClick={() => NetworkPopover.visible.set(true)} >
-      <Icon />
-    </HoverRevealer>
+    <menubutton>
+      <HoverRevealer hiddenChild={Label} onClicked={() => NetworkPopover.visible = true}>
+        <Icon />
+      </HoverRevealer>
+      {NetworkPopover}
+    </menubutton>
   )
 }
 
 export default function Wifi() {
   return (
-    <box className="network">
+    <box cssClasses={["network"]}>
       <NetworkEvent />
     </box>
   );

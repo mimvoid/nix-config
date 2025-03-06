@@ -1,4 +1,4 @@
-import { Astal, Gdk, Gtk, Widget } from "astal/gtk3"
+import { Astal, Gdk, Gtk, Widget } from "astal/gtk4"
 
 const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
 
@@ -50,7 +50,7 @@ export default function Popover({
         if (!self.visible) onClose?.(self)
       }}
       // close when click occurs outside of child
-      onButtonPressEvent={(self, event) => {
+      onButtonPressed={(self, event) => {
         const [, _x, _y] = event.get_coords()
         const { x, y, width, height } = self
           .get_child()!
@@ -65,7 +65,7 @@ export default function Popover({
         }
       }}
       // close when hitting Escape
-      onKeyPressEvent={(self, event: Gdk.Event) => {
+      onKeyPressed={(self, event: Gdk.Event) => {
         if (event.get_keyval()[1] === Gdk.KEY_Escape) {
           self.visible = false
         }
@@ -73,7 +73,7 @@ export default function Popover({
     >
       <box
         // make sure click event does not bubble up
-        onButtonPressEvent={() => true}
+        onButtonPressed={() => true}
         // child can be positioned with `halign` `valign` and margins
         expand
         halign={halign}

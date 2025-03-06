@@ -1,32 +1,28 @@
 import { bind } from "astal";
 import Picker from "@services/colorpicker";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
+import { pointer } from "@lib/utils";
 import Icons from "@lib/icons";
 import ColorsPopover from "../popovers/colors";
 
 const picker = Picker.get_default();
 
-function Trigger() {
-  const Icon = <icon icon={Icons.colorpicker} />;
-
-  return (
-    <button
-      className="color-button"
-      onClicked={() => picker.pick().catch(console.error)}
-      tooltipText={bind(picker, "colors").as(() => `Last color: ${picker.lastColor()}`)}
-      cursor="pointer"
-    >
-      {Icon}
-    </button>
-  );
-}
+const Trigger = (
+  <button
+    setup={pointer}
+    cssClasses={["color-button"]}
+    onClicked={() => picker.pick().catch(console.error)}
+    tooltipText={bind(picker, "colors").as(() => `Last color: ${picker.lastColor()}`)}
+    iconName={Icons.colorpicker}
+  />
+);
 
 function Color() {
   // A circle showing the last picked color
   const colorDisplay = (
-    <box className="color-circle">
+    <box cssClasses={["color-circle"]}>
       <box
-        className="color-display"
+        cssClasses={["color-display"]}
         css={bind(picker, "colors").as(() => `background-color: ${picker.lastColor()}`)}
       />
     </box>
@@ -34,23 +30,26 @@ function Color() {
 
   // Include a color label and the circle
   return (
-    <HoverRevealer
-      hiddenChild={
-        <box className="color-box">
-          {bind(picker, "colors").as(() => picker.lastColor())}
-          {colorDisplay}
-        </box>
-      }
-      onClick={() => ColorsPopover.visible.set(true)}
-    >
-      <Trigger />
-    </HoverRevealer>
+    <menubutton>
+      <HoverRevealer
+        hiddenChild={
+          <box cssClasses={["color-box"]}>
+            {bind(picker, "colors").as(() => picker.lastColor())}
+            {colorDisplay}
+          </box>
+        }
+        onClicked={() => ColorsPopover.visible = true}
+      >
+        {Trigger}
+      </HoverRevealer>
+      {ColorsPopover}
+    </menubutton>
   );
 }
 
 export default function ColorPicker() {
   return (
-    <box className="colorpicker icon-label">
+    <box cssClasses={["colorpicker", "icon-label"]}>
       <Color />
     </box>
   );

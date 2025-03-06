@@ -1,7 +1,8 @@
 import { bind } from "astal";
-import { Widget, Gtk } from "astal/gtk3";
+import { Widget, Gtk } from "astal/gtk4";
 import Bluetooth from "gi://AstalBluetooth";
 import Icon from "@lib/icons";
+import { pointer } from "@lib/utils";
 
 const { START, END } = Gtk.Align;
 
@@ -11,23 +12,23 @@ interface BluetoothItemProps extends Widget.ButtonProps {
 
 export default function DeviceItem({ device, ...props }: BluetoothItemProps) {
   const Paired = (
-    <icon
-      icon={Icon.bluetooth.paired}
+    <image
+      iconName={Icon.bluetooth.paired}
       tooltipText="Paired"
       visible={device.paired}
     />
   );
 
   const Connecting = bind(device, "connecting").as((c) =>
-    <icon icon={Icon.waiting} visible={c} halign={END} />
+    <image iconName={Icon.waiting} visible={c} halign={END} />
   );
 
   return (
-    <button className="device" cursor="pointer" {...props}>
+    <button setup={pointer} cssClasses={["device"]} {...props}>
       <box>
-        <icon icon={bind(device, "icon")} />
+        <image iconName={bind(device, "icon")} />
         <label label={device.alias} halign={START} hexpand />
-        <box className="device-info" halign={END}>
+        <box cssClasses={["device-info"]} halign={END}>
           {Paired}
         </box>
         {Connecting}

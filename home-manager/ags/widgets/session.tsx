@@ -1,6 +1,7 @@
 import { exec } from "astal";
-import { App, Astal, Gtk, Gdk } from "astal/gtk3";
+import { App, Astal, Gtk, Gdk } from "astal/gtk4";
 import Icon from "@lib/icons";
+import { pointer } from "@lib/utils";
 
 function Session() {
   const { START, END, FILL } = Gtk.Align;
@@ -42,14 +43,14 @@ function Session() {
 
     const Button = (
       <button
+        setup={pointer}
         halign={actions[action].halign}
         valign={actions[action].valign}
         name={action}
-        className="box"
-        cursor="pointer"
+        cssClasses={["box"]}
         onClicked={() => exec(actions[action].command)}
       >
-        <icon icon={Icon.powermenu[action]} />
+        <image iconName={Icon.powermenu[action]} />
       </button>
     );
 
@@ -63,20 +64,20 @@ export default function SessionMenu() {
   return (
     <window
       name="session"
-      className="session"
+      cssClasses={["session"]}
       visible={false}
       anchor={Astal.WindowAnchor.NONE}
       exclusivity={Astal.Exclusivity.NORMAL}
       layer={Astal.Layer.OVERLAY}
       keymode={Astal.Keymode.EXCLUSIVE}
-      onKeyPressEvent={(_, event) => {
-        if (event.get_keyval()[1] === Gdk.KEY_Escape) {
+      onKeyPressed={(_, keyval) => {
+        if (keyval === Gdk.KEY_Escape) {
           App.toggle_window("session");
         }
       }}
       application={App}
     >
-      <Session />
+      {Session()}
     </window>
   );
 }

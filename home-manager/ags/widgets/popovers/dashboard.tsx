@@ -1,60 +1,42 @@
-import { Gtk } from "astal/gtk3";
+import { Gtk } from "astal/gtk4";
 
-import Popover from "@lib/widgets/Popover";
 import { name } from "@lib/variables";
 
 import Toggles from "./dashboard/toggles";
 import Launchers from "./dashboard/launchers";
-import visible from "./dashboard/visible";
 
 const { START, CENTER } = Gtk.Align;
 
 function User() {
   const Avatar = (
-    <box className="avatar with-bg-img" css={`background-image: url('${SRC}/assets/avatar.jpg')`} />
+    <image cssClasses={["avatar"]} file={`${SRC}/assets/avatar.jpg`} />
   );
 
   const Names = (
     <box vertical valign={CENTER}>
-      <label label={name.username} className="avatar title" halign={START} />
+      <label label={name.username} cssClasses={["avatar", "title"]} halign={START} />
       <label label={name.hostname} halign={START} />
     </box>
   );
 
   return (
-    <box className="user-info section">
+    <box cssClasses={["user-info", "section"]}>
       {Avatar}
       {Names}
     </box>
   );
 }
 
-function Dashboard() {
-  const { START } = Gtk.Align;
-
-  const Widget = (
-    <Popover
-      name="dashboard"
-      className="dashboard popover"
-      visible={visible()}
-      onClose={() => visible.set(false)}
-      valign={START}
-      halign={START}
-      marginTop={28}
-      marginLeft={12}
-    >
-      <box vertical>
-        <User />
-        <Toggles />
-        <Launchers />
-      </box>
-    </Popover>
-  );
-
-  return {
-    visible: visible,
-    Widget: Widget
-  }
-}
-
-export default Dashboard()
+export default (
+  <popover
+    name="dashboard"
+    cssClasses={["dashboard"]}
+    hasArrow={false}
+  >
+    <box vertical>
+      <User />
+      <Toggles />
+      <Launchers />
+    </box>
+  </popover>
+);

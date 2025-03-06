@@ -1,8 +1,9 @@
 import { bind } from "astal";
-import { Gtk } from "astal/gtk3";
+import { Gtk } from "astal/gtk4";
 import Mpris from "gi://AstalMpris";
 
 import Icons from "@lib/icons";
+import { pointer } from "@lib/utils";
 
 // Action buttons for playback
 
@@ -18,36 +19,33 @@ export default function Actions(player: Mpris.Player) {
 
     return (
       <button
-        className="play-pause"
-        onClick={() => player.play_pause()}
+        setup={pointer}
+        cssClasses={["play-pause"]}
+        onClicked={() => player.play_pause()}
         visible={bind(player, "canPlay")}
-        cursor="pointer"
-      >
-        <icon icon={icon} />
-      </button>
+        iconName={icon}
+      />
     );
   }
 
   const Prev = (
     <button
-      className="previous"
-      onClick={() => player.previous()}
+      setup={pointer}
+      cssClasses={["previous"]}
+      onClicked={() => player.previous()}
       visible={bind(player, "canGoPrevious")}
-      cursor="pointer"
-    >
-      <icon icon={Icons.mpris.backward} />
-    </button>
+      iconName={Icons.mpris.backward}
+    />
   );
 
   const Next = (
     <button
-      className="next"
-      onClick={() => player.next()}
+      setup={pointer}
+      cssClasses={["next"]}
+      onClicked={() => player.next()}
       visible={bind(player, "canGoNext")}
-      cursor="pointer"
-    >
-      <icon icon={Icons.mpris.forward} />
-    </button>
+      iconName={Icons.mpris.forward}
+    />
   );
 
   function Loop() {
@@ -59,14 +57,13 @@ export default function Actions(player: Mpris.Player) {
 
     return (
       <button
-        className={bind(player, "loopStatus").as((s) => `loop${s === NONE && " off"}`)}
-        onClick={() => player.loop()}
+        setup={pointer}
+        cssClasses={bind(player, "loopStatus").as((s) => ["loop", s === NONE ? "off" : ""])}
+        onClicked={() => player.loop()}
         visible={bind(player, "loopStatus").as((s) => s !== UNSUPPORTED)}
-        cursor="pointer"
         halign={START}
-      >
-        <icon icon={icon} />
-      </button>
+        iconName={icon}
+      />
     );
   }
 
@@ -79,21 +76,20 @@ export default function Actions(player: Mpris.Player) {
 
     return (
       <button
-        className={bind(player, "shuffleStatus").as((s) => `shuffle${s === OFF && " off"}`)}
-        onClick={() => player.shuffle()}
+        setup={pointer}
+        cssClasses={bind(player, "shuffleStatus").as((s) => ["shuffle", s === OFF ? "off" : ""])}
+        onClicked={() => player.shuffle()}
         visible={bind(player, "shuffleStatus").as((s) => s !== UNSUPPORTED)}
-        cursor="pointer"
         halign={END}
-      >
-        <icon icon={icon} />
-      </button>
+        iconName={icon}
+      />
     );
   }
 
   return (
-    <centerbox className="media-actions">
+    <centerbox cssClasses={["media-actions"]}>
       <Loop />
-      <box className="main-actions" halign={CENTER} hexpand>
+      <box cssClasses={["main-actions"]} halign={CENTER} hexpand>
         {Prev}
         <Toggle />
         {Next}

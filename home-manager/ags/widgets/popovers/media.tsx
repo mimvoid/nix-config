@@ -1,27 +1,21 @@
-import { bind, Variable } from "astal";
-import { Gtk } from "astal/gtk3";
+import { bind } from "astal";
 import Mpris from "gi://AstalMpris";
-
-import Popover from "@lib/widgets/Popover";
 
 import Actions from "./media/Actions";
 import Progress from "./media/Progress";
 import Info from "./media/Info";
 
 const mpris = Mpris.get_default();
-const { START, CENTER } = Gtk.Align;
 
 // Pass the mpris player to the widget modules
 function Input() {
-  function Popup(player: Mpris.Player) {
-    return (
-      <box vertical>
-        {Actions(player)}
-        {Progress(player)}
-        {Info(player)}
-      </box>
-    );
-  }
+  const Popup = (player: Mpris.Player) => (
+    <box vertical>
+      {Actions(player)}
+      {Progress(player)}
+      {Info(player)}
+    </box>
+  );
 
   const Default = <box>Nothing Playing</box>
 
@@ -32,27 +26,12 @@ function Input() {
   );
 }
 
-function MediaBox() {
-  const visible = Variable(false);
-
-  const Widget = (
-    <Popover
-      name="media"
-      className="media popover"
-      visible={visible()}
-      onClose={() => visible.set(false)}
-      valign={START}
-      halign={CENTER}
-      marginTop={28}
-    >
-      {Input()}
-    </Popover>
-  );
-
-  return {
-    visible: visible,
-    Widget: () => Widget
-  }
-}
-
-export default MediaBox()
+export default (
+  <popover
+    name="media"
+    cssClasses={["media", "box"]}
+    hasArrow={false}
+  >
+    {Input()}
+  </popover>
+);

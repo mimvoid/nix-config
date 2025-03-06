@@ -5,7 +5,7 @@ const battery = Battery.get_default();
 
 export default function BatteryLevel() {
   // Get the icon from Astal
-  const Icon = <icon icon={bind(battery, "batteryIconName")} />;
+  const Icon = <image iconName={bind(battery, "batteryIconName")} />;
 
   // Format the battery percentage
   const label = bind(battery, "percentage").as((i) => `${Math.floor(i * 100)}%`);
@@ -15,7 +15,7 @@ export default function BatteryLevel() {
 
   return (
     <box
-      className="battery icon-label"
+      cssClasses={["battery", "icon-label"]}
       tooltipText={tooltip}
       visible={bind(battery, "isPresent")}
     >

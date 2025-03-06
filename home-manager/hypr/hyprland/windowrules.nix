@@ -22,6 +22,7 @@ in
       (high "ristretto")
 
       (active "firefox")
+      (active "zen")
       (active "FFPWA*")
 
       (full "krita")
@@ -32,6 +33,8 @@ in
     ++ [
       "suppressevent maximize, class:.*"
       "opacity 0.8 override 0.7 override, class:(${terminal})"
+
+      "float, class:(io.Astal.astal)"
 
       # Make Zotero plugin notifications less intrusive
       "float, class:^(Zotero)$, title:^(Progress)$"

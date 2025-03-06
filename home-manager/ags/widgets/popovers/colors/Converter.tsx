@@ -1,5 +1,5 @@
 import { Variable } from "astal";
-import { Gtk } from "astal/gtk3";
+import { Gtk } from "astal/gtk4";
 import Gdk from "gi://Gdk";
 
 import Picker from "@services/colorpicker";
@@ -9,6 +9,7 @@ import Dropdown from "@lib/widgets/Dropdown";
 
 import Icons from "@lib/icons";
 import { gRgbaToHex, gRgbaToHsl } from "@lib/colors";
+import { pointer } from "@lib/utils";
 
 const picker = Picker.get_default();
 
@@ -25,13 +26,14 @@ const colorLabel = Variable(color.to_string());
 const Display = (
   <ColorButton
     rgba={color}
-    className="color-box"
-    cursor="pointer"
+    setup={pointer}
+    cssClasses={["color-box"]}
     onColorSet={(self) => {
       color = self.rgba;
       colorLabel.set(self.rgba.to_string());
     }}
-    expand
+    hexpand
+    vexpand
   />
 );
 
@@ -64,15 +66,15 @@ function Switcher() {
 
     return (
       <box spacing={4} vertical halign={Gtk.Align.END}>
-        <button label="hex" cursor="pointer" onClick={hex} />
-        <button label="rgb" cursor="pointer" onClick={rgb} />
-        <button label="hsl" cursor="pointer" onClick={hsl} />
+        <button setup={pointer} label="hex" onClicked={hex} />
+        <button setup={pointer} label="rgb" onClicked={rgb} />
+        <button setup={pointer} label="hsl" onClicked={hsl} />
       </box>
-    )
+    );
   }
 
   return (
-    <box className="color-switcher" spacing={8} hexpand>
+    <box cssClasses={["color-switcher"]} spacing={8} hexpand>
       {Display}
       <Formats />
     </box>
@@ -120,8 +122,8 @@ function Enter() {
       {Entry}
       <box spacing={4} halign={Gtk.Align.END}>
         {buttons.map((b) => (
-          <button onClick={b.cmd} tooltipText={b.tooltip} cursor="pointer">
-            <icon icon={b.icon} />
+          <button setup={pointer} onClicked={b.cmd} tooltipText={b.tooltip}>
+            <image iconName={b.icon} />
           </button>
         ))}
       </box>
@@ -131,8 +133,8 @@ function Enter() {
 
 export default function Converter() {
   return (
-    <Dropdown label={<label label="Color Selector" className="title" />}>
-      <box className="converter" vertical spacing={8}>
+    <Dropdown label={<label label="Color Selector" cssClasses={["title"]} />}>
+      <box cssClasses={["converter"]} vertical spacing={8}>
         <Switcher />
         <Enter />
       </box>

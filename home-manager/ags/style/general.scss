@@ -6,11 +6,6 @@
 * {
   all: unset;
   @include fonts.font;
-  -gtk-icon-theme: "Adwaita";
-
-  + label {
-    margin-left: 0.4em;
-  }
 }
 
 .display {
@@ -19,26 +14,27 @@
 
 window {
   @include looks.radius;
+}
 
-  &.popover > box {
-    @include looks.radius(0.66);
+popover {
+  @include looks.radius(0.66);
+  @include fonts.menu-size;
+
+  margin: 0.25rem 0.5rem;
+  padding: 1em;
+  background: color.change(palette.$base, $alpha: 0.9);
+  color: palette.$string;
+
+  label {
     @include fonts.menu-size;
+  }
 
-    padding: 1em;
-    background: color.change(palette.$base, $alpha: 0.9);
-    color: palette.$string;
+  trough {
+    margin: 0.5rem 0.5rem 0.5rem 0;
+    min-height: 0.6rem;
 
-    label {
-      @include fonts.menu-size;
-    }
-
-    trough {
-      margin: 0.5rem 0.5rem 0.5rem 0;
-      min-height: 0.6rem;
-
-      + label {
-        margin-left: 0;
-      }
+    + label {
+      margin-left: 0;
     }
   }
 }
@@ -51,26 +47,19 @@ window {
   margin: 1rem;
 }
 
-.with-bg-img {
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-color: palette.$box;
-}
-
 .dropdown {
   > button {
     padding: 0.5rem;
     padding-bottom: 0;
     margin-bottom: 1rem;
 
-    icon {
+    image {
       @include looks.transition;
       @include fonts.font-size(1.25);
     }
   }
 
-  &.open > button icon {
+  &.open > button image {
     -gtk-icon-transform: rotate(-180deg);
   }
 }
@@ -79,28 +68,60 @@ button {
   @include looks.radius;
   @include looks.transition;
 
-  padding: 0.4em;
+  padding: 0 0.4em;
   background-color: transparent;
 
   &:focus {
-    background-color: palette.$box-dim;
+    background-color: color.change(palette.$box-dim, $alpha: 0.05);
   }
 
   &:hover {
     background-color: palette.$box;
   }
+
+  > image {
+    margin: 0;
+    padding: 0;
+    background: transparent;
+  }
+}
+
+menubutton {
+  margin: 0;
+  padding: 0;
+
+  > button {
+    margin: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+}
+
+.hover-revealer {
+  padding: 0;
+  background-color: transparent;
+
+  &:focus,
+  &:hover {
+    background-color: transparent;
+  }
+
+  > box {
+    margin: 0;
+    padding: 0;
+  }
 }
 
 label {
   margin-right: 0.4em;
-}
-label.title,
-.popover > box label.title {
-  @include fonts.title-size;
-  margin-left: 0;
-  margin-bottom: 0.75rem;
-  font-weight: bolder;
-  color: palette.$primary-bright;
+
+  &.title {
+    @include fonts.title-size;
+    margin-left: 0;
+    margin-bottom: 0.75rem;
+    font-weight: bolder;
+    color: palette.$primary-bright;
+  }
 }
 
 entry {
@@ -114,7 +135,7 @@ trough {
 
   min-width: 8em;
   min-height: 0.6em;
-  margin: 0.25em;
+  margin: 0.25em 0.5em;
 
   background-color: palette.$box-bright;
 

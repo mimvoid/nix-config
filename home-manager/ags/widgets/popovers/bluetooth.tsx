@@ -1,13 +1,13 @@
-import { execAsync, bind, Variable } from "astal";
-import { Gtk } from "astal/gtk3";
+import { execAsync, bind } from "astal";
+import { Gtk } from "astal/gtk4";
 import Bluetooth from "gi://AstalBluetooth";
 
-import Popover from "@lib/widgets/Popover";
 import Icon from "@lib/icons";
+import { pointer } from "@lib/utils";
 import DeviceItem from "./bluetooth/DeviceItem";
 
 const bluetooth = Bluetooth.get_default();
-const { START, END } = Gtk.Align;
+const { START } = Gtk.Align;
 
 function Status() {
   const action = () => execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
@@ -19,25 +19,33 @@ function Status() {
   );
 
   return (
-    <box className="status section">
-      <button onClicked={action} tooltipText={tooltip} cursor="pointer">
-        <icon className="big-icon" icon={icon} />
+    <box cssClasses={["status", "section"]}>
+      <button setup={pointer} onClicked={action} tooltipText={tooltip}>
+        <image cssClasses={["big-icon"]} iconName={icon} />
       </button>
       <label label={bind(bluetooth, "isPowered").as((p) => p ? "On" : "Off")} halign={START} />
     </box>
   );
 }
 
-function Connected() {
-  const Devices = bind(bluetooth, "devices").as((d) =>
-    d.filter((device) => device.connected).map((device) =>
+const Devices = (forConnected: boolean) => (
+  bind(bluetooth, "devices").as((d) => (
+    d.map((device) => (
       <DeviceItem
         device={device}
-        onClick={() => execAsync(["bluetoothctl", "disconnect", device.address])}
-        tooltipText="Disconnect device"
+        onClicked={() => execAsync([
+          "bluetoothctl",
+          forConnected ? "disconnect" : "connect",
+          device.address
+        ])}
+        tooltipText={`${forConnected ? "Disconnect" : "Connect"} device`}
+        visible={bind(device, "connected").as((c) => forConnected ? c : !c)}
       />
-  ));
+    ))
+  ))
+);
 
+function Connected() {
   const DefaultLabel = (
     <label
       label="None connected"
@@ -47,57 +55,28 @@ function Connected() {
   );
 
   return (
-    <box className="section connected" vertical>
-      <label className="title" label="Connected" halign={START} />
+    <box cssClasses={["section", "connected"]} vertical>
+      <label cssClasses={["title"]} label="Connected" halign={START} />
       {DefaultLabel}
-      {Devices}
+      {Devices(true)}
     </box>
   );
 }
 
-function Disconnected() {
-  const Devices = bind(bluetooth, "devices").as((d) =>
-    d.filter((device) => !device.connected).map((device) =>
-      <DeviceItem
-        device={device}
-        onClick={() => execAsync(["bluetoothctl", "connect", device.address])}
-        tooltipText="Connect device"
-      />
-  ));
+const Disconnected = (
+  <box cssClasses={["section", "disconnected"]} vertical>
+    <label cssClasses={["title"]} label="Disconnected" halign={START} />
+    {Devices(false)}
+  </box>
+);
 
-  return (
-    <box className="section disconnected" vertical>
-      <label className="title" label="Disconnected" halign={START} />
-      {Devices}
+
+export default (
+  <popover cssClasses={["bluetooth-popover"]} hasArrow={false}>
+    <box vertical>
+      <Status />
+      <Connected />
+      {Disconnected}
     </box>
-  );
-}
-
-function BluetoothPopover() {
-  const visible = Variable(false);
-
-  const Widget = (
-    <Popover
-      className="bluetooth-popover popover"
-      visible={visible()}
-      onClose={() => visible.set(false)}
-      valign={START}
-      halign={END}
-      marginTop={28}
-      marginRight={12}
-    >
-      <box vertical>
-        <Status />
-        <Connected />
-        <Disconnected />
-      </box>
-    </Popover>
-  )
-
-  return {
-    visible: visible,
-    Widget: Widget
-  }
-}
-
-export default BluetoothPopover()
+  </popover>
+);

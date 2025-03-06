@@ -1,9 +1,10 @@
 import { bind } from "astal";
-import { Gtk } from "astal/gtk3";
+import { Gtk } from "astal/gtk4";
 import WlSunset from "./wlsunset";
 
 import Brightness from "@services/brightness";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
+import { pointer } from "@lib/utils";
 
 // Brightness label & slider
 
@@ -14,9 +15,9 @@ function BrightnessBox() {
   // Change brightness on drag
   const Slider = (
     <slider
+      setup={pointer}
       value={bind(brightness, "light")}
-      onDragged={({ value }) => brightness.light = value}
-      cursor="pointer"
+      onChangeValue={({ value }) => brightness.light = value}
       valign={CENTER}
       hexpand
     />
@@ -33,9 +34,9 @@ function BrightnessBox() {
           {label}
         </box>
       }
-      onScroll={(_, { delta_y }) => (
+      onScroll={(_, __, dy) => (
         // Change brightness by scrolling
-        delta_y < 0 ? (brightness.light += 0.05) : (brightness.light -= 0.05)
+        dy < 0 ? (brightness.light += 0.05) : (brightness.light -= 0.05)
       )}
     />
   );
@@ -43,7 +44,7 @@ function BrightnessBox() {
 
 export default function BrightnessWidget() {
   return (
-    <box className="brightness">
+    <box cssClasses={["brightness"]}>
       <WlSunset />
       <BrightnessBox />
     </box>

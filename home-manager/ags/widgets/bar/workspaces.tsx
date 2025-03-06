@@ -1,5 +1,6 @@
 import { bind } from "astal";
 import Hyprland from "gi://AstalHyprland";
+import { pointer } from "@lib/utils";
 
 const hypr = Hyprland.get_default();
 
@@ -11,16 +12,16 @@ const Spaces = bind(hypr, "workspaces").as((wss) =>
     // Create a button for each workspace
     .map((ws) => (
       <button
-        className={bind(hypr, "focusedWorkspace").as((fw) =>
-          ws === fw ? "active" : ""
+        setup={pointer}
+        cssClasses={bind(hypr, "focusedWorkspace").as((fw) =>
+          ws === fw ? ["active"] : []
         )}
         onClicked={() => ws.focus()}
         tooltipText={`Workspace ${ws.id}`}
-        cursor="pointer"
       />
     )),
 );
 
 export default function Workspaces() {
-  return <box className="workspaces">{Spaces}</box>;
+  return <box cssClasses={["workspaces"]}>{Spaces}</box>;
 }

@@ -2,14 +2,8 @@
 @use "./variables/fonts";
 @use "./variables/looks";
 
-#dashboard > box {
-  @include fonts.menu-size;
-  background-color: palette.$base;
-  margin: 0;
-}
-
 .user-info {
-  box.avatar {
+  image.avatar {
     @include looks.radius(1.5);
     margin: 0.5rem 0.75rem 0.5rem 0;
     min-width: 5rem;
@@ -38,12 +32,12 @@
       color: palette.$string;
     }
 
-    icon {
+    image {
       @include fonts.title-size;
     }
   }
 
-  .launchers icon {
+  .launchers image {
     color: palette.$primary;
   }
 }

@@ -1,7 +1,7 @@
-import { bind, Variable } from "astal";
-import { Gtk } from "astal/gtk3";
+import { bind } from "astal";
+import { Gtk } from "astal/gtk4";
 import Wp from "gi://AstalWp";
-import Popover from "@lib/widgets/Popover";
+import { pointer } from "@lib/utils";
 
 const { START, CENTER, END, FILL } = Gtk.Align;
 
@@ -15,17 +15,17 @@ function Section(endpoint: Wp.Endpoint, name: string) {
   const Icon = (
     // Can mute or unmute
     <button
-      cursor="pointer"
-      onClicked={() => (endpoint.mute = !endpoint.mute)}
+      setup={pointer}
+      onClicked={() => endpoint.mute = !endpoint.mute}
       tooltipText={bind(endpoint, "mute").as((m) => `${m ? "Unmute" : "Mute"} ${lowerName}`)}
     >
-      <icon className="big-icon" icon={bind(endpoint, "volumeIcon")} />
+      <image cssClasses={["big-icon"]} iconName={bind(endpoint, "volumeIcon")} />
     </button>
   );
 
   const Label = (
     <label
-      className="description"
+      cssClasses={["description"]}
       label={bind(endpoint, "description").as((d) => d || endpoint.name || "")}
       halign={START}
       hexpand
@@ -35,9 +35,9 @@ function Section(endpoint: Wp.Endpoint, name: string) {
   const Slider = (
     <box>
       <slider
+        setup={pointer}
         value={bind(endpoint, "volume")}
-        onDragged={({ value }) => (endpoint.volume = value)}
-        cursor="pointer"
+        onChangeValue={({ value }) => (endpoint.volume = value)}
         valign={CENTER}
         hexpand
       />
@@ -50,12 +50,12 @@ function Section(endpoint: Wp.Endpoint, name: string) {
   );
 
   return (
-    <box className={`section ${lowerName}`} halign={FILL} valign={CENTER} expand>
+    <box cssClasses={["section", lowerName]} halign={FILL} valign={CENTER} hexpand vexpand>
       <box vertical>
-        <label className="title" label={name} halign={START} />
+        <label cssClasses={["title"]} label={name} halign={START} />
         <box>
           {Icon}
-          <box vertical valign={CENTER} expand>
+          <box vertical valign={CENTER} hexpand vexpand>
             {Label}
             {Slider}
           </box>
@@ -68,30 +68,11 @@ function Section(endpoint: Wp.Endpoint, name: string) {
 const Speaker = Section(speaker, "Speaker");
 const Microphone = Section(microphone, "Microphone");
 
-function AudioPopover() {
-  const visible = Variable(false);
-
-  const Widget = (
-    <Popover
-      className="audio-popover popover"
-      visible={visible()}
-      onClose={() => visible.set(false)}
-      valign={START}
-      halign={END}
-      marginTop={28}
-      marginRight={12}
-    >
-      <box vertical>
-        {Speaker}
-        {Microphone}
-      </box>
-    </Popover>
-  )
-
-  return {
-    visible: visible,
-    Widget: () => Widget
-  }
-}
-
-export default AudioPopover()
+export default (
+  <popover cssClasses={["audio-popover"]} hasArrow={false}>
+    <box vertical>
+      {Speaker}
+      {Microphone}
+    </box>
+  </popover>
+);

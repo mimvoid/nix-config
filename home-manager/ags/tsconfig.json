@@ -8,7 +8,7 @@
     "module": "ES2023",
     "moduleResolution": "Bundler",
     "jsx": "react-jsx",
-    "jsxImportSource": "/home/zinnia/.local/share/ags/gtk3",
+    "jsxImportSource": "/home/zinnia/.local/share/ags/gtk4",
     "paths": {
       "astal": ["/home/zinnia/.local/share/ags"],
       "astal/*": ["/home/zinnia/.local/share/ags/*"],

@@ -1,13 +1,12 @@
 import { bind, Variable, writeFile } from "astal";
-import { Gtk } from "astal/gtk3";
+import { Gtk } from "astal/gtk4";
 
 import Picker from "@services/colorpicker";
 
 import Dropdown from "@lib/widgets/Dropdown";
 import { hexToRgb, hexToHsl } from "@lib/colors";
 import Icons from "@lib/icons";
-
-import visible from "./visible";
+import { pointer } from "@lib/utils";
 
 const picker = Picker.get_default();
 const { START, CENTER, END } = Gtk.Align;
@@ -17,14 +16,14 @@ function ColorItem(color: string) {
 
   const Main = (
     <button
-      onClick={() => picker.copy(curr.get())}
-      className="main-info"
-      cursor="pointer"
+      setup={pointer}
+      onClicked={() => picker.copy(curr.get())}
+      cssClasses={["main-info"]}
       hexpand
     >
       <box>
         <box
-          className="color-box"
+          cssClasses={["color-box"]}
           css={`background-color: ${color}`}
           halign={START}
           valign={CENTER}
@@ -47,25 +46,25 @@ function ColorItem(color: string) {
     
     switch (c) {
       case color:
-        return <button label="rgb" onClick={setRgb} cursor="pointer" />
+        return <button setup={pointer} label="rgb" onClicked={setRgb}/>
       case hexToRgb(color):
-        return <button label="hsl" onClick={setHsl} cursor="pointer" />
+        return <button setup={pointer} label="hsl" onClicked={setHsl}/>
       default:
-        return <button label="hex" onClick={() => curr.set(color)} cursor="pointer" />
+        return <button setup={pointer} label="hex" onClicked={() => curr.set(color)}/>
     }
   })
 
   const Actions = (
     <box className="actions" halign={END}>
       {Switcher}
-      <button onClick={() => picker.remove(color)} cursor="pointer" >
-        <icon icon={Icons.actions.close} />
+      <button setup={pointer} onClicked={() => picker.remove(color)}>
+        <image iconName={Icons.actions.close} />
       </button>
     </box>
   )
 
   return (
-    <box className="color-item" hexpand>
+    <box cssClasses={["color-item"]} hexpand>
       {Main}
       {Actions}
     </box>
@@ -81,7 +80,6 @@ function Actions() {
     Picker.set_filename(picker.storePath);
     Picker.set_current_name("color-history.json");
 
-    visible.set(false);
     const res = Picker.run();
     if (res === Gtk.ResponseType.ACCEPT) {
       const newFilename = Picker.get_filename();
@@ -96,19 +94,17 @@ function Actions() {
   return (
     <box spacing={4} halign={END}>
       <button
-        onClick={saveColors}
+        setup={pointer}
+        onClicked={saveColors}
         tooltipText="Save color history to file"
-        cursor="pointer"
-      >
-        <icon icon={Icons.actions.save} />
-      </button>
+        iconName={Icons.actions.save}
+      />
       <button
-        onClick={() => picker.clear()}
+        setup={pointer}
+        onClicked={() => picker.clear()}
         tooltipText="Clear color history"
-        cursor="pointer"
-      >
-        <icon icon={Icons.actions.clearAll} />
-      </button>
+        iconName={Icons.actions.clearAll}
+      />
     </box>
   )
 }
@@ -118,19 +114,17 @@ export default function PickerList() {
     c.map((color) => ColorItem(color))
   );
 
-  const { EXTERNAL, NEVER } = Gtk.PolicyType;
-
   return (
     <Dropdown
-      className="colorpicker-list"
-      label={<label label="History" className="title" halign={START} />}
+      cssClasses={["colorpicker-list"]}
+      label={<label label="History" cssClasses={["title"]} halign={START} />}
     >
-      <scrollable hscroll={NEVER} vscroll={EXTERNAL} heightRequest={350}>
+      <box heightRequest={350}>
         <box spacing={8} vertical>
           <Actions />
           {Colors}
         </box>
-      </scrollable>
+      </box>
     </Dropdown>
   );
 }

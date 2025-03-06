@@ -1,4 +1,4 @@
-import { App, Astal, Gtk, Gdk } from "astal/gtk3";
+import { App, Astal, Gtk, Gdk } from "astal/gtk4";
 
 // Get the bar modules
 import Workspaces from "./workspaces";
@@ -18,7 +18,7 @@ import Brightness from "./brightness/brightness";
 // Define the three parts of the bar
 function Left() {
   return (
-    <box className="left box" hexpand halign={Gtk.Align.START}>
+    <box cssClasses={["left", "box"]} hexpand halign={Gtk.Align.START}>
       {Dashboard}
       <Workspaces />
       <Title />
@@ -28,7 +28,7 @@ function Left() {
 
 function Center() {
   return (
-    <box className="center box">
+    <box cssClasses={["center", "box"]}>
       <Clock />
       {Media}
     </box>
@@ -37,7 +37,7 @@ function Center() {
 
 function Right() {
   return (
-    <box className="right box" hexpand halign={Gtk.Align.END}>
+    <box cssClasses={["right", "box"]} hexpand halign={Gtk.Align.END}>
       <Tray />
       <ColorPicker />
       <Network />
@@ -56,11 +56,16 @@ export default function Bar(monitor: Gdk.Monitor) {
   return (
     <window
       name="bar"
-      className="bar"
+      cssClasses={["bar"]}
       gdkmonitor={monitor}
       exclusivity={Astal.Exclusivity.EXCLUSIVE}
       anchor={TOP | LEFT | RIGHT}
       application={App}
+      marginTop={3}
+      marginRight={12}
+      marginBottom={1}
+      marginLeft={12}
+      visible
     >
       <centerbox>
         <Left />

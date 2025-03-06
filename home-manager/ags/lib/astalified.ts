@@ -1,26 +1,7 @@
-import { Gtk, astalify, type ConstructProps } from "astal/gtk3";
-import GObject from "gi://GObject";
+import { Gtk, astalify } from "astal/gtk4";
 
-export class Calendar extends astalify(Gtk.Calendar) {
-  static {
-    GObject.registerClass(this);
-  }
-
-  constructor(props: ConstructProps<Calendar, Gtk.Calendar.ConstructorProps, {}>) {
-    super(props as any);
-  }
-}
-
-export class ColorButton extends astalify(Gtk.ColorButton) {
-  static {
-    GObject.registerClass(this);
-  }
-
-  constructor(props:
-    ConstructProps<ColorButton,
-    Gtk.ColorButton.ConstructorProps,
-    { onColorSet: [] }
-  >){
-    super(props as any);
-  }
-}
+export const Calendar = astalify<Gtk.Calendar, Gtk.Calendar.ConstructorProps>(Gtk.Calendar, {});
+export const ColorButton = astalify<Gtk.ColorButton, Gtk.ColorButton.ConstructorProps>(Gtk.ColorButton, {});
+export const ColorDialogButton = astalify<Gtk.ColorDialogButton, Gtk.ColorDialogButton.ConstructorProps>(Gtk.ColorDialogButton, {});
+export const ScrolledWindow = astalify<Gtk.ScrolledWindow, Gtk.ScrolledWindow.ConstructorProps>(Gtk.ScrolledWindow, {});
+export const Picture = astalify<Gtk.Picture, Gtk.Picture.ConstructorProps>(Gtk.Picture, {});

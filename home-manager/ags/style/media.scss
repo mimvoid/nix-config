@@ -3,7 +3,7 @@
 @use "./variables/fonts";
 @use "./variables/looks";
 
-window.media > box {
+popover.media {
   padding: 1.5rem;
 }
 
@@ -48,7 +48,7 @@ window.media > box {
 .media-actions {
   padding: 0 2.5rem;
 
-  icon {
+  image {
     @include fonts.menu-size(1.15);
   }
 

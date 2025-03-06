@@ -4,6 +4,7 @@
 @use "./variables/fonts";
 
 .big-clock {
+  min-width: 24em;
   margin: 2em 2em 1em;
 
   .hour, .minute {
@@ -33,14 +34,18 @@
 }
 
 calendar {
-  @include fonts.title-size;
+  margin: 1rem;
 
-  // Keep week numbers aligned
-  &:not(.highlight) {
-    padding: 0.4em;
+  header {
+    margin-bottom: 1rem;
+
+    label,
+    image {
+      @include fonts.title-size;
+    }
   }
 
-  &.button {
+  button {
     @include looks.radius;
     @include looks.transition;
 
@@ -51,18 +56,30 @@ calendar {
     }
   }
 
-  // Week numbers & day names
-  &.highlight {
-    color: color.adjust(palette.$primary, $alpha: 0.3);
-  }
+  grid {
+    label {
+      @include fonts.title-size;
+    }
 
-  // Defaults to current day
-  &:selected {
-    color: palette.$tertiary;
-  }
+    .day-number {
+      padding: 0.4rem;
+      margin: 0.15rem 0.5rem;
+    }
 
-  // Days outside the current month
-  &:indeterminate {
-    color: color.adjust(palette.$string, $alpha: 0.6);
+    .day-name,
+    .week-number {
+      color: color.adjust(palette.$primary, $alpha: 0.3);
+    }
+
+    .today {
+      @include looks.radius;
+      font-weight: bolder;
+      color: palette.$base;
+      background-color: palette.$tertiary;
+    }
+
+    .other-month {
+      color: palette.$string-dim;
+    }
   }
 }

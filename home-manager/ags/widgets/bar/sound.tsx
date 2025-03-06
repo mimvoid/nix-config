@@ -1,24 +1,27 @@
 import { bind } from "astal";
-import { Gtk } from "astal/gtk3";
+import { Gtk } from "astal/gtk4";
 import Wp from "gi://AstalWp";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
+import { pointer } from "@lib/utils";
 import AudioPopover from "../popovers/audio";
 
 const speaker = Wp.get_default()?.audio.defaultSpeaker!;
 
+// Can mute or unmute speaker
 const Icon = (
-  // Can mute or unmute speaker
-  <button cursor="pointer" onClicked={() => (speaker.mute = !speaker.mute)}>
-    <icon icon={bind(speaker, "volumeIcon")} />
-  </button>
+  <button
+    setup={pointer}
+    onClicked={() => (speaker.mute = !speaker.mute)}
+    iconName={bind(speaker, "volumeIcon")}
+  />
 );
 
 // Control volume with slider
 const Slider = (
   <slider
+    setup={pointer}
     value={bind(speaker, "volume")}
-    onDragged={({ value }) => (speaker.volume = value)}
-    cursor="pointer"
+    onChangeValue={({ value }) => (speaker.volume = value)}
     valign={Gtk.Align.CENTER}
     hexpand
   />
@@ -32,32 +35,34 @@ function SliderHover() {
   // Hitbox does not include the icon
   // Makes clicking on the icon button easier
   return (
-    <HoverRevealer
-      hiddenChild={Slider}
-      onScroll={(_, { delta_y }) => {
-        const step = 0.05;
+    <menubutton>
+      <HoverRevealer
+        hiddenChild={Slider}
+        onScroll={(_, __, dy) => {
+          const step = 0.05;
 
-        if (delta_y < 0) {
-          speaker.volume <= 1 - step
-            ? (speaker.volume += step)
-            : (speaker.volume = 1);
-        } else {
-          speaker.volume >= step
-            ? (speaker.volume -= step)
-            : (speaker.volume = 0);
-        }
-      }}
-      onClick={() => AudioPopover.visible.set(true)}
-      cursor="pointer"
-    >
-      {label}
-    </HoverRevealer>
+          if (dy < 0) {
+            speaker.volume <= 1 - step
+              ? (speaker.volume += step)
+              : (speaker.volume = 1);
+          } else {
+            speaker.volume >= step
+              ? (speaker.volume -= step)
+              : (speaker.volume = 0);
+          }
+        }}
+        onClicked={() => AudioPopover.visible = true}
+      >
+        {label}
+      </HoverRevealer>
+      {AudioPopover}
+    </menubutton>
   )
 }
 
 export default function AudioSlider() {
   return (
-    <box className="sound icon-label">
+    <box cssClasses={["sound", "icon-label"]}>
       {Icon}
       <SliderHover />
     </box>

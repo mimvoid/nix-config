@@ -2,25 +2,23 @@ import { bind } from "astal";
 import Notifd from "gi://AstalNotifd";
 
 import Icons from "@lib/icons";
+import { pointer } from "@lib/utils";
 
 const notifd = Notifd.get_default();
 
 const NotifDnd = (
   <button
-    className={bind(notifd, "dontDisturb").as((d) => d ? "on" : "off")}
+    setup={pointer}
+    cssClasses={bind(notifd, "dontDisturb").as((d) => [d ? "on" : "off"])}
     tooltipText={bind(notifd, "dontDisturb").as((d) => `Turn ${d ? "off" : "on"} Do not Disturb`)}
-    onClick={() => notifd.dontDisturb = !notifd.dontDisturb}
-    cursor="pointer"
-  >
-    <icon
-      icon={bind(notifd, "dontDisturb").as((d) => d ? Icons.notifications.off : Icons.notifications.on)}
-    />
-  </button>
+    onClicked={() => notifd.dontDisturb = !notifd.dontDisturb}
+    iconName={bind(notifd, "dontDisturb").as((d) => d ? Icons.notifications.off : Icons.notifications.on)}
+  />
 );
 
 export default function Toggles() {
   return (
-    <box className="toggles section">
+    <box cssClasses={["toggles", "section"]}>
       {NotifDnd}
     </box>
   );
