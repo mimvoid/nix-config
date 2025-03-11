@@ -78,6 +78,7 @@
           ./configuration.nix
           ./hosts/intel.nix
           ./hosts/sirru/hardware-configuration.nix
+          ./hosts/sirru/extra.nix
 
           { environment.variables = { inherit FLAKE; }; }
         ];
