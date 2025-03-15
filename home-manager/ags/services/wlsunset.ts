@@ -1,14 +1,12 @@
 import GObject, { register, property } from "astal/gobject";
-import { execAsync } from "astal";
+import { exec, execAsync } from "astal";
 
 function getWlsunset() {
-  // FIX: When wlsunset is inactive, gives a Gjs error Gio.IOErrorEnum
-  // with no message afterward
-  const state = execAsync("systemctl --user is-active wlsunset.service")
-    .then((out) => out === "active")
-    .catch((err) => printerr(err))
-
-  return state
+  try {
+    return exec("pidof wlsunset") !== null;
+  } catch (err) {
+    return false;
+  }
 }
 
 // Create library
@@ -35,6 +33,6 @@ export default class WlSunset extends GObject.Object {
     execAsync(`systemctl --user ${setValue} wlsunset.service`).then(() => {
       this.#running = stat;
       this.notify("running");
-    });
+    }).catch(console.error);
   }
 }
