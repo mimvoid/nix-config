@@ -12,11 +12,11 @@
     background-color: palette.$base;
   }
 
-  picture {
+  image {
     @include looks.radius(0.25);
+    transform: scale(1.25);
     min-width: 16rem;
     min-height: 9rem;
-    margin-bottom: 0.25em;
   }
 
   label {
@@ -24,6 +24,6 @@
   }
 
   button {
-    padding: 0.4rem;
+    padding-bottom: 0.4rem;
   }
 }

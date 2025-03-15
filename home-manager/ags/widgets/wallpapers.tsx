@@ -1,9 +1,8 @@
 import { bind } from "astal";
 import { Astal, App, Gtk, Gdk } from "astal/gtk4";
-import Gio from "gi://Gio";
 
 import { pointer } from "@lib/utils";
-import { Picture, ScrolledWindow } from "@lib/astalified";
+import { ScrolledWindow } from "@lib/astalified";
 import Wallpapers from "@services/wallpapers";
 
 const wallpapers = Wallpapers.get_default();
@@ -13,20 +12,17 @@ const Choices = bind(wallpapers, "wallpapers").as((ws) =>
     <button
       setup={pointer}
       cssClasses={["item"]}
-      onClicked={() => wallpapers.setWallpaper(w.path)}
+      onClicked={() => { if (w[0]) wallpapers.setWallpaper(wallpapers.wallpaperDir + w[0]) }}
     >
       <box vertical spacing={4}>
-        <Picture
-          file={Gio.File.new_for_path(w.thumbnail || w.path)}
-          contentFit={Gtk.ContentFit.COVER}
-        />
-        <label cssClasses={["filename"]} label={w.name} />
+        <image file={w[1] || wallpapers.wallpaperDir + w[0] || ""} />
+        <label cssClasses={["filename"]} label={w[0] || ""} />
       </box>
     </button>
   ))
 );
 
-export default function WallpaperPicker() {
+export default async function WallpaperPicker() {
   const { EXTERNAL, NEVER } = Gtk.PolicyType;
   const { BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor;
 

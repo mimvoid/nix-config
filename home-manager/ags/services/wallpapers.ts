@@ -19,39 +19,34 @@ export default class Wallpapers extends GObject.Object {
   }
 
   #wallpapers = this.fileInfo() || [];
+  #wallpaperDir = wpPath;
 
   @property()
   get wallpapers() {
     return this.#wallpapers;
   }
 
+  @property(String)
+  get wallpaperDir() {
+    return this.#wallpaperDir;
+  }
+
   setWallpaper(path: string) {
-    execAsync(`swww img ${path}`).catch(console.error);
+    execAsync(`swww img -t grow --transition-pos 0.95,0.95 --transition-step 90 ${path}`)
+      .catch(console.error);
   }
 
   private wallpapersEnum() {
     const wpGFile = Gio.File.new_for_path(wpPath);
 
-    // Get childen with a Gio.FileEnumerator object
-    const enumChildren = ((gFile: Gio.File) => {
-      const attrs = [ attrDisplayName, attrFastContentType, attrThumbnailPath ].join(",");
-      return gFile.enumerate_children(attrs, Gio.FileQueryInfoFlags.NONE, null);
-    });
-
     try {
-      return enumChildren(wpGFile);
+      // Get childen with a Gio.FileEnumerator object
+      const attrs = `${attrDisplayName},${attrFastContentType},${attrThumbnailPath}`;
+      return wpGFile.enumerate_children(attrs, Gio.FileQueryInfoFlags.NONE, null);
     } catch (err) {
       if (err === Gio.IOErrorEnum.NOT_FOUND) {
-        // Make the directory and try again
-
         wpGFile.make_directory();
-
-        try {
-          return enumChildren(wpGFile);
-        } catch (createErr) {
-          console.error(err);
-          return;
-        }
+        return;
       }
 
       console.error(err);
@@ -70,13 +65,10 @@ export default class Wallpapers extends GObject.Object {
       const type = file.get_attribute_as_string(attrFastContentType);
 
       if (type && type.startsWith("image")) {
-        const name = file.get_display_name();
-
-        fileInfo.push({
-          name: name,
-          path: wpPath + name,
-          thumbnail: file.get_attribute_as_string(attrThumbnailPath),
-        })
+        fileInfo.push([
+          file.get_display_name(),
+          file.get_attribute_as_string(attrThumbnailPath)
+        ])
       }
 
       file = enumerator.next_file(null);
