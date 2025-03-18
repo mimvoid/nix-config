@@ -3,5 +3,7 @@
   opacity: 0.85 !important;
     
   /* Removes border */
-  > #statuspanel-label { border: 0 !important; }
+  > #statuspanel-label {
+    border: 0 !important;
+  }
 }

@@ -19,6 +19,14 @@
  * @import url("./extras/window_control_force_linux_system_style.css");
  */
 
+:root {
+  /* The default color used for bookmark icons, both in the toolbar and in the sidebar */
+  --bookmark-folder-icon-fill: #ee99a0;
+
+  /* The border radius for the browser ui */
+  --toolbarbutton-border-radius: 6px !important;
+}
+
 /* Windows Controls */
 
 /* Shrinks space occupied by windows controls
@@ -33,14 +41,4 @@
 .titlebar-restore,
 .titlebar-close {
   display: none !important;
-}
-
-/* Edit these values to suit your needs */
-
-:root {
-  /* The default color used for bookmark icons, both in the toolbar and in the sidebar */
-  --bookmark-folder-icon-fill: #ee99a0;
-
-  /* The border radius for the browser ui--the higher, the rounder */
-  --toolbarbutton-border-radius: 6px !important;
 }

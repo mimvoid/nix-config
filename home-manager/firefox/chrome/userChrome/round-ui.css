@@ -1,14 +1,11 @@
 /* Edits radius of round UI from
  * ./extras/round_ui_items and ./extras/rounded_menupopups.css */
 
-/* Adjust this to change the border radius */
 :root {
-  --toolbarbutton-border-radius: 10px !important
-;
-}
+  /* Adjust this to change the border radius */
+  --toolbarbutton-border-radius: 10px !important;
 
-/* Matches the menupopup border radius */
-:root {
+  /* Match the menupopup border radius */
   --uc-menupopup-border-radius: var(--toolbarbutton-border-radius);
 }
 

@@ -1,123 +1,32 @@
 /* Custom colors for bookmark folders */
 
-:root {
-  --bookmark-folder-icon-fill: #ee99a0;
+:-moz-any(#bookmarks-view, #editBMPanel_folderTree, #placesList, #placeContent) treechildren {
+  &::-moz-tree-image(container),
+  &::-moz-tree-image(container, query),
+  &::-moz-tree-image(container, OrganizerQuery_BookmarksMenu),
+  &::-moz-tree-image(container, OrganizerQuery_BookmarksToolbar),
+  &::-moz-tree-image(container, queryFolder_menu________),
+  &::-moz-tree-image(container, queryFolder_toolbar_____) {
+    fill: var(--bookmark-folder-icon-fill) !important;
+  }
 }
 
-/* Standard folder -- on Toolbar and Menus */
-
-/* The toolbar icons usually change just fine with the theme,
- * but if you really want your own folder colors, uncomment this. */
-
-/*#PlacesToolbarItems toolbarbutton[container="true"]:not([query="true"]) .toolbarbutton-icon,
-:-moz-any(
-#PlacesToolbarItems,
-#PlacesChevronPopup,
-#BMB_bookmarksPopup,
-#bookmarksMenu,
-#OtherBookmarksPopup) menu[container="true"]:not([query="true"]) > .menu-iconic-left > .menu-iconic-icon,
-
-/* Standard folder -- in Sidebar, Library, Add/Edit Bookmark dialog */
-:-moz-any(
-#bookmarks-view, 
-#editBMPanel_folderTree, 
-#placesList, 
-#placeContent) treechildren::-moz-tree-image(container), 
-#editBMPanel_folderMenuList > .menulist-label-box > .menulist-icon,
-#editBMPanel_folderMenuList menupopup menuitem, 
 #editBMPanel_folderMenuList {
-  
   fill: var(--bookmark-folder-icon-fill) !important;
-  
+
+  menupopup menuitem,
+  > .menulist-label-box > .menulist-icon,
+  &[selectedIndex="1"] > .menulist-label-box > .menulist-icon,
+  &[selectedGuid="menu________"],
+  &[selectedIndex="0"] > .menulist-label-box > .menulist-icon, 
+  &[selectedGuid="toolbar_____"] {
+    fill: var(--bookmark-folder-icon-fill) !important;
+  }
 }
 
-/* Smart bookmark folder -- on Toolbar and Menus */
-/*#PlacesToolbarItems toolbarbutton[container="true"][query="true"] .toolbarbutton-icon,
-:-moz-any(
-#PlacesToolbarItems,
-#PlacesChevronPopup,
-#BMB_bookmarksPopup,
-#bookmarksMenu,
-#OtherBookmarksPopup) menu[container="true"][query="true"] > .menu-iconic-left > .menu-iconic-icon,*/
-
-/* Smart bookmark folder -- in Sidebar, Library, Add/Edit Bookmark dialog */
-:-moz-any(
-#bookmarks-view, 
-#editBMPanel_folderTree, 
-#placesList, 
-#placeContent) treechildren::-moz-tree-image(container, query) {
-  
-  fill: var(--bookmark-folder-icon-fill) !important;
-  
+#editBMPanel_bmRootItem,
+#editBMPanel_toolbarFolderItem {
+  > .menu-iconic-left {
+    fill: var(--bookmark-folder-icon-fill) !important;
+  }
 }
-
-/*** Top-level "container" icons (otherwise would be Standard folder color) ***/
-/* Bookmarks Menu -- in Sidebar, Library, Add/Edit Bookmark dialog */
-:-moz-any(
-#bookmarks-view, 
-#editBMPanel_folderTree, 
-#placesList, 
-#placeContent) treechildren::-moz-tree-image(container, OrganizerQuery_BookmarksMenu),
-:-moz-any(
-#bookmarks-view, 
-#editBMPanel_folderTree, 
-#placesList, 
-#placeContent) treechildren::-moz-tree-image(container, queryFolder_menu________),
-#editBMPanel_bmRootItem > .menu-iconic-left, 
-#editBMPanel_folderMenuList[selectedIndex="1"] > .menulist-label-box > .menulist-icon, 
-#editBMPanel_folderMenuList[selectedGuid="menu________"] {
-  
-  fill: var(--bookmark-folder-icon-fill) !important;
-  
-}
-
-/* Bookmarks Toolbar -- on Menus */
-/*#BMB_bookmarksPopup #BMB_bookmarksToolbar > .menu-iconic-left > .menu-iconic-icon,
-#bookmarksMenuPopup #bookmarksToolbarFolderMenu  > .menu-iconic-left > .menu-iconic-icon,*/
-
-/* Bookmarks Toolbar -- in Sidebar, Library, Add/Edit Bookmark dialog */
-:-moz-any(
-#bookmarks-view, 
-#editBMPanel_folderTree, 
-#placesList, 
-#placeContent) treechildren::-moz-tree-image(container, OrganizerQuery_BookmarksToolbar),
-:-moz-any(
-#bookmarks-view, 
-#editBMPanel_folderTree, 
-#placesList, 
-#placeContent) treechildren::-moz-tree-image(container, queryFolder_toolbar_____),
-#editBMPanel_toolbarFolderItem > .menu-iconic-left, 
-#editBMPanel_folderMenuList[selectedIndex="0"] > .menulist-label-box > .menulist-icon, 
-#editBMPanel_folderMenuList[selectedGuid="toolbar_____"] {
-  
-  fill: var(--bookmark-folder-icon-fill) !important;
-  
-}
-
-/* Other Bookmarks -- on Menus */
-
-/*#BMB_bookmarksPopup #BMB_unsortedBookmarks > .menu-iconic-left > .menu-iconic-icon,
-#bookmarksMenuPopup #menu_unsortedBookmarks  > .menu-iconic-left > .menu-iconic-icon,*/
-
-/* FIX: the other bookmarks in the toolbar also gets affected
- * This also seems to break the font color in the sidebar
-
-/* Other Bookmarks -- in Sidebar, Library, Add/Edit Bookmark dialog */
-/*:-moz-any(
-#bookmarks-view, 
-#editBMPanel_folderTree, 
-#placesList, 
-#placeContent) treechildren::-moz-tree-image(container, OrganizerQuery_UnfiledBookmarks),
-:-moz-any(
-#bookmarks-view, 
-#editBMPanel_folderTree, 
-#placesList, 
-#placeContent) treechildren::-moz-tree-image(container, queryFolder_unfiled_____),
-#editBMPanel_unfiledRootItem > .menu-iconic-left, 
-#editBMPanel_folderMenuList[selectedIndex="2"] > .menulist-label-box > .menulist-icon, 
-#editBMPanel_folderMenuList[selectedGuid="unfiled_____"],
-#OtherBookmarksPopup + .toolbarbutton-icon {
-  
-  fill: var(--bookmark-folder-icon-fill) !important;
-  
-}*/

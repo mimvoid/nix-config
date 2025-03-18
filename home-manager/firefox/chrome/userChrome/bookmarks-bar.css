@@ -22,6 +22,7 @@
  * Hides the Other Bookmarks text */
 #OtherBookmarks {
   opacity: 0.75;
+
   > .toolbarbutton-text {
     display: none !important;
   }

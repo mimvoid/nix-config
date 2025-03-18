@@ -72,14 +72,14 @@
 
 /* Sidebar content */
 
-.sidebar-placesTree {
+.sidebar-placesTree treechildren {
   /* Decreases indentation */
-  treechildren::-moz-tree-indentation {
+  &::-moz-tree-indentation {
     width: 4px !important;
   }
 
   /* Spaces rows out, slightly rounds corners */
-  treechildren::-moz-tree-row {
+  &::-moz-tree-row {
     min-height: 28px !important;
     border-radius: 4px;
   }
