@@ -93,7 +93,7 @@ def format_todos(api: DooitAPI, _):
 
     # Set icons
     t.status.add(status_icons(**STATUS_ICONS))
-    t.urgency.add(urgency_icons(icons=URGENCY_ICONS, colors=urgency_colors(api)))
+    t.urgency.add(urgency_icons(icons=URGENCY_ICONS, colors=urgency_colors(theme)))
     t.due.add(due_icon(**DUE_ICONS))
     t.recurrence.add(recurrence_icon(icon=RECURRENCE_ICON))
 
@@ -138,5 +138,7 @@ def setup_bar(api: DooitAPI, _):
 
 @subscribe(Startup)
 def setup_dashboard(api: DooitAPI, _):
-    items = [ascii_art(api), ""] + dashboard_text(api) + ["", ""] + dashboard_statuses(api)
+    theme = api.vars.theme
+
+    items = [ascii_art(theme), ""] + dashboard_text(theme) + ["", ""] + dashboard_statuses(theme)
     api.dashboard.set(items)

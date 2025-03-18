@@ -1,4 +1,4 @@
-from dooit.ui.api import DooitAPI
+from dooit.api.theme import DooitThemeBase
 from dooit.api import Todo
 
 from rich.style import Style
@@ -8,15 +8,13 @@ from rich.text import Text
 # ------- DASHBOARD -------
 
 
-def ascii_art(api: DooitAPI) -> Text:
+def ascii_art(theme: DooitThemeBase) -> Text:
     """
     A helper function.
 
     Will be called during an @subscribe(Setup) decorated function in config.py
     to pass in the api argument.
     """
-
-    theme = api.vars.theme
 
     primary = theme.cyan
     secondary = theme.red
@@ -41,9 +39,7 @@ def ascii_art(api: DooitAPI) -> Text:
     return ascii
 
 
-def dashboard_text(api: DooitAPI) -> list[Text]:
-    theme = api.vars.theme
-
+def dashboard_text(theme: DooitThemeBase) -> list[Text]:
     text = [
         "The fear within me is beyond anything your soul can make.",
         "You cannot kill me in a way that matters.",
@@ -61,9 +57,7 @@ def dashboard_text(api: DooitAPI) -> list[Text]:
     return formatted_lines
 
 
-def dashboard_statuses(api: DooitAPI) -> list[Text]:
-    theme = api.vars.theme
-
+def dashboard_statuses(theme: DooitThemeBase) -> list[Text]:
     due_today = [
         1 for i in Todo.all() if (i.due is not None) and i.is_due_today and i.is_pending
     ]
@@ -90,8 +84,7 @@ STATUS_ICONS = {"completed": " ", "pending": "● ", "overdue": " "}
 URGENCY_ICONS = {1: "   ", 2: "  󱊡", 3: "  󱊢", 4: " !󱊣"}
 
 
-def urgency_colors(api: DooitAPI) -> dict[int, str]:
-    theme = api.vars.theme
+def urgency_colors(theme: DooitThemeBase) -> dict[int, str]:
     return {1: theme.blue, 2: theme.green, 3: theme.yellow, 4: theme.red}
 
 
