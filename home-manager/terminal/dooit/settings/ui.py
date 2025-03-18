@@ -89,6 +89,12 @@ STATUS_ICONS = {"completed": " ", "pending": "● ", "overdue": " "}
 
 URGENCY_ICONS = {1: "   ", 2: "  󱊡", 3: "  󱊢", 4: " !󱊣"}
 
+
+def urgency_colors(api: DooitAPI) -> dict[int, str]:
+    theme = api.vars.theme
+    return {1: theme.blue, 2: theme.green, 3: theme.yellow, 4: theme.red}
+
+
 DUE_ICONS = {"completed": " ", "pending": " ", "overdue": " "}
 
 

@@ -25,6 +25,7 @@ from settings.ui import (
     RECURRENCE_ICON,
     STATUS_ICONS,
     URGENCY_ICONS,
+    urgency_colors,
     DUE_ICONS,
     BAR_ICON,
     MODE,
@@ -92,7 +93,7 @@ def format_todos(api: DooitAPI, _):
 
     # Set icons
     t.status.add(status_icons(**STATUS_ICONS))
-    t.urgency.add(urgency_icons(icons=URGENCY_ICONS))
+    t.urgency.add(urgency_icons(icons=URGENCY_ICONS, colors=urgency_colors(api)))
     t.due.add(due_icon(**DUE_ICONS))
     t.recurrence.add(recurrence_icon(icon=RECURRENCE_ICON))
 
