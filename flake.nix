@@ -38,6 +38,7 @@
         tinted-foot.follows = "";
         tinted-kitty.follows = "";
         tinted-tmux.follows = "";
+        firefox-gnome-theme.follows = "";
       };
     };
 
