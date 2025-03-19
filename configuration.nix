@@ -65,7 +65,7 @@
     };
   };
 
-  programs.xwayland.enable = true;
+  programs.xwayland.enable = false;
 
   # Desktop environments
   # & window managers

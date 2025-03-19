@@ -12,9 +12,7 @@
   ];
 
   home.packages = with pkgs; [
-    unstable.bluetui
     voids.arttime
-    goread
     fletchling
   ];
 
