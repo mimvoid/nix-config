@@ -1,9 +1,12 @@
-{ pkgs, ... }:
+{ inputs, pkgs, ... }:
 let
   inherit (pkgs.unstable) firefoxpwa;
 in
 {
-  home.packages = [ firefoxpwa ];
+  home.packages = [
+    firefoxpwa
+    inputs.zen-browser.packages.${pkgs.system}.default
+  ];
 
   programs.firefox = {
     enable = true;
