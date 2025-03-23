@@ -9,10 +9,14 @@
     enableZshIntegration = true;
     shellWrapperName = "yy";
 
-    theme.status = {
-      separator_open = "";
-      separator_close = "";
-    };
+    theme.status =
+      let
+        common = { open = ""; close = ""; };
+      in
+      {
+        sep_left = common;
+        sep_right = common;
+      };
 
     settings = {
       manager = {
