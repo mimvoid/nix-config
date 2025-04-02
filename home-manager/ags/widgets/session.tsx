@@ -1,60 +1,68 @@
 import { exec } from "astal";
 import { App, Astal, Gtk, Gdk } from "astal/gtk4";
+
 import Icon from "@lib/icons";
 import { pointer } from "@lib/utils";
+import { Grid } from "@lib/astalified";
+
+interface Action {
+  name: string;
+  command: string;
+  halign: Gtk.Align;
+  valign: Gtk.Align;
+}
 
 function Session() {
   const { START, END, FILL } = Gtk.Align;
 
-  const ButtonGrid = new Gtk.Grid({
-    halign: FILL,
-    valign: FILL,
-    hexpand: true,
-    vexpand: true,
-    visible: true,
-  });
+  const ButtonGrid = (
+    <Grid halign={FILL} valign={FILL} hexpand vexpand />
+  ) as Gtk.Grid;
 
-  const actions = {
-    lock: {
+  const actions: Action[] = [
+    {
+      name: "lock",
       command: "hyprlock",
       halign: END,
       valign: END,
     },
-    logout: {
+    {
+      name: "logout",
       command: "hyprctl dispatch exit",
       halign: END,
       valign: START,
     },
-    reboot: {
+    {
+      name: "reboot",
       command: "systemctl reboot",
       halign: START,
       valign: END,
     },
-    shutdown: {
+    {
+      name: "shutdown",
       command: "systemctl poweroff",
       halign: START,
       valign: START,
     },
-  };
+  ];
 
-  for (const action of ["lock", "logout", "reboot", "shutdown"]) {
-    const row = actions[action].halign === END ? 1 : 2;
-    const column = actions[action].valign === END ? 1 : 2;
-
+  for (const a of actions) {
     const Button = (
       <button
         setup={pointer}
-        halign={actions[action].halign}
-        valign={actions[action].valign}
-        name={action}
+        name={a.name}
         cssClasses={["box"]}
-        onClicked={() => exec(actions[action].command)}
+        halign={a.halign}
+        valign={a.valign}
+        onClicked={() => exec(a.command)}
       >
-        <image iconName={Icon.powermenu[action]} />
+        <image iconName={Icon.powermenu[a.name]} />
       </button>
     );
 
-    ButtonGrid.attach(Button, row, column, 1, 1);
+    const cell = (align: Gtk.Align) => (align === END ? 1 : 2);
+
+    ButtonGrid.attach(Button, cell(a.halign), cell(a.valign), 1, 1);
   }
 
   return ButtonGrid;
