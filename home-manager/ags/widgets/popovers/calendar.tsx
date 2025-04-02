@@ -29,13 +29,15 @@ function Time() {
 
 const Uptime = (
   <label
-    label={bind(uptime).as((t) => `Uptime: ${Math.floor(t / 60)}h ${Math.floor(t % 60)}m` || "")}
+    label={bind(uptime).as(
+      (t) => `Uptime: ${Math.floor(t / 60)}h ${Math.floor(t % 60)}m` || "",
+    )}
     cssClasses={["uptime"]}
     valign={END}
     hexpand
     vexpand
   />
-)
+);
 
 const CalendarWidget = (
   <box cssClasses={["calendar"]} halign={CENTER} vertical>

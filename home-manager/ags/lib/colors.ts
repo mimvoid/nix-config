@@ -1,7 +1,7 @@
 import Gdk from "gi://Gdk";
 
 export function newGdkRgba(value: string) {
-  const color = new Gdk.RGBA;
+  const color = new Gdk.RGBA();
 
   if (color.parse(value)) {
     return color;
@@ -13,7 +13,7 @@ function colorToInts(g: Gdk.RGBA) {
     red: g.red * 255,
     green: g.green * 255,
     blue: g.blue * 255,
-  }
+  };
 }
 
 export function hexToRgb(value: string) {
@@ -24,7 +24,7 @@ export function hexToRgb(value: string) {
 }
 
 function asHex(n: number) {
-  return n.toString(16).padStart(2, "0")
+  return n.toString(16).padStart(2, "0");
 }
 
 export function gRgbaToHex(g: Gdk.RGBA) {
@@ -33,7 +33,7 @@ export function gRgbaToHex(g: Gdk.RGBA) {
 
   if (g.alpha == 1.0) return main;
   return main + asHex(g.alpha * 255);
-} 
+}
 
 export function rgbToHex(value: string) {
   const gRgba = newGdkRgba(value);
@@ -55,17 +55,16 @@ export function gRgbaToHsl(g: Gdk.RGBA) {
   let h = 0;
   if (diff == 0) {
     h = 0;
-  }
-  else {
+  } else {
     switch (cmax) {
       case red:
         h = ((green - blue) / diff) % 6;
         break;
       case green:
-        h = ((blue - green) / diff) + 2;
+        h = (blue - green) / diff + 2;
         break;
       default:
-        h = ((red - green) / diff) + 4;
+        h = (red - green) / diff + 4;
         break;
     }
   }

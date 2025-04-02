@@ -12,7 +12,9 @@ const Trigger = (
     setup={pointer}
     cssClasses={["color-button"]}
     onClicked={() => picker.pick().catch(console.error)}
-    tooltipText={bind(picker, "colors").as(() => `Last color: ${picker.lastColor()}`)}
+    tooltipText={bind(picker, "colors").as(
+      () => `Last color: ${picker.lastColor()}`,
+    )}
     iconName={Icons.colorpicker}
   />
 );
@@ -23,7 +25,9 @@ function Color() {
     <box cssClasses={["color-circle"]}>
       <box
         cssClasses={["color-display"]}
-        css={bind(picker, "colors").as(() => `background-color: ${picker.lastColor()}`)}
+        css={bind(picker, "colors").as(
+          () => `background-color: ${picker.lastColor()}`,
+        )}
       />
     </box>
   );
@@ -38,7 +42,7 @@ function Color() {
             {colorDisplay}
           </box>
         }
-        onClicked={() => ColorsPopover.visible = true}
+        onClicked={() => (ColorsPopover.visible = true)}
       >
         {Trigger}
       </HoverRevealer>

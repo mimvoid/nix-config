@@ -9,15 +9,16 @@ export default function Title() {
   const focused = bind(hypr, "focusedClient");
 
   // Format the focused window title
-  const Label = focused.as((client) =>
-    client && (
-      <label
-        label={bind(client, "title")}
-        tooltipText={bind(client, "title")}
-        ellipsize={Pango.EllipsizeMode.END}
-        maxWidthChars={42}
-      />
-    )
+  const Label = focused.as(
+    (client) =>
+      client && (
+        <label
+          label={bind(client, "title")}
+          tooltipText={bind(client, "title")}
+          ellipsize={Pango.EllipsizeMode.END}
+          maxWidthChars={42}
+        />
+      ),
   );
 
   // Show the title if there is a focused window

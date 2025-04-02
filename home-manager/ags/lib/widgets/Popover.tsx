@@ -1,6 +1,6 @@
-import { Astal, Gdk, Gtk, Widget } from "astal/gtk4"
+import { Astal, Gdk, Gtk, Widget } from "astal/gtk4";
 
-const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor
+const { TOP, BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor;
 
 type PopoverProps = Pick<
   Widget.WindowProps,
@@ -16,8 +16,8 @@ type PopoverProps = Pick<
   | "halign"
   | "valign"
 > & {
-  onClose?(self: Widget.Window): void
-}
+  onClose?(self: Widget.Window): void;
+};
 
 /**
  * Full screen window widget where you can space the child widget
@@ -47,27 +47,25 @@ export default function Popover({
       anchor={TOP | BOTTOM | LEFT | RIGHT}
       exclusivity={Astal.Exclusivity.IGNORE}
       onNotifyVisible={(self) => {
-        if (!self.visible) onClose?.(self)
+        if (!self.visible) onClose?.(self);
       }}
       // close when click occurs outside of child
       onButtonPressed={(self, event) => {
-        const [, _x, _y] = event.get_coords()
-        const { x, y, width, height } = self
-          .get_child()!
-          .get_allocation()
+        const [, _x, _y] = event.get_coords();
+        const { x, y, width, height } = self.get_child()!.get_allocation();
 
-        const xOut = _x < x || _x > x + width
-        const yOut = _y < y || _y > y + height
+        const xOut = _x < x || _x > x + width;
+        const yOut = _y < y || _y > y + height;
 
         // clicked outside
         if (xOut || yOut) {
-          self.visible = false
+          self.visible = false;
         }
       }}
       // close when hitting Escape
       onKeyPressed={(self, event: Gdk.Event) => {
         if (event.get_keyval()[1] === Gdk.KEY_Escape) {
-          self.visible = false
+          self.visible = false;
         }
       }}
     >
@@ -86,5 +84,5 @@ export default function Popover({
         {child}
       </box>
     </window>
-  )
+  );
 }

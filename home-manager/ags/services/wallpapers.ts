@@ -32,8 +32,9 @@ export default class Wallpapers extends GObject.Object {
   }
 
   setWallpaper(path: string) {
-    execAsync(`swww img -t grow --transition-pos 0.95,0.95 --transition-step 90 ${path}`)
-      .catch(console.error);
+    execAsync(
+      `swww img -t grow --transition-pos 0.95,0.95 --transition-step 90 ${path}`,
+    ).catch(console.error);
   }
 
   private wallpapersEnum() {
@@ -42,7 +43,11 @@ export default class Wallpapers extends GObject.Object {
     try {
       // Get childen with a Gio.FileEnumerator object
       const attrs = `${attrDisplayName},${attrFastContentType},${attrThumbnailPath}`;
-      return wpGFile.enumerate_children(attrs, Gio.FileQueryInfoFlags.NONE, null);
+      return wpGFile.enumerate_children(
+        attrs,
+        Gio.FileQueryInfoFlags.NONE,
+        null,
+      );
     } catch (err) {
       if (err === Gio.IOErrorEnum.NOT_FOUND) {
         wpGFile.make_directory();
@@ -67,8 +72,8 @@ export default class Wallpapers extends GObject.Object {
       if (type && type.startsWith("image")) {
         fileInfo.push([
           file.get_display_name(),
-          file.get_attribute_as_string(attrThumbnailPath)
-        ])
+          file.get_attribute_as_string(attrThumbnailPath),
+        ]);
       }
 
       file = enumerator.next_file(null);

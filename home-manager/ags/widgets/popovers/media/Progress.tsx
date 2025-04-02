@@ -9,7 +9,9 @@ const { START, END } = Gtk.Align;
 
 function lengthStr(length: number) {
   const min = Math.floor(length / 60).toString();
-  const sec = Math.floor(length % 60).toString().padStart(2, "0");
+  const sec = Math.floor(length % 60)
+    .toString()
+    .padStart(2, "0");
   return min + ":" + sec;
 }
 
@@ -44,7 +46,10 @@ export default function Progress(player: Mpris.Player) {
   );
 
   return (
-    <box cssClasses={["media-progress"]} visible={bind(player, "length").as((l) => l > 0)}>
+    <box
+      cssClasses={["media-progress"]}
+      visible={bind(player, "length").as((l) => l > 0)}
+    >
       {Position}
       {ProgressBar}
       {Length}

@@ -16,10 +16,10 @@ export default {
 
   brightness: {
     levels: {
-      low: 'brightness-low-symbolic',
-      medium: 'brightness-medium-symbolic',
-      high: 'brightness-high-symbolic',
-    }
+      low: "brightness-low-symbolic",
+      medium: "brightness-medium-symbolic",
+      high: "brightness-high-symbolic",
+    },
   },
 
   calendar: "x-office-calendar",
@@ -69,6 +69,6 @@ export default {
 
   wlsunset: {
     on: "display-brightness-symbolic",
-    off: "weather-few-clouds-night-symbolic"
+    off: "weather-few-clouds-night-symbolic",
   },
 };

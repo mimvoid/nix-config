@@ -12,11 +12,12 @@ function Indicator() {
   // Show the Bluetooth status
 
   // Execute `bluetooth off` or `bluetooth on`
-  const action = () => execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
+  const action = () =>
+    execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
 
   // Show Bluetooth status on hover
-  const tooltip = bind(bluetooth, "isPowered").as((p) =>
-    `Bluetooth ${p ? "on" : "off"}`
+  const tooltip = bind(bluetooth, "isPowered").as(
+    (p) => `Bluetooth ${p ? "on" : "off"}`,
   );
 
   // Display icon depending on Bluetooth status
@@ -42,16 +43,16 @@ function BluetoothBox() {
     }
 
     return bind(bluetooth, "devices").as((d) => {
-      const first = d.filter((device) => device.connected)[0]
-      return <label label={first.alias} visible={bind(first, "connected")} />
-    })
+      const first = d.filter((device) => device.connected)[0];
+      return <label label={first.alias} visible={bind(first, "connected")} />;
+    });
   }
 
   return (
     <menubutton>
       <HoverRevealer
         hiddenChild={<box>{Device()}</box>}
-        onClicked={() => BluetoothPopover.visible = true}
+        onClicked={() => (BluetoothPopover.visible = true)}
       >
         <Indicator />
       </HoverRevealer>

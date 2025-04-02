@@ -19,9 +19,9 @@ export default function DeviceItem({ device, ...props }: BluetoothItemProps) {
     />
   );
 
-  const Connecting = bind(device, "connecting").as((c) =>
+  const Connecting = bind(device, "connecting").as((c) => (
     <image iconName={Icon.waiting} visible={c} halign={END} />
-  );
+  ));
 
   return (
     <button setup={pointer} cssClasses={["device"]} {...props}>
@@ -34,5 +34,5 @@ export default function DeviceItem({ device, ...props }: BluetoothItemProps) {
         {Connecting}
       </box>
     </button>
-  )
+  );
 }

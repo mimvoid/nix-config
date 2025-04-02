@@ -17,7 +17,7 @@ function BrightnessBox() {
     <slider
       setup={pointer}
       value={bind(brightness, "light")}
-      onChangeValue={({ value }) => brightness.light = value}
+      onChangeValue={({ value }) => (brightness.light = value)}
       valign={CENTER}
       hexpand
     />
@@ -34,13 +34,13 @@ function BrightnessBox() {
           {label}
         </box>
       }
-      onScroll={(_, __, dy) => (
+      onScroll={(_, __, dy) =>
         // Change brightness by scrolling
         dy < 0 ? (brightness.light += 0.05) : (brightness.light -= 0.05)
-      )}
+      }
     />
   );
-};
+}
 
 export default function BrightnessWidget() {
   return (

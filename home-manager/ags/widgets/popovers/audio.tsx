@@ -16,10 +16,15 @@ function Section(endpoint: Wp.Endpoint, name: string) {
     // Can mute or unmute
     <button
       setup={pointer}
-      onClicked={() => endpoint.mute = !endpoint.mute}
-      tooltipText={bind(endpoint, "mute").as((m) => `${m ? "Unmute" : "Mute"} ${lowerName}`)}
+      onClicked={() => (endpoint.mute = !endpoint.mute)}
+      tooltipText={bind(endpoint, "mute").as(
+        (m) => `${m ? "Unmute" : "Mute"} ${lowerName}`,
+      )}
     >
-      <image cssClasses={["big-icon"]} iconName={bind(endpoint, "volumeIcon")} />
+      <image
+        cssClasses={["big-icon"]}
+        iconName={bind(endpoint, "volumeIcon")}
+      />
     </button>
   );
 
@@ -50,7 +55,13 @@ function Section(endpoint: Wp.Endpoint, name: string) {
   );
 
   return (
-    <box cssClasses={["section", lowerName]} halign={FILL} valign={CENTER} hexpand vexpand>
+    <box
+      cssClasses={["section", lowerName]}
+      halign={FILL}
+      valign={CENTER}
+      hexpand
+      vexpand
+    >
       <box vertical>
         <label cssClasses={["title"]} label={name} halign={START} />
         <box>
@@ -62,7 +73,7 @@ function Section(endpoint: Wp.Endpoint, name: string) {
         </box>
       </box>
     </box>
-  )
+  );
 }
 
 const Speaker = Section(speaker, "Speaker");

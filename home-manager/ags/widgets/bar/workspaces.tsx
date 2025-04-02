@@ -14,7 +14,7 @@ const Spaces = bind(hypr, "workspaces").as((wss) =>
       <button
         setup={pointer}
         cssClasses={bind(hypr, "focusedWorkspace").as((fw) =>
-          ws === fw ? ["active"] : []
+          ws === fw ? ["active"] : [],
         )}
         onClicked={() => ws.focus()}
         tooltipText={`Workspace ${ws.id}`}

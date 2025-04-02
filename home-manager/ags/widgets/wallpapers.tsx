@@ -12,14 +12,16 @@ const Choices = bind(wallpapers, "wallpapers").as((ws) =>
     <button
       setup={pointer}
       cssClasses={["item"]}
-      onClicked={() => { if (w[0]) wallpapers.setWallpaper(wallpapers.wallpaperDir + w[0]) }}
+      onClicked={() => {
+        if (w[0]) wallpapers.setWallpaper(wallpapers.wallpaperDir + w[0]);
+      }}
     >
       <box vertical spacing={4}>
         <image file={w[1] || wallpapers.wallpaperDir + w[0] || ""} />
         <label cssClasses={["filename"]} label={w[0] || ""} />
       </box>
     </button>
-  ))
+  )),
 );
 
 export default async function WallpaperPicker() {
@@ -42,11 +44,13 @@ export default async function WallpaperPicker() {
       application={App}
       marginBottom={12}
     >
-      <ScrolledWindow hscrollbarPolicy={EXTERNAL} vscrollbarPolicy={NEVER} widthRequest={1200}>
-        <box spacing={8}>
-          {Choices}
-        </box>
+      <ScrolledWindow
+        hscrollbarPolicy={EXTERNAL}
+        vscrollbarPolicy={NEVER}
+        widthRequest={1200}
+      >
+        <box spacing={8}>{Choices}</box>
       </ScrolledWindow>
     </window>
-  )
+  );
 }

@@ -45,8 +45,8 @@ export default class Brightness extends GObject.Object {
     const monitor = exec("sh -c 'ls -w1 /sys/class/backlight | head -1'");
 
     // Update brightness on changes to the file
-    monitorFile(`/sys/class/backlight/${monitor}/brightness`, async f => {
-      const v = await readFileAsync(f)
+    monitorFile(`/sys/class/backlight/${monitor}/brightness`, async (f) => {
+      const v = await readFileAsync(f);
       this.#light = Number(v) / max;
       this.notify("light");
     });

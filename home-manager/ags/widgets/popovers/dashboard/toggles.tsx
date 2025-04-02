@@ -10,16 +10,16 @@ const NotifDnd = (
   <button
     setup={pointer}
     cssClasses={bind(notifd, "dontDisturb").as((d) => [d ? "on" : "off"])}
-    tooltipText={bind(notifd, "dontDisturb").as((d) => `Turn ${d ? "off" : "on"} Do not Disturb`)}
-    onClicked={() => notifd.dontDisturb = !notifd.dontDisturb}
-    iconName={bind(notifd, "dontDisturb").as((d) => d ? Icons.notifications.off : Icons.notifications.on)}
+    tooltipText={bind(notifd, "dontDisturb").as(
+      (d) => `Turn ${d ? "off" : "on"} Do not Disturb`,
+    )}
+    onClicked={() => (notifd.dontDisturb = !notifd.dontDisturb)}
+    iconName={bind(notifd, "dontDisturb").as((d) =>
+      d ? Icons.notifications.off : Icons.notifications.on,
+    )}
   />
 );
 
 export default function Toggles() {
-  return (
-    <box cssClasses={["toggles", "section"]}>
-      {NotifDnd}
-    </box>
-  );
+  return <box cssClasses={["toggles", "section"]}>{NotifDnd}</box>;
 }

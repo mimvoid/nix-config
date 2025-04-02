@@ -14,7 +14,9 @@ export default function Actions(player: Mpris.Player) {
   // Icon changes based on the playing status
   function Toggle() {
     const icon = bind(player, "playbackStatus").as((s) =>
-      s === Mpris.PlaybackStatus.PLAYING ? Icons.mpris.pause : Icons.mpris.start,
+      s === Mpris.PlaybackStatus.PLAYING
+        ? Icons.mpris.pause
+        : Icons.mpris.start,
     );
 
     return (
@@ -58,7 +60,10 @@ export default function Actions(player: Mpris.Player) {
     return (
       <button
         setup={pointer}
-        cssClasses={bind(player, "loopStatus").as((s) => ["loop", s === NONE ? "off" : ""])}
+        cssClasses={bind(player, "loopStatus").as((s) => [
+          "loop",
+          s === NONE ? "off" : "",
+        ])}
         onClicked={() => player.loop()}
         visible={bind(player, "loopStatus").as((s) => s !== UNSUPPORTED)}
         halign={START}
@@ -77,7 +82,10 @@ export default function Actions(player: Mpris.Player) {
     return (
       <button
         setup={pointer}
-        cssClasses={bind(player, "shuffleStatus").as((s) => ["shuffle", s === OFF ? "off" : ""])}
+        cssClasses={bind(player, "shuffleStatus").as((s) => [
+          "shuffle",
+          s === OFF ? "off" : "",
+        ])}
         onClicked={() => player.shuffle()}
         visible={bind(player, "shuffleStatus").as((s) => s !== UNSUPPORTED)}
         halign={END}

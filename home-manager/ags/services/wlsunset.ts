@@ -30,9 +30,11 @@ export default class WlSunset extends GObject.Object {
   set running(stat: boolean) {
     const setValue = stat ? "start" : "stop";
 
-    execAsync(`systemctl --user ${setValue} wlsunset.service`).then(() => {
-      this.#running = stat;
-      this.notify("running");
-    }).catch(console.error);
+    execAsync(`systemctl --user ${setValue} wlsunset.service`)
+      .then(() => {
+        this.#running = stat;
+        this.notify("running");
+      })
+      .catch(console.error);
   }
 }

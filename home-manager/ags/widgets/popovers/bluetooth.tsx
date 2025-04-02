@@ -10,8 +10,12 @@ const bluetooth = Bluetooth.get_default();
 const { START } = Gtk.Align;
 
 function Status() {
-  const action = () => execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
-  const tooltip = bind(bluetooth, "isPowered").as((p) => `Turn ${p ? "off" : "on"} Bluetooth`);
+  const action = () =>
+    execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
+
+  const tooltip = bind(bluetooth, "isPowered").as(
+    (p) => `Turn ${p ? "off" : "on"} Bluetooth`,
+  );
 
   // Display icon depending on Bluetooth status
   const icon = bind(bluetooth, "isPowered").as((p) =>
@@ -23,27 +27,31 @@ function Status() {
       <button setup={pointer} onClicked={action} tooltipText={tooltip}>
         <image cssClasses={["big-icon"]} iconName={icon} />
       </button>
-      <label label={bind(bluetooth, "isPowered").as((p) => p ? "On" : "Off")} halign={START} />
+      <label
+        label={bind(bluetooth, "isPowered").as((p) => (p ? "On" : "Off"))}
+        halign={START}
+      />
     </box>
   );
 }
 
-const Devices = (forConnected: boolean) => (
-  bind(bluetooth, "devices").as((d) => (
+const Devices = (forConnected: boolean) =>
+  bind(bluetooth, "devices").as((d) =>
     d.map((device) => (
       <DeviceItem
         device={device}
-        onClicked={() => execAsync([
-          "bluetoothctl",
-          forConnected ? "disconnect" : "connect",
-          device.address
-        ])}
+        onClicked={() =>
+          execAsync([
+            "bluetoothctl",
+            forConnected ? "disconnect" : "connect",
+            device.address,
+          ])
+        }
         tooltipText={`${forConnected ? "Disconnect" : "Connect"} device`}
-        visible={bind(device, "connected").as((c) => forConnected ? c : !c)}
+        visible={bind(device, "connected").as((c) => (forConnected ? c : !c))}
       />
-    ))
-  ))
-);
+    )),
+  );
 
 function Connected() {
   const DefaultLabel = (
@@ -69,7 +77,6 @@ const Disconnected = (
     {Devices(false)}
   </box>
 );
-
 
 export default (
   <popover cssClasses={["bluetooth-popover"]} hasArrow={false}>

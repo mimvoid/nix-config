@@ -12,8 +12,10 @@ const Current = (
   <box cssClasses={["section", "current"]}>
     <button
       setup={pointer}
-      onClicked={() => wifi.enabled = !wifi.enabled}
-      tooltipText={bind(wifi, "enabled").as((e) => `Turn ${e ? "off" : "on"} wifi`)}
+      onClicked={() => (wifi.enabled = !wifi.enabled)}
+      tooltipText={bind(wifi, "enabled").as(
+        (e) => `Turn ${e ? "off" : "on"} wifi`,
+      )}
     >
       <image cssClasses={["big-icon"]} iconName={bind(wifi, "iconName")} />
     </button>
@@ -26,8 +28,6 @@ const Current = (
 
 export default (
   <popover cssClasses={["network-popover"]} hasArrow={false}>
-    <box vertical>
-      {Current}
-    </box>
+    <box vertical>{Current}</box>
   </popover>
 );

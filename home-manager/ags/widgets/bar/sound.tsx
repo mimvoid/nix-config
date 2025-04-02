@@ -51,13 +51,13 @@ function SliderHover() {
               : (speaker.volume = 0);
           }
         }}
-        onClicked={() => AudioPopover.visible = true}
+        onClicked={() => (AudioPopover.visible = true)}
       >
         {label}
       </HoverRevealer>
       {AudioPopover}
     </menubutton>
-  )
+  );
 }
 
 export default function AudioSlider() {

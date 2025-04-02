@@ -11,12 +11,12 @@ export const Media = (
     <button
       setup={pointer}
       cssClasses={["media-launch"]}
-      onClicked={() => MediaPopover.visible = true}
+      onClicked={() => (MediaPopover.visible = true)}
       iconName={Icon.mimetypes.audio}
     />
     {MediaPopover}
   </menubutton>
-)
+);
 
 // Toggle the dashboard
 export const Dashboard = (
@@ -24,12 +24,12 @@ export const Dashboard = (
     <button
       setup={pointer}
       cssClasses={["dashboard-launch"]}
-      onClicked={() => DashboardPopover.visible = true}
+      onClicked={() => (DashboardPopover.visible = true)}
       iconName={Icon.overview}
     />
     {DashboardPopover}
   </menubutton>
-)
+);
 
 // Toggle buttons for logging out, shutting down, etc.
 export const Session = (

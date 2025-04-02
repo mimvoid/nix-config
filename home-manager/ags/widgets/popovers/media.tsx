@@ -17,21 +17,15 @@ function Input() {
     </box>
   );
 
-  const Default = <box>Nothing Playing</box>
+  const Default = <box>Nothing Playing</box>;
 
   // Draw the widget modules if there is a player
   // Only displays the first player
-  return bind(mpris, "players").as((ps) =>
-    ps[0] ? Popup(ps[0]) : Default,
-  );
+  return bind(mpris, "players").as((ps) => (ps[0] ? Popup(ps[0]) : Default));
 }
 
 export default (
-  <popover
-    name="media"
-    cssClasses={["media", "box"]}
-    hasArrow={false}
-  >
+  <popover name="media" cssClasses={["media", "box"]} hasArrow={false}>
     {Input()}
   </popover>
 );

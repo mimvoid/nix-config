@@ -16,39 +16,33 @@ import Battery from "./battery";
 import Brightness from "./brightness/brightness";
 
 // Define the three parts of the bar
-function Left() {
-  return (
-    <box cssClasses={["left", "box"]} hexpand halign={Gtk.Align.START}>
-      {Dashboard}
-      <Workspaces />
-      <Title />
-    </box>
-  );
-}
+const Left = (
+  <box cssClasses={["left", "box"]} hexpand halign={Gtk.Align.START}>
+    {Dashboard}
+    <Workspaces />
+    <Title />
+  </box>
+);
 
-function Center() {
-  return (
-    <box cssClasses={["center", "box"]}>
-      <Clock />
-      {Media}
-    </box>
-  );
-}
+const Center = (
+  <box cssClasses={["center", "box"]}>
+    <Clock />
+    {Media}
+  </box>
+);
 
-function Right() {
-  return (
-    <box cssClasses={["right", "box"]} hexpand halign={Gtk.Align.END}>
-      <Tray />
-      <ColorPicker />
-      <Network />
-      <Bluetooth />
-      <Sound />
-      <Battery />
-      <Brightness />
-      {Session}
-    </box>
-  );
-}
+const Right = (
+  <box cssClasses={["right", "box"]} hexpand halign={Gtk.Align.END}>
+    <Tray />
+    <ColorPicker />
+    <Network />
+    <Bluetooth />
+    <Sound />
+    <Battery />
+    <Brightness />
+    {Session}
+  </box>
+);
 
 export default function Bar(monitor: Gdk.Monitor) {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
@@ -68,9 +62,9 @@ export default function Bar(monitor: Gdk.Monitor) {
       visible
     >
       <centerbox>
-        <Left />
-        <Center />
-        <Right />
+        {Left}
+        {Center}
+        {Right}
       </centerbox>
     </window>
   );

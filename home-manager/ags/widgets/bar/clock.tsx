@@ -8,14 +8,14 @@ import Icon from "@lib/icons";
 
 export default function Clock() {
   // Format the date & time
-  const timeFmt = bind(time).as((t) => t.format("%a · %b %d · %H:%M") || "")
+  const timeFmt = bind(time).as((t) => t.format("%a · %b %d · %H:%M") || "");
 
   return (
     <menubutton>
       <button
         setup={pointer}
         cssClasses={["clock"]}
-        onClicked={() => Calendar.visible = true}
+        onClicked={() => (Calendar.visible = true)}
         halign={Gtk.Align.CENTER}
       >
         <box>

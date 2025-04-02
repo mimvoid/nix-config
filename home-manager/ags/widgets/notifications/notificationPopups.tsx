@@ -9,7 +9,7 @@ const TIMEOUT_DELAY = 5000;
 const WINDOW_NAME = "notification-window";
 
 function NotifItems() {
-  const NotifsBox = <box cssClasses={["notifications"]} vertical />
+  const NotifsBox = <box cssClasses={["notifications"]} vertical />;
 
   notifd.connect("notified", (_, id) => {
     const notification = notifd.get_notification(id);
@@ -24,10 +24,11 @@ function NotifItems() {
         notification.dismiss();
         self.unparent;
       },
-      setup: (self) => timeout(TIMEOUT_DELAY, () => {
-        notification.dismiss();
-        self.unparent;
-      }),
+      setup: (self) =>
+        timeout(TIMEOUT_DELAY, () => {
+          notification.dismiss();
+          self.unparent;
+        }),
     });
 
     Item.set_parent(NotifsBox);

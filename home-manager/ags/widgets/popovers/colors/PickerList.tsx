@@ -24,7 +24,9 @@ function ColorItem(color: string) {
       <box>
         <box
           cssClasses={["color-box"]}
-          css={`background-color: ${color}`}
+          css={`
+            background-color: ${color};
+          `}
           halign={START}
           valign={CENTER}
         />
@@ -36,23 +38,29 @@ function ColorItem(color: string) {
   const Switcher = bind(curr).as((c) => {
     const setRgb = () => {
       const rgb = hexToRgb(color);
-      if (rgb) curr.set(rgb)
-    }
+      if (rgb) curr.set(rgb);
+    };
 
     const setHsl = () => {
       const hsl = hexToHsl(color);
       if (hsl) curr.set(hsl);
-    }
-    
+    };
+
     switch (c) {
       case color:
-        return <button setup={pointer} label="rgb" onClicked={setRgb}/>
+        return <button setup={pointer} label="rgb" onClicked={setRgb} />;
       case hexToRgb(color):
-        return <button setup={pointer} label="hsl" onClicked={setHsl}/>
+        return <button setup={pointer} label="hsl" onClicked={setHsl} />;
       default:
-        return <button setup={pointer} label="hex" onClicked={() => curr.set(color)}/>
+        return (
+          <button
+            setup={pointer}
+            label="hex"
+            onClicked={() => curr.set(color)}
+          />
+        );
     }
-  })
+  });
 
   const Actions = (
     <box className="actions" halign={END}>
@@ -61,7 +69,7 @@ function ColorItem(color: string) {
         <image iconName={Icons.actions.close} />
       </button>
     </box>
-  )
+  );
 
   return (
     <box cssClasses={["color-item"]} hexpand>
@@ -89,7 +97,7 @@ function Actions() {
     }
 
     Picker.destroy();
-  }
+  };
 
   return (
     <box spacing={4} halign={END}>
@@ -106,12 +114,12 @@ function Actions() {
         iconName={Icons.actions.clearAll}
       />
     </box>
-  )
+  );
 }
 
 export default function PickerList() {
   const Colors = bind(picker, "colors").as((c) =>
-    c.map((color) => ColorItem(color))
+    c.map((color) => ColorItem(color)),
   );
 
   return (

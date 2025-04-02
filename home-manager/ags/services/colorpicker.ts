@@ -5,7 +5,7 @@ import GLib from "gi://GLib";
 const COLORS_STORE = GLib.get_user_state_dir() + "/ags/colorpicker.json";
 const MAX_COLORS = 10;
 
-function readColorsCache() : string[] {
+function readColorsCache(): string[] {
   try {
     return JSON.parse(readFile(COLORS_STORE));
   } catch (error) {
@@ -43,17 +43,21 @@ export default class ColorPicker extends GObject.Object {
   readonly storePath = COLORS_STORE;
 
   readonly pick = async () => {
-    const color = await execAsync("hyprpicker --format=hex --autocopy --no-fancy").catch(console.error);
+    const color = await execAsync(
+      "hyprpicker --format=hex --autocopy --no-fancy",
+    ).catch(console.error);
     if (!color) return;
 
     this.add(color.toLowerCase());
     return color.toLowerCase();
-  }
+  };
 
   readonly copy = async (color: string) => {
     execAsync(["wl-copy", color]).catch(console.error);
-    execAsync(`notify-send "Colorpicker" "Copied to clipboard:\n\n${color}"`).catch(console.error);
-  }
+    execAsync(
+      `notify-send "Colorpicker" "Copied to clipboard:\n\n${color}"`,
+    ).catch(console.error);
+  };
 
   readonly add = (color: string) => {
     let list = this.colors;
@@ -67,12 +71,12 @@ export default class ColorPicker extends GObject.Object {
     }
 
     this.colors = list;
-  }
+  };
 
   readonly remove = (color: string) => {
     const newList = this.colors.filter((c) => c !== color);
     this.colors = newList;
-  }
+  };
 
-  readonly clear = () => this.colors = [];
+  readonly clear = () => (this.colors = []);
 }

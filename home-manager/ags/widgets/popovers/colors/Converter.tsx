@@ -14,10 +14,10 @@ import { pointer } from "@lib/utils";
 const picker = Picker.get_default();
 
 let color = new Gdk.RGBA({
-  red: (245 / 255),
-  green: (189 / 255),
-  blue: (230 / 255),
-  alpha: 1.0
+  red: 245 / 255,
+  green: 189 / 255,
+  blue: 230 / 255,
+  alpha: 1.0,
 });
 color.parse(picker.lastColor());
 
@@ -50,7 +50,7 @@ const Entry = (
     placeholderText={colorLabel()}
     onChanged={(self) => updateColor(self.text)}
   />
-)
+);
 
 function Switcher() {
   function Formats() {
@@ -78,14 +78,14 @@ function Switcher() {
       {Display}
       <Formats />
     </box>
-  )
+  );
 }
 
 function Enter() {
   const clear = () => {
     Entry.set_property("text", "");
     colorLabel.set(color.to_string());
-  }
+  };
 
   const buttons = [
     {
@@ -94,7 +94,7 @@ function Enter() {
       cmd: () => {
         picker.add(gRgbaToHex(color));
         clear();
-      }
+      },
     },
     {
       icon: Icons.actions.copy,
@@ -113,9 +113,9 @@ function Enter() {
         const newColor = await picker.pick();
         if (!newColor) return;
         updateColor(newColor);
-      }
-    }
-  ]
+      },
+    },
+  ];
 
   return (
     <box vertical spacing={8}>
@@ -128,7 +128,7 @@ function Enter() {
         ))}
       </box>
     </box>
-  )
+  );
 }
 
 export default function Converter() {
@@ -139,5 +139,5 @@ export default function Converter() {
         <Enter />
       </box>
     </Dropdown>
-  )
+  );
 }

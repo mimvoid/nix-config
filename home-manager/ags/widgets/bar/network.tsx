@@ -27,20 +27,28 @@ function NetworkEvent() {
     <label
       label={bind(network.wifi, "ssid")}
       visible={bind(network, "state").as((s) => {
-        const { CONNECTED_LOCAL, CONNECTED_GLOBAL, CONNECTED_SITE } = Network.State;
-        return s === CONNECTED_LOCAL || s === CONNECTED_GLOBAL || s === CONNECTED_SITE
+        const { CONNECTED_LOCAL, CONNECTED_GLOBAL, CONNECTED_SITE } =
+          Network.State;
+        return (
+          s === CONNECTED_LOCAL ||
+          s === CONNECTED_GLOBAL ||
+          s === CONNECTED_SITE
+        );
       })}
     />
   );
 
   return (
     <menubutton>
-      <HoverRevealer hiddenChild={Label} onClicked={() => NetworkPopover.visible = true}>
+      <HoverRevealer
+        hiddenChild={Label}
+        onClicked={() => (NetworkPopover.visible = true)}
+      >
         <Icon />
       </HoverRevealer>
       {NetworkPopover}
     </menubutton>
-  )
+  );
 }
 
 export default function Wifi() {

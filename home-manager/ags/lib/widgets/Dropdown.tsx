@@ -18,14 +18,27 @@ export default function Dropdown({
   transitionType = Gtk.RevealerTransitionType.SLIDE_DOWN,
   ...props
 }: DropdownProps): Gtk.Widget {
-
   const revealed = Variable(revealChild);
 
   return (
-    <box cssClasses={bind(revealed).as((r) => ["dropdown", "section", r ? "open" : "closed"])} vertical>
-      <button setup={pointer} onClicked={() => revealed.set(!revealed.get())} hexpand vexpand>
+    <box
+      cssClasses={bind(revealed).as((r) => [
+        "dropdown",
+        "section",
+        r ? "open" : "closed",
+      ])}
+      vertical
+    >
+      <button
+        setup={pointer}
+        onClicked={() => revealed.set(!revealed.get())}
+        hexpand
+        vexpand
+      >
         <box valign={CENTER}>
-          <box halign={START} valign={CENTER}>{label}</box>
+          <box halign={START} valign={CENTER}>
+            {label}
+          </box>
           <image iconName="pan-down-symbolic" halign={END} valign={CENTER} />
         </box>
       </button>

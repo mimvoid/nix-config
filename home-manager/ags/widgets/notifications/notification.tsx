@@ -45,35 +45,36 @@ export default function Notification(props: Props) {
 
   // Display the icon in various possible formats
   function Icon() {
-    let Image = <image cssClasses={["app-icon"]} iconName="dialog-information-symbolic" />
+    let Image = (
+      <image cssClasses={["app-icon"]} iconName="dialog-information-symbolic" />
+    );
 
     if (n.appIcon || n.desktopEntry) {
       Image = (
         <image
           cssClasses={["app-icon"]}
-          visible={Boolean(n.appIcon || n.desktopEntry)}
           iconName={n.appIcon || n.desktopEntry}
         />
       );
-    }
-    else if (n.image) {
+    } else if (n.image) {
       if (fileExists(n.image)) {
-        Image = <image cssClasses={["image"]} valign={START} file={n.image} />
-      }
-      else if (isIcon(n.image)) {
+        Image = <image cssClasses={["image"]} valign={START} file={n.image} />;
+      } else if (isIcon(n.image)) {
         Image = (
-          <box cssClasses={["icon-image"]} valign={START} >
-            <image iconName={n.image} hexpand vexpand halign={CENTER} valign={CENTER} />
+          <box cssClasses={["icon-image"]} valign={START}>
+            <image
+              iconName={n.image}
+              hexpand
+              vexpand
+              halign={CENTER}
+              valign={CENTER}
+            />
           </box>
         );
       }
     }
 
-    return (
-      <box cssClasses={["notif-icon"]}>
-        {Image}
-      </box>
-    );
+    return <box cssClasses={["notif-icon"]}>{Image}</box>;
   }
 
   function Header() {
