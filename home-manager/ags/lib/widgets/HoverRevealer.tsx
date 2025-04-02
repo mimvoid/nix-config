@@ -1,4 +1,4 @@
-import { Binding, Variable } from "astal";
+import { Binding } from "astal";
 import { Widget, Gtk } from "astal/gtk4";
 import { pointer } from "../utils";
 
@@ -15,26 +15,22 @@ export default function HoverRevealer({
   transitionType = Gtk.RevealerTransitionType.SLIDE_RIGHT,
   ...props
 }: HoverRevealerProps): Gtk.Widget {
-
-  const revealed = Variable(false);
-
   const Revealer = (
     <revealer
       transitionDuration={transitionDuration}
       transitionType={transitionType}
-      revealChild={revealed()}
     >
       {hiddenChild}
     </revealer>
-  );
+  ) as Gtk.Revealer;
 
   const result = (
     <button
-      onHoverEnter={() => revealed.set(true)}
-      onHoverLeave={() => revealed.set(false)}
+      onHoverEnter={() => (Revealer.revealChild = true)}
+      onHoverLeave={() => (Revealer.revealChild = false)}
       {...props}
     >
-      <box className="revealer-box">
+      <box cssClasses={["revealer-box"]}>
         {Revealer}
         {child}
       </box>
