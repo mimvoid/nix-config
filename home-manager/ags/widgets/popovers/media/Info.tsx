@@ -6,7 +6,7 @@ import Mpris from "gi://AstalMpris";
 
 const { CENTER } = Gtk.Align;
 
-export default function Info(player: Mpris.Player) {
+export default (player: Mpris.Player) => {
   // Display cover art
   const CoverArt = (
     <image
@@ -42,4 +42,4 @@ export default function Info(player: Mpris.Player) {
       {Artist}
     </box>
   );
-}
+};

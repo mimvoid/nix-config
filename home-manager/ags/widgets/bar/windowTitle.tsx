@@ -4,7 +4,7 @@ import Pango from "gi://Pango";
 
 const hypr = Hyprland.get_default();
 
-export default function Title() {
+export default () => {
   // Get the focused window
   const focused = bind(hypr, "focusedClient");
 
@@ -27,4 +27,4 @@ export default function Title() {
       {Label}
     </box>
   );
-}
+};

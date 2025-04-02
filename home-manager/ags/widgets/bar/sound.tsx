@@ -60,11 +60,9 @@ function SliderHover() {
   );
 }
 
-export default function AudioSlider() {
-  return (
-    <box cssClasses={["sound", "icon-label"]}>
-      {Icon}
-      <SliderHover />
-    </box>
-  );
-}
+export default () => (
+  <box cssClasses={["sound", "icon-label"]}>
+    {Icon}
+    <SliderHover />
+  </box>
+);

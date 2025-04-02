@@ -3,7 +3,7 @@ import Battery from "gi://AstalBattery";
 
 const battery = Battery.get_default();
 
-export default function BatteryLevel() {
+export default () => {
   // Get the icon from Astal
   const Icon = <image iconName={bind(battery, "batteryIconName")} />;
 
@@ -27,4 +27,4 @@ export default function BatteryLevel() {
       {label}
     </box>
   );
-}
+};

@@ -24,7 +24,7 @@ const Choices = bind(wallpapers, "wallpapers").as((ws) =>
   )),
 );
 
-export default async function WallpaperPicker() {
+export default async () => {
   const { EXTERNAL, NEVER } = Gtk.PolicyType;
   const { BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor;
 
@@ -53,4 +53,4 @@ export default async function WallpaperPicker() {
       </ScrolledWindow>
     </window>
   );
-}
+};

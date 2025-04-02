@@ -44,7 +44,7 @@ const Right = (
   </box>
 );
 
-export default function Bar(monitor: Gdk.Monitor) {
+export default (monitor: Gdk.Monitor) => {
   const { TOP, LEFT, RIGHT } = Astal.WindowAnchor;
 
   return (
@@ -68,4 +68,4 @@ export default function Bar(monitor: Gdk.Monitor) {
       </centerbox>
     </window>
   );
-}
+};

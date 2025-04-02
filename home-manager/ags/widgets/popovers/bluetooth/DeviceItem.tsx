@@ -10,7 +10,7 @@ interface BluetoothItemProps extends Widget.ButtonProps {
   device: Bluetooth.Device;
 }
 
-export default function DeviceItem({ device, ...props }: BluetoothItemProps) {
+export default ({ device, ...props }: BluetoothItemProps) => {
   const Paired = (
     <image
       iconName={Icon.bluetooth.paired}
@@ -35,4 +35,4 @@ export default function DeviceItem({ device, ...props }: BluetoothItemProps) {
       </box>
     </button>
   );
-}
+};

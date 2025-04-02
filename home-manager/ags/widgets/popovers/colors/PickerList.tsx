@@ -117,7 +117,7 @@ function Actions() {
   );
 }
 
-export default function PickerList() {
+export default () => {
   const Colors = bind(picker, "colors").as((c) =>
     c.map((color) => ColorItem(color)),
   );
@@ -135,4 +135,4 @@ export default function PickerList() {
       </box>
     </Dropdown>
   );
-}
+};

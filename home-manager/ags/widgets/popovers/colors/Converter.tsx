@@ -131,13 +131,11 @@ function Enter() {
   );
 }
 
-export default function Converter() {
-  return (
-    <Dropdown label={<label label="Color Selector" cssClasses={["title"]} />}>
-      <box cssClasses={["converter"]} vertical spacing={8}>
-        <Switcher />
-        <Enter />
-      </box>
-    </Dropdown>
-  );
-}
+export default () =>  (
+  <Dropdown label={<label label="Color Selector" cssClasses={["title"]} />}>
+    <box cssClasses={["converter"]} vertical spacing={8}>
+      <Switcher />
+      <Enter />
+    </box>
+  </Dropdown>
+);

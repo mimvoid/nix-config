@@ -15,7 +15,7 @@ function lengthStr(length: number) {
   return min + ":" + sec;
 }
 
-export default function Progress(player: Mpris.Player) {
+export default (player: Mpris.Player) => {
   const position = bind(player, "position").as((p) =>
     player.length > 0 ? p / player.length : 0,
   );
@@ -55,4 +55,4 @@ export default function Progress(player: Mpris.Player) {
       {Length}
     </box>
   );
-}
+};

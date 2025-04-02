@@ -28,7 +28,7 @@ type PopoverProps = Pick<
  * without explicitly setting its `max_width_chars` property.
  * For a workaround see Popover2.tsx
  */
-export default function Popover({
+export default ({
   child,
   marginBottom,
   marginTop,
@@ -38,7 +38,7 @@ export default function Popover({
   valign = Gtk.Align.CENTER,
   onClose,
   ...props
-}: PopoverProps) {
+}: PopoverProps) => {
   return (
     <window
       {...props}
@@ -85,4 +85,4 @@ export default function Popover({
       </box>
     </window>
   );
-}
+};

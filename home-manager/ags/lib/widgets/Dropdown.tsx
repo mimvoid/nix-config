@@ -10,14 +10,14 @@ interface DropdownProps extends Widget.RevealerProps {
   transitionType?: Gtk.RevealerTransitionType;
 }
 
-export default function Dropdown({
+export default ({
   child,
   label,
   revealChild = true,
   transitionDuration = 250,
   transitionType = Gtk.RevealerTransitionType.SLIDE_DOWN,
   ...props
-}: DropdownProps): Gtk.Widget {
+}: DropdownProps): Gtk.Widget => {
   const revealed = Variable(revealChild);
 
   return (
@@ -52,4 +52,4 @@ export default function Dropdown({
       </revealer>
     </box>
   );
-}
+};

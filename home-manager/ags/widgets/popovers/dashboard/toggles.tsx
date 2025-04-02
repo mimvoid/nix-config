@@ -20,6 +20,4 @@ const NotifDnd = (
   />
 );
 
-export default function Toggles() {
-  return <box cssClasses={["toggles", "section"]}>{NotifDnd}</box>;
-}
+export default () => <box cssClasses={["toggles", "section"]}>{NotifDnd}</box>;

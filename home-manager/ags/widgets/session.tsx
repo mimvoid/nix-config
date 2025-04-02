@@ -68,24 +68,22 @@ function Session() {
   return ButtonGrid;
 }
 
-export default function SessionMenu() {
-  return (
-    <window
-      name="session"
-      cssClasses={["session"]}
-      visible={false}
-      anchor={Astal.WindowAnchor.NONE}
-      exclusivity={Astal.Exclusivity.NORMAL}
-      layer={Astal.Layer.OVERLAY}
-      keymode={Astal.Keymode.EXCLUSIVE}
-      onKeyPressed={(_, keyval) => {
-        if (keyval === Gdk.KEY_Escape) {
-          App.toggle_window("session");
-        }
-      }}
-      application={App}
-    >
-      {Session()}
-    </window>
-  );
-}
+export default () => (
+  <window
+    name="session"
+    cssClasses={["session"]}
+    visible={false}
+    anchor={Astal.WindowAnchor.NONE}
+    exclusivity={Astal.Exclusivity.NORMAL}
+    layer={Astal.Layer.OVERLAY}
+    keymode={Astal.Keymode.EXCLUSIVE}
+    onKeyPressed={(_, keyval) => {
+      if (keyval === Gdk.KEY_Escape) {
+        App.toggle_window("session");
+      }
+    }}
+    application={App}
+  >
+    {Session()}
+  </window>
+);

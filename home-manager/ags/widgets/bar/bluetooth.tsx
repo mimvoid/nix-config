@@ -61,10 +61,8 @@ function BluetoothBox() {
   );
 }
 
-export default function BluetoothWidget() {
-  return (
-    <box cssClasses={["bluetooth"]}>
-      <BluetoothBox />
-    </box>
-  );
-}
+export default () => (
+  <box cssClasses={["bluetooth"]}>
+    <BluetoothBox />
+  </box>
+);

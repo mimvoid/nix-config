@@ -40,7 +40,7 @@ function NotifItems() {
   return NotifsBox;
 }
 
-export default function NotificationPopups(gdkmonitor: Gdk.Monitor) {
+export default (gdkmonitor: Gdk.Monitor) => {
   const { TOP, RIGHT } = Astal.WindowAnchor;
 
   return (
@@ -55,4 +55,4 @@ export default function NotificationPopups(gdkmonitor: Gdk.Monitor) {
       <NotifItems />
     </window>
   );
-}
+};

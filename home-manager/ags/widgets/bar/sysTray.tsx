@@ -65,11 +65,9 @@ function SysTrayToggle() {
   );
 }
 
-export default function SysTray() {
-  return (
-    <box cssClasses={["system-tray"]}>
-      {Revealer}
-      <SysTrayToggle />
-    </box>
-  );
-}
+export default () => (
+  <box cssClasses={["system-tray"]}>
+    {Revealer}
+    <SysTrayToggle />
+  </box>
+);

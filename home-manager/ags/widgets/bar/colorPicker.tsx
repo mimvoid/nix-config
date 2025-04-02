@@ -51,10 +51,8 @@ function Color() {
   );
 }
 
-export default function ColorPicker() {
-  return (
-    <box cssClasses={["colorpicker", "icon-label"]}>
-      <Color />
-    </box>
-  );
-}
+export default () => (
+  <box cssClasses={["colorpicker", "icon-label"]}>
+    <Color />
+  </box>
+);

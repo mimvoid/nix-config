@@ -8,13 +8,13 @@ interface HoverRevealerProps extends Widget.ButtonProps {
   transitionType?: Gtk.RevealerTransitionType;
 }
 
-export default function HoverRevealer({
+export default ({
   hiddenChild,
   child,
   transitionDuration = 250,
   transitionType = Gtk.RevealerTransitionType.SLIDE_RIGHT,
   ...props
-}: HoverRevealerProps): Gtk.Widget {
+}: HoverRevealerProps): Gtk.Widget => {
   const Revealer = (
     <revealer
       transitionDuration={transitionDuration}
@@ -41,4 +41,4 @@ export default function HoverRevealer({
   pointer(result);
 
   return result;
-}
+};

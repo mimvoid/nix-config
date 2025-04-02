@@ -37,7 +37,7 @@ type Props = {
   notification: Notifd.Notification;
 };
 
-export default function Notification(props: Props) {
+export default (props: Props) => {
   const { notification: n, onHoverLeave, setup } = props;
   const { START, CENTER, END } = Gtk.Align;
 
@@ -160,4 +160,4 @@ export default function Notification(props: Props) {
       {NotifBox}
     </box>
   );
-}
+};

@@ -14,10 +14,8 @@ const Wallpapers = (
   </button>
 );
 
-export default function Launchers() {
-  return (
-    <box cssClasses={["launchers", "section"]} hexpand>
-      {Wallpapers}
-    </box>
-  );
-}
+export default () => (
+  <box cssClasses={["launchers", "section"]} hexpand>
+    {Wallpapers}
+  </box>
+);

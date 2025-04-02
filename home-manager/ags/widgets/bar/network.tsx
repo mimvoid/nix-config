@@ -51,10 +51,8 @@ function NetworkEvent() {
   );
 }
 
-export default function Wifi() {
-  return (
-    <box cssClasses={["network"]}>
-      <NetworkEvent />
-    </box>
-  );
-}
+export default () => (
+  <box cssClasses={["network"]}>
+    <NetworkEvent />
+  </box>
+);

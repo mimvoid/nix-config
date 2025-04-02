@@ -9,7 +9,7 @@ import { pointer } from "@lib/utils";
 
 const { START, CENTER, END } = Gtk.Align;
 
-export default function Actions(player: Mpris.Player) {
+export default (player: Mpris.Player) => {
   // Play or pause
   // Icon changes based on the playing status
   function Toggle() {
@@ -105,4 +105,4 @@ export default function Actions(player: Mpris.Player) {
       <Shuffle />
     </centerbox>
   );
-}
+};

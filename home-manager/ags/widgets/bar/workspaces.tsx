@@ -22,6 +22,4 @@ const Spaces = bind(hypr, "workspaces").as((wss) =>
     )),
 );
 
-export default function Workspaces() {
-  return <box cssClasses={["workspaces"]}>{Spaces}</box>;
-}
+export default () => <box cssClasses={["workspaces"]}>{Spaces}</box>;

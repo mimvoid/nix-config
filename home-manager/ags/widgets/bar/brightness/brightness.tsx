@@ -42,11 +42,9 @@ function BrightnessBox() {
   );
 }
 
-export default function BrightnessWidget() {
-  return (
-    <box cssClasses={["brightness"]}>
-      <WlSunset />
-      <BrightnessBox />
-    </box>
-  );
-}
+export default () => (
+  <box cssClasses={["brightness"]}>
+    <WlSunset />
+    <BrightnessBox />
+  </box>
+);
