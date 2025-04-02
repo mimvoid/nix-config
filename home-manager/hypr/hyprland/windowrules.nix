@@ -8,6 +8,8 @@ let
   };
 in
 {
+  layerrule = [ "noanim, launcher" ];
+
   windowrule = [ "pseudo, fcitx" ];
 
   windowrulev2 = with opacity;
