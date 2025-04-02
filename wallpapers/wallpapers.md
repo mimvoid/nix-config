@@ -86,11 +86,29 @@ Filename format: `artist-name_title-name.filetype`
 </details>
 <details open><summary>
 
+#### [Broken Moon](https://www.deviantart.com/amaury2502/art/Broken-Moon-1106663156)
+
+</summary>
+
+![Broken Moon by Anthonio Amaury](wallpapers/anthonio-amaury_broken-moon.jpg)
+
+</details>
+<details open><summary>
+
 #### [Red Leaves](https://www.deviantart.com/amaury2502/art/Red-Leaves-979865962)
 
 </summary>
 
 ![Red Leaves by Anthonio Amaury](wallpapers/anthonio-amaury_red-leaves.png)
+
+</details>
+<details open><summary>
+
+#### [Landscape](https://www.deviantart.com/amaury2502/art/Landscape-953842636)
+
+</summary>
+
+![Landscape by Anthonio Amaury](wallpapers/anthonio-amaury_landscape.png)
 
 </details>
 <details open><summary>
@@ -112,6 +130,31 @@ Filename format: `artist-name_title-name.filetype`
 
 </details>
 <br />
+
+### Arttssam
+
+[Foundation](https://foundation.app/@artsam),
+[DeviantArt](https://www.deviantart.com/samuel-one/gallery)
+
+<details open><summary>
+
+#### [Quiet Evening](https://www.deviantart.com/samuel-one/art/Quiet-Evening-918954714)
+
+</summary>
+
+![Quiet Evening by Arttssam](wallpapers/arttssam_quiet-evening.jpg)
+
+</details>
+<details open><summary>
+
+#### [Red Sky](https://www.deviantart.com/samuel-one/art/Red-Sky-876133052)
+
+</summary>
+
+![Red Sky by Arttssam](wallpapers/arttssam_red-sky.jpg)
+
+</details>
+<br>
 
 ### Axle (鳥)
 
@@ -192,6 +235,30 @@ Catppuccin-ified version from
 </details>
 <br>
 
+### BangJoy
+
+[Twitter](https://x.com/bangjoy1992)
+
+<details open><summary>
+
+#### [hi 2024](https://x.com/bangjoy1992/status/1742139007260119510)
+
+</summary>
+
+![hi 2024 by BangJoy](wallpapers/bangjoy_hi-2024.jpg)
+
+</details>
+<details open><summary>
+
+#### [wind (風) 1](https://x.com/bangjoy1992/status/1718917611260682374/photo/1)
+
+</summary>
+
+![wind (風) by BangJoy](wallpapers/bangjoy_wind-1.jpg)
+
+</details>
+<br>
+
 ### Bastien Grivet
 
 [Artstation](https://www.artstation.com/grivetart)
@@ -219,6 +286,21 @@ Catppuccin-ified version from
 </summary>
 
 ![Abandoned Cottage by Bis Biswas](wallpapers/bis-biswas_abandoned-cottage.jpg)
+
+</details>
+<br>
+
+### Camila Nogueira
+
+[Homepage](https://camilaillustration.pt)
+
+<details open><summary>
+
+#### [Late Night Chill](https://camilaillustration.pt/work/night)
+
+</summary>
+
+![Late Night Chill by Camila Nogueira](wallpapers/camila-nogueira_late-night-chill.jpg)
 
 </details>
 <br>
@@ -258,6 +340,33 @@ Catppuccin-ified version from
 [Landing page](https://lit.link/en/gracilejp),
 [website](https://www.gracile.jp)
 
+<details open><summary>
+
+#### ["alien"](https://www.instagram.com/gracile_jp/p/C-2trfpyUEm)
+
+</summary>
+
+!["alien" by Gracile](wallpapers/gracile_alien.jpg)
+
+</details>
+<details open><summary>
+
+#### ["aquarium"](https://x.com/gracile_jp/status/1847325205582225435/photo/2)
+
+</summary>
+
+!["aquarium" by Gracile](wallpapers/gracile_aquarium.jpg)
+
+</details>
+<details open><summary>
+
+#### ["balloon"](https://x.com/gracile_jp/status/1829199321474183657/photo/4)
+
+</summary>
+
+!["balloon" by Gracile](wallpapers/gracile_balloon.jpg)
+
+</details>
 <details open><summary>
 
 #### ["blue 2"](https://x.com/gracile_jp/status/1352278374903779329/photo/2)
@@ -325,6 +434,24 @@ Original source unknown
 </details>
 <details open><summary>
 
+#### ["to the sky"](https://www.instagram.com/gracile_jp/p/CrqugH4S41M)
+
+</summary>
+
+!["to the sky" by Gracile](wallpapers/gracile_to-the-sky.jpg)
+
+</details>
+<details open><summary>
+
+#### ["towers"](https://www.instagram.com/gracile_jp/p/ChrEJGXLhcs)
+
+</summary>
+
+!["towers" by Gracile](wallpapers/gracile_towers.jpg)
+
+</details>
+<details open><summary>
+
 #### [Jellyfish](https://x.com/gracile_jp/status1497202048840118277/photo/1)
 
 </summary>
@@ -359,6 +486,15 @@ Original source unknown
 Original source unknown
 
 !["savanna"](wallpapers/gracile_savanna.jpg)
+
+</details>
+<details open><summary>
+
+#### ["tunnel"](https://x.com/gracile_jp/status/1847325205582225435/photo/4)
+
+</summary>
+
+!["tunnel" by Gracile](wallpapers/gracile_tunnel.jpg)
 
 </details>
 <details open><summary>
@@ -412,6 +548,21 @@ Original source unknown
 </details>
 <br />
 
+### Matt Vince
+
+[Homepage](https://www.mattvince.com/)
+
+<details open><summary>
+
+#### [Lake Hylia](https://www.mattvince.com/lake-hylia)
+
+</summary>
+
+![Lake Hylia by Matt Vince](wallpapers/matt-vince_lake-hylia.jpg)
+
+</details>
+<br>
+
 ### Sam Yang
 
 [Landing page](https://linktr.ee/samdoesarts)
@@ -444,6 +595,21 @@ Uncropped original unknown
 </details>
 <br>
 
+### SouredApple
+
+[Tumblr](https://www.tumblr.com/appleillustrations)
+
+<details open><summary>
+
+#### ["movie aesthetic"](https://www.tumblr.com/appleillustrations/189967268001/trying-to-draw-a-movie-aesthetic)
+
+</summary>
+
+!["movie aesthetic" by SouredApple](wallpapers/souredapple_movie.jpg)
+
+</details>
+<br>
+
 ### Surendra Rajawat
 
 [Homepage](https://rajawats.com),
@@ -464,6 +630,20 @@ Uncropped original unknown
 ![Tatami Construct - Mommy Hilfiger by Surendra Rajawat](wallpapers/surendra-rajawat_tatami-construct-mommyhilfiger.jpg)
 
 </summary></details>
+
+### WLOP
+
+[DeviantArt](https://www.deviantart.com/wlop),
+[Twitter](https://x.com/wlopwangling)
+
+<details open><summary>
+
+#### [Fissure 2](https://x.com/wlopwangling/status/1827279147225510001/photo/2)
+
+![Fissure 2 by WLOP](wallpapers/wlop_fissure-2.jpg)
+
+</summary></details>
+<br>
 
 ### XilmO
 
