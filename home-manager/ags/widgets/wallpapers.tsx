@@ -24,7 +24,7 @@ const Choices = bind(wallpapers, "wallpapers").as((ws) =>
   )),
 );
 
-export default async () => {
+export default () => {
   const { EXTERNAL, NEVER } = Gtk.PolicyType;
   const { BOTTOM, LEFT, RIGHT } = Astal.WindowAnchor;
 
@@ -36,10 +36,8 @@ export default async () => {
       layer={Astal.Layer.OVERLAY}
       exclusivity={Astal.Exclusivity.NORMAL}
       keymode={Astal.Keymode.EXCLUSIVE}
-      onKeyPressed={(_, keyval) => {
-        if (keyval === Gdk.KEY_Escape) {
-          App.toggle_window("wallpaperPicker");
-        }
+      onKeyPressed={(self, keyval) => {
+        if (keyval === Gdk.KEY_Escape) self.visible = false;
       }}
       application={App}
       marginBottom={12}
@@ -52,5 +50,5 @@ export default async () => {
         <box spacing={8}>{Choices}</box>
       </ScrolledWindow>
     </window>
-  );
+  ) as Gtk.Window;
 };

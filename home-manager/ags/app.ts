@@ -10,7 +10,6 @@ import style from "./style/style.scss";
 import Bar from "./widgets/bar/bar";
 import NotificationPopups from "./widgets/notifications/notificationPopups";
 import SessionMenu from "./widgets/session";
-import WallpaperPicker from "./widgets/wallpapers";
 
 App.start({
   css: style,
@@ -31,6 +30,5 @@ App.start({
     }
 
     SessionMenu();
-    WallpaperPicker();
   },
 });
