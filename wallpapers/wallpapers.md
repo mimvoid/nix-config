@@ -35,7 +35,7 @@ Filename format: `artist-name_title-name.filetype`
 ![Under the Blue Sky 4 by Aeuna](wallpapers/aeuna_under-the-blue-sky-4.jpg)
 
 </details>
-<br>
+<br />
 
 ### Alena Aenami
 
@@ -59,7 +59,7 @@ Filename format: `artist-name_title-name.filetype`
 ![Someday by Alena Aenami](wallpapers/alena-aenami_someday.jpg)
 
 </details>
-<br>
+<br />
 
 ### Anthonio Amaury
 
@@ -74,7 +74,6 @@ Filename format: `artist-name_title-name.filetype`
 ![The Moon and the Stars by Anthonio Amaury](wallpapers/anthonio-amaury_moon-and-stars.jpg)
 
 </details>
-
 <details open><summary>
 
 #### [The Last Stars Before Dawn](https://www.deviantart.com/amaury2502/art/The-last-stars-before-dawn-941385647)
@@ -154,7 +153,7 @@ Filename format: `artist-name_title-name.filetype`
 ![Red Sky by Arttssam](wallpapers/arttssam_red-sky.jpg)
 
 </details>
-<br>
+<br />
 
 ### Axle (鳥)
 
@@ -215,7 +214,7 @@ Filename format: `artist-name_title-name.filetype`
 ![A Warm and Blue World (あたたかくて青い世界) by Axle](wallpapers/axle_warm-blue-world.jpg)
 
 </details>
-<br>
+<br />
 
 ### BAKAIRIS
 
@@ -233,7 +232,7 @@ Catppuccin-ified version from
 !["rainy world" (亚特兰市郊) by BAKAIRIS](wallpapers/bakairis_rainy-world.png)
 
 </details>
-<br>
+<br />
 
 ### BangJoy
 
@@ -288,7 +287,7 @@ Catppuccin-ified version from
 ![Abandoned Cottage by Bis Biswas](wallpapers/bis-biswas_abandoned-cottage.jpg)
 
 </details>
-<br>
+<br />
 
 ### Camila Nogueira
 
@@ -303,7 +302,7 @@ Catppuccin-ified version from
 ![Late Night Chill by Camila Nogueira](wallpapers/camila-nogueira_late-night-chill.jpg)
 
 </details>
-<br>
+<br />
 
 ### DANGERDROP / ARQISAT
 
@@ -318,7 +317,7 @@ Catppuccin-ified version from
 !["coffee roadtrip" by DANGERDROP](wallpapers/dangerdrop_coffee-roadtrip.jpg)
 
 </details>
-<br>
+<br />
 
 ### Elias Stern
 
@@ -333,12 +332,13 @@ Catppuccin-ified version from
 ![Sunrise Speed Panorama by Elias Stern](wallpapers/elias-stern_sunrise.jpeg)
 
 </details>
-<br>
+<br />
 
 ### Gracile
 
 [Landing page](https://lit.link/en/gracilejp),
-[website](https://www.gracile.jp)
+[website](https://www.gracile.jp),
+[Instagram](https://www.instagram.com/gracile_jp)
 
 <details open><summary>
 
@@ -396,11 +396,9 @@ Catppuccin-ified version from
 </details>
 <details open><summary>
 
-#### ["clouds"](https://wallhaven.cc/w/e7d368)
+#### ["clouds"](https://www.instagram.com/p/Cg1oU0hrGBP)
 
 </summary>
-
-Original source unknown
 
 !["clouds" by Gracile](wallpapers/gracile_clouds.jpg)
 
@@ -479,13 +477,11 @@ Original source unknown
 </details>
 <details open><summary>
 
-#### [Gracile? "savanna"](https://wallhaven.cc/w/ex2dol)
+#### ["savanna"](https://www.instagram.com/gracile_jp/p/Cw77DYCRxRq)
 
 </summary>
 
-Original source unknown
-
-!["savanna"](wallpapers/gracile_savanna.jpg)
+!["savanna" by Gracile](wallpapers/gracile_savanna.jpg)
 
 </details>
 <details open><summary>
@@ -506,7 +502,7 @@ Original source unknown
 !["twilight" by Gracile](wallpapers/gracile_twilight.jpg)
 
 </details>
-<br>
+<br />
 
 ### Han Yijie
 
@@ -521,7 +517,7 @@ Original source unknown
 ![Departure (出航) by Han Yijie](wallpapers/hanyijie_departure.jpg)
 
 </details>
-<br>
+<br />
 
 ### Hue Teo
 
@@ -561,7 +557,7 @@ Original source unknown
 ![Lake Hylia by Matt Vince](wallpapers/matt-vince_lake-hylia.jpg)
 
 </details>
-<br>
+<br />
 
 ### Sam Yang
 
@@ -578,7 +574,7 @@ Uncropped original unknown
 ![Sunset by Sam Yang](wallpapers/sam-yang_sunset.png)
 
 </details>
-<br>
+<br />
 
 ### milkgrrl / Shari Coté
 
@@ -593,7 +589,7 @@ Uncropped original unknown
 ![Clouds by Shari Coté](wallpapers/shari-cote_clouds.png)
 
 </details>
-<br>
+<br />
 
 ### SouredApple
 
@@ -608,7 +604,7 @@ Uncropped original unknown
 !["movie aesthetic" by SouredApple](wallpapers/souredapple_movie.jpg)
 
 </details>
-<br>
+<br />
 
 ### Surendra Rajawat
 
@@ -619,17 +615,21 @@ Uncropped original unknown
 
 #### [Nature's Beauty](https://www.artstation.com/artwork/lRlPwe)
 
+</summary>
+
 ![Nature's Beauty by Surendra Rajawat](wallpapers/surendra-rajawat_natures-beauty.jpg)
 
-</summary></details>
-
+</details>
 <details open><summary>
 
 #### [Tatami Construct - Mommy Hilfiger](https://www.artstation.com/artwork/xYoRgR)
 
+</summary>
+
 ![Tatami Construct - Mommy Hilfiger by Surendra Rajawat](wallpapers/surendra-rajawat_tatami-construct-mommyhilfiger.jpg)
 
-</summary></details>
+</details>
+<br />
 
 ### WLOP
 
@@ -643,7 +643,7 @@ Uncropped original unknown
 ![Fissure 2 by WLOP](wallpapers/wlop_fissure-2.jpg)
 
 </summary></details>
-<br>
+<br />
 
 ### XilmO
 
@@ -659,7 +659,7 @@ Uncropped original unknown
 ![Mountain (山) by XilmO](wallpapers/xilmo_mountain.png)
 
 </details>
-<br>
+<br />
 
 ### Unknown Artist
 
@@ -675,4 +675,3 @@ Catppuccin-ified version from
 ![Tokyo Shinjuku](wallpapers/tokyo-shinjuku.png)
 
 </details>
-<br>
