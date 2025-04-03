@@ -1,4 +1,4 @@
-import { App } from "astal/gtk4";
+import { App, Gtk } from "astal/gtk4";
 import Icons from "@lib/icons";
 import { pointer } from "@lib/utils";
 import Wallpapers from "../../wallpapers";
@@ -19,7 +19,7 @@ const WallpapersLauncher = (
     }}
   >
     <box>
-      <image iconName={Icons.mimetypes.image} cssClasses={["big-icon"]} />
+      <image iconName={Icons.mimetypes.image} iconSize={Gtk.IconSize.LARGE} />
       <label label="Change wallpaper" />
     </box>
   </button>

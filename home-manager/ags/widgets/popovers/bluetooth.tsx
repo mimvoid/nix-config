@@ -25,7 +25,7 @@ function Status() {
   return (
     <box cssClasses={["status", "section"]}>
       <button setup={pointer} onClicked={action} tooltipText={tooltip}>
-        <image cssClasses={["big-icon"]} iconName={icon} />
+        <image iconName={icon} iconSize={Gtk.IconSize.LARGE} />
       </button>
       <label
         label={bind(bluetooth, "isPowered").as((p) => (p ? "On" : "Off"))}

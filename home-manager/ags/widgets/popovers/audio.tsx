@@ -22,8 +22,8 @@ function Section(endpoint: Wp.Endpoint, name: string) {
       )}
     >
       <image
-        cssClasses={["big-icon"]}
         iconName={bind(endpoint, "volumeIcon")}
+        iconSize={Gtk.IconSize.LARGE}
       />
     </button>
   );

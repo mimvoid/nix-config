@@ -17,7 +17,7 @@ const Current = (
         (e) => `Turn ${e ? "off" : "on"} wifi`,
       )}
     >
-      <image cssClasses={["big-icon"]} iconName={bind(wifi, "iconName")} />
+      <image iconName={bind(wifi, "iconName")} iconSize={Gtk.IconSize.LARGE} />
     </button>
     <box vertical>
       <label label={bind(wifi, "ssid")} halign={START} />
