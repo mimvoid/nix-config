@@ -1,7 +1,7 @@
 import { bind } from "astal";
 import { Gtk } from "astal/gtk4";
 import Wp from "gi://AstalWp";
-import { pointer } from "@lib/utils";
+import { pointer, drawValuePercentage } from "@lib/utils";
 
 const { START, CENTER, END, FILL } = Gtk.Align;
 
@@ -38,20 +38,16 @@ function Section(endpoint: Wp.Endpoint, name: string) {
   );
 
   const Slider = (
-    <box>
-      <slider
-        setup={pointer}
-        value={bind(endpoint, "volume")}
-        onChangeValue={({ value }) => (endpoint.volume = value)}
-        valign={CENTER}
-        hexpand
-      />
-      <label
-        label={bind(endpoint, "volume").as((i) => `${Math.floor(i * 100)}%`)}
-        halign={END}
-        valign={CENTER}
-      />
-    </box>
+    <slider
+      setup={(self) => {
+        pointer(self);
+        drawValuePercentage(self);
+      }}
+      value={bind(endpoint, "volume")}
+      onChangeValue={({ value }) => (endpoint.volume = value)}
+      valign={CENTER}
+      hexpand
+    />
   );
 
   return (

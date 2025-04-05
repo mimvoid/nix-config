@@ -4,7 +4,7 @@ import WlSunset from "./wlsunset";
 
 import Brightness from "@services/brightness";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
-import { pointer } from "@lib/utils";
+import { pointer, drawValuePercentage } from "@lib/utils";
 
 // Brightness label & slider
 
@@ -15,7 +15,10 @@ function BrightnessBox() {
   // Change brightness on drag
   const Slider = (
     <slider
-      setup={pointer}
+      setup={(self) => {
+        pointer(self);
+        drawValuePercentage(self);
+      }}
       value={bind(brightness, "light")}
       onChangeValue={({ value }) => (brightness.light = value)}
       valign={CENTER}
@@ -23,17 +26,9 @@ function BrightnessBox() {
     />
   );
 
-  // Format brightness as percentage
-  const label = bind(brightness, "light").as((i) => `${Math.floor(i * 100)}%`);
-
   return (
     <HoverRevealer
-      hiddenChild={
-        <box hexpand valign={CENTER}>
-          {Slider}
-          {label}
-        </box>
-      }
+      hiddenChild={Slider}
       onScroll={(_, __, dy) =>
         // Change brightness by scrolling
         dy < 0 ? (brightness.light += 0.05) : (brightness.light -= 0.05)
