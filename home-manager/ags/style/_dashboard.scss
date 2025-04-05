@@ -1,6 +1,6 @@
-@use "./palettes/palette";
-@use "./variables/fonts";
-@use "./variables/looks";
+@use "./palette";
+@use "abstracts/fonts";
+@use "abstracts/looks";
 
 .user-info {
   image.avatar {

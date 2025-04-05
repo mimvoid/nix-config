@@ -1,6 +1,6 @@
-@use "./palettes/palette";
-@use "./variables/looks";
-@use "./variables/fonts";
+@use "palette";
+@use "abstracts/looks";
+@use "abstracts/fonts";
 
 .audio-popover .section {
   &.speaker {

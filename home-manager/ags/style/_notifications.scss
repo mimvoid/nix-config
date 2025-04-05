@@ -1,7 +1,7 @@
 @use "sass:color";
-@use "./palettes/palette";
-@use "./variables/fonts";
-@use "./variables/looks";
+@use "palette";
+@use "abstracts/fonts";
+@use "abstracts/looks";
 
 .notification {
   @include looks.radius(0.4);

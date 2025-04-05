@@ -1,6 +1,6 @@
 @use "sass:color";
-@use "./palettes/palette";
-@use "./variables/looks";
+@use "palette";
+@use "abstracts/looks";
 
 @mixin grid-box($v, $h) {
   $v-opposed: "bottom";
