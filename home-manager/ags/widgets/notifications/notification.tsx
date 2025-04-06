@@ -61,15 +61,14 @@ export default (props: Props) => {
         Image = <image cssClasses={["image"]} valign={START} file={n.image} />;
       } else if (isIcon(n.image)) {
         Image = (
-          <box cssClasses={["icon-image"]} valign={START}>
-            <image
-              iconName={n.image}
-              hexpand
-              vexpand
-              halign={CENTER}
-              valign={CENTER}
-            />
-          </box>
+          <image
+            iconName={n.image}
+            cssClasses={["icon-image"]}
+            hexpand
+            vexpand
+            halign={CENTER}
+            valign={CENTER}
+          />
         );
       }
     }
@@ -108,45 +107,59 @@ export default (props: Props) => {
         wrap
       />
     );
-    const Body = (
-      <label
-        label={n.body}
-        cssClasses={["body"]}
-        wrap
-        maxWidthChars={36}
-        useMarkup
-        halign={START}
-      />
-    );
 
-    return (
+    const Container = (
       <box cssClasses={["content"]} vertical>
         {Summary}
-        {n.body && Body}
       </box>
-    );
+    ) as Gtk.Box;
+
+    if (n.body) {
+      const Body = (
+        <label
+          label={n.body}
+          cssClasses={["body"]}
+          wrap
+          maxWidthChars={36}
+          useMarkup
+          halign={START}
+        />
+      );
+
+      Container.append(Body);
+    }
+
+    return Container;
   }
 
-  // Create a button for each action if they exist
-  const Actions = n.get_actions().length > 0 && (
-    <box cssClasses={["actions"]}>
-      {n.get_actions().map(({ label, id }) => (
-        <button setup={pointer} onClicked={() => n.invoke(id)} hexpand>
-          <label label={label} halign={CENTER} hexpand />
-        </button>
-      ))}
+  // Put contents together
+  const NotifText = (
+    <box vertical>
+      <Header />
+      <Content />
     </box>
-  );
+  ) as Gtk.Box;
 
-  // Put all the contents together
+  // Create a button for each action if they exist
+  if (n.get_actions().length > 0) {
+    const Actions = (
+      <box cssClasses={["actions"]}>
+        {n.get_actions().map(({ label, id }) => (
+          <button setup={pointer} onClicked={() => n.invoke(id)} hexpand>
+            <label label={label} halign={CENTER} hexpand />
+          </button>
+        ))}
+      </box>
+    );
+
+    NotifText.append(Actions);
+  }
+
+  // Put everything together
   const NotifBox = (
     <box cssClasses={["notification"]}>
       <Icon />
-      <box vertical>
-        <Header />
-        <Content />
-        {Actions}
-      </box>
+      {NotifText}
     </box>
   );
 
