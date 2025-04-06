@@ -4,10 +4,10 @@
 @use "abstracts/fonts";
 
 .big-clock {
-  min-width: 24em;
   margin: 2em 2em 1em;
 
-  .hour, .minute {
+  .hour,
+  .minute {
     @include fonts.display-size(1.5);
     margin: 0 0.1rem; // space out a little more
   }
@@ -23,18 +23,14 @@
   .second {
     @include fonts.display-size;
     min-width: 1.5em;
-    margin: 0;
     padding-bottom: 0.1em;
     color: color.mix(palette.$string-dim, palette.$string);
   }
 }
 
-.uptime {
-  margin-bottom: 1.25rem;
-}
-
 calendar {
   margin: 1rem;
+  margin-top: 2.25rem;
 
   header {
     margin-bottom: 1rem;
@@ -62,13 +58,16 @@ calendar {
     }
 
     .day-number {
-      padding: 0.4rem;
       margin: 0.15rem 0.5rem;
+      padding: 0.4rem;
     }
 
-    .day-name,
-    .week-number {
+    .day-name {
       color: color.adjust(palette.$primary, $alpha: 0.3);
+    }
+
+    .week-number {
+      color: color.mix(palette.$primary-dim, palette.$string-dim);
     }
 
     .today {

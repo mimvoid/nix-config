@@ -15,6 +15,8 @@ export default ({
   transitionType = Gtk.RevealerTransitionType.SLIDE_RIGHT,
   ...props
 }: HoverRevealerProps): Gtk.Widget => {
+  hiddenChild.add_css_class("hidden-child");
+
   const Revealer = (
     <revealer
       transitionDuration={transitionDuration}

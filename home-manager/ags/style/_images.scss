@@ -1,0 +1,19 @@
+@use "abstracts/fonts";
+@use "abstracts/space";
+
+.large-icons {
+  @include fonts.title-size(1.1);
+  padding: 0.5rem 0.25rem;
+}
+
+image + label {
+  margin-left: 0.75em;
+}
+
+.icon-label {
+  @include space.mx(0.5rem);
+
+  + .icon-label {
+    margin-left: 0.4rem;
+  }
+}

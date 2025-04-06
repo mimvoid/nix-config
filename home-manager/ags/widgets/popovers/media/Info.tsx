@@ -2,6 +2,7 @@ import { bind } from "astal";
 import { Gtk } from "astal/gtk4";
 import Mpris from "gi://AstalMpris";
 import Gio from "gi://Gio";
+import Pango from "gi://Pango";
 import { Picture } from "@lib/astalified";
 
 // Information about the current song
@@ -25,10 +26,12 @@ export default (player: Mpris.Player) => {
 
   const Title = (
     <label
-      cssClasses={["media-title", "title"]}
+      cssClasses={["title"]}
       label={bind(player, "title")}
-      maxWidthChars={36}
       justify={Gtk.Justification.CENTER}
+      maxWidthChars={36}
+      lines={3}
+      ellipsize={Pango.EllipsizeMode.END}
       wrap
     />
   );

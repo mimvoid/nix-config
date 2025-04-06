@@ -2,6 +2,7 @@
 @use "palette";
 @use "abstracts/fonts";
 @use "abstracts/looks";
+@use "abstracts/space";
 
 popover.media {
   padding: 1.5rem;
@@ -23,7 +24,7 @@ popover.media {
 }
 
 .media-progress {
-  margin: 1.5rem 0 0.75rem 0;
+  margin: 1.5rem 0 0.75rem;
 
   trough {
     margin: 0 0.5rem;
@@ -46,37 +47,41 @@ popover.media {
     @include fonts.menu-size(1.15);
   }
 
-  button:hover {
-    color: palette.$primary-bright;
-    background-color: transparent;
-  }
-}
+  button {
+    @include space.mx(0.25em);
+    padding: 1.25em;
 
-button.play-pause {
-  @include looks.transition;
+    &:focus,
+    &:hover {
+      color: palette.$primary-bright;
+      background-color: transparent;
+    }
 
-  margin: 0 1rem;
-  padding: 1.25rem;
+    &.play-pause {
+      @include looks.transition;
 
-  background-color: palette.$box;
-  color: palette.$primary-bright;
+      background-color: palette.$box;
+      color: palette.$primary-bright;
 
-  &:hover {
-    color: palette.$base;
-    background-color: palette.$primary;
-  }
-}
+      &:hover {
+        color: palette.$base;
+        background-color: palette.$primary;
+      }
+    }
 
-// Make them less noticable
-button.loop, button.shuffle {
-  margin: 0 1.5rem;
-  color: palette.$string-dim;
+    // Make them less noticable
+    &.loop,
+    &.shuffle {
+      margin: 0 0.5rem;
+      color: palette.$string-dim;
 
-  &:hover {
-    color: palette.$primary-bright;
-  }
+      &:hover {
+        color: palette.$primary-bright;
+      }
 
-  &.off {
-    color: color.change(palette.$string-dim, $alpha: 0.75);
+      &.off {
+        color: color.change(palette.$string-dim, $alpha: 0.75);
+      }
+    }
   }
 }

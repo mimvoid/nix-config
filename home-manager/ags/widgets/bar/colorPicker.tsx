@@ -52,7 +52,7 @@ function Color() {
 }
 
 export default () => (
-  <box cssClasses={["colorpicker", "icon-label"]}>
+  <box cssClasses={["colorpicker"]}>
     <Color />
   </box>
 );

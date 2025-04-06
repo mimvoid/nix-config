@@ -2,24 +2,20 @@
 @use "abstracts/fonts";
 @use "abstracts/looks";
 
-.user-info {
-  image.avatar {
-    @include looks.radius(1.5);
-    margin: 0.5rem 0.75rem 0.5rem 0;
-    min-width: 5rem;
-    min-height: 5rem;
-  }
+.avatar {
+  @include looks.radius(1.5);
+  margin: 0.5rem 0.75rem 0.5rem 0;
+  min-width: 5rem;
+  min-height: 5rem;
+}
 
-  label {
-    margin: 0;
-  }
+.user-info label {
+  margin: 0;
 }
 
 .dashboard {
   .toggles > button {
     @include looks.transition;
-
-    margin: 0.5em;
     padding: 1.5em;
 
     &.on {

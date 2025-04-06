@@ -20,4 +20,8 @@ const NotifDnd = (
   />
 );
 
-export default () => <box cssClasses={["toggles", "section"]}>{NotifDnd}</box>;
+export default () => (
+  <box cssClasses={["toggles", "section"]} spacing={10}>
+    {NotifDnd}
+  </box>
+);

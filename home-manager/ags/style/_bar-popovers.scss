@@ -2,8 +2,8 @@
 @use "abstracts/looks";
 @use "abstracts/fonts";
 
-.audio-popover .section {
-  &.speaker {
+.audio-popover {
+  .speaker {
     $c: palette.$tertiary-bright;
 
     trough highlight {
@@ -14,7 +14,7 @@
     }
   }
 
-  &.microphone {
+  .microphone {
     $c: palette.$tertiary;
 
     trough highlight {
@@ -23,11 +23,6 @@
     button image {
       color: $c;
     }
-  }
-
-  box > label {
-    padding: 0;
-    margin-left: 0;
   }
 
   button {

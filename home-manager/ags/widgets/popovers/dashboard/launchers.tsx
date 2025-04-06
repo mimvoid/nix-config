@@ -26,7 +26,7 @@ const WallpapersLauncher = (
 );
 
 export default () => (
-  <box cssClasses={["launchers", "section"]} hexpand>
+  <box cssClasses={["launchers", "section"]} spacing={10} hexpand>
     {WallpapersLauncher}
   </box>
 );

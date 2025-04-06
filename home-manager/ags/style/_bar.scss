@@ -1,37 +1,22 @@
 @use "sass:color";
 @use "palette";
 @use "abstracts/looks";
+@use "abstracts/space";
 
-.bar centerbox {
-  @include looks.radius;
-
+.bar {
   color: palette.$primary;
-  background-color: transparent;
-}
 
-.left,
-.center {
-  > * {
-    padding: 0.3rem 0.5rem;
+  centerbox {
     color: palette.$primary;
+    background-color: transparent;
   }
 
-  menubutton {
-    margin: 0;
-    padding: 0;
-
-    > button {
-      margin: 0;
-      padding: 0 0.5rem;
-    }
+  .left {
+    padding-right: 1em;
   }
-}
 
-.icon-label {
-  margin: 0 0.35rem;
-
-  + .icon-label {
-    margin-left: 0.3rem;
+  .right {
+    padding-left: 0.5em;
   }
 }
 
@@ -39,24 +24,23 @@
 /* Modules */
 /*---------*/
 
-button.dashboard-launch image {
+.dashboard-launch image {
   color: palette.$tertiary-dim;
 }
 
-box.workspaces {
-  padding: 0.65rem; // Make workspace buttons slimmer
+.workspaces {
+  padding: 0.65rem 0; // Make workspace buttons slimmer
 
   button {
     @include looks.transition;
 
-    margin: 0 0.25em;
-    padding: 0 0.5em;
+    min-width: 0.4em;
     color: transparent;
     background-color: palette.$primary;
 
     // Expand active workspace GNOME-style
     &.active {
-      padding: 0 1.25em;
+      min-width: 1.75em;
       background-color: palette.$primary-dim;
     }
 
@@ -66,18 +50,14 @@ box.workspaces {
   }
 }
 
-button.clock {
+.window-title {
+  // Extra spacing
+  margin-left: 0.25em;
+}
+
+.clock {
   margin: 0;
-  padding: 0;
-
-  image {
-    margin: 0 1rem 0 0.25rem;
-  }
-
-  label {
-    margin: 0;
-    padding: 0;
-  }
+  padding-right: 0;
 
   // Disable default button background color
   &:hover {
@@ -86,10 +66,8 @@ button.clock {
 }
 
 .hider {
-  @include looks.radius;
   @include looks.transition;
 
-  padding: 0 2px;
   opacity: 0.7;
   color: palette.$tertiary-dim;
 
@@ -98,25 +76,18 @@ button.clock {
     opacity: 0.5;
   }
 }
-.hider-wrapper.non-empty {
-  margin-left: 0.5rem;
+.hider-wrapper.non-empty .indicator {
+  min-width: 0.25em;
+  min-height: 0.25em;
+  margin: 0.85rem 0;
 
-  .indicator {
-    margin: 0.85rem 0;
-    padding: 0.15rem;
-    border-radius: 64px;
-    background-color: palette.$tertiary-dim;
-    opacity: 0.7;
-  }
+  border-radius: 64px;
+  background-color: palette.$tertiary-dim;
+  opacity: 0.7;
 }
 
 .colorpicker {
-  @include looks.radius;
-
-  margin: 0;
-  padding: 0 0.25rem;
-
-  button {
+  menubutton {
     color: palette.$primary-dim;
   }
 
@@ -124,6 +95,7 @@ button.clock {
     margin-right: 0.25rem;
     padding: 0.3rem;
   }
+
   .color-display {
     border: 1px solid palette.$box;
     border-radius: 24px;
@@ -151,10 +123,6 @@ button.clock {
 .battery {
   color: palette.$good;
 
-  label {
-    margin-left: 0.5rem;
-  }
-
   image {
     -gtk-icon-transform: rotate(90deg);
   }
@@ -162,6 +130,8 @@ button.clock {
 
 .brightness {
   $c: color.adjust(palette.$error, $lightness: 8%);
+
+  margin: 0 0.25em; // extra space
   color: $c;
 
   highlight {
@@ -169,7 +139,7 @@ button.clock {
   }
 
   .hover-revealer {
-    min-width: 0.75rem;
+    min-width: 0.5rem;
   }
 }
 .wlsunset-toggle {

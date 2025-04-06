@@ -17,7 +17,12 @@ import Brightness from "./brightness/brightness";
 
 // Define the three parts of the bar
 const Left = (
-  <box cssClasses={["left", "box"]} hexpand halign={Gtk.Align.START}>
+  <box
+    cssClasses={["left", "box"]}
+    halign={Gtk.Align.START}
+    spacing={10}
+    hexpand
+  >
     {Dashboard}
     <Workspaces />
     <Title />
@@ -32,7 +37,7 @@ const Center = (
 );
 
 const Right = (
-  <box cssClasses={["right", "box"]} hexpand halign={Gtk.Align.END}>
+  <box cssClasses={["right", "box"]} halign={Gtk.Align.END} hexpand>
     <Tray />
     <ColorPicker />
     <Network />

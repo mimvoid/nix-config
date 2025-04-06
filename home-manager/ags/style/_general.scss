@@ -5,42 +5,52 @@
 
 * {
   all: unset;
-  @include fonts.font;
 }
 
-.display {
-  @include fonts.display;
-}
-
-window {
+// Roundness
+window,
+scrolledwindow,
+popover,
+centerbox,
+button,
+entry,
+tooltip,
+trough,
+highlight,
+block.filled,
+.box {
   @include looks.radius;
 }
 
+window.dialog {
+  $bg: color.change(palette.$base, $alpha: 1);
+
+  @include fonts.menu-size;
+
+  color: palette.$string;
+  background-color: $bg;
+
+  > box,
+  headerbar {
+    padding: 1rem;
+    background-color: $bg;
+  }
+}
+
 popover {
-  @include looks.radius(0.66);
   @include fonts.menu-size;
 
   margin: 0.25rem 0.5rem;
   padding: 1em;
-  background: color.change(palette.$base, $alpha: 0.9);
+  background-color: color.change(palette.$base, $alpha: 0.9);
   color: palette.$string;
 
   label {
     @include fonts.menu-size;
   }
-
-  trough {
-    margin: 0.5rem 0.5rem 0.5rem 0;
-    min-height: 0.6rem;
-
-    + label {
-      margin-left: 0;
-    }
-  }
 }
 
 .box {
-  @include looks.radius;
   background-color: palette.$base;
 }
 .section {
@@ -65,7 +75,6 @@ popover {
 }
 
 button {
-  @include looks.radius;
   @include looks.transition;
 
   padding: 0 0.4em;
@@ -79,10 +88,8 @@ button {
     background-color: palette.$box;
   }
 
-  > image {
-    margin: 0;
-    padding: 0;
-    background: transparent;
+  + button {
+    padding-left: 0.25em;
   }
 }
 
@@ -92,90 +99,29 @@ menubutton {
 
   > button {
     margin: 0;
-    padding-top: 0;
-    padding-bottom: 0;
+    padding: 0 0.4em;
   }
 }
 
 .hover-revealer {
   padding: 0;
-  background-color: transparent;
 
   &:focus,
   &:hover {
     background-color: transparent;
   }
-
-  > box {
-    margin: 0;
-    padding: 0;
-  }
 }
-
-.large-icons {
-  @include looks.transition;
-  @include fonts.title-size(1.1);
-  padding: 0.5rem 0.25rem;
-}
-
-label {
-  margin-right: 0.4em;
-
-  &.title {
-    @include fonts.title-size;
-    margin-left: 0;
-    margin-bottom: 0.75rem;
-    font-weight: bolder;
-    color: palette.$primary-bright;
-  }
-}
-
-entry {
-  @include looks.radius;
-  padding: 0.5rem;
-  background-color: palette.$box-dim;
+.hidden-child {
+  padding: 0 0.5em;
 }
 
 trough {
-  @include looks.radius;
-
   min-width: 8em;
   min-height: 0.6em;
-  margin: 0.25em 0.5em;
 
   background-color: palette.$box-bright;
-
-  highlight,
-  block.filled {
-    @include looks.radius;
-  }
 }
 
-tooltip {
-  background-color: transparent;
-  border: none;
-
-  label {
-    @include looks.radius;
-
-    padding: 1em;
-    color: palette.$string;
-    background-color: color.change(palette.$base, $alpha: 0.7);
-  }
-}
-
-dialog {
-  $bg: color.change(palette.$base, $alpha: 1);
-
-  @include looks.radius;
-  @include fonts.menu-size;
-
-  color: palette.$string;
-  background-color: $bg;
-
-  > box,
-  headerbar {
-    padding: 1rem;
-    background-color: $bg;
-  }
+value.right {
+  margin-left: 0.25em;
 }
