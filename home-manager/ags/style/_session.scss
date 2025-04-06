@@ -10,16 +10,15 @@
 
   $h-opposed: "right";
   @if $h == "right" {
-    $h-opposed: "left"
+    $h-opposed: "left";
   }
 
   border-#{$v}-#{$h}-radius: looks.$radius;
   margin-#{$v}: 0.75em;
   margin-#{$h}: 0.75em;
-  margin-#{$v-opposed}: 2px;
-  margin-#{$h-opposed}: 2px;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     border-#{$v-opposed}-#{$h-opposed}-radius: 2px;
   }
 }
@@ -28,10 +27,10 @@
   color: palette.$primary-bright;
 
   image {
-    margin: 4rem 6rem;
-    -gtk-icon-size: 4rem;
+    margin: 5rem 7.5rem;
+    -gtk-icon-size: 4.25rem;
     transition:
-      all 0.4s cubic-bezier(0.55, 0, 0.25, 1.68),
+      -gtk-icon-size 0.25s cubic-bezier(0.55, 0, 0.25, 1.68),
       color 0s linear;
   }
 
@@ -44,19 +43,19 @@
       background-color: color.change(palette.$base, $alpha: 0.7);
 
       image {
-        -gtk-icon-size: 4.5rem;
+        -gtk-icon-size: 4.75rem;
       }
     }
 
     &:hover {
       @include looks.radius;
 
-      margin: 6px;
+      margin: 4px;
       color: palette.$base;
       background-color: palette.$primary;
 
       image {
-        -gtk-icon-size: 4.75rem;
+        -gtk-icon-size: 5rem;
       }
     }
   }

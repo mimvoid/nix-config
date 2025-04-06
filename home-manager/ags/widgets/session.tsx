@@ -16,7 +16,16 @@ function Session() {
   const { START, END, FILL } = Gtk.Align;
 
   const ButtonGrid = (
-    <Grid halign={FILL} valign={FILL} hexpand vexpand />
+    <Grid
+      halign={FILL}
+      valign={FILL}
+      rowHomogeneous={true}
+      columnHomogeneous={true}
+      columnSpacing={2}
+      rowSpacing={2}
+      hexpand
+      vexpand
+    />
   ) as Gtk.Grid;
 
   const actions: Action[] = [
@@ -55,9 +64,8 @@ function Session() {
         halign={a.halign}
         valign={a.valign}
         onClicked={() => exec(a.command)}
-      >
-        <image iconName={Icon.powermenu[a.name]} />
-      </button>
+        iconName={Icon.powermenu[a.name]}
+      />
     );
 
     const cell = (align: Gtk.Align) => (align === END ? 1 : 2);
