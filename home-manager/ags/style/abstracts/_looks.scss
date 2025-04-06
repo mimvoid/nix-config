@@ -11,3 +11,16 @@ $fallback-icons: "Papirus";
 @mixin transition() {
   transition: $transition;
 }
+
+// Simulates an outline around text
+@mixin text-stroke($size, $color) {
+  text-shadow:
+    $size $size 0 $color,
+    (-$size) (-$size) 0 $color,
+    ($size) (-$size) 0 $color,
+    (-$size) $size 0 $color,
+    0 $size 0 $color,
+    $size 0 0 $color,
+    0 (-$size) 0 $color,
+    (-$size) 0 0 $color;
+}

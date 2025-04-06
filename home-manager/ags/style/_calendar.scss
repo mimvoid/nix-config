@@ -8,77 +8,96 @@
 
   .hour,
   .minute {
-    @include fonts.display-size(1.5);
-    margin: 0 0.1rem; // space out a little more
+    @include fonts.display-size(1.8);
   }
 
   .hour {
+    margin-bottom: 0.35em;
     color: palette.$string;
   }
 
   .minute {
+    margin-left: 0.15em;
     color: palette.$primary;
+    @include looks.text-stroke(2px, color.change(palette.$base, $alpha: 1));
   }
 
   .second {
     @include fonts.display-size;
-    min-width: 1.5em;
-    padding-bottom: 0.1em;
     color: color.mix(palette.$string-dim, palette.$string);
+  }
+
+  .minor-time {
+    min-width: 6em;
+    margin-left: 0.5em;
+    margin-bottom: 1em;
   }
 }
 
-calendar {
+.calendar-wrapper {
   margin: 1rem;
-  margin-top: 2.25rem;
 
-  header {
+  .header {
     margin-bottom: 1rem;
+    padding: 0 0.5em;
 
-    label,
-    image {
-      @include fonts.title-size;
-    }
-  }
-
-  button {
-    @include looks.radius;
-    @include looks.transition;
-
-    color: color.adjust(palette.$string, $alpha: -0.5);
-
-    &:hover {
-      background-color: palette.$box;
-    }
-  }
-
-  grid {
     label {
       @include fonts.title-size;
     }
 
-    .day-number {
-      margin: 0.15rem 0.5rem;
-      padding: 0.4rem;
+    .month-switcher label {
+      margin-left: 0.25em;
     }
 
-    .day-name {
-      color: color.adjust(palette.$primary, $alpha: 0.3);
+    .year-switcher label {
+      margin-right: 0.25em;
     }
 
-    .week-number {
-      color: color.mix(palette.$primary-dim, palette.$string-dim);
-    }
+    button {
+      margin-right: 0.2em;
+      padding: 0.2em;
+      color: color.adjust(palette.$string, $alpha: -0.5);
 
-    .today {
+      &:focus,
+      &:hover {
+        color: palette.$primary;
+        background-color: transparent;
+      }
+    }
+  }
+}
+
+calendar {
+  label {
+    @include fonts.title-size;
+  }
+
+  .day-number {
+    margin: 0.15rem 0.5rem;
+    padding: 0.4rem;
+
+    &:not(.today):selected {
       @include looks.radius;
-      font-weight: bolder;
-      color: palette.$base;
-      background-color: palette.$tertiary;
+      background-color: palette.$box;
     }
+  }
 
-    .other-month {
-      color: palette.$string-dim;
-    }
+  .day-name {
+    color: color.adjust(palette.$primary, $alpha: 0.3);
+  }
+
+  .week-number {
+    color: color.mix(palette.$primary-dim, palette.$string-dim);
+  }
+
+  .today {
+    @include looks.radius;
+    font-weight: bolder;
+    color: palette.$base;
+    background-color: palette.$tertiary;
+  }
+
+  .other-month {
+    color: palette.$string-dim;
   }
 }

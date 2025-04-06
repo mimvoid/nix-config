@@ -50,6 +50,11 @@ export default {
     loopSong: "media-playlist-repeat-song-symbolic",
   },
 
+  nav: {
+    previous: "go-previous-symbolic",
+    next: "go-next-symbolic",
+  },
+
   notifications: {
     on: "alarm-symbolic",
     off: "notifications-disabled-symbolic",
