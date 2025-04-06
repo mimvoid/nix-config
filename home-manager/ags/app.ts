@@ -1,7 +1,6 @@
 #!/usr/bin/env gjs -m
 
 import { App } from "astal/gtk4";
-import GLib from "gi://GLib";
 
 // Get root stylesheet
 import style from "./style/style.scss";
@@ -21,8 +20,6 @@ App.start({
   },
 
   main() {
-    GLib.set_prgname(App.instanceName);
-
     // Map to every monitor
     for (const monitor of App.get_monitors()) {
       Bar(monitor);

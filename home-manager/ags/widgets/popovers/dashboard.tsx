@@ -16,7 +16,7 @@ function User() {
     <box vertical valign={CENTER}>
       <label
         label={name.username}
-        cssClasses={["avatar", "title"]}
+        cssClasses={["title"]}
         halign={START}
       />
       <label label={name.hostname} halign={START} />

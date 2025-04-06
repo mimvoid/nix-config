@@ -5,7 +5,7 @@ import { pointer } from "../utils";
 const { START, CENTER, END } = Gtk.Align;
 
 interface DropdownProps extends Widget.RevealerProps {
-  label?: string | Gtk.Widget;
+  label: string | Gtk.Widget;
   transitionDuration?: number;
   transitionType?: Gtk.RevealerTransitionType;
 }
