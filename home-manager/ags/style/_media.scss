@@ -7,21 +7,15 @@ popover.media {
   padding: 1.5rem;
 }
 
-.cover-art {
-  @include looks.radius(0.5);
-
-  min-height: 24rem;
-  min-width: 24rem;
+.cover-art-container {
   margin: 1.5em 0;
 }
-
-.media-title {
-  @include fonts.menu-size(1.25);
-
-  margin-bottom: 4px;
-
-  font-weight: bolder;
-  color: palette.$primary-bright;
+.cover-art-box {
+  min-height: 24rem;
+  min-width: 24rem;
+}
+.cover-art {
+  @include looks.radius(0.5);
 }
 
 .media-artist {

@@ -1,19 +1,26 @@
 import { bind } from "astal";
 import { Gtk } from "astal/gtk4";
 import Mpris from "gi://AstalMpris";
+import Gio from "gi://Gio";
+import { Picture } from "@lib/astalified";
 
 // Information about the current song
 
-const { CENTER } = Gtk.Align;
+const { FILL } = Gtk.Align;
 
 export default (player: Mpris.Player) => {
   // Display cover art
   const CoverArt = (
-    <image
-      cssClasses={["cover-art"]}
-      file={bind(player, "coverArt")}
-      valign={CENTER}
-    />
+    <overlay cssClasses={["cover-art-container"]}>
+      <box cssClasses={["cover-art-box"]} />
+      <Picture
+        type="overlay clip"
+        cssClasses={["cover-art"]}
+        file={bind(player, "coverArt").as((a) => Gio.File.new_for_path(a))}
+        contentFit={Gtk.ContentFit.COVER}
+        valign={FILL}
+      />
+    </overlay>
   );
 
   const Title = (
