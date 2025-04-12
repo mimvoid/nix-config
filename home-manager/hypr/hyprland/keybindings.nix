@@ -16,9 +16,9 @@ let
       filename = "$(date +%F_%H-%M-%S).png";
     in
     {
-      screen = "${hyprshot} -m output -o ${dir} -f ${filename}";
-      window = "${hyprshot} -m window -o ${dir} -f ${filename}";
-      region = "${hyprshot} -m region -o ${dir} -f ${filename}";
+      screen = "${hyprshot} -m output --freeze -o ${dir} -f ${filename}";
+      window = "${hyprshot} -m window --freeze -o ${dir} -f ${filename}";
+      region = "${hyprshot} -m region --freeze -o ${dir} -f ${filename}";
     };
 in
 {
