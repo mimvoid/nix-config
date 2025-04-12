@@ -145,7 +145,7 @@
 window.popup.csd.background menu,
 window.popup.csd.background menuitem {
   border-radius: 6px;
-  padding: 6px;
+  padding: 4px;
 }
 
 /* Get rid of the sharp corner artifacts */
@@ -158,7 +158,7 @@ window.popup.csd.background decoration {
 }
 
 window.popup.csd.background menu separator {
-  margin: 4px 0;
+  margin: 2px 0;
 }
 
 
