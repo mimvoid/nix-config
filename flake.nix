@@ -2,8 +2,8 @@
   description = "mimvoid's NixOS system & home flake configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
-    nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-24.11";
+    nixpkgs-unstable.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable";
 
     home-manager = {
       url = "github:nix-community/home-manager/release-24.11";
@@ -65,6 +65,7 @@
       config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
         "vivaldi"
         "obsidian"
+        "pureref"
       ];
     };
 
