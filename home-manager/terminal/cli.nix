@@ -2,6 +2,8 @@
 
 {
   home.packages = with pkgs; [
+    gnumake
+
     # media
     imagemagick
     exiftool
