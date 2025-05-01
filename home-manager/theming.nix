@@ -11,28 +11,32 @@ in
   imports = [ inputs.stylix.homeManagerModules.stylix ];
 
   home.packages = with pkgs; [
-    # Fonts
-
+    ## Fonts
     # Sans serif
     noto-fonts-cjk-sans
-    atkinson-hyperlegible
+    unstable.atkinson-hyperlegible-next
     raleway
+    work-sans
+    ostrich-sans
+    public-sans
+    open-sans
+    montserrat
 
     # Serif
     noto-fonts-cjk-serif
+    eb-garamond
 
     # Monospace
     courier-prime
+    source-code-pro
 
     # Display / Handwriting
     norwester-font
-
     oswald
     major-mono-display
   ]
   ++ (with pkgs.voids.fonts; [
     # Fonts outside nixpkgs
-
     limelight
     ma-shan-zheng
     ritzflf
