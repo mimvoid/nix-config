@@ -6,6 +6,42 @@
 
 popover.media {
   padding: 1.5rem;
+
+  stackswitcher {
+    padding: 0 10rem;
+  }
+
+  .title {
+    margin-bottom: 0.25em; // reduce
+  }
+}
+
+.cava trough {
+  border-radius: 6px 6px 0 0;
+  min-width: 1.95em;
+  min-height: 12em;
+  background-color: transparent;
+
+  highlight,
+  block.filled {
+    border-radius: 6px 6px 0 0;
+    border: 1px solid color.change(palette.$base, $alpha: 0.1);
+    border-bottom: 0;
+
+    $color1: color.change(palette.$primary-bright, $alpha: 0.85, $lightness: 90%);
+    $color2: color.change(palette.$primary, $alpha: 0.85);
+    $color3: color.change(palette.$primary-dim, $alpha: 0.85);
+    background-image: linear-gradient($color1 30%, $color2 70%, $color3);
+  }
+}
+
+.cava-toggler {
+  margin: 0.5em;
+  color: palette.$string;
+
+  image {
+    filter: drop-shadow(0 0 1px color.change(palette.$base, $alpha: 1));
+  }
 }
 
 .cover-art-container {
@@ -14,6 +50,11 @@ popover.media {
 .cover-art-box {
   min-height: 24rem;
   min-width: 24rem;
+
+  &.placeholder {
+    @include looks.radius;
+    background-color: palette.$box;
+  }
 }
 .cover-art {
   @include looks.radius(0.5);

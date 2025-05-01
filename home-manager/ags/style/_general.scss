@@ -2,6 +2,7 @@
 @use "palette";
 @use "abstracts/looks";
 @use "abstracts/fonts";
+@use "abstracts/space";
 
 * {
   all: unset;
@@ -93,6 +94,49 @@ button {
   }
 }
 
+stack {
+  @include space.py(0.5em);
+
+  + stackswitcher {
+    margin-top: 1em;
+  }
+}
+
+stackswitcher {
+  button {
+    background-color: palette.$box-dim;
+
+    &:checked,
+    &:focus,
+    &:hover {
+      background-color: palette.$primary-dim;
+    }
+  }
+
+  &.no-labels {
+    button {
+      @include space.mx(2px);
+      @include space.py(0.4em);
+
+      &:focus,
+      &:hover {
+        @include space.px(1em);
+      }
+    }
+
+    label {
+      margin: 0;
+      padding: 0;
+      font-size: 0;
+      color: transparent;
+    }
+
+    &:not(:focus-within) button:checked {
+      @include space.px(1em);
+    }
+  }
+}
+
 menubutton {
   margin: 0;
   padding: 0;
@@ -124,4 +168,32 @@ trough {
 
 value.right {
   margin-left: 0.25em;
+}
+
+scrollbar {
+  trough {
+    background-color: transparent;
+  }
+
+  slider {
+    min-height: 1px;
+    min-width: 1px;
+    background-color: palette.$box;
+
+    &:hover {
+      background-color: palette.$box-bright;
+    }
+  }
+
+  &.vertical {
+    trough, slider {
+      min-width: 4px;
+    }
+  }
+
+  &.horizontal {
+    trough, slider {
+      min-height: 4px;
+    }
+  }
 }

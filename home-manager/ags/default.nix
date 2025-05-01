@@ -22,6 +22,7 @@
       battery
       notifd
       mpris
+      cava
     ];
   };
 

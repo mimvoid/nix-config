@@ -70,6 +70,7 @@ export default {
     shutdown: "system-shutdown-symbolic",
   },
 
+  visualizer: "format-justify-right-symbolic",
   waiting: "content-loading-symbolic",
 
   wlsunset: {
