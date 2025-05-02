@@ -14,6 +14,7 @@
 
   imports = [
     ./theming.nix
+    ./hellwal
     ./links.nix
     ./tts.nix
     ./krita

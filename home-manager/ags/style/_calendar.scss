@@ -18,7 +18,7 @@
 
   .minute {
     margin-left: 0.15em;
-    color: palette.$primary;
+    color: palette.$tertiary-bright;
     @include looks.text-stroke(2px, color.change(palette.$base, $alpha: 1));
   }
 

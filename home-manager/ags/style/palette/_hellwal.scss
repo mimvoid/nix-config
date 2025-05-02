@@ -1,0 +1,43 @@
+@use "sass:color";
+@use "/home/zinnia/.cache/hellwal/colors.scss" as c;
+
+$base: color.change(c.$background,
+  $alpha: 0.8,
+  $lightness: 12%,
+  $saturation: 30%);
+
+$box: color.change(c.$background,
+  $alpha: 0.25,
+  $lightness: 25%,
+  $saturation: 25%);
+
+$box-bright: color.change(c.$background,
+  $alpha: 0.25,
+  $lightness: 35%,
+  $saturation: 25%);
+
+$box-dim: color.change(c.$background,
+  $alpha: 0.25,
+  $lightness: 20%,
+  $saturation: 25%);
+
+$string: c.$foreground;
+$string-dim: color.change(color.adjust(c.$foreground, $lightness: -40%), $saturation: 5%);
+
+$shadow: color.adjust(c.$color0, $lightness: -10%);
+
+$primary: color.change(c.$color9, $lightness: 85%);
+$primary-bright: color.change(c.$color11, $lightness: 95%);
+$primary-dim: color.change(c.$color13, $whiteness: 70%);
+
+$secondary: color.change(c.$color11, $lightness: 80%);
+$secondary-bright: color.change(c.$color11, $lightness: 92%);
+$secondary-dim: color.change(c.$color13, $lightness: 65%);
+
+$tertiary: color.change(c.$color10, $lightness: 75%);
+$tertiary-bright: color.change(c.$color14, $lightness: 85%);
+$tertiary-dim: color.change(c.$color12, $lightness: 70%);
+
+$good: $tertiary;
+$warn: $secondary;
+$error: $primary;
