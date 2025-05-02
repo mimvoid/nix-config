@@ -26,6 +26,7 @@ in
       (active "firefox")
       (active "zen")
       (active "FFPWA*")
+      (active "FreeTube")
 
       (full "krita")
       (full "org.inkscape.Inkscape")

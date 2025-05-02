@@ -28,6 +28,7 @@
     # virt-manager
 
     # Media
+    voids.freetube
     tauon
     # inkscape
     unstable.krita
