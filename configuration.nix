@@ -45,27 +45,9 @@
   environment.systemPackages = with pkgs; [
     nh
     git
-
-    # Restricting this to a user doesn't seem to work
-    xfce.xfce4-docklike-plugin
-    xfce.xfce4-pulseaudio-plugin
   ];
 
   services.flatpak.enable = true;
-
-  # X11
-  services.xserver = {
-    enable = true;
-    excludePackages = [ pkgs.xterm ];
-
-    # Keyboard layouts
-    xkb = {
-      layout = "us";
-      variant = ",intl";
-    };
-  };
-
-  programs.xwayland.enable = false;
 
   # Desktop environments
   # & window managers
@@ -77,39 +59,6 @@
       xdg-desktop-portal-xapp
       xdg-desktop-portal-gtk
     ];
-  };
-
-  # XFCE
-  services.xserver.desktopManager.xfce = {
-    enable = true;
-    enableXfwm = true;
-    noDesktop = false;
-  };
-
-  programs.xfconf.enable = true;
-
-  environment.xfce.excludePackages =
-    with pkgs; [
-      gnome-themes-extra
-      adwaita-icon-theme
-      hicolor-icon-theme
-      tango-icon-theme
-    ]
-    ++ (with pkgs.xfce; [
-      xfwm4-themes
-      xfce4-taskmanager
-      xfce4-screenshooter
-      xfce4-terminal
-      xfce4-icon-theme
-      ristretto
-      mousepad
-      parole
-    ]);
-
-  # Hyprland
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
   };
 
   #-----------------#
@@ -134,24 +83,15 @@
     enableBashCompletion = true;
   };
 
-  programs.gamemode = {
-    enable = true;
-    settings.custom =
-      let
-        notify-send = "${pkgs.libnotify}/bin/notify-send";
-      in
-      {
-        start = "${notify-send} 'GameMode started'";
-        end = "${notify-send} 'GameMode ended'";
-      };
-    };
-
   security.polkit.enable = true;
   services.gnome.gnome-keyring.enable = true;
 
-  hardware.graphics.enable = true;
-
-  services.libinput.enable = true; # Touchpad support
+  hardware = {
+    graphics.enable = true; # hardware accelerated graphics drivers
+    bluetooth.enable = true;
+    opentabletdriver.enable = true; # drawing tablet support
+  };
+  services.libinput.enable = true; # touchpad support
 
   # Sound
   services.pipewire = {
@@ -159,35 +99,11 @@
     pulse.enable = true;
   };
 
-  # Power management
-  services.upower = {
-    enable = true;
-    usePercentageForPolicy = true;
-    percentageLow = 40;
-    percentageCritical = 20;
-
-    percentageAction = 5;
-    criticalPowerAction = "HybridSleep";
-  };
-
-  services.tlp = {
-    enable = true;
-    settings = {
-      USB_EXCLUDE_BTUSB = 1;
-    };
-  };
-  services.auto-cpufreq.enable = true;
-
   # Networks & connections
   networking = {
     hostName = "sirru";
     networkmanager.enable = true;
   };
-
-  hardware.bluetooth.enable = true;
-
-  # Drawing tablet support
-  hardware.opentabletdriver.enable = true;
 
   # CUPS
   services.printing = {
@@ -202,22 +118,6 @@
   };
 
   programs.system-config-printer.enable = true;
-
-  # Thunar additions
-  programs.thunar = {
-    enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-media-tags-plugin
-    ];
-  };
-
-  services.gvfs = {
-    enable = true;
-    package = pkgs.gvfs;
-  };
-
-  services.tumbler.enable = true;
 
   #---------------#
   # Miscellaneous #

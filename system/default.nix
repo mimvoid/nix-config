@@ -2,8 +2,14 @@
   imports = [
     ./boot.nix
     ./console.nix
-    ./login.nix
+    ./greetd.nix
+
+    ./hyprland.nix
+    ./xfce.nix
+
     ./virt.nix
-    ./aagl-hosts.nix
+    ./power.nix
+    ./thunar.nix
+    ./games.nix
   ];
 }
