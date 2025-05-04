@@ -8,11 +8,15 @@ let
     {
       background = base;
       text = string;
-      match = secondary;
+      prompt = primary;
+      placeholder = box-bright;
+      input = string-dim;
+      match = primary;
       selection = box-bright;
-      selection-match = primary;
+      selection-match = secondary;
       selection-text = secondary-bright;
-      border = error;
+      counter = string-dim;
+      border = primary;
     };
   icon-theme = config.gtk.iconTheme.name;
 in
@@ -39,9 +43,14 @@ in
 
         fields = "filename,name";
         tabs = 4;
+
+        match-counter = true;
       };
 
-      border.radius = 8;
+      border = {
+        width = 2;
+        radius = 8;
+      };
     };
   };
 
@@ -52,7 +61,7 @@ in
   # Networkmanager dmenu
   home.packages = with pkgs; [ networkmanager_dmenu ];
 
-  xdg.configFile."networkmanager-dmenu/config.ini".text = ''
+  xdg.configFile."networkmanager-dmenu/config.ini".text = /* ini */ ''
     [dmenu]
     dmenu_command = fuzzel -d -w 40
     active_chars = >

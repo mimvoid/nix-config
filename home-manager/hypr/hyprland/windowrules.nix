@@ -8,7 +8,13 @@ let
   };
 in
 {
-  layerrule = [ "noanim, launcher" ];
+  layerrule = [
+    "animation popin 65%, launcher"
+    "ignorezero, launcher"
+    "blur, launcher"
+    "xray 0, launcher"
+    "dimaround, launcher"
+  ];
 
   windowrule = [ "pseudo, fcitx" ];
 
