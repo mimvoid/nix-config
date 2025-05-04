@@ -14,6 +14,7 @@ import Bluetooth from "./bluetooth";
 import Sound from "./sound";
 import Battery from "./battery";
 import Brightness from "./brightness/brightness";
+import { setLayerrules } from "@lib/utils";
 
 // Define the three parts of the bar
 const Left = (
@@ -54,7 +55,16 @@ export default (monitor: Gdk.Monitor) => {
 
   return (
     <window
+      setup={(self) =>
+        setLayerrules(self.namespace, [
+          "blur",
+          "blurpopups",
+          "ignorezero",
+          "xray 0",
+        ])
+      }
       name="bar"
+      namespace="bar"
       cssClasses={["bar"]}
       gdkmonitor={monitor}
       exclusivity={Astal.Exclusivity.EXCLUSIVE}

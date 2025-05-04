@@ -2,6 +2,7 @@ import { Astal, Gdk } from "astal/gtk4";
 import { timeout, bind } from "astal";
 
 import Notifd from "gi://AstalNotifd";
+import { setLayerrules } from "@lib/utils";
 import Notification from "./notification";
 
 const notifd = Notifd.get_default();
@@ -32,7 +33,16 @@ export default (gdkmonitor: Gdk.Monitor) => {
 
   return (
     <window
+      setup={(self) =>
+        setLayerrules(self.namespace, [
+          "animation slidefade right",
+          "blur",
+          "ignorezero",
+          "xray 0",
+        ])
+      }
       name={WINDOW_NAME}
+      namespace={WINDOW_NAME}
       cssClasses={["notification-popups"]}
       gdkmonitor={gdkmonitor}
       exclusivity={Astal.Exclusivity.EXCLUSIVE}

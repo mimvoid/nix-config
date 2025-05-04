@@ -2,7 +2,7 @@ import { exec } from "astal";
 import { App, Astal, Gtk, Gdk } from "astal/gtk4";
 
 import Icon from "@lib/icons";
-import { pointer } from "@lib/utils";
+import { pointer, setLayerrules } from "@lib/utils";
 import { Grid } from "@lib/astalified";
 
 interface Action {
@@ -78,7 +78,17 @@ function Session() {
 
 export default () => (
   <window
+    setup={(self) => {
+      const layerrules = [
+        "animation popin 95%",
+        "blur",
+        "ignorezero",
+        "xray 0",
+      ];
+      setLayerrules(self.namespace, layerrules);
+    }}
     name="session"
+    namespace="session"
     cssClasses={["session"]}
     visible={false}
     anchor={Astal.WindowAnchor.NONE}

@@ -2,7 +2,7 @@ import { bind } from "astal";
 import { Astal, App, Gtk, Gdk } from "astal/gtk4";
 import Gio from "gi://Gio";
 
-import { pointer } from "@lib/utils";
+import { pointer, setLayerrules } from "@lib/utils";
 import { ScrolledWindow, Picture } from "@lib/astalified";
 import Wallpapers from "@services/wallpapers";
 
@@ -40,8 +40,12 @@ export default () => {
 
   return (
     <window
-      cssClasses={["wallpaper-picker", "popover"]}
+      setup={(self) =>
+        setLayerrules(self.namespace, ["blur", "ignorezero", "xray 0"])
+      }
       name="wallpaperPicker"
+      namespace="wallpaper-picker"
+      cssClasses={["wallpaper-picker", "popover"]}
       anchor={BOTTOM | LEFT | RIGHT}
       layer={Astal.Layer.OVERLAY}
       exclusivity={Astal.Exclusivity.NORMAL}
