@@ -1,4 +1,5 @@
-import { execAsync } from "astal";
+import { exec, execAsync, monitorFile } from "astal";
+import { App } from "astal/gtk4";
 import GObject, { register, property } from "astal/gobject";
 import GLib from "gi://GLib";
 import Gio from "gi://Gio";
@@ -33,8 +34,8 @@ export default class Wallpapers extends GObject.Object {
 
   setWallpaper(path: string) {
     execAsync(
-      `swww img -t grow --transition-pos 0.95,0.95 --transition-step 90 ${path}`,
-    ).catch(console.error);
+      `matugen image ${path} -t scheme-rainbow --contrast 0.5 -q`,
+    ).catch((err) => print(err));
   }
 
   private wallpapersEnum() {
@@ -80,5 +81,16 @@ export default class Wallpapers extends GObject.Object {
     }
 
     return fileInfo;
+  }
+
+  constructor() {
+    super();
+
+    monitorFile("./style/palette/_matugen.scss", (_, e) => {
+      if (e == Gio.FileMonitorEvent.CHANGED) {
+        exec("sass ./style/style.scss /tmp/ags/style.css");
+        App.apply_css("/tmp/ags/style.css", true);
+      }
+    });
   }
 }

@@ -28,6 +28,7 @@ in
 
       main = {
         inherit font icon-theme;
+        include = "~/.config/fuzzel/colors.ini"; # matugen
         terminal = "kitty";
 
         dpi-aware = true;

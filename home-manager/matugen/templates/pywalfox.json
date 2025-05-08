@@ -1,0 +1,28 @@
+{
+  "wallpaper": "{{image}}",
+  "alpha": "100",
+  "special": {
+    "background": "{{colors.background.default.hex}}",
+    "foreground": "{{colors.on_background.default.hex}}",
+    "cursor": "{{colors.on_background.default.hex}}",
+    "border": "{{colors.primary.default.hex}}"
+  },
+  "colors": {
+    "color0": "{{colors.background.default.hex}}",
+    "color1": "{{colors.background.default.hex}}",
+    "color2": "",
+    "color3": "{{colors.surface_dim.default.hex}}",
+    "color4": "",
+    "color5": "",
+    "color6": "",
+    "color7": "",
+    "color8": "",
+    "color9": "",
+    "color10": "{{colors.primary.default.hex}}",
+    "color11": "",
+    "color12": "",
+    "color13": "{{colors.secondary.default.hex}}",
+    "color14": "",
+    "color15": "{{colors.on_background.default.hex}}"
+  }
+}

@@ -4,7 +4,7 @@
 @use "abstracts/space";
 
 .bar {
-  color: palette.$primary;
+  color: color.mix(palette.$primary, palette.$string, $weight: 25%);
 
   centerbox {
     color: palette.$primary;

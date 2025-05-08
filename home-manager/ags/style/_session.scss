@@ -36,6 +36,7 @@
 
   .box {
     border-radius: 2px;
+    filter: drop-shadow(palette.$shadow, 2px, 2px, 16px);
 
     &:focus {
       @include looks.radius;

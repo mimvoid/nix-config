@@ -90,6 +90,7 @@
         tab_bar_align = "right";
 
         # Misc
+        allow_remote_control = true;
         scrollback_lines = 2048;
         strip_trailing_spaces = "smart";
         enable_audio_bell = false;
@@ -107,6 +108,8 @@
       window_padding_width 0 14
       scrollback_indicator_opacity 0.5
       mouse_hide_wait -1
+
+      include colors.conf
     '';
   };
 }
