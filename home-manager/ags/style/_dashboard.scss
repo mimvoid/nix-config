@@ -14,18 +14,9 @@
 }
 
 .dashboard {
-  .toggles > button {
-    @include looks.transition;
-    padding: 1.5em;
-
-    &.on {
-      background-color: palette.$primary;
-      color: palette.$base;
-    }
-
-    &.off {
-      background-color: palette.$box;
-      color: palette.$string;
+  .toggles {
+    button {
+      padding: 1.5em;
     }
 
     image {

@@ -1,38 +1,79 @@
-import { bind } from "astal";
-import { Widget, Gtk } from "astal/gtk4";
+import { Variable } from "astal";
+import { Gtk } from "astal/gtk4";
 import Bluetooth from "gi://AstalBluetooth";
 import Icon from "@lib/icons";
 import { pointer } from "@lib/utils";
 
 const { START, END } = Gtk.Align;
+const bluetooth = Bluetooth.get_default();
 
-interface BluetoothItemProps extends Widget.ButtonProps {
-  device: Bluetooth.Device;
-}
+export const connectedDevices: Variable<Gtk.Widget[]> = Variable([]);
+export const disconnectedDevices: Variable<Gtk.Widget[]> = Variable([]);
 
-export default ({ device, ...props }: BluetoothItemProps) => {
-  const Paired = (
-    <image
-      iconName={Icon.bluetooth.paired}
-      tooltipText="Paired"
-      visible={device.paired}
-    />
-  );
+bluetooth.get_devices().map((device) => {
+  const DeviceInfo: Gtk.Widget[] = [];
 
-  const Connecting = bind(device, "connecting").as((c) => (
-    <image iconName={Icon.waiting} visible={c} halign={END} />
-  ));
+  if (device.paired) {
+    DeviceInfo.push(
+      <image
+        iconName={Icon.bluetooth.paired}
+        tooltipText="Paired"
+        visible={device.paired}
+      />,
+    );
+  }
+
+  const iconName = Variable(device.icon);
 
   return (
-    <button setup={pointer} cssClasses={["device"]} {...props}>
-      <box>
-        <image iconName={bind(device, "icon")} />
+    <button
+      setup={(self) => {
+        pointer(self);
+
+        if (device.connected) {
+          const d = connectedDevices.get();
+          d.push(self);
+          connectedDevices.set(d);
+        } else {
+          const d = disconnectedDevices.get();
+          d.push(self);
+          disconnectedDevices.set(d);
+        }
+
+        device.connect("notify::connected", ({ c }) => {
+          self.tooltipText = `${c ? "Disconnect" : "Connect"} device`;
+
+          const toRemoveFrom = c ? disconnectedDevices : connectedDevices;
+          const toAddTo = c ? connectedDevices : disconnectedDevices;
+
+          toRemoveFrom.set(toRemoveFrom.get().filter((d) => d !== self));
+
+          const d = toAddTo.get();
+          d.push(self);
+          toAddTo.set(d);
+        });
+      }}
+      tooltipText={`${device.connected ? "Disconnect" : "Connect"} device`}
+      cssClasses={["device"]}
+      onClicked={() => {
+        if (device.connecting) return;
+
+        iconName.set(Icon.waiting);
+
+        const callback = () => iconName.set(device.icon);
+
+        device.connected
+          ? device.disconnect_device(callback)
+          : device.connect_device(callback);
+      }}
+    >
+      <box widthRequest={180}>
+        <image iconName={iconName()} onDestroy={() => iconName.drop()} />
         <label label={device.alias} halign={START} hexpand />
         <box cssClasses={["device-info"]} halign={END}>
-          {Paired}
+          {DeviceInfo}
         </box>
-        {Connecting}
       </box>
     </button>
   );
-};
+});

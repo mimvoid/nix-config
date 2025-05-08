@@ -94,6 +94,21 @@ button {
   }
 }
 
+.big-toggle {
+  @include looks.transition;
+  padding: 0.75rem;
+
+  &.on {
+    background-color: palette.$primary;
+    color: palette.$base;
+  }
+
+  &.off {
+    background-color: palette.$box;
+    color: palette.$string;
+  }
+}
+
 stack {
   @include space.py(0.5em);
 

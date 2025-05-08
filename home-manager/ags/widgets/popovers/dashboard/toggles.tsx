@@ -9,7 +9,7 @@ const notifd = Notifd.get_default();
 const NotifDnd = (
   <button
     setup={pointer}
-    cssClasses={bind(notifd, "dontDisturb").as((d) => [d ? "on" : "off"])}
+    cssClasses={bind(notifd, "dontDisturb").as((d) => ["dnd-toggle", "big-toggle", d ? "on" : "off"])}
     tooltipText={bind(notifd, "dontDisturb").as(
       (d) => `Turn ${d ? "off" : "on"} Do not Disturb`,
     )}
