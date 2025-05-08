@@ -45,6 +45,13 @@ in
 
       "float, class:(io.Astal.astal)"
 
+      # For some Krita plugin windows
+      "xray 0, class:^krita$, floating:1"
+      "noinitialfocus, class:^krita$, floating:1"
+      "noblur 1, class:^krita$, floating:1"
+      "noborder 1, class:^krita$, floating:1"
+      "noshadow 1, class:^krita$, floating:1"
+
       # Make Zotero plugin notifications less intrusive
       "float, class:^(Zotero)$, title:^(Progress)$"
       "noinitialfocus, class:^(Zotero)$, title:^(Progress)$"
