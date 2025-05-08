@@ -1,12 +1,13 @@
 { lib }:
 let
   inherit (lib.attrsets)
+    mapAttrs
     mapAttrsRecursive
     ;
 
   strings = import ./strings.nix { inherit lib; };
 in
-{
+rec {
   /**
     Remove hashtag prefixes throughout an attribute set.
 
@@ -55,6 +56,10 @@ in
   */
   hexToRgb = mapAttrsRecursive (_: value: strings.hexToRgb value);
 
+  isSplitRgb = set: set ? r && set ? g && set ? b;
+
+  isSplitRgba = set: isSplitRgb set && set ? a;
+
   /**
     Convert an attribute set of RGB values into decimal percentages.
 
@@ -68,4 +73,26 @@ in
     => { a = 0.8; b = 1; g = 0.980392; r = 0.960784; };
   */
   toDec = mapAttrsRecursive (_: value: strings.toDec value);
+
+  /**
+    Join an attribute set of RGB values into an RGB string.
+
+    # Type
+
+    joinRgb :: attrset -> string
+
+    # Examples
+
+    joinRgb { a = 204; b = 255; g = 250; r = 245; };
+    => "rgba(245,250,255,204)"
+  */
+  joinRgb = set:
+    let
+      inherit (builtins) toString;
+      inner = "${toString set.r},${toString set.g},${toString set.b}";
+    in
+    if set ? a then
+      "rgba(${inner},${toString set.a})"
+    else
+      "rgb(${inner})";
 }

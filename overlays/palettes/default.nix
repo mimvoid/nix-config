@@ -10,12 +10,20 @@ let
 
   parse = palette:
     let
+      inherit (pkgs.lib.attrsets) mapAttrsRecursive;
+
       inherit (utils.attrsets)
         noHashtag
         rgbWrap
         hexToRgb
         toDec
+        isSplitRgb
+        joinRgb
         ;
+
+      # joinRgbCond = mapAttrsRecursive
+      #   (as: !(isSplitRgb as))
+      #   (_: value: joinRgb value);
     in
     rec {
       hex = {
@@ -26,6 +34,7 @@ let
 
       rgb = {
         split = hexToRgb palette;
+        # default = joinRgbCond rgb.split;
         dec = toDec rgb.split;
       };
     };
