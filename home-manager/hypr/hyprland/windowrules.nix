@@ -32,6 +32,7 @@ in
       (active "firefox")
       (active "zen")
       (active "FFPWA*")
+      (active "libreoffice*")
       (active "FreeTube")
 
       (full "krita")

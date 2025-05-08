@@ -10,6 +10,7 @@
     unstable.obsidian
 
     # Files & documents
+    libreoffice
     file-roller
     nextcloud-client # Have it available as an app
     rnote
