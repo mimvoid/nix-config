@@ -61,6 +61,22 @@ Filename format: `artist-name_title-name.filetype`
 </details>
 <br />
 
+### Anato Finnstark
+
+[Artstation](https://www.artstation.com/anto-finnstark),
+[Redbubble](https://www.redbubble.com/people/Anatofinnstark/shop)
+
+<details open><summary>
+
+#### [Divine Step](https://www.artstation.com/artwork/PlXd3)
+
+</summary>
+
+![Divine Step by Anato Finnstark](wallpapers/anato-finnstark_divine-step.jpg)
+
+</details>
+<br />
+
 ### Anthonio Amaury
 
 [DeviantArt](https://www.deviantart.com/amaury2502/gallery)
@@ -544,6 +560,20 @@ Catppuccin-ified version from
 </details>
 <br />
 
+### Jujuzi (桔桔子)
+
+[Pixiv](https://www.pixiv.net/en/users/8692387)
+
+<details open><summary>
+
+#### ["Fragrance" (香料)](https://www.pixiv.net/en/artworks/80209458)
+
+</summary>
+
+!["Fragrance" (香料) by Jujuzi (桔桔子)](wallpapers/jujuzi_fragrance.jpg)
+
+</details>
+
 ### Matt Vince
 
 [Homepage](https://www.mattvince.com/)
@@ -555,6 +585,22 @@ Catppuccin-ified version from
 </summary>
 
 ![Lake Hylia by Matt Vince](wallpapers/matt-vince_lake-hylia.jpg)
+
+</details>
+<br />
+
+### NanoMortis
+
+[Instagram](https://www.instagram.com/nanomortis),
+[DeviantArt](https://www.deviantart.com/nanomortis)
+
+<details open><summary>
+
+#### [Burned Down To The Ground](https://www.deviantart.com/nanomortis/art/Burned-Down-To-The-Ground-553938699)
+
+</summary>
+
+![Burned Down To The Ground by Nano Mortis](wallpapers/nanomortis_burned.png)
 
 </details>
 <br />
