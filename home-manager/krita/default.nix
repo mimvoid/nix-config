@@ -26,7 +26,8 @@ in
     composition-helper
     timer-watch
     shortcut-composer
-  ];
+  ]
+  ++ [ pkgs.unstable.krita ];
 
   xdg.dataFile = {
     # Krita thumbnails

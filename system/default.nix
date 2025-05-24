@@ -7,7 +7,7 @@
     ./hyprland.nix
     ./xfce.nix
 
-    ./virt.nix
+    # ./virt.nix
     ./power.nix
     ./thunar.nix
     ./games.nix

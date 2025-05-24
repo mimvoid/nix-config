@@ -13,7 +13,6 @@
     libreoffice
     file-roller
     nextcloud-client # Have it available as an app
-    rnote
 
     # Academics
     unstable.zotero
@@ -32,7 +31,6 @@
     voids.freetube
     tauon
     # inkscape
-    unstable.krita
     unstable.digikam
   ];
 
