@@ -16,8 +16,6 @@ in
     "dimaround, launcher"
   ];
 
-  windowrule = [ "pseudo, fcitx" ];
-
   windowrulev2 = with opacity;
     [
       (more { id = "title"; } "*Nextcloud")

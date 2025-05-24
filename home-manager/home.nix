@@ -14,6 +14,7 @@
 
   imports = [
     ./theming.nix
+    ./ime.nix
     ./hellwal
     ./matugen
     ./links.nix
@@ -28,21 +29,9 @@
     ./ags
   ];
 
-
   home.packages = with pkgs; [
     unstable.ollama
     unstable.alpaca
     (fontforge-gtk.override { withPython = false; })
   ];
-
-  # Pinyin for Simplified Chinese
-  i18n.inputMethod = {
-    enable = true;
-    type = "fcitx5";
-    fcitx5.addons = with pkgs; [
-      fcitx5-gtk
-      fcitx5-rime
-      catppuccin-fcitx5
-    ];
-  };
 }

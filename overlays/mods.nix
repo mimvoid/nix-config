@@ -16,4 +16,13 @@ in
     flavor = "macchiato";
     accent = "pink";
   };
+
+  catppuccin-fcitx5 = prev.catppuccin-fcitx5.overrideAttrs (finalAttrs: prevAttrs: {
+    installPhase = ''
+      runHook preInstall
+      mkdir -p $out/share/fcitx5/themes
+      cp -r src/catppuccin-macchiato-pink $out/share/fcitx5/themes/catppuccin-macchiato-pink
+      runHook postInstall
+    '';
+  });
 }
