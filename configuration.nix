@@ -5,9 +5,6 @@
 
   # General system configurations
   nix = {
-    # https://github.com/NixOS/nix/issues/10815
-    package = pkgs.nixVersions.nix_2_20;
-
     nixPath = [
       "nixpkgs=${inputs.nixpkgs}"
       "nixpkgs-unstable=${inputs.nixpkgs-unstable}"

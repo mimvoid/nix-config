@@ -15,7 +15,7 @@ rustPlatform.buildRustPackage {
     hash = "sha256-L5PU8mECUOHLok8wpT0eiJIksS9U1ov+kbPazsS3zW4=";
   };
 
-  cargoHash = "sha256-ZnhWN2gmrluZ9AkdbD2zgKAE2rSmB7rmq9LIVAs5/Qs=";
+  cargoHash = "sha256-0G6G71eCdf4KZzFRem26ReRYOO/6zitbAnusPMHTp+Y=";
 
   meta = {
     description = "Preview markdown files in a browser";
