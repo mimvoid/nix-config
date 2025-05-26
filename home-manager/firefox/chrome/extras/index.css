@@ -1,9 +1,3 @@
 @import url("round_ui_items.css");
 @import url("rounded_menupopups.css");
 @import url("hide_tabs_toolbar.css");
-
-/* To return window controls, add:
- * @import url("window_control_placeholder_support.css"); */
-
-/* For Linux, you can also add:
- * @import url("window_control_force_linux_system_style.css"); */

@@ -1,8 +1,6 @@
-#unified-extensions-panel {
-  .panel-header,
-  #unified-extensions-manage-extensions {
-    display: none !important;
-  }
+#unified-extensions-panel .panel-header,
+#unified-extensions-manage-extensions {
+  display: none !important;
 }
 
 /* From Shina Fox */

@@ -1,14 +1,47 @@
-/* Main sidebar appearance */
-
-/* Allows more shrinking of the sidebar,
- * adds a little margin,
- * and colors it */
+#sidebar-main,
 #sidebar-box {
-  min-width: 36px !important;
-  margin-left: 4px !important;
-  margin-right: 4px !important;
+  min-width: calc(var(--button-size-icon) + (2 * var(--space-small))) !important;
+}
+
+#sidebar-main {
+  --button-outer-padding-inline-start: 0;
+  --button-outer-padding-inline-end: var(--button-outer-padding-inline-start);
+  --button-outer-padding-block-start: var(--space-xsmall);
+  --button-outer-padding-block-end: var(--button-outer-padding-block-start);
+
+  padding-inline: var(--space-small);
+}
+
+.sidebar-splitter {
+  /* Shrink the sidebar splitter */
+  border: 0 !important;
+  width: 2px !important;
+  /* It seems to be completely disabled if opacity is 0? */
+  opacity: 0.01;
+
+  /* Still show splitter when there are no vertical tabs */
+  @media -moz-pref("sidebar.revamp") {
+    @media not -moz-pref("sidebar.verticalTabs") {
+      &#sidebar-launcher-splitter {
+        display: block !important;
+      }
+    }
+  }
+}
+
+#sidebar-box {
   background-color: var(--toolbar-bgcolor) !important;
   container-type: inline-size;
+}
+#sidebar-panel-header {
+  padding-inline: var(--space-medium) !important;
+  padding-block-start: var(--space-small) !important;
+}
+#sidebar-panel-close {
+  --button-size-icon: 18px;
+  --icon-size-default: 14px;
+
+  opacity: 0.75;
 }
 
 /* Switches padding from ../extras/round_ui.css to margin
@@ -21,57 +54,12 @@
   }
 }
 
-/* Adjusts the sidebar header */
-#sidebar-header {
-  display: none;
-  opacity: 0.75 !important;
-  margin-bottom: 4px !important;
-
-  > #sidebar-switcher-target {
-    margin-left: -4px !important;
-    > #sidebar-icon {
-      margin-right: 4px;
-    }
-    > #sidebar-title {
-      font-size: 14px;
-    }
-  }
-}
-
-/* TODO: fix this to fit different sidebar title lengths */
-/* Hides sidebar title and switcher arrow according to sidebar width */
-@container (max-width: 84px) {
-  #sidebar-switcher-arrow {
-    visibility: hidden;
-  }
-}
-@container (max-width: 72px) {
-  #sidebar-title {
-    visibility: hidden;
-  }
-}
-
-/* Shrinks the sidebar splitter */
-.sidebar-splitter {
-  border: 0 !important;
-  width: 2px !important;
-  /* It seems to be completely disabled if opacity is 0? */
-  opacity: 0.01;
-}
-
 /* Hides sidebar scrollbar */
 .hidevscroll-scrollbar {
   display: none;
 }
 
-/* Hides close button */
-/* Don't use display: none or the other ui elements will shift */
-.close-icon {
-  visibility: hidden;
-}
-
 /* Sidebar content */
-
 .sidebar-placesTree treechildren {
   /* Decreases indentation */
   &::-moz-tree-indentation {

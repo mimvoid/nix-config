@@ -3,11 +3,6 @@
 
 /* Makes panels, menupopups, urlbar and searchbar rounded */
 
-/* Modify the rounding size here */
-:root {
-  --uc-menupopup-border-radius: 20px;
-}
-
 panel[type="autocomplete-richlistbox"],
 menupopup,
 .panel-arrowcontent {

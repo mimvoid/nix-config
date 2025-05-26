@@ -1,14 +1,6 @@
 /* Edits radius of round UI from
  * ./extras/round_ui_items and ./extras/rounded_menupopups.css */
 
-:root {
-  /* Adjust this to change the border radius */
-  --toolbarbutton-border-radius: 10px !important;
-
-  /* Match the menupopup border radius */
-  --uc-menupopup-border-radius: var(--toolbarbutton-border-radius);
-}
-
 /* URL & menu bar */
 #urlbar-input-container > box:hover,
 #urlbar-input-container > box[open],
@@ -38,15 +30,7 @@ menupopup,
 
 /* Misc */
 button,
-.tab-background {
-  border-radius: var(--toolbarbutton-border-radius) !important;
-}
-
-/* Rounds the status panel */
-
-/* Chose this specific value since it fits well against the edges of the
- * browser content window */
-
+.tab-background,
 #statuspanel-label {
-  border-radius: 4px;
+  border-radius: var(--border-radius-small) !important;
 }

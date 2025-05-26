@@ -1,22 +1,15 @@
 @import url("extras/index.css");
 @import url("userChrome/index.css");
 
+/* Variables */
 :root {
-  /* The default color used for bookmark icons, both in the toolbar and in the sidebar */
-  --bookmark-folder-icon-fill: #ee99a0;
+  /* Default color for bookmark icons, in toolbar and sidebar */
+  --bookmark-folder-icon-fill: var(--toolbarbutton-icon-fill);
 
-  /* The border radius for the browser ui */
-  --toolbarbutton-border-radius: 6px !important;
+  --toolbarbutton-border-radius: 6px !important; /* browser ui items */
+  --uc-menupopup-border-radius: var(--toolbarbutton-border-radius); /* rounded menupopups */
+  --browser-content-panel-radius: 9px;
 }
-
-/* Windows Controls */
-
-/* Shrinks space occupied by windows controls
- * Use if you returned window controls
- * :root:is([tabsintitlebar], [sizemode="fullscreen"]) {
- *   --uc-window-control-width: 72px !important;
- * }
- */
 
 /* Completely hides windows controls */
 .titlebar-min,

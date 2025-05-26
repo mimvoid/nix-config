@@ -1,5 +1,9 @@
 /* Targets the URL bar and its tracker icon, site information, etc. */
 
+#navigator-toolbox {
+  margin-bottom: 0;
+}
+
 /* Removes borders, increases margins to compensate */
 toolbox {
   border: 0px !important;
