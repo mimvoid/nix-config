@@ -1,23 +1,5 @@
-@import url("./extras/round_ui_items.css");
-@import url("./extras/rounded_menupopups.css");
-@import url("./extras/hide_tabs_toolbar.css");
-
-@import url("./userChrome/bookmarks-bar.css");
-@import url("./userChrome/browser-rounded.css");
-@import url("./userChrome/round-ui.css");
-@import url("./userChrome/sidebar.css");
-@import url("./userChrome/status.css");
-@import url("./userChrome/toolbox.css");
-@import url("./userChrome/default-bookmark-icons.css");
-@import url("./userChrome/extensions-menu.css");
-
-/* To return window controls, add:
- * @import url("./extras/window_control_placeholder_support.css");
- */
-
-/* For Linux, you can also add:
- * @import url("./extras/window_control_force_linux_system_style.css");
- */
+@import url("extras/index.css");
+@import url("userChrome/index.css");
 
 :root {
   /* The default color used for bookmark icons, both in the toolbar and in the sidebar */
