@@ -61,12 +61,14 @@ popover {
 .dropdown {
   > button {
     padding: 0.5rem;
-    padding-bottom: 0;
     margin-bottom: 1rem;
 
     image {
       @include looks.transition;
       @include fonts.font-size(1.25);
+    }
+    .title {
+      margin: 0;
     }
   }
 

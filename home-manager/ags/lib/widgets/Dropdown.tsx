@@ -1,11 +1,9 @@
-import { bind, Variable } from "astal";
+import { bind } from "astal";
 import { Widget, Gtk } from "astal/gtk4";
-import { pointer } from "../utils";
-
-const { START, CENTER, END } = Gtk.Align;
 
 interface DropdownProps extends Widget.RevealerProps {
-  label: string | Gtk.Widget;
+  label: Gtk.Widget;
+  expanded: boolean;
   transitionDuration?: number;
   transitionType?: Gtk.RevealerTransitionType;
 }
@@ -13,16 +11,25 @@ interface DropdownProps extends Widget.RevealerProps {
 export default ({
   child,
   label,
-  revealChild = true,
+  expanded = true,
   transitionDuration = 250,
   transitionType = Gtk.RevealerTransitionType.SLIDE_DOWN,
   ...props
 }: DropdownProps): Gtk.Widget => {
-  const revealed = Variable(revealChild);
+  const Revealer = (
+    <revealer
+      transitionDuration={transitionDuration}
+      transitionType={transitionType}
+      revealChild={expanded}
+      {...props}
+    >
+      {child}
+    </revealer>
+  ) as Gtk.Revealer;
 
   return (
     <box
-      cssClasses={bind(revealed).as((r) => [
+      cssClasses={bind(Revealer, "revealChild").as((r) => [
         "dropdown",
         "section",
         r ? "open" : "closed",
@@ -30,26 +37,16 @@ export default ({
       vertical
     >
       <button
-        setup={pointer}
-        onClicked={() => revealed.set(!revealed.get())}
+        setup={(self) => self.set_cursor_from_name("pointer")}
+        onClicked={() => Revealer.revealChild = !Revealer.revealChild}
         hexpand
-        vexpand
       >
-        <box valign={CENTER}>
-          <box halign={START} valign={CENTER}>
-            {label}
-          </box>
-          <image iconName="pan-down-symbolic" halign={END} valign={CENTER} />
+        <box spacing={6}>
+          <image iconName="pan-down-symbolic" />
+          {label}
         </box>
       </button>
-      <revealer
-        transitionDuration={transitionDuration}
-        transitionType={transitionType}
-        revealChild={revealed()}
-        {...props}
-      >
-        {child}
-      </revealer>
+      {Revealer}
     </box>
   );
 };
