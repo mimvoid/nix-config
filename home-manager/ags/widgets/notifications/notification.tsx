@@ -2,7 +2,6 @@ import { GLib } from "astal";
 import { Gtk } from "astal/gtk4";
 import Notifd from "gi://AstalNotifd";
 import Pango from "gi://Pango";
-import { pointer } from "@lib/utils";
 
 // Defines an individual notification widget
 
@@ -145,7 +144,11 @@ export default (props: Props) => {
     const Actions = (
       <box cssClasses={["actions"]}>
         {n.get_actions().map(({ label, id }) => (
-          <button setup={pointer} onClicked={() => n.invoke(id)} hexpand>
+          <button
+            setup={(self) => self.set_cursor_from_name("pointer")}
+            onClicked={() => n.invoke(id)}
+            hexpand
+          >
             <label label={label} halign={CENTER} hexpand />
           </button>
         ))}

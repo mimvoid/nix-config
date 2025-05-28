@@ -2,7 +2,6 @@ import { Variable } from "astal";
 import { Gtk } from "astal/gtk4";
 import Bluetooth from "gi://AstalBluetooth";
 import Icon from "@lib/icons";
-import { pointer } from "@lib/utils";
 
 const { START, END } = Gtk.Align;
 const bluetooth = Bluetooth.get_default();
@@ -28,7 +27,7 @@ bluetooth.get_devices().map((device) => {
   return (
     <button
       setup={(self) => {
-        pointer(self);
+        self.set_cursor_from_name("pointer");
 
         if (device.connected) {
           const d = connectedDevices.get();

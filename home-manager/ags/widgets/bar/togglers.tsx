@@ -1,6 +1,5 @@
 import { App, Gtk } from "astal/gtk4";
 import Icon from "@lib/icons";
-import { pointer } from "@lib/utils";
 
 import DashboardPopover from "../popovers/dashboard";
 import MediaPopover from "../popovers/media";
@@ -9,7 +8,7 @@ import MediaPopover from "../popovers/media";
 export const Media = (
   <menubutton>
     <button
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
       cssClasses={["media-launch"]}
       onClicked={() => (MediaPopover.visible = true)}
       iconName={Icon.mimetypes.audio}
@@ -22,7 +21,7 @@ export const Media = (
 export const Dashboard = (
   <menubutton>
     <button
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
       cssClasses={["dashboard-launch"]}
       onClicked={() => (DashboardPopover.visible = true)}
       iconName={Icon.overview}
@@ -34,7 +33,7 @@ export const Dashboard = (
 // Toggle buttons for logging out, shutting down, etc.
 export const Session = (
   <button
-    setup={pointer}
+    setup={(self) => self.set_cursor_from_name("pointer")}
     cssClasses={["session-launch"]}
     onClicked={() => App.toggle_window("session")}
     iconName={Icon.powermenu.indicator}

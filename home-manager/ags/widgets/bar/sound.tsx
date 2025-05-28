@@ -2,7 +2,6 @@ import { bind } from "astal";
 import { Gtk } from "astal/gtk4";
 import Wp from "gi://AstalWp";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
-import { pointer } from "@lib/utils";
 import AudioPopover from "../popovers/audio";
 
 const speaker = Wp.get_default()?.audio.defaultSpeaker!;
@@ -10,7 +9,7 @@ const speaker = Wp.get_default()?.audio.defaultSpeaker!;
 // Can mute or unmute speaker
 const Icon = (
   <button
-    setup={pointer}
+    setup={(self) => self.set_cursor_from_name("pointer")}
     onClicked={() => (speaker.mute = !speaker.mute)}
     iconName={bind(speaker, "volumeIcon")}
   />
@@ -19,7 +18,7 @@ const Icon = (
 // Control volume with slider
 const Slider = (
   <slider
-    setup={pointer}
+    setup={(self) => self.set_cursor_from_name("pointer")}
     value={bind(speaker, "volume")}
     onChangeValue={({ value }) => (speaker.volume = value)}
     valign={Gtk.Align.CENTER}

@@ -8,7 +8,6 @@ import Pango from "gi://Pango";
 
 import Visualizer from "./Visualizer";
 import { Picture } from "@lib/astalified";
-import { pointer } from "@lib/utils";
 import Icon from "@lib/icons";
 
 // Information about the current song
@@ -21,7 +20,7 @@ export default (player: Mpris.Player) => {
   const CoverArtBox = <box cssClasses={["cover-art-box"]} />;
   const VisToggle = (overlay: Gtk.Overlay) => (
     <button
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
       onClicked={() => {
         const CurrentCava = CavaWidget.get();
 

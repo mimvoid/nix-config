@@ -1,6 +1,5 @@
 import { bind } from "astal";
 import Hyprland from "gi://AstalHyprland";
-import { pointer } from "@lib/utils";
 
 const hypr = Hyprland.get_default();
 
@@ -12,7 +11,7 @@ const Spaces = bind(hypr, "workspaces").as((wss) =>
     // Create a button for each workspace
     .map((ws) => (
       <button
-        setup={pointer}
+        setup={(self) => self.set_cursor_from_name("pointer")}
         cssClasses={bind(hypr, "focusedWorkspace").as((fw) =>
           ws === fw ? ["active"] : [],
         )}

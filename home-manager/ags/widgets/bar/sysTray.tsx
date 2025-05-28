@@ -2,7 +2,6 @@ import { bind, Variable } from "astal";
 import { Gtk } from "astal/gtk4";
 import Tray from "gi://AstalTray";
 import Icon from "@lib/icons";
-import { pointer } from "@lib/utils";
 
 const tray = Tray.get_default();
 
@@ -16,7 +15,10 @@ function TrayIcons() {
         actionGroup={bind(item, "actionGroup").as((ag) => ["dbusmenu", ag])}
         menuModel={bind(item, "menuModel")}
       >
-        <image setup={pointer} gicon={bind(item, "gicon")} />
+        <image
+          setup={(self) => self.set_cursor_from_name("pointer")}
+          gicon={bind(item, "gicon")}
+        />
       </menubutton>
     )),
   );
@@ -50,7 +52,7 @@ function SysTrayToggle() {
   // Don't actually include the revealer in the hitbox
   return (
     <button
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
       cssClasses={bind(tray, "items").as((items) => [
         "hider-wrapper",
         items[0] ? "non-empty" : "empty",

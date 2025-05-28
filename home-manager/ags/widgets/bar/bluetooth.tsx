@@ -4,7 +4,6 @@ import Bluetooth from "gi://AstalBluetooth";
 import BluetoothPopover from "../popovers/bluetooth";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
 import Icon from "@lib/icons";
-import { pointer } from "@lib/utils";
 
 const bluetooth = Bluetooth.get_default();
 
@@ -27,7 +26,7 @@ function Indicator() {
 
   return (
     <button
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
       onClicked={action}
       tooltipText={tooltip}
       iconName={icon}

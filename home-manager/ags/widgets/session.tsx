@@ -2,7 +2,7 @@ import { exec } from "astal";
 import { App, Astal, Gtk, Gdk } from "astal/gtk4";
 
 import Icon from "@lib/icons";
-import { pointer, setLayerrules } from "@lib/utils";
+import { setLayerrules } from "@lib/utils";
 import { Grid } from "@lib/astalified";
 
 interface Action {
@@ -58,7 +58,7 @@ function Session() {
   for (const a of actions) {
     const Button = (
       <button
-        setup={pointer}
+        setup={(self) => self.set_cursor_from_name("pointer")}
         name={a.name}
         cssClasses={["box"]}
         halign={a.halign}

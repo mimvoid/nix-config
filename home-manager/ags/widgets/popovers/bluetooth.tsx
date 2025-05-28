@@ -3,7 +3,6 @@ import { Gtk } from "astal/gtk4";
 import Bluetooth from "gi://AstalBluetooth";
 
 import Icon from "@lib/icons";
-import { pointer } from "@lib/utils";
 import { connectedDevices, disconnectedDevices } from "./bluetooth/DeviceItem";
 
 const bluetooth = Bluetooth.get_default();
@@ -21,7 +20,7 @@ function Status() {
   return (
     <box cssClasses={["status", "section"]}>
       <button
-        setup={pointer}
+        setup={(self) => self.set_cursor_from_name("pointer")}
         cssClasses={bind(bluetooth, "isPowered").as((p) => [
           "big-toggle",
           p ? "on" : "off",

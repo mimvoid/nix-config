@@ -1,12 +1,10 @@
-import { bind, Variable } from "astal";
+import { bind } from "astal";
 import { Gtk } from "astal/gtk4";
 
 import Brightness from "@services/brightness";
 import WlSunset from "@services/wlsunset";
 
-import Popover from "@lib/widgets/Popover";
 import Icon from "@lib/icons";
-import { pointer } from "@lib/utils";
 
 const brightness = Brightness.get_default();
 const wlsunset = WlSunset.get_default();
@@ -22,7 +20,7 @@ function WlStatus() {
 
   return (
     <box cssClasses={["status", "section"]}>
-      <button setup={pointer} onClicked={action}>
+      <button setup={(self) => self.set_cursor_from_name("pointer")} onClicked={action}>
         <image iconName={icon} iconSize={Gtk.IconSize.LARGE} />
       </button>
       <label
@@ -38,7 +36,7 @@ function WlStatus() {
 function BrightnessSlider() {
   const Slider = (
     <slider
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
       value={bind(brightness, "light")}
       onChangeValue={({ value }) => (brightness.light = value)}
       valign={CENTER}

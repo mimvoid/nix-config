@@ -4,7 +4,7 @@ import WlSunset from "./wlsunset";
 
 import Brightness from "@services/brightness";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
-import { pointer, drawValuePercentage } from "@lib/utils";
+import { drawValuePercentage } from "@lib/utils";
 
 // Brightness label & slider
 
@@ -16,7 +16,7 @@ function BrightnessBox() {
   const Slider = (
     <slider
       setup={(self) => {
-        pointer(self);
+        self.set_cursor_from_name("pointer");
         drawValuePercentage(self);
       }}
       value={bind(brightness, "light")}

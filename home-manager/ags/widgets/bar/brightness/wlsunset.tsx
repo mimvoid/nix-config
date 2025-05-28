@@ -1,7 +1,6 @@
 import { bind } from "astal";
 import WlSunset from "@services/wlsunset";
 import Icon from "@lib/icons";
-import { pointer } from "@lib/utils";
 
 const wlsunset = WlSunset.get_default();
 
@@ -9,7 +8,7 @@ const wlsunset = WlSunset.get_default();
 
 export default () => (
   <button
-    setup={pointer}
+    setup={(self) => self.set_cursor_from_name("pointer")}
     cssClasses={bind(wlsunset, "running").as((r) => [
       "wlsunset-toggle",
       r ? "on" : "off",

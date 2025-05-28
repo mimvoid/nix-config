@@ -15,7 +15,11 @@ function Section(endpoint: Wp.Endpoint, name: string) {
   const Icon = (
     // Can mute or unmute
     <button
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
+      cssClasses={bind(endpoint, "mute").as((m) => [
+        "big-toggle",
+        m ? "off" : "on",
+      ])}
       onClicked={() => (endpoint.mute = !endpoint.mute)}
       tooltipText={bind(endpoint, "mute").as(
         (m) => `${m ? "Unmute" : "Mute"} ${lowerName}`,
@@ -40,7 +44,7 @@ function Section(endpoint: Wp.Endpoint, name: string) {
   const Slider = (
     <slider
       setup={(self) => {
-        pointer(self);
+        self.set_cursor_from_name("pointer");
         drawValuePercentage(self);
       }}
       value={bind(endpoint, "volume")}

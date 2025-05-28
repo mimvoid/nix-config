@@ -1,7 +1,6 @@
 import { execAsync, bind } from "astal";
 import Network from "gi://AstalNetwork";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
-import { pointer } from "@lib/utils";
 import NetworkPopover from "../popovers/network";
 
 const network = Network.get_default();
@@ -13,7 +12,7 @@ function Icon() {
   // Wrap it in a button that launches a network manager
   return (
     <button
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
       onClicked={() => execAsync("networkmanager_dmenu")}
       tooltipText={tooltip}
       iconName={bind(network.wifi, "iconName")}

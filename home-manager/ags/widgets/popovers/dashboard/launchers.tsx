@@ -1,11 +1,10 @@
 import { App, Gtk } from "astal/gtk4";
 import Icons from "@lib/icons";
-import { pointer } from "@lib/utils";
 import Wallpapers from "../../wallpapers";
 
 const WallpapersLauncher = (
   <button
-    setup={pointer}
+    setup={(self) => self.set_cursor_from_name("pointer")}
     onClicked={() => {
       const existingWin = App.get_window("wallpaperPicker");
 

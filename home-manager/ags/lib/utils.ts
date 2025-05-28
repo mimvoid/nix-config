@@ -1,10 +1,8 @@
-import { Gtk, Gdk } from "astal/gtk4";
+import { Gtk } from "astal/gtk4";
 import AstalHyprland from "gi://AstalHyprland";
 
-const pointerCursor = Gdk.Cursor.new_from_name("pointer", null);
-
 export function pointer(self: Gtk.Widget) {
-  self.set_cursor(pointerCursor);
+  self.set_cursor_from_name("pointer");
 }
 
 export function drawValuePercentage(w: Gtk.Scale) {

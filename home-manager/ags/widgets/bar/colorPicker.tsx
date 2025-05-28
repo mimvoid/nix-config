@@ -1,7 +1,7 @@
 import { bind } from "astal";
+import { Gtk } from "astal/gtk4";
 import Picker from "@services/colorpicker";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
-import { pointer } from "@lib/utils";
 import Icons from "@lib/icons";
 import ColorsPopover from "../popovers/colors";
 
@@ -9,12 +9,10 @@ const picker = Picker.get_default();
 
 const Trigger = (
   <button
-    setup={pointer}
+    setup={(self) => self.set_cursor_from_name("pointer")}
     cssClasses={["color-button"]}
     onClicked={() => picker.pick().catch(console.error)}
-    tooltipText={bind(picker, "colors").as(
-      () => `Last color: ${picker.lastColor()}`,
-    )}
+    tooltipText={bind(picker, "lastColor").as((c) => `Last color: ${c}`)}
     iconName={Icons.colorpicker}
   />
 );
@@ -23,12 +21,24 @@ function Color() {
   // A circle showing the last picked color
   const colorDisplay = (
     <box cssClasses={["color-circle"]}>
-      <box
-        cssClasses={["color-display"]}
-        css={bind(picker, "colors").as(
-          () => `background-color: ${picker.lastColor()}`,
-        )}
-      />
+      {bind(picker, "lastColor").as((c) => {
+        const colorClass = `color-${c.startsWith("#") ? c.substring(1) : c}`;
+        const sp = new Gtk.CssProvider();
+        sp.load_from_string(
+          `.color-circle box.${colorClass} { background-color: ${c}; }`,
+        );
+
+        return [
+          <box
+            setup={(self) =>
+              self
+                .get_style_context()
+                .add_provider(sp, Gtk.STYLE_PROVIDER_PRIORITY_USER)
+            }
+            cssClasses={["color-display", colorClass]}
+          />,
+        ];
+      })}
     </box>
   );
 
@@ -38,7 +48,7 @@ function Color() {
       <HoverRevealer
         hiddenChild={
           <box cssClasses={["color-box"]}>
-            {bind(picker, "colors").as(() => picker.lastColor())}
+            <label label={bind(picker, "lastColor")} />
             {colorDisplay}
           </box>
         }

@@ -2,7 +2,7 @@ import { bind } from "astal";
 import { Astal, App, Gtk, Gdk } from "astal/gtk4";
 import Gio from "gi://Gio";
 
-import { pointer, setLayerrules } from "@lib/utils";
+import { setLayerrules } from "@lib/utils";
 import { ScrolledWindow, Picture } from "@lib/astalified";
 import Wallpapers from "@services/wallpapers";
 
@@ -11,7 +11,7 @@ const wallpapers = Wallpapers.get_default();
 const Choices = bind(wallpapers, "wallpapers").as((ws) =>
   ws.map((w) => (
     <button
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
       cssClasses={["item"]}
       onClicked={() => {
         if (w[0]) wallpapers.setWallpaper(wallpapers.wallpaperDir + w[0]);

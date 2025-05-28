@@ -1,7 +1,6 @@
 import { bind } from "astal";
 import { Gtk } from "astal/gtk4";
 import Mpris from "gi://AstalMpris";
-import { pointer } from "@lib/utils";
 
 // Song progress
 
@@ -22,7 +21,7 @@ export default (player: Mpris.Player) => {
 
   const ProgressBar = (
     <slider
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
       value={position}
       onChangeValue={({ value }) => (player.position = value * player.length)}
       hexpand
