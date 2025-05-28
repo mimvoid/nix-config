@@ -1,4 +1,5 @@
-import { execAsync, bind } from "astal";
+import { execAsync } from "astal";
+import { hook } from "astal/gtk4";
 import Bluetooth from "gi://AstalBluetooth";
 
 import BluetoothPopover from "../popovers/bluetooth";
@@ -7,54 +8,50 @@ import Icon from "@lib/icons";
 
 const bluetooth = Bluetooth.get_default();
 
-function Indicator() {
-  // Show the Bluetooth status
+// Show the Bluetooth status
+const Indicator = (
+  <button
+    setup={(self) => {
+      self.set_cursor_from_name("pointer");
 
-  // Execute `bluetooth off` or `bluetooth on`
-  const action = () =>
-    execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`);
+      function poweredHook() {
+        const p = bluetooth.isPowered;
+        self.tooltipText = `Bluetooth ${p ? "on" : "off"}`;
+        self.iconName = Icon.bluetooth[p ? "enabled" : "disabled"];
+      }
 
-  // Show Bluetooth status on hover
-  const tooltip = bind(bluetooth, "isPowered").as(
-    (p) => `Bluetooth ${p ? "on" : "off"}`,
-  );
-
-  // Display icon depending on Bluetooth status
-  const icon = bind(bluetooth, "isPowered").as((p) =>
-    p ? Icon.bluetooth.enabled : Icon.bluetooth.disabled,
-  );
-
-  return (
-    <button
-      setup={(self) => self.set_cursor_from_name("pointer")}
-      onClicked={action}
-      tooltipText={tooltip}
-      iconName={icon}
-    />
-  );
-}
+      poweredHook();
+      hook(self, bluetooth, "notify::is-powered", poweredHook);
+    }}
+    onClicked={() =>
+      execAsync(`bluetooth ${bluetooth.isPowered ? "off" : "on"}`)
+    }
+  />
+);
 
 function BluetoothBox() {
   // Show first connected device name
-  function Device() {
-    if (bind(bluetooth, "isConnected").as((c) => !c)) {
-      return <label label="None connected" />;
-    }
+  const DeviceName = (
+    <label
+      setup={(self) => {
+        function connectHook() {
+          if (!bluetooth.is_connected) {
+            self.label = "None connected";
+          } else {
+            const firstConnected = bluetooth.devices.find((d) => d.connected)!;
+            self.label = firstConnected.alias;
+          }
+        }
 
-    return bind(bluetooth, "devices").as((d) => {
-      const first = d.filter((device) => device.connected)[0];
-      return <label label={first.alias} visible={bind(first, "connected")} />;
-    });
-  }
+        connectHook();
+        hook(self, bluetooth, "notify::is-connected", connectHook);
+      }}
+    />
+  );
 
   return (
     <menubutton>
-      <HoverRevealer
-        hiddenChild={<box>{Device()}</box>}
-        onClicked={() => (BluetoothPopover.visible = true)}
-      >
-        <Indicator />
-      </HoverRevealer>
+      <HoverRevealer hiddenChild={DeviceName}>{Indicator}</HoverRevealer>
       {BluetoothPopover}
     </menubutton>
   );

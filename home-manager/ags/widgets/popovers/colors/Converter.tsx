@@ -1,4 +1,4 @@
-import { bind, Variable } from "astal";
+import { Variable } from "astal";
 import { Gtk } from "astal/gtk4";
 import Gdk from "gi://Gdk";
 
@@ -13,79 +13,68 @@ import { pointer } from "@lib/utils";
 
 const picker = Picker.get_default();
 
-let color = new Gdk.RGBA({
-  red: 245 / 255,
-  green: 189 / 255,
-  blue: 230 / 255,
-  alpha: 1.0,
-});
-color.parse(picker.lastColor);
-
-const colorLabel = Variable(color.to_string());
-
-const Display = (
-  <ColorDialogButton
-    setup={(self) => {
-      pointer(self);
-      bind(self, "rgba").as((rgba) => {
-        color = rgba;
-        colorLabel.set(rgba.to_string());
-      });
-    }}
-    rgba={color}
-    cssClasses={["color-box"]}
-    hexpand
-    vexpand
-  />
-) as Gtk.ColorDialogButton;
+const color = Variable(
+  new Gdk.RGBA({
+    red: 245 / 255,
+    green: 189 / 255,
+    blue: 230 / 255,
+    alpha: 1.0,
+  }),
+);
 
 function updateColor(value: string) {
-  const newColor = color.parse(value);
-  if (newColor) {
-    Display.rgba = color;
-    colorLabel.set(color.to_string());
-  }
+  const newColor = new Gdk.RGBA();
+  if (newColor.parse(value)) color.set(newColor);
 }
+updateColor(picker.lastColor);
 
 const Entry = (
   <entry
-    placeholderText={colorLabel()}
+    setup={(self) => color.subscribe((value) => self.placeholderText = value.to_string())}
+    placeholderText={color.get().to_string()}
     onChanged={(self) => updateColor(self.text)}
   />
 ) as Gtk.Entry;
 
 function Switcher() {
-  function Formats() {
-    function updateLabel(value: string) {
-      colorLabel.set(value);
-      Entry.text = colorLabel.get();
-    }
+  const Display = (
+    <ColorDialogButton
+      setup={pointer}
+      rgba={color()}
+      cssClasses={["color-box"]}
+      hexpand
+      vexpand
+    />
+  );
 
-    const rgb = () => updateLabel(color.to_string());
-    const hex = () => updateLabel(gRgbaToHex(color));
-    const hsl = () => updateLabel(gRgbaToHsl(color));
-
-    return (
-      <box spacing={4} vertical halign={Gtk.Align.END}>
-        <button setup={pointer} label="hex" onClicked={hex} />
-        <button setup={pointer} label="rgb" onClicked={rgb} />
-        <button setup={pointer} label="hsl" onClicked={hsl} />
-      </box>
-    );
+  function updateLabel(value: string) {
+    Entry.placeholderText = value;
+    Entry.text = value;
   }
+  const rgb = () => updateLabel(color.get().to_string());
+  const hex = () => updateLabel(gRgbaToHex(color.get()));
+  const hsl = () => updateLabel(gRgbaToHsl(color.get()));
+
+  const Formats = (
+    <box spacing={4} vertical halign={Gtk.Align.END}>
+      <button setup={pointer} label="hex" onClicked={hex} />
+      <button setup={pointer} label="rgb" onClicked={rgb} />
+      <button setup={pointer} label="hsl" onClicked={hsl} />
+    </box>
+  );
 
   return (
     <box cssClasses={["color-switcher"]} spacing={8} hexpand>
       {Display}
-      <Formats />
+      {Formats}
     </box>
   );
 }
 
-function Enter() {
+function EntryBox() {
   function clear() {
+    Entry.placeholderText = color.get().to_string();
     Entry.text = "";
-    colorLabel.set(color.to_string());
   }
 
   const buttons = [
@@ -93,14 +82,14 @@ function Enter() {
       icon: Icons.actions.save,
       tooltip: "Add color to history",
       cmd: () => {
-        picker.add(gRgbaToHex(color));
+        picker.add(gRgbaToHex(color.get()));
         clear();
       },
     },
     {
       icon: Icons.actions.copy,
       tooltip: "Copy color to clipboard",
-      cmd: () => picker.copy(colorLabel.get()),
+      cmd: () => picker.copy(Entry.placeholderText),
     },
     {
       icon: Icons.actions.clear,
@@ -111,8 +100,7 @@ function Enter() {
       icon: Icons.colorpicker,
       tooltip: "Pick color",
       cmd: async () => {
-        const newColor = await picker.pick();
-        if (!newColor) return;
+        const newColor = (await picker.pick())!;
         updateColor(newColor);
       },
     },
@@ -137,9 +125,14 @@ function Enter() {
 
 export default () => (
   <Dropdown label={<label label="Color Selector" cssClasses={["title"]} />}>
-    <box cssClasses={["converter"]} vertical spacing={8}>
+    <box
+      cssClasses={["converter"]}
+      vertical
+      spacing={8}
+      onDestroy={() => color.drop()}
+    >
       <Switcher />
-      <Enter />
+      <EntryBox />
     </box>
   </Dropdown>
 );

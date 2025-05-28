@@ -1,11 +1,11 @@
 import { bind, Variable, writeFile } from "astal";
-import { Gtk } from "astal/gtk4";
+import { Gtk, Gdk } from "astal/gtk4";
 import Gio from "gi://Gio";
 
 import Picker from "@services/colorpicker";
 
 import Dropdown from "@lib/widgets/Dropdown";
-import { ScrolledWindow } from "@lib/astalified";
+import { ColorDialogButton, ScrolledWindow } from "@lib/astalified";
 import { hexToRgb, hexToHsl } from "@lib/colors";
 import Icons from "@lib/icons";
 import { pointer } from "@lib/utils";
@@ -24,19 +24,11 @@ function ColorItem(color: string) {
       hexpand
     >
       <box>
-        <box
+        <ColorDialogButton
           setup={(self) => {
-            const colorClass = `color-${color.startsWith("#") ? color.substring(1) : color}`;
-            self.add_css_class(colorClass);
-
-            const sp = new Gtk.CssProvider();
-            sp.load_from_string(
-              `box.color-item box.${colorClass} { background-color: ${color}; }`,
-            );
-
-            self
-              .get_style_context()
-              .add_provider(sp, Gtk.STYLE_PROVIDER_PRIORITY_USER);
+            const gRgb = new Gdk.RGBA();
+            gRgb.parse(color);
+            self.rgba = gRgb;
           }}
           cssClasses={["color-box"]}
           halign={START}
@@ -48,38 +40,27 @@ function ColorItem(color: string) {
   );
 
   const Switcher = bind(curr).as((c) => {
-    const setRgb = () => {
-      const rgb = hexToRgb(color);
-      if (rgb) curr.set(rgb);
-    };
-
-    const setHsl = () => {
-      const hsl = hexToHsl(color);
-      if (hsl) curr.set(hsl);
-    };
-
     switch (c) {
       case color:
+        const setRgb = () => curr.set(hexToRgb(color)!);
         return <button setup={pointer} label="rgb" onClicked={setRgb} />;
       case hexToRgb(color):
+        const setHsl = () => curr.set(hexToHsl(color)!);
         return <button setup={pointer} label="hsl" onClicked={setHsl} />;
       default:
-        return (
-          <button
-            setup={pointer}
-            label="hex"
-            onClicked={() => curr.set(color)}
-          />
-        );
+        const setHex = () => curr.set(color);
+        return <button setup={pointer} label="hex" onClicked={setHex} />;
     }
   });
 
   const Actions = (
     <box className="actions" halign={END}>
       {Switcher}
-      <button setup={pointer} onClicked={() => picker.remove(color)}>
-        <image iconName={Icons.actions.close} />
-      </button>
+      <button
+        setup={pointer}
+        iconName={Icons.actions.close}
+        onClicked={() => picker.remove(color)}
+      />
     </box>
   );
 
@@ -99,8 +80,7 @@ function Actions() {
       initialName: "color-history.json",
     });
 
-    const cancel = new Gio.Cancellable();
-    Picker.save(null, cancel, (_, res) => {
+    Picker.save(null, null, (_, res) => {
       const newFile = Picker.save_finish(res)!;
       const newPath = newFile.get_path()!;
       writeFile(newPath, JSON.stringify(picker.colors));

@@ -1,5 +1,5 @@
 import { execAsync, bind } from "astal";
-import { Gtk } from "astal/gtk4";
+import { Gtk, hook } from "astal/gtk4";
 import Bluetooth from "gi://AstalBluetooth";
 
 import Icon from "@lib/icons";
@@ -20,14 +20,19 @@ function Status() {
   return (
     <box cssClasses={["status", "section"]}>
       <button
-        setup={(self) => self.set_cursor_from_name("pointer")}
-        cssClasses={bind(bluetooth, "isPowered").as((p) => [
-          "big-toggle",
-          p ? "on" : "off",
-        ])}
-        tooltipText={bind(bluetooth, "isPowered").as(
-          (p) => `Turn ${p ? "off" : "on"} Bluetooth`,
-        )}
+        setup={(self) => {
+          self.set_cursor_from_name("pointer");
+
+          function powerHook() {
+            const p = bluetooth.isPowered;
+            self.tooltipText = `Turn ${p ? "off" : "on"} Bluetooth`;
+            p ? self.remove_css_class("off") : self.add_css_class("on");
+          }
+
+          powerHook();
+          hook(self, bluetooth, "notify::is-powered", powerHook);
+        }}
+        cssClasses={["big-toggle"]}
         onClicked={action}
       >
         <image iconName={icon} iconSize={Gtk.IconSize.LARGE} />

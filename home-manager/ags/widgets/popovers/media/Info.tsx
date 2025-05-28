@@ -1,5 +1,5 @@
 import { bind, Variable } from "astal";
-import { Gtk } from "astal/gtk4";
+import { Gtk, hook } from "astal/gtk4";
 
 import Mpris from "gi://AstalMpris";
 
@@ -17,7 +17,6 @@ const { START, END, FILL } = Gtk.Align;
 export default (player: Mpris.Player) => {
   const CavaWidget: Variable<Gtk.Widget | null> = Variable(null);
 
-  const CoverArtBox = <box cssClasses={["cover-art-box"]} />;
   const VisToggle = (overlay: Gtk.Overlay) => (
     <button
       setup={(self) => self.set_cursor_from_name("pointer")}
@@ -28,7 +27,7 @@ export default (player: Mpris.Player) => {
           CurrentCava.visible = !CurrentCava.visible;
         } else {
           // Lazy load Cava visualizer
-          const newCava = Visualizer()!;
+          const newCava = Visualizer();
           CavaWidget.set(newCava);
           overlay.add_overlay(newCava);
         }
@@ -41,25 +40,34 @@ export default (player: Mpris.Player) => {
   );
 
   // Display cover art
+  const CoverArtBox = <box cssClasses={["cover-art-box"]} />;
+  const Art = (
+    <Picture
+      setup={(self) => {
+        function artHook() {
+          self.visible = Boolean(player.coverArt);
+          if (!player.coverArt) return;
+
+          self.file = Gio.File.new_for_path(player.coverArt);
+        }
+        artHook();
+        hook(self, player, "notify::cover-art", artHook);
+      }}
+      type="overlay clip"
+      cssClasses={["cover-art"]}
+      contentFit={Gtk.ContentFit.COVER}
+      valign={FILL}
+    />
+  );
+
   const CoverArt = (
     <overlay
       setup={(self) => self.add_overlay(VisToggle(self))}
       cssClasses={["cover-art-container"]}
+      onDestroy={() => CavaWidget.drop()}
     >
-      {bind(player, "coverArt").as((a) => {
-        if (!a) return [CoverArtBox];
-
-        return [
-          CoverArtBox,
-          <Picture
-            type="overlay clip"
-            cssClasses={["cover-art"]}
-            file={Gio.File.new_for_path(a)}
-            contentFit={Gtk.ContentFit.COVER}
-            valign={FILL}
-          />,
-        ];
-      })}
+      {CoverArtBox}
+      {Art}
     </overlay>
   );
 

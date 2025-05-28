@@ -16,19 +16,16 @@ const fileExists = (path: string) => GLib.file_test(path, GLib.FileTest.EXISTS);
 const time = (time: number, format = "%H:%M") =>
   GLib.DateTime.new_from_unix_local(time).format(format)!;
 
-const urgency = (n: Notifd.Notification) => {
-  const { LOW, NORMAL, CRITICAL } = Notifd.Urgency;
-  // match operator when?
+function urgency(n: Notifd.Notification) {
   switch (n.urgency) {
-    case LOW:
+    case Notifd.Urgency.LOW:
       return "low";
-    case CRITICAL:
+    case Notifd.Urgency.CRITICAL:
       return "critical";
-    case NORMAL:
     default:
       return "normal";
   }
-};
+}
 
 type Props = {
   setup(self: Gtk.Box): void;
@@ -44,9 +41,7 @@ export default (props: Props) => {
 
   // Display the icon in various possible formats
   function Icon() {
-    let Image = (
-      <image cssClasses={["app-icon"]} iconName="dialog-information-symbolic" />
-    );
+    let Image: Gtk.Widget;
 
     if (n.appIcon || n.desktopEntry) {
       Image = (
@@ -55,21 +50,26 @@ export default (props: Props) => {
           iconName={n.appIcon || n.desktopEntry}
         />
       );
-    } else if (n.image) {
-      if (fileExists(n.image)) {
-        Image = <image cssClasses={["image"]} valign={START} file={n.image} />;
-      } else if (isIcon(n.image)) {
-        Image = (
-          <image
-            iconName={n.image}
-            cssClasses={["icon-image"]}
-            hexpand
-            vexpand
-            halign={CENTER}
-            valign={CENTER}
-          />
-        );
-      }
+    } else if (n.image && fileExists(n.image)) {
+      Image = <image cssClasses={["image"]} valign={START} file={n.image} />;
+    } else if (n.image && isIcon(n.image)) {
+      Image = (
+        <image
+          iconName={n.image}
+          cssClasses={["icon-image"]}
+          hexpand
+          vexpand
+          halign={CENTER}
+          valign={CENTER}
+        />
+      );
+    } else {
+      Image = (
+        <image
+          cssClasses={["app-icon"]}
+          iconName="dialog-information-symbolic"
+        />
+      );
     }
 
     return <box cssClasses={["notif-icon"]}>{Image}</box>;
@@ -109,7 +109,7 @@ export default (props: Props) => {
 
     const Container = (
       <box cssClasses={["content"]} vertical>
-        {Summary}
+        {[Summary]}
       </box>
     ) as Gtk.Box;
 

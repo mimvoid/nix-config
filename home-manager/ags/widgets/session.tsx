@@ -51,22 +51,22 @@ function Session() {
     },
   ];
 
-  for (const a of actions) {
+  for (const { name, command, halign, valign } of actions) {
     const Button = (
       <button
         setup={(self) => self.set_cursor_from_name("pointer")}
-        name={a.name}
+        name={name}
         cssClasses={["box"]}
-        halign={a.halign}
-        valign={a.valign}
-        onClicked={() => exec(a.command)}
-        iconName={Icon.powermenu[a.name]}
+        halign={halign}
+        valign={valign}
+        onClicked={() => exec(command)}
+        iconName={Icon.powermenu[name]}
       />
     );
 
     const cell = (align: Gtk.Align) => (align === END ? 1 : 2);
 
-    ButtonGrid.attach(Button, cell(a.halign), cell(a.valign), 1, 1);
+    ButtonGrid.attach(Button, cell(halign), cell(valign), 1, 1);
   }
 
   return ButtonGrid;
@@ -74,15 +74,14 @@ function Session() {
 
 export default () => (
   <window
-    setup={(self) => {
-      const layerrules = [
+    setup={(self) =>
+      setLayerrules(self.namespace, [
         "animation popin 95%",
         "blur",
         "ignorezero",
         "xray 0",
-      ];
-      setLayerrules(self.namespace, layerrules);
-    }}
+      ])
+    }
     name="session"
     namespace="session"
     cssClasses={["session"]}

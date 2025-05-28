@@ -1,5 +1,5 @@
 import { Variable } from "astal";
-import { Gtk } from "astal/gtk4";
+import { Gtk, hook } from "astal/gtk4";
 import Bluetooth from "gi://AstalBluetooth";
 import Icon from "@lib/icons";
 
@@ -10,56 +10,51 @@ export const connectedDevices: Variable<Gtk.Widget[]> = Variable([]);
 export const disconnectedDevices: Variable<Gtk.Widget[]> = Variable([]);
 
 bluetooth.get_devices().map((device) => {
-  const DeviceInfo: Gtk.Widget[] = [];
+  const DeviceInfo = (
+    <box cssClasses={["device-info"]} halign={END} />
+  ) as Gtk.Box;
 
   if (device.paired) {
-    DeviceInfo.push(
+    DeviceInfo.append(
       <image
         iconName={Icon.bluetooth.paired}
         tooltipText="Paired"
-        visible={device.paired}
       />,
     );
   }
 
-  const iconName = Variable(device.icon);
+  const DeviceIcon = (<image iconName={device.icon} />) as Gtk.Image;
 
   return (
     <button
       setup={(self) => {
         self.set_cursor_from_name("pointer");
 
-        if (device.connected) {
-          const d = connectedDevices.get();
-          d.push(self);
-          connectedDevices.set(d);
-        } else {
-          const d = disconnectedDevices.get();
-          d.push(self);
-          disconnectedDevices.set(d);
-        }
-
-        device.connect("notify::connected", ({ c }) => {
+        function connectHook() {
+          const c = device.connected;
           self.tooltipText = `${c ? "Disconnect" : "Connect"} device`;
 
-          const toRemoveFrom = c ? disconnectedDevices : connectedDevices;
           const toAddTo = c ? connectedDevices : disconnectedDevices;
+          toAddTo.set([...toAddTo.get(), self]);
+        }
 
+        connectHook();
+
+        hook(self, device, "notify::connected", () => {
+          connectHook();
+
+          const toRemoveFrom = device.connected
+            ? disconnectedDevices
+            : connectedDevices;
           toRemoveFrom.set(toRemoveFrom.get().filter((d) => d !== self));
-
-          const d = toAddTo.get();
-          d.push(self);
-          toAddTo.set(d);
         });
       }}
-      tooltipText={`${device.connected ? "Disconnect" : "Connect"} device`}
       cssClasses={["device"]}
       onClicked={() => {
         if (device.connecting) return;
 
-        iconName.set(Icon.waiting);
-
-        const callback = () => iconName.set(device.icon);
+        DeviceIcon.iconName = Icon.waiting;
+        const callback = () => (DeviceIcon.iconName = device.icon);
 
         device.connected
           ? device.disconnect_device(callback)
@@ -67,11 +62,9 @@ bluetooth.get_devices().map((device) => {
       }}
     >
       <box widthRequest={180}>
-        <image iconName={iconName()} onDestroy={() => iconName.drop()} />
+        {DeviceIcon}
         <label label={device.alias} halign={START} hexpand />
-        <box cssClasses={["device-info"]} halign={END}>
-          {DeviceInfo}
-        </box>
+        {DeviceInfo}
       </box>
     </button>
   );

@@ -91,15 +91,16 @@
     color: palette.$primary-dim;
   }
 
-  .color-circle {
-    margin-right: 0.25rem;
-    padding: 0.3rem;
-  }
-
   .color-display {
-    border: 1px solid palette.$box;
-    border-radius: 24px;
-    padding: 0 0.75rem;
+    button {
+      margin-left: 0.5em;
+      padding: 0;
+    }
+
+    colorswatch {
+      border: 1px solid palette.$box-bright;
+      border-radius: 24px;
+    }
   }
 }
 

@@ -1,7 +1,9 @@
 import { bind } from "astal";
-import { Gtk } from "astal/gtk4";
+import { Gdk, hook } from "astal/gtk4";
+
 import Picker from "@services/colorpicker";
 import HoverRevealer from "@lib/widgets/HoverRevealer";
+import { ColorDialogButton } from "@lib/astalified";
 import Icons from "@lib/icons";
 import ColorsPopover from "../popovers/colors";
 
@@ -20,26 +22,25 @@ const Trigger = (
 function Color() {
   // A circle showing the last picked color
   const colorDisplay = (
-    <box cssClasses={["color-circle"]}>
-      {bind(picker, "lastColor").as((c) => {
-        const colorClass = `color-${c.startsWith("#") ? c.substring(1) : c}`;
-        const sp = new Gtk.CssProvider();
-        sp.load_from_string(
-          `.color-circle box.${colorClass} { background-color: ${c}; }`,
-        );
-
-        return [
-          <box
-            setup={(self) =>
-              self
-                .get_style_context()
-                .add_provider(sp, Gtk.STYLE_PROVIDER_PRIORITY_USER)
-            }
-            cssClasses={["color-display", colorClass]}
-          />,
-        ];
-      })}
-    </box>
+    <ColorDialogButton
+      setup={(self) => {
+        function colorHook() {
+          const gRgb = new Gdk.RGBA();
+          if (gRgb.parse(picker.lastColor)) {
+            self.rgba = gRgb;
+          } else if (!self.rgba) {
+            gRgb.red = 0;
+            gRgb.green = 0;
+            gRgb.blue = 0;
+            gRgb.alpha = 1;
+            self.rgba = gRgb;
+          }
+        }
+        colorHook();
+        hook(self, picker, "notify::lastColor", colorHook);
+      }}
+      cssClasses={["color-display"]}
+    />
   );
 
   // Include a color label and the circle
@@ -52,7 +53,6 @@ function Color() {
             {colorDisplay}
           </box>
         }
-        onClicked={() => (ColorsPopover.visible = true)}
       >
         {Trigger}
       </HoverRevealer>

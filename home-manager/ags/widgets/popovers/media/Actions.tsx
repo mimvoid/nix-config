@@ -1,5 +1,5 @@
 import { bind } from "astal";
-import { Gtk } from "astal/gtk4";
+import { Gtk, hook } from "astal/gtk4";
 import Mpris from "gi://AstalMpris";
 
 import Icons from "@lib/icons";
@@ -13,10 +13,9 @@ export default (player: Mpris.Player) => {
   // Play or pause
   // Icon changes based on the playing status
   function Toggle() {
-    const icon = bind(player, "playbackStatus").as((s) =>
-      s === Mpris.PlaybackStatus.PLAYING
-        ? Icons.mpris.pause
-        : Icons.mpris.start,
+    const icon = bind(player, "playbackStatus").as(
+      (s) =>
+        Icons.mpris[s === Mpris.PlaybackStatus.PLAYING ? "pause" : "start"],
     );
 
     return (
@@ -50,59 +49,67 @@ export default (player: Mpris.Player) => {
     />
   );
 
-  function Loop() {
-    const { UNSUPPORTED, NONE, TRACK } = Mpris.Loop;
+  const Loop = (
+    <button
+      setup={(self) => {
+        pointer(self);
 
-    const icon = bind(player, "loopStatus").as((s) =>
-      s === TRACK ? Icons.mpris.loopSong : Icons.mpris.loop,
-    );
+        function loopHook() {
+          const { UNSUPPORTED, NONE, TRACK } = Mpris.Loop;
+          const loop = player.loopStatus;
 
-    return (
-      <button
-        setup={pointer}
-        cssClasses={bind(player, "loopStatus").as((s) => [
-          "loop",
-          s === NONE ? "off" : "",
-        ])}
-        onClicked={() => player.loop()}
-        visible={bind(player, "loopStatus").as((s) => s !== UNSUPPORTED)}
-        halign={START}
-        iconName={icon}
-      />
-    );
-  }
+          self.visible = loop !== UNSUPPORTED;
+          if (!self.visible) return;
 
-  function Shuffle() {
-    const { UNSUPPORTED, ON, OFF } = Mpris.Shuffle;
+          self.iconName = Icons.mpris[loop === TRACK ? "loopSong" : "loop"];
+          loop === NONE
+            ? self.add_css_class("off")
+            : self.remove_css_class("off");
+        }
 
-    const icon = bind(player, "shuffleStatus").as((s) =>
-      s === ON ? Icons.mpris.shuffle : Icons.mpris.noShuffle,
-    );
+        loopHook();
+        hook(self, player, "notify::loop-status", loopHook);
+      }}
+      cssClasses={["loop"]}
+      onClicked={() => player.loop()}
+      halign={START}
+    />
+  );
 
-    return (
-      <button
-        setup={pointer}
-        cssClasses={bind(player, "shuffleStatus").as((s) => [
-          "shuffle",
-          s === OFF ? "off" : "",
-        ])}
-        onClicked={() => player.shuffle()}
-        visible={bind(player, "shuffleStatus").as((s) => s !== UNSUPPORTED)}
-        halign={END}
-        iconName={icon}
-      />
-    );
-  }
+  const Shuffle = (
+    <button
+      setup={(self) => {
+        pointer(self);
+
+        function shuffleHook() {
+          const { UNSUPPORTED, ON, OFF } = Mpris.Shuffle;
+          const s = player.shuffleStatus;
+
+          self.visible = s !== UNSUPPORTED;
+          if (!self.visible) return;
+
+          self.iconName = Icons.mpris[s === ON ? "shuffle" : "noShuffle"];
+          s === OFF ? self.add_css_class("off") : self.remove_css_class("off");
+        }
+
+        shuffleHook();
+        hook(self, player, "notify::shuffle-status", shuffleHook);
+      }}
+      cssClasses={["shuffle"]}
+      onClicked={() => player.shuffle()}
+      halign={END}
+    />
+  );
 
   return (
     <centerbox cssClasses={["media-actions"]}>
-      <Loop />
+      {Loop}
       <box cssClasses={["main-actions"]} halign={CENTER} hexpand>
         {Prev}
         <Toggle />
         {Next}
       </box>
-      <Shuffle />
+      {Shuffle}
     </centerbox>
   );
 };

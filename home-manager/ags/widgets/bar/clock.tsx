@@ -5,9 +5,6 @@ import Calendar from "../popovers/calendar";
 import { time } from "@lib/variables";
 import Icon from "@lib/icons";
 
-// Format the date & time
-const timeFmt = bind(time).as((t) => t.format("%a · %b %d · %H:%M") || "");
-
 export default () => (
   <menubutton>
     <button
@@ -18,7 +15,9 @@ export default () => (
     >
       <box>
         <image iconName={Icon.calendar} />
-        {timeFmt}
+        <label
+          label={bind(time).as((t) => t.format("%a · %b %d · %H:%M") || "")}
+        />
       </box>
     </button>
     {Calendar}

@@ -85,10 +85,18 @@
   }
 
   .color-box {
-    @include looks.radius;
     min-width: 2.5rem;
     min-height: 2.5rem;
     margin-right: 0.75rem;
+
+    button {
+      margin: 0;
+      padding: 0;
+    }
+
+    colorswatch {
+      @include looks.radius;
+    }
   }
 
   .main-info {
@@ -106,7 +114,6 @@
     }
 
     colorswatch {
-      @include looks.radius;
       min-width: 8rem;
       min-height: 6rem;
     }

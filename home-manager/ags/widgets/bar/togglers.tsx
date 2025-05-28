@@ -1,4 +1,4 @@
-import { App, Gtk } from "astal/gtk4";
+import { App } from "astal/gtk4";
 import Icon from "@lib/icons";
 
 import DashboardPopover from "../popovers/dashboard";
@@ -10,7 +10,6 @@ export const Media = (
     <button
       setup={(self) => self.set_cursor_from_name("pointer")}
       cssClasses={["media-launch"]}
-      onClicked={() => (MediaPopover.visible = true)}
       iconName={Icon.mimetypes.audio}
     />
     {MediaPopover}
@@ -23,7 +22,6 @@ export const Dashboard = (
     <button
       setup={(self) => self.set_cursor_from_name("pointer")}
       cssClasses={["dashboard-launch"]}
-      onClicked={() => (DashboardPopover.visible = true)}
       iconName={Icon.overview}
     />
     {DashboardPopover}
@@ -35,7 +33,7 @@ export const Session = (
   <button
     setup={(self) => self.set_cursor_from_name("pointer")}
     cssClasses={["session-launch"]}
-    onClicked={() => App.toggle_window("session")}
     iconName={Icon.powermenu.indicator}
+    onClicked={() => App.toggle_window("session")}
   />
 );

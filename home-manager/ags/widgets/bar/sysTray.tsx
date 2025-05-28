@@ -1,5 +1,5 @@
-import { bind, Variable } from "astal";
-import { Gtk } from "astal/gtk4";
+import { bind } from "astal";
+import { Gtk, hook } from "astal/gtk4";
 import Tray from "gi://AstalTray";
 import Icon from "@lib/icons";
 
@@ -27,23 +27,27 @@ function TrayIcons() {
   return <box spacing={8}>{Items}</box>;
 }
 
-const reveal = Variable(false);
-
 // Display system tray after clicking on a button
 const Revealer = (
   <revealer
     transitionDuration={250}
     transitionType={Gtk.RevealerTransitionType.SLIDE_LEFT}
-    revealChild={reveal()}
   >
     <TrayIcons />
   </revealer>
-);
+) as Gtk.Revealer;
 
 function SysTrayToggle() {
   const ToggleIcon = (
     <image
-      cssClasses={bind(reveal).as((r) => ["hider", r ? "open" : ""])}
+      setup={(self) =>
+        hook(self, Revealer, "notify::revealChild", () =>
+          Revealer.revealChild
+            ? self.add_css_class("open")
+            : self.remove_css_class("open"),
+        )
+      }
+      cssClasses={["hider"]}
       iconName={Icon.hider}
     />
   );
@@ -52,12 +56,19 @@ function SysTrayToggle() {
   // Don't actually include the revealer in the hitbox
   return (
     <button
-      setup={(self) => self.set_cursor_from_name("pointer")}
-      cssClasses={bind(tray, "items").as((items) => [
-        "hider-wrapper",
-        items[0] ? "non-empty" : "empty",
-      ])}
-      onClicked={() => reveal.set(!reveal.get())}
+      setup={(self) => {
+        self.set_cursor_from_name("pointer");
+        if (tray.items && tray.items[0]) self.add_css_class("non-empty");
+
+        hook(self, tray, "item-added", () => {
+          if (!self.has_css_class("non-empty")) self.add_css_class("non-empty");
+        });
+        hook(self, tray, "item-removed", () => {
+          if (!tray.items || !tray.items[0]) self.remove_css_class("non-empty");
+        })
+      }}
+      cssClasses={["hider-wrapper"]}
+      onClicked={() => (Revealer.revealChild = !Revealer.revealChild)}
     >
       <box>
         {Indicator}

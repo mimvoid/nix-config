@@ -1,9 +1,9 @@
 import { bind } from "astal";
-import { Gtk } from "astal/gtk4";
+import { Gtk, hook } from "astal/gtk4";
 import Wp from "gi://AstalWp";
-import { pointer, drawValuePercentage } from "@lib/utils";
+import { drawValuePercentage } from "@lib/utils";
 
-const { START, CENTER, END, FILL } = Gtk.Align;
+const { START, CENTER, FILL } = Gtk.Align;
 
 const wp = Wp.get_default();
 const speaker = wp?.audio.defaultSpeaker!;
@@ -15,15 +15,20 @@ function Section(endpoint: Wp.Endpoint, name: string) {
   const Icon = (
     // Can mute or unmute
     <button
-      setup={(self) => self.set_cursor_from_name("pointer")}
-      cssClasses={bind(endpoint, "mute").as((m) => [
-        "big-toggle",
-        m ? "off" : "on",
-      ])}
+      setup={(self) => {
+        self.set_cursor_from_name("pointer");
+
+        function muteHook() {
+          const m = endpoint.mute;
+          self.tooltipText = `${m ? "Unmute" : "Mute"} ${lowerName}`;
+          m ? self.add_css_class("off") : self.remove_css_class("off");
+        }
+
+        muteHook();
+        hook(self, endpoint, "notify::mute", muteHook);
+      }}
+      cssClasses={["big-toggle"]}
       onClicked={() => (endpoint.mute = !endpoint.mute)}
-      tooltipText={bind(endpoint, "mute").as(
-        (m) => `${m ? "Unmute" : "Mute"} ${lowerName}`,
-      )}
     >
       <image
         iconName={bind(endpoint, "volumeIcon")}
@@ -61,15 +66,14 @@ function Section(endpoint: Wp.Endpoint, name: string) {
       valign={CENTER}
       hexpand
       vexpand
+      vertical
     >
-      <box vertical>
-        <label cssClasses={["title"]} label={name} halign={START} />
-        <box>
-          {Icon}
-          <box vertical valign={CENTER} hexpand vexpand>
-            {Label}
-            {Slider}
-          </box>
+      <label cssClasses={["title"]} label={name} halign={START} />
+      <box>
+        {Icon}
+        <box vertical valign={CENTER} hexpand vexpand>
+          {Label}
+          {Slider}
         </box>
       </box>
     </box>

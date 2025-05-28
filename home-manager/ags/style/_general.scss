@@ -99,11 +99,8 @@ button {
 .big-toggle {
   @include looks.transition;
   padding: 0.75rem;
-
-  &.on {
-    background-color: palette.$primary;
-    color: palette.$base;
-  }
+  color: palette.$base;
+  background-color: palette.$primary;
 
   &.off {
     background-color: palette.$box;

@@ -1,30 +1,24 @@
-import { bind } from "astal";
+import { hook } from "astal/gtk4";
 import Hyprland from "gi://AstalHyprland";
 import Pango from "gi://Pango";
 
 const hypr = Hyprland.get_default();
 
-export default () => {
-  // Get the focused window
-  const focused = bind(hypr, "focusedClient");
+export default () => (
+  <label
+    setup={(self) => {
+      function hookClient() {
+        self.visible = Boolean(hypr.focusedClient);
+        if (!hypr.focusedClient) return;
 
-  // Format the focused window title
-  const Label = focused.as(
-    (client) =>
-      client && (
-        <label
-          label={bind(client, "title")}
-          tooltipText={bind(client, "title")}
-          ellipsize={Pango.EllipsizeMode.END}
-          maxWidthChars={42}
-        />
-      ),
-  );
-
-  // Show the title if there is a focused window
-  return (
-    <box cssClasses={["window-title"]} visible={focused.as(Boolean)}>
-      {Label}
-    </box>
-  );
-};
+        self.label = hypr.focusedClient.title;
+        self.tooltipText = hypr.focusedClient.title;
+      }
+      hookClient();
+      hook(self, hypr, "notify::focused-client", hookClient);
+    }}
+    cssClasses={["window-title"]}
+    ellipsize={Pango.EllipsizeMode.END}
+    maxWidthChars={42}
+  />
+);
