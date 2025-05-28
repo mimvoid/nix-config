@@ -1,9 +1,11 @@
 import { bind, Variable, writeFile } from "astal";
 import { Gtk } from "astal/gtk4";
+import Gio from "gi://Gio";
 
 import Picker from "@services/colorpicker";
 
 import Dropdown from "@lib/widgets/Dropdown";
+import { ScrolledWindow } from "@lib/astalified";
 import { hexToRgb, hexToHsl } from "@lib/colors";
 import Icons from "@lib/icons";
 import { pointer } from "@lib/utils";
@@ -23,10 +25,20 @@ function ColorItem(color: string) {
     >
       <box>
         <box
+          setup={(self) => {
+            const colorClass = `color-${color.startsWith("#") ? color.substring(1) : color}`;
+            self.add_css_class(colorClass);
+
+            const sp = new Gtk.CssProvider();
+            sp.load_from_string(
+              `box.color-item box.${colorClass} { background-color: ${color}; }`,
+            );
+
+            self
+              .get_style_context()
+              .add_provider(sp, Gtk.STYLE_PROVIDER_PRIORITY_USER);
+          }}
           cssClasses={["color-box"]}
-          css={`
-            background-color: ${color};
-          `}
           halign={START}
           valign={CENTER}
         />
@@ -81,22 +93,18 @@ function ColorItem(color: string) {
 
 function Actions() {
   const saveColors = () => {
-    const Picker = new Gtk.FileChooserNative({
-      action: Gtk.FileChooserAction.SAVE,
+    const Picker = new Gtk.FileDialog({
       acceptLabel: "Save",
+      initialFolder: Gio.File.new_for_path(picker.storeFolder),
+      initialName: "color-history.json",
     });
-    Picker.set_filename(picker.storePath);
-    Picker.set_current_name("color-history.json");
 
-    const res = Picker.run();
-    if (res === Gtk.ResponseType.ACCEPT) {
-      const newFilename = Picker.get_filename();
-      if (!newFilename) return;
-
-      writeFile(newFilename, JSON.stringify(picker.colors));
-    }
-
-    Picker.destroy();
+    const cancel = new Gio.Cancellable();
+    Picker.save(null, cancel, (_, res) => {
+      const newFile = Picker.save_finish(res)!;
+      const newPath = newFile.get_path()!;
+      writeFile(newPath, JSON.stringify(picker.colors));
+    });
   };
 
   return (
@@ -123,16 +131,16 @@ export default () => {
   );
 
   return (
-    <Dropdown
-      cssClasses={["colorpicker-list"]}
-      label={<label label="History" cssClasses={["title"]} halign={START} />}
-    >
-      <box heightRequest={350}>
+    <ScrolledWindow heightRequest={350}>
+      <Dropdown
+        cssClasses={["colorpicker-list"]}
+        label={<label label="History" cssClasses={["title"]} halign={START} />}
+      >
         <box spacing={8} vertical>
           <Actions />
           {Colors}
         </box>
-      </box>
-    </Dropdown>
+      </Dropdown>
+    </ScrolledWindow>
   );
 };

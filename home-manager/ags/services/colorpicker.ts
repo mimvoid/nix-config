@@ -2,17 +2,7 @@ import { execAsync, readFile, writeFile } from "astal";
 import GObject, { register, property } from "astal/gobject";
 import GLib from "gi://GLib";
 
-const COLORS_STORE = GLib.get_user_state_dir() + "/ags/colorpicker.json";
 const MAX_COLORS = 10;
-
-function readColorsCache(): string[] {
-  try {
-    return JSON.parse(readFile(COLORS_STORE));
-  } catch (error) {
-    writeFile(COLORS_STORE, "[]");
-    return [];
-  }
-}
 
 @register({ GTypeName: "Colorpicker" })
 export default class ColorPicker extends GObject.Object {
@@ -23,7 +13,10 @@ export default class ColorPicker extends GObject.Object {
     return this.instance;
   }
 
-  #colors = readColorsCache();
+  readonly storeFolder = GLib.get_user_state_dir() + "/ags";
+  readonly storeFile = this.storeFolder + "/colorpicker.json";
+
+  #colors = this.readColorsCache();
 
   @property()
   get colors() {
@@ -33,14 +26,22 @@ export default class ColorPicker extends GObject.Object {
   set colors(colors) {
     this.#colors = colors;
     this.notify("colors");
-    writeFile(COLORS_STORE, JSON.stringify(colors, null, 2));
+    writeFile(this.storeFile, JSON.stringify(colors, null, 2));
   }
 
-  lastColor() {
+  @property()
+  get lastColor() {
     return this.colors[this.colors.length - 1] || "#000000";
   }
 
-  readonly storePath = COLORS_STORE;
+  private readColorsCache(): string[] {
+    try {
+      return JSON.parse(readFile(this.storeFile));
+    } catch (error) {
+      writeFile(this.storeFile, "[]");
+      return [];
+    }
+  }
 
   readonly pick = async () => {
     const color = await execAsync(

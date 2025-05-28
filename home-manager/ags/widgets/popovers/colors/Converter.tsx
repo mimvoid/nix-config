@@ -1,10 +1,10 @@
-import { Variable } from "astal";
+import { bind, Variable } from "astal";
 import { Gtk } from "astal/gtk4";
 import Gdk from "gi://Gdk";
 
 import Picker from "@services/colorpicker";
 
-import { ColorButton } from "@lib/astalified";
+import { ColorDialogButton } from "@lib/astalified";
 import Dropdown from "@lib/widgets/Dropdown";
 
 import Icons from "@lib/icons";
@@ -19,28 +19,30 @@ let color = new Gdk.RGBA({
   blue: 230 / 255,
   alpha: 1.0,
 });
-color.parse(picker.lastColor());
+color.parse(picker.lastColor);
 
 const colorLabel = Variable(color.to_string());
 
 const Display = (
-  <ColorButton
-    rgba={color}
-    setup={pointer}
-    cssClasses={["color-box"]}
-    onColorSet={(self) => {
-      color = self.rgba;
-      colorLabel.set(self.rgba.to_string());
+  <ColorDialogButton
+    setup={(self) => {
+      pointer(self);
+      bind(self, "rgba").as((rgba) => {
+        color = rgba;
+        colorLabel.set(rgba.to_string());
+      });
     }}
+    rgba={color}
+    cssClasses={["color-box"]}
     hexpand
     vexpand
   />
-);
+) as Gtk.ColorDialogButton;
 
 function updateColor(value: string) {
   const newColor = color.parse(value);
   if (newColor) {
-    Display.set_property("rgba", color);
+    Display.rgba = color;
     colorLabel.set(color.to_string());
   }
 }
@@ -50,14 +52,13 @@ const Entry = (
     placeholderText={colorLabel()}
     onChanged={(self) => updateColor(self.text)}
   />
-);
+) as Gtk.Entry;
 
 function Switcher() {
   function Formats() {
     function updateLabel(value: string) {
-      if (!value) return;
       colorLabel.set(value);
-      Entry.set_property("text", colorLabel.get());
+      Entry.text = colorLabel.get();
     }
 
     const rgb = () => updateLabel(color.to_string());
@@ -82,10 +83,10 @@ function Switcher() {
 }
 
 function Enter() {
-  const clear = () => {
-    Entry.set_property("text", "");
+  function clear() {
+    Entry.text = "";
     colorLabel.set(color.to_string());
-  };
+  }
 
   const buttons = [
     {
@@ -121,17 +122,20 @@ function Enter() {
     <box vertical spacing={8}>
       {Entry}
       <box spacing={4} halign={Gtk.Align.END}>
-        {buttons.map((b) => (
-          <button setup={pointer} onClicked={b.cmd} tooltipText={b.tooltip}>
-            <image iconName={b.icon} />
-          </button>
+        {buttons.map(({ icon, tooltip, cmd }) => (
+          <button
+            setup={pointer}
+            onClicked={cmd}
+            tooltipText={tooltip}
+            iconName={icon}
+          />
         ))}
       </box>
     </box>
   );
 }
 
-export default () =>  (
+export default () => (
   <Dropdown label={<label label="Color Selector" cssClasses={["title"]} />}>
     <box cssClasses={["converter"]} vertical spacing={8}>
       <Switcher />
