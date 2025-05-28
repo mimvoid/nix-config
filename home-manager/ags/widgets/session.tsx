@@ -13,18 +13,14 @@ interface Action {
 }
 
 function Session() {
-  const { START, END, FILL } = Gtk.Align;
+  const { START, END } = Gtk.Align;
 
   const ButtonGrid = (
     <Grid
-      halign={FILL}
-      valign={FILL}
       rowHomogeneous={true}
       columnHomogeneous={true}
       columnSpacing={2}
       rowSpacing={2}
-      hexpand
-      vexpand
     />
   ) as Gtk.Grid;
 

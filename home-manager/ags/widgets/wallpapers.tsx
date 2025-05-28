@@ -40,9 +40,12 @@ export default () => {
 
   return (
     <window
-      setup={(self) =>
-        setLayerrules(self.namespace, ["blur", "ignorezero", "xray 0"])
-      }
+      setup={(self) => {
+        setLayerrules(self.namespace, ["blur", "ignorezero", "xray 0"]);
+        const monitor =
+          App.get_monitors()[self.monitor] || App.get_monitors()[0];
+        self.child.widthRequest = monitor.geometry.width;
+      }}
       name="wallpaperPicker"
       namespace="wallpaper-picker"
       cssClasses={["wallpaper-picker", "popover"]}
@@ -50,17 +53,15 @@ export default () => {
       layer={Astal.Layer.OVERLAY}
       exclusivity={Astal.Exclusivity.NORMAL}
       keymode={Astal.Keymode.EXCLUSIVE}
-      onKeyPressed={(self, keyval) => {
-        if (keyval === Gdk.KEY_Escape) self.visible = false;
+      onKeyPressed={(_, keyval) => {
+        if (keyval === Gdk.KEY_Escape) {
+          App.toggle_window("wallpaperPicker");
+        }
       }}
       application={App}
       marginBottom={12}
     >
-      <ScrolledWindow
-        hscrollbarPolicy={EXTERNAL}
-        vscrollbarPolicy={NEVER}
-        widthRequest={1200}
-      >
+      <ScrolledWindow hscrollbarPolicy={EXTERNAL} vscrollbarPolicy={NEVER}>
         <box spacing={8}>{Choices}</box>
       </ScrolledWindow>
     </window>
