@@ -24,3 +24,12 @@ $fallback-icons: "Papirus";
     0 (-$size) 0 $color,
     (-$size) 0 0 $color;
 }
+
+@mixin color-toggle($color) {
+  &.on {
+    background-color: $color;
+  }
+  &.off {
+    color: $color;
+  }
+}

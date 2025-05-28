@@ -1,17 +1,20 @@
 import { bind } from "astal";
 import { Gtk } from "astal/gtk4";
 import Network from "gi://AstalNetwork";
-import { pointer } from "@lib/utils";
 
 const network = Network.get_default();
 const wifi = network.wifi;
 
-const { START } = Gtk.Align;
+const { START, CENTER } = Gtk.Align;
 
 const Current = (
   <box cssClasses={["section", "current"]}>
     <button
-      setup={pointer}
+      setup={(self) => self.set_cursor_from_name("pointer")}
+      cssClasses={bind(wifi, "enabled").as((e) => [
+        "big-toggle",
+        e ? "on" : "off",
+      ])}
       onClicked={() => (wifi.enabled = !wifi.enabled)}
       tooltipText={bind(wifi, "enabled").as(
         (e) => `Turn ${e ? "off" : "on"} wifi`,
@@ -19,7 +22,7 @@ const Current = (
     >
       <image iconName={bind(wifi, "iconName")} iconSize={Gtk.IconSize.LARGE} />
     </button>
-    <box vertical>
+    <box valign={CENTER} vertical>
       <label label={bind(wifi, "ssid")} halign={START} />
       <label label={bind(wifi, "strength").as((i) => `${i}%`)} halign={START} />
     </box>

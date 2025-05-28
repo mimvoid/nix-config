@@ -7,10 +7,10 @@
     $c: palette.$tertiary-bright;
 
     trough highlight {
-      background: $c;
+      background-color: $c;
     }
-    button image {
-      color: $c;
+    button {
+      @include looks.color-toggle($c);
     }
   }
 
@@ -18,10 +18,10 @@
     $c: palette.$tertiary;
 
     trough highlight {
-      background: $c;
+      background-color: $c;
     }
-    button image {
-      color: $c;
+    button {
+      @include looks.color-toggle($c);
     }
   }
 
@@ -37,20 +37,7 @@
 
     button {
       margin-right: 0.75rem;
-
-      &.on {
-        background-color: palette.$tertiary;
-        image {
-          color: palette.$base;
-        }
-      }
-
-      &.off {
-        background-color: palette.$box;
-        image {
-          color: palette.$tertiary;
-        }
-      }
+      @include looks.color-toggle(palette.$tertiary);
     }
   }
 
@@ -87,10 +74,7 @@
 
     button {
       margin-right: 0.75rem;
-
-      image {
-        color: palette.$tertiary-dim;
-      }
+      @include looks.color-toggle(palette.$tertiary-dim);
     }
   }
 }
@@ -104,6 +88,7 @@
     @include looks.radius;
     min-width: 2.5rem;
     min-height: 2.5rem;
+    margin-right: 0.75rem;
   }
 
   .main-info {
