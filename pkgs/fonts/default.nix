@@ -2,6 +2,7 @@
 
 with pkgs;
 {
+  courier-prime-sans = callPackage ./courier-prime-sans { };
   leggie = callPackage ./leggie { };
   limelight = callPackage ./limelight { };
   ritzflf = callPackage ./ritzflf { };
