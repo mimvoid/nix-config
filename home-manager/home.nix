@@ -20,7 +20,7 @@
     ./links.nix
     ./tts.nix
     ./krita
-    ./neovim
+    ./neovim.nix
     ./terminal
     ./hypr
     ./xfconf
