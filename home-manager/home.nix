@@ -25,7 +25,7 @@
     ./xfconf
     ./guis
     ./firefox
-    ./ags
+    ./ags.nix
   ];
 
   home.packages = with pkgs; [
