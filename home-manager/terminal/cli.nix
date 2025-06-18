@@ -3,7 +3,6 @@
 {
   home.packages = with pkgs; [
     gnumake
-    unstable.zoxide
 
     # media
     imagemagick
@@ -100,6 +99,11 @@
         "--all"
         "--across"
       ];
+    };
+
+    zoxide = {
+      enable = true;
+      package = pkgs.unstable.zoxide;
     };
   };
 }
