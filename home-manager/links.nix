@@ -28,7 +28,7 @@ in
 
   home.file = {
     # Firefox userChrome & userContent
-    ".mozilla/firefox/${firefox-profile}/chrome" = symlink "${home-manager}/firefox/chrome";
+    ".mozilla/firefox/${firefox-profile}/chrome" = symlink "${home-manager}/firefox/panefox";
 
     # Obsidian CSS
     "${obsidian-dir}/.obsidian/snippets" = symlink "${home-manager}/obsidian-css";
