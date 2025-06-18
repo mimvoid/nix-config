@@ -1,0 +1,6 @@
+[submodule "wallpapers"]
+	path = wallpapers
+	url = https://github.com/mimvoid/wallpaper-stash
+[submodule "panefox"]
+	path = home-manager/firefox/panefox
+	url = https://github.com/mimvoid/panefox
