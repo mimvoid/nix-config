@@ -77,18 +77,29 @@ popover {
   }
 }
 
-button {
-  @include looks.transition;
+button,
+menubutton,
+image {
+  transition:
+    all 0.25s ease-in-out,
+    color 0s ease-in-out,
+    transform 0.1s ease-in-out;
+}
 
+button {
   padding: 0 0.4em;
   background-color: transparent;
 
-  &:focus {
+  &:focus-within {
     background-color: color.change(palette.$box-dim, $alpha: 0.05);
   }
 
   &:hover {
     background-color: palette.$box;
+
+    image {
+      -gtk-icon-transform: scale(1.05);
+    }
   }
 
   + button {

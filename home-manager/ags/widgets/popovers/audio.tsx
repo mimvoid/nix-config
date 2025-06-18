@@ -1,7 +1,7 @@
 import { bind } from "astal";
 import { Gtk, hook } from "astal/gtk4";
 import Wp from "gi://AstalWp";
-import { drawValuePercentage } from "@lib/utils";
+import { pointer, popButton, drawValuePercentage } from "@lib/utils";
 
 const { START, CENTER, FILL } = Gtk.Align;
 
@@ -16,7 +16,8 @@ function Section(endpoint: Wp.Endpoint, name: string) {
     // Can mute or unmute
     <button
       setup={(self) => {
-        self.set_cursor_from_name("pointer");
+        pointer(self);
+        popButton(self);
 
         function muteHook() {
           const m = endpoint.mute;

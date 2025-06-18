@@ -1,8 +1,22 @@
-import { Gtk } from "astal/gtk4";
+import { timeout } from "astal";
+import { Gtk, hook } from "astal/gtk4";
 import AstalHyprland from "gi://AstalHyprland";
 
 export function pointer(self: Gtk.Widget) {
   self.set_cursor_from_name("pointer");
+}
+
+export function popButton(self: Gtk.Button) {
+  hook(self, self, "clicked", () => {
+    self.add_css_class("pop");
+    timeout(100, () => self.remove_css_class("pop"));
+  });
+}
+export function popMenuButton(self: Gtk.MenuButton, popover: Gtk.Popover) {
+  hook(self, popover, "show", () => {
+    self.add_css_class("pop");
+    timeout(100, () => self.remove_css_class("pop"));
+  });
 }
 
 export function drawValuePercentage(w: Gtk.Scale) {

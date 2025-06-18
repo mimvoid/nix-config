@@ -16,6 +16,7 @@
 .dashboard {
   .toggles {
     button {
+      @include looks.color-toggle(palette.$primary);
       padding: 1.5em;
     }
 

@@ -6,12 +6,8 @@ import MediaPopover from "../popovers/media";
 
 // Toggle mpris media widget menu
 export const Media = (
-  <menubutton>
-    <button
-      setup={(self) => self.set_cursor_from_name("pointer")}
-      cssClasses={["media-launch"]}
-      iconName={Icon.mimetypes.audio}
-    />
+  <menubutton setup={(self) => self.set_cursor_from_name("pointer")}>
+    <image cssClasses={["media-launch"]} iconName={Icon.mimetypes.audio} />
     {MediaPopover}
   </menubutton>
 );

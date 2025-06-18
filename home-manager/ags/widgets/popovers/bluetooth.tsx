@@ -4,6 +4,7 @@ import Bluetooth from "gi://AstalBluetooth";
 
 import Icon from "@lib/icons";
 import { connectedDevices, disconnectedDevices } from "./bluetooth/DeviceItem";
+import { pointer, popButton } from "@lib/utils";
 
 const bluetooth = Bluetooth.get_default();
 const { START, CENTER } = Gtk.Align;
@@ -21,7 +22,8 @@ function Status() {
     <box cssClasses={["status", "section"]}>
       <button
         setup={(self) => {
-          self.set_cursor_from_name("pointer");
+          pointer(self);
+          popButton(self);
 
           function powerHook() {
             const p = bluetooth.isPowered;

@@ -3,7 +3,7 @@ import { Gtk, hook } from "astal/gtk4";
 import Mpris from "gi://AstalMpris";
 
 import Icons from "@lib/icons";
-import { pointer } from "@lib/utils";
+import { pointer, popButton } from "@lib/utils";
 
 // Action buttons for playback
 
@@ -20,7 +20,10 @@ export default (player: Mpris.Player) => {
 
     return (
       <button
-        setup={pointer}
+        setup={(self) => {
+          pointer(self);
+          popButton(self);
+        }}
         cssClasses={["play-pause"]}
         onClicked={() => player.play_pause()}
         visible={bind(player, "canPlay")}
@@ -31,7 +34,10 @@ export default (player: Mpris.Player) => {
 
   const Prev = (
     <button
-      setup={pointer}
+      setup={(self) => {
+        pointer(self);
+        popButton(self);
+      }}
       cssClasses={["previous"]}
       onClicked={() => player.previous()}
       visible={bind(player, "canGoPrevious")}
@@ -41,7 +47,10 @@ export default (player: Mpris.Player) => {
 
   const Next = (
     <button
-      setup={pointer}
+      setup={(self) => {
+        pointer(self);
+        popButton(self);
+      }}
       cssClasses={["next"]}
       onClicked={() => player.next()}
       visible={bind(player, "canGoNext")}
@@ -53,6 +62,7 @@ export default (player: Mpris.Player) => {
     <button
       setup={(self) => {
         pointer(self);
+        popButton(self);
 
         function loopHook() {
           const { UNSUPPORTED, NONE, TRACK } = Mpris.Loop;
@@ -80,6 +90,7 @@ export default (player: Mpris.Player) => {
     <button
       setup={(self) => {
         pointer(self);
+        popButton(self);
 
         function shuffleHook() {
           const { UNSUPPORTED, ON, OFF } = Mpris.Shuffle;

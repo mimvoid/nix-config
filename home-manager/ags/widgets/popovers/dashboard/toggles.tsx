@@ -2,19 +2,19 @@ import { hook } from "astal/gtk4";
 import Notifd from "gi://AstalNotifd";
 
 import Icons from "@lib/icons";
+import { pointer, popButton } from "@lib/utils";
 
 const notifd = Notifd.get_default();
 
 const NotifDnd = (
   <button
     setup={(self) => {
-      self.set_cursor_from_name("pointer");
+      pointer(self);
+      popButton(self);
 
       function dndHook() {
         const dnd = notifd.dontDisturb;
-
-        self.remove_css_class(dnd ? "off" : "on");
-        self.add_css_class(dnd ? "on" : "off");
+        dnd ? self.remove_css_class("off") : self.add_css_class("off");
         self.tooltipText = `Turn ${dnd ? "off" : "on"} Do not Disturb`;
         self.iconName = Icons.notifications[dnd ? "off" : "on"];
       }

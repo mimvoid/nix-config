@@ -76,7 +76,7 @@ export default () => (
   <window
     setup={(self) =>
       setLayerrules(self.namespace, [
-        "animation popin 95%",
+        "animation popin 75%",
         "blur",
         "ignorezero",
         "xray 0",

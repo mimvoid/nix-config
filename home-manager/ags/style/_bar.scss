@@ -15,6 +15,11 @@
     padding-right: 1em;
   }
 
+  .center {
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+  }
+
   .right {
     padding-left: 0.5em;
   }
@@ -56,7 +61,6 @@
 }
 
 .clock {
-  margin: 0;
   padding-right: 0;
 
   // Disable default button background color

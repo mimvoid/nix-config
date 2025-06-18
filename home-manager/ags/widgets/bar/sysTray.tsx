@@ -41,7 +41,7 @@ function SysTrayToggle() {
   const ToggleIcon = (
     <image
       setup={(self) =>
-        hook(self, Revealer, "notify::revealChild", () =>
+        hook(self, Revealer, "notify::reveal-child", () =>
           Revealer.revealChild
             ? self.add_css_class("open")
             : self.remove_css_class("open"),

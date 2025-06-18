@@ -2,8 +2,9 @@ import { bind } from "astal";
 import { Gtk, Widget } from "astal/gtk4";
 
 import { Calendar } from "@lib/astalified";
+import PopRevealer from "@lib/widgets/PopRevealer";
 import { time, uptime } from "@lib/variables";
-import { pointer } from "@lib/utils";
+import { pointer, popButton } from "@lib/utils";
 import Icon from "@lib/icons";
 
 const { START, CENTER, END } = Gtk.Align;
@@ -67,7 +68,10 @@ function CalendarWidget() {
     <box cssClasses={["header"]}>
       <box cssClasses={["month-switcher"]} hexpand>
         <button
-          setup={pointer}
+          setup={(self) => {
+            pointer(self);
+            popButton(self);
+          }}
           onClicked={() => {
             if (Cal.month > 0) {
               Cal.month--;
@@ -79,7 +83,10 @@ function CalendarWidget() {
           iconName={Icon.nav.previous}
         />
         <button
-          setup={pointer}
+          setup={(self) => {
+            pointer(self);
+            popButton(self);
+          }}
           onClicked={() => {
             if (Cal.month < 11) {
               Cal.month++;
@@ -97,12 +104,18 @@ function CalendarWidget() {
       <box cssClasses={["year-switcher"]}>
         <label label={bind(Cal, "year").as((y) => String(y))} />
         <button
-          setup={pointer}
+          setup={(self) => {
+            pointer(self);
+            popButton(self);
+          }}
           onClicked={() => Cal.year--}
           iconName={Icon.nav.previous}
         />
         <button
-          setup={pointer}
+          setup={(self) => {
+            pointer(self);
+            popButton(self);
+          }}
           onClicked={() => Cal.year++}
           iconName={Icon.nav.next}
         />
@@ -119,10 +132,10 @@ function CalendarWidget() {
 }
 
 export default (
-  <popover name="calendar" hasArrow={false}>
+  <PopRevealer name="calendar" hasArrow={false}>
     <box cssClasses={["calendar"]} halign={CENTER} vertical>
       <Time />
       <CalendarWidget />
     </box>
-  </popover>
-);
+  </PopRevealer>
+) as Gtk.Popover;

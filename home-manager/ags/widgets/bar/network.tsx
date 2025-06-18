@@ -19,7 +19,9 @@ export default () => {
 
   return (
     <menubutton cssClasses={["network"]}>
-      <HoverRevealer hiddenChild={Label}>{Icon}</HoverRevealer>
+      <HoverRevealer hiddenChild={Label}>
+        {Icon}
+      </HoverRevealer>
       {NetworkPopover}
     </menubutton>
   );

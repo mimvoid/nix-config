@@ -1,6 +1,7 @@
 import { bind } from "astal";
 import { Gtk, hook } from "astal/gtk4";
 import Network from "gi://AstalNetwork";
+import { pointer, popButton } from "@lib/utils";
 
 const network = Network.get_default();
 const wifi = network.wifi;
@@ -11,7 +12,8 @@ const Current = (
   <box cssClasses={["section", "current"]}>
     <button
       setup={(self) => {
-        self.set_cursor_from_name("pointer");
+        pointer(self);
+        popButton(self);
 
         function enabledHook() {
           const e = wifi.enabled;
@@ -38,4 +40,4 @@ export default (
   <popover cssClasses={["network-popover"]} hasArrow={false}>
     <box vertical>{Current}</box>
   </popover>
-);
+) as Gtk.Popover;
