@@ -16,17 +16,4 @@
 
   home.file.".cache/wal/colors.json".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.cache/hellwal/colors.json";
-
-  # programs =
-  #   let
-  #     inherit (pkgs.lib) mkAfter;
-  #     sourceHellwal = ''
-  #       source ~/.cache/hellwal/variables.sh
-  #       sh ~/.cache/hellwal/terminal.sh
-  #     '';
-  #   in
-  #   {
-  #     zsh.initExtra = mkAfter sourceHellwal;
-  #     bash.bashrcExtra = mkAfter sourceHellwal;
-  #   };
 }

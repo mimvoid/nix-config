@@ -25,7 +25,6 @@
       [config.wallpaper]
       command = "swww"
       arguments = ["img", "-t", "grow", "--transition-pos", "0.95,0.95", "--transition-step", "90"]
-      set = true
 
       [config.custom_colors]
       bg = "${base00}"

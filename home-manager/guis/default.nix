@@ -31,7 +31,7 @@
     voids.freetube
     tauon
     # inkscape
-    unstable.digikam
+    # unstable.digikam
   ];
 
   services.nextcloud-client = {
