@@ -20,12 +20,7 @@
   };
 
   # XFCE
-  services.xserver.desktopManager.xfce = {
-    enable = true;
-    enableXfwm = true;
-    noDesktop = false;
-  };
-
+  services.xserver.desktopManager.xfce.enable = true;
   programs.xfconf.enable = true;
 
   environment.xfce.excludePackages =

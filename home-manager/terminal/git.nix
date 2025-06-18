@@ -3,14 +3,8 @@
     enable = true;
     userName = "mimvoid";
     userEmail = "mimvoid@proton.me";
-    ignores = [
-      "result/"
-      "__pycache__/"
-    ];
-    extraConfig = {
-      init.defaultBranch = "main";
-      core.editor = "nvim";
-    };
+    ignores = [ "__pycache__/" ];
+    extraConfig.init.defaultBranch = "main";
 
     diff-so-fancy = {
       enable = true;

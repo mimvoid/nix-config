@@ -19,7 +19,7 @@
       { on = "j"; run = "plugin arrow 1"; }
 
       # Max preview
-      { on = "T"; run = "plugin max-preview"; }
+      { on = "T"; run = "plugin toggle-pane max-preview"; }
 
       # Bookmarks
       { on = "m"; run = "plugin bookmarks save"; }
@@ -40,51 +40,25 @@
     '';
   };
 
-  xdg.configFile =
-    let
-      inherit (pkgs.voids.yaziPlugins)
-        plugins
-        bookmarks
-        exifaudio;
-    in
-    pkgs.voids.lib.prependAttrs "yazi/plugins/"
-    {
-      "bookmarks.yazi".source = bookmarks;
-      "exifaudio.yazi".source = exifaudio;
+  xdg.configFile = pkgs.voids.lib.prependAttrs "yazi/plugins/" {
+    "bookmarks.yazi".source = pkgs.voids.yaziPlugins.bookmarks;
+    "exifaudio.yazi".source = pkgs.voids.yaziPlugins.exifaudio;
 
-      # Smart paste: paste files without entering directory
-      "smart-paste.yazi/main.lua".text = /* lua */ ''
-        --- @sync entry
-        return {
-          entry = function()
-            local h = cx.active.current.hovered
-            if h and h.cha.is_dir then
-              ya.mgr_emit("enter", {})
-              ya.mgr_emit("paste", {})
-              ya.mgr_emit("leave", {})
-            else
-              ya.mgr_emit("paste", {})
-            end
-          end,
-        }
-      '';
+    "git.yazi".source = pkgs.yaziPlugins.git;
+    "full-border.yazi".source = pkgs.yaziPlugins.full-border;
+    "smart-paste.yazi".source = pkgs.yaziPlugins.smart-paste;
+    "toggle-pane.yazi".source = pkgs.yaziPlugins.toggle-pane;
 
-      # Arrow: file navigation wraparound
-      "arrow.yazi/main.lua".text = /* lua */ ''
-        --- @sync entry
-        return {
-          entry = function(_, job)
-            local current = cx.active.current
-            local new = (current.cursor + job.args[1]) % #current.files
-            ya.mgr_emit("arrow", { new - current.cursor })
-          end,
-        }
-      '';
-    }
-    // {
-      "yazi/plugins" = {
-        source = plugins;
-        recursive = true;
-      };
-    };
+    # Arrow: file navigation wraparound
+    "arrow.yazi/main.lua".text = /* lua */ ''
+      --- @sync entry
+      return {
+        entry = function(_, job)
+          local current = cx.active.current
+          local new = (current.cursor + job.args[1]) % #current.files
+          ya.mgr_emit("arrow", { new - current.cursor })
+        end,
+      }
+    '';
+  };
 }

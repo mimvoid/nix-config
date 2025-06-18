@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ flakePath, config, pkgs, ... }:
 
 {
   imports = [ ./themes.nix ];
@@ -6,7 +6,7 @@
 
   xdg.configFile =
     let
-      here = "${config.home.sessionVariables.FLAKE}/home-manager/terminal/dooit";
+      here = "${flakePath}/home-manager/terminal/dooit";
 
       symlink = src: {
         source = config.lib.file.mkOutOfStoreSymlink "${here}/${src}";

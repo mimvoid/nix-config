@@ -2,8 +2,6 @@
 
 with pkgs;
 {
-  plugins = callPackage ./plugins.nix { };
-
   bookmarks = fetchFromGitHub {
     owner = "dedukun";
     repo = "bookmarks.yazi";

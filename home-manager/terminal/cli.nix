@@ -1,8 +1,9 @@
-{ pkgs, ... }:
+{ flakePath, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
     gnumake
+    unstable.zoxide
 
     # media
     imagemagick
@@ -20,6 +21,8 @@
   ];
 
   home.sessionVariables = {
+    NH_FLAKE = flakePath;
+
     # pagers
     PAGER = "less";
     LESS = builtins.concatStringsSep " " [
@@ -84,7 +87,6 @@
     };
   };
 
-  # Misc cli tools
   programs = {
     bat.enable = true;
     lesspipe.enable = true;
@@ -98,11 +100,6 @@
         "--all"
         "--across"
       ];
-    };
-
-    zoxide = {
-      enable = true;
-      package = pkgs.unstable.zoxide;
     };
   };
 }

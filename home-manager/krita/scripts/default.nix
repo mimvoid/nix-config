@@ -1,10 +1,10 @@
-{ config, ... }:
+{ flakePath, config, ... }:
 let
   symlink = src: {
     source = config.lib.file.mkOutOfStoreSymlink src;
   };
 
-  here = "${config.home.sessionVariables.FLAKE}/home-manager/krita/scripts";
+  here = "${flakePath}/home-manager/krita/scripts";
 in
 {
   xdg.dataFile = {

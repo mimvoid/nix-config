@@ -4,28 +4,12 @@ let
 
   # Theming configs
   font = "${monospace.name}:size=9";
-  colors = with pkgs.palettes.main.hex.noHashtag.alpha;
-    {
-      background = base;
-      text = string;
-      prompt = primary;
-      placeholder = box-bright;
-      input = string-dim;
-      match = primary;
-      selection = box-bright;
-      selection-match = secondary;
-      selection-text = secondary-bright;
-      counter = string-dim;
-      border = primary;
-    };
   icon-theme = config.gtk.iconTheme.name;
 in
 {
   programs.fuzzel = {
     enable = true;
     settings = {
-      inherit colors;
-
       main = {
         inherit font icon-theme;
         include = "~/.config/fuzzel/colors.ini"; # matugen

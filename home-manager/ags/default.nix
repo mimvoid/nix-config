@@ -25,6 +25,4 @@
       cava
     ];
   };
-
-  xdg.configFile."wallpapers".source = ../../wallpapers/wallpapers;
 }

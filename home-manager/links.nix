@@ -1,4 +1,4 @@
-{ config, ... }:
+{ flakePath, config, ... }:
 let
   # Direct (out of store) symlinks
 
@@ -11,26 +11,25 @@ let
   };
 
   # Directory shorthands
-  home-manager = "${config.home.sessionVariables.FLAKE}/home-manager";
-
   firefox-profile = "30dphuug.default";
   obsidian-dir = "Documents/Zettelkasten";
 in
 {
   xdg = {
     configFile = {
-      "ags" = symlink "${home-manager}/ags";
+      "ags" = symlink "${flakePath}/home-manager/ags";
       "gtk-3.0/gtk.css".source = ./xfconf/gtk3.css;
+      "wallpapers".source = ../wallpapers/wallpapers;
     };
 
-    dataFile."navi/cheats" = symlink "${home-manager}/terminal/navi";
+    dataFile."navi/cheats" = symlink "${flakePath}/home-manager/terminal/navi";
   };
 
   home.file = {
     # Firefox userChrome & userContent
-    ".mozilla/firefox/${firefox-profile}/chrome" = symlink "${home-manager}/firefox/panefox";
+    ".mozilla/firefox/${firefox-profile}/chrome" = symlink "${flakePath}/home-manager/firefox/panefox";
 
     # Obsidian CSS
-    "${obsidian-dir}/.obsidian/snippets" = symlink "${home-manager}/obsidian-css";
+    "${obsidian-dir}/.obsidian/snippets" = symlink "${flakePath}/home-manager/obsidian-css";
   };
 }

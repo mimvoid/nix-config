@@ -52,7 +52,6 @@
     dooit-extras.url = "github:dooit-org/dooit-extras";
 
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
-    zen-browser.url = "github:0xc000022070/zen-browser-flake";
   };
 
   outputs = { self, nixpkgs, home-manager, ... } @ inputs:
@@ -71,7 +70,7 @@
     };
 
     # Directory for absolute paths, use sparingly
-    FLAKE = "/home/zinnia/NixOS";
+    flakePath = "/home/zinnia/NixOS";
   in
   {
     nixosConfigurations = {
@@ -83,8 +82,6 @@
           ./hosts/intel.nix
           ./hosts/sirru/hardware-configuration.nix
           ./hosts/sirru/extra.nix
-
-          { environment.variables = { inherit FLAKE; }; }
         ];
       };
 
@@ -97,11 +94,11 @@
     homeConfigurations = {
       "zinnia" = home-manager.lib.homeManagerConfiguration {
         inherit pkgs;
-        extraSpecialArgs = { inherit inputs; };
-        modules = [
-          ./home-manager/home.nix
-          { home.sessionVariables = { inherit FLAKE; }; }
-        ];
+        extraSpecialArgs = {
+          inherit inputs;
+          inherit flakePath;
+        };
+        modules = [ ./home-manager/home.nix ];
       };
     };
   };

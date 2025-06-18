@@ -84,7 +84,7 @@ in
 
     shellAliases."-" = "cd -";
 
-    initExtra = /* sh */ ''
+    initContent = /* sh */ ''
       # history substring search integration with vi mode
       bindkey -M vicmd 'k' history-substring-search-up
       bindkey -M vicmd 'j' history-substring-search-up

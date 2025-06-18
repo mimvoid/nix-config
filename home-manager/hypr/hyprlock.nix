@@ -51,8 +51,7 @@ in
       ];
 
       label = [
-        {
-          # Time
+        { # Time
           text = ''cmd[update:1000] echo "<big> $(date +'%H:%M') </big>"'';
           color = rgb.string;
           font_family = display;
@@ -62,8 +61,7 @@ in
           halign = "center";
           valign = "top";
         }
-        {
-          # Date
+        { # Date
           text = ''cmd[update:18000000] echo "$(date +'%A, %B %-d')"'';
           color = rgb.string;
           font_family = fonts.monospace.name;
@@ -73,8 +71,7 @@ in
           halign = "center";
           valign = "center";
         }
-        {
-          # User field
+        { # User field
           text = "  ${config.home.username}";
           color = rgb.string;
           font_family = fonts.monospace.name;

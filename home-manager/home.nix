@@ -6,7 +6,6 @@
     homeDirectory = "/home/zinnia";
     stateVersion = "23.11";
 
-    enableNixpkgsReleaseCheck = false;
     preferXdgDirectories = true;
   };
 

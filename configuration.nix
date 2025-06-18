@@ -53,7 +53,6 @@
     xdgOpenUsePortal = true;
     extraPortals = with pkgs; [
       xdg-desktop-portal-hyprland
-      xdg-desktop-portal-xapp
       xdg-desktop-portal-gtk
     ];
   };
@@ -105,13 +104,7 @@
   # CUPS
   services.printing = {
     enable = true;
-    package = pkgs.cups;
-    drivers = with pkgs; [
-      epson-escpr
-      epson-escpr2
-      epsonscan2
-    ];
-    startWhenNeeded = true;
+    drivers = with pkgs; [ epson-escpr ];
   };
 
   programs.system-config-printer.enable = true;
