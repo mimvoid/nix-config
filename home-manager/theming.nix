@@ -37,6 +37,7 @@ in
   ]
   ++ (with pkgs.voids.fonts; [
     # Fonts outside nixpkgs
+    courier-prime-sans
     limelight
     ma-shan-zheng
     ritzflf

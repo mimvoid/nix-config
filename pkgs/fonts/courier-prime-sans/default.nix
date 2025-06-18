@@ -13,7 +13,7 @@ stdenvNoCC.mkDerivation {
     repo = "CourierPrimeSans";
     sparseCheckout = [ "ttf" ];
     rev = "5740acaf752618ababc8d0499d225a7dcd3a54a9";
-    hash = "sha256-00005U1M/shvfKvmeW8BsAlseGIB5i4YQ2MPqfM1pTE=";
+    hash = "sha256-2Wmuptc70SnAnKYSunu+O0zi7W3SVD602nfNDnPMQdY=";
   };
 
   installPhase = ''
