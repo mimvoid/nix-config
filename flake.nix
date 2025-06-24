@@ -12,11 +12,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # My Neovim
-    # Local repo from $ nix registry add flake:neovim-dots git+file:///path/to/neovim-dots
-    # Remote is github:mimvoid/neovim-dots
     nvim = {
-      url = "flake:neovim-dots";
+      url = "github:mimvoid/neovim-dots";
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
