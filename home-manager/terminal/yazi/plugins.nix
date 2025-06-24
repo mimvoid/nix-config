@@ -10,7 +10,7 @@
       ];
     };
 
-    keymap.manager.prepend_keymap = [
+    keymap.mgr.prepend_keymap = [
       # Smart paste plugin
       { on = "p"; run = "plugin smart-paste"; }
 
@@ -40,14 +40,19 @@
     '';
   };
 
-  xdg.configFile = pkgs.voids.lib.prependAttrs "yazi/plugins/" {
+  xdg.configFile =
+    let
+      inherit (pkgs.unstable.yaziPlugins)
+        git full-border smart-paste toggle-pane;
+    in
+    pkgs.voids.lib.prependAttrs "yazi/plugins/" {
     "bookmarks.yazi".source = pkgs.voids.yaziPlugins.bookmarks;
     "exifaudio.yazi".source = pkgs.voids.yaziPlugins.exifaudio;
 
-    "git.yazi".source = pkgs.yaziPlugins.git;
-    "full-border.yazi".source = pkgs.yaziPlugins.full-border;
-    "smart-paste.yazi".source = pkgs.yaziPlugins.smart-paste;
-    "toggle-pane.yazi".source = pkgs.yaziPlugins.toggle-pane;
+    "git.yazi".source = git;
+    "full-border.yazi".source = full-border;
+    "smart-paste.yazi".source = smart-paste;
+    "toggle-pane.yazi".source = toggle-pane;
 
     # Arrow: file navigation wraparound
     "arrow.yazi/main.lua".text = /* lua */ ''

@@ -19,7 +19,7 @@
       };
 
     settings = {
-      manager = {
+      mgr = {
         ratio = [ 1 4 3 ];
         show_hidden = true;
         show_symlink = true;
