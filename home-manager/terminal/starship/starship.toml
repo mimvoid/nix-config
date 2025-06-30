@@ -1,0 +1,146 @@
+[character]
+success_symbol = "[❯](yellow)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[cmd_duration]
+format = '[$duration]($style) '
+style = 'yellow'
+
+[directory]
+read_only = ''
+style = 'cyan'
+
+[git_branch]
+format = '[$symbol$branch]($style) '
+style = 'purple'
+
+[git_state]
+style = 'yellow'
+
+[git_status]
+format = '[$all_status$ahead_behind]($style) '
+style = 'red'
+untracked = '+'
+modified = '*'
+deleted = 'x'
+staged = '•'
+stashed = '≡'
+
+# Specifics
+
+[c]
+symbol = " "
+version_format = '${raw}'
+style = 'blue'
+
+[cpp]
+symbol = " "
+version_format = '${raw}'
+style = 'blue'
+
+[cmake]
+symbol = " "
+version_format = '${raw}'
+style = 'blue'
+
+[nim]
+symbol = "󰆥 "
+version_format = '${raw}'
+style = 'yellow'
+
+[nix_shell]
+format = 'via [$symbol$state]($style)[( \($name\))](blue italic dimmed) '
+symbol = ''
+impure_msg = '-'
+pure_msg = '+'
+style = 'blue'
+
+[nodejs]
+symbol = ' '
+version_format = '${raw}'
+style = 'green'
+
+[package]
+symbol = '󰏗 '
+version_format = '${raw}'
+style = 'yellow'
+
+[perl]
+symbol = ' '
+version_format = '${raw}'
+style = 'green'
+
+[python]
+symbol = ' '
+version_format = '${raw}'
+style = 'yellow'
+
+# Nerd font symbols
+
+[bun]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[git_commit]
+tag_symbol = '  '
+
+[golang]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[meson]
+symbol = "󰔷 "
+
+[ocaml]
+symbol = " "
+
+[os.symbols]
+Arch = " "
+Debian = " "
+Linux = " "
+NixOS = " "
+openSUSE = " "
+
+[php]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[rust]
+symbol = "󱘗 "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "

@@ -6,6 +6,7 @@
     ./cli.nix
     ./git.nix
     ./kitty
+    ./starship
     ./yazi
     ./dooit
     ./navi
