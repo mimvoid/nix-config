@@ -36,16 +36,14 @@ in
 
     shellAliases = {
       ".." = "cd ..";
+      "..." = "cd ../..";
 
       # nix aliases
       nhos = "nh os switch";
       nhh = "nh home switch";
 
       # command shorthands
-      blueon = "bluetooth on";
-      btui = "bluetui";
       lg = "lazygit";
-      kitsd = "kitty --detach --session";
 
       # config aliases
       arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
@@ -70,6 +68,8 @@ in
         "ll"
         "eza"
         ".."
+        "..."
+        "z"
         "-"
         "yazi"
         "yy"
@@ -97,6 +97,10 @@ in
       # enter a nix shell with package from unstable branch
       function nixpkg-unstable() {
         nix shell nixpkgs/nixos-unstable#''${1}
+      }
+
+      function kitsd() {
+        kitty --dispatch --session ''${1} && exit
       }
     '';
 
