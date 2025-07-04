@@ -100,7 +100,7 @@ in
       }
 
       function kitsd() {
-        kitty --dispatch --session ''${1} && exit
+        kitty --detach --session ''${1} && exit
       }
     '';
 
