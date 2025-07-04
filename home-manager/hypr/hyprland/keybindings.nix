@@ -66,7 +66,7 @@ in
     # Having AGS reload also serves as a good visual indicator.
     # You can replace it with any bar (e.g. waybar) you like.
     "$mod, R, exec, hyprctl reload config-only"
-    "$mod, R, exec, pkill xfce4-notifyd ; ags quit ; ags run --gtk4 &"
+    "$mod, R, exec, pkill xfce4-notifyd ; ags quit ; ags run"
 
     # Toggle fullscreen
     "$mod, F, fullscreen"
