@@ -40,8 +40,8 @@
       cyan = "${cyan}"
       magenta = "${magenta}"
 
-      [templates.astal]
-      input_path = '${./templates/astal.scss}'
+      [templates.ags]
+      input_path = '${./templates/ags.scss}'
       output_path = '~/.config/ags/style/palette/_matugen.scss'
 
       [templates.hyprland]

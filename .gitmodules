@@ -4,6 +4,6 @@
 [submodule "panefox"]
 	path = home-manager/firefox/panefox
 	url = https://github.com/mimvoid/panefox
-[submodule "mim-shell"]
+[submodule "home-manager/ags"]
 	path = home-manager/ags
 	url = git@github.com:mimvoid/mim-shell.git

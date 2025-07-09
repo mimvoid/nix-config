@@ -1,0 +1,28 @@
+:root {
+  --base: hsla(from {{ colors.background.default.hsla | set_alpha: 0.8 }} h s 12% / alpha);
+
+  --box: hsla(from {{ colors.surface_variant.default.hsla | set_alpha: 0.5 }} h s 25% / alpha);
+  --box-bright: hsla(from {{ colors.surface_bright.default.hsla | set_alpha: 0.5 }} h s 35% / alpha);
+  --box-dim: hsla(from {{ colors.surface_dim.default.hsla | set_alpha: 0.5 }} h s 20% / alpha);
+
+  --string: {{ colors.on_background.default.rgb }};
+  --string-dim: {{ colors.on_surface_variant.default.rgb }};
+
+  --shadow: {{ colors.shadow.default.rgb }};
+
+  --primary: {{ colors.primary.default.rgb }};
+  --primary-bright: {{ colors.primary_fixed.default.rgb }};
+  --primary-dim: {{ colors.primary_container.default.rgb }};
+
+  --secondary: {{ colors.secondary.default.rgb }};
+  --secondary-bright: {{ colors.secondary_fixed.default.rgb }};
+  --secondary-dim: {{ colors.secondary_container.default.rgb }};
+
+  --tertiary: {{ colors.tertiary.default.rgb }};
+  --tertiary-bright: {{ colors.tertiary_fixed.default.rgb }};
+  --tertiary-dim: {{ colors.tertiary_container.default.rgb }};
+
+  --good: {{ colors.green.default.rgb}};
+  --warn: {{ colors.yellow.default.rgb }};
+  --error: {{ colors.error.default.rgb }};
+}
