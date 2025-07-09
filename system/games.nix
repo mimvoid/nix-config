@@ -19,4 +19,5 @@
   ];
 
   networking.mihoyo-telemetry.block = true;
+  programs.steam.enable = true;
 }

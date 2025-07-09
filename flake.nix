@@ -63,6 +63,8 @@
       config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
         "vivaldi"
         "obsidian"
+        "steam"
+        "steam-unwrapped"
       ];
     };
 
