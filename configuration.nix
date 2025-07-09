@@ -38,6 +38,8 @@
     };
   };
 
+  programs.nix-ld.enable = true;
+
   # Minimum system packages, most are in home manager
   environment.systemPackages = with pkgs; [
     nh
