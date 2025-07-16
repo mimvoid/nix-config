@@ -43,11 +43,6 @@
 
     # Extra packages
     ags.url = "github:Aylur/ags";
-
-    # Dooit v3
-    dooit.url = "github:dooit-org/dooit";
-    dooit-extras.url = "github:dooit-org/dooit-extras";
-
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   };
 

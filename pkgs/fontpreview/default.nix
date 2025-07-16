@@ -1,5 +1,5 @@
 {
-  stdenv,
+  stdenvNoCC,
   lib,
   fetchFromGitHub,
   makeWrapper,
@@ -9,7 +9,7 @@
   nsxiv,
 }:
 
-stdenv.mkDerivation rec {
+stdenvNoCC.mkDerivation rec {
   pname = "fontpreview";
   version = "unstable-2024-12-25";
 

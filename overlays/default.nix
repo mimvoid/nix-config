@@ -14,8 +14,6 @@ let
   # Overlays provided by inputs
   # Usually, just use pkgs.<package>
   input-overlays = with inputs; [
-    dooit.overlay
-    dooit-extras.overlay
     fletchling.overlay
   ];
 
@@ -40,7 +38,7 @@ let
   theming = final: _: {
     # Defined palettes & functions to manipulate palettes
     # Use pkgs.palettes.<name>
-    palettes = import ./palettes { pkgs = final.pkgs.unstable; };
+    palettes = import ./palettes { inherit (final) pkgs; };
 
     # Other variables regarding theming (e.g. fonts, icons, etc.)
     # Use pkgs.theme.<name>

@@ -23,8 +23,7 @@ stdenvNoCC.mkDerivation rec {
     runHook preInstall
 
     mkdir -p $out/share/krita/pykrita
-    cp -r shortcut_composer.desktop $out/share/krita/pykrita
-    cp -r shortcut_composer $out/share/krita/pykrita
+    cp -t $out/share/krita/pykrita -r shortcut_composer.desktop shortcut_composer
 
     runHook postInstall
   '';
