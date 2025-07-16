@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ ... }:
 
 {
   home = {
@@ -26,11 +26,5 @@
     ./guis
     ./firefox
     ./ags.nix
-  ];
-
-  home.packages = with pkgs; [
-    unstable.ollama
-    unstable.alpaca
-    (fontforge-gtk.override { withPython = false; })
   ];
 }
