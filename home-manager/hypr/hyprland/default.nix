@@ -17,6 +17,10 @@ let
   };
 in
 {
+  # The Hyprland home-manager module enables this, but xdg portals
+  # are already configured for the system
+  xdg.portal.enable = pkgs.lib.mkForce false;
+
   wayland.windowManager.hyprland = {
     enable = true;
     systemd = {
