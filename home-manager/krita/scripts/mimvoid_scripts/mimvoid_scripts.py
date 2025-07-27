@@ -1,6 +1,8 @@
 from krita import Extension, Krita, Node, InfoObject, Selection
+from collections.abc import Generator, Iterable
 
 
+KI = Krita.instance()
 ID = "pykrita_mimvoid_scripts"
 
 
@@ -13,116 +15,125 @@ class MimvoidScripts(Extension):
         pass
 
     def createActions(self, window):
-        app = Krita.instance()
-
         setup = window.createAction(f"{ID}_setup", "Setup Layers", "tools")
-        setup.setIcon(app.icon("paintLayer"))
+        setup.setIcon(KI.icon("paintLayer"))
         setup.triggered.connect(self.setup_layers)
 
         render = window.createAction(f"{ID}_render", "Add Render Layers", "tools")
-        render.setIcon(app.icon("wheel-light"))
+        render.setIcon(KI.icon("wheel-light"))
         render.triggered.connect(self.add_render)
 
         noise = window.createAction(f"{ID}_noise", "Noise", "tools")
-        noise.setIcon(app.icon("spraybrush"))
+        noise.setIcon(KI.icon("spraybrush"))
         noise.triggered.connect(self.add_noise)
 
-    # Helper functions
-    def create_layer(self, name: str, kind: str = "paintLayer") -> Node:
-        doc = Krita.instance().activeDocument()
+    # ---------------- #
+    # Helper functions #
+    # ---------------- #
+
+    @staticmethod
+    def create_layer(doc, name: str, kind="paintLayer") -> Node:
         return doc.createNode(name, kind)
 
-    def create_layers(self, names: list[str], kind: str = "paintLayer") -> list[Node]:
-        result = map(lambda i: self.create_layer(i, kind), names)
-        return list(result)
+    @staticmethod
+    def create_layers(doc, names: Iterable[str], kind="paintLayer") -> Generator:
+        return (doc.createNode(name, kind) for name in names)
 
-    # Actions
+    # ------- #
+    # Actions #
+    # ------- #
+
     def setup_layers(self):
-        doc = Krita.instance().activeDocument()
+        doc = KI.activeDocument()
+        if not doc:
+            return
+
         root = doc.rootNode()
 
         # Sketch layers at root level
-        layers = self.create_layers(["Sketch 1", "Sketch 2"])
-
-        for i in layers:
+        sketch1 = MimvoidScripts.create_layer(doc, "Sketch 1")
+        sketch2 = MimvoidScripts.create_layer(doc, "Sketch 2")
+        for i in (sketch1, sketch2):
             root.addChildNode(i, None)
 
         # Background group layer
         bg = doc.createGroupLayer("Background")
         root.addChildNode(bg, None)
 
-        bg_layer = self.create_layer("Background")
+        bg_layer = MimvoidScripts.create_layer(doc, "Background")
         bg.addChildNode(bg_layer, None)
 
         # Character group layer
         char = doc.createGroupLayer("Character")
         root.addChildNode(char, None)
 
-        char_children = ["Lineart", "Highlight"]
-        char_layer_children = self.create_layers(char_children)
-        for i in char_layer_children:
+        lineart = MimvoidScripts.create_layer(doc, "Lineart")
+        highlight = MimvoidScripts.create_layer(doc, "Highlight")
+        for i in (lineart, highlight):
             char.addChildNode(i, None)
 
         # Colorize mask for lineart layer
         color = doc.createColorizeMask("Base")
         color.setLimitToDeviceBounds(True)
 
-        doc.nodeByName("Lineart").addChildNode(color, None)
+        lineart.addChildNode(color, None)
 
         # Top layers
-        watermark = self.create_layer("Watermark")
+        watermark = MimvoidScripts.create_layer(doc, "Watermark")
         root.addChildNode(watermark, None)
 
         # Change active node
+        doc.waitForDone()
+        doc.setActiveNode(sketch1)
+
         doc.refreshProjection()
-        doc.setActiveNode(doc.nodeByName("Sketch 1"))
 
     def add_render(self):
-        doc = Krita.instance().activeDocument()
+        doc = KI.activeDocument()
+        if not doc:
+            return
 
         # Find the currently selected node and its parent
         base = doc.activeNode()
         parent = base.parentNode()
 
         # Define layers
-        renders = self.create_layers(["Light", "Shade 3", "Shade 2", "Shade"])
+        renders = MimvoidScripts.create_layers(
+            doc, ["Light", "Shade 3", "Shade 2", "Shade"]
+        )
 
-        # Set blending modes
-        renders[0].setBlendingMode("hard_light")
+        for i, render in enumerate(renders):
+            if i == 0:
+                render.setBlendingMode("hard_light")
+            else:
+                render.setBlendingMode("multiply")
 
-        for i in renders[1:]:
-            i.setBlendingMode("multiply")
-
-        # Add the layers above the active node
-        for i in renders:
-            i.setInheritAlpha(True)
-            parent.addChildNode(i, base)
+            render.setInheritAlpha(True)
+            parent.addChildNode(render, base)
 
         doc.refreshProjection()
 
     def add_noise(self):
-        doc = Krita.instance().activeDocument()
-        root = doc.rootNode()
+        doc = KI.activeDocument()
+        if not doc:
+            return
 
         # Create a black fill layer
-        i = InfoObject()
-        i.setProperty("color", "#000")
+        info = InfoObject()
+        info.setProperty("color", "#000")
 
-        s = Selection()
-        s.select(0, 0, doc.width(), doc.height(), 255)
+        selection = Selection()
+        selection.select(0, 0, doc.width(), doc.height(), 255)
 
-        layer = doc.createFillLayer("Noise", "color", i, s)
+        layer = doc.createFillLayer("Noise", "color", info, selection)
+        doc.rootNode().addChildNode(layer, None)
 
         # Set layer properties
         layer.setBlendingMode("soft_light")
         layer.setOpacity(102)  # 40% opacity
 
-        root.addChildNode(layer, None)
-
         # Filter with random noise
-        target = doc.nodeByName("Noise")
-
-        noise = Krita.instance().filter("noise")
-        noise.apply(target, 0, 0, doc.width(), doc.height())
+        noise = KI.filter("noise")
+        noise.apply(layer, 0, 0, doc.width(), doc.height())
 
         doc.refreshProjection()
