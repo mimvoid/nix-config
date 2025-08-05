@@ -27,7 +27,7 @@ rec {
 
     monospace = {
       name = "0xProto Nerd Font Mono";
-      package = pkgs.unstable.nerd-fonts._0xproto;
+      package = pkgs.nerd-fonts._0xproto;
     };
 
     terminal-size = 12;
