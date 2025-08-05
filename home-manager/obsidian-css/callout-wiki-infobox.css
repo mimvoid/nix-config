@@ -24,294 +24,102 @@ settings:
         default: true
 */
 
-body.infobox-enabled,
-body:not(.css-settings-manager) {
+.infobox-enabled,
+:not(.css-settings-manager) {
   --infobox-font-size: var(--font-smaller);
-  /*--infobox-gap: 16px;*/
-  /*--infobox-width: 256px;*/
-}
 
-body.infobox-enabled .cm-sizer:has([data-callout="infobox"]),
-body:not(.css-settings-manager) .cm-sizer:has([data-callout="infobox"]),
-body.infobox-enabled .markdown-preview-sizer:has([data-callout="infobox"]),
-body:not(.css-settings-manager)
+  .cm-sizer:has([data-callout="infobox"]),
   .markdown-preview-sizer:has([data-callout="infobox"]) {
-  --callout-padding: var(--size-4-2);
-  --file-line-width: calc(700px + var(--infobox-width));
-  --list-spacing: 0.125em;
-  --table-header-size: 1em;
+    --callout-padding: var(--size-4-2);
+    --file-line-width: calc(700px + var(--infobox-width));
+    --list-spacing: 0.125em;
+    --table-header-size: 1em;
+  }
+
+  .cm-callout:has([data-callout="infobox"]) .edit-block-button,
+  .cm-embed-block.cm-callout:has(> [data-callout="infobox"])
+    > .edit-block-button {
+    display: none;
+  }
+
+  &[data-callout="infobox"] {
+    background: transparent;
+    border: 1px solid var(--background-modifier-border);
+    font-size: var(--infobox-font-size);
+    margin: 0 auto;
+
+    .callout-title,
+    .edit-block-button {
+      display: none;
+    }
+
+    .callout-content {
+      background: transparent;
+
+      & h2,
+      & h3,
+      & p {
+        text-align: center;
+      }
+      & h2 {
+        font-size: 1.5em;
+        margin: var(--size-4-2);
+      }
+      & h3 {
+        background: var(--background-secondary);
+        font-size: 1.065em;
+        padding: var(--size-2-1) var(--size-2-2);
+        text-align: center;
+      }
+      & p:has(.internal-embed) {
+        margin: 0;
+      }
+
+      & h3,
+      & table,
+      & p,
+      & ol,
+      & ul {
+        margin: var(--size-4-1) 0;
+      }
+
+      & table {
+        width: 100%;
+        border: none !important;
+      }
+
+      & thead tr {
+        border-bottom: 1px solid var(--background-modifier-border);
+      }
+
+      & td,
+      & th {
+        width: 65%;
+        border-width: 0 !important;
+        padding: var(--list-spacing) 0 var(--list-spacing)
+          var(--callout-padding);
+        font-size: 1.075em;
+
+        &:first-child {
+          font-weight: bold;
+          text-align: right;
+          width: 35%;
+        }
+      }
+
+      & li {
+        line-height: var(--line-height-tight);
+      }
+    }
+  }
 }
 
-body.infobox-enabled
-  .cm-callout:has([data-callout="infobox"])
-  .edit-block-button,
-body:not(.css-settings-manager)
-  .cm-callout:has([data-callout="infobox"])
-  .edit-block-button {
-  display: none !important;
-}
-
-body.infobox-enabled [data-callout="infobox"],
-body:not(.css-settings-manager) [data-callout="infobox"] {
-  background: transparent;
-  border: 1px solid var(--background-modifier-border);
-  font-size: var(--infobox-font-size);
-  margin: 0 auto;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-title,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-title {
-  display: none !important;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content {
-  background: transparent;
-}
-
-body.infobox-enabled [data-callout="infobox"] .edit-block-button,
-body:not(.css-settings-manager) [data-callout="infobox"] .edit-block-button {
-  display: none;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content h2,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content h2 {
-  font-size: 1.5em;
-  margin: var(--size-4-2);
-  text-align: center;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content h3,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content h3 {
-  background: var(--background-secondary);
-  font-size: 1.065em;
-  margin: var(--size-4-1) 0 !important;
-  padding: var(--size-2-1) var(--size-2-2);
-  text-align: center;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content table,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content table,
-body.infobox-enabled [data-callout="infobox"] .callout-content p,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content p,
-body.infobox-enabled [data-callout="infobox"] .callout-content ol,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content ol,
-body.infobox-enabled [data-callout="infobox"] .callout-content ul,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content ul {
-  margin: var(--size-4-2) 0;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content table,
-body:not(.css-settings-manager)
-  [data-callout="infobox"]
-  .callout-content
-  table {
-  width: 100%;
-  border: none !important;
-}
-
-body.infobox-enabled.infobox-hide-thead
-  [data-callout="infobox"]
-  .callout-content
-  thead,
-body:not(.css-settings-manager)
-  [data-callout="infobox"]
-  .callout-content
-  thead {
-  display: none;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content thead tr,
-body:not(.css-settings-manager)
-  [data-callout="infobox"]
-  .callout-content
-  thead
-  tr {
-  border-bottom: 1px solid var(--background-modifier-border);
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content td,
-body.infobox-enabled [data-callout="infobox"] .callout-content th,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content td,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content th {
-  border-width: 0 !important;
-  padding: var(--list-spacing) 0 var(--list-spacing) var(--callout-padding);
-  width: 65%;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content td:first-child,
-body.infobox-enabled [data-callout="infobox"] .callout-content th:first-child,
-body:not(.css-settings-manager)
-  [data-callout="infobox"]
-  .callout-content
-  td:first-child,
-body:not(.css-settings-manager)
-  [data-callout="infobox"]
-  .callout-content
-  th:first-child {
-  font-weight: bold;
-  text-align: right;
-  width: 35%;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content td,
-body.infobox-enabled [data-callout="infobox"] .callout-content th,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content td,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content th {
-  padding: 0.4em 0.5em 0.4em 0;
-  font-size: 1.075em;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content p,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content p {
-  text-align: center;
-}
-
-body.infobox-enabled [data-callout="infobox"] .callout-content li,
-body:not(.css-settings-manager) [data-callout="infobox"] .callout-content li {
-  line-height: var(--line-height-tight);
-}
-body.infobox-enabled
-  [data-callout="infobox"]
-  .callout-content
-  p:has(.internal-embed),
-body:not(.css-settings-manager)
-  [data-callout="infobox"]
-  .callout-content
-  p:has(.internal-embed) {
-  margin: 0;
-}
-
-/* NEWLY ADDED: fix for live preview editing */
 .markdown-source-view
   .cm-embed-block.cm-callout:has(> [data-callout="infobox"]) {
   display: contents;
-}
-.markdown-source-view
-  .cm-embed-block.cm-callout:has(> [data-callout="infobox"])
+
   > .callout {
-  float: left;
-  z-index: 1;
+    float: left;
+    z-index: 1;
+  }
 }
-.markdown-source-view
-  .cm-embed-block.cm-callout:has(> [data-callout="infobox"])
-  > .edit-block-button {
-  display: none;
-}
-
-/*
-body.infobox-enabled [data-callout="infobox"] .callout-content .internal-embed,
-body:not(.css-settings-manager)
-  [data-callout="infobox"]
-  .callout-content
-  .internal-embed {
-  border-radius: 0;
-}
-
-body.infobox-enabled:not(.is-mobile)
-  .markdown-preview-sizer:has([data-callout="infobox"]),
-body.infobox-enabled.is-tablet
-  .markdown-preview-sizer:has([data-callout="infobox"]),
-body:not(.css-settings-manager):not(.is-mobile)
-  .markdown-preview-sizer:has([data-callout="infobox"]),
-body:not(.css-settings-manager).is-tablet
-  .markdown-preview-sizer:has([data-callout="infobox"]),
-body.infobox-enabled:not(.is-mobile)
-  .cm-contentContainer:has([data-callout="infobox"])
-  .cm-content,
-body.infobox-enabled.is-tablet
-  .cm-contentContainer:has([data-callout="infobox"])
-  .cm-content,
-body:not(.css-settings-manager):not(.is-mobile)
-  .cm-contentContainer:has([data-callout="infobox"])
-  .cm-content,
-body:not(.css-settings-manager).is-tablet
-  .cm-contentContainer:has([data-callout="infobox"])
-  .cm-content {
-  position: relative;
-}
-
-body.infobox-enabled:not(.is-mobile)
-  .cm-contentContainer:has([data-callout="infobox"])
-  .cm-content,
-body.infobox-enabled.is-tablet
-  .cm-contentContainer:has([data-callout="infobox"])
-  .cm-content,
-body:not(.css-settings-manager):not(.is-mobile)
-  .cm-contentContainer:has([data-callout="infobox"])
-  .cm-content,
-body:not(.css-settings-manager).is-tablet
-  .cm-contentContainer:has([data-callout="infobox"])
-  .cm-content,
-body.infobox-enabled:not(.is-mobile)
-  .cm-contentContainer:has([data-callout="infobox"])
-  + .embedded-backlinks,
-body.infobox-enabled.is-tablet
-  .cm-contentContainer:has([data-callout="infobox"])
-  + .embedded-backlinks,
-body:not(.css-settings-manager):not(.is-mobile)
-  .cm-contentContainer:has([data-callout="infobox"])
-  + .embedded-backlinks,
-body:not(.css-settings-manager).is-tablet
-  .cm-contentContainer:has([data-callout="infobox"])
-  + .embedded-backlinks,
-body.infobox-enabled:not(.is-mobile)
-  .markdown-preview-sizer:has([data-callout="infobox"])
-  > div:not(.mod-header),
-body.infobox-enabled.is-tablet
-  .markdown-preview-sizer:has([data-callout="infobox"])
-  > div:not(.mod-header),
-body:not(.css-settings-manager):not(.is-mobile)
-  .markdown-preview-sizer:has([data-callout="infobox"])
-  > div:not(.mod-header),
-body:not(.css-settings-manager).is-tablet
-  .markdown-preview-sizer:has([data-callout="infobox"])
-  > div:not(.mod-header) {
-  margin-right: calc(var(--infobox-width) + var(--infobox-gap));
-  position: relative;
-}
-
-body.infobox-enabled:not(.is-mobile) .cm-callout:has([data-callout="infobox"]),
-body.infobox-enabled.is-tablet .cm-callout:has([data-callout="infobox"]),
-body:not(.css-settings-manager):not(.is-mobile)
-  .cm-callout:has([data-callout="infobox"]),
-body:not(.css-settings-manager).is-tablet
-  .cm-callout:has([data-callout="infobox"]),
-body.infobox-enabled:not(.is-mobile)
-  .markdown-preview-sizer
-  > div:has([data-callout="infobox"]),
-body.infobox-enabled.is-tablet
-  .markdown-preview-sizer
-  > div:has([data-callout="infobox"]),
-body:not(.css-settings-manager):not(.is-mobile)
-  .markdown-preview-sizer
-  > div:has([data-callout="infobox"]),
-body:not(.css-settings-manager).is-tablet
-  .markdown-preview-sizer
-  > div:has([data-callout="infobox"]) {
-  margin-bottom: var(--file-margins);
-  position: absolute !important;
-  right: calc(-1 * (var(--infobox-width) + var(--infobox-gap)));
-  top: 0;
-  width: var(--infobox-width);
-}
-
-body.infobox-enabled:not(.is-mobile)
-  .show-inline-title
-  .markdown-preview-sizer
-  > div:has([data-callout="infobox"]),
-body.infobox-enabled.is-tablet
-  .show-inline-title
-  .markdown-preview-sizer
-  > div:has([data-callout="infobox"]),
-body:not(.css-settings-manager):not(.is-mobile)
-  .show-inline-title
-  .markdown-preview-sizer
-  > div:has([data-callout="infobox"]),
-body:not(.css-settings-manager).is-tablet
-  .show-inline-title
-  .markdown-preview-sizer
-  > div:has([data-callout="infobox"]) {
-  top: calc(var(--inline-title-size) * var(--inline-title-line-height) + 0.5em);
-}
-*/

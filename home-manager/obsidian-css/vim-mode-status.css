@@ -3,7 +3,7 @@
 /* Depends on the Obsidian Vimrc Support Plugin */
 /* source: https://github.com/esm7/obsidian-vimrc-support */
 
-div.status-bar-item.plugin-obsidian-vimrc-support {
+.status-bar-item.plugin-obsidian-vimrc-support {
   /* Catppuccin colors */
   --text-color-normal: #c6a0f6;
   --text-color-insert: #f5bde6;
@@ -14,65 +14,67 @@ div.status-bar-item.plugin-obsidian-vimrc-support {
   --background-color-insert: transparent;
   --background-color-visual: transparent;
   --background-color-replace: transparent;
-}
 
-div.status-bar-item.plugin-obsidian-vimrc-support {
   /* Move to bottom left corner and discard top/left/bottom space
      from container paddings. */
   order: -9999;
   margin: -4px auto -5px -5px;
-
-  padding-right: 1em;
-  padding-left: 1em;
+  padding-inline: 1em;
 
   /* Use monospace font */
   font-family: var(--font-monospace);
   font-size: 1.2em;
+
+  &:after {
+    /* Separator character */
+    content: "";
+    position: relative;
+    font-size: 1.5rem;
+    left: 0.9rem;
+
+    /* Fine adjust the position */
+    margin-top: 0.1rem;
+  }
 }
 
-div.status-bar-item.plugin-obsidian-vimrc-support:after {
-  /* Separator character */
-  content: "";
-  position: relative;
-  font-size: 1.5rem;
-  left: 0.9rem;
+.status-bar-item.vimrc-support-vim-mode {
+  /* Normal */
+  &[data-vim-mode="normal"] {
+    color: var(--text-color-normal);
+    background-color: var(--background-color-normal);
 
-  /* Fine adjust the position */
-  margin-top: 0.1rem;
-}
+    &:after {
+      color: var(--background-color-normal);
+    }
+  }
 
-/* Normal */
-div.status-bar-item.vimrc-support-vim-mode[data-vim-mode="normal"]:after {
-  color: var(--background-color-normal);
-}
-div.status-bar-item.vimrc-support-vim-mode[data-vim-mode="normal"] {
-  color: var(--text-color-normal);
-  background-color: var(--background-color-normal);
-}
+  /* Insert */
+  &[data-vim-mode="insert"] {
+    color: var(--text-color-insert);
+    background-color: var(--background-color-insert);
 
-/* Insert */
-div.status-bar-item.vimrc-support-vim-mode[data-vim-mode="insert"]:after {
-  color: var(--background-color-insert);
-}
-div.status-bar-item.vimrc-support-vim-mode[data-vim-mode="insert"] {
-  color: var(--text-color-insert);
-  background-color: var(--background-color-insert);
-}
+    &:after {
+      color: var(--background-color-insert);
+    }
+  }
 
-/* Visual */
-div.status-bar-item.vimrc-support-vim-mode[data-vim-mode="visual"]:after {
-  color: var(--background-color-visual);
-}
-div.status-bar-item.vimrc-support-vim-mode[data-vim-mode="visual"] {
-  color: var(--text-color-visual);
-  background-color: var(--background-color-visual);
-}
+  /* Visual */
+  &[data-vim-mode="visual"] {
+    color: var(--text-color-visual);
+    background-color: var(--background-color-visual);
 
-/* Replace */
-div.status-bar-item.vimrc-support-vim-mode[data-vim-mode="replace"]:after {
-  color: var(--background-color-replace);
-}
-div.status-bar-item.vimrc-support-vim-mode[data-vim-mode="replace"] {
-  color: var(--text-color-replace);
-  background-color: var(--background-color-replace);
+    &:after {
+      color: var(--background-color-visual);
+    }
+  }
+
+  /* Replace */
+  &[data-vim-mode="replace"] {
+    color: var(--text-color-replace);
+    background-color: var(--background-color-replace);
+
+    &:after {
+      color: var(--background-color-replace);
+    }
+  }
 }

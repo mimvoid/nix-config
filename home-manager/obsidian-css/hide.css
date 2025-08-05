@@ -22,17 +22,20 @@
 }
 
 /* Hide top window buttons while maintaining some whitespace */
-.workspace-leaf-content[data-type="outline"] .nav-buttons-container,
-.workspace-leaf-content[data-type="file-explorer"] .nav-buttons-container,
-.workspace-leaf-content[data-type="bookmarks"] .nav-buttons-container {
-  display: none;
+.workspace-leaf-content {
+  &[data-type="outline"],
+  &[data-type="file-explorer"],
+  &[data-type="bookmarks"] {
+    .nav-buttons-container {
+      display: none;
+    }
+  }
 }
 
-.embedded-backlinks .nav-action-button[aria-label="Collapse results"],
-.embedded-backlinks .nav-action-button[aria-label="Show search filter"],
-.workspace-leaf-content[data-type="backlink"]
+.workspace-leaf-content[data-type="backlink"],
+.embedded-backlinks {
   .nav-action-button[aria-label="Collapse results"],
-.workspace-leaf-content[data-type="backlink"]
   .nav-action-button[aria-label="Show search filter"] {
-  display: none;
+    display: none;
+  }
 }

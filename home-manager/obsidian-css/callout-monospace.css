@@ -4,9 +4,7 @@
  * author: efemkay
  * source: https://forum.obsidian.md/t/monospace-segment-in-live-preview-without-breaking-links/38327/2 */
 
-div[data-callout-metadata*="monospace"] {
-    font-family: var(--font-monospace);
-}
+[data-callout-metadata*="monospace"],
 .HyperMD-quote {
     font-family: var(--font-monospace);
 }

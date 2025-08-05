@@ -24,13 +24,15 @@ th:first-of-type {
 th:last-of-type {
   border-top-right-radius: var(--table-border-radius);
 }
-tr:last-child td:first-child {
-  border-bottom-left-radius: var(--table-border-radius);
-}
-tr:last-child td:last-child {
-  border-bottom-right-radius: var(--table-border-radius);
+tr:last-child td {
+  &:first-child {
+    border-bottom-left-radius: var(--table-border-radius);
+  }
+  &:last-child {
+    border-bottom-right-radius: var(--table-border-radius);
+  }
 }
 
-:root :is(td, th) {
+td, th {
   border-width: 0 var(--table-border-width) var(--table-border-width) 0;
 }
