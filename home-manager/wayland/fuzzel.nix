@@ -1,51 +1,50 @@
 { config, pkgs, ... }:
-let
-  inherit (pkgs.theme.fonts) monospace;
 
-  # Theming configs
-  font = "${monospace.name}:size=9";
-  icon-theme = config.gtk.iconTheme.name;
-in
 {
-  programs.fuzzel = {
-    enable = true;
-    settings = {
-      main = {
-        inherit font icon-theme;
-        include = "~/.config/fuzzel/colors.ini"; # matugen
-        terminal = "kitty";
+  home.packages = with pkgs; [
+    fuzzel
+    networkmanager_dmenu
+  ];
 
-        dpi-aware = true;
-        width = 33;
-        lines = 16;
-        layer = "overlay";
-        prompt = "'> '";
-        exit-on-keyboard-focus-loss = false;
+  xdg.configFile."fuzzel/fuzzel.ini".text =
+    let
+      font = "${pkgs.theme.fonts.monospace.name}:size=9";
+      icon-theme = config.gtk.iconTheme.name;
+    in
+    # ini
+    ''
+      include = ~/.config/fuzzel/colors.ini # matugen
 
-        horizontal-pad = 28;
-        vertical-pad = 18;
-        inner-pad = 16;
+      font = ${font}
+      icon-theme = ${icon-theme}
+      terminal = kitty
 
-        fields = "filename,name";
-        tabs = 4;
+      prompt = "> "
+      width = 33
+      lines = 16
+      dpi-aware = yes
+      layer = overlay
 
-        match-counter = true;
-      };
+      horizontal-pad = 28
+      vertical-pad = 18
+      inner-pad = 16
 
-      border = {
-        width = 2;
-        radius = 8;
-      };
-    };
-  };
+      fields = filename,name
+      tabs = 4
+
+      exit-on-keyboard-focus-loss = no
+      match-counter = yes
+
+      [border]
+      width = 2
+      radius = 8
+    '';
 
   # ------- #
   # Plugins #
   # ------- #
 
   # Networkmanager dmenu
-  home.packages = with pkgs; [ networkmanager_dmenu ];
-
   xdg.configFile."networkmanager-dmenu/config.ini".text = /* ini */ ''
     [dmenu]
     dmenu_command = fuzzel -d -w 40
