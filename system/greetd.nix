@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 
 {
   # Used to start an X11 session, and is faster than startx
@@ -16,8 +16,8 @@
       command =
         let
           hyprland = "${pkgs.hyprland}/share/wayland-sessions";
-          xfce = "${pkgs.xfce.xfce4-session}/share/xsessions";
-          sx = "${config.services.xserver.displayManager.sx.package}/bin/sx";
+          # xfce = "${pkgs.xfce.xfce4-session}/share/xsessions";
+          # sx = "${config.services.xserver.displayManager.sx.package}/bin/sx";
 
           theme = builtins.concatStringsSep ";" [
             "border=blue"
@@ -38,7 +38,7 @@
           "--window-padding 2 --container-padding 2"
           "--remember --remember-session"
           "--sessions ${hyprland}"
-          "--xsessions ${xfce} --xsession-wrapper '${sx} /usr/bin/env'"
+          # "--xsessions ${xfce} --xsession-wrapper '${sx} /usr/bin/env'"
           "--theme '${theme}'"
         ];
 

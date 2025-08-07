@@ -5,7 +5,7 @@
     ./greetd.nix
 
     ./hyprland.nix
-    ./xfce.nix
+    # ./xfce.nix
 
     # ./virt.nix
     ./power.nix

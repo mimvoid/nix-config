@@ -22,7 +22,7 @@
     ./neovim.nix
     ./terminal
     ./hypr
-    ./xfconf
+    # ./xfconf
     ./guis
     ./firefox
     ./ags.nix
