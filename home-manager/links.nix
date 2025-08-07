@@ -18,7 +18,6 @@ in
   xdg = {
     configFile = {
       "ags" = symlink "${flakePath}/home-manager/ags";
-      "gtk-3.0/gtk.css".source = ./xfconf/gtk3.css;
       "wallpapers".source = ../wallpapers/wallpapers;
     };
 
@@ -30,6 +29,6 @@ in
     ".mozilla/firefox/${firefox-profile}/chrome" = symlink "${flakePath}/home-manager/firefox/panefox";
 
     # Obsidian CSS
-    "${obsidian-dir}/.obsidian/snippets" = symlink "${flakePath}/home-manager/obsidian-css";
+    "${obsidian-dir}/.obsidian/snippets" = symlink "${flakePath}/home-manager/theming/obsidian-css";
   };
 }

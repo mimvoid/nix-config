@@ -2,7 +2,7 @@
 let
   # Needs to be a string
   # See: https://github.com/nix-community/home-manager/issues/5743
-  lockscreen = "${../../wallpapers/wallpapers/tokyo-shinjuku.png}";
+  lockscreen = "${../../../wallpapers/wallpapers/tokyo-shinjuku.png}";
   display = "RitzFLF";
 
   rgb = pkgs.palettes.main.hex.rgbWrap;
