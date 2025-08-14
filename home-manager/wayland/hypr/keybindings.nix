@@ -11,8 +11,7 @@ let
   screenshot =
     let
       hyprshot = "${pkgs.hyprshot}/bin/hyprshot";
-
-      dir = "$(xdg-user-dir PICTURES)/Screenshots";
+      dir = "~/Pictures/Screenshots";
       filename = "$(date +%F_%H-%M-%S).png";
     in
     {
