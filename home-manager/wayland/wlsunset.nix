@@ -1,10 +1,8 @@
 { pkgs, ... }:
 
-{
-  # Allows wlsunset to launch with a terminal command
-  home.packages = with pkgs; [ wlsunset ];
+# Like the home-manager wlsunset module, but with an added duration argument
 
-  # Set up custom args (duration)
+{
   systemd.user.services.wlsunset = {
     Unit = {
       Description = "Day/night gamma adjustments for Wayland compositors.";
