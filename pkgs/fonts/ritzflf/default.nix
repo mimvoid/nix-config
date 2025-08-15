@@ -1,23 +1,25 @@
 {
   lib,
   stdenvNoCC,
-  fetchzip,
+  fetchFromGitHub,
 }:
 
 stdenvNoCC.mkDerivation {
   pname = "ritzflf";
-  version = "2024-12-25";
+  version = "2025-08-14";
 
-  src = fetchzip {
-    url = "https://moorstation.org/typoasis/designers/casady_greene/r-z/Ritz.zip";
-    hash = "sha256-V6NYAg+7GLB7H/dip1vmZVfszc0xjiAzis1LOFZ9vyA=";
-    stripRoot = false;
+  src = fetchFromGitHub {
+    owner = "mimvoid";
+    repo = "casady-greene";
+    sparseCheckout = [ "fonts/ritz/ttf" ];
+    rev = "25f84eee481cff1e624247f000300bf0f70c19da";
+    hash = "sha256-4pZg2RqI7O8wlC6dxVMiYxjiK6ztVOz+i6r4Nk/jazw=";
   };
 
   installPhase = ''
     runHook preInstall
 
-    install -Dm444 -t $out/share/fonts/truetype *.ttf
+    install -Dm444 -t $out/share/fonts/truetype fonts/ritz/ttf/*.ttf
 
     runHook postInstall
   '';
