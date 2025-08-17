@@ -32,6 +32,8 @@ in
       (active "FFPWA*")
       (active "libreoffice*")
       (active "FreeTube")
+      (active "Godot")
+      (active "org.godotengine.Editor")
 
       (full "krita")
       (full "org.inkscape.Inkscape")
@@ -50,6 +52,16 @@ in
       "noblur 1, class:^krita$, floating:1"
       "noborder 1, class:^krita$, floating:1"
       "noshadow 1, class:^krita$, floating:1"
+
+      # Shimejis
+      "xray 0, class:^Shijima-Qt$, floating:1"
+      "noinitialfocus, class:^Shijima-Qt$, floating:1"
+      "noblur 1, class:^Shijima-Qt$, floating:1"
+      "noborder 1, class:^Shijima-Qt$, floating:1"
+      "noshadow 1, class:^Shijima-Qt$, floating:1"
+      "opaque 1, class:^Shijima-Qt$, floating:1"
+      "decorate 0, class:^Shijima-Qt$, floating:1"
+      "norounding 1, class:^Shijima-Qt$, floating:1"
 
       # Make Zotero plugin notifications less intrusive
       "float, class:^(Zotero)$, title:^(Progress)$"
