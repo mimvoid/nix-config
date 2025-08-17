@@ -137,11 +137,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1735270018,
-        "narHash": "sha256-vrhOZ4RnZnZKm6/J8MOWJHNnkoPQQybWG66MDptZ0Es=",
+        "lastModified": 1755147026,
+        "narHash": "sha256-Od0GmKjiQoZod9A7tGQE9qTmIo9m3fkXCOYlg74jXeM=",
         "owner": "mimvoid",
         "repo": "fletchling",
-        "rev": "49bd5b4fb8f651571766577e665ff6529cc58fb1",
+        "rev": "931277ae10f2fdba56baf08d6c2dca58731b7dfa",
         "type": "github"
       },
       "original": {
