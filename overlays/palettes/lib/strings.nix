@@ -69,20 +69,20 @@ rec {
   hexToRgb = s:
     let
       hex = noHashtag s;
+      len = stringLength hex;
+      numChars = if len == 3 then 1 else 2;
 
-      # Give the starting index of the substring to convert
-      fromHex = start: lib.trivial.fromHexString (substring start 2 hex);
-
-      # Get the hex values
-      r = fromHex 0;
-      g = fromHex 2;
-      b = fromHex 4;
-
-      # Get the alpha value as a float if it exists
-      # Otherwise, set it to 255
-      a = if stringLength hex == 8 then (fromHex 6) else 255;
+      # Takes the starting index of the substring
+      fromHex = startIndex: lib.trivial.fromHexString (substring startIndex numChars hex);
     in
-    { inherit r g b a; };
+    {
+      r = fromHex 0;
+      g = fromHex numChars;
+      b = fromHex (numChars * 2);
+
+      # Get the alpha value if it exists, defaults to 255
+      a = if len == 8 then (fromHex 6) else 255;
+    };
 
   /**
     (Not a string function)

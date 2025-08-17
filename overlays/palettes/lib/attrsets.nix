@@ -1,7 +1,6 @@
 { lib }:
 let
   inherit (lib.attrsets)
-    mapAttrs
     mapAttrsRecursive
     ;
 
@@ -76,6 +75,7 @@ rec {
 
   /**
     Join an attribute set of RGB values into an RGB string.
+    Ignores any alpha value.
 
     # Type
 
@@ -84,15 +84,20 @@ rec {
     # Examples
 
     joinRgb { a = 204; b = 255; g = 250; r = 245; };
-    => "rgba(245,250,255,204)"
+    => "rgb(245,250,255)"
   */
   joinRgb = set:
     let
       inherit (builtins) toString;
-      inner = "${toString set.r},${toString set.g},${toString set.b}";
     in
-    if set ? a then
-      "rgba(${inner},${toString set.a})"
-    else
-      "rgb(${inner})";
+    "rgb(${toString set.r},${toString set.g},${toString set.b})";
+
+  /**
+    Join an attribute set of RGB values into an RGBA string.
+  */
+  joinRgba = set:
+    let
+      inherit (builtins) toString;
+    in
+    "rgba(${toString set.r},${toString set.g},${toString set.b},${toString set.a})";
 }
