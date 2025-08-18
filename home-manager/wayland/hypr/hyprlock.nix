@@ -5,7 +5,7 @@ let
   lockscreen = "${../../../wallpapers/wallpapers/tokyo-shinjuku.png}";
   display = "RitzFLF";
 
-  rgb = pkgs.palettes.main.hex.rgbWrap;
+  rgb = pkgs.palettes.macchi-nightlight.hexRgbWrap;
   inherit (pkgs.theme) fonts;
 in
 {

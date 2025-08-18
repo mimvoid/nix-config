@@ -1,6 +1,6 @@
 { pkgs, ... }:
 
-with pkgs.palettes.moonfall-eve.hex.default;
+with pkgs.palettes.moonfall-eve.hex;
 {
   xdg.configFile."dooit/settings/themes.py".text = /* python */ ''
     from dooit.api.theme import DooitThemeBase
@@ -18,11 +18,11 @@ with pkgs.palettes.moonfall-eve.hex.default;
 
         red: str = "${red}"
         orange: str = "${yellow}"
-        yellow: str = "${yellow}"
+        yellow: str = orange
         green: str = "${green}"
         blue: str = "${blue}"
         purple: str = "${magenta}"
-        magenta: str = "${magenta}"
+        magenta: str = purple
         cyan: str = "${cyan}"
 
         primary: str = yellow

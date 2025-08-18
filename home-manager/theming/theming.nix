@@ -52,7 +52,7 @@ in
     enable = true;
     autoEnable = false;
 
-    base16Scheme = pkgs.palettes.moonfall-eve.hex.noHashtag.base16;
+    base16Scheme = pkgs.palettes.moonfall-eve.hexNoHashtag.base16;
 
     inherit cursor;
 

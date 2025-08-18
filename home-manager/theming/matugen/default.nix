@@ -5,7 +5,7 @@
 
   xdg.configFile."matugen/config.toml".text =
     let
-      inherit (pkgs.palettes.moonfall-eve.hex.default)
+      inherit (pkgs.palettes.moonfall-eve.hex)
         base00
         base01
         base02

@@ -22,7 +22,7 @@
 
     settings =
       let
-        colors = with pkgs.palettes.moonfall-eve.hex.default; rec {
+        colors = with pkgs.palettes.moonfall-eve.hex; rec {
           foreground = base06;
           background = base00;
           selection_background = base0F;
