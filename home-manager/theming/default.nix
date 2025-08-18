@@ -2,7 +2,7 @@
   imports = [
     ./hellwal
     ./matugen
-    ./theming.nix
+    ./general.nix
     ./fonts.nix
   ];
 

@@ -12,27 +12,6 @@ in
 
   home.packages = pkgs.theme.packages;
 
-
-  # home.pointerCursor = {
-  #   inherit (cursor) name package size;
-  #   x11.enable = true;
-  #   gtk.enable = true;
-  # };
-  #
-  # fonts.fontconfig =
-  #   let
-  #     inherit (fonts) sansSerif serif monospace;
-  #   in
-  #   {
-  #   enable = true;
-  #   defaultFonts = {
-  #     sansSerif = [ sansSerif.name ];
-  #     serif = [ serif.name ];
-  #     monospace = [ monospace.name ];
-  #   };
-  # };
-
-
   gtk = {
     inherit (gtk) theme;
     enable = true;
@@ -47,7 +26,6 @@ in
     style.name = "breeze";
   };
 
-
   stylix = {
     enable = true;
     autoEnable = false;
@@ -55,13 +33,14 @@ in
     base16Scheme = pkgs.palettes.moonfall-eve.hexNoHashtag.base16;
 
     inherit cursor;
-
     fonts = {
       inherit (fonts) serif sansSerif monospace;
       sizes.terminal = fonts.terminal-size;
     };
 
     targets = {
+      fontconfig.enable = true;
+
       bat.enable = true;
       fzf.enable = true;
       xresources.enable = true;
