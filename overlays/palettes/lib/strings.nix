@@ -1,13 +1,5 @@
 { lib }:
 
-let
-  inherit (lib.strings)
-    removePrefix
-    stringLength
-    substring
-    ;
-in
-
 rec {
   /**
     Remove the leading "#" from a string, if it exists.
@@ -24,7 +16,7 @@ rec {
     noHashtag "000000"
     => "000000"
   */
-  noHashtag = removePrefix "#";
+  noHashtag = lib.strings.removePrefix "#";
 
   /**
     Surround a string with "rgb()" or "rgba()".
@@ -46,7 +38,7 @@ rec {
     let
       hex = noHashtag s;
     in
-    if stringLength hex == 8 then
+    if builtins.stringLength hex == 8 then
       "rgba(${hex})"
     else
       "rgb(${hex})";
@@ -69,11 +61,11 @@ rec {
   hexToRgb = s:
     let
       hex = noHashtag s;
-      len = stringLength hex;
+      len = builtins.stringLength hex;
       numChars = if len == 3 then 1 else 2;
 
       # Takes the starting index of the substring
-      fromHex = startIndex: lib.trivial.fromHexString (substring startIndex numChars hex);
+      fromHex = startIndex: lib.trivial.fromHexString (builtins.substring startIndex numChars hex);
     in
     {
       r = fromHex 0;

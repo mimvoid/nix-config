@@ -1,9 +1,6 @@
 { lib }:
 let
-  inherit (lib.attrsets)
-    mapAttrsRecursive
-    ;
-
+  inherit (lib.attrsets) mapAttrsRecursive;
   strings = import ./strings.nix { inherit lib; };
 in
 rec {

@@ -28,7 +28,7 @@ let
         # Note: changing the plugin type for a previously used number may not update
         # the plugins' internal names right away, leading to some strange behavior.
         # I found that reloading (e.g. logging out) fixes it.
-        "plugin-ids" = pkgs.lib.lists.range 1 9;
+        "plugin-ids" = builtins.genList (x: x + 1) 9;
       };
 
       bottom-panel = prependAttrs "panels/panel-2" {
@@ -39,7 +39,7 @@ let
         "length" = 1; # let it be autoexpanded by plugins
         "size" = 46;
 
-        "plugin-ids" = pkgs.lib.lists.range 10 12;
+        "plugin-ids" = builtins.genList (x: x + 10) 3;
       };
     };
 
