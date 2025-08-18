@@ -24,20 +24,22 @@
     };
 
     stylix = {
-      url = "github:danth/stylix/release-25.05";
+      url = "github:nix-community/stylix/release-25.05";
       inputs = {
         nixpkgs.follows = "nixpkgs";
-        home-manager.follows = "home-manager";
 
         # Ignore un-needed inputs
         base16-fish.follows = "";
         base16-helix.follows = "";
         base16-vim.follows = "";
+        firefox-gnome-theme.follows = "";
         gnome-shell.follows = "";
+        nur.follows = "";
         tinted-foot.follows = "";
         tinted-kitty.follows = "";
+        tinted-schemes.follows = "";
         tinted-tmux.follows = "";
-        firefox-gnome-theme.follows = "";
+        tinted-zed.follows = "";
       };
     };
 
