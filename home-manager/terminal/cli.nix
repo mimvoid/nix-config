@@ -1,23 +1,27 @@
 { flakePath, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    gnumake
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      gnumake
 
-    # media
-    imagemagick
-    exiftool
-    mediainfo
-    voids.fontpreview
-    nsxiv
+      # media
+      imagemagick
+      exiftool
+      mediainfo
+      nsxiv
 
-    # other
-    megacmd
-    tlrc
-    libnotify
-    dwt1-shell-color-scripts
-    voids.mdopen
-  ];
+      # other
+      megacmd
+      tlrc
+      libnotify
+      dwt1-shell-color-scripts
+      ;
+    inherit (pkgs.voids)
+      fontpreview
+      mdopen
+      ;
+  };
 
   home.sessionVariables = {
     NH_FLAKE = flakePath;
@@ -39,10 +43,10 @@
 
     # fontpreview settings
     FONTPREVIEW_SIZE = "650x700";
-    FONTPREVIEW_PREVIEW_TEXT = pkgs.lib.strings.concatLines [
+    FONTPREVIEW_PREVIEW_TEXT = builtins.concatStringsSep "\n" [
       "SPHINX OF BLACK QUARTZ,"
       "JUDGE MY VOW."
-      "" # extra /n line break
+      "" # extra \n line break
       "Sphinx of Black Quartz,"
       "Judge My Vow."
       ""

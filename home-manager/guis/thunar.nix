@@ -2,7 +2,7 @@
 
 {
   # View .webp thumbnails
-  home.packages = with pkgs; [ webp-pixbuf-loader ];
+  home.packages = [ pkgs.webp-pixbuf-loader ];
 
   xfconf.settings.thunar = {
     "last-view" = "ThunarIconView";

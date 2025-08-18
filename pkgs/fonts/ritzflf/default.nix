@@ -29,6 +29,6 @@ stdenvNoCC.mkDerivation {
     homepage = "https://moorstation.org/typoasis/designers/casady_greene/r_z.htm";
     license = lib.licenses.free;
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [ mimvoid ];
+    maintainers = [ lib.maintainers.mimvoid ];
   };
 }

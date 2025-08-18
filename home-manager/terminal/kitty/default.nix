@@ -22,7 +22,7 @@
 
     settings =
       let
-        colors = with pkgs.palettes.moonfall-eve.hex; rec {
+        colors = with pkgs.palettes.moonfall-eve.hex; {
           foreground = base06;
           background = base00;
           selection_background = base0F;
@@ -42,12 +42,12 @@
           color7 = base03;
           color15 = base04;
 
-          color9 = color1;
-          color10 = color2;
-          color11 = color3;
-          color12 = color4;
-          color13 = color5;
-          color14 = color6;
+          color9 = colors.color1;
+          color10 = colors.color2;
+          color11 = colors.color3;
+          color12 = colors.color4;
+          color13 = colors.color5;
+          color14 = colors.color6;
         };
 
         color-usages = with colors; {

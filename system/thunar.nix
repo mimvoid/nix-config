@@ -4,9 +4,9 @@
   # Thunar additions
   programs.thunar = {
     enable = true;
-    plugins = with pkgs.xfce; [
-      thunar-archive-plugin
-      thunar-media-tags-plugin
+    plugins = [
+      pkgs.xfce.thunar-archive-plugin
+      pkgs.xfce.thunar-media-tags-plugin
     ];
   };
 

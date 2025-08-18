@@ -29,6 +29,6 @@ stdenvNoCC.mkDerivation {
     homepage = "https://invent.kde.org/freyalupen/reference-tabs-docker";
     license = lib.licenses.gpl3Only;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [ mimvoid ];
+    maintainers =  [ lib.maintainers.mimvoid ];
   };
 }

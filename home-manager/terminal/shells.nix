@@ -1,53 +1,19 @@
 { pkgs, ... }:
-let
-  zsh-plugins = {
-    zsh-autopair = {
-      name = "zsh-autopair";
-      src = pkgs.zsh-autopair;
-      file = "share/zsh/zsh-autopair/autopair.zsh";
-    };
 
-    zsh-nix-shell = {
-      name = "zsh-nix-shell";
-      src = pkgs.zsh-nix-shell;
-      file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
-    };
-
-    zsh-vi-mode = {
-      name = "zsh-vi-mode";
-      src = pkgs.zsh-vi-mode;
-      file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
-    };
-
-    zsh-help = {
-      name = "zsh-help";
-      src = pkgs.voids.zsh-help;
-    };
-  };
-in
 {
-  home = {
-    packages = with zsh-plugins; [
-      zsh-autopair.src
-      zsh-nix-shell.src
-      zsh-vi-mode.src
-      zsh-help.src
-    ];
+  home.shellAliases = {
+    ".." = "cd ..";
+    "..." = "cd ../..";
 
-    shellAliases = {
-      ".." = "cd ..";
-      "..." = "cd ../..";
+    # nix aliases
+    nhos = "nh os switch";
+    nhh = "nh home switch";
 
-      # nix aliases
-      nhos = "nh os switch";
-      nhh = "nh home switch";
+    # command shorthands
+    lg = "lazygit";
 
-      # command shorthands
-      lg = "lazygit";
-
-      # config aliases
-      arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
-    };
+    # config aliases
+    arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
   };
 
   programs.bash.enable = true;
@@ -105,11 +71,26 @@ in
     '';
 
     # zsh plugin configuration
-    plugins = with zsh-plugins; [
-      zsh-autopair
-      zsh-nix-shell
-      zsh-vi-mode
-      zsh-help
+    plugins = [
+      {
+        name = "zsh-autopair";
+        src = pkgs.zsh-autopair;
+        file = "share/zsh/zsh-autopair/autopair.zsh";
+      }
+      {
+        name = "zsh-nix-shell";
+        src = pkgs.zsh-nix-shell;
+        file = "share/zsh-nix-shell/nix-shell.plugin.zsh";
+      }
+      {
+        name = "zsh-vi-mode";
+        src = pkgs.zsh-vi-mode;
+        file = "share/zsh-vi-mode/zsh-vi-mode.plugin.zsh";
+      }
+      {
+        name = "zsh-help";
+        src = pkgs.voids.zsh-help;
+      }
     ];
 
     sessionVariables = {

@@ -21,6 +21,6 @@ rustPlatform.buildRustPackage {
     description = "Preview markdown files in a browser";
     homepage = "https://github.com/immanelg/mdopen";
     license = lib.licenses.bsd3;
-    maintainers = with lib.maintainers; [ mimvoid ];
+    maintainers =  [ lib.maintainers.mimvoid ];
   };
 }

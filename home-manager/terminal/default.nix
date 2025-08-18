@@ -12,9 +12,9 @@
     ./navi
   ];
 
-  home.packages = with pkgs; [
-    voids.arttime
-    fletchling
+  home.packages = [
+    pkgs.voids.arttime
+    pkgs.fletchling
   ];
 
   programs.direnv = {

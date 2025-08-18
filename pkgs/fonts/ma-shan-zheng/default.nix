@@ -34,6 +34,6 @@ stdenvNoCC.mkDerivation {
     homepage = "https://fonts.google.com/specimen/Ma+Shan+Zheng";
     license = lib.licenses.ofl;
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [ mimvoid ];
+    maintainers = [ lib.maintainers.mimvoid ];
   };
 }

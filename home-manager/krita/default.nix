@@ -3,13 +3,15 @@
 {
   imports = [ ./scripts ];
 
-  home.packages = with pkgs.voids.krita; [
-    reference-tabs-docker
-    composition-helper
-    timer-watch
-    shortcut-composer
-  ]
-  ++ [ pkgs.unstable.krita ];
+  home.packages = builtins.attrValues {
+    inherit (pkgs.voids.krita)
+      reference-tabs-docker
+      composition-helper
+      timer-watch
+      shortcut-composer
+      ;
+    inherit (pkgs.unstable) krita;
+  };
 
   xdg.dataFile = {
     "krita" = {

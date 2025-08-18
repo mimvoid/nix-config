@@ -56,8 +56,8 @@ stdenvNoCC.mkDerivation rec {
       emulators of starving developers and other users who can use the terminal.
     '';
     homepage = "https://github.com/poetaman/arttime";
-    license = with lib.licenses; [ gpl3Only ];
+    license = [ lib.licenses.gpl3Only ];
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [ mimvoid ];
+    maintainers = [ lib.maintainers.mimvoid ];
   };
 }

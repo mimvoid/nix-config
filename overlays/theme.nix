@@ -1,6 +1,6 @@
 { pkgs }:
 
-rec {
+let
   cursor = {
     name = "BreezeX-RosePineDawn-Linux";
     package = pkgs.rose-pine-cursor;
@@ -42,4 +42,5 @@ rec {
     fonts.serif.package
     fonts.monospace.package
   ];
-}
+in
+{ inherit cursor gtk icons fonts packages; }

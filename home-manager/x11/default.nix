@@ -7,5 +7,5 @@
     ./picom.nix
   ];
 
-  home.packages = with pkgs; [ xclip ];
+  home.packages = [ pkgs.xclip ];
 }

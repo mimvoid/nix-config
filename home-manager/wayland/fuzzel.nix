@@ -1,9 +1,9 @@
 { config, pkgs, ... }:
 
 {
-  home.packages = with pkgs; [
-    fuzzel
-    networkmanager_dmenu
+  home.packages = [
+    pkgs.fuzzel
+    pkgs.networkmanager_dmenu
   ];
 
   xdg.configFile."fuzzel/fuzzel.ini".text =

@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
-with pkgs;
+let
+  inherit (pkgs) callPackage;
+in
 {
   arttime = callPackage ./arttime { };
   cortile = callPackage ./cortile { };

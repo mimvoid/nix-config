@@ -8,13 +8,17 @@ let
   keybindings = import ./keybindings.nix { inherit pkgs terminal; };
 
   # Colors
-  colors = with pkgs.palettes.macchi-nightlight.hexRgbWrap; {
-    general = {
-      "col.active_border" = primary;
-      "col.inactive_border" = alpha.primary-dim;
+  colors =
+    let
+      inherit (pkgs.palettes.macchi-nightlight.hexRgbWrap) primary alpha;
+    in
+    {
+      general = {
+        "col.active_border" = primary;
+        "col.inactive_border" = alpha.primary-dim;
+      };
+      decoration.shadow.color = alpha.shadow;
     };
-    decoration.shadow.color = alpha.shadow;
-  };
 in
 {
   # The Hyprland home-manager module enables this, but xdg portals

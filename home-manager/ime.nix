@@ -7,10 +7,10 @@
     type = "fcitx5";
     fcitx5 = {
       waylandFrontend = true;
-      addons = with pkgs; [
-        fcitx5-gtk
-        fcitx5-rime
-        mods.catppuccin-fcitx5
+      addons = [
+        pkgs.fcitx5-gtk
+        pkgs.fcitx5-rime
+        pkgs.mods.catppuccin-fcitx5
       ];
     };
   };

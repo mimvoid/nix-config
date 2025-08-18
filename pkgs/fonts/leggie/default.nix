@@ -35,6 +35,6 @@ stdenv.mkDerivation {
     '';
     homepage = "https://github.com/wikkyk/leggie";
     license = lib.licenses.cc-by-40;
-    maintainers = with lib.maintainers; [ mimvoid ];
+    maintainers = [ lib.maintainers.mimvoid ];
   };
 }

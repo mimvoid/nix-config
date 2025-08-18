@@ -1,14 +1,9 @@
 { final, prev, ... }:
-let
-  # Meaning: pkgs = final.pkgs;
-  inherit (final) pkgs; 
-in
+
 {
   # Add extra packages to dooit
   dooit = final.dooit.override {
-    extraPackages = with pkgs; [
-      dooit-extras
-    ];
+    extraPackages = [ final.pkgs.dooit-extras ];
   };
 
   # Pink Catppuccin Macchiato Papirus folders

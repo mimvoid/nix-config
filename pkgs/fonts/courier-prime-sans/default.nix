@@ -29,6 +29,6 @@ stdenvNoCC.mkDerivation {
     homepage = "https://github.com/quoteunquoteapps/CourierPrimeSans";
     license = lib.licenses.ofl;
     platforms = lib.platforms.all;
-    maintainers = with lib.maintainers; [ mimvoid ];
+    maintainers = [ lib.maintainers.mimvoid ];
   };
 }

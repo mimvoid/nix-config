@@ -32,6 +32,6 @@ stdenvNoCC.mkDerivation {
     homepage = "https://github.com/Freed-Wu/zsh-help";
     license = lib.licenses.gpl3;
     platforms = lib.platforms.unix;
-    maintainers = with lib.maintainers; [ mimvoid ];
+    maintainers =  [ lib.maintainers.mimvoid ];
   };
 }

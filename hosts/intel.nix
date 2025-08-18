@@ -1,10 +1,10 @@
 { pkgs, ... }:
 
 {
-  hardware.graphics.extraPackages = with pkgs; [
-    intel-media-driver # vaapi
-    intel-compute-runtime # opencl
-    libvdpau-va-gl # vdpau
-    vpl-gpu-rt # oneapi
+  hardware.graphics.extraPackages = [
+    pkgs.intel-media-driver # vaapi
+    pkgs.intel-compute-runtime # opencl
+    pkgs.libvdpau-va-gl # vdpau
+    pkgs.vpl-gpu-rt # oneapi
   ];
 }

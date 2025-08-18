@@ -13,8 +13,8 @@ let
 
   # Overlays provided by inputs
   # Usually, just use pkgs.<package>
-  input-overlays = with inputs; [
-    fletchling.overlay
+  input-overlays = [
+    inputs.fletchling.overlay
   ];
 
   additions = final: _: {

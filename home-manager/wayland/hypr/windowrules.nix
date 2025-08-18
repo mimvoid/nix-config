@@ -1,12 +1,5 @@
 { terminal, ... }:
-let
-  opacity = {
-    more = { id ? "class" }: name: "opacity 0.9 override 0.75 override, ${id}:(${name})";
-    high = name: "opacity 0.97 override 0.85 override, class:(${name})";
-    active = name: "opacity 1.0 override 0.85 override, class:(${name})";
-    full = name: "opaque, class:(${name})";
-  };
-in
+
 {
   layerrule = [
     "animation popin 65%, launcher"
@@ -16,7 +9,14 @@ in
     "dimaround, launcher"
   ];
 
-  windowrulev2 = with opacity;
+  windowrulev2 =
+    let
+      # Opacity
+      more = { id ? "class" }: name: "opacity 0.9 override 0.75 override, ${id}:(${name})";
+      high = name: "opacity 0.97 override 0.85 override, class:(${name})";
+      active = name: "opacity 1.0 override 0.85 override, class:(${name})";
+      full = name: "opaque, class:(${name})";
+    in
     [
       (more { id = "title"; } "*Nextcloud")
       (more { } "Anki")
@@ -39,8 +39,7 @@ in
       (full "org.inkscape.Inkscape")
       (full "org.kde.digikam")
       (full "virt-manager")
-    ]
-    ++ [
+
       "suppressevent maximize, class:.*"
       "opacity 0.8 override 0.7 override, class:(${terminal})"
 

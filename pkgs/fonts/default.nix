@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
-with pkgs;
+let
+  inherit (pkgs) callPackage;
+in
 {
   courier-prime-sans = callPackage ./courier-prime-sans { };
   leggie = callPackage ./leggie { };

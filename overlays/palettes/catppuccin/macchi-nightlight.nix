@@ -33,8 +33,11 @@ let
   # Copy the main attribute set and append "ff"
   # Then override some of them
   alpha =
+    let
+      inherit (main) primary-dim base shadow;
+    in
     builtins.mapAttrs (_: value: value + "ff") main
-    // (with main; {
+    // {
       box = primary-dim + "1a"; # 10% opacity
       box-bright = primary-dim + "33"; # 20% opacity
       box-dim = primary-dim + "1a"; # 10% opacity
@@ -43,6 +46,6 @@ let
       shadow = shadow + "33"; # 25% opacity
 
       primary-dim = primary-dim + "66"; # 40% opacity
-    });
+    };
 in
 main // { inherit alpha; }

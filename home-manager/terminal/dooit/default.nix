@@ -2,7 +2,7 @@
 
 {
   imports = [ ./themes.nix ];
-  home.packages = with pkgs.mods; [ dooit ];
+  home.packages = [ pkgs.mods.dooit ];
 
   xdg.configFile =
     let

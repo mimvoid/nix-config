@@ -7,33 +7,33 @@
     ./zathura.nix
   ];
 
-  home.packages = with pkgs; [
-    unstable.obsidian
+  home.packages = builtins.attrValues {
+    inherit (pkgs)
+      # Files & documents
+      libreoffice
+      file-roller
+      nextcloud-client # Have it available as an app
 
-    # Files & documents
-    libreoffice
-    file-roller
-    nextcloud-client # Have it available as an app
+      # Media
+      tauon
+      # inkscape
+      # unstable.digikam
 
-    # Academics
-    unstable.zotero
-    unstable.anki-bin
-    anki-sync-server
+      anki-sync-server
+      vesktop
+      # virt-manager
+      ;
 
-    # Social
-    vesktop
+    inherit (pkgs.unstable)
+      zotero
+      anki-bin
+      obsidian
+      # bottles
+      # prismlauncher
+      ;
 
-    # Virtualisation/layers/games
-    # unstable.bottles
-    # unstable.prismlauncher
-    # virt-manager
-
-    # Media
-    voids.freetube
-    tauon
-    # inkscape
-    # unstable.digikam
-  ];
+    inherit (pkgs.voids) freetube;
+  };
 
   services.nextcloud-client = {
     enable = true;

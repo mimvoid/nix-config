@@ -3,7 +3,7 @@
 {
   console = {
     font = "leggie-24";
-    packages = with pkgs.voids.fonts; [ leggie ];
+    packages = [ pkgs.voids.fonts.leggie ];
     useXkbConfig = true;
 
     colors = pkgs.palettes.lib.lists.removeHashtag [

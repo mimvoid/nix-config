@@ -7,8 +7,8 @@
     ./wlsunset.nix
   ];
 
-  home.packages = with pkgs; [
-    wl-clipboard-rs
-    swww
+  home.packages = [
+    pkgs.wl-clipboard-rs
+    pkgs.swww
   ];
 }

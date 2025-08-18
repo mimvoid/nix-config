@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs; [ unstable.picom ];
+  home.packages = [ pkgs.unstable.picom ];
 
   xfconf.settings.xfwm4."general/use_compositing" = false;
 

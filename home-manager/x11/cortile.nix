@@ -1,7 +1,7 @@
 { pkgs, ... }:
 
 {
-  home.packages = with pkgs.voids; [ cortile ];
+  home.packages = [ pkgs.voids.cortile ];
 
   xdg.configFile."cortile/config.toml".text = /* toml */ ''
     # Tiling

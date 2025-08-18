@@ -7,7 +7,5 @@
     ./hyprlock.nix
   ];
 
-  home.packages = with pkgs; [
-    hyprpicker
-  ];
+  home.packages = [ pkgs.hyprpicker ];
 }

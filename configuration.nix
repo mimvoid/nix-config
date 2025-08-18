@@ -41,9 +41,9 @@
   programs.nix-ld.enable = true;
 
   # Minimum system packages, most are in home manager
-  environment.systemPackages = with pkgs; [
-    nh
-    git
+  environment.systemPackages = [
+    pkgs.nh
+    pkgs.git
   ];
 
   services.flatpak.enable = true;
@@ -53,9 +53,9 @@
   xdg.portal = {
     enable = true;
     xdgOpenUsePortal = true;
-    extraPortals = with pkgs; [
-      xdg-desktop-portal-hyprland
-      xdg-desktop-portal-gtk
+    extraPortals = [
+      pkgs.xdg-desktop-portal-hyprland
+      pkgs.xdg-desktop-portal-gtk
     ];
   };
 
@@ -106,7 +106,7 @@
   # CUPS
   services.printing = {
     enable = true;
-    drivers = with pkgs; [ epson-escpr ];
+    drivers = [ pkgs.epson-escpr ];
   };
 
   programs.system-config-printer.enable = true;

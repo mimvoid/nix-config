@@ -33,6 +33,6 @@ stdenvNoCC.mkDerivation rec {
     homepage = "https://github.com/wojtryb/Shortcut-Composer";
     license = lib.licenses.gpl3;
     platforms = lib.platforms.linux;
-    maintainers = with lib.maintainers; [ mimvoid ];
+    maintainers =  [ lib.maintainers.mimvoid ];
   };
 }
