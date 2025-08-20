@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 {
+  fonts.fontconfig.enable = true;
+
   home.packages = builtins.attrValues {
     inherit (pkgs)
       # Sans serif
