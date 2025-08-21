@@ -10,15 +10,23 @@ let
   # Commands
   screenshot =
     let
-      hyprshot = "${pkgs.hyprshot}/bin/hyprshot";
       dir = "~/Pictures/Screenshots";
-      filename = "$(date +%F_%H-%M-%S).png";
+      file = "$(date +%F_%H-%M-%S).png";
+      mkCommand = _: mode: "${pkgs.hyprshot}/bin/hyprshot -m ${mode} --freeze -o ${dir} -f ${file}";
     in
-    {
-      screen = "${hyprshot} -m output --freeze -o ${dir} -f ${filename}";
-      window = "${hyprshot} -m window --freeze -o ${dir} -f ${filename}";
-      region = "${hyprshot} -m region --freeze -o ${dir} -f ${filename}";
+    builtins.mapAttrs mkCommand {
+      screen = "output";
+      window = "window";
+      region = "region";
     };
+
+  vim-motions = [
+    { key = "H"; direction = "l"; resize = "-10 0"; }
+    { key = "L"; direction = "r"; resize = "10 0"; }
+    { key = "K"; direction = "u"; resize = "0 -10"; }
+    { key = "J"; direction = "d"; resize = "0 10"; }
+  ];
+  mapVimMotions = f: builtins.map f vim-motions;
 in
 {
   "$mod" = "SUPER";
@@ -28,13 +36,8 @@ in
     "$mod, mouse:273, movewindow"
   ];
 
-  binde = [
-    # Resize windows
-    "$mod ALT, H, resizeactive, -10 0"
-    "$mod ALT, L, resizeactive, 10 0"
-    "$mod ALT, K, resizeactive, 0 -10"
-    "$mod ALT, J, resizeactive, 0 10"
-  ];
+  # Resize windows
+  binde = mapVimMotions (dir: "$mod ALT, ${dir.key}, resizeactive, ${dir.resize}");
 
   bind = [
     # Launch
@@ -58,7 +61,7 @@ in
     "$mod, C, exec, hyprpicker --autocopy --format=hex"
 
     # Toggle session menu
-    "$mod SHIFT, Q, exec, ags toggle \"session\""
+    "$mod SHIFT, Q, exec, ags toggle 'session'"
 
     # Reload
     # I use this binding to manually reload config changes.
@@ -67,40 +70,26 @@ in
     "$mod, R, exec, hyprctl reload config-only"
     "$mod, R, exec, pkill xfce4-notifyd ; ags quit ; ags run"
 
-    # Toggle fullscreen
-    "$mod, F, fullscreen"
-
-    # Exit
-    "$mod, Q, killactive"
-
+    "$mod, F, fullscreen" # Toggle fullscreen
+    "$mod, Q, killactive" # Exit
+  ]
+  ++ (
     # Switch focus
-    "$mod, H, movefocus, l"
-    "$mod, L, movefocus, r"
-    "$mod, K, movefocus, u"
-    "$mod, J, movefocus, d"
-
+    mapVimMotions (dir: "$mod, ${dir.key}, movefocus, ${dir.direction}")
+  )
+  ++ (
     # Move windows
-    "$mod SHIFT, H, movewindow, l"
-    "$mod SHIFT, L, movewindow, r"
-    "$mod SHIFT, K, movewindow, u"
-    "$mod SHIFT, J, movewindow, d"
-  ] ++ (
+    mapVimMotions (dir: "$mod SHIFT, ${dir.key}, movewindow, ${dir.direction}")
+  )
+  ++ (
     # Workspaces
     # $mod + {1..10} for workspace {1..10}
     # $mod + shift + {1..10} for move to workspace {1..10}
     builtins.concatLists (
-      builtins.genList (
-        x: let
-          ws = let
-            c = (x + 1) / 10;
-          in
-          builtins.toString (x + 1 - (c * 10));
-        in
-        [
-          "$mod, ${ws}, workspace, ${toString (x + 1)}"
-          "$mod SHIFT, ${ws}, movetoworkspace, ${toString (x + 1)}"
-        ]
-      ) 10
+      builtins.genList (i: [
+        "$mod, code:1${toString i}, workspace, ${toString (i + 1)}"
+        "$mod SHIFT, code:1${toString i}, movetoworkspace, ${toString (i + 1)}"
+      ]) 9
     )
   );
 }
