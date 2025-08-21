@@ -1,7 +1,6 @@
 {
   imports = [
     ./hellwal
-    ./matugen
     ./general.nix
     ./fonts.nix
   ];
