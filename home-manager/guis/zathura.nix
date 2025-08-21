@@ -1,13 +1,13 @@
 { pkgs, ... }:
 let
   font-name = pkgs.theme.fonts.monospace.name;
-  font-size = builtins.toString pkgs.theme.fonts.terminal-size;
+  font-size = pkgs.theme.fonts.terminal-size;
 in
 {
   programs.zathura = {
     enable = true;
     options = {
-      font = "${font-name} normal ${font-size}";
+      font = "${font-name} normal ${toString font-size}";
       guioptions = "sv";
       recolor = true;
       recolor-keephue = true;

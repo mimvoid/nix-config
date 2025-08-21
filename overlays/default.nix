@@ -5,7 +5,7 @@
 let
   # Allows nixpkgs-unstable to be referenced
   # Use pkgs.unstable.<package>
-  unstable-packages = final: _: {
+  unstable-packages = final: _prev: {
     unstable = import inputs.nixpkgs-unstable {
       inherit (final) system config;
     };
@@ -17,7 +17,7 @@ let
     inputs.fletchling.overlay
   ];
 
-  additions = final: _: {
+  additions = final: _prev: {
     voids =
       # Get the set of custom packages
       # Use pkgs.voids.<package>
@@ -35,7 +35,7 @@ let
     mods = import ./mods.nix { inherit final prev; };
   };
 
-  theming = final: _: {
+  theming = final: _prev: {
     # Defined palettes & functions to manipulate palettes
     # Use pkgs.palettes.<name>
     palettes = import ./palettes { inherit (final) pkgs; };

@@ -36,7 +36,7 @@ let
     let
       inherit (main) primary-dim base shadow;
     in
-    builtins.mapAttrs (_: value: value + "ff") main
+    builtins.mapAttrs (_name: value: value + "ff") main
     // {
       box = primary-dim + "1a"; # 10% opacity
       box-bright = primary-dim + "33"; # 20% opacity

@@ -15,9 +15,9 @@
       mode = "no-cursor";
     };
 
-    font = with pkgs.theme.fonts; {
-      inherit (monospace) name package;
-      size = terminal-size-float;
+    font = {
+      inherit (pkgs.theme.fonts.monospace) name package;
+      size = pkgs.theme.fonts.terminal-size-float;
     };
 
     settings =

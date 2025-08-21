@@ -1,4 +1,4 @@
-{ pkgs, terminal, ... }:
+{ pkgs, terminal }:
 let
   # Default applications
   launcher = "fuzzel";

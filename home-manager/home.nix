@@ -1,5 +1,3 @@
-{ ... }:
-
 {
   home = {
     username = "zinnia";
@@ -16,12 +14,12 @@
     ./terminal
     ./guis
     ./firefox
+    ./krita
     ./theming
 
     ./ime.nix
     ./links.nix
     ./tts.nix
-    ./krita
     ./neovim.nix
     ./ags.nix
   ];

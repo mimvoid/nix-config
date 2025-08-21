@@ -16,7 +16,7 @@ rec {
     removeHashtag { bar = "#ffffff"; alpha = { baz = "#000000cc"; }; };
     => { bar = "ffffff"; alpha = { baz = "000000cc"; }; };
   */
-  noHashtag = mapAttrsRecursive (_: value: strings.noHashtag value);
+  noHashtag = mapAttrsRecursive (_name: value: strings.noHashtag value);
 
   /**
     Surround the values of an attribute set with "rgb()" or "rgba()".
@@ -31,7 +31,7 @@ rec {
     rgbWrap { bar = "#ffffff"; alpha = { baz = "#000000cc"; }; };
     => { bar = "rgb(ffffff)"; alpha = { baz = "rgba(000000cc)"; }; };
   */
-  rgbWrap = mapAttrsRecursive (_: value: strings.rgbWrap value);
+  rgbWrap = mapAttrsRecursive (_name: value: strings.rgbWrap value);
 
   /**
     Convert a set of hex values to subsets of red, green, blue, and alpha values.
@@ -50,7 +50,7 @@ rec {
       };
     };
   */
-  hexToRgb = mapAttrsRecursive (_: value: strings.hexToRgb value);
+  hexToRgb = mapAttrsRecursive (_name: value: strings.hexToRgb value);
 
   isSplitRgb = set: set ? r && set ? g && set ? b;
 
@@ -68,7 +68,7 @@ rec {
     toDec { a = 204; b = 255; g = 250; r = 245; };
     => { a = 0.8; b = 1; g = 0.980392; r = 0.960784; };
   */
-  toDec = mapAttrsRecursive (_: value: strings.toDec value);
+  toDec = mapAttrsRecursive (_name: value: strings.toDec value);
 
   /**
     Join an attribute set of RGB values into an RGB string.
@@ -83,18 +83,12 @@ rec {
     joinRgb { a = 204; b = 255; g = 250; r = 245; };
     => "rgb(245,250,255)"
   */
-  joinRgb = set:
-    let
-      inherit (builtins) toString;
-    in
-    "rgb(${toString set.r},${toString set.g},${toString set.b})";
+  joinRgb = { r, g, b, ... }:
+    "rgb(${toString r},${toString g},${toString b})";
 
   /**
     Join an attribute set of RGB values into an RGBA string.
   */
-  joinRgba = set:
-    let
-      inherit (builtins) toString;
-    in
-    "rgba(${toString set.r},${toString set.g},${toString set.b},${toString set.a})";
+  joinRgba = { r, g, b, a }:
+    "rgba(${toString r},${toString g},${toString b},${toString a})";
 }

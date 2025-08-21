@@ -1,4 +1,4 @@
-{ terminal, ... }:
+{ terminal }:
 let
   setRules = params: rules: builtins.map (rule: "${rule}, ${params}") rules;
 in

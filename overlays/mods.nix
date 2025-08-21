@@ -1,4 +1,4 @@
-{ final, prev, ... }:
+{ final, prev }:
 
 {
   # Add extra packages to dooit
@@ -12,7 +12,7 @@
     accent = "pink";
   };
 
-  catppuccin-fcitx5 = prev.catppuccin-fcitx5.overrideAttrs (finalAttrs: prevAttrs: {
+  catppuccin-fcitx5 = prev.catppuccin-fcitx5.overrideAttrs (_finalAttrs: _prevAttrs: {
     installPhase = ''
       runHook preInstall
       mkdir -p $out/share/fcitx5/themes
