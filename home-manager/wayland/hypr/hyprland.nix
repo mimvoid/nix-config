@@ -1,4 +1,4 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 let
   # Default applications
   terminal = "kitty";
@@ -21,17 +21,14 @@ let
     };
 in
 {
-  # The Hyprland home-manager module enables this, but xdg portals
-  # are already configured for the system
-  xdg.portal.enable = pkgs.lib.mkForce false;
-
   wayland.windowManager.hyprland = {
     enable = true;
-    systemd = {
-      enable = true;
-      variables = [ "--all" ];
-    };
-    xwayland.enable = true;
+
+    # Already handled with NixOS
+    package = null;
+    portalPackage = null;
+
+    systemd.variables = [ "--all" ];
 
     extraConfig = # hyprlang
       ''
@@ -46,10 +43,11 @@ in
       '';
   };
 
-  wayland.windowManager.hyprland.settings = keybindings // windowrules
+  wayland.windowManager.hyprland.settings =
+    keybindings
+    // windowrules
     // {
       # Startup & daemons
-      # Includes swww daemon, see ./hypr-theme.nix
       exec-once = [
         "systemctl --user import-environment &"
         "dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus &"
@@ -67,36 +65,37 @@ in
         "nm-applet --indicator &"
       ];
 
-      env = [
-        "XDK_CURRENT_DESKTOP, Hyprland"
-        "XDK_SESSION_TYPE, wayland"
-        "XDK_SESSION_DESKTOP, Hyprland"
+      env =
+        let
+          inherit (pkgs.theme) cursor;
+        in
+        [
+          "GDK_scale, 1"
+          "GDK_BACKEND, wayland, x11, *"
 
-        "GDK_scale, 1"
-        "GDK_BACKEND, wayland, x11, *"
+          "QT_AUTO_SCREEN_SCALE_FACTOR, 1_SCALE_FACTOR, 1"
+          "QT_QPA_PLATFORM, wayland; xcb"
+          "QT_QPA_scale, 2"
+          "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
 
-        "QT_AUTO_SCREEN_SCALE_FACTOR, 1_SCALE_FACTOR, 1"
-        "QT_QPA_PLATFORM, wayland; xcb"
-        "QT_QPA_PLATFORMTHEME, gtk3"
-        "QT_QPA_scale, 2"
-        "QT_WAYLAND_DISABLE_WINDOWDECORATION, 1"
+          "MOZ_ENABLE_WAYLAND, 1"
 
-        "MOZ_ENABLE_WAYLAND, 1"
+          # Enable Ozone Wayland for electron apps
+          "NIXOS_OZONE_WL, 1"
+          "ELECTRON_OZONE_PLATFORM_HINT, auto"
 
-        # Enable Ozone Wayland for electron apps
-        "NIXOS_OZONE_WL, 1"
-        "ELECTRON_OZONE_PLATFORM_HINT, auto"
-        # Anki
-        "ANKI_WAYLAND, 1"
-        # Fcitx adjustments
-        "QT_IM_MODULES, wayland;fcitx"
-        "GTK_IM_MODULE, "
+          # Anki
+          "ANKI_WAYLAND, 1"
 
-        "XCURSOR_SIZE, 24"
-        "XCURSOR_THEME, ${config.gtk.cursorTheme.name}"
-        "HYPRCURSOR_SIZE, 24"
-        "HYPRCURSOR_THEME, ${config.gtk.cursorTheme.name}"
-      ];
+          # Fcitx adjustments
+          "QT_IM_MODULES, wayland;fcitx"
+          "GTK_IM_MODULE, "
+
+          "XCURSOR_SIZE, ${toString cursor.size}"
+          "XCURSOR_THEME, ${cursor.name}"
+          "HYPRCURSOR_SIZE, ${toString cursor.size}"
+          "HYPRCURSOR_THEME, ${cursor.name}"
+        ];
 
       monitor = ",preferred,auto,auto";
       xwayland.force_zero_scaling = true;
@@ -114,7 +113,6 @@ in
         border_size = 1;
 
         resize_on_border = true;
-        allow_tearing = false;
       }
       // colors.general;
 
@@ -167,19 +165,15 @@ in
       # Miscellaneous #
       #---------------#
 
-      input = {
-        follow_mouse = "1";
-        sensitivity = "0";
-        touchpad.natural_scroll = false;
-
-        kb_layout = "us";
+      ecosystem = {
+        no_update_news = true;
+        no_donation_nag = true;
       };
-
-      gestures.workspace_swipe = false;
 
       misc = {
         force_default_wallpaper = 0;
         disable_hyprland_logo = true;
+        disable_splash_rendering = true;
       };
     };
 }
