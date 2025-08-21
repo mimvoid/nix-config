@@ -33,9 +33,7 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/bin
-    mkdir -p $out/share
-
+    mkdir -p $out/bin $out/share
     cp -a bin $out
     cp -a share/arttime $out/share
 

@@ -19,8 +19,7 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/share/krita/pykrita
-    mkdir -p $out/share/krita/actions
+    mkdir -p $out/share/krita/pykrita $out/share/krita/actions
 
     cd compositionhelper
     cp -t $out/share/krita/pykrita -r compositionhelper.desktop compositionhelper
