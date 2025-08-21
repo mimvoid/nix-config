@@ -109,7 +109,7 @@
       scrollback_indicator_opacity 0.5
       mouse_hide_wait -1
 
-      include colors.conf
+      include ~/.cache/hellwal/kitty-colors.conf
     '';
   };
 }

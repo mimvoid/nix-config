@@ -13,7 +13,7 @@
     in
     # ini
     ''
-      include = ~/.config/fuzzel/colors.ini # matugen
+      include = ~/.cache/hellwal/fuzzel-colors.ini # hellwal
 
       font = ${font}
       icon-theme = ${icon-theme}
