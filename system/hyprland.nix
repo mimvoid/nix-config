@@ -1,5 +1,5 @@
 {
-  programs.xwayland.enable = false;
+  programs.xwayland.enable = true;
 
   # Hyprland
   programs.hyprland = {
