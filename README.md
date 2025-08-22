@@ -8,15 +8,15 @@ My config files, helpful resources, and some advice from my experience with NixO
 
 #### Hyprland
 
-![Screenshot: Hyprland with my custom fetcher fletchling and eza][i1]
+![Screenshot: Hyprland with fletchling, eza, and a bar built with AGS][i1]
 
-![Screenshot: dooit with Tauon music player and Thunar file manager][i2]
+![Screenshot: arttime with Tauon music player and hellwal color preview][i2]
 
-![Screenshot: Ethereal jellyfish wallpaper by gracile with a notification saying "'pwease im dwowning' obama: then perish"][i3]
+![Screenshot: AGS media controller popover and a notification saying "'pwease im dwowning' 'obama: then perish'"][i3]
 
-[i1]: assets/2024-11-27_hyprland-1.png
-[i2]: assets/2024-11-27_hyprland-2.png
-[i3]: assets/2024-11-27_hyprland-3.png
+[i1]: assets/2025-08-21_hyprland-1.png
+[i2]: assets/2025-08-21_hyprland-2.png
+[i3]: assets/2025-08-21_hyprland-3.png
 
 #### XFCE
 
