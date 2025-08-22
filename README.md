@@ -25,6 +25,7 @@ My config files, helpful resources, and some advice from my experience with NixO
 - Firefox CSS: [panefox](https://github.com/mimvoid/panefox)
 - Wallpapers (with credits): [wallpaper-stash](https://github.com/mimvoid/wallpaper-stash)
 - Neovim config: [neovim-dots](https://github.com/mimvoid/neovim-dots)
+- Fetcher: [fletchling](https://github.com/mimvoid/fletchling)
 
 ## What I Use
 
