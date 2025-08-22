@@ -4,6 +4,9 @@
   fetchFromGitHub,
   installShellFiles,
   zsh,
+  withLibnotify ? true,
+  withVorbistools ? true,
+  withFzf ? true,
   libnotify,
   vorbis-tools,
   fzf,
@@ -20,28 +23,35 @@ stdenvNoCC.mkDerivation rec {
     hash = "sha256-hYC9om8141Z+PbJGU4d63Y0Up4kkYslPr3CO5KuwNTc=";
   };
 
-  nativeBuildInputs = [ installShellFiles ];
-  buildInputs = [
+  nativeBuildInputs = [
     zsh
-    libnotify
-    vorbis-tools
-    fzf
+    installShellFiles
   ];
+
+  buildInputs =
+    [ ]
+    ++ lib.optionals withLibnotify [ libnotify ]
+    ++ lib.optionals withVorbistools [ vorbis-tools ]
+    ++ lib.optionals withFzf [ fzf ];
 
   dontBuild = true;
 
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/bin $out/share
-    cp -a bin $out
-    cp -a share/arttime $out/share
+    mkdir -p $out/bin \
+      $out/share/arttime/doc \
+      $out/share/arttime/keypoems \
+      $out/share/arttime/src \
+      $out/share/arttime/textart \
+      $out/share/man/man1
+
+    zsh ./install.sh --prefix $out --zcompdir - --noupdaterc
 
     runHook postInstall
   '';
 
   postInstall = ''
-    installManPage share/man/man1/*
     installShellCompletion --zsh --name _artprint share/zsh/functions/_artprint
     installShellCompletion --zsh --name _arttime share/zsh/functions/_arttime
   '';
@@ -55,7 +65,7 @@ stdenvNoCC.mkDerivation rec {
     '';
     homepage = "https://github.com/poetaman/arttime";
     license = [ lib.licenses.gpl3Only ];
-    platforms = lib.platforms.unix;
+    platforms = lib.platforms.all;
     maintainers = [ lib.maintainers.mimvoid ];
   };
 }
