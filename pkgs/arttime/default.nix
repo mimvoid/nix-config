@@ -4,6 +4,8 @@
   fetchFromGitHub,
   installShellFiles,
   zsh,
+  coreutils,
+  gnused,
   withLibnotify ? true,
   withVorbistools ? true,
   withFzf ? true,
@@ -14,13 +16,13 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "arttime";
-  version = "2.3.4";
+  version = "2.4.0";
 
   src = fetchFromGitHub {
     owner = "poetaman";
     repo = "arttime";
     rev = "v${version}";
-    hash = "sha256-hYC9om8141Z+PbJGU4d63Y0Up4kkYslPr3CO5KuwNTc=";
+    hash = "sha256-luz2tz8ammN4Xiw5q4vUVAAwIpbDNU/vO/ewTlvjRHA=";
   };
 
   nativeBuildInputs = [
@@ -29,7 +31,9 @@ stdenvNoCC.mkDerivation rec {
   ];
 
   buildInputs =
-    [ ]
+    [
+      gnused
+    ]
     ++ lib.optionals withLibnotify [ libnotify ]
     ++ lib.optionals withVorbistools [ vorbis-tools ]
     ++ lib.optionals withFzf [ fzf ];
@@ -39,12 +43,8 @@ stdenvNoCC.mkDerivation rec {
   installPhase = ''
     runHook preInstall
 
-    mkdir -p $out/bin \
-      $out/share/arttime/doc \
-      $out/share/arttime/keypoems \
-      $out/share/arttime/src \
-      $out/share/arttime/textart \
-      $out/share/man/man1
+    substituteInPlace install.sh \
+      --replace-fail "/bin/mkdir" "${coreutils}/bin/mkdir"
 
     zsh ./install.sh --prefix $out --zcompdir - --noupdaterc
 
@@ -54,6 +54,9 @@ stdenvNoCC.mkDerivation rec {
   postInstall = ''
     installShellCompletion --zsh --name _artprint share/zsh/functions/_artprint
     installShellCompletion --zsh --name _arttime share/zsh/functions/_arttime
+
+    substituteInPlace $out/share/arttime/src/arttime.zsh \
+      --replace-warn "/bin/stty" "${coreutils}/bin/stty"
   '';
 
   meta = {
