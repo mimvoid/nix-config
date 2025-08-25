@@ -33,6 +33,6 @@ stdenvNoCC.mkDerivation rec {
     homepage = "https://github.com/Grum999/CompositionHelper";
     license = lib.licenses.gpl3Only;
     platforms = lib.platforms.linux;
-    maintainers =  [ lib.maintainers.mimvoid ];
+    maintainers = [ lib.maintainers.mimvoid ];
   };
 }

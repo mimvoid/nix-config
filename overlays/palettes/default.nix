@@ -8,7 +8,8 @@ let
 
   # See ./lib for what the functions do
 
-  parse = palette:
+  parse =
+    palette:
     let
       inherit (utils.attrsets)
         noHashtag

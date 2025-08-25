@@ -9,10 +9,6 @@ let
   symlink = src: {
     source = config.lib.file.mkOutOfStoreSymlink src;
   };
-
-  # Directory shorthands
-  firefox-profile = "30dphuug.default";
-  obsidian-dir = "Documents/Zettelkasten";
 in
 {
   xdg = {
@@ -24,11 +20,17 @@ in
     dataFile."navi/cheats" = symlink "${flakePath}/home-manager/terminal/navi";
   };
 
-  home.file = {
-    # Firefox userChrome & userContent
-    ".mozilla/firefox/${firefox-profile}/chrome" = symlink "${flakePath}/home-manager/firefox/panefox";
+  home.file =
+    let
+      # Directory shorthands
+      firefox-profile = "30dphuug.default";
+      obsidian-dir = "Documents/Zettelkasten";
+    in
+    {
+      # Firefox userChrome & userContent
+      ".mozilla/firefox/${firefox-profile}/chrome" = symlink "${flakePath}/home-manager/firefox/panefox";
 
-    # Obsidian CSS
-    "${obsidian-dir}/.obsidian/snippets" = symlink "${flakePath}/home-manager/theming/obsidian-css";
-  };
+      # Obsidian CSS
+      "${obsidian-dir}/.obsidian/snippets" = symlink "${flakePath}/home-manager/obsidian-css";
+    };
 }

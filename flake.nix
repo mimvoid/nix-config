@@ -48,51 +48,53 @@
     aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... } @ inputs:
-  let
-    system = "x86_64-linux";
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+    let
+      system = "x86_64-linux";
 
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = import ./overlays { inherit inputs; };
-
-      # Allow certain unfree packages
-      config.allowUnfreePredicate = pkg: builtins.elem (nixpkgs.lib.getName pkg) [
-        "vivaldi"
-        "obsidian"
-        "steam"
-        "steam-unwrapped"
-      ];
-    };
-
-    # Directory for absolute paths, use sparingly
-    flakePath = "/home/zinnia/NixOS";
-  in
-  {
-    nixosConfigurations = {
-      sirru = nixpkgs.lib.nixosSystem {
-        inherit system pkgs;
-        specialArgs = { inherit inputs; };
-        modules = [
-          ./configuration.nix
-          ./hosts/intel.nix
-          ./hosts/sirru/hardware-configuration.nix
-          ./hosts/sirru/extra.nix
-        ];
-      };
-
-      customIso = nixpkgs.lib.nixosSystem {
+      pkgs = import nixpkgs {
         inherit system;
-        modules = [ ./hosts/iso/configuration.nix ];
-      };
-    };
+        overlays = import ./overlays { inherit inputs; };
 
-    homeConfigurations = {
-      "zinnia" = home-manager.lib.homeManagerConfiguration {
-        inherit pkgs;
-        extraSpecialArgs = { inherit inputs flakePath; };
-        modules = [ ./home-manager/home.nix ];
+        # Allow certain unfree packages
+        config.allowUnfreePredicate =
+          pkg:
+          builtins.elem (nixpkgs.lib.getName pkg) [
+            "vivaldi"
+            "obsidian"
+            "steam"
+            "steam-unwrapped"
+          ];
+      };
+
+      # Directory for absolute paths, use sparingly
+      flakePath = "/home/zinnia/NixOS";
+    in
+    {
+      nixosConfigurations = {
+        sirru = nixpkgs.lib.nixosSystem {
+          inherit system pkgs;
+          specialArgs = { inherit inputs; };
+          modules = [
+            ./configuration.nix
+            ./hosts/intel.nix
+            ./hosts/sirru/hardware-configuration.nix
+            ./hosts/sirru/extra.nix
+          ];
+        };
+
+        customIso = nixpkgs.lib.nixosSystem {
+          inherit system;
+          modules = [ ./hosts/iso/configuration.nix ];
+        };
+      };
+
+      homeConfigurations = {
+        "zinnia" = home-manager.lib.homeManagerConfiguration {
+          inherit pkgs;
+          extraSpecialArgs = { inherit inputs flakePath; };
+          modules = [ ./home-manager/home.nix ];
+        };
       };
     };
-  };
 }

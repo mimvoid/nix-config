@@ -39,6 +39,6 @@ stdenvNoCC.mkDerivation {
     homepage = "https://github.com/mimvoid/gpl-palettes";
     license = lib.licenses.mit;
     platforms = lib.platforms.all;
-    maintainers =  [ lib.maintainers.mimvoid ];
+    maintainers = [ lib.maintainers.mimvoid ];
   };
 }

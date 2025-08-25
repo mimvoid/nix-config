@@ -30,13 +30,12 @@ stdenvNoCC.mkDerivation rec {
     installShellFiles
   ];
 
-  buildInputs =
-    [
-      gnused
-    ]
-    ++ lib.optionals withLibnotify [ libnotify ]
-    ++ lib.optionals withVorbistools [ vorbis-tools ]
-    ++ lib.optionals withFzf [ fzf ];
+  buildInputs = [
+    gnused
+  ]
+  ++ lib.optionals withLibnotify [ libnotify ]
+  ++ lib.optionals withVorbistools [ vorbis-tools ]
+  ++ lib.optionals withFzf [ fzf ];
 
   dontBuild = true;
 

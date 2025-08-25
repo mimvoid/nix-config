@@ -50,7 +50,4 @@ let
     base0F = halo;
   };
 in
-names
-// generic
-// base16
-// { inherit base16; }
+names // generic // base16 // { inherit base16; }

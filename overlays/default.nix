@@ -21,8 +21,7 @@ let
     voids =
       # Get the set of custom packages
       # Use pkgs.voids.<package>
-      (import ../pkgs { inherit (final) pkgs; })
-      // {
+      (import ../pkgs { inherit (final) pkgs; }) // {
         # A set of custom functions
         # Use pkgs.voids.lib.<function> <parameter values>
         lib = import ./lib.nix { inherit (final.pkgs) lib; };

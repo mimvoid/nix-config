@@ -36,6 +36,6 @@ stdenvNoCC.mkDerivation {
     homepage = "https://github.com/EyeOdin/timer_watch";
     license = lib.licenses.gpl3Only;
     platforms = lib.platforms.linux;
-    maintainers =  [ lib.maintainers.mimvoid ];
+    maintainers = [ lib.maintainers.mimvoid ];
   };
 }

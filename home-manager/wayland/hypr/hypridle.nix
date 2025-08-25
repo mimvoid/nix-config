@@ -9,21 +9,25 @@
       };
 
       listener = [
-        { # Idle warning
+        {
+          # Idle warning
           timeout = 540;
           on-timeout = "notify-send 'Hypridle' 'Are you there...?'";
           on-resume = "notify-send 'Hypridle' 'Welcome back!'";
         }
-        { # Lock
+        {
+          # Lock
           timeout = 600;
           on-timeout = "hyprlock";
         }
-        { # Screen off
+        {
+          # Screen off
           timeout = 900;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
-        { # Suspend
+        {
+          # Suspend
           timeout = 1200;
           on-timeout = "systemctl suspend";
         }

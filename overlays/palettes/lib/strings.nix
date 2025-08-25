@@ -34,14 +34,12 @@ rec {
     rgbWrap "#f02bab33"
     => "rgba(f02bab33)"
   */
-  rgbWrap = s:
+  rgbWrap =
+    s:
     let
       hex = noHashtag s;
     in
-    if builtins.stringLength hex == 8 then
-      "rgba(${hex})"
-    else
-      "rgb(${hex})";
+    if builtins.stringLength hex == 8 then "rgba(${hex})" else "rgb(${hex})";
 
   /**
     Convert a hex RGB string to an attrset of red, green, blue, and alpha values.
@@ -58,7 +56,8 @@ rec {
     hexToRgb "#ffffffcc"
     => { a = 204; b = 255; g = 255; r = 255; };
   */
-  hexToRgb = s:
+  hexToRgb =
+    s:
     let
       hex = noHashtag s;
       len = builtins.stringLength hex;

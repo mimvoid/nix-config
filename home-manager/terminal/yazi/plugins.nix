@@ -29,15 +29,16 @@
       { on = [ "b" "D" ]; run = "plugin bookmarks delete_all"; }
     ];
 
-    initLua = /* lua */ ''
-      require("git"):setup()
-      require("full-border"):setup()
-      require("bookmarks"):setup({
-        persist = "vim",
-        desc_format = "parent",
-        file_pick_mode = "parent",
-      })
-    '';
+    initLua = # lua
+      ''
+        require("git"):setup()
+        require("full-border"):setup()
+        require("bookmarks"):setup({
+          persist = "vim",
+          desc_format = "parent",
+          file_pick_mode = "parent",
+        })
+      '';
   };
 
   xdg.configFile =
@@ -55,15 +56,16 @@
     "toggle-pane.yazi".source = toggle-pane;
 
     # Arrow: file navigation wraparound
-    "arrow.yazi/main.lua".text = /* lua */ ''
-      --- @sync entry
-      return {
-        entry = function(_, job)
-          local current = cx.active.current
-          local new = (current.cursor + job.args[1]) % #current.files
-          ya.mgr_emit("arrow", { new - current.cursor })
-        end,
-      }
-    '';
+    "arrow.yazi/main.lua".text = # lua
+      ''
+        --- @sync entry
+        return {
+          entry = function(_, job)
+            local current = cx.active.current
+            local new = (current.cursor + job.args[1]) % #current.files
+            ya.mgr_emit("arrow", { new - current.cursor })
+          end,
+        }
+      '';
   };
 }

@@ -11,7 +11,7 @@
         start = "${notify-send} 'GameMode started'";
         end = "${notify-send} 'GameMode ended'";
       };
-    };
+  };
 
   # AAGL
   imports = [
