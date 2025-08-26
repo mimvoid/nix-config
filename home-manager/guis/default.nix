@@ -2,6 +2,7 @@
 
 {
   imports = [
+    ./obsidian
     ./thunar.nix
     ./aagl.nix
     ./zathura.nix
@@ -27,7 +28,6 @@
     inherit (pkgs.unstable)
       zotero
       anki-bin
-      obsidian
       # bottles
       # prismlauncher
       ;

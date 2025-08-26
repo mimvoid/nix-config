@@ -22,15 +22,10 @@ in
 
   home.file =
     let
-      # Directory shorthands
       firefox-profile = "30dphuug.default";
-      obsidian-dir = "Documents/Zettelkasten";
     in
     {
       # Firefox userChrome & userContent
       ".mozilla/firefox/${firefox-profile}/chrome" = symlink "${flakePath}/home-manager/firefox/panefox";
-
-      # Obsidian CSS
-      "${obsidian-dir}/.obsidian/snippets" = symlink "${flakePath}/home-manager/obsidian-css";
     };
 }
