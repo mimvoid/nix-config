@@ -60,6 +60,7 @@
         config.allowUnfreePredicate =
           pkg:
           builtins.elem (nixpkgs.lib.getName pkg) [
+            "arttime"
             "vivaldi"
             "obsidian"
             "steam"
