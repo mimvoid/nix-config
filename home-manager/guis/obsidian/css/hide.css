@@ -6,16 +6,11 @@
 .metadata-container .metadata-add-button {
   color: var(--background-modifier-border-hover);
 }
-/* Hide in reading mode */
-.markdown-preview-view .metadata-container .metadata-add-button {
-  display: none;
-}
 
+/* Hide "Add property" button in reading mode */
+.markdown-preview-view .metadata-container .metadata-add-button,
 /* Hide "Properties" title */
-.metadata-properties-heading {
-  display: none;
-}
-
+.metadata-properties-heading,
 /* Hide help button */
 .svg-icon.help {
   display: none;

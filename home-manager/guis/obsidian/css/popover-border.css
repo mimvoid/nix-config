@@ -1,8 +1,0 @@
-/* Adds a border to note hover previews */
-
-/* author: rushi
- * source: https://github.com/r-u-s-h-i-k-e-s-h/Obsidian-CSS-Snippets/blob/Collection/Snippets/Popover%20border.md */
-
-.popover {
-  border: 1px solid var(--text-accent);
-}
