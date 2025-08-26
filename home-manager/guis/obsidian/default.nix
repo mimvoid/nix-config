@@ -13,5 +13,6 @@
     {
       # CSS snippets
       "${vault-dir}/.obsidian/snippets" = symlink "css";
+      "${vault-dir}/.obsidian.vimrc" = symlink ".obsidian.vimrc";
     };
 }
