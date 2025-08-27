@@ -1,24 +1,14 @@
-{ flakePath, config, ... }:
+{ config, ... }:
 let
-  # Direct (out of store) symlinks
-
-  # If you're using flakes, use absolute paths or the symlinks will point to the nix store.
-  # Relative paths can cause broken links, and nothing will update until a rebuild.
-  # No need for direct symlinks if you don't need instant updates.
-
-  symlink = src: {
-    source = config.lib.file.mkOutOfStoreSymlink src;
-  };
+  inherit (config.voids.lib) symlink;
 in
 {
-  xdg = {
-    configFile = {
-      "ags" = symlink "${flakePath}/home-manager/ags";
-      "wallpapers".source = ../wallpapers/wallpapers;
-    };
-
-    dataFile."navi/cheats" = symlink "${flakePath}/home-manager/terminal/navi";
+  xdg.configFile = {
+    "ags" = symlink "ags";
+    "wallpapers".source = ../wallpapers/wallpapers;
   };
+
+  xdg.dataFile."navi/cheats" = symlink "terminal/navi";
 
   home.file =
     let
@@ -26,6 +16,6 @@ in
     in
     {
       # Firefox userChrome & userContent
-      ".mozilla/firefox/${firefox-profile}/chrome" = symlink "${flakePath}/home-manager/firefox/panefox";
+      ".mozilla/firefox/${firefox-profile}/chrome" = symlink "firefox/panefox";
     };
 }

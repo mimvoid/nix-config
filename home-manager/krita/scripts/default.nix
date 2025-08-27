@@ -1,10 +1,6 @@
-{ flakePath, config, ... }:
+{ config, ... }:
 let
-  here = "${flakePath}/home-manager/krita/scripts";
-
-  symlink = src: {
-    source = config.lib.file.mkOutOfStoreSymlink "${here}/${src}";
-  };
+  symlink = src: config.voids.lib.symlink "krita/scripts/${src}";
 in
 {
   xdg.dataFile = {

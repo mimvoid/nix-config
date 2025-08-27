@@ -1,4 +1,4 @@
-{ flakePath, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   home.packages = builtins.attrValues {
@@ -24,8 +24,6 @@
   };
 
   home.sessionVariables = {
-    NH_FLAKE = flakePath;
-
     # pagers
     PAGER = "less";
     LESS = builtins.concatStringsSep " " [

@@ -1,4 +1,4 @@
-{ flakePath, config, pkgs, ... }:
+{ config, pkgs, ... }:
 
 {
   imports = [ ./themes.nix ];
@@ -6,11 +6,7 @@
 
   xdg.configFile =
     let
-      here = "${flakePath}/home-manager/terminal/dooit";
-
-      symlink = src: {
-        source = config.lib.file.mkOutOfStoreSymlink "${here}/${src}";
-      };
+      symlink = src: config.voids.lib.symlink "terminal/dooit/${src}";
     in
     {
       "dooit/config.py" = symlink "config.py";

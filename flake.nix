@@ -93,8 +93,11 @@
       homeConfigurations = {
         "zinnia" = home-manager.lib.homeManagerConfiguration {
           inherit pkgs;
-          extraSpecialArgs = { inherit inputs flakePath; };
-          modules = [ ./home-manager/home.nix ];
+          extraSpecialArgs = { inherit inputs; };
+          modules = [
+            ./home-manager/home.nix
+            (import ./modules/hm.nix { inherit flakePath; })
+          ];
         };
       };
     };
