@@ -8,6 +8,7 @@
     # ./xfce.nix
 
     # ./virt.nix
+    # ./containers.nix
     ./power.nix
     ./thunar.nix
     ./games.nix
