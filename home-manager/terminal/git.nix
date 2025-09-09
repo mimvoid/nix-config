@@ -1,4 +1,8 @@
+{ pkgs, ... }:
+
 {
+  home.packages = [ pkgs.lazygit ];
+
   programs.git = {
     enable = true;
     userName = "mimvoid";
@@ -13,20 +17,19 @@
     };
   };
 
-  programs.lazygit = {
-    enable = true;
-    settings = {
-      gui = {
-        scrollPastBottom = false;
-        showRandomTip = false;
-        showListFooter = false;
-        showPanelJumps = false;
-        filterMode = "fuzzy";
-        showDivergenceFromBaseBranch = "onlyArrow";
-        statusPanelView = "allBranchesLog";
-      };
-      git.paging.pager = "diff-so-fancy";
-      notARepository = "quit";
-    };
-  };
+  xdg.configFile."lazygit/config.yml".text = # yaml
+    ''
+      gui:
+        scrollPastBottom: false
+        showRandomTip: false
+        showListFooter: false
+        showPanelJumps: false
+        filterMode: fuzzy
+        showDivergenceFromBaseBranch: onlyArrow
+        statusPanelView: allBranchesLog
+      git:
+        paging:
+          pager: diff-so-fancy
+      notARepository: quit
+    '';
 }

@@ -1,0 +1,18 @@
+style:
+  comment:
+    color: yellow
+    width_percentage: 30
+  snippet:
+    color: grey
+    min_width: 55
+    width_percentage: 65
+  tag:
+    color: green
+    min_width: 5
+  width_percentage: 5
+finder:
+  command: fzf
+  overrides: --no-select-1
+shell:
+  command: zsh
+  finder_command: zsh
