@@ -18,13 +18,13 @@ in
     [
       "float, class:.*astal"
       "workspace 9, class:tauonmb"
-      "opacity 0.8 override 0.7 override, class:(${terminal})"
     ]
     # Increase opacity somewhat
     ++ (mapClasses "opacity 0.9 override 0.75 override" [
       "Anki"
       ".*zathura"
       ".*rnote"
+      terminal
     ])
     # High opacity
     ++ (mapClasses "opacity 0.97 override 0.85 override" [

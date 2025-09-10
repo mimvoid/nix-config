@@ -74,6 +74,8 @@
         inherit (pkgs.theme.fonts) monospace;
       in
       ''
+        background_opacity 0.9
+
         # Bold font
         bold_font ${monospace.name} Bold
         bold_italic_font ${monospace.name} Bold Italic
