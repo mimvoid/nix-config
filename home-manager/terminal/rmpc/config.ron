@@ -1,0 +1,168 @@
+#![enable(implicit_some)]
+#![enable(unwrap_newtypes)]
+#![enable(unwrap_variant_newtypes)]
+(
+  address: "127.0.0.1:6600",
+  password: None,
+  theme: Some("theme"),
+  lyrics_dir: Some("~/Music"),
+  cache_dir: None,
+  on_song_change: None,
+  volume_step: 5,
+  max_fps: 30,
+  scrolloff: 12,
+  wrap_navigation: true,
+  enable_mouse: true,
+  status_update_interval_ms: 1000,
+  select_current_song_on_change: true,
+  center_current_song_on_change: true,
+  rewind_to_start_sec: Some(10),
+  album_art: (
+    method: Auto,
+    max_size_px: (width: 1200, height: 1200),
+    disabled_protocols: ["http://", "https://"],
+    vertical_align: Center,
+    horizontal_align: Center,
+  ),
+  keybinds: (
+    global: {
+      ":":     CommandMode,
+      ",":     VolumeDown,
+      "s":     Stop,
+      ".":     VolumeUp,
+      "<Tab>":   NextTab,
+      "<S-Tab>": PreviousTab,
+      "1":     SwitchToTab("Queue"),
+      "2":     SwitchToTab("Lyrics"),
+      "3":     SwitchToTab("Directories"),
+      "4":     SwitchToTab("Playlists"),
+      "q":     Quit,
+      ">":     NextTrack,
+      "<Space>":     TogglePause,
+      "<":     PreviousTrack,
+      "f":     SeekForward,
+      "z":     ToggleRepeat,
+      "x":     ToggleRandom,
+      "c":     ToggleConsume,
+      "<C-l>":     ToggleSingle,
+      "b":     SeekBack,
+      "~":     ShowHelp,
+      "I":     ShowCurrentSongInfo,
+      "O":     ShowOutputs,
+      "P":     ShowDecoders,
+    },
+    navigation: {
+      "k":     Up,
+      "j":     Down,
+      "h":     Left,
+      "l":     Right,
+      "<Up>":    Up,
+      "<Down>":  Down,
+      "<Left>":  Left,
+      "<Right>":   Right,
+      "<C-k>":   PaneUp,
+      "<C-j>":   PaneDown,
+      "<C-h>":   PaneLeft,
+      "<C-l>":   PaneRight,
+      "<C-u>":   UpHalf,
+      "N":     PreviousResult,
+      "a":     Add,
+      "A":     AddAll,
+      "r":     Rename,
+      "n":     NextResult,
+      "g":     Top,
+      "v":   Select,
+      "<C-v>": InvertSelection,
+      "G":     Bottom,
+      "<CR>":    Confirm,
+      "i":     FocusInput,
+      "J":     MoveDown,
+      "<C-d>":   DownHalf,
+      "/":     EnterSearch,
+      "<C-c>":   Close,
+      "<Esc>":   Close,
+      "K":     MoveUp,
+      "D":     Delete,
+    },
+    queue: {
+      "D":     DeleteAll,
+      "<CR>":  Play,
+      "<C-s>":   Save,
+      "a":     AddToPlaylist,
+      "d":     Delete,
+      "i":     ShowInfo,
+      "C":     JumpToCurrent,
+    },
+  ),
+  search: (
+    case_sensitive: false,
+    mode: Contains,
+    tags: [
+      (value: "any",     label: "Any Tag"),
+      (value: "artist",    label: "Artist"),
+      (value: "album",     label: "Album"),
+      (value: "albumartist", label: "Album Artist"),
+      (value: "title",     label: "Title"),
+      (value: "filename",  label: "Filename"),
+      (value: "genre",     label: "Genre"),
+    ],
+  ),
+  artists: (
+    album_display_mode: SplitByDate,
+    album_sort_by: Date,
+  ),
+  tabs: [
+    (
+      name: "Queue",
+      pane: Split(
+        direction: Horizontal,
+        panes: [
+          (
+            size: "40%",
+            pane: Split(
+              direction: Vertical,
+              panes: [
+                (size: "75%", pane: Pane(AlbumArt)),
+                (size: "1", pane: Component("spacer")),
+                (size: "25%", pane: Pane(Lyrics)),
+              ]
+            )
+          ),
+          (size: "60%", pane: Pane(Queue)),
+        ],
+      ),
+    ),
+    (
+      name: "Lyrics",
+      pane: Split(
+        direction: Horizontal,
+        panes: [
+          (
+            size: "45%",
+            pane: Split(
+              size: "100%",
+              direction: Vertical,
+              panes: [
+                (size: "85%", pane: Pane(AlbumArt)),
+                (size: "1", pane: Component("spacer")),
+                (size: "1", pane: Component("title")),
+                (size: "1", pane: Component("artist"))
+              ]
+            )
+          ),
+          (size: "1", pane: Component("spacer")),
+          (size: "45%", pane: Pane(Lyrics)),
+        ]
+      )
+    ),
+    (
+      name: "Directories",
+      pane: Pane(Directories),
+    ),
+    (
+      name: "Playlists",
+      pane: Pane(Playlists),
+    ),
+  ],
+)
+

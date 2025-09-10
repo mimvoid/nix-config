@@ -10,6 +10,7 @@
     ./yazi
     ./dooit
     ./navi
+    ./rmpc
   ];
 
   home.packages = [
