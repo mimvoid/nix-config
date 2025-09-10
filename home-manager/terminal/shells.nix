@@ -1,7 +1,25 @@
 { pkgs, ... }:
-
+let
+  historyIgnore = [
+    "ls"
+    "la"
+    "ll"
+    "eza"
+    ".."
+    "..."
+    "z"
+    "-"
+    "yazi"
+    "yy"
+    "nhos"
+    "nhh"
+    "exit"
+    "lg"
+  ];
+in
 {
   home.shellAliases = {
+    "-" = "cd -";
     ".." = "cd ..";
     "..." = "cd ../..";
 
@@ -16,7 +34,19 @@
     arttime = "arttime --nolearn --style 1 --pa  --pb  --pl 20";
   };
 
-  programs.bash.enable = true;
+  programs.bash = {
+    enable = true;
+    shellOptions = [
+      "histappend"
+      "checkwinsize"
+      "extglob"
+      "globstar"
+      "checkjobs"
+      "cdspell"
+      "autocd"
+    ];
+    inherit historyIgnore;
+  };
 
   programs.zsh = {
     enable = true;
@@ -25,51 +55,43 @@
 
     history = {
       path = "$HOME/zsh/.zsh_history";
-      extended = true;
       ignoreDups = true;
       ignoreAllDups = true;
-      ignorePatterns = [
-        "ls"
-        "la"
-        "ll"
-        "eza"
-        ".."
-        "..."
-        "z"
-        "-"
-        "yazi"
-        "yy"
-        "nhos"
-        "nhh"
-        "exit"
-        "lg"
-      ];
+      findNoDups = true;
+      saveNoDups = true;
+      expireDuplicatesFirst = true;
+      ignorePatterns = historyIgnore;
     };
     historySubstringSearch.enable = true;
-    autocd = true;
 
-    shellAliases."-" = "cd -";
+    initContent =
+      pkgs.lib.mkAfter
+        # sh
+        ''
+          setopt autocd
+          setopt correct # offer to correct mistyped commands
 
-    initContent = # sh
-      ''
-        # history substring search integration with vi mode
-        bindkey -M vicmd 'k' history-substring-search-up
-        bindkey -M vicmd 'j' history-substring-search-up
+          # expand aliases with TAB
+          zstyle ':completion:*' completer _expand_alias _complete _ignored
 
-        # nix develop with zsh shell
-        function nixdev() {
-          nix develop ''${1} --command zsh
-        }
+          # history substring search integration with vi mode
+          bindkey -M vicmd 'k' history-substring-search-up
+          bindkey -M vicmd 'j' history-substring-search-up
 
-        # enter a nix shell with package from unstable branch
-        function nixpkg-unstable() {
-          nix shell nixpkgs/nixos-unstable#''${1}
-        }
+          # nix develop with zsh shell
+          function nixdev() {
+            nix develop ''${1} --command zsh
+          }
 
-        function kitsd() {
-          kitty --detach --session ''${1} && exit
-        }
-      '';
+          # enter a nix shell with package from unstable branch
+          function nixpkg-unstable() {
+            nix shell nixpkgs/nixos-unstable#''${1}
+          }
+
+          function kitsd() {
+            kitty --detach --session ''${1} && exit
+          }
+        '';
 
     # zsh plugin configuration
     plugins = [
