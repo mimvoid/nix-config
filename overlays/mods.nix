@@ -2,8 +2,8 @@
 
 {
   # Add extra packages to dooit
-  dooit = final.dooit.override {
-    extraPackages = [ final.pkgs.dooit-extras ];
+  dooit = final.unstable.dooit.override {
+    extraPackages = [ final.pkgs.unstable.dooit-extras ];
   };
 
   # Pink Catppuccin Macchiato Papirus folders
