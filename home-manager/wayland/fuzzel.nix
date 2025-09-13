@@ -48,11 +48,14 @@
   xdg.configFile."networkmanager-dmenu/config.ini".text = # ini
     ''
       [dmenu]
-      dmenu_command = fuzzel -d -w 40
+      dmenu_command = fuzzel -d --width 50 --lines 18
       active_chars = >
       wifi_chars = ▂▄▆█
       wifi_icons = 󰤯󰤟󰤢󰤥󰤨
-      format = {name:18}           {signal}%%  {bars}
+      format = {name:<{max_len_name}}      {icon:1} {signal:2}%%  {sec:<{max_len_sec}}
+
+      [dmenu_passphrase]
+      obscure = True
 
       [editor]
       terminal = kitty

@@ -4,11 +4,10 @@ let
 in
 {
   layerrule = setRules "launcher" [
-    "animation popin 65%"
+    "noanim"
     "ignorezero"
     "blur"
     "xray 0"
-    "dimaround"
   ];
 
   windowrulev2 =
