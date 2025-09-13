@@ -12,7 +12,7 @@ from dooit_extras.formatters import (
     status_icons,
     urgency_icons,
 )
-from dooit_extras.bar_widgets import Date, Mode, Spacer, StatusIcons, TextBox, Ticker
+from dooit_extras.bar_widgets import Date, Mode, Spacer, StatusIcons, Ticker
 
 from rich.text import Text
 
@@ -27,7 +27,6 @@ from settings.ui import (
     URGENCY_ICONS,
     urgency_colors,
     DUE_ICONS,
-    BAR_ICON,
     MODE,
     TICKER,
     BAR_STATUS_ICONS,
@@ -60,7 +59,7 @@ def setup_layout(api: DooitAPI, _):
 
 
 @subscribe(DooitEvent)
-def define_vars(api: DooitAPI, event: DooitEvent):
+def define_vars(api: DooitAPI, _: DooitEvent):
     # Disable confirmation check
     api.vars.show_confirm = False
 
@@ -115,8 +114,6 @@ def setup_bar(api: DooitAPI, _):
     theme = api.vars.theme
 
     widgets = [
-        TextBox(api, BAR_ICON, bg=theme.magenta),
-        Spacer(api, width=1),
         Mode(api, **MODE),
         Spacer(api, width=1),
         Ticker(api, fmt=TICKER, fg=theme.cyan, bg=theme.background2),
@@ -138,5 +135,11 @@ def setup_bar(api: DooitAPI, _):
 def setup_dashboard(api: DooitAPI, _):
     theme = api.vars.theme
 
-    items = [ascii_art(theme), ""] + dashboard_text(theme) + ["", ""] + dashboard_statuses(theme)
-    api.dashboard.set(items)
+    api.dashboard.set([
+        ascii_art(theme),
+        "",
+        *dashboard_text(theme),
+        "",
+        "",
+        *dashboard_statuses(theme),
+    ])
