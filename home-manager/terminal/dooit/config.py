@@ -34,7 +34,6 @@ from settings.ui import (
     DATE,
 )
 from settings.formats import my_due
-# from settings.vars import show_workspace_children
 from settings.themes import MoonfallEve
 
 
@@ -46,6 +45,10 @@ from settings.themes import MoonfallEve
 @subscribe(Startup)
 def setup_layout(api: DooitAPI, _):
     api.css.set_theme(MoonfallEve)
+
+    # Expand workspaces & todos
+    api.vars.always_expand_workspaces = True
+    api.vars.always_expand_todos = True
 
     api.layouts.todo_layout = [
         TodoWidget.status,
@@ -60,11 +63,6 @@ def setup_layout(api: DooitAPI, _):
 def define_vars(api: DooitAPI, event: DooitEvent):
     # Disable confirmation check
     api.vars.show_confirm = False
-
-
-# @subscribe(Startup)
-# def setup_vars(api: DooitAPI, _):
-#     show_workspace_children(api)
 
 
 # ----------
