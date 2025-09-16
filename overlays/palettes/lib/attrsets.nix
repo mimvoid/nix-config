@@ -71,24 +71,26 @@ rec {
   toDec = mapAttrsRecursive (_name: value: strings.toDec value);
 
   /**
-    Join an attribute set of RGB values into an RGB string.
+    Join a set of RGB value attribute sets into a set of RGB strings.
     Ignores any alpha value.
 
     # Type
 
-    joinRgb :: attrset -> string
+    joinRgb :: attrset -> attrset
 
     # Examples
 
     joinRgb { a = 204; b = 255; g = 250; r = 245; };
     => "rgb(245,250,255)"
   */
-  joinRgb = { r, g, b, ... }:
-    "rgb(${toString r},${toString g},${toString b})";
+  joinRgb = builtins.mapAttrs (_name: value: strings.joinRgb value);
 
   /**
-    Join an attribute set of RGB values into an RGBA string.
+    Join a set of RGB value attribute sets into a set of RGBA strings.
+
+    # Type
+
+    joinRgba :: attrset -> attrset
   */
-  joinRgba = { r, g, b, a }:
-    "rgba(${toString r},${toString g},${toString b},${toString a})";
+  joinRgba = builtins.mapAttrs (_name: value: strings.joinRgba value);
 }

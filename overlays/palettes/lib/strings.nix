@@ -92,4 +92,26 @@ rec {
     => 0.980392
   */
   toDec = num: num / 255.0;
+
+  /**
+    Join an attribute set of RGB values into an RGB string.
+    Ignores any alpha value.
+
+    # Type
+
+    joinRgb :: attrset -> string
+
+    # Examples
+
+    joinRgb { a = 204; b = 255; g = 250; r = 245; };
+    => "rgb(245,250,255)"
+  */
+  joinRgb = { r, g, b, ... }:
+    "rgb(${toString r},${toString g},${toString b})";
+
+  /**
+    Join an attribute set of RGB values into an RGBA string.
+  */
+  joinRgba = { r, g, b, a }:
+    "rgba(${toString r},${toString g},${toString b},${toString a})";
 }
