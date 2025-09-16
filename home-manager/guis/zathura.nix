@@ -7,6 +7,15 @@ in
   programs.zathura = {
     enable = true;
     options = {
+      default-bg =
+        let
+          bg = pkgs.palettes.moonfall-eve.rgbSplit.nadir // {
+            a = 0.75;
+          };
+          bgStr = pkgs.palettes.lib.strings.joinRgba bg;
+        in
+        pkgs.lib.mkForce bgStr;
+
       font = "${font-name} normal ${toString font-size}";
       guioptions = "sv";
       recolor = true;
