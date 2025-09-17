@@ -42,7 +42,6 @@ in
       fontconfig.enable = true;
 
       bat.enable = true;
-      fzf.enable = true;
       xresources.enable = true;
       yazi.enable = true;
       zathura.enable = true;

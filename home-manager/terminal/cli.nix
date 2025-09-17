@@ -63,11 +63,11 @@
 
     defaultOptions = [
       "--height=60%"
-      "--border"
       "--layout=reverse"
       "--cycle"
       "--no-scrollbar"
       "--no-bold"
+      "--color=16"
 
       "--bind 'alt-k:up'"
       "--bind 'alt-j:down'"
