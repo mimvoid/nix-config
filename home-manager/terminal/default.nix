@@ -2,9 +2,9 @@
 
 {
   imports = [
-    ./shells.nix
     ./cli.nix
     ./git.nix
+    ./shells
     ./kitty
     ./starship
     ./yazi
