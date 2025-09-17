@@ -58,8 +58,12 @@ in
           setopt autocd
           setopt correct # offer to correct mistyped commands
 
+          # Completion
+
           # expand aliases with TAB
           zstyle ':completion:*' completer _expand_alias _complete _ignored
+          zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
+          zstyle ':completion:*' menu no
 
           # history substring search integration with vi mode
           bindkey -M vicmd 'k' history-substring-search-up
