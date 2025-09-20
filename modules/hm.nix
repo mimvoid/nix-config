@@ -14,6 +14,8 @@
 
     voids = {
       lib = {
+        inherit flakePath;
+
         # Simple wrapper around mkOutOfStoreSymlink to make direct symlinks.
         #
         # Due to the nature of how flakes are stored, making paths absolute with `toString`
