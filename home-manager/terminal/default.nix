@@ -6,7 +6,8 @@
     ./git.nix
     ./shells
     ./kitty
-    ./starship
+    # ./starship
+    ./ohmyposh
     ./yazi
     ./dooit
     ./navi

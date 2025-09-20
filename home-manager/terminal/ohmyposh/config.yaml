@@ -1,0 +1,66 @@
+console_title_template: "{{ .Shell }} in {{ .Folder }}"
+version: 3
+final_space: true
+secondary_prompt:
+  template: "❯❯ "
+  foreground: "yellow"
+transient_prompt:
+  template: "❯ "
+  foreground_templates:
+    - '{{ eq .Code 0 | ternary "yellow" "red" }}'
+blocks:
+  - type: "prompt"
+    alignment: "left"
+    newline: true
+    segments:
+      - type: "path"
+        templates:
+          - "{{ if not .Writable }}{{ end }}"
+          # Truncate to git root when available
+          - "{{ if $repo := .Segments.Git.RepoName }}{{ print $repo (splitn $repo 2 .Path)._1 }}{{ else }}{{ .Path }}{{ end }}"
+        foreground: "cyan"
+        style: "plain"
+        properties:
+          style: "fish"
+          full_length_dirs: 2
+          gitdir_format: "%s" # don't truncate git root name
+      - type: "git"
+        templates:
+          - " {{ .HEAD }} "
+          - "{{ if gt .Working.Modified 0 }}*{{ end }}"
+          - "{{ if gt .Working.Untracked 0 }}+{{ end }}"
+          - "{{ if or (gt .Working.Deleted 0) (gt .Staging.Deleted 0) }}x{{ end }}"
+          - "{{ if .Staging.Changed }}•{{ end }}"
+          - "{{ if gt .Behind 0 }}⇣{{ end }}"
+          - "{{ if gt .Ahead 0 }}⇡{{ end }}"
+          - "{{ if gt .StashCount 0 }}≡{{ end }}"
+        foreground: "magenta"
+        style: "plain"
+        properties:
+          branch_icon: " "
+          cache_duration: "none"
+          fetch_status: true
+      - type: "text" # custom Nix shell segment
+        template: '{{ if $type := .Env.IN_NIX_SHELL }} via {{ if eq $type "pure" }}+{{ else if eq $type "impure" }}-{{ end }}{{ with .Env.name }} <d><i>({{ . }})</i></d>{{ end }}{{ end }}'
+        foreground: "blue"
+        style: "plain"
+        cache:
+          stragety: "folder"
+      - type: "executiontime"
+        foreground: "yellow"
+        style: "plain"
+        properties:
+          style: "round"
+          cache_duration: "none"
+          threshold: 5000
+  - type: "prompt"
+    alignment: "left"
+    newline: true
+    segments:
+      - type: "text"
+        template: "❯"
+        foreground_templates:
+          - '{{ eq .Code 0 | ternary "yellow" "red" }}'
+        style: "plain"
+        properties:
+          cache_duration: "none"
