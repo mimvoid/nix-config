@@ -65,7 +65,10 @@ in
           zstyle ':completion:*' list-colors "''${(s.:.)LS_COLORS}"
           zstyle ':completion:*' menu no
 
-          # history substring search integration with vi mode
+          # history substring search
+          bindkey "^[OA" history-substring-search-up
+          bindkey "^[OB" history-substring-search-down
+          # integration with vi mode
           bindkey -M vicmd 'k' history-substring-search-up
           bindkey -M vicmd 'j' history-substring-search-up
 
