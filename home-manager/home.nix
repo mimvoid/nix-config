@@ -20,7 +20,7 @@
 
     ./ime.nix
     ./links.nix
-    ./tts.nix
+    # ./tts.nix
     ./neovim.nix
     ./ags.nix
   ];

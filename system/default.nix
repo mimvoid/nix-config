@@ -11,6 +11,6 @@
     # ./containers.nix
     ./power.nix
     ./thunar.nix
-    ./games.nix
+    # ./games.nix
   ];
 }

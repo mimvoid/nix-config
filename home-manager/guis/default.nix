@@ -4,7 +4,7 @@
   imports = [
     ./obsidian
     ./thunar.nix
-    ./aagl.nix
+    # ./aagl.nix
     ./zathura.nix
   ];
 
