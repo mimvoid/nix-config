@@ -45,7 +45,7 @@
 
     # Extra packages
     ags.url = "github:Aylur/ags";
-    aagl.url = "github:ezKEa/aagl-gtk-on-nix";
+    # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
