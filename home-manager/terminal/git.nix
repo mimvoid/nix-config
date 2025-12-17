@@ -5,13 +5,20 @@
 
   programs.git = {
     enable = true;
-    userName = "mimvoid";
-    userEmail = "mimvoid@proton.me";
     ignores = [ "__pycache__/" ];
-    extraConfig.init.defaultBranch = "main";
+    settings = {
+      init.defaultBranch = "main";
+      user = {
+        name = "mimvoid";
+        email = "mimvoid@proton.me";
+      };
+    };
+  };
 
-    diff-so-fancy = {
-      enable = true;
+  programs.diff-so-fancy = {
+    enable = true;
+    enableGitIntegration = true;
+    settings = {
       stripLeadingSymbols = false;
       markEmptyLines = false;
     };
@@ -28,8 +35,8 @@
         showDivergenceFromBaseBranch: onlyArrow
         statusPanelView: allBranchesLog
       git:
-        paging:
-          pager: diff-so-fancy
+        pagers:
+          - pager: diff-so-fancy
       notARepository: quit
     '';
 }

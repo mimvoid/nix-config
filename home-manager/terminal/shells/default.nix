@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, ... }:
 let
   historyIgnore = [
     "ls" "la" "ll" "eza"
@@ -36,7 +36,7 @@ in
 
   programs.zsh = {
     enable = true;
-    dotDir = ".config/zsh";
+    dotDir = "${config.xdg.configHome}/zsh";
     syntaxHighlighting.enable = true;
 
     history = {

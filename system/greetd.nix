@@ -31,7 +31,7 @@
           ];
         in
         builtins.concatStringsSep " " [
-          "${pkgs.greetd.tuigreet}/bin/tuigreet"
+          "${pkgs.tuigreet}/bin/tuigreet"
           "--greeting 'Welcome back!'"
           "--time --time-format '%a, %b %d %Y - %H:%M'"
           "--asterisks"

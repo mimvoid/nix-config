@@ -144,7 +144,6 @@ in
 
       animations = {
         enabled = true;
-        first_launch_animation = true;
         bezier = [
           "overshoot, 0.05, 0.9, 0.1, 1.1"
           "overshootMini, 0.1, 0.9, 0.1, 1.02"

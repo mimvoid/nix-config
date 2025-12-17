@@ -6,6 +6,5 @@
     systemd-boot.enable = true;
   };
 
-  # See: https://github.com/NixOS/nixpkgs/issues/449939
-  boot.kernelPackages = pkgs.linuxPackages_6_16;
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 }

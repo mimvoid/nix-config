@@ -22,11 +22,11 @@
       # Binary caches from cachix
       substituters = [
         "https://mimvoid.cachix.org"
-        "https://ezkea.cachix.org" # for aagl
+        # "https://ezkea.cachix.org" # for aagl
       ];
       trusted-public-keys = [
         "mimvoid.cachix.org-1:c1LQSKRAc7IiFA8GuaTDzD4fqUIG49Cftb2aJwqvtzY="
-        "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
+        # "ezkea.cachix.org-1:ioBmUbJTZIKsHmWWXPe1FSFbeVe+afhfgqgTSNd34eI="
       ];
       trusted-users = [ "root" "zinnia" ];
     };
