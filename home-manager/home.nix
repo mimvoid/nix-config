@@ -17,9 +17,9 @@
     ./firefox
     ./krita
     ./theming
+    ./links
 
     ./ime.nix
-    ./links.nix
     # ./tts.nix
     ./neovim.nix
     ./ags.nix

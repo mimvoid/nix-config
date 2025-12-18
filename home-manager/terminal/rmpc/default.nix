@@ -16,13 +16,4 @@
   };
 
   services.mpd-mpris.enable = true;
-
-  xdg.configFile =
-    let
-      inherit (config.voids.lib) symlink;
-    in
-    {
-      "rmpc/config.ron" = symlink "terminal/rmpc/config.ron";
-      "rmpc/themes/theme.ron" = symlink "terminal/rmpc/theme.ron";
-    };
 }

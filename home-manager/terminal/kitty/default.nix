@@ -1,11 +1,6 @@
 { pkgs, ... }:
 
 {
-  # Session files
-  xdg.configFile = {
-    "kitty/hugo".source = ./hugo.conf;
-  };
-
   programs.kitty = {
     enable = true;
     package = pkgs.unstable.kitty;

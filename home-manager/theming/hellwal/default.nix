@@ -9,11 +9,6 @@
     '')
   ];
 
-  xdg.configFile = {
-    "hellwal/themes".source = ./themes;
-    "hellwal/templates".source = ./templates;
-  };
-
   home.file.".cache/wal/colors.json".source =
     config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/.cache/hellwal/colors.json";
 }
