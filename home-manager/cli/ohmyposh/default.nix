@@ -1,6 +1,6 @@
 { pkgs, config, ... }:
 let
-  configPath = "${config.voids.lib.flakePath}/home-manager/terminal/ohmyposh/config.yaml";
+  configPath = "${config.voids.lib.flakePath}/home-manager/cli/ohmyposh/config.yaml";
 
   initConfig =
     shell:

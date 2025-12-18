@@ -1,8 +1,6 @@
-{ pkgs, config, ... }:
+{ config, ... }:
 
 {
-  home.packages = [ pkgs.unstable.rmpc ];
-
   services.mpd = {
     enable = true;
     musicDirectory = config.xdg.userDirs.music;

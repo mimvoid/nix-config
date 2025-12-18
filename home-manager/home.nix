@@ -11,17 +11,16 @@
   xdg.enable = true;
 
   imports = [
-    ./wayland
-    ./terminal
-    ./guis
+    ./cli
+    ./gui
     ./firefox
     ./krita
-    ./theming
     ./links
+    ./theme
+    ./wayland
 
+    ./ags.nix
     ./ime.nix
     # ./tts.nix
-    ./neovim.nix
-    ./ags.nix
   ];
 }

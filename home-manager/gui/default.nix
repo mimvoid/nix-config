@@ -2,9 +2,7 @@
 
 {
   imports = [
-    ./obsidian
     ./thunar.nix
-    # ./aagl.nix
     ./zathura.nix
   ];
 
@@ -26,6 +24,7 @@
       ;
 
     inherit (pkgs.unstable)
+      obsidian
       zotero
       anki-bin
       # bottles

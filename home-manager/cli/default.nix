@@ -2,16 +2,17 @@
 
 {
   imports = [
-    ./cli.nix
-    ./git.nix
-    ./shells
-    ./kitty
-    # ./starship
-    ./ohmyposh
-    ./yazi
     ./dooit
-    ./navi
-    # ./rmpc
+    ./ohmyposh
+    ./shells
+    ./yazi
+
+    ./fontpreview.nix
+    ./git.nix
+    ./kitty.nix
+    ./misc.nix
+    ./neovim.nix
+    ./pagers.nix
   ];
 
   home.packages = [

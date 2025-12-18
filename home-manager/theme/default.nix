@@ -1,7 +1,7 @@
 {
   imports = [
-    ./hellwal
-    ./general.nix
     ./fonts.nix
+    ./general.nix
+    ./hellwal.nix
   ];
 }
