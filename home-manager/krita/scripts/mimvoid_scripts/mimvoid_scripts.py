@@ -106,6 +106,23 @@ def add_noise():
     doc.refreshProjection()
 
 
+def number_layers():
+    window = Krita.instance().activeWindow()
+    if not window:
+        return
+
+    view = window.activeView()
+    if view == 0:
+        return
+
+    for i, node in enumerate(view.selectedNodes(), start=1):
+        # Check if the split name is not empty
+        if split_name := node.name().split():
+            split_name[0] = str(i)
+            node.setName(" ".join(split_name))
+
+
+
 class MimvoidScripts(Extension):
     def __init__(self, parent):
         super().__init__(parent)
@@ -129,3 +146,7 @@ class MimvoidScripts(Extension):
         noise = window.createAction(prefix + "_noise", "Noise", "tools")
         noise.setIcon(ki.icon("spraybrush"))
         noise.triggered.connect(add_noise)
+
+        number = window.createAction(prefix + "_number_layers", "Number layers", "tools")
+        number.setIcon(ki.icon("view-list-text"))
+        number.triggered.connect(number_layers)
