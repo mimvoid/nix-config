@@ -43,7 +43,7 @@
 
   xdg.configFile =
     let
-      inherit (pkgs.unstable.yaziPlugins)
+      inherit (pkgs.yaziPlugins)
         git full-border smart-paste toggle-pane;
     in
     pkgs.voids.lib.prependAttrs "yazi/plugins/" {

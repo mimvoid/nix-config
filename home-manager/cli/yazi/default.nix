@@ -1,11 +1,8 @@
-{ pkgs, ... }:
-
 {
   imports = [ ./plugins.nix ];
 
   programs.yazi = {
     enable = true;
-    package = pkgs.unstable.yazi;
     enableZshIntegration = true;
     shellWrapperName = "yy";
 
