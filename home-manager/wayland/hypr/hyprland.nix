@@ -117,7 +117,7 @@ in
       // colors.general;
 
       decoration = {
-        rounding = 5;
+        rounding = 4;
 
         active_opacity = 0.85;
         inactive_opacity = 0.7;
@@ -156,7 +156,7 @@ in
           "border, 1, 3, default"
           "borderangle, 1, 2, default"
           "fade, 1, 2, default"
-          "workspaces, 1, 3, overshootMini, slidefade"
+          "workspaces, 1, 2, default, fade"
         ];
       };
 
