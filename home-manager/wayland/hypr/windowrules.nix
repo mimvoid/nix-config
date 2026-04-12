@@ -43,13 +43,13 @@ in
       "org.godotengine.Editor"
     ])
     ++ (mapClasses "opaque" [
-      "krita"
+      "org.kde.krita"
       ".*Inkscape"
       ".*digikam"
       "virt-manager"
     ])
     # For some Krita plugin windows
-    ++ (setRules "class:krita, floating:1" [
+    ++ (setRules "class:org.kde.krita, floating:1" [
       "xray 0"
       "noinitialfocus"
       "noblur"
