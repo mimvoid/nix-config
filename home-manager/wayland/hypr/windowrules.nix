@@ -31,6 +31,7 @@ in
       "vesktop"
       "ristretto"
       "libreoffice.*"
+      "Zotero"
     ])
     # Opaque when focused
     ++ (mapClasses "opacity 1.0 override 0.85 override" [
