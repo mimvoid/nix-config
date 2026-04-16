@@ -1,11 +1,18 @@
 { pkgs, ... }:
-
 let
-  inherit (pkgs) callPackage;
+  plugins = import ./plugins { inherit pkgs; };
+  resources = import ./resources { inherit pkgs; };
 in
 {
-  reference-tabs-docker = callPackage ./reference-tabs-docker { };
-  composition-helper = callPackage ./composition-helper { };
-  timer-watch = callPackage ./timer-watch { };
-  shortcut-composer = callPackage ./shortcut-composer { };
+  inherit (plugins)
+    composition-helper
+    reference-tabs-docker
+    shortcut-composer
+    timer-watch
+    ;
+
+  inherit (resources)
+    catppuccin-macchiato-maroon
+    bundles
+    ;
 }

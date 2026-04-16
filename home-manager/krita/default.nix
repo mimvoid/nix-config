@@ -9,19 +9,18 @@
       composition-helper
       timer-watch
       shortcut-composer
+      catppuccin-macchiato-maroon
       ;
     inherit (pkgs.unstable) krita;
   };
 
   xdg.dataFile = {
+    # Krita has only one resource folder, so simply downloading a package does not make
+    # it available to Krita. Therefore, we need to symlink them.
     "krita" = {
-      source = ./resources;
+      source = "${pkgs.voids.krita.bundles}/share/krita";
       recursive = true;
     };
-
-    "krita/color-schemes/CatppuccinMacchiatoMaroon.colors".source = ./CatppuccinMacchiatoMaroon.colors;
-
-    # Krita can't seem to recognize the files in ~/.nix-profile/share/krita/palettes
     "krita/palettes" = {
       source = "${pkgs.voids.gpl-palettes}/share/krita/palettes";
       recursive = true;
