@@ -75,26 +75,7 @@
       nixosConfigurations.sirru = nixpkgs.lib.nixosSystem {
         inherit system pkgs;
         specialArgs = { inherit inputs; };
-
-        modules = builtins.attrValues {
-          sirru = ./hosts/sirru;
-          inherit (self.nixosModules)
-            boot
-            console
-            core
-            greetd
-            hyprland
-            intel
-            nixConfig
-            power
-            printing
-            packagers
-            thunar
-            xdgPortal
-            zinnia
-            zsh
-            ;
-        };
+        modules = [ ./hosts/sirru ];
       };
 
       nixosConfigurations.customIso = nixpkgs.lib.nixosSystem {
