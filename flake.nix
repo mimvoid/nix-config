@@ -70,35 +70,55 @@
 
       # Directory for absolute paths, use sparingly
       flakePath = "/home/zinnia/NixOS";
+
+      # Basic function to create an attrset of files and their content from a directory.
+      import-modules-dir =
+        dir:
+        pkgs.lib.attrsets.mapAttrs' (name: value: {
+          name = pkgs.lib.strings.removeSuffix ".nix" name;
+          value = import "${dir}/${name}";
+        }) (builtins.readDir dir);
     in
     {
-      nixosConfigurations = {
-        sirru = nixpkgs.lib.nixosSystem {
-          inherit system pkgs;
-          specialArgs = { inherit inputs; };
-          modules = [
-            ./configuration.nix
-            ./hosts/intel.nix
-            ./hosts/sirru/hardware-configuration.nix
-            ./hosts/sirru/extra.nix
-          ];
-        };
+      nixosModules = import-modules-dir ./modules/nixos;
 
-        customIso = nixpkgs.lib.nixosSystem {
-          inherit system;
-          modules = [ ./hosts/iso/configuration.nix ];
+      nixosConfigurations.sirru = nixpkgs.lib.nixosSystem {
+        inherit system pkgs;
+        specialArgs = { inherit inputs; };
+
+        modules = builtins.attrValues {
+          sirru = ./hosts/sirru;
+          inherit (self.nixosModules)
+            boot
+            console
+            core
+            greetd
+            hyprland
+            intel
+            nixConfig
+            power
+            printing
+            packagers
+            thunar
+            xdgPortal
+            zinnia
+            zsh
+            ;
         };
       };
 
-      homeConfigurations = {
-        "zinnia" = home-manager.lib.homeManagerConfiguration {
-          inherit pkgs;
-          extraSpecialArgs = { inherit inputs; };
-          modules = [
-            ./home-manager/home.nix
-            (import ./modules/hm.nix { inherit flakePath; })
-          ];
-        };
+      nixosConfigurations.customIso = nixpkgs.lib.nixosSystem {
+        inherit system;
+        modules = [ ./hosts/iso ];
+      };
+
+      homeConfigurations.zinnia = home-manager.lib.homeManagerConfiguration {
+        inherit pkgs;
+        extraSpecialArgs = { inherit inputs; };
+        modules = [
+          ./home-manager/home.nix
+          (import ./modules/hm.nix { inherit flakePath; })
+        ];
       };
     };
 }

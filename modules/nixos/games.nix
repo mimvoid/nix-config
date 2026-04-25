@@ -1,4 +1,4 @@
-{ inputs, pkgs, ... }:
+{ pkgs, ... }:
 
 {
   programs.gamemode = {
@@ -13,11 +13,5 @@
       };
   };
 
-  # AAGL
-  imports = [
-    "${inputs.aagl.outPath}/module/hosts.nix"
-  ];
-
-  networking.mihoyo-telemetry.block = true;
   programs.steam.enable = true;
 }

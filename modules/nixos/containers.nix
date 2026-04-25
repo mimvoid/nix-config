@@ -1,5 +1,3 @@
-{ lib, ... }:
-
 {
   # Enable common container config files in /etc/containers
   virtualisation.containers.enable = true;
@@ -10,8 +8,4 @@
     autoPrune.enable = true;
     defaultNetwork.settings.dns_enabled = true;
   };
-
-  users.users.zinnia.extraGroups = lib.mkAfter [
-    "podman"
-  ];
 }
