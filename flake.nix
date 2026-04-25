@@ -55,17 +55,7 @@
       pkgs = import nixpkgs {
         inherit system;
         overlays = import ./overlays { inherit inputs; };
-
-        # Allow certain unfree packages
-        config.allowUnfreePredicate =
-          pkg:
-          builtins.elem (nixpkgs.lib.getName pkg) [
-            "arttime"
-            "vivaldi"
-            "obsidian"
-            "steam"
-            "steam-unwrapped"
-          ];
+        config.allowUnfree = true;
       };
 
       # Directory for absolute paths, use sparingly
