@@ -8,30 +8,22 @@
 
   home.packages = builtins.attrValues {
     inherit (pkgs)
-      # Files & documents
       libreoffice
       file-roller
       nextcloud-client # Have it available as an app
 
-      # Media
       tauon
-      # inkscape
-      # unstable.digikam
+      vesktop
 
       anki-sync-server
-      vesktop
-      # virt-manager
       ;
 
     inherit (pkgs.unstable)
       obsidian
       zotero
       anki-bin
-      # bottles
-      # prismlauncher
+      prismlauncher
       ;
-
-    inherit (pkgs.voids) freetube;
   };
 
   services.nextcloud-client = {
