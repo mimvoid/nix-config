@@ -6,25 +6,19 @@
 
 stdenvNoCC.mkDerivation rec {
   pname = "krita-shortcut-composer";
-  version = "1.5.4";
+  version = "1.7.1";
 
   src = fetchFromGitHub {
     owner = "wojtryb";
     repo = "Shortcut-Composer";
-    sparseCheckout = [
-      "shortcut_composer.desktop"
-      "shortcut_composer"
-    ];
     rev = "v${version}";
-    hash = "sha256-TCuBLaIENOrYQP8e+Qq3AJweiiWoRkgOBoGcUjAZa5I=";
+    hash = "sha256-G/Aos9tE8ssg1sUdZEjWvdeV2joS63Sf25RdbizVKjE=";
   };
 
   installPhase = ''
     runHook preInstall
-
     mkdir -p $out/share/krita/pykrita
     cp -t $out/share/krita/pykrita -r shortcut_composer.desktop shortcut_composer
-
     runHook postInstall
   '';
 

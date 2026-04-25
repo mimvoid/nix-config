@@ -6,28 +6,19 @@
 
 stdenvNoCC.mkDerivation {
   pname = "krita-timer-watch";
-  version = "unstable-2024-08-12";
+  version = "unstable-2025-01-06";
 
   src = fetchFromGitHub {
     owner = "EyeOdin";
     repo = "timer_watch";
-    sparseCheckout = [
-      "timer_watch.desktop"
-      "timer_watch/__init__.py"
-      "timer_watch/timer_watch_docker.py"
-      "timer_watch/timer_watch_docker.ui"
-      "timer_watch/timer_watch_settings.ui"
-    ];
-    rev = "1f181c8bdf5a4410b4c43537910f0e1d36ed95d8";
-    hash = "sha256-aIzB+nYmwKX2oiUmaHLWwEZz+RIyhaCaXndrax8MzCI=";
+    rev = "d9f5dd6afba5e80cbfdb3026076c93da5db87c89";
+    hash = "sha256-htigJ+QT5E9csm7K7HxFbcndbUsOAsQ2MkX7qwh/coU=";
   };
 
   installPhase = ''
     runHook preInstall
-
     mkdir -p $out/share/krita/pykrita
-    cp -r * $out/share/krita/pykrita
-
+    cp -t $out/share/krita/pykrita -r timer_watch.desktop timer_watch
     runHook postInstall
   '';
 

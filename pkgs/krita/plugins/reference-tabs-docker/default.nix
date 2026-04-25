@@ -6,21 +6,18 @@
 
 stdenvNoCC.mkDerivation {
   pname = "krita-reference-tabs-docker";
-  version = "unstable-2024-08-12";
+  version = "unstable-2026-02-15";
 
   src = fetchgit {
     url = "https://invent.kde.org/freyalupen/reference-tabs-docker";
-    sparseCheckout = [ "pykrita" ];
-    rev = "cf6fccd847ec19833ca0a81b2bf58c2fb1d0e231";
-    hash = "sha256-hDIAxYVXCV3aW6zwckxkfO9EgLh1S7wdnnw0KDTxHRY=";
+    rev = "4e9723566c6f6772758067b247b86556a72de242";
+    hash = "sha256-L/7tA6o4lrYJZfoiaEsstlP3FQdPkl/QdD+Ihq2kpgk=";
   };
 
   installPhase = ''
     runHook preInstall
-
-    mkdir -p $out/share/krita/pykrita
-    cp -r pykrita/* $out/share/krita/pykrita
-
+    mkdir -p $out/share/krita
+    cp -r pykrita $out/share/krita
     runHook postInstall
   '';
 
