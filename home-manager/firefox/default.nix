@@ -1,19 +1,16 @@
-# { pkgs, ... }:
-# let
-#   inherit (pkgs.unstable) firefoxpwa;
-#   inherit (pkgs) pywalfox-native;
-# in
+{ config, pkgs, ... }:
+let
+  inherit (config.voids.lib) symlink;
+  firefox-profile = "30dphuug.default";
+in
 {
-  # home.packages = [
-  #   firefoxpwa
-  #   pywalfox-native
-  # ];
-
   programs.firefox = {
     enable = true;
-    # nativeMessagingHosts = [
-    #   firefoxpwa
-    #   pywalfox-native
-    # ];
+    package = pkgs.unstable.firefox;
+  };
+
+  home.file = {
+    # Firefox userChrome & userContent
+    ".mozilla/firefox/${firefox-profile}/chrome" = symlink "firefox/panefox";
   };
 }

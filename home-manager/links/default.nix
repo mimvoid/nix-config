@@ -26,13 +26,9 @@ in
 
   home.file =
     let
-      firefox-profile = "30dphuug.default";
       vault-dir = "Documents/Zettelkasten";
     in
     {
-      # Firefox userChrome & userContent
-      ".mozilla/firefox/${firefox-profile}/chrome" = symlink "firefox/panefox";
-
       # Obsidian
       "${vault-dir}/.obsidian/snippets" = symlink "links/obsidian/snippets";
       "${vault-dir}/.obsidian.vimrc" = symlink "links/obsidian/.obsidian.vimrc";
