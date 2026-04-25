@@ -21,6 +21,6 @@
 
     ./ags.nix
     ./ime.nix
-    # ./tts.nix
+    ./tts.nix
   ];
 }
