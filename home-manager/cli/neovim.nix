@@ -2,7 +2,7 @@
 
 {
   home.packages = [
-    inputs.nvim.packages.${pkgs.system}.default
+    inputs.nvim.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   # Make default editor

@@ -7,7 +7,8 @@ let
   # Use pkgs.unstable.<package>
   unstable-packages = final: _prev: {
     unstable = import inputs.nixpkgs-unstable {
-      inherit (final) system config;
+      inherit (final) config;
+      inherit (final.stdenv.hostPlatform) system;
     };
   };
 

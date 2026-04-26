@@ -14,7 +14,7 @@
     configDir = null;
 
     extraPackages = builtins.attrValues {
-      inherit (inputs.ags.packages.${pkgs.system})
+      inherit (inputs.ags.packages.${pkgs.stdenv.hostPlatform.system})
         hyprland
         tray
         network
