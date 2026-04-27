@@ -3,15 +3,15 @@ let
   amy = pkgs.fetchFromGitHub {
     owner = "sweetbbak";
     repo = "Neural-Amy-TTS";
-    sparseCheckout = [ "models/amy_neural" ];
     rev = "9131abc49bfe028ff823c35add38649987fda17f";
-    hash = "sha256-8HJRHRclpub9ogkq2r1COyen/JvHfg60zlkEYnhw0gs=";
+    hash = "sha256-7pOdzA5bwqO1XdXR/rsPUGYFm86HIeuct6KtBH3Qsxw=";
+    rootDir = "models/amy_neural";
   };
 
-  piper-models = pkgs.runCommand "piper-models" { } ''
-    mkdir -p $out
-    cp ${amy}/models/amy_neural/* $out
-  '';
+  piper-models = pkgs.symlinkJoin {
+    name = "piper-models";
+    paths = [ amy ];
+  };
 in
 {
   home.packages = [

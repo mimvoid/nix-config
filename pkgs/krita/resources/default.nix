@@ -1,17 +1,20 @@
 { pkgs }:
 
 {
-  catppuccin-macchiato-maroon =
-    let
-      src = fetchTarball {
-        url = "https://github.com/catppuccin/kde/releases/download/v0.2.6/Macchiato-color-schemes.tar.gz";
-        sha256 = "1wn7b8k8k3a7jwqsv932drrzj2brgj095kn53659rgyw4iq7kz8a";
-      };
-    in
-    pkgs.runCommand "krita-catppuccin-macchiato-maroon" { } ''
+  catppuccin-macchiato-maroon = pkgs.stdenvNoCC.mkDerivation rec {
+    pname = "krita-catppuccin-macchiato-maroon";
+    version = "0.2.6";
+
+    src = pkgs.fetchzip {
+      url = "https://github.com/catppuccin/kde/releases/download/v${version}/Macchiato-color-schemes.tar.gz";
+      sha256 = "1wn7b8k8k3a7jwqsv932drrzj2brgj095kn53659rgyw4iq7kz8a";
+    };
+
+    installPhase = ''
       mkdir -p $out/share/krita/color-schemes
-      cp ${src}/CatppuccinMacchiatoMaroon.colors $out/share/krita/color-schemes
+      cp CatppuccinMacchiatoMaroon.colors $out/share/krita/color-schemes
     '';
+  };
 
   bundles =
     let
