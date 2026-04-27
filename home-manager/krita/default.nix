@@ -11,7 +11,18 @@
       shortcut-composer
       catppuccin-macchiato-maroon
       ;
-    inherit (pkgs.unstable) krita;
+
+    # See https://github.com/NixOS/nixpkgs/issues/509315
+    krita = pkgs.symlinkJoin {
+      name = "krita-fixed";
+      paths = [ pkgs.unstable.krita ];
+      nativeBuildInputs = [ pkgs.makeWrapper ];
+      postBuild = ''
+        wrapProgram "$out/bin/krita" \
+          --prefix XDG_DATA_DIRS : "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}" \
+          --prefix XDG_DATA_DIRS : "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
+      '';
+    };
   };
 
   xdg.dataFile = {
