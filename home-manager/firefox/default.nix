@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  inherit (config.voids.lib) symlink;
+  inherit (config.voids.lib) flakePath;
   firefox-profile = "30dphuug.default";
 in
 {
@@ -9,8 +9,7 @@ in
     package = pkgs.unstable.firefox;
   };
 
-  home.file = {
-    # Firefox userChrome & userContent
-    ".mozilla/firefox/${firefox-profile}/chrome" = symlink "firefox/panefox";
-  };
+  # Firefox userChrome & userContent
+  home.file.".mozilla/firefox/${firefox-profile}/chrome".source =
+    config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/firefox/panefox";
 }

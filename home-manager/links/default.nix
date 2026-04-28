@@ -1,10 +1,10 @@
 { config, ... }:
 let
-  inherit (config.voids.lib) symlink;
+  inherit (config.voids.lib) flakePath symlink;
 in
 {
   xdg.configFile = {
-    "ags" = symlink "ags";
+    "ags".source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/ags";
     "wallpapers".source = ../../wallpapers/wallpapers;
 
     "dooit/config.py" = symlink "links/dooit/config.py";

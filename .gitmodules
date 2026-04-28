@@ -2,8 +2,8 @@
 	path = wallpapers
 	url = https://github.com/mimvoid/wallpaper-stash
 [submodule "panefox"]
-	path = home-manager/firefox/panefox
+	path = home/firefox/panefox
 	url = https://github.com/mimvoid/panefox
 [submodule "home-manager/ags"]
-	path = home-manager/ags
+	path = home/ags
 	url = git@github.com:mimvoid/mim-shell.git
