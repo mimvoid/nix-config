@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   imports = [ ./scripts ];
@@ -40,7 +40,7 @@
     "thumbnailers/kra.thumbnailer".text = ''
       [Thumbnailer Entry]
       TryExec=unzip
-      Exec=sh -c "${pkgs.unzip}/bin/unzip -p %i preview.png > %o"
+      Exec=sh -c "${lib.getExe pkgs.unzip} -p %i preview.png > %o"
       MimeType=application/x-krita;
     '';
   };

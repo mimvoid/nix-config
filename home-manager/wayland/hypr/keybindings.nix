@@ -12,7 +12,7 @@ let
     let
       dir = "~/Pictures/Screenshots";
       file = "$(date +%F_%H-%M-%S).png";
-      mkCommand = _: mode: "${pkgs.hyprshot}/bin/hyprshot -m ${mode} --freeze -o ${dir} -f ${file}";
+      mkCommand = _: mode: "${pkgs.lib.getExe pkgs.hyprshot} -m ${mode} --freeze -o ${dir} -f ${file}";
     in
     builtins.mapAttrs mkCommand {
       screen = "output";

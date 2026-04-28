@@ -1,11 +1,11 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   programs.gamemode = {
     enable = true;
     settings.custom =
       let
-        notify-send = "${pkgs.libnotify}/bin/notify-send";
+        notify-send = lib.getExe pkgs.libnotify;
       in
       {
         start = "${notify-send} 'GameMode started'";

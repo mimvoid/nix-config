@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 {
   # Used to start an X11 session, and is faster than startx
@@ -31,7 +31,7 @@
           ];
         in
         builtins.concatStringsSep " " [
-          "${pkgs.tuigreet}/bin/tuigreet"
+          (lib.getExe pkgs.tuigreet)
           "--greeting 'Welcome back!'"
           "--time --time-format '%a, %b %d %Y - %H:%M'"
           "--asterisks"

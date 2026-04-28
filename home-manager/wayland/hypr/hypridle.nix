@@ -1,9 +1,14 @@
+{ pkgs, lib, ... }:
+let
+  hyprlock = lib.getExe pkgs.hyprlock;
+  notify-send = lib.getExe pkgs.libnotify;
+in
 {
   services.hypridle = {
     enable = true;
     settings = {
       general = {
-        lock_cmd = "hyprlock";
+        lock_cmd = hyprlock;
         before_sleep_cmd = "loginctl lock-session";
         after_sleep_cmd = "hyprctl dispatch dpms on";
       };
@@ -12,13 +17,13 @@
         {
           # Idle warning
           timeout = 540;
-          on-timeout = "notify-send 'Hypridle' 'Are you there...?'";
-          on-resume = "notify-send 'Hypridle' 'Welcome back!'";
+          on-timeout = "${notify-send} 'Hypridle' 'Are you there...?'";
+          on-resume = "${notify-send} 'Hypridle' 'Welcome back!'";
         }
         {
           # Lock
           timeout = 600;
-          on-timeout = "hyprlock";
+          on-timeout = hyprlock;
         }
         {
           # Screen off

@@ -1,11 +1,9 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 let
-  configPath = "${config.voids.lib.flakePath}/home-manager/cli/ohmyposh/config.yaml";
-
   initConfig =
     shell:
     pkgs.lib.mkAfter ''
-      eval "$(oh-my-posh init ${shell} --config '${configPath}')"
+      eval "$(oh-my-posh init ${shell} --config '${./config.yaml}')"
     '';
 in
 {

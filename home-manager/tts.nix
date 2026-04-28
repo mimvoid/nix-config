@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 let
   amy = pkgs.fetchFromGitHub {
     owner = "sweetbbak";
@@ -24,7 +24,7 @@ in
       piper-generic = pkgs.writeText "piper-generic.conf" ''
         GenericExecuteSynth \
         "echo \'$DATA\' \
-        | ${pkgs.piper-tts}/bin/piper --model \'${piper-models}/$VOICE.onnx\' --output-raw \
+        | ${lib.getExe pkgs.piper-tts} --model \'${piper-models}/$VOICE.onnx\' --output-raw \
         | pw-play --rate=22050 --channel-map=LE --raw -"
 
         AddVoice "en" "female1" "amy"

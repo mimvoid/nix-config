@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, lib, ... }:
 
 # Like the home-manager wlsunset module, but with an added duration argument
 
@@ -9,7 +9,7 @@
       PartOf = [ "graphical-session.target" ];
     };
 
-    Service.ExecStart = "${pkgs.wlsunset}/bin/wlsunset -T 5000 -S 7:30 -t 2500 -s 20:00 -d 1800";
+    Service.ExecStart = "${lib.getExe pkgs.wlsunset} -T 5000 -S 7:30 -t 2500 -s 20:00 -d 1800";
 
     Install.WantedBy = [ "hyprland-session.target" ];
   };
