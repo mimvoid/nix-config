@@ -1,20 +1,11 @@
-{ inputs, pkgs, ... }:
+{ inputs, pkgs, config, ... }:
+let
+  inherit (config.voids.lib) flakePath;
 
-{
-  imports = [ inputs.ags.homeManagerModules.default ];
-
-  home.packages = [
-    pkgs.dart-sass
-    pkgs.brightnessctl
-    pkgs.adwaita-icon-theme
-  ];
-
-  programs.ags = {
-    enable = true;
-    configDir = null;
-
+  ags-pkgs = inputs.ags.packages.${pkgs.stdenv.hostPlatform.system};
+  ags = ags-pkgs.ags.override {
     extraPackages = builtins.attrValues {
-      inherit (inputs.ags.packages.${pkgs.stdenv.hostPlatform.system})
+      inherit (ags-pkgs)
         hyprland
         tray
         network
@@ -27,4 +18,14 @@
         ;
     };
   };
+in
+{
+  home.packages = [
+    ags
+    pkgs.dart-sass
+    pkgs.brightnessctl
+    pkgs.adwaita-icon-theme
+  ];
+
+  xdg.configFile."ags".source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/ags";
 }
