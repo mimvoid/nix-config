@@ -31,7 +31,7 @@
       mkdir -p $out/share/krita
       cp ${sk-sketching}/SK_V1_.bundle $out/share/krita
       cp ${./Chalks_for_Children.bundle} $out/share/krita/Chalks_for_Children.bundle
-      cp ${./hollow_line.bundle} $out/share/hollow_line.bundle
+      cp ${./hollow_line.bundle} $out/share/krita/hollow_line.bundle
       cp ${rakurri} $out/share/krita/Rakurri_Gradient_Map_Set_V1.0.bundle
     '';
 }
