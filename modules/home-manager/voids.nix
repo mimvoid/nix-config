@@ -1,8 +1,14 @@
-{ flakePath }:
 { config, lib, ... }:
-
+let
+  cfg = config.voids;
+in
 {
   options.voids = {
+    flakeDir = lib.mkOption {
+      description = "Impure absolute path to the Nix flake";
+      type = lib.types.str;
+    };
+
     lib = lib.mkOption {
       description = "Utility functions";
       readOnly = true;
@@ -10,12 +16,10 @@
   };
 
   config = {
-    home.sessionVariables.NH_FLAKE = flakePath;
+    home.sessionVariables.NH_FLAKE = cfg.flakeDir;
 
     voids = {
       lib = {
-        inherit flakePath;
-
         # Simple wrapper around mkOutOfStoreSymlink to make direct symlinks.
         #
         # Due to the nature of how flakes are stored, making paths absolute with `toString`
@@ -25,14 +29,8 @@
         # Since this is impure, only use it if the benefits of instant updates outweigh the
         # cost of purity.
         symlink = hmPathStr: {
-          source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home-manager/${hmPathStr}";
+          source = config.lib.file.mkOutOfStoreSymlink "${cfg.flakeDir}/home-manager/${hmPathStr}";
         };
-
-        # hardlink =
-        #   src: dst:
-        #   lib.hm.dag.entryAfter [ "writeBoundary" ] ''
-        #     $DRY_RUN_CMD ln -fn ${flakePath}/home-manager/${src} ${config.home.homeDirectory}/${dst}
-        #   '';
       };
     };
   };

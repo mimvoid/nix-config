@@ -1,6 +1,6 @@
 { inputs, pkgs, config, ... }:
 let
-  inherit (config.voids.lib) flakePath;
+  inherit (config.voids) flakeDir;
 
   ags-pkgs = inputs.ags.packages.${pkgs.stdenv.hostPlatform.system};
   ags = ags-pkgs.ags.override {
@@ -27,5 +27,5 @@ in
     pkgs.adwaita-icon-theme
   ];
 
-  xdg.configFile."ags".source = config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/ags";
+  xdg.configFile."ags".source = config.lib.file.mkOutOfStoreSymlink "${flakeDir}/home/ags";
 }

@@ -1,6 +1,6 @@
 { config, pkgs, ... }:
 let
-  inherit (config.voids.lib) flakePath;
+  inherit (config.voids) flakeDir;
   firefox-profile = "30dphuug.default";
 in
 {
@@ -11,5 +11,5 @@ in
 
   # Firefox userChrome & userContent
   home.file.".mozilla/firefox/${firefox-profile}/chrome".source =
-    config.lib.file.mkOutOfStoreSymlink "${flakePath}/home/firefox/panefox";
+    config.lib.file.mkOutOfStoreSymlink "${flakeDir}/home/firefox/panefox";
 }

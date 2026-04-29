@@ -59,7 +59,7 @@
       };
 
       # Directory for absolute paths, use sparingly
-      flakePath = "/home/zinnia/NixOS";
+      flakeDir = "/home/zinnia/NixOS";
 
       # Basic function to create an attrset of files and their content from a directory.
       import-modules-dir =
@@ -88,7 +88,8 @@
         extraSpecialArgs = { inherit inputs; };
         modules = [
           ./home-manager/home.nix
-          (import ./modules/hm.nix { inherit flakePath; })
+          ./modules/home-manager/voids.nix
+          { voids = { inherit flakeDir; }; }
         ];
       };
     };
