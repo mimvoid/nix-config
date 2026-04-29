@@ -1,13 +1,14 @@
 { pkgs, ... }:
-
+let
+  hexNoHashtag = str: builtins.substring 1 6 str;
+in
 {
   console = {
     font = "leggie-24";
     packages = [ pkgs.voids.fonts.leggie ];
     useXkbConfig = true;
 
-    colors = builtins.map pkgs.palettes.lib.strings.noHashtag [
-      # catppuccin mocha
+    colors = map hexNoHashtag [
       "#11111b" # crust      black
       "#f38ba8" # red        red
       "#a6e3a1" # green      green
