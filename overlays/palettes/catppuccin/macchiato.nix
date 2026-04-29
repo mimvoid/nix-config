@@ -1,5 +1,4 @@
 # Catppuccin Macchiato color palette
-
 {
   rosewater = "#f4dbd6";
   flamingo = "#f0c6c6";

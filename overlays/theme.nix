@@ -33,7 +33,9 @@ let
     terminal-size = 12;
     terminal-size-float = 12.5;
   };
-
+in
+{
+  inherit cursor gtk icons fonts;
   packages = [
     gtk.theme.package
     icons.package
@@ -42,5 +44,4 @@ let
     fonts.serif.package
     fonts.monospace.package
   ];
-in
-{ inherit cursor gtk icons fonts packages; }
+}

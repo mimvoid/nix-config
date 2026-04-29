@@ -1,6 +1,5 @@
 # Based on Catppuccin Macchiato
 # Main colors: pinks, purples, greens, blues
-
 let
   main = {
     string = "#cad3f5"; # text

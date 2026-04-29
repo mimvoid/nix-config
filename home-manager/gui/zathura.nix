@@ -9,7 +9,7 @@ in
     options = {
       default-bg =
         let
-          bg = pkgs.palettes.moonfall-eve.rgbSplit.nadir // {
+          bg = pkgs.palettes.moonfall-eve.rgbSplit.black // {
             a = 0.75;
           };
           bgStr = pkgs.palettes.lib.strings.joinRgba bg;
