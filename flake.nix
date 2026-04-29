@@ -58,6 +58,9 @@
         config.allowUnfree = true;
       };
 
+      allSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
+      toSystems = passPkgs: allSystems (system: passPkgs (import nixpkgs { inherit system; }));
+
       # Directory for absolute paths, use sparingly
       flakeDir = "/home/zinnia/NixOS";
 
@@ -71,6 +74,7 @@
     in
     {
       nixosModules = import-modules-dir ./modules/nixos;
+      packages = toSystems (pkgs: import ./pkgs { inherit pkgs; });
 
       nixosConfigurations.sirru = nixpkgs.lib.nixosSystem {
         inherit system pkgs;
