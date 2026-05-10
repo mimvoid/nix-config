@@ -12,6 +12,7 @@
     ./misc.nix
     ./neovim.nix
     ./pagers.nix
+    ./todotui.nix
   ];
 
   home.packages = [

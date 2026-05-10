@@ -9,6 +9,7 @@ in
   fontpreview = callPackage ./fontpreview { };
   freetube = callPackage ./freetube { };
   mdopen = callPackage ./mdopen { };
+  todotui = callPackage ./todotui { };
   zsh-help = callPackage ./zsh-help { };
 
   gpl-palettes = callPackage ./gpl-palettes {
