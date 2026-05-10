@@ -7,7 +7,6 @@
     ./shells
     ./yazi
 
-    ./fontpreview.nix
     ./git.nix
     ./kitty.nix
     ./misc.nix
@@ -18,6 +17,7 @@
   home.packages = [
     pkgs.voids.arttime
     pkgs.fletchling
+    pkgs.voids.fontpreview
   ];
 
   programs.direnv = {

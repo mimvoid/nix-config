@@ -35,7 +35,23 @@ stdenvNoCC.mkDerivation rec {
           imagemagick
           nsxiv
         ]
-      }
+      } \
+      --suffix FONTPREVIEW_SIZE : "650x700" \
+      --suffix FONTPREVIEW_PREVIEW_TEXT : "${
+        builtins.concatStringsSep "\n" [
+          "SPHINX OF BLACK QUARTZ,"
+          "JUDGE MY VOW."
+          "" # extra line break
+          "Sphinx of Black Quartz,"
+          "Judge My Vow."
+          ""
+          "sphinx of black quartz,"
+          "judge my vow."
+          ""
+          "1234567890"
+          ''!@$\%(){}[];:\'\"''
+        ]
+      }"
   '';
 
   meta = {
