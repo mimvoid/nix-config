@@ -209,11 +209,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1777258707,
-        "narHash": "sha256-w3WZtBasXWklh+Ihn/dc8w3LcwaPSrzZoNPAexN3xsg=",
+        "lastModified": 1778451670,
+        "narHash": "sha256-e3pgd3Rh9cHrPpaNL+yTZQzDJXaPutgZtDQtLDWLQ+0=",
         "owner": "mimvoid",
         "repo": "neovim-dots",
-        "rev": "0130c464cbc42cc317df019cb13cd9fcbf805a69",
+        "rev": "129bc1aa583fcc18772e99dfe015400ab845a347",
         "type": "github"
       },
       "original": {
