@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ pkgs, config, lib, ... }:
 
 {
   imports = [ ./zsh.nix ];
@@ -10,11 +10,11 @@
     extraGroups = [
       "wheel"
       "networkmanager"
-      "podman"
-    ];
+    ]
+    ++ lib.optionals config.virtualisation.podman.enable [ "podman" ];
 
     shell = pkgs.zsh;
   };
 
-  nix.settings.trusted-users = pkgs.lib.mkAfter [ "zinnia" ];
+  nix.settings.trusted-users = lib.mkAfter [ "zinnia" ];
 }
