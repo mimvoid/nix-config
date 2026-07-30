@@ -32,6 +32,7 @@ in
       "ristretto"
       "libreoffice.*"
       "Zotero"
+      "jetbrains-studio"
     ])
     # Opaque when focused
     ++ (mapClasses "opacity 1.0 override 0.85 override" [
@@ -43,6 +44,7 @@ in
       "org.godotengine.Editor"
     ])
     ++ (mapClasses "opaque" [
+      "krita"
       "org.kde.krita"
       ".*Inkscape"
       ".*digikam"
