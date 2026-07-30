@@ -11,7 +11,8 @@
       "wheel"
       "networkmanager"
     ]
-    ++ lib.optionals config.virtualisation.podman.enable [ "podman" ];
+    ++ lib.optionals config.virtualisation.podman.enable [ "podman" ]
+    ++ lib.optionals config.virtualisation.libvirtd.enable [ "libvirtd" ];
 
     shell = pkgs.zsh;
   };

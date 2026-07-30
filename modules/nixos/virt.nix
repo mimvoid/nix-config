@@ -1,10 +1,8 @@
 { pkgs, ... }:
 
 {
-  environment.systemPackages = [ pkgs.qemu_kvm ];
-
-  virtualisation = {
-    libvirtd.enable = true;
-    kvmgt.enable = true;
+  virtualisation.libvirtd = {
+    enable = true;
+    qemu.package = pkgs.qemu_kvm; # Just emulate host architectures
   };
 }
