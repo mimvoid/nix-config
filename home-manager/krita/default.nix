@@ -19,6 +19,7 @@
       nativeBuildInputs = [ pkgs.makeWrapper ];
       postBuild = ''
         wrapProgram "$out/bin/krita" \
+          --prefix QT_QPA_PLATFORM : "xcb;" \
           --prefix XDG_DATA_DIRS : "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}" \
           --prefix XDG_DATA_DIRS : "${pkgs.gtk3}/share/gsettings-schemas/${pkgs.gtk3.name}"
       '';
