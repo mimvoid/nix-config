@@ -55,7 +55,7 @@ in
         "${pkgs.gnome-keyring}/bin/gnome-keyring-daemon --start &"
         "mega-cmd-server &"
         "fcitx5 -d &"
-        "swww-daemon &"
+        "awww-daemon &"
         "ags run &"
       ];
 

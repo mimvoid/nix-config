@@ -9,6 +9,6 @@
 
   home.packages = [
     pkgs.wl-clipboard-rs
-    pkgs.swww
+    pkgs.awww
   ];
 }
