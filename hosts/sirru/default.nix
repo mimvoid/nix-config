@@ -8,6 +8,7 @@
       boot
       console
       core
+      games
       greetd
       hyprland
       intel
@@ -16,6 +17,7 @@
       printing
       packagers
       thunar
+      virt
       xdgPortal
       zinnia
       zsh
