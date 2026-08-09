@@ -81,6 +81,12 @@
         modules = [ ./hosts/sirru ];
       };
 
+      nixosConfigurations.auriga = nixpkgs.lib.nixosSystem {
+        inherit system pkgs;
+        specialArgs = { inherit inputs; };
+        modules = [ ./hosts/auriga ];
+      };
+
       nixosConfigurations.customIso = nixpkgs.lib.nixosSystem {
         inherit system;
         modules = [ ./hosts/iso ];
