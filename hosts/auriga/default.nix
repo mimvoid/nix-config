@@ -4,6 +4,7 @@
   imports = builtins.attrValues {
     hardware = ./hardware-configuration.nix;
     capella = ./capella.nix;
+    services = ./services.nix;
     inherit (inputs.self.nixosModules)
       boot
       console
