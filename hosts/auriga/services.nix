@@ -1,10 +1,12 @@
-{ pkgs, ... }:
+{ pkgs, inputs, config, ... }:
 let
   ports = {
     karakeep = 3000;
   };
 in
 {
+  imports = [ inputs.self.nixosModules.sops ];
+
   services.nginx = {
     enable = true;
     recommendedGzipSettings = true;
@@ -67,8 +69,11 @@ in
 
       dnsProvider = "desec";
       dnsPropagationCheck = true;
-      credentialFiles.DESEC_TOKEN_FILE = "/var/lib/desec/desec-token";
+      credentialFiles.DESEC_TOKEN_FILE = config.sops.secrets."acme/auriga_cafe/desec_token".path;
     };
   };
   users.users.nginx.extraGroups = [ "acme" ];
+
+  sops.age.keyFile = "/home/capella/.config/sops/age/keys.txt";
+  sops.secrets."acme/auriga_cafe/desec_token" = { };
 }
