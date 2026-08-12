@@ -1,6 +1,8 @@
-{ pkgs, ... }:
+{ pkgs, inputs, ... }:
 
 {
+  imports = [ inputs.self.nixosModules.sops ];
+
   users.users.capella = {
     isNormalUser = true;
     extraGroups = [
@@ -9,6 +11,7 @@
     ];
     shell = pkgs.zsh;
   };
+  sops.age.keyFile = "/home/capella/.config/sops/age/keys.txt";
 
   home-manager.users.capella = {
     imports = [

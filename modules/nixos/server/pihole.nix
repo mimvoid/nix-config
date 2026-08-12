@@ -1,0 +1,21 @@
+{ config, lib, ... }:
+let
+  auriga-domains = [
+    "auriga.cafe"
+  ]
+  ++ lib.optionals config.services.karakeep.enable [ "karakeep.auriga.cafe" ]
+  ++ lib.optionals config.services.nextcloud.enable [ config.services.nextcloud.hostName ];
+in
+{
+  services.pihole-ftl = {
+    enable = true;
+    openFirewallDNS = true;
+    settings.dns = {
+      upstreams = [
+        "1.1.1.1"
+        "9.9.9.9"
+      ];
+      hosts = [ "10.0.0.27 ${builtins.concatStringsSep " " auriga-domains}" ];
+    };
+  };
+}

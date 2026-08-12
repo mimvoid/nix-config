@@ -4,13 +4,19 @@
   imports = builtins.attrValues {
     hardware = ./hardware-configuration.nix;
     capella = ./capella.nix;
-    services = ./services.nix;
     inherit (inputs.self.nixosModules)
       boot
       console
       homeManager
       nixConfig
       zsh
+      ;
+    inherit (inputs.self.nixosModules.server)
+      acme
+      karakeep
+      nginx
+      nextcloud
+      pihole
       ;
   };
 

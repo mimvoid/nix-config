@@ -68,16 +68,10 @@
       # Directory for absolute paths, use sparingly
       flakeDir = "/home/zinnia/NixOS";
 
-      # Basic function to create an attrset of files and their content from a directory.
-      import-modules-dir =
-        dir:
-        pkgs.lib.attrsets.mapAttrs' (name: value: {
-          name = pkgs.lib.strings.removeSuffix ".nix" name;
-          value = import "${dir}/${name}";
-        }) (builtins.readDir dir);
+      modules = import ./modules { inherit (pkgs) lib; };
     in
     {
-      nixosModules = import-modules-dir ./modules/nixos;
+      inherit (modules) nixosModules;
       packages = toSystems (pkgs: import ./pkgs { inherit pkgs; });
 
       nixosConfigurations.sirru = nixpkgs.lib.nixosSystem {
