@@ -24,7 +24,4 @@
   };
 
   networking.hostName = "sirru";
-
-  # VGA compatible controller and audio device for IOMMU
-  boot.kernelParams = lib.mkAfter [ "vfio-pci.ids=8086:9a78,8086:a0c8" ];
 }
