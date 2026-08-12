@@ -3,7 +3,6 @@
 {
   imports = builtins.attrValues {
     hardware = ./hardware-configuration.nix;
-    hardware-extra = ./extra.nix;
     inherit (inputs.self.nixosModules)
       boot
       console
