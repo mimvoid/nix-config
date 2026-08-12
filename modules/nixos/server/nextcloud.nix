@@ -14,6 +14,7 @@
       dbtype = "mysql";
       adminpassFile = config.sops.secrets."nextcloud/admin_pass".path;
     };
+    phpOptions."opcache.interned_strings_buffer" = "16";
     settings = {
       maintenance_window_start = 1;
       default_phone_region = "US";
