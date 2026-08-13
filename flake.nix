@@ -47,9 +47,7 @@
       };
     };
 
-    # Extra packages
     ags.url = "github:Aylur/ags";
-    # aagl.url = "github:ezKEa/aagl-gtk-on-nix";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -64,9 +62,6 @@
 
       allSystems = nixpkgs.lib.genAttrs nixpkgs.lib.platforms.all;
       toSystems = passPkgs: allSystems (system: passPkgs (import nixpkgs { inherit system; }));
-
-      # Directory for absolute paths, use sparingly
-      flakeDir = "/home/zinnia/NixOS";
 
       modules = import ./modules { inherit (pkgs) lib; };
     in
@@ -97,7 +92,10 @@
         modules = [
           ./home-manager/home.nix
           ./modules/home-manager/voids.nix
-          { voids = { inherit flakeDir; }; }
+          {
+            # Directory for absolute paths, use sparingly
+            voids.flakeDir = "/home/zinnia/NixOS";
+          }
         ];
       };
     };
