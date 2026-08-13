@@ -3,20 +3,20 @@
 {
   security.acme = {
     acceptTerms = true;
-    certs."auriga.cafe" = {
-      domain = "auriga.cafe";
+    certs."auri.dedyn.io" = {
+      domain = "auri.dedyn.io";
       extraDomainNames = [
-        "karakeep.auriga.cafe"
+        "karakeep.auri.dedyn.io"
         config.services.nextcloud.hostName
       ];
       reloadServices = [ "nginx" ];
 
       dnsProvider = "desec";
       dnsPropagationCheck = true;
-      credentialFiles.DESEC_TOKEN_FILE = config.sops.secrets."acme/auriga_cafe/desec_token".path;
+      credentialFiles.DESEC_TOKEN_FILE = config.sops.secrets."desec/nginx_proxy".path;
     };
   };
   users.users.nginx.extraGroups = [ "acme" ];
 
-  sops.secrets."acme/auriga_cafe/desec_token" = { };
+  sops.secrets."desec/nginx_proxy" = { };
 }

@@ -1,9 +1,9 @@
 { config, lib, ... }:
 let
   auriga-domains = [
-    "auriga.cafe"
+    "auri.dedyn.io"
   ]
-  ++ lib.optionals config.services.karakeep.enable [ "karakeep.auriga.cafe" ]
+  ++ lib.optionals config.services.karakeep.enable [ "karakeep.auri.dedyn.io" ]
   ++ lib.optionals config.services.nextcloud.enable [ config.services.nextcloud.hostName ];
 in
 {

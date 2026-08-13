@@ -5,7 +5,7 @@
 
   services.nextcloud = {
     enable = true;
-    hostName = "nextcloud.auriga.cafe";
+    hostName = "nextcloud.auri.dedyn.io";
     https = true;
     database.createLocally = true;
     configureRedis = true;
@@ -37,8 +37,8 @@
     };
   };
 
-  services.nginx.virtualHosts."nextcloud.auriga.cafe" = {
-    useACMEHost = "auriga.cafe";
+  services.nginx.virtualHosts."nextcloud.auri.dedyn.io" = {
+    useACMEHost = "auri.dedyn.io";
     forceSSL = true;
   };
 

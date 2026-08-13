@@ -14,8 +14,8 @@ in
     };
   };
 
-  services.nginx.virtualHosts."karakeep.auriga.cafe" = {
-    useACMEHost = "auriga.cafe";
+  services.nginx.virtualHosts."karakeep.auri.dedyn.io" = {
+    useACMEHost = "auri.dedyn.io";
     forceSSL = true;
     locations."/".proxyPass = "http://127.0.0.1:${toString port}";
   };
