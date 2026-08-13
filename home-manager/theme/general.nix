@@ -15,6 +15,7 @@ in
   gtk = {
     inherit (gtk) theme;
     enable = true;
+    gtk4.theme = gtk.theme;
     font = fonts.sansSerif;
     iconTheme = icons;
     cursorTheme = cursor;

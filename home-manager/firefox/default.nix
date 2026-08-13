@@ -7,6 +7,7 @@ in
   programs.firefox = {
     enable = true;
     package = pkgs.unstable.firefox;
+    configPath = ".mozilla/firefox";
   };
 
   # Firefox userChrome & userContent
