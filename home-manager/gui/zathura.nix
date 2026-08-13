@@ -1,22 +1,16 @@
 { pkgs, ... }:
-let
-  font-name = pkgs.theme.fonts.monospace.name;
-  font-size = pkgs.theme.fonts.terminal-size;
-in
+
 {
   programs.zathura = {
     enable = true;
     options = {
-      default-bg =
+      font =
         let
-          bg = pkgs.palettes.moonfall-eve.rgbSplit.black // {
-            a = 0.75;
-          };
-          bgStr = pkgs.palettes.lib.strings.joinRgba bg;
+          font-name = pkgs.theme.fonts.monospace.name;
+          font-size = pkgs.theme.fonts.terminal-size;
         in
-        pkgs.lib.mkForce bgStr;
+        "${font-name} normal ${toString font-size}";
 
-      font = "${font-name} normal ${toString font-size}";
       guioptions = "sv";
       recolor = true;
       recolor-keephue = true;
@@ -30,6 +24,37 @@ in
       scroll-step = 60;
       double-click-follow = true;
       selection-notification = false;
-    };
+    }
+    // pkgs.palettes.lib.attrsets.joinRgba (
+      with pkgs.palettes.moonfall-eve.rgbSplit.base16;
+      {
+        default-bg = base00 // {
+          a = 0.75;
+        };
+        default-fg = base01;
+        statusbar-fg = base04;
+        statusbar-bg = base02;
+        inputbar-bg = base00;
+        inputbar-fg = base07;
+        notification-bg = base00;
+        notification-fg = base07;
+        notification-error-bg = base00;
+        notification-error-fg = base08;
+        notification-warning-bg = base00;
+        notification-warning-fg = base08;
+        highlight-color = base0A // {
+          a = 0.5;
+        };
+        highlight-active-color = base0D // {
+          a = 0.5;
+        };
+        completion-bg = base01;
+        completion-fg = base0D;
+        completion-highlight-fg = base07;
+        completion-highlight-bg = base0D;
+        recolor-lightcolor = base00;
+        recolor-darkcolor = base06;
+      }
+    );
   };
 }

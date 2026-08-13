@@ -1,3 +1,5 @@
+{ pkgs, ... }:
+
 {
   imports = [ ./plugins.nix ];
 
@@ -5,15 +7,6 @@
     enable = true;
     enableZshIntegration = true;
     shellWrapperName = "yy";
-
-    theme.status =
-      let
-        common = { open = ""; close = ""; };
-      in
-      {
-        sep_left = common;
-        sep_right = common;
-      };
 
     settings = {
       mgr = {
@@ -32,6 +25,24 @@
         max_width = 2000;
         max_height = 2000;
       };
+    };
+
+    theme = {
+      flavor = {
+        dark = "base16";
+        light = "base16";
+      };
+      status = {
+        sep_left = { open = ""; close = ""; };
+        sep_right = { open = ""; close = ""; };
+      };
+    };
+
+    flavors.base16 = pkgs.fetchFromGitHub {
+      owner = "matt-dong-123";
+      repo = "base16.yazi";
+      rev = "ed793528890e2b37595c76b70c212ccfdc81d9ae";
+      hash = "sha256-1WhixzYE1zsXg9o6T/YKWJgzfRZnzsmpiUIfi+j4H9Q=";
     };
   };
 }

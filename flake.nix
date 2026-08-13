@@ -28,25 +28,6 @@
       inputs.nixpkgs.follows = "nixpkgs-unstable";
     };
 
-    stylix = {
-      url = "github:nix-community/stylix/release-26.05";
-      inputs = {
-        nixpkgs.follows = "nixpkgs";
-
-        # Ignore un-needed inputs
-        base16-fish.follows = "";
-        base16-helix.follows = "";
-        base16-vim.follows = "";
-        firefox-gnome-theme.follows = "";
-        gnome-shell.follows = "";
-        nur.follows = "";
-        tinted-kitty.follows = "";
-        tinted-schemes.follows = "";
-        tinted-tmux.follows = "";
-        tinted-zed.follows = "";
-      };
-    };
-
     ags.url = "github:Aylur/ags";
   };
 

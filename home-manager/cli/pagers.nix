@@ -1,8 +1,10 @@
 {
-  programs = {
-    bat.enable = true;
-    lesspipe.enable = true;
+  programs.bat = {
+    enable = true;
+    config.theme = "ansi";
   };
+
+  programs.lesspipe.enable = true;
 
   home.sessionVariables = {
     # pagers
