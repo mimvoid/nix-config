@@ -7,14 +7,14 @@
       boot
       console
       core
-      games
+      desktop
+      gamemode
       greetd
       hyprland
       intel
       nixConfig
       power
       printing
-      packagers
       thunar
       virt
       xdgPortal
@@ -24,4 +24,7 @@
   };
 
   networking.hostName = "sirru";
+
+  services.libinput.enable = true; # Touchpad support.
+  programs.nix-ld.enable = true; # Enable binaries.
 }

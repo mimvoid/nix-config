@@ -7,6 +7,7 @@
     inherit (inputs.self.nixosModules)
       boot
       console
+      core
       homeManager
       nixConfig
       zsh
@@ -21,8 +22,6 @@
   };
 
   networking.hostName = "auriga";
-
-  networking.networkmanager.enable = true;
   networking.firewall.enable = true;
 
   environment.sessionVariables = {
@@ -45,9 +44,4 @@
     enable = true;
     enableSSHSupport = true;
   };
-
-  time.timeZone = "America/New_York";
-  i18n.defaultLocale = "en_US.UTF-8";
-
-  system.stateVersion = "26.05";
 }
