@@ -14,6 +14,7 @@
       ;
     inherit (inputs.self.nixosModules.server)
       acme
+      ddns
       karakeep
       nginx
       nextcloud

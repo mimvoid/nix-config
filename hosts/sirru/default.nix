@@ -40,7 +40,7 @@
           "0.0.0.0/0"
           "::/0"
         ];
-        endpoint = "10.0.0.27:56017"; # TODO: set up DDNS
+        endpoint = "auri.dedyn.io:56017";
       }
     ];
   };

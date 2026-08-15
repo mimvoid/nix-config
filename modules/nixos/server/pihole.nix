@@ -1,10 +1,9 @@
 { config, lib, ... }:
 let
-  auriga-domains = [
-    "auri.dedyn.io"
-  ]
-  ++ lib.optionals config.services.karakeep.enable [ "karakeep.auri.dedyn.io" ]
-  ++ lib.optionals config.services.nextcloud.enable [ config.services.nextcloud.hostName ];
+  auriga-domains =
+    [ ]
+    ++ lib.optionals config.services.karakeep.enable [ "karakeep.auri.dedyn.io" ]
+    ++ lib.optionals config.services.nextcloud.enable [ config.services.nextcloud.hostName ];
 in
 {
   services.pihole-ftl = {
