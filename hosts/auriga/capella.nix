@@ -21,6 +21,7 @@
       ../../home-manager/cli/neovim.nix
     ];
 
+    xdg.enable = true;
     home.stateVersion = "23.11";
   };
 }
