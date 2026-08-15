@@ -1,10 +1,12 @@
-{ config, inputs, ... }:
+{ pkgs, config, inputs, ... }:
 
 {
   imports = [ inputs.self.nixosModules.sops ];
 
   services.nextcloud = {
     enable = true;
+    package = pkgs.nextcloud34;
+
     hostName = "nextcloud.auri.dedyn.io";
     https = true;
     database.createLocally = true;
