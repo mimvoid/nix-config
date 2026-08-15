@@ -18,4 +18,5 @@
   };
 
   nix.settings.trusted-users = lib.mkAfter [ "zinnia" ];
+  sops.age.keyFile = "/home/zinnia/.config/sops/age/keys.txt";
 }
