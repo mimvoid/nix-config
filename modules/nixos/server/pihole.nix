@@ -3,7 +3,8 @@ let
   auriga-domains =
     [ ]
     ++ lib.optionals config.services.karakeep.enable [ "karakeep.auri.dedyn.io" ]
-    ++ lib.optionals config.services.nextcloud.enable [ config.services.nextcloud.hostName ];
+    ++ lib.optionals config.services.nextcloud.enable [ config.services.nextcloud.hostName ]
+    ++ lib.optionals config.services.immich.enable [ "immich.auri.dedyn.io" ];
 in
 {
   services.pihole-ftl = {
