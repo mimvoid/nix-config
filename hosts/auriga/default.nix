@@ -18,6 +18,7 @@
       nginx
       nextcloud
       pihole
+      wireguard
       ;
   };
 
