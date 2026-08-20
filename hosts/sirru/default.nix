@@ -32,6 +32,7 @@
   # Wireguard client
   networking.wg-quick.interfaces.auriga = {
     address = [ "172.16.0.2/24" ];
+    dns = [ "10.0.0.27" ];
     privateKeyFile = config.sops.secrets."wireguard/laptop_key".path;
     peers = [
       {
