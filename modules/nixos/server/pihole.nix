@@ -31,5 +31,19 @@ in
       # not open port 53, but it still feels bad.
       listeningMode = "ALL";
     };
+
+    lists = [
+      {
+        enabled = true;
+        description = "hagezi Normal blocklist";
+        url = "https://raw.githubusercontent.com/hagezi/dns-blocklists/main/adblock/multi.txt";
+        type = "block";
+      }
+    ];
+  };
+
+  services.pihole-web = {
+    enable = true;
+    ports = [ "8443s" ];
   };
 }
