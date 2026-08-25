@@ -1,4 +1,4 @@
-{ inputs, config, ... }:
+{ inputs, ... }:
 
 {
   imports = builtins.attrValues {
@@ -15,7 +15,6 @@
       nixConfig
       power
       printing
-      sops
       thunar
       virt
       xdgPortal
@@ -33,7 +32,7 @@
   networking.wg-quick.interfaces.auriga = {
     address = [ "172.16.0.2/24" ];
     dns = [ "10.0.0.27" ];
-    privateKeyFile = config.sops.secrets."wireguard/laptop_key".path;
+    privateKeyFile = "/etc/wireguard/laptop_key";
     peers = [
       {
         publicKey = "80EyevBLy23Vmnn77lwVFkHyb4pcmV7Y0px6LL4uTVc=";
@@ -45,5 +44,4 @@
       }
     ];
   };
-  sops.secrets."wireguard/laptop_key" = { };
 }
