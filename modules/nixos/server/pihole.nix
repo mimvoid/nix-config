@@ -26,10 +26,6 @@ in
       ];
 
       hosts = [ "10.0.0.27 ${builtins.concatStringsSep " " auriga-domains}" ];
-
-      # HACK: Have Pi-Hole allow requests from Wireguard. This is fine since the router does
-      # not open port 53, but it still feels bad.
-      listeningMode = "ALL";
     };
 
     lists = [

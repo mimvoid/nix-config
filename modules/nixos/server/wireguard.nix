@@ -27,7 +27,7 @@
       '';
     in
     {
-      address = [ "${ipv4Prefix}.1/32" ];
+      address = [ "${ipv4Prefix}.1/24" ];
       listenPort = 56017;
       postUp = commands "-A";
       preDown = commands "-D";
