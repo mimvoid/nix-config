@@ -20,7 +20,7 @@
       nginx
       nextcloud
       pihole
-      wireguard
+      tailscale
       ;
   };
 

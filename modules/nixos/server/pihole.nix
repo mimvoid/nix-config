@@ -25,7 +25,7 @@ in
         "2620:fe::9"
       ];
 
-      hosts = [ "10.0.0.27 ${builtins.concatStringsSep " " auriga-domains}" ];
+      hosts = [ "100.101.35.114 ${builtins.concatStringsSep " " auriga-domains}" ];
     };
 
     lists = [
