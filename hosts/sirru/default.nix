@@ -8,6 +8,7 @@
       console
       core
       desktop
+      docker
       gamemode
       greetd
       hyprland
