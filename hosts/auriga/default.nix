@@ -14,12 +14,12 @@
       ;
     inherit (inputs.self.nixosModules.server)
       acme
+      blocky
       ddns
       immich
       karakeep
       nginx
       nextcloud
-      pihole
       tailscale
       ;
   };
