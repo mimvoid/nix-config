@@ -1,8 +1,7 @@
 { config, pkgs, ... }:
 let
-  # Needs to be a string
-  # See: https://github.com/nix-community/home-manager/issues/5743
-  lockscreen = "${../../../wallpapers/wallpapers/tokyo-shinjuku.png}";
+  # I'd ideally use a path here, but I'd rather not copy all those wallpapers into the Nix store.
+  lockscreen = "${config.voids.flakeDir}/wallpapers/wallpapers/tokyo-shinjuku.png";
   display = "RitzFLF";
 
   rgb = pkgs.palettes.macchi-nightlight.hexRgbWrap;

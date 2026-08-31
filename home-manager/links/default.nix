@@ -4,7 +4,9 @@ let
 in
 {
   xdg.configFile = {
-    "wallpapers".source = ../../wallpapers/wallpapers;
+    # I'd ideally use a path here, but I'd rather not copy all those wallpapers into the Nix store.
+    "wallpapers".source =
+      config.lib.file.mkOutOfStoreSymlink "${config.voids.flakeDir}/wallpapers/wallpapers";
 
     "dooit/config.py" = symlink "links/dooit/config.py";
     "dooit/settings/formats.py" = symlink "links/dooit/settings/format.py";

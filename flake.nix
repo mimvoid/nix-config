@@ -2,8 +2,6 @@
   description = "mimvoid's NixOS system & home flake configuration";
 
   inputs = {
-    self.submodules = true;
-
     nixpkgs.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-26.05";
     nixpkgs-unstable.url = "git+https://github.com/NixOS/nixpkgs?shallow=1&ref=nixos-unstable";
 
