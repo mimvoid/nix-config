@@ -1,0 +1,4 @@
+/* Make Markdown-style links look like Wikilinks */
+.cm-link > .cm-underline {
+  text-decoration: none !important;
+}
