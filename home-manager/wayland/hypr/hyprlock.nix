@@ -12,10 +12,10 @@ in
     enable = true;
     settings = {
       general = {
-        grace = 2;
-        disable_loading_bar = true;
         hide_cursor = false;
+        ignore_empty_input = true;
       };
+      auth.pam.module = "su";
 
       background = [
         {
